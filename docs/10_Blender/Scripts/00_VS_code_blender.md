@@ -9,11 +9,11 @@
 このフォルダ下になるが、この下に開発用のコードも置いてしまうのはイヤなので、  
 別の Scripts フォルダを設定する。
 
-![](../../../img/2018-12-17-22-37-37.png)
+![](https://gyazo.com/38a2a1adb78912ca8a2b3ca10e8fc9af.png)
 
 Preferences の Files 下の「Scripts」に、スクリプトの作業フォルダを設定する。
 
-![](../../../img/2018-12-17-22-37-54.png)
+![](https://gyazo.com/a1c561dce22a811c2c895c170545c933.png)
 
 自分の場合は、pipenv でプロジェクトを作成しているので、基本構造は ↑ のようになります。  
 Scripts で指定した Path は、各種スクリプトの Root フォルダになっているので  
@@ -42,7 +42,7 @@ VSCode でコーディングするのに、AutoComplete がないのは不便な
 pythonPath は、 python/bin/python  
 あとは、bpy モジュールのパスを **python.autoComplete.extraPaths** に追加する。
 
-![](../../../img/2018-12-17-22-38-32.png)
+![](https://gyazo.com/fd011d7c7643f73f78a4d05d59b0635b.png)
 
 パスを登録して VSCode を再起動すると、↑ のように予測変換が表示される。
 
