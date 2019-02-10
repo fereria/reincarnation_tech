@@ -1813,10 +1813,7 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
 52
 53
 54
-55
-56
-57
-58</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+55</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">BlenderのMaterialsノードを自作する時の最小構成</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -1856,11 +1853,8 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
 
 <span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
     <span class="kn">from</span> <span class="nn">bpy.utils</span> <span class="kn">import</span> <span class="n">register_class</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
     <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
         <span class="n">register_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
-
     <span class="n">nodeitems_utils</span><span class="o">.</span><span class="n">register_node_categories</span><span class="p">(</span><span class="s1">&#39;CUSTOM_NODES&#39;</span><span class="p">,</span> <span class="n">node_categories</span><span class="p">)</span>
 
 
@@ -1952,6 +1946,11 @@ icon は、ノード上に表示されるアイコン。</p>
 <p><img alt="" src="https://gyazo.com/f646082a3d1b3fa3da1853eb07798424.png" /></p>
 <p>NodeCategory でカテゴリ追加、そのカテゴリ内に items 引数にある NodeItem を追加<br />
 その配列を、register 関数内でまとめて登録・削除する。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>第一引数のOTHERNODESは、他の読み込まれているプラグインで使用していたら<br />
+プラグインロード時にエラーになってしまう</p>
+</div>
 <h3 id="_4">ロード・アンロード処理</h3>
 <p>最後にロード・アンロード時の処理を定義をする。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
