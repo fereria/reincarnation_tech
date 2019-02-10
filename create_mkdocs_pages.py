@@ -20,7 +20,8 @@ FOLDER_REPLACE_STRING = {
     "terms": u"用語",
     "modifier": u"モディファイアの使い方",
     "back-to-top-button": u"検証・考察",
-    "study_materials":u"NodeEditorマテリアル学習"
+    "study_materials": u"NodeEditorマテリアル学習",
+    "study_scripts_reading": u"サンプルコード読んで学習"
 }
 
 # 無視するフォルダ
