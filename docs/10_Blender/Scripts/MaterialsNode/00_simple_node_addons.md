@@ -59,11 +59,8 @@ classes = (MyCustomNode,)
 
 def register():
     from bpy.utils import register_class
-    print(classes)
     for cls in classes:
-        print(cls)
         register_class(cls)
-
     nodeitems_utils.register_node_categories('CUSTOM_NODES', node_categories)
 
 
@@ -155,6 +152,10 @@ node_categories = [
 NodeCategory でカテゴリ追加、そのカテゴリ内に items 引数にある NodeItem を追加  
 その配列を、register 関数内でまとめて登録・削除する。
 
+!!! note
+    第一引数のOTHERNODESは、他の読み込まれているプラグインで使用していたら  
+    プラグインロード時にエラーになってしまう
+    
 ### ロード・アンロード処理
 
 最後にロード・アンロード時の処理を定義をする。
