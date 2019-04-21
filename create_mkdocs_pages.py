@@ -21,7 +21,9 @@ FOLDER_REPLACE_STRING = {
     "modifier": u"モディファイアの使い方",
     "back-to-top-button": u"検証・考察",
     "study_materials": u"NodeEditorマテリアル学習",
-    "study_scripts_reading": u"サンプルコード読んで学習"
+    "study_scripts_reading": u"サンプルコード読んで学習",
+    "imitate": u"Houdini写経"
+
 }
 
 # 無視するフォルダ
