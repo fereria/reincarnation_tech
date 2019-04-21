@@ -38,7 +38,7 @@
     
     
       
-        <title>PipEnvの使い方 - Reincarnation+#Tech</title>
+        <title>HDAの作り方 - Reincarnation+#Tech</title>
       
     
     
@@ -111,7 +111,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#pipenv" tabindex="1" class="md-skip">
+      <a href="#hda" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -137,7 +137,7 @@
                 Reincarnation+#Tech
               </span>
               <span class="md-header-nav__topic">
-                PipEnvの使い方
+                HDAの作り方
               </span>
             
           
@@ -243,7 +243,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../10_Houdini/00_Basic/00_start_houdini/" title="Houdini" class="md-tabs__link">
+        <a href="../00_start_houdini/" title="Houdini" class="md-tabs__link md-tabs__link--active">
           Houdini
         </a>
       
@@ -281,7 +281,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../00_npm_install/" title="Programming" class="md-tabs__link md-tabs__link--active">
+        <a href="../../../10_Programming/00_PG_setup/00_npm_install/" title="Programming" class="md-tabs__link">
           Programming
         </a>
       
@@ -1208,10 +1208,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Houdini
@@ -1227,10 +1229,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
     
     <label class="md-nav__link" for="nav-2-1">
       Basic
@@ -1248,7 +1252,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/00_Basic/00_start_houdini/" title="初めてのHoudini_基本操作01" class="md-nav__link">
+    <a href="../00_start_houdini/" title="初めてのHoudini_基本操作01" class="md-nav__link">
       初めてのHoudini_基本操作01
     </a>
   </li>
@@ -1260,7 +1264,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/00_Basic/02_mesh_polygon/" title="VtxPointPrimitiveMeshPolygonについて" class="md-nav__link">
+    <a href="../02_mesh_polygon/" title="VtxPointPrimitiveMeshPolygonについて" class="md-nav__link">
       VtxPointPrimitiveMeshPolygonについて
     </a>
   </li>
@@ -1272,7 +1276,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/00_Basic/03_group/" title="HoudiniのGroup_01" class="md-nav__link">
+    <a href="../03_group/" title="HoudiniのGroup_01" class="md-nav__link">
       HoudiniのGroup_01
     </a>
   </li>
@@ -1282,11 +1286,104 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../../10_Houdini/00_Basic/04_HDA/" title="HDAの作り方" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        HDAの作り方
+      </label>
+    
+    <a href="./" title="HDAの作り方" class="md-nav__link md-nav__link--active">
       HDAの作り方
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hda_1" title="HDA とは？" class="md-nav__link">
+    HDA とは？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subset" title="Subset の作成" class="md-nav__link">
+    Subset の作成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="パラメーターを外に出す" class="md-nav__link">
+    パラメーターを外に出す
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export" title="Export" class="md-nav__link">
+    Export
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hda_2" title="HDA の管理" class="md-nav__link">
+    HDA の管理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="設定の編集" class="md-nav__link">
+    設定の編集
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hda_3" title="HDA の中のノードを隠蔽する" class="md-nav__link">
+    HDA の中のノードを隠蔽する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="参考" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1296,7 +1393,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/00_Basic/99_shortcut/" title="Houdiniのショートカット" class="md-nav__link">
+    <a href="../99_shortcut/" title="Houdiniのショートカット" class="md-nav__link">
       Houdiniのショートカット
     </a>
   </li>
@@ -1332,7 +1429,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/10_VOP/01_vex_to_vop_noise/" title="VEXをVOPに置き換える_01_ノイズ" class="md-nav__link">
+    <a href="../../10_VOP/01_vex_to_vop_noise/" title="VEXをVOPに置き換える_01_ノイズ" class="md-nav__link">
       VEXをVOPに置き換える_01_ノイズ
     </a>
   </li>
@@ -1344,7 +1441,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/10_VOP/02_add_attribute/" title="Attributeを追加してVOPで使用する" class="md-nav__link">
+    <a href="../../10_VOP/02_add_attribute/" title="Attributeを追加してVOPで使用する" class="md-nav__link">
       Attributeを追加してVOPで使用する
     </a>
   </li>
@@ -1356,7 +1453,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/10_VOP/03_add_param/" title="パラメーターを追加する" class="md-nav__link">
+    <a href="../../10_VOP/03_add_param/" title="パラメーターを追加する" class="md-nav__link">
       パラメーターを追加する
     </a>
   </li>
@@ -1392,7 +1489,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/50_imitate/00_glue_constraint_rbd/" title="Houdini写経01_RBD_ClueConstraint" class="md-nav__link">
+    <a href="../../50_imitate/00_glue_constraint_rbd/" title="Houdini写経01_RBD_ClueConstraint" class="md-nav__link">
       Houdini写経01_RBD_ClueConstraint
     </a>
   </li>
@@ -1404,7 +1501,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../10_Houdini/50_imitate/01_ifend/" title="01_ifend" class="md-nav__link">
+    <a href="../../50_imitate/01_ifend/" title="01_ifend" class="md-nav__link">
       01_ifend
     </a>
   </li>
@@ -1556,12 +1653,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Programming
@@ -1577,12 +1672,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
     
     <label class="md-nav__link" for="nav-4-1">
       PG_setup
@@ -1600,7 +1693,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../00_npm_install/" title="npmをインストールする" class="md-nav__link">
+    <a href="../../../10_Programming/00_PG_setup/00_npm_install/" title="npmをインストールする" class="md-nav__link">
       npmをインストールする
     </a>
   </li>
@@ -1610,20 +1703,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="PipEnvの使い方" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../../10_Programming/00_PG_setup/pipenv_statup/" title="PipEnvの使い方" class="md-nav__link">
       PipEnvの使い方
     </a>
-    
   </li>
 
         
@@ -1657,7 +1741,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../01_VSCode/VSCode_extension/" title="VSCodeの拡張機能を作る" class="md-nav__link">
+    <a href="../../../10_Programming/01_VSCode/VSCode_extension/" title="VSCodeの拡張機能を作る" class="md-nav__link">
       VSCodeの拡張機能を作る
     </a>
   </li>
@@ -1669,7 +1753,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../01_VSCode/VSCode_snippet_sc/" title="キーバインドに指定スニペットを挿入を指定" class="md-nav__link">
+    <a href="../../../10_Programming/01_VSCode/VSCode_snippet_sc/" title="キーバインドに指定スニペットを挿入を指定" class="md-nav__link">
       キーバインドに指定スニペットを挿入を指定
     </a>
   </li>
@@ -1681,7 +1765,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../01_VSCode/VSCode_task/" title="VSCodeのタスクを作成する" class="md-nav__link">
+    <a href="../../../10_Programming/01_VSCode/VSCode_task/" title="VSCodeのタスクを作成する" class="md-nav__link">
       VSCodeのタスクを作成する
     </a>
   </li>
@@ -1717,7 +1801,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../10_Python2/gitbook_create_summary/" title="GitBookのSUMMARYファイルを自動作成" class="md-nav__link">
+    <a href="../../../10_Programming/10_Python2/gitbook_create_summary/" title="GitBookのSUMMARYファイルを自動作成" class="md-nav__link">
       GitBookのSUMMARYファイルを自動作成
     </a>
   </li>
@@ -1729,7 +1813,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../10_Python2/super_class/" title="Pythonのクラスで多重継承した場合の__init__順序" class="md-nav__link">
+    <a href="../../../10_Programming/10_Python2/super_class/" title="Pythonのクラスで多重継承した場合の__init__順序" class="md-nav__link">
       Pythonのクラスで多重継承した場合の__init__順序
     </a>
   </li>
@@ -1765,7 +1849,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../10_Python3/py_import/" title="Import関係の構造" class="md-nav__link">
+    <a href="../../../10_Programming/10_Python3/py_import/" title="Import関係の構造" class="md-nav__link">
       Import関係の構造
     </a>
   </li>
@@ -1820,7 +1904,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../10_python_module/PySide/pyside_graphicsview_child_item/" title="PySideのGraphicsViewで親子化" class="md-nav__link">
+    <a href="../../../10_Programming/10_python_module/PySide/pyside_graphicsview_child_item/" title="PySideのGraphicsViewで親子化" class="md-nav__link">
       PySideのGraphicsViewで親子化
     </a>
   </li>
@@ -1861,7 +1945,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../20_GitLab/docker_gitlab_ci/" title="DockerでRunnerを使用する_セットアップ編" class="md-nav__link">
+    <a href="../../../10_Programming/20_GitLab/docker_gitlab_ci/" title="DockerでRunnerを使用する_セットアップ編" class="md-nav__link">
       DockerでRunnerを使用する_セットアップ編
     </a>
   </li>
@@ -1873,7 +1957,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../20_GitLab/download_artifacts/" title="Build結果をダウンロードする" class="md-nav__link">
+    <a href="../../../10_Programming/20_GitLab/download_artifacts/" title="Build結果をダウンロードする" class="md-nav__link">
       Build結果をダウンロードする
     </a>
   </li>
@@ -1885,7 +1969,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../20_GitLab/gitlab_windows/" title="Windows環境でGitLabのCI/CDを実行する" class="md-nav__link">
+    <a href="../../../10_Programming/20_GitLab/gitlab_windows/" title="Windows環境でGitLabのCI/CDを実行する" class="md-nav__link">
       Windows環境でGitLabのCI/CDを実行する
     </a>
   </li>
@@ -1897,7 +1981,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../20_GitLab/gitlab_windows_nose/" title="GitLabCIでnosetests" class="md-nav__link">
+    <a href="../../../10_Programming/20_GitLab/gitlab_windows_nose/" title="GitLabCIでnosetests" class="md-nav__link">
       GitLabCIでnosetests
     </a>
   </li>
@@ -2242,6 +2326,77 @@
     
   
   
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hda_1" title="HDA とは？" class="md-nav__link">
+    HDA とは？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subset" title="Subset の作成" class="md-nav__link">
+    Subset の作成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="パラメーターを外に出す" class="md-nav__link">
+    パラメーターを外に出す
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export" title="Export" class="md-nav__link">
+    Export
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hda_2" title="HDA の管理" class="md-nav__link">
+    HDA の管理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="設定の編集" class="md-nav__link">
+    設定の編集
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hda_3" title="HDA の中のノードを隠蔽する" class="md-nav__link">
+    HDA の中のノードを隠蔽する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="参考" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2252,15 +2407,75 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Programming/00_PG_setup/pipenv_statup.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Houdini/00_Basic/04_HDA.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="pipenv">PipEnv の使い方</h1>
-<!-- SUMMARY:PipEnv の使い方 -->
+                <h1 id="hda">HDA の作り方</h1>
+<!-- SUMMARY:HDAの作り方 -->
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pipenv --python 3.6
-</pre></div>
-</td></tr></table>
+<h2 id="hda_1">HDA とは？</h2>
+<p>HDA とは「Houdini Digital Asset」の略で、作成したノードを使い回しするために<br />
+Export して、Tab キーのショートカットから呼び出せるようにできる機能の事。</p>
+<p>Maya でいうなら Export したものを Reference で読み込めるようにする機能に近いが、<br />
+どちらかというとプログラミングの関数化に近い気がします。</p>
+<h2 id="subset">Subset の作成</h2>
+<p>HDA を作成するには、まず Subnet を作成します。</p>
+<p><img alt="" src="https://gyazo.com/5753221616601561c2c52449453f47dd.png" /></p>
+<p>Subnet は、ノードネットワークを再利用することができるようにするための機能。</p>
+<p><img alt="" src="https://gyazo.com/1f93ef3703bafc71a7e4f521edfd0d03.png" /></p>
+<p>たとえば、こんな感じのノードがあった場合、Subnet 化すると</p>
+<p><img alt="" src="https://gyazo.com/149be445878e79771fe510a9a6230fa1.png" /></p>
+<p>１つのノードにまとめることができる。</p>
+<p>イメージとしては、これはローカル関数に近い。<br />
+Houdini のシーン内のみで使いまわしができるのがこの Subnet なのかな？</p>
+<h2 id="_1">パラメーターを外に出す</h2>
+<p>subnet 化は、いわゆるカプセル化というやつで<br />
+１つの機能を１つのノードとしてまとめることで、中の処理を見えなくすることができる。<br />
+ただ、それだとパラメーターの調整がいちいち Subnet 内に入らないとできないので<br />
+Subnet 側にパラメーターを表示するようにする。</p>
+<p><img alt="" src="https://gyazo.com/92c2b911a6e90e5206887c7b82ff3797.png" /></p>
+<p>Subnet のノードを選択して、歯車マーク →Edit Parameter Interface...<br />
+をクリックする。</p>
+<p>そのあと表に出したいパラメーターのノードを Subnet 内で選択し、</p>
+<p><img alt="" src="https://gyazo.com/9e9e468408ff0054364482da007c1934.png" /></p>
+<p>外に出したいアトリビュートを、EditParameterInterface の Existing Parameters の枠の中に D&amp;D する。</p>
+<p><img alt="" src="https://gyazo.com/5ef9b5a0b30cb40381f74a1bbc4b40ea.png" /></p>
+<p>D&amp;D すると、Subnet にパラメーターが追加される。</p>
+<p><img alt="" src="https://gyazo.com/aa9b222fd8822ac7c69c952a45fac03c.png" /></p>
+<p>すると、グリーンマークになり、</p>
+<p><img alt="" src="https://gyazo.com/44cfda4cc29af3dc0b11810efcdde025.png" /></p>
+<p>Subnet にパラメーターが表示される。</p>
+<h2 id="export">Export</h2>
+<p><img alt="" src="https://gyazo.com/b5cb78864b0c7ca9743f7d731420510a.png" /></p>
+<p>準備ができたら、HDA を出力をする。<br />
+HDA にしたい Subnet を選択 → 右クリックで　 Create Digital Asset...を選択する。</p>
+<p><img alt="" src="https://gyazo.com/28deb0aea86fa82661673741b76e98c5.png" /></p>
+<p>Operator Name を指定して、HDA ファイルの出力パスを指定する。<br />
+とりあえずはデフォルトで。</p>
+<p>最後に、出力する HDA の詳細情報を指定する。<br />
+今回はスキップ。<br />
+いわゆる配布物である HDA の使い方の Docs やら、アイコンなどの情報をここで指定する。</p>
+<p><img alt="" src="https://gyazo.com/5de8d72f17805901513406c53af1a89a.png" /></p>
+<p>いろいろありますが、とりあえずはデフォルトにしておきます。</p>
+<p><img alt="" src="https://gyazo.com/6ce359ffa4c444bc55dd523f182db946.png" /></p>
+<p>出力が完了すると、Tab→Labem 名を入れると、作成した HDA のノードを作成することができます。</p>
+<h2 id="hda_2">HDA の管理</h2>
+<p>HDA のノードを右クリック →Show in Asset Manager...を選択すると、</p>
+<p><img alt="" src="https://gyazo.com/cb703f64ddb254d03829ca009ef096b9.png" /></p>
+<p>作成した HAD を確認することができる。</p>
+<h3 id="_2">設定の編集</h3>
+<p><img alt="" src="https://gyazo.com/c9b9584384017dd3160c75155faecab4.png" /></p>
+<p>HDA 出力時の設定は、Asset Manager の　 Type Properties から編集することができる。</p>
+<h3 id="hda_3">HDA の中のノードを隠蔽する</h3>
+<p><img alt="" src="https://gyazo.com/eee83b4505a322df55fca2ad35e0cff4.png" /></p>
+<p>ノードの中身を開かせたくない場合は「Create Black box assets...」を作成する。</p>
+<p><img alt="" src="https://gyazo.com/532c38fbc9a73227e211a1df29302edb.png" /></p>
+<p>ブラックボックス化されたノードの場合、ノードの中を見ようとすると PermissionDenied が表示され、<br />
+中をみることができない。</p>
+<h2 id="_3">参考</h2>
+<ul>
+<li><a href="https://www.kickbase.net/entry/houdini-create-hda#HDA%E4%BD%9C%E6%88%90%E6%89%8B%E9%A0%86">https://www.kickbase.net/entry/houdini-create-hda#HDA%E4%BD%9C%E6%88%90%E6%89%8B%E9%A0%86</a></li>
+</ul>
                 
                   
                 
@@ -2281,7 +2496,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../00_npm_install/" title="npmをインストールする" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../03_group/" title="HoudiniのGroup_01" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2290,19 +2505,19 @@
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                npmをインストールする
+                HoudiniのGroup_01
               </span>
             </div>
           </a>
         
         
-          <a href="../../01_VSCode/VSCode_extension/" title="VSCodeの拡張機能を作る" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../99_shortcut/" title="Houdiniのショートカット" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
-                VSCodeの拡張機能を作る
+                Houdiniのショートカット
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
