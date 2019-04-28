@@ -2,6 +2,79 @@
 
 <!-- SUMMARY:PipEnv の使い方 -->
 
+## インストール方法
+
+まず、通常のpipを使用してpython3にpipenvをインストールする。  
+```
+pip install pipenv
+```
+```
+C:\Users\<UserName>\AppData\Local\Programs\Python\Python36\Scripts
+```
+次に、pipのあるフォルダにPATHを通す。  
+  
+  
+## インストール先を変更する
+
+デフォルトだとHOME下に仮想環境が作成されてしまうので、
+プロジェクト下になるように環境変数で指定する
+
+```batch
+PIPENV_VENV_IN_PROJECT=true
+```
+
+## Versionを指定してPIPENVの環境を作成する
+
 ```bat
 pipenv --python 3.6
 ```
+
+このようにバージョン指定すると、その指定されたバージョンで仮想環境を作成できる（2系3系どちらも可能） 
+
+![](https://gyazo.com/ad0977ba38ddb16cd3aa8cc9556d177c.png)
+
+実行すると、プロジェクト下に.venvが作成され  
+その下に仮想環境が作成される。  
+  
+## Debugの構成を追加
+
+![](https://gyazo.com/58d9a1d4ded9b6048fd526213ee48923.png)
+
+Debugの構成を追加して、launch.jsonを作成する。
+
+```json
+{
+   "version": "0.2.0",
+   "configurations": [
+     {
+       "name": "Python: Current File used Pipenv",
+       "type": "python",
+       "request": "launch",
+       "program": "${file}",
+       "pythonPath": "${workspaceFolder}/.venv/Scripts/python",
+       "console": "integratedTerminal"
+     }
+   ]
+}
+```
+
+作成されたlaunch.jsonの中身を↑に書き換える。  
+  
+さらに、.vscode下にあるsetting.jsonの中身を
+
+```json
+{
+   "python.pythonPath": "${workspaceFolder}/.venv/Scripts/python"
+}
+```
+
+これに書き換える。  
+この設定をすると、VSCodeでPythonを実行したときに、.venv内のpythonを  
+使用するようになる。  
+  
+![](https://gyazo.com/47cd29cfc0bc4b6eab229f466179b845.png)
+
+作成した仮想環境にモジュールをインストールしたい場合は、  
+コンソールで pipenv install #### を実行することで  
+インストールすることができる。  
+  
