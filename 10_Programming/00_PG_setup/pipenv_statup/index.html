@@ -1620,9 +1620,59 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        PipEnvの使い方
+      </label>
+    
     <a href="./" title="PipEnvの使い方" class="md-nav__link md-nav__link--active">
       PipEnvの使い方
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="インストール方法" class="md-nav__link">
+    インストール方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="インストール先を変更する" class="md-nav__link">
+    インストール先を変更する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionpipenv" title="Versionを指定してPIPENVの環境を作成する" class="md-nav__link">
+    Versionを指定してPIPENVの環境を作成する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug" title="Debugの構成を追加" class="md-nav__link">
+    Debugの構成を追加
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -2290,6 +2340,43 @@
     
   
   
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="インストール方法" class="md-nav__link">
+    インストール方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="インストール先を変更する" class="md-nav__link">
+    インストール先を変更する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionpipenv" title="Versionを指定してPIPENVの環境を作成する" class="md-nav__link">
+    Versionを指定してPIPENVの環境を作成する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug" title="Debugの構成を追加" class="md-nav__link">
+    Debugの構成を追加
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2306,9 +2393,81 @@
                 <h1 id="pipenv">PipEnv の使い方</h1>
 <!-- SUMMARY:PipEnv の使い方 -->
 
+<h2 id="_1">インストール方法</h2>
+<p>まず、通常のpipを使用してpython3にpipenvをインストールする。  </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install pipenv
+</pre></div>
+</td></tr></table>
+
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\Users\&lt;UserName&gt;\AppData\Local\Programs\Python\Python36\Scripts
+</pre></div>
+</td></tr></table>
+
+<p>次に、pipのあるフォルダにPATHを通す。  </p>
+<h2 id="_2">インストール先を変更する</h2>
+<p>デフォルトだとHOME下に仮想環境が作成されてしまうので、
+プロジェクト下になるように環境変数で指定する</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>PIPENV_VENV_IN_PROJECT=true
+</pre></div>
+</td></tr></table>
+
+<h2 id="versionpipenv">Versionを指定してPIPENVの環境を作成する</h2>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pipenv --python 3.6
 </pre></div>
 </td></tr></table>
+
+<p>このようにバージョン指定すると、その指定されたバージョンで仮想環境を作成できる（2系3系どちらも可能） </p>
+<p><img alt="" src="https://gyazo.com/ad0977ba38ddb16cd3aa8cc9556d177c.png" /></p>
+<p>実行すると、プロジェクト下に.venvが作成され<br />
+その下に仮想環境が作成される。  </p>
+<h2 id="debug">Debugの構成を追加</h2>
+<p><img alt="" src="https://gyazo.com/58d9a1d4ded9b6048fd526213ee48923.png" /></p>
+<p>Debugの構成を追加して、launch.jsonを作成する。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Python: Current File used Pipenv&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;program&quot;</span><span class="p">:</span> <span class="s2">&quot;${file}&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}/.venv/Scripts/python&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;console&quot;</span><span class="p">:</span> <span class="s2">&quot;integratedTerminal&quot;</span>
+     <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>作成されたlaunch.jsonの中身を↑に書き換える。  </p>
+<p>さらに、.vscode下にあるsetting.jsonの中身を</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}/.venv/Scripts/python&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>これに書き換える。<br />
+この設定をすると、VSCodeでPythonを実行したときに、.venv内のpythonを<br />
+使用するようになる。  </p>
+<p><img alt="" src="https://gyazo.com/47cd29cfc0bc4b6eab229f466179b845.png" /></p>
+<p>作成した仮想環境にモジュールをインストールしたい場合は、<br />
+コンソールで pipenv install #### を実行することで<br />
+インストールすることができる。  </p>
                 
                   
                 
