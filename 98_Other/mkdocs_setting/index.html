@@ -2354,6 +2354,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../VSCode/vscode_note/" title="VSCodeでノートをつける" class="md-nav__link">
+      VSCodeでノートをつける
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../VSCode/vscode_task/" title="VSCodeでタスク管理" class="md-nav__link">
       VSCodeでタスク管理
     </a>
@@ -2758,13 +2770,13 @@ tabs は後に追加する pages の 1 階層目をタブで切り替えでき�
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>hogehoge</p>
 </div>
-<p>こんな感じで、NoteやWarningを作成できます。  </p>
+<p>hogehoge</p>
+<p>こんな感じで、Note や Warning を作成できます。</p>
 <h4 id="codehilite">codehilite</h4>
 <p>コードを張り付けた時に、行数やコピペボタンを追加してくれます。<br />
-このサイト的には必須。  </p>
-<p>読み込んだExtensionは、</p>
+このサイト的には必須。</p>
+<p>読み込んだ Extension は、</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>  - codehilite:
@@ -2773,16 +2785,16 @@ tabs は後に追加する pages の 1 階層目をタブで切り替えでき�
 </pre></div>
 </td></tr></table>
 
-<p>こんな感じで、１つ下のインデントにオプションを追加すればOKです。</p>
+<p>こんな感じで、１つ下のインデントにオプションを追加すれば OK です。</p>
 <h2 id="_5">ローカルで確認する</h2>
 <p>書きながら結果を確認したい場合は、</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdocs serve
 </pre></div>
 </td></tr></table>
 
-<p>を実行して、サーバーを起動します。  </p>
+<p>を実行して、サーバーを起動します。</p>
 <p>が、毎度サーバーを起動するためにコンソールを開くのはめんどくさいので<br />
-VSCodeのタスクを作成しておきます。  </p>
+VSCode のタスクを作成しておきます。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -2811,24 +2823,24 @@ VSCodeのタスクを作成しておきます。  </p>
 </pre></div>
 </td></tr></table>
 
-<p>.vscode/tasks.json に↑を追加しておきます。  </p>
+<p>.vscode/tasks.json に ↑ を追加しておきます。</p>
 <p><img alt="" src="https://gyazo.com/36f624879ebf4fbcb9b045996fb9a76b.png" /></p>
-<p>あとは、ビルドタスクで設定したタスクを選択すると  </p>
-<p><img alt="" src="https://gyazo.com/c5f18cabe6fa35fcf4f485463684bcca.png" />  </p>
+<p>あとは、ビルドタスクで設定したタスクを選択すると</p>
+<p><img alt="" src="https://gyazo.com/c5f18cabe6fa35fcf4f485463684bcca.png" /></p>
 <p>コンソールでサーバーが起動します。<br />
 あとは<br />
 <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a><br />
-ブラウザでページを確認すればOKです。<br />
-mdを編集したら、随時ページ側も更新されるのでらくちんです。  </p>
+ブラウザでページを確認すれば OK です。<br />
+md を編集したら、随時ページ側も更新されるのでらくちんです。</p>
 <h2 id="_6">自動でメニューを作る</h2>
-<p>mkdocsは、特に何も指定しないと、docs下の構成が自動でメニューツリーに追加されます。<br />
+<p>mkdocs は、特に何も指定しないと、docs 下の構成が自動でメニューツリーに追加されます。<br />
 しかしそれだといろいろと問題があるので、<br />
 自動でいい感じに生成してくれるスクリプトを作りました。<br />
 長いので本体は
 <a href="https://github.com/fereria/reincarnation_tech/blob/master/create_mkdocs_pages.py">https://github.com/fereria/reincarnation_tech/blob/master/create_mkdocs_pages.py</a>
-こちらから。  </p>
-<p>設定は、mkdocs.ymlに追加する必要があるので<br />
-今回はテキスト処理ではなく yamlモジュールを使用して処理をします。  </p>
+こちらから。</p>
+<p>設定は、mkdocs.yml に追加する必要があるので<br />
+今回はテキスト処理ではなく yaml モジュールを使用して処理をします。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -2841,26 +2853,26 @@ mdを編集したら、随時ページ側も更新されるのでらくちんで
 </pre></div>
 </td></tr></table>
 
-<p>読み込むと、jsonと同じように、DictとList形式に展開してくれるので<br />
-とても扱いやすいです。  </p>
-<p>このスクリプトを書くときに、素直にYMLに持っていけるDictと配列を構成しようと<br />
+<p>読み込むと、json と同じように、Dict と List 形式に展開してくれるので<br />
+とても扱いやすいです。</p>
+<p>このスクリプトを書くときに、素直に YML に持っていける Dict と配列を構成しようと<br />
 いろいろテストしてたのですが、地味に苦戦したので<br />
-実際のコードでは  </p>
+実際のコードでは</p>
 <ol>
-<li>まずはテキストのYMLファイルを生成</li>
+<li>まずはテキストの YML ファイルを生成</li>
 <li>いったん読み込んで</li>
-<li>get_mkdocs_yml()で取得したメインの設定にpagesを追加する</li>
+<li>get_mkdocs_yml()で取得したメインの設定に pages を追加する</li>
 </ol>
-<p>という方法で処理をしました。  </p>
+<p>という方法で処理をしました。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&lt;!-- SUMMARY:メニューに表示される名前 --&gt;
 </pre></div>
 </td></tr></table>
 
-<p>mdファイル名は英語、メニューは日本語にするのには、<br />
+<p>md ファイル名は英語、メニューは日本語にするのには、<br />
 というコメントを追加しておいて<br />
-この行をメニュー扱いにして置きかえるようにしています。  </p>
+この行をメニュー扱いにして置きかえるようにしています。</p>
 <p>最後に、毎度スクリプトを実行しにいくのはめんどくさいので<br />
-VSCodeのビルドタスクを作成しておきます。  </p>
+VSCode のビルドタスクを作成しておきます。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -2901,18 +2913,18 @@ mkdocs gh-deploy
 ビルドタスクに登録しておけば<br />
 とくに意識しないでもメニューの更新ができるようになりました。</p>
 <h2 id="_7">レイアウトを調整する</h2>
-<p>Materialテーマはおおむね満足なのですが、<br />
+<p>Material テーマはおおむね満足なのですが、<br />
 メニューの幅が狭すぎるのと、どれがフォルダなのか記事へのリンクなのかわかりにくかったので<br />
-CSSを調整して幅を広げました。  </p>
-<p>カスタムなCSSを入れたい場合は  </p>
+CSS を調整して幅を広げました。</p>
+<p>カスタムな CSS を入れたい場合は</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>extra_css:
   - stylesheets/extra.css
 </pre></div>
 </td></tr></table>
 
-<p>extra_css: で、読み込みたいCSSを指定します。<br />
-（docs以下のパスで指定）  </p>
+<p>extra_css: で、読み込みたい CSS を指定します。<br />
+（docs 以下のパスで指定）</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -2979,24 +2991,24 @@ CSSを調整して幅を広げました。  </p>
 </pre></div>
 </td></tr></table>
 
-<p>CSSはほとんど知らないので苦戦しました。<br />
+<p>CSS はほとんど知らないので苦戦しました。<br />
 <mark>@media only screen and (min-width: 100em) {</mark>
 この行で、デスクトップ用の時の時のみ設定が反映されるようにしています。<br />
 （ブラウザの幅が指定ピクセル以上のときという設定）<br />
 これがないと、スマホで見た時にレイアウトが壊れます。<br />
-あとは、ブラウザの解析機能で、CSSのClassを探しつつ<br />
-数値を調整しました。  </p>
+あとは、ブラウザの解析機能で、CSS の Class を探しつつ<br />
+数値を調整しました。</p>
 <h2 id="_8">メニューのタブをすべてオープンにする</h2>
-<p>GitBookでもそうですが、全部のタブをチクチク開いて探していかないといけないのは<br />
+<p>GitBook でもそうですが、全部のタブをチクチク開いて探していかないといけないのは<br />
 けっこうな苦行なので<br />
-デフォルトで全部オープンしておくようにしました。  </p>
+デフォルトで全部オープンしておくようにしました。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>extra_javascript:
   - javascripts/extra.js
 </pre></div>
 </td></tr></table>
 
-<p>まず、シーンに読み込みたいJSを追加して</p>
+<p>まず、シーンに読み込みたい JS を追加して</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -3027,20 +3039,20 @@ CSSを調整して幅を広げました。  </p>
 </pre></div>
 </td></tr></table>
 
-<p>このコードをコピペします。  </p>
+<p>このコードをコピペします。</p>
 <p><img alt="" src="https://gyazo.com/245531c7d601c2a24bba5946f5b0d49b.png" /></p>
 <p>設定の結果。<br />
-折り返さない程度の広さに拡張し、フォルダはBGの色を変更しました。  </p>
+折り返さない程度の広さに拡張し、フォルダは BG の色を変更しました。</p>
 <p><a href="https://fereria.github.io/reincarnation_tech/">https://fereria.github.io/reincarnation_tech/</a></p>
 <p>以上の結果がこちらのサイト。<br />
-Gitbookも悪くなかったのですが、表示するたびにそこそこ大きなラグがあるのと<br />
+Gitbook も悪くなかったのですが、表示するたびにそこそこ大きなラグがあるのと<br />
 公式版だと自分でのカスタムがしにくい。<br />
-かといって自分でGitLabでやるにはめんどくさい...<br />
-ということもありほかの静的ページ生成ツールをテストしていましたが  </p>
+かといって自分で GitLab でやるにはめんどくさい...<br />
+ということもありほかの静的ページ生成ツールをテストしていましたが</p>
 <p>軽いし、公開も楽だし、今までかいたドキュメントをほぼ丸々持ち込み可能だった<br />
 ということもあり<br />
 mkdocs+GitHubPages に落ち着きそうです。<br />
-(pythonでできているというのもGood！)  </p>
+(python でできているというのも Good！)</p>
 <p>というわけで、以降もこのサイトで<br />
 いろいろと調べた内容を公開していこうとおもいます。<br />
 がんばるぞー</p>
