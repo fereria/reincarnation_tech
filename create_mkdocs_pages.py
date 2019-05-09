@@ -83,7 +83,7 @@ def replace_title_folder_name(name):
     buff = name
     for key in FOLDER_REPLACE_STRING.keys():
         buff = buff.replace(key, FOLDER_REPLACE_STRING[key])
-    return buff
+    return buff  
 
 
 def create_pages(summary_path, root_path, indent_space="  "):
