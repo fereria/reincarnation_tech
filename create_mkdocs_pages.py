@@ -22,7 +22,8 @@ FOLDER_REPLACE_STRING = {
     "back-to-top-button": u"検証・考察",
     "study_materials": u"NodeEditorマテリアル学習",
     "study_scripts_reading": u"サンプルコード読んで学習",
-    "imitate": u"Houdini写経"
+    "imitate": u"Houdini写経",
+    "Env_Maya": u"Maya作業環境構築"
 
 }
 
@@ -83,7 +84,7 @@ def replace_title_folder_name(name):
     buff = name
     for key in FOLDER_REPLACE_STRING.keys():
         buff = buff.replace(key, FOLDER_REPLACE_STRING[key])
-    return buff  
+    return buff
 
 
 def create_pages(summary_path, root_path, indent_space="  "):
