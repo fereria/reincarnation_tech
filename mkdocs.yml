@@ -7,25 +7,32 @@ extra:
   - link: https://twitter.com/fereria
     type: twitter
 extra_css:
-- https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
-- stylesheets/extra.css
+  - https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
+  - stylesheets/extra.css
+  - https://unpkg.com/mermaid@8.0.0/dist/mermaid.css
 extra_javascript:
-- javascripts/extra.js
+  - javascripts/extra.js
+  - https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js
 google_analytics:
-- UA-134257918-1
-- fereria.github.io/reincarnation_tech
+  - UA-134257918-1
+  - fereria.github.io/reincarnation_tech
 markdown_extensions:
-- meta
-- pymdownx.mark
-- pymdownx.magiclink
-- pymdownx.emoji
-- fontawesome_markdown
-- pymdownx.keys
-- def_list
-- admonition
-- codehilite:
-    linenums: true
-    use_pygments: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  - meta
+  - pymdownx.mark
+  - pymdownx.magiclink
+  - pymdownx.emoji
+  - fontawesome_markdown
+  - pymdownx.keys
+  - def_list
+  - admonition
+  - codehilite:
+      linenums: true
+      use_pygments: true
 pages:
 - Blender:
   - 基本操作:
