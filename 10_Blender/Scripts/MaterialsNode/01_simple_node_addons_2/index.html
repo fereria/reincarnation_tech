@@ -2005,6 +2005,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Programming/10_python_module/PySide/Basic/02_graphicsView_01/" title="GraphicsViewの基本" class="md-nav__link">
+      GraphicsViewの基本
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2649,7 +2661,7 @@
 注意しないと行けないのは「RNA」プロパティと呼ばれる構造と<br />
 UIにウィジェットというかパーツを追加する方法の2つです。  </p>
 <p>まずコード。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -2753,14 +2765,15 @@ UIにウィジェットというかパーツを追加する方法の2つです�
 MayaのAddAttrとは違って、同種のノードタイプに一律でプロパティを拡張することができます。  </p>
 <p>既存のオブジェクトに対して設定するように、自分で作成したカスタムノードに対してプロパティを<br />
 作りたい場合は、このRNAプロパティの追加をします。  </p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">text</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
                           <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                           <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Text to show, if set will overide file&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-プロパティはクラスの変数として指定してあげます。<br />
+
+<p>プロパティはクラスの変数として指定してあげます。<br />
 <a href="https://docs.blender.org/api/blender2.8/bpy.types.Property.html#bpy.types.Property">プロパティ関係はこのHelp参照</a></p>
 <h2 id="_2">関数をオーバーライドする</h2>
 <p>プラグインを作る場合は、
@@ -2780,7 +2793,7 @@ MayaのAddAttrとは違って、同種のノードタイプに一律でプロパ
 <p>Blenderのクラスは、「draw_XXXX」になっているものがUIへの描画になっている模様。  </p>
 <h3 id="draw_buttons">draw_buttons</h3>
 <p>まず、draw_buttonsがノード自体に各種ウィジェットを実装するための関数です。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2812,7 +2825,7 @@ label自体は、改行コードが使えないため<br />
 <p><img alt="" src="https://gyazo.com/2aada53efeab9471bbf15f2fc7753a96.png" /></p>
 <p>draw_buttons_extは、「N」を押したときにウィンドウの右側に表示されるトグルスライドバーの<br />
 なかのUIパーツを追加するための関数です。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2830,7 +2843,7 @@ propはRNAプロパティにつなげたUIを表示するときに使用しま�
 propの第二引数でtextを指定しています。  </p>
 <p>もう1つのoperatorは、ボタンを追加するコマンドで、<br />
 実行するコマンドは、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4

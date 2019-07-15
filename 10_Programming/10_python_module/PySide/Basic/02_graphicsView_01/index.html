@@ -38,7 +38,7 @@
     
     
       
-        <title>GraphicsViewの基本(Sceneをスケールする) - Reincarnation+#Tech</title>
+        <title>GraphicsViewの基本 - Reincarnation+#Tech</title>
       
     
     
@@ -139,7 +139,7 @@
                 Reincarnation+#Tech
               </span>
               <span class="md-header-nav__topic">
-                GraphicsViewの基本(Sceneをスケールする)
+                GraphicsViewの基本
               </span>
             
           
@@ -211,7 +211,9 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -1628,10 +1630,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Programming
@@ -1839,10 +1843,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" checked>
     
     <label class="md-nav__link" for="nav-4-5">
       python_module
@@ -1858,10 +1864,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5-1" type="checkbox" id="nav-4-5-1">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5-1" type="checkbox" id="nav-4-5-1" checked>
     
     <label class="md-nav__link" for="nav-4-5-1">
       PySide
@@ -1877,10 +1885,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5-1-1" type="checkbox" id="nav-4-5-1-1">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5-1-1" type="checkbox" id="nav-4-5-1-1" checked>
     
     <label class="md-nav__link" for="nav-4-5-1-1">
       Basic
@@ -1901,6 +1911,63 @@
     <a href="../01_importUiLoader/" title="UILoaderで.uiをロードする" class="md-nav__link">
       UILoaderで.uiをロードする
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        GraphicsViewの基本
+      </label>
+    
+    <a href="./" title="GraphicsViewの基本" class="md-nav__link md-nav__link--active">
+      GraphicsViewの基本
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="基本的な構成" class="md-nav__link">
+    基本的な構成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qtransform" title="QTransformを使用して拡大縮小" class="md-nav__link">
+    QTransformを使用して拡大縮小
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -2496,7 +2563,7 @@ PhotoShopに例えると、Viewは新規　とかで作成できるウィンド�
 Sceneはレイヤー、 Itemはシェイプで、基本的にはSceneに対してItemを配置し<br />
 それをViewに表示する...という形になります。<br />
 とりあえず、その3つ＋Dialogクラスを作成したサンプルを元にざっくりまとめ。</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -2683,7 +2750,8 @@ Sceneはレイヤー、 Itemはシェイプで、基本的にはSceneに対し�
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-実行すると、</p>
+
+<p>実行すると、</p>
 <p><img alt="" src="https://gyazo.com/467b0327752953f929ebc3e0ebfd707d.gif" /></p>
 <p>ホイールで拡大・縮小、○をドラッグすることで動かせます。</p>
 <h2 id="qtransform">QTransformを使用して拡大縮小</h2>
@@ -2701,11 +2769,12 @@ ViewとSceneの役割考えて使わないと意図しないことになるな..
 <p>この行列で求められます。<br />
 Sx、Syというのが、ベクトル（X,Y,1)を拡大縮小するためのスケール値。<br />
 元のベクトル（X,Y,1）に対して行列をかけ算することで、スケールした結果を取得できます。  </p>
-<p>現在のスケールを取得している<br />
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">cur_scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">transform</span><span class="o">.</span><span class="n">m11</span><span class="p">(),</span> <span class="n">transform</span><span class="o">.</span><span class="n">m22</span><span class="p">())</span>
+<p>現在のスケールを取得している  </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">cur_scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">transform</span><span class="o">.</span><span class="n">m11</span><span class="p">(),</span> <span class="n">transform</span><span class="o">.</span><span class="n">m22</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-というのは、</p>
+
+<p>というのは、</p>
 <p><img alt="" src="https://gyazo.com/0af788717484171b095485438ca2c5e0.png" /></p>
 <p>PySideのMatrixの各要素を取得する場合、<br />
 ScaleのSxとSyの数値に対応する m11(scaleX) と m22(scaleY) を<br />
@@ -2738,6 +2807,41 @@ ItemをDragしたときに移動するほうは<br />
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../01_importUiLoader/" title="UILoaderで.uiをロードする" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前
+                </span>
+                UILoaderで.uiをロードする
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../pyside_graphicsview_child_item/" title="PySideのGraphicsViewで親子化" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  次
+                </span>
+                PySideのGraphicsViewで親子化
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

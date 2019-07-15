@@ -1969,6 +1969,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Programming/10_python_module/PySide/Basic/02_graphicsView_01/" title="GraphicsViewの基本" class="md-nav__link">
+      GraphicsViewの基本
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2577,7 +2589,7 @@ Python2系のサポート終了が近い影響なのか、各所で公開され�
 <p>インストール方法はそのままコピペでもOKですが、<br />
 私はダウンロードしたptvsd-4.2.10.zipを解凍してできたフォルダに<br />
 管理者モードのコマンドプロンプトで入り、  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&quot;C:\Program Files\Autodesk\Maya2018\bin\mayapy.exe&quot; setup.py install
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&quot;C:\Program Files\Autodesk\Maya2018\bin\mayapy.exe&quot; setup.py install
 </pre></div>
 </td></tr></table>
 
@@ -2585,7 +2597,7 @@ Python2系のサポート終了が近い影響なのか、各所で公開され�
 <h2 id="_1">デバッグモードを設定する</h2>
 <p><img alt="" src="https://gyazo.com/db1dc29358c0bd83655b0a4f53156975.png" /></p>
 <p>VSCodeのDebug画面に移動して、「構成の追加...」をクリックします。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -2620,10 +2632,11 @@ Python2系のサポート終了が近い影響なのか、各所で公開され�
 </td></tr></table>
 
 <p>launch.jsonを上のように書き換えます。  </p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">ptvsd</span><span class="p">;</span><span class="n">ptvsd</span><span class="o">.</span><span class="n">enable_attach</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">),</span> <span class="n">redirect_output</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">ptvsd</span><span class="p">;</span><span class="n">ptvsd</span><span class="o">.</span><span class="n">enable_attach</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">),</span> <span class="n">redirect_output</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-最後に、userSetup.py内にリモートデバッグを有効にするためのコマンドを記入して準備は終了。  </p>
+
+<p>最後に、userSetup.py内にリモートデバッグを有効にするためのコマンドを記入して準備は終了。  </p>
 <h2 id="_2">使用する</h2>
 <p>準備ができたら、</p>
 <p><img alt="" src="https://gyazo.com/4be95dfcdf0e17f8535011b8559dc76e.png" /></p>
