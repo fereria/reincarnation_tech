@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2536,7 +2538,7 @@
 <p>VSCode の拡張は TypeScript で作成する。</p>
 <h2 id="_1">下準備</h2>
 <p>まず、Extension の基本的な構造を作るための準備をする。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>npm install -g yo generator-code
 yo code
 </pre></div>
@@ -2553,7 +2555,7 @@ yo code で、実行できる。</p>
 Y を押していく。（基本は名前のみ決めれば OK）</p>
 <p>実行が完了すると、カレントフォルダ下に指定の名前で<br />
 プロジェクトフォルダが作成される。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>cd &lt;作成したフォルダ名&gt;
 code .
 </pre></div>
@@ -2569,7 +2571,7 @@ code .　で VisualStudioCode を起動する。</p>
 どうやら、この画面は無視して「このままデバッグを続ける」を押しても<br />
 デバッグは実行可能だが、邪魔なので</p>
 <p>launch.json 内の Extension の{}内にある</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&quot;preLaunchTask&quot;: &quot;npm: watch&quot;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&quot;preLaunchTask&quot;: &quot;npm: watch&quot;
 </pre></div>
 </td></tr></table>
 
@@ -2691,6 +2693,8 @@ code .　で VisualStudioCode を起動する。</p>
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

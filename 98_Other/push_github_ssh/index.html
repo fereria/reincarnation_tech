@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2584,12 +2586,12 @@ SSH 化してみた。<br />
 <h2 id="ssh">SSH の認証用の鍵ファイルを作る</h2>
 <p>まずは、認証用の鍵を作成する。</p>
 <p>コマンドプロンプトで、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\Users\&lt;user_name&gt;\.ssh
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\Users\&lt;user_name&gt;\.ssh
 </pre></div>
 </td></tr></table>
 
 <p>に移動して</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ssh-keygen -t rsa -C &quot;メールアドレス&quot;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ssh-keygen -t rsa -C &quot;メールアドレス&quot;
 </pre></div>
 </td></tr></table>
 
@@ -2604,13 +2606,13 @@ Title には　 MyPC 　のようなにのキーなのかを入力し、<br />
 Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する。</p>
 <h2 id="config">config 作成</h2>
 <p>Git で、ssh を使用して接続するときのオプションを config ファイルに記入する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\Users\&lt;user_name&gt;\.ssh
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\Users\&lt;user_name&gt;\.ssh
 </pre></div>
 </td></tr></table>
 
 <p>下に、config ファイル（拡張子なしのテキスト）を作成。
 その中に</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Host github.com
@@ -2624,7 +2626,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 こうしておくと、github.com で SSH 接続する場合、<br />
 この設定に書かれている id_rsa などの設定で接続できるようになる。
 続いて、この config が Git で使われるようにシンボリックリンクを作成する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mklink &quot;C:\Program Files\Git\etc\ssh\ssh_config&quot; &quot;C:\Users\&lt;user_name&gt;\.ssh\config&quot;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mklink &quot;C:\Program Files\Git\etc\ssh\ssh_config&quot; &quot;C:\Users\&lt;user_name&gt;\.ssh\config&quot;
 </pre></div>
 </td></tr></table>
 
@@ -2636,7 +2638,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 うーむ、なんだろうと調べていったら<br />
 そもそも ssh-add でキーを登録していないと NG だった。<br />
 が、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Error connecting to agent: No such file or directory
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Error connecting to agent: No such file or directory
 </pre></div>
 </td></tr></table>
 
@@ -2646,12 +2648,12 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 <p>Windows のサービスから OpenSSH Authentication Agent のプロパティを開いて<br />
 開始＋スタートアップからも起動できるようにしておく。</p>
 <p>ここまでやってから、接続できるかテストしてみる。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ssh -T git@github.com
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ssh -T git@github.com
 </pre></div>
 </td></tr></table>
 
 <p>こんな感じで実行して、うまくいっていれば</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Hi fereria! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Hi fereria! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
 </pre></div>
 </td></tr></table>
 
@@ -2660,7 +2662,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 この部分のアカウント名は git@で固定なので注意が必要。</p>
 <p>接続はできたので、SSH 鍵の登録はおそらく問題はなさそう。<br />
 うまくいかない場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ssh -vT git@github.com
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ssh -vT git@github.com
 </pre></div>
 </td></tr></table>
 
@@ -2673,7 +2675,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 <p>どうやら、Git で上で指定した Windows の OpenSSH ではないものが使用されている場合<br />
 そもそも設定した SSH 設定が使われていないので接続できないようだった。<br />
 ので、Git の設定を変更して、Windows の OpenSSH を使用するようにする。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git config --global core.sshCommand &quot;C:/Windows/System32/OpenSSH/ssh.exe&quot;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git config --global core.sshCommand &quot;C:/Windows/System32/OpenSSH/ssh.exe&quot;
 </pre></div>
 </td></tr></table>
 
@@ -2793,6 +2795,8 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

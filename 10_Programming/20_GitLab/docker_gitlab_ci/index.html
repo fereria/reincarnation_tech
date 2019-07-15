@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2554,13 +2556,13 @@
 <p>次に、GitLab-Runner をインストールする。</p>
 <p><a href="https://docs.gitlab.com/runner/install/windows.html">https://docs.gitlab.com/runner/install/windows.html</a></p>
 <p>手順は公式参考にして、 gitlab-runner の 64bit 用 exe をダウンロードして、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\GitLab-Runner
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\GitLab-Runner
 </pre></div>
 </td></tr></table>
 
 <p>このフォルダにコピーする。<br />
 次に、管理者モードのコマンドプロンプトを開き、上のフォルダに移動後</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>gitlab-runner install
 gitlab-runner start
 </pre></div>
@@ -2573,7 +2575,7 @@ gitlab-runner start
 <p><img alt="" src="https://gyazo.com/67e413b0a1f7938d1100515561c46a83.png" /></p>
 <p>Setup a specific Runner manually ないにある URL と Token を確認しつつ、
 コマンドプロンプトに、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>gitlab-runner register
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>gitlab-runner register
 </pre></div>
 </td></tr></table>
 
@@ -2590,7 +2592,7 @@ SharedRunner に登録すると、複数プロジェクトでの共通になる�
 <p>準備ができたら、CI を走らせるための設定ファイルを作成する。<br />
 Git のプロジェクトルートに、 <strong>.gitlab-ci.yml</strong> ファイルを作成して<br />
 とりあえずコミットしてみる。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2620,7 +2622,7 @@ Git のプロジェクトルートに、 <strong>.gitlab-ci.yml</strong> ファ�
 
 <p>中身はとりあえずシンプルにこんな感じにする。<br />
 基本は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&lt;name&gt;:
  - コマンドプロンプトで実行するコマンド
 </pre></div>
@@ -2632,7 +2634,7 @@ Git のプロジェクトルートに、 <strong>.gitlab-ci.yml</strong> ファ�
 こんかいは Python2.7 でテストするのでその名前にしている。</p>
 <p>before_script が、メインの処理が始まる前に実行する内容。</p>
 <p>stages は、実際に実行する処理内容。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2778,6 +2780,8 @@ Maya 等を自動で動かしたい場合は、Docker ではなく Shell にす�
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

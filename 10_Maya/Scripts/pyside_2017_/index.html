@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2565,7 +2567,7 @@
 <p>変換する場合は、Maya/bin 　下にある <mark>pyside2-uic</mark> を使用する。<br />
 ただしそのままではコマンドとして認識されないので<br />
 以下のように変換をする。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">cd</span> /d <span class="s2">&quot;C:\Program Files\Autodesk\Maya2018\bin&quot;</span>
 mayapy pyside2-uic -o <span class="p">&lt;</span>出力先<span class="p">&gt;</span>\main_ui.py <span class="p">&lt;</span>コンバート前の置き場<span class="p">&gt;</span>\main.ui
@@ -2575,7 +2577,7 @@ mayapy pyside2-uic -o <span class="p">&lt;</span>出力先<span class="p">&gt;</
 
 <h2 id="qtpy">Qt.py のインストール</h2>
 <p>PySide と PySide2 の違いを吸収するために、　 Qt.py 　モジュールを使用する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install qt.py -t &lt;インストール先のPATH&gt;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install qt.py -t &lt;インストール先のPATH&gt;
 </pre></div>
 </td></tr></table>
 
@@ -2587,7 +2589,7 @@ pip の引数として -t ＜ PATH ＞　を使用すれば、指定の site-pac
 QtGui は、Painter、Brush、Pen、Image、Event のような Widget を作成する上での Core 的な部分が<br />
 QtGui になっている。</p>
 <h2 id="_1">それ以外に書き換えが必要だった箇所</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>QHeaderView.setResizemode -&gt; setSectionResizeMode (Section を追加）
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>QHeaderView.setResizemode -&gt; setSectionResizeMode (Section を追加）
 </pre></div>
 </td></tr></table>
                 
@@ -2692,6 +2694,8 @@ QtGui になっている。</p>
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

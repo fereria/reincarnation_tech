@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2642,7 +2644,7 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
 が...Materials じゃないパネルを新規で作ってからそこにノードを追加するスクリプトだったので<br />
 そこからいらない所をけして、Materials に追加するための最小コードをつくってみました。</p>
 <h2 id="_1">スクリプト本体</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2765,7 +2767,7 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
 <p><img alt="" src="https://gyazo.com/7c316ce2b06cbb5edf6bb568343de554.png" /></p>
 <p>まず、Add-ons 画面内に表示されるプラグイン名や説明などは<br />
 .py ファイルの Globals 変数で「bl_info」を定義する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2790,7 +2792,7 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
 blender で指定するバージョンが、読み込む Blender のバージョンと同じ出ないと<br />
 エラーになるので注意。</p>
 <h2 id="_2">カスタムノードを作る</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2814,7 +2816,7 @@ icon は、ノード上に表示されるアイコン。</p>
 <h2 id="blender">Blender に登録する</h2>
 <h3 id="_3">メニューへの登録</h3>
 <p>2.80 とそれ以前だと登録するタームは大きく変わっている模様。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># NodeEditorの追加メニューにノードを作成するメニューを追加する。</span>
@@ -2838,7 +2840,7 @@ icon は、ノード上に表示されるアイコン。</p>
 </div>
 <h3 id="_4">ロード・アンロード処理</h3>
 <p>最後にロード・アンロード時の処理を定義をする。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2985,6 +2987,8 @@ unregister はその逆処理になっている。</p>
       <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
       
         <script src="../../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

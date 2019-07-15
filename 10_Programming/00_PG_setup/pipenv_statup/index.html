@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2576,25 +2578,23 @@
 <!-- SUMMARY:PipEnv の使い方 -->
 
 <h2 id="_1">インストール方法</h2>
-<p>まず、通常のpipを使用してpython3にpipenvをインストールする。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install pipenv
+<p>まず、通常のpipを使用してpython3にpipenvをインストールする。<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pip install pipenv
 </pre></div>
 </td></tr></table>
-
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\Users\&lt;UserName&gt;\AppData\Local\Programs\Python\Python36\Scripts
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>C:\Users\&lt;UserName&gt;\AppData\Local\Programs\Python\Python36\Scripts
 </pre></div>
 </td></tr></table>
-
-<p>次に、pipのあるフォルダにPATHを通す。  </p>
+次に、pipのあるフォルダにPATHを通す。  </p>
 <h2 id="_2">インストール先を変更する</h2>
 <p>デフォルトだとHOME下に仮想環境が作成されてしまうので、
 プロジェクト下になるように環境変数で指定する</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>PIPENV_VENV_IN_PROJECT=true
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>PIPENV_VENV_IN_PROJECT=true
 </pre></div>
 </td></tr></table>
 
 <h2 id="versionpipenv">Versionを指定してPIPENVの環境を作成する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pipenv --python 3.6
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pipenv --python 3.6
 </pre></div>
 </td></tr></table>
 
@@ -2605,7 +2605,7 @@
 <h2 id="debug">Debugの構成を追加</h2>
 <p><img alt="" src="https://gyazo.com/58d9a1d4ded9b6048fd526213ee48923.png" /></p>
 <p>Debugの構成を追加して、launch.jsonを作成する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2635,7 +2635,7 @@
 
 <p>作成されたlaunch.jsonの中身を↑に書き換える。  </p>
 <p>さらに、.vscode下にあるsetting.jsonの中身を</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
    <span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}/.venv/Scripts/python&quot;</span>
@@ -2787,6 +2787,8 @@
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

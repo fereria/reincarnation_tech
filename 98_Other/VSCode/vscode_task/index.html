@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2618,12 +2620,11 @@ TODOファイルが作成されます。  </p>
 <p><img alt="" src="https://gyazo.com/09e245e2a3f2624d991b59d29ee37706.png" /></p>
 <p>エンコードがアレなので、UTF-8に変更して保存します。  </p>
 <p><img alt="" src="https://gyazo.com/1fdf8028f1dd40715f44d1c6b75fe495.gif" /></p>
-<p>できたTODOファイルに、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Group:
+<p>できたTODOファイルに、
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Group:
 </pre></div>
 </td></tr></table>
-
-<p>このように、###: でタスクのグループ（プロジェクト？）を作成します。<br />
+このように、###: でタスクのグループ（プロジェクト？）を作成します。<br />
 あとは、インデントした次の行で Ctrl+Enterを押すと<br />
 チェックボックスが追加されるので、タスクの内容を記入します。  </p>
 <p><img alt="" src="https://gyazo.com/5d63a2461ef26075a7c08012a3760c19.gif" /></p>
@@ -2657,11 +2658,10 @@ TODOファイルが作成されます。  </p>
 <p>こんな感じで、タスク記録としてはほしい機能がそろってるので<br />
 VSCodeで完結できる都合、この方法で実践してみようかとおもいます。  </p>
 <p>VSCodeのスクリプトプロジェクト以外のタスクについては、  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="s2">&quot;todo.embedded.include&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;**/*&quot;</span><span class="p">,</span> <span class="s2">&quot;C:/Users/remir/CloudStation/TODO&quot;</span><span class="p">]</span><span class="err">,</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="s2">&quot;todo.embedded.include&quot;</span><span class="err">:</span> <span class="p">[</span><span class="s2">&quot;**/*&quot;</span><span class="p">,</span> <span class="s2">&quot;C:/Users/remir/CloudStation/TODO&quot;</span><span class="p">]</span><span class="err">,</span>
 </pre></div>
 </td></tr></table>
-
-<p>こんなかんじで、Synologyのフォルダ同期フォルダを（DropboxやOneDriveのようなもの）<br />
+こんなかんじで、Synologyのフォルダ同期フォルダを（DropboxやOneDriveのようなもの）<br />
 TODO+のパースフォルダ下に指定しておいて  </p>
 <p><img alt="" src="https://gyazo.com/2736c27e89e7dcf6a6f84dfa271aebdc.png" /></p>
 <p>その下にTODOファイルを配置して、そっち側にタスクを記入するようにしました。<br />
@@ -2690,7 +2690,7 @@ TODO+のパースフォルダ下に指定しておいて  </p>
 その行をハイライトするようにしました。  </p>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight">https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight</a></p>
 <p>使用しているのは、この　TODO Highlight。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2751,8 +2751,7 @@ TODO+のパースフォルダ下に指定しておいて  </p>
   <span class="p">}</span><span class="err">,</span>
 </pre></div>
 </td></tr></table>
-
-<p>setting.json内に↑の設定を追加して<br />
+setting.json内に↑の設定を追加して<br />
 目立つようにしています。  </p>
 <p><img alt="" src="https://gyazo.com/c0af9b3db469aa1ec6960437bb31f8e6.png" /></p>
 <p>このタグを入れておくと、スクロールバーにも色が残るのがなかなか良いです。  </p>
@@ -2861,6 +2860,8 @@ TODO+はこれ以外にももっとカスタマイズできるので、色々調
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2585,7 +2587,7 @@
 <p>これは、Item を親子化した場合<br />
 イベント処理が親側から発生するためであり、親 → 子の処理のいずれかで「ホバーした！」という Event が検知されると<br />
 すべての親子に対して Event が適応されてしまうからの模様。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">hoverEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
@@ -2603,7 +2605,7 @@
 <p>なので、なんとかするためにこのホバーしたタイミングで呼ばれるイベント関数内に<br />
 実行するかどうかの判定を追加する。<br />
 以下テストコード</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2788,7 +2790,7 @@ Painter で図形を描画したときに、マウスが上に載っているか
 「hoverEnterEvent」だったのだけれども<br />
 Enter で判定を行うと判定が外れてしまうことがあるという指摘がありました。<br />
 ので、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2918,6 +2920,8 @@ hoverMoveEvent にしたら、反応しなくなるなどの謎挙動はなく�
       <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
       
         <script src="../../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

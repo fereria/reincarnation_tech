@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2563,19 +2565,19 @@
 
 <h2 id="_1">とりあえず、さくっと実行</h2>
 <p>Python で、.py ファイルを import ではなくそのまま実行したい場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">execfile</span><span class="p">(</span><span class="s2">&quot;&lt;python_path&gt;&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">execfile</span><span class="p">(</span><span class="s2">&quot;&lt;python_path&gt;&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>このようにします。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="k">print</span> <span class="sa">u</span><span class="s2">&quot;はろーわーるど&quot;</span>
 </pre></div>
 </td></tr></table>
 
 <p>このファイルを</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">execfile</span><span class="p">(</span><span class="s2">&quot;S:/test_file.py&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">execfile</span><span class="p">(</span><span class="s2">&quot;S:/test_file.py&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -2584,7 +2586,7 @@
 <p>中のコードが実行されます。</p>
 <p>この execfile は、import で実行するときと基本的なルールは同じで<br />
 1 行目の</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span># -_- coding: utf-8 -_-
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span># -_- coding: utf-8 -_-
 </pre></div>
 </td></tr></table>
 
@@ -2601,7 +2603,7 @@
 このエンコード設定と同じになってる必要があります。<br />
 ↑ のように、ファイル自体は「Shift JIS」になっているのに、<br />
 ファイルそのものが utf-8 になっている場合は、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2616,7 +2618,7 @@
 </td></tr></table>
 
 <p>このようにエラーになってしまいます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span># -*- coding: shift-jis -*-
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span># -*- coding: shift-jis -*-
 </pre></div>
 </td></tr></table>
 
@@ -2626,7 +2628,7 @@
 <h2 id="python">文字コードエラーを発生させずに無理矢理 Python ファイルを実行する</h2>
 <p>execfile を使用せずに、1 行目の #encoding 設定を書かずに実行したい場合は、<br />
 Mel ファイルから実行するという手もあります。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2666,7 +2668,7 @@ fopen で python ファイルをテキストとして読み込み、文字を改
 <p>Maya のデフォルトエンコードについては ↓<br />
 <a href="http://help.autodesk.com/view/MAYAUL/2016/JPN/?guid=GUID-88109151-076A-4AB1-836A-85370B32A256">http://help.autodesk.com/view/MAYAUL/2016/JPN/?guid=GUID-88109151-076A-4AB1-836A-85370B32A256</a></p>
 <h2 id="execfile">execfile のおまけ</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="k">def</span> <span class="nf">test_hello</span><span class="p">():</span>
@@ -2677,7 +2679,7 @@ fopen で python ファイルをテキストとして読み込み、文字を改
 <p>execfile で Python ファイルを実行したときは、グローバルに書かれた内容が実行されるだけで<br />
 書かれている関数は実行されない。<br />
 ↑ のように書かれた関数を execfile で実行してから使用したい場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">G</span><span class="o">=</span><span class="p">{}</span>
@@ -2691,17 +2693,17 @@ fopen で python ファイルをテキストとして読み込み、文字を改
 execfile の 2、3 つめの引数に、空の Dict を入れると<br />
 その中に execfile 内の関数・変数が代入されます。<br />
 中で定義されている関数は Local 関数扱いなので 3 つめの引数「L」に入ります。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s1">&#39;test_hello&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">test_hello</span> <span class="n">at</span> <span class="mh">0x0000015C7B715F98</span><span class="o">&gt;</span><span class="p">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s1">&#39;test_hello&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">test_hello</span> <span class="n">at</span> <span class="mh">0x0000015C7B715F98</span><span class="o">&gt;</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Dict 型はこのようになっていて、関数名の Key に中に Function が入ってます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">HOGEHOGE</span> <span class="o">=</span> <span class="s2">&quot;fugafuga&quot;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">HOGEHOGE</span> <span class="o">=</span> <span class="s2">&quot;fugafuga&quot;</span>
 </pre></div>
 </td></tr></table>
 
 <p>関数以外に、変数を定義してから使いたい場合も同様で</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s1">&#39;HOGEHOGE&#39;</span><span class="p">:</span> <span class="s1">&#39;fugafuga&#39;</span><span class="p">,</span> <span class="s1">&#39;test_hello&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">test_hello</span> <span class="n">at</span> <span class="mh">0x0000015C7B715F98</span><span class="o">&gt;</span><span class="p">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s1">&#39;HOGEHOGE&#39;</span><span class="p">:</span> <span class="s1">&#39;fugafuga&#39;</span><span class="p">,</span> <span class="s1">&#39;test_hello&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">test_hello</span> <span class="n">at</span> <span class="mh">0x0000015C7B715F98</span><span class="o">&gt;</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -2813,6 +2815,8 @@ importlib を使う方が良いです。</p>
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2523,7 +2525,7 @@
 Maya などのような Windows で動くものの動作テストができないなどの問題があるので<br />
 Runner を「Shell」にして登録する。</p>
 <p><img alt="" src="https://gyazo.com/c702ceb943c57557787c33b9315ce8bf.png" /></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>gitlab-runner register
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>gitlab-runner register
 </pre></div>
 </td></tr></table>
 
@@ -2534,7 +2536,7 @@ Executer を <strong>「Shell」</strong> にして登録する。</p>
 <h2 id="_1">実行してみる</h2>
 <p>準備ができたら、簡単な JOB を投げてみる。</p>
 <p>.gitlab-ci.yml の内容はこんな感じ。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2554,7 +2556,7 @@ build_job_test_win:
 
 <p><img alt="" src="https://gyazo.com/995d6b3cbc9c80af4e45f1636079a824.png" /></p>
 <p>プロジェクトの構成はこんな感じで、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="k">print</span> <span class="s2">&quot;Hello World&quot;</span>
 </pre></div>
@@ -2678,6 +2680,8 @@ Python の場合は pipenv などでクローズドな環境を毎回構築す�
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

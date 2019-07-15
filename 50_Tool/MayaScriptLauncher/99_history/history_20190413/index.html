@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134257918-1"></script>
@@ -2611,7 +2613,7 @@
 ダウンロードの構造をまず確認。<br />
 まさに同じような動作をしているモジュールが入っていて<br />
 scripts/python/githubdownloader.py が、まさに望んでる動作をしてました。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2691,7 +2693,7 @@ config→ パッケージ管理用 GitHub の中身を展開、ツールの UI �
 の 2 つ。<br />
 それ以外はシェルフ用だったり、モジュール置き場だったり Mel 置き場（scripts)だったり<br />
 の、各種 PATH を通したフォルダになります。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2762,7 +2764,7 @@ mod の書き方によっては自動でダウンロードして使えるよう�
 その辺は次回試す。</p>
 <h2 id="packagecontentsxml">PackageContents.xml の 不思議挙動</h2>
 <p>調べている最中に気がついたことですが、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&lt;ComponentEntry ModuleName=&quot;./Contents/python/userSetup.py&quot; /&gt;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&lt;ComponentEntry ModuleName=&quot;./Contents/python/userSetup.py&quot; /&gt;
 </pre></div>
 </td></tr></table>
 
@@ -2883,6 +2885,8 @@ ComponentEntry の中身が実行されてるぽいのですけどね。</p>
       <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
       
         <script src="../../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>
