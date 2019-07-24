@@ -1,6 +1,8 @@
 # Introduction
 
-Blender、Maya、Python まわりの調べた内容をメモしつつ公開するページです。
+Blender、Maya、Python まわりの調べた内容をメモしつつ公開するページです。  
+  
+ページの更新記録は [更新記録](update_log.md) を参照。  
 
 ## 中で使用しているサンプルデータ
 
