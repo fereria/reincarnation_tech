@@ -2075,6 +2075,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="いろいろと勘違いしてたので..." class="md-nav__link">
+    いろいろと勘違いしてたので...
+  </a>
+  
+</li>
+      
       
       
       
@@ -2610,6 +2617,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="いろいろと勘違いしてたので..." class="md-nav__link">
+    いろいろと勘違いしてたので...
+  </a>
+  
+</li>
+      
       
       
       
@@ -2644,193 +2658,7 @@ PhotoShopに例えると、Viewは新規　とかで作成できるウィンド�
 Sceneはレイヤー、 Itemはシェイプで、基本的にはSceneに対してItemを配置し<br />
 それをViewに表示する...という形になります。<br />
 とりあえず、その3つ＋Dialogクラスを作成したサンプルを元にざっくりまとめ。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">os.path</span>
-
-<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span><span class="p">,</span> <span class="n">QtWidgets</span>
-<span class="kn">from</span> <span class="nn">PySide2.QtUiTools</span> <span class="kn">import</span> <span class="n">QUiLoader</span>
-
-<span class="n">ZOOM_MIN</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
-<span class="n">ZOOM_MAX</span> <span class="o">=</span> <span class="mi">2</span>
-
-
-<span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-
-        <span class="nb">super</span><span class="p">(</span><span class="n">UISample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">((</span><span class="n">parent</span><span class="p">))</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">NodeView</span><span class="p">()</span>
-        <span class="n">layout</span>  <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">scene</span> <span class="o">=</span> <span class="n">NodeScene</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setScene</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
-
-        <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">addEllipse</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-        <span class="n">item</span><span class="o">.</span><span class="n">setBrush</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QBrush</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="s1">&#39;pink&#39;</span><span class="p">)))</span>
-
-
-<span class="k">class</span> <span class="nc">NodeView</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QGraphicsView</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">NodeView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">wheelEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
-        <span class="n">delta</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">delta</span><span class="p">()</span>
-        <span class="n">adjust</span> <span class="o">=</span> <span class="p">(</span><span class="n">delta</span> <span class="o">/</span> <span class="mi">120</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_zoom</span><span class="p">(</span><span class="n">adjust</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">set_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-
-        <span class="n">scale</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="c1"># 今のズーム率 指定外にはならないようにする</span>
-        <span class="n">zoom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_zoom</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">ZOOM_MIN</span> <span class="o">&gt;=</span> <span class="n">zoom</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
-                <span class="k">return</span>
-        <span class="k">if</span> <span class="n">ZOOM_MAX</span> <span class="o">&lt;=</span> <span class="n">zoom</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
-                <span class="k">return</span>
-        <span class="n">scale</span> <span class="o">=</span> <span class="mf">0.9</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="k">else</span> <span class="mf">1.1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">get_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">transform</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
-        <span class="n">cur_scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">transform</span><span class="o">.</span><span class="n">m11</span><span class="p">(),</span> <span class="n">transform</span><span class="o">.</span><span class="n">m22</span><span class="p">())</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;{:0.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cur_scale</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span>
-
-
-<span class="k">class</span> <span class="nc">NodeScene</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QGraphicsScene</span><span class="p">):</span>
-
-    <span class="n">sel_item</span> <span class="o">=</span> <span class="bp">None</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">NodeScene</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">button</span><span class="p">()</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">LeftButton</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sel_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemAt</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">scenePos</span><span class="p">(),</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QTransform</span><span class="p">())</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pos</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">scenePos</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">mouseMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">cur</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">scenePos</span><span class="p">()</span>
-            <span class="n">val</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pos</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sel_item</span><span class="o">.</span><span class="n">moveBy</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span><span class="n">val</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pos</span> <span class="o">=</span> <span class="n">cur</span>
-
-    <span class="k">def</span> <span class="nf">viewer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">views</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">views</span><span class="p">()</span> <span class="k">else</span> <span class="bp">None</span>
-
-    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pos</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sel_item</span> <span class="o">=</span> <span class="bp">None</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">UISample</span><span class="p">()</span>
-    <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
-</pre></div>
-</td></tr></table>
+<script src="https://embed.cacher.io/83503b805863a944faf845c50b2c4faf2a5ffc40.js?a=c96d660f9a5afd75389879576678bc39"></script>
 
 <p>実行すると、</p>
 <p><img alt="" src="https://gyazo.com/467b0327752953f929ebc3e0ebfd707d.gif" /></p>
@@ -2850,28 +2678,34 @@ ViewとSceneの役割考えて使わないと意図しないことになるな..
 <p>この行列で求められます。<br />
 Sx、Syというのが、ベクトル（X,Y,1)を拡大縮小するためのスケール値。<br />
 元のベクトル（X,Y,1）に対して行列をかけ算することで、スケールした結果を取得できます。  </p>
-<p>現在のスケールを取得している  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">cur_scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">transform</span><span class="o">.</span><span class="n">m11</span><span class="p">(),</span> <span class="n">transform</span><span class="o">.</span><span class="n">m22</span><span class="p">())</span>
+<h2 id="_2">いろいろと勘違いしてたので...</h2>
+<p>Transform周りを調べつつもどうも腑に落ちてないというか理由がよくわからずうーん...<br />
+になってたのですが<br />
+いろいろと教えてもらって（たぶん）理解したので書き直し...orz  </p>
+<p>GraphicsViewのデフォルトのTransformは3ｘ3の単位行列になっています。<br />
+いわゆる「なにもしない」行列です。<br />
+その行列に対して、 self.scale(x,y) を実行すると<br />
+現在のTransformに対してかけ算された数値がセットされます。  </p>
+<p>今回のように、単純なスケールのみならOKなのですが<br />
+これに回転が入ってくると、</p>
+<p><img alt="" src="https://gyazo.com/50a8f3fe59c00c82d7cb725a035d9ec6.png" /></p>
+<p>10度まわした結果、数値が綺麗な数字ではなくなり、  </p>
+<p>スケールの今のスケール値を</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    transform = self.transform()
+    cur_scale = (transform.m11(), transform.m22())
 </pre></div>
 </td></tr></table>
 
-<p>というのは、</p>
-<p><img alt="" src="https://gyazo.com/0af788717484171b095485438ca2c5e0.png" /></p>
-<p>PySideのMatrixの各要素を取得する場合、<br />
-ScaleのSxとSyの数値に対応する m11(scaleX) と m22(scaleY) を<br />
-取得すれば良いからです。  </p>
-<p>この行列はてっきり単位行列かとおもってたのですが、デフォルトはぜんぶ0で<br />
-拡大してれば＋の数値、縮小していればーの数値が入っているようでした。<br />
-なので、0.5なら1.5倍、1.0なら2倍というように、＋1をした数値をかけたその結果の数値で<br />
-拡大・縮小をしているようでした。（不思議）  </p>
-<p>全体の拡大縮小はサンプルの通りtransformを使用した変換を使用していますが<br />
-ItemをDragしたときに移動するほうは<br />
-あえてTransformではなくItemのポジションを変更するやり方で作成しています。  </p>
-<p>moveBy(x,y)は、現在位置からの移動量でItemのポジションを動かしているので<br />
-前回のマウスポジションと現在のマウスポジションの差分を<br />
-このmoveByにセットしています。  </p>
-<p>同じ理屈で、マウスのドラッグでScene全体をスクロールしたいとかも作れそうです。  </p>
-<p>次は、各座標系ごとのポジション取得とかを調べます。</p>
+<p>このように取得使用とすると</p>
+<p><img alt="" src="https://gyazo.com/6196a8bad55610bcf832b2ccf5a27b51.png" /></p>
+<p>意図しない数値が返ってきてしまうのであまり望ましくありません。  </p>
+<p>ということで、<br />
+修正版ではScaleの値はGraphicsViewに保持しておいて<br />
+Zoom処理で一度Transformをリセットしてからscaleに数値を入れるようにしました。  </p>
+<p>Viewにスケールを持つことで、最大・最小値でClampするところかも大分シンプルになりました。  </p>
+<p>指摘してもらえるのが超貴い...orz  </p>
+<p>コレを機に、GraphicsViewベースに行列の勉強します(´･ω･`)</p>
                 
                   
                 
