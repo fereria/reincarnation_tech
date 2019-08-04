@@ -1,5 +1,7 @@
 # USD関係参考資料
 
+<!-- SUMMARY:USD関係参考資料 -->
+
 ## Docs/GitHub
 
 ### PIXAR

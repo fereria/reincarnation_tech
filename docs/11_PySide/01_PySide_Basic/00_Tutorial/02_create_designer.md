@@ -129,5 +129,3 @@ self.ui.objectName.指定の動作.connect(実行したい関数名)
 
 ボタンを押すと、こんな感じでclick_btn関数が呼ばれます。  
   
-次は、このボタンを押したときの動作、  
-PySideの「キモ」となるSignal-Slotについて説明します。  
