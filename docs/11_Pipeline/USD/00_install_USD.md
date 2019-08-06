@@ -32,7 +32,7 @@ Pythonのバージョンが2と3がありますが、3のほうにはUSDViewが�
 
 |変数名|PATH|
 |--|--|
-|PYTHONPATH|<downloadしたフォルダルート>/lib/path|
+|PYTHONPATH|<downloadしたフォルダルート>/lib/python|
 |PATH|<downloadしたフォルダルート>/bin <br> <downloadしたフォルダルート>/lib|
 
 !!! info 

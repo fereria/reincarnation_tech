@@ -1,4 +1,6 @@
-# 基本Widgetを使ってみる:LineEdit
+# 基本Widgetを使ってみる(1):LineEdit
+
+<!-- SUMMARY:基本Widgetを使ってみる(1) LineEdit -->
 
 widgetを説明したところで、PySideでよく使うWidgetの参考を色々書きながら  
 頻出な関数などを紹介していこうと思います。  

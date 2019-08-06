@@ -1,4 +1,11 @@
 # 更新履歴  
+## 2019/08/06 15:46:54  
+<!--e6ca4cd1e5ded16f474ef5f610e5b15a26c7e672-->  
+  
+LineEditの説明追加  
+  
+### 更新ページ  
+* [](11_PySide/01_PySide_Basic/00_Tutorial/05_widget_sample_01.md)  
 ## 2019/08/06 14:58:19  
 <!--a39800e5a15a0dd2cc69d24f5df2bd15b5ba4d04-->  
   
