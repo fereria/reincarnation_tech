@@ -1,4 +1,14 @@
 # 更新履歴  
+## 2019/08/04 14:04:40  
+<!--28715ffb8aa6df80724a3bc829c62896ccb2a687-->  
+  
+Signal-Slotの解説とカスタムウィジェットについて追加  
+  
+### 更新ページ  
+* [USD関係参考資料](11_Pipeline/USD/99_link.md)  
+* [QtDesignerでUIを作る](11_PySide/01_PySide_Basic/00_Tutorial/02_create_designer.md)  
+* [SignalとSlotについて(1)](11_PySide/01_PySide_Basic/00_Tutorial/03_signal_slot_01.md)  
+* [Widgetとカスタムウィジェットを作成する](11_PySide/01_PySide_Basic/00_Tutorial/04_widgets.md)  
 ## 2019/07/24 14:29:27  
 <!--3e6ddaaa660b933dbfade1bb8d970d8e0562b148-->  
   
