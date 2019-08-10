@@ -1,4 +1,12 @@
 # 更新履歴  
+## 2019/08/06 22:10:19  
+<!--b6f90ca1be4f5cea413f2ef57cbcd325c1f64fe4-->  
+  
+PYTHONPATHの登録先の記述が間違っていたので修正  
+  
+### 更新ページ  
+* [USDを使ってみる](11_Pipeline/USD/00_install_USD.md)  
+* [基本Widgetを使ってみる(1)LineEdit](11_PySide/01_PySide_Basic/00_Tutorial/05_widget_sample_01.md)  
 ## 2019/08/06 15:46:54  
 <!--e6ca4cd1e5ded16f474ef5f610e5b15a26c7e672-->  
   
