@@ -1,4 +1,11 @@
 # 更新履歴  
+## 2019/08/10 07:57:43  
+<!--6c275021bfc6105395fbc8a58b88550d055d7fad-->  
+  
+MayaPySideでUIを重複させない方法を追加  
+  
+### 更新ページ  
+* [MayaPySideで重複Windowを出さない方法（改](11_PySide/02_Tips/03_child_dup_window.md)  
 ## 2019/08/06 22:10:19  
 <!--b6f90ca1be4f5cea413f2ef57cbcd325c1f64fe4-->  
   
