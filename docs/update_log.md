@@ -1,4 +1,11 @@
 # 更新履歴  
+## 2019/08/10 08:56:30  
+<!--c5d15b87a96485e1f2c2c61f81eacd61b341190e-->  
+  
+RadioButtonの説明を追加  
+  
+### 更新ページ  
+* [](11_PySide/01_PySide_Basic/00_Tutorial/06_widget_sample_02.md)  
 ## 2019/08/10 07:57:43  
 <!--6c275021bfc6105395fbc8a58b88550d055d7fad-->  
   
