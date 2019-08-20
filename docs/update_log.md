@@ -1,4 +1,12 @@
 # 更新履歴  
+## 2019/08/12 15:12:02  
+<!--24dbdb0bf1f42c90a101f3e7f956fd2e7de50ecd-->  
+  
+ComboBoxを追加  
+  
+### 更新ページ  
+* [基本Widgetを使ってみる(2)_RadioButton](11_PySide/01_PySide_Basic/00_Tutorial/06_widget_sample_02.md)  
+* [基本Widgetを使ってみる(3)_ComboBox_基本編](11_PySide/01_PySide_Basic/00_Tutorial/07_widget_sample_03.md)  
 ## 2019/08/10 08:56:30  
 <!--c5d15b87a96485e1f2c2c61f81eacd61b341190e-->  
   

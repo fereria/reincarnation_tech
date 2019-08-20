@@ -1,4 +1,4 @@
-#!python2
+#!python3
 # -*- coding: utf-8 -*-
 
 import os
@@ -12,6 +12,7 @@ import glob
 GITBOOK_ROOT = u"S:/docs/markdown_note/reincarnation_tech"
 GITBOOK_DOCS = GITBOOK_ROOT + u"/docs"
 MKDOCS       = "mkdocs.yml"
+MKDOCS_BASE  = "mkdocs_base.yml"
 
 # 日本語のIndexにしたいものは、フォルダ名から↓の名前に置換する
 FOLDER_REPLACE_STRING = {
@@ -38,9 +39,9 @@ EXCLUSION = [".git", ".vscode", ".history", "_book", "node_modules", "stylesheet
 def get_mkdocs_yml():
 
     # Jsonのように扱える
-    with codecs.open(MKDOCS, 'r', 'utf-8') as file:
-        yml = yaml.load(file)
-    return yml
+    with codecs.open(MKDOCS_BASE, 'r', 'utf-8') as file:
+        return "".join(file.readlines())
+
 
 
 def has_markdown(path):
@@ -122,13 +123,11 @@ def create_pages(summary_path, root_path, indent_space="  "):
 
     recursive_file_check(root_path)
 
-    yml_val = yaml.safe_load("\n".join(write_val))
-
     yml_base = get_mkdocs_yml()
-    yml_base['pages'] = yml_val['pages']
+    yml_base = yml_base + "\n".join(write_val)
 
     with codecs.open(MKDOCS, 'w+', "utf-8") as f:
-        f.write(yaml.dump(yml_base, default_flow_style=False, encoding='utf-8', allow_unicode=True).decode("utf-8"))
+        f.write(yml_base)
 
 
 if __name__ == "__main__":
