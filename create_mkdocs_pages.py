@@ -92,7 +92,7 @@ def replace_title_folder_name(name):
 
 def create_pages(summary_path, root_path, indent_space="  "):
 
-    write_val = ["pages:", indent_space + u"- 更新履歴: update_log.md"]
+    write_val = ["nav:", indent_space + u"- 更新履歴: update_log.md"]
 
     def recursive_file_check(path):
 
