@@ -2124,15 +2124,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" title="カスタムスキーマを作る" class="md-nav__link">
-    カスタムスキーマを作る
+  <a href="#newschemaclass" title="NewSchemaClassを作る" class="md-nav__link">
+    NewSchemaClassを作る
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" title="作業フォルダを作る" class="md-nav__link">
+  <a href="#_2" title="作業フォルダを作る" class="md-nav__link">
     作業フォルダを作る
   </a>
   
@@ -2146,7 +2146,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" title="必要なファイルを準備する" class="md-nav__link">
+  <a href="#_3" title="必要なファイルを準備する" class="md-nav__link">
     必要なファイルを準備する
   </a>
   
@@ -2165,14 +2165,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" title="ビルド結果を確認する" class="md-nav__link">
+  <a href="#_4" title="ビルド結果を確認する" class="md-nav__link">
     ビルド結果を確認する
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" title="テストしてみる" class="md-nav__link">
+  <a href="#_5" title="テストしてみる" class="md-nav__link">
     テストしてみる
   </a>
   
@@ -3049,15 +3049,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" title="カスタムスキーマを作る" class="md-nav__link">
-    カスタムスキーマを作る
+  <a href="#newschemaclass" title="NewSchemaClassを作る" class="md-nav__link">
+    NewSchemaClassを作る
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" title="作業フォルダを作る" class="md-nav__link">
+  <a href="#_2" title="作業フォルダを作る" class="md-nav__link">
     作業フォルダを作る
   </a>
   
@@ -3071,7 +3071,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" title="必要なファイルを準備する" class="md-nav__link">
+  <a href="#_3" title="必要なファイルを準備する" class="md-nav__link">
     必要なファイルを準備する
   </a>
   
@@ -3090,14 +3090,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" title="ビルド結果を確認する" class="md-nav__link">
+  <a href="#_4" title="ビルド結果を確認する" class="md-nav__link">
     ビルド結果を確認する
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" title="テストしてみる" class="md-nav__link">
+  <a href="#_5" title="テストしてみる" class="md-nav__link">
     テストしてみる
   </a>
   
@@ -3201,12 +3201,13 @@ pip install PyOpenGL
 <ul>
 <li>USD/bin</li>
 <li>USD/lib</li>
+<li>USD/plugin (これは後で説明)</li>
 </ul>
 <p>この２つに通します。  </p>
 <p>以上で準備は完了です。  </p>
-<h3 id="_2">カスタムスキーマを作る</h3>
-<h4 id="_3">作業フォルダを作る</h4>
-<p>ここまで準備ができたら、カスタムスキーマを作成します。<br />
+<h3 id="newschemaclass">NewSchemaClassを作る</h3>
+<h4 id="_2">作業フォルダを作る</h4>
+<p>ここまで準備ができたら、NewSchemaClassを作成します。<br />
 まずは、USDの公式のビルドシステム（上の build_usd.pyを使用したやり方）に乗っかって<br />
 ビルドできるように、CMakeLists.txtを作成していきます。  </p>
 <p>リポジトリのプロジェクト下の  </p>
@@ -3304,7 +3305,7 @@ libraryName が必須要素になります。<br />
 Windowsのせいなのか、相対パスでは記述できないのだけ注意が必要です。  </p>
 <p><img alt="" src="https://gyazo.com/b806510f43362a68c1af4e499193c327.png" /></p>
 <p>実行すると、同じフォルダに cpp と .h が作成されます。  </p>
-<h4 id="_4">必要なファイルを準備する</h4>
+<h4 id="_3">必要なファイルを準備する</h4>
 <p>実行した cpp .h 以外にもいくつか必要なファイルがあるので<br />
 それらをサンプルからコピペしてきます。<br />
 USD/extras/usd/examples/usdSchemaExamples<br />
@@ -3420,60 +3421,61 @@ hoge フォルダ下に CMakeLists.txt を作り、</p>
 33
 34
 35
-36</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>set(PXR_PACKAGE hogehoge)
+36</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">PXR_PACKAGE</span> <span class="s">hogehoge</span><span class="p">)</span>
 
-pxr_plugin(<span class="cp">${</span><span class="n">PXR_PACKAGE</span><span class="cp">}</span>
-    LIBRARIES
-        tf
-        sdf
-        usd
-        vt
+<span class="nb">pxr_plugin</span><span class="p">(</span><span class="o">${</span><span class="nv">PXR_PACKAGE</span><span class="o">}</span>
+    <span class="s">LIBRARIES</span>
+        <span class="s">tf</span>
+        <span class="s">sdf</span>
+        <span class="s">usd</span>
+        <span class="s">vt</span>
 
-    INCLUDE_DIRS
-        <span class="cp">${</span><span class="n">Boost_INCLUDE_DIRS</span><span class="cp">}</span>
-        <span class="cp">${</span><span class="n">PYTHON_INCLUDE_DIRS</span><span class="cp">}</span>
+    <span class="s">INCLUDE_DIRS</span>
+        <span class="o">${</span><span class="nv">Boost_INCLUDE_DIRS</span><span class="o">}</span>
+        <span class="o">${</span><span class="nv">PYTHON_INCLUDE_DIRS</span><span class="o">}</span>
 
-    PUBLIC_HEADERS
-        api.h
+    <span class="s">PUBLIC_HEADERS</span>
+        <span class="s">api.h</span>
 
-    PUBLIC_CLASSES
-        fuga
-        tokens
+    <span class="s">PUBLIC_CLASSES</span>
+        <span class="s">fuga</span>
+        <span class="s">tokens</span>
 
-    PYTHON_CPPFILES
-        moduleDeps.cpp    
+    <span class="s">PYTHON_CPPFILES</span>
+        <span class="s">moduleDeps.cpp</span>    
 
-    PYMODULE_FILES
-        __init__.py
+    <span class="s">PYMODULE_FILES</span>
+        <span class="s">__init__.py</span>
 
-    PYMODULE_CPPFILES
-        module.cpp
-        wrapFuga.cpp
-        wrapTokens.cpp
+    <span class="s">PYMODULE_CPPFILES</span>
+        <span class="s">module.cpp</span>
+        <span class="s">wrapFuga.cpp</span>
+        <span class="s">wrapTokens.cpp</span>
 
-    RESOURCE_FILES
-        generatedSchema.usda
-        plugInfo.json
-        schema.usda:schema.usda
-)
+    <span class="s">RESOURCE_FILES</span>
+        <span class="s">generatedSchema.usda</span>
+        <span class="s">plugInfo.json</span>
+        <span class="s">schema.usda:schema.usda</span>
+<span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>中身をこうします。  </p>
-<p>変更点は PUBLIC_CLASSES　と　PYMODULE_CPPFILES　部分で、ここに作成するクラス名（hoge）を入れます。<br />
+<p>変更点は、1行目の  PXR_PACKAGE 部分（ビルドされた後のlib等の名前がこれになります）<br />
+PUBLIC_CLASSES　と　PYMODULE_CPPFILES　部分で、ここに作成するクラス名（hoge）を入れます。<br />
 (指定したクラス名の頭が大文字の場合小文字になります)<br />
 Python用は、wrapが頭につきます。  </p>
 <p>以上で準備が完了です。</p>
 <p><img alt="" src="https://gyazo.com/73abbebb98072118a03ba5a511195e3d.png" /></p>
 <p>できあがったフォルダがこちら。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>python build_scripts\build_usd.py &quot;&lt;Build先&gt;&quot;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>python build_scripts\build_usd.py <span class="s2">&quot;&lt;Build先&gt;&quot;</span>
 </pre></div>
 </td></tr></table>
 
 <p>準備ができたら、 build_usd.py を使用してビルドします。  </p>
-<h3 id="_5">ビルド結果を確認する</h3>
+<h3 id="_4">ビルド結果を確認する</h3>
 <p>特にエラーがなく無事に完了すると、<br />
-ビルドフォルダ下に作成したライブラリが作成されます。  </p>
+ビルドフォルダとして指定したフォルダ下に、作成したlibとdll等が作成されます。  </p>
 <p><img alt="" src="https://gyazo.com/cf61e13e4ed9a875fed59af4f9a7fab0.png" /></p>
 <p>まず、 lib と dll。<br />
 この２つは USD/plugin/usd 下に作成されます。<br />
@@ -3491,7 +3493,7 @@ Python用は、wrapが頭につきます。  </p>
 <p>こんなかんじ。  </p>
 <p>libraryPathが . 以外だとうまくいかないのが現状謎なので<br />
 今は直下にフォルダができます。  </p>
-<h3 id="_6">テストしてみる</h3>
+<h3 id="_5">テストしてみる</h3>
 <p>とりあえず出来上がったモジュールをPython側から使ってみます。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
