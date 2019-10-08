@@ -11,6 +11,8 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
+        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/USD/03_schema/">
+      
       
         <meta name="author" content="Megumi Ando@Remiria">
       
@@ -115,7 +117,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../.." title="Reincarnation+#Tech" class="md-header-nav__button md-logo">
+        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -349,7 +351,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../98_Other/git_command/" title="Other" class="md-tabs__link">
+        <a href="../../../98_Other/99_mkdocs_sample/" title="Other" class="md-tabs__link">
           Other
         </a>
       
@@ -383,7 +385,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../.." title="Reincarnation+#Tech" class="md-nav__button md-logo">
+    <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -2684,6 +2686,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../98_Other/99_mkdocs_sample/" title="mkdocsでのMarkdown記載サンプル" class="md-nav__link">
+      mkdocsでのMarkdown記載サンプル
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../98_Other/git_command/" title="Gitよく使うコマンドやら操作メモ" class="md-nav__link">
       Gitよく使うコマンドやら操作メモ
     </a>
@@ -2721,13 +2735,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-4" type="checkbox" id="nav-10-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-5" type="checkbox" id="nav-10-5">
     
-    <label class="md-nav__link" for="nav-10-4">
+    <label class="md-nav__link" for="nav-10-5">
       VSCode
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-10-4">
+      <label class="md-nav__title" for="nav-10-5">
         VSCode
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2916,22 +2930,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">目次</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="映像制作のための汎用フォーマット" class="md-nav__link">
-    映像制作のための汎用フォーマット
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2950,7 +2948,6 @@
 
 <!--WRITING_NOW-->
 
-<h3 id="_2">映像制作のための汎用フォーマット</h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -2960,31 +2957,6 @@ def Sphere &quot;hello&quot;
 }
 </pre></div>
 </td></tr></table>
-
-<p>USDファイルは、ファイルそのものはテキストまたはバイナリの <strong>データフォーマット</strong> であり、<br />
-いわゆるJSONであったり、INIであったり、TOMLであったり、YAMLであったり、<br />
-そういったものと同じです。<br />
-（このフォーマットをすごく良い感じに処理してくれるのがUSDライブラリ）  </p>
-<p>一般的なファイルフォーマットと違うのは <strong>「スキーマシステム」</strong> と呼ばれる<br />
-3DCGで使用するいくつもの型（解釈）がデフォルトで用意されていて、<br />
-それを使用することで簡単に3Dのデータ構造を定義できることです。  </p>
-<p><img alt="" src="https://gyazo.com/1a077192243d97256d8cbe8284ef2f21.png" /></p>
-<p>例えば、上の4行のusdファイルの例だと「Sphere（球オブジェクト）を作る」という<br />
-「<a href="https://graphics.pixar.com/usd/docs/api/class_usd_geom_sphere.html">UsdGeomSphere</a>」スキーマによってSphereが定義されています。<br />
-そのおかげで、この4行（実質1行）だけで球を描画することができます。  </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>このスキーマは、デフォルトで「3DCGで良く使用されるスキーマ」が用意されています。<br />
-<a href="https://graphics.pixar.com/usd/docs/api/usd_geom_page_front.html">https://graphics.pixar.com/usd/docs/api/usd_geom_page_front.html</a><br />
-このスキーマを使用することで、大体の構造は作成することができます。<br />
-もちろん、必要に応じて自分でスキーマを定義して、カスタマイズすることも可能です。</p>
-</div>
-<p>スキーマについてはまた別途きちんとまとめを書こうと思いますが、<br />
-とにかく、USDとは<br />
-<strong>「スキーマシステムによって、DCCツールのデータを相互にやりとりすることを可能にしたデーフォーマット」</strong><br />
-であり、<br />
-<strong>拡張することで、あらゆるパイプラインに対応することを可能にするPixarが考えた映像制作のための汎用フォーマット</strong><br />
-というものになります。  </p>
                 
                   
                 
