@@ -43,7 +43,6 @@ def get_mkdocs_yml():
         return "".join(file.readlines())
 
 
-
 def has_markdown(path):
     """
     指定フォルダ以下にMarkdownファイルが存在する場合Trueを返す
@@ -82,6 +81,18 @@ def get_summary_word(path):
     return ""
 
 
+def isWriting(path):
+    """
+    書き途中か調べる
+    """
+    with codecs.open(path, 'r', 'utf-8') as f:
+        lines = f.readlines()
+    for i in lines:
+        if re.search('<!--WRITING_NOW-->', i) is not None:
+            return True
+    return False
+
+
 def replace_title_folder_name(name):
 
     buff = name
@@ -106,20 +117,25 @@ def create_pages(summary_path, root_path, indent_space="  "):
                     indent  = (len(buff)) * indent_space
                     if is_exclusion_path(path) is False:
                         write_val.append(indent + "- " + replace_title_folder_name(re.sub("^[0-9][0-9]_", "", buff[-1])) + ":")
+                        if os.path.exists(path + "/index.md"):
+                            write_val.append(indent + "  - " + buff[0] + "/index.md")
+
             files = os.listdir(path)
             for file in files:
                 recursive_file_check(path + "/" + file)
         else:
             bn = os.path.splitext(os.path.basename(path))[0]
-            if bn != "SUMMARY":
+
+            if bn != "SUMMARY" and bn != "index":
                 relative_path = path.replace("\\", "/").replace(root_path + "/", "")
                 buff = relative_path.split('/')
                 summary_keyword = get_summary_word(path)
-                if summary_keyword == "":
-                    summary_keyword = bn
-                if is_exclusion_path(path) is False:
-                    if len(relative_path.split("/")) > 1:
-                        write_val.append((len(buff)) * indent_space + u"- {0}: {1}".format(summary_keyword, relative_path))
+                if not isWriting(path):
+                    if summary_keyword == "":
+                        summary_keyword = bn
+                    if is_exclusion_path(path) is False:
+                        if len(relative_path.split("/")) > 1:
+                            write_val.append((len(buff)) * indent_space + u"- {0}: {1}".format(summary_keyword, relative_path))
 
     recursive_file_check(root_path)
 

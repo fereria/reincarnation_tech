@@ -13,6 +13,10 @@
 
 * https://developer.nvidia.com/usd
 
+## 日本語Help
+
+* https://usd.prisms.xyz/index.html
+
 ## スライド 参考ページ
 
 ### 公式スライド

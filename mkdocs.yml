@@ -17,6 +17,8 @@ google_analytics:
   - UA-134257918-1
   - fereria.github.io/reincarnation_tech
 markdown_extensions:
+  - footnotes
+  - pymdownx.tilde
   - meta
   - pymdownx.mark
   - pymdownx.magiclink
@@ -30,7 +32,10 @@ markdown_extensions:
   - codehilite:
       linenums: true
       use_pygments: true
+  - markdown_blockdiag:
+      format: svg      
 repo_url: https://github.com/fereria/reincarnation_tech
+site_url: https://fereria.github.io/reincarnation_tech
 site_author: Megumi Ando@Remiria
 site_name: Reincarnation+#Tech
 theme:
@@ -44,6 +49,7 @@ theme:
 nav:
   - 更新履歴: update_log.md
   - Blender:
+    - 10_Blender/index.md
     - 基本操作:
       - レンダリングカメラを操作する: 10_Blender/basic_operation/blender_render_cam.md
       - BlenderからMayaにデータを移植する: 10_Blender/basic_operation/export_to_maya.md
@@ -98,6 +104,7 @@ nav:
       - blender_shortcut_materials: 10_Blender/Shortcut/blender_shortcut_materials.md
       - モデリング時のショートカット: 10_Blender/Shortcut/blender_short_cut_modeling.md
   - Houdini:
+    - 10_Houdini/index.md
     - Basic:
       - 初めてのHoudini_基本操作01: 10_Houdini/00_Basic/00_start_houdini.md
       - VtxPointPrimitiveMeshPolygonについて: 10_Houdini/00_Basic/02_mesh_polygon.md
@@ -110,7 +117,7 @@ nav:
       - パラメーターを追加する: 10_Houdini/10_VOP/03_add_param.md
     - Python:
       - PythonでHoudiniのパラメーターを取得・セットする: 10_Houdini/20_Python/get_param_01.md
-    - HoPySide_基本編PySide_基本編udini写経:
+    - HoPySide_BasicPySide_Basicudini写経:
       - Houdini写経01_RBD_ClueConstraint: 10_Houdini/50_imitate/00_glue_constraint_rbd.md
       - 01_ifend: 10_Houdini/50_imitate/01_ifend.md
   - Maya:
@@ -144,10 +151,16 @@ nav:
     - Documentation:
       - mkdocsを設定する: 10_Programming/99_Documentation/00_mkdocs_setting.md
   - Pipeline:
+    - 11_Pipeline/index.md
+    - USD関係参考資料: 11_Pipeline/99_link.md
     - USD:
       - USDを使ってみる: 11_Pipeline/USD/00_install_USD.md
-      - USD関係参考資料: 11_Pipeline/USD/99_link.md
+      - USDをPythonから色々操作するための環境を作る: 11_Pipeline/USD/01_start_USD.md
+      - USDとは: 11_Pipeline/USD/02_whats_USD.md
+    - USDTips:
+      - オリジナルのNewSchemaClassを作る: 11_Pipeline/USDTips/00_create_custom_schema.md
   - PySide:
+    - 11_PySide/index.md
     - PySide_基本編:
       - Tutorial:
         - PySideで単独アプリケーションを作る: 11_PySide/01_PySide_Basic/00_Tutorial/01_start.md
@@ -159,6 +172,7 @@ nav:
         - 基本Widgetを使ってみる(3)_ComboBox_基本編: 11_PySide/01_PySide_Basic/00_Tutorial/07_widget_sample_03.md
         - 基本Widgetを使ってみる(4)_ListView: 11_PySide/01_PySide_Basic/00_Tutorial/08_widget_sample_04.md
         - QSettingsを使用してUIの情報を保存する: 11_PySide/01_PySide_Basic/00_Tutorial/09_qsettings.md
+        - コンテキストメニューを作る: 11_PySide/01_PySide_Basic/00_Tutorial/10_context_menu.md
     - Tips:
       - UILoaderで.uiをロードする: 11_PySide/02_Tips/01_importUiLoader.md
       - GraphicsViewの基本(Sceneをスケールする): 11_PySide/02_Tips/02_graphicsView_01.md
@@ -169,12 +183,14 @@ nav:
       - GraphicsViewでQColorをアニメーションさせる: 11_PySide/02_Tips/graphics_view_color_anim.md
       - PySideのGraphicsViewで親子化: 11_PySide/02_Tips/pyside_graphicsview_child_item.md
       - QThreadでマルチスレッドを使う(Signalの注意点): 11_PySide/02_Tips/qthread_01.md
+      - PySideのTableViewでDelegateを使う(1): 11_PySide/02_Tips/view_model_delegate_01.md
+      - PySideのTableViewでDelegateを使う(2)paintする: 11_PySide/02_Tips/view_model_delegate_02.md
   - Photo:
     - colorpassportでlightroomのプロファイルを作る: 20_Photo/color_passport.md
     - 全周パノラマを作る（撮影編）: 20_Photo/create_hdr_01.md
     - 全周パノラマを作る（現像編）: 20_Photo/create_hdr_02.md
   - Tool:
-    - index: 50_Tool/index.md
+    - 50_Tool/index.md
     - MayaScriptLauncher:
       - overview:
         - ツールの基本仕様: 50_Tool/MayaScriptLauncher/00_overview/00_app_folder_rule.md
@@ -183,6 +199,8 @@ nav:
         - Mayaのツール配布環境を作りたい_03_基本構造: 50_Tool/MayaScriptLauncher/99_history/history_20190413.md
         - Mayaのツール配布環境を作りたい_04_Modの挙動とGitAPI: 50_Tool/MayaScriptLauncher/99_history/history_20190414.md
   - Other:
+    - mkdocsでのMarkdown記載サンプル: 98_Other/99_mkdocs_sample.md
+    - Gitよく使うコマンドやら操作メモ: 98_Other/git_command.md
     - Hpyer-Vで仮想デスクトップを作成する: 98_Other/hyper-v.md
     - VSCodeからSSH経由でPush: 98_Other/push_github_ssh.md
     - VSCode:

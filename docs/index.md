@@ -1,20 +1,18 @@
 # Introduction
 
-Blender、Maya、Python まわりの調べた内容をメモしつつ公開するページです。  
-  
-ページの更新記録は [更新記録](update_log.md) を参照。  
+Blender、Maya、Python 等の 3DCG 関係のテクニカル系の諸々を調べた内容を  
+自分のメモとしてまとめています。
 
-## 中で使用しているサンプルデータ
+## 最近の主要記事
 
-### シーンファイルとか
+| LINK                             | 内容                                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------------------- |
+| [Houdini](10_Houdini/index.md)   | Houdini 関係の基本メモ、写経の記録、スクリプト等                                      |
+| [Blender](10_Blender/index.md)   | Blender2.8 の基本的な使い方など                                                       |
+| [PySide](11_PySide/index.md)     | PySide 入門チュートリアルと、自分が調べて苦戦したりとかやり方を調べたもののメモなど。 |
+| [Pipeline](11_Pipeline/index.md) | おもに USD 周りの調べた内容など                                                       |
 
-https://remi-saba.net:5001/d/f/469945296762183837  
-blend ファイルやその他諸々のソースコード以外のシーンファイルをアップします。
-
-### ソースコードとか
-
-https://github.com/fereria/study_blender_scripts  
-Blender 関係のスクリプト勉強用で書いたものをアップします。
+---
 
 ## 別サイト Link
 
