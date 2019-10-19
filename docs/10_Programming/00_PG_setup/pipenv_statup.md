@@ -89,3 +89,49 @@ Debugの構成を追加して、launch.jsonを作成する。
 | lock                   | Pipenv.lock ファイルを作成する。                                       |
 | update                 | lockコマンドを実行後、その時同期する                                   |
 | clean                  | Pipenv.lock に記載されていないすべてのパッケージをアンインストールする |
+
+## 設定済みファイルから環境を構築する
+
+pipenvは、設定ファイルをベースに仮想環境を再構築することができます。  
+  
+```Pipfile
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+jupyter = "*"
+notebook = "*"
+ipykernel = "*"
+pyside = "*"
+qt-py = "*"
+pyopengl = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "2.7"
+```
+
+まずは、空のフォルダに Pipfile という名前の空のテキストを作成します。  
+作成したファイルを開いて、↑のようにインストールしたいパッケージや、Pythonのバージョンを  
+記載して保存します。  
+このファイルは、 pipenv install hogehoge したときに作成されるファイルで  
+すでに別の仮想環境を作っていた場合はファイルが作成されています。  
+ので、すでにあるファイルをコピペしてくるのでもOKです。  
+  
+次に、コマンドプロンプトでフォルダに移動して
+
+```
+pipenv install
+```
+を実行します。  
+  
+実行すると、 Pipfile に記載されているパッケージのうちインストールされていない物があれば  
+インストールされます。  
+空の場合、指定のPythonバージョンの環境構築も行われます。  
+  
+
+
+

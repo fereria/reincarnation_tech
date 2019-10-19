@@ -9,7 +9,7 @@ import yaml
 import glob
 
 # 定数
-GITBOOK_ROOT = u"S:/docs/markdown_note/reincarnation_tech"
+GITBOOK_ROOT = u"C:/reincarnation_tech"
 GITBOOK_DOCS = GITBOOK_ROOT + u"/docs"
 MKDOCS       = "mkdocs.yml"
 MKDOCS_BASE  = "mkdocs_base.yml"

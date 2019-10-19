@@ -34,3 +34,79 @@ pip install mkdocs
 ## 参考
   
   * https://qiita.com/mebiusbox2/items/a61d42878266af969e3c
+
+
+```plantuml format="png" classes="uml myDiagram" alt="My super diagram placeholder" title="My super diagram" width="300px" height="300px"
+
+@startuml
+
+up -up-> right
+-right-> down
+-down-> left
+-left-> up
+
+@enduml  
+```
+
+```plantuml
+@startuml
+
+:hello world;
+:hoge hoge;
+
+if (condition A) then (yes)
+  :text ;
+else (no)
+  :textB ;
+endif
+:hoge ;
+
+repeat
+  :hoge ;
+  :hoge2 ;
+repeat while (condition)
+
+floating note left : this is a note
+
+while (hogehoge)
+
+  :hogeB;
+  :hogeC;
+
+end while
+
+:end hoge;
+
+note right
+  note
+end note
+
+#hotpink: hogehoge;
+
+:hoge>
+-[#blue]->
+:hoge<
+-[#blue,dotted]->
+:hoge|
+-[#red,bold]->
+:hoge/
+
+fork
+ :hoge;
+ :hoge2;
+fork again
+ :hogeB;
+ :hogeC;
+endfork
+
+stop
+
+
+@enduml
+```
+
+
+
+{{color(red)::some_text}}  
+{{color(blue)::some_text}}
+
