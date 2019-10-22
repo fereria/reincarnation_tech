@@ -122,20 +122,41 @@ Pythonの場合、 Sdf.ValueTypeNames というEnumが存在していて
 （しかしドキュメントにこの ValueTypeNames はない）  
   
 
-Asset AssetArray Bool BoolArray Color3d Color3dArray Color3f Color3fArray Color3h  
-Color3hArray Color4d Color4dArray Color4f Color4fArray Color4h Color4hArray Double  
-Double2 Double2Array Double3 Double3Array Double4 Double4Array DoubleArray Find  
-Float Float2  Float2Array  Float3  Float3Array  Float4  Float4Array  FloatArray  Frame4d  
-Frame4dArray  Half  Half2  Half2Array  Half3  Half3Array  Half4  Half4Array  HalfArray  
-Int  Int2  Int2Array  Int3  Int3Array  Int4  Int4Array  Int64  Int64Array  IntArray  
-Matrix2d  Matrix2dArray  Matrix3d  Matrix3dArray  Matrix4d  Matrix4dArray  Normal3d  Normal3dArray  
-Normal3f  Normal3fArray  Normal3h  Normal3hArray  Point3d  Point3dArray  Point3f  Point3fArray  
-Point3h  Point3hArray  Quatd  QuatdArray  Quatf  QuatfArray  Quath  QuathArray  String  
-StringArray  TexCoord2d  TexCoord2dArray  TexCoord2f  TexCoord2fArray  TexCoord2h  TexCoord2hArray  
-TexCoord3d  TexCoord3dArray  TexCoord3f  TexCoord3fArray  TexCoord3h  TexCoord3hArray  Token  
-TokenArray  UChar  UCharArray  UInt  UInt64  UInt64Array  UIntArray  Vector3d  Vector3dArray  
-Vector3f  Vector3fArray  Vector3h  Vector3hArray  
+Asset AssetArray  
+Bool BoolArray  
+Color3d Color3dArray Color3f Color3fArray  
+Color3h Color3hArray Color4d Color4dArray  
+Color4f Color4fArray Color4h Color4hArray  
+Double Double2 Double2Array  
+Double3 Double3Array  
+Double4 Double4Array DoubleArray  
+Find  
+Float Float2  Float2Array  
+Float3  Float3Array  
+Float4  Float4Array  FloatArray  
+Frame4d Frame4dArray  
+Half  Half2  Half2Array  
+Half3  Half3Array  
+Half4  Half4Array  HalfArray  
+Int  Int2  Int2Array  
+Int3  Int3Array  
+Int4  Int4Array  
+Int64  Int64Array  
+IntArray  
+Matrix2d  Matrix2dArray  Matrix3d  Matrix3dArray  Matrix4d  Matrix4dArray  
+Normal3d  Normal3dArray  Normal3f  Normal3fArray  Normal3h  Normal3hArray  
+Point3d  Point3dArray  Point3f  Point3fArray  Point3h  Point3hArray  
+Quatd  QuatdArray  Quatf  QuatfArray  Quath  QuathArray  
+String  StringArray  
+TexCoord2d  TexCoord2dArray  TexCoord2f  TexCoord2fArray  TexCoord2h  TexCoord2hArray  
+TexCoord3d  TexCoord3dArray  TexCoord3f  TexCoord3fArray  TexCoord3h  TexCoord3hArray  
+Token  TokenArray  
+UChar  UCharArray  
+UInt  UInt64  UInt64Array  UIntArray  
+Vector3d  Vector3dArray  
+Vector3f  Vector3fArray  
+Vector3h  Vector3hArray  
   
 print(dir(Sdf.ValueTypeNames))をすると、一応使える型がリストできるので  
 これを見ながら頑張ってCreateAttributeの型定義をします。  
-（しました）
+（しました）  
