@@ -105,6 +105,45 @@ ConcreteSchemaにはDefine関数があるので、↑のように定義する。
 prim = xform.GetPrim()
 ```
 
+## SdfPath関係
+
+### SdfPathの基本操作
+
+```python
+sdfPath = Sdf.Path("/base")
+xform = UsdGeom.Xform.Define(stage, sdfPath)
+```
+SdfPathは、 / スタートで Stage内のシーングラフを定義する。
+定義したPathで、Primやスキーマの定義を作ることができる。
+
+### 各オブジェクトからPath取得
+
+```python
+attr = prim.CreateAttribute("test", Sdf.ValueTypeNames.Bool)
+xformPath = xform.GetPrim().GetPath()
+attrPath = attr.GetPath()
+```
+Pathを取得したいPrimやAttribute、Primオブジェクトで .GetPath() する。  
+AttributeのPathは /base.test のように . で表現される。  
+  
+### SdfPathが何を指しているか確認する
+
+```python
+print(sdfPath.IsPropertyPath())
+print(sdfPath.IsPrimPath())
+print(sdfPath.IsTargetPath())
+```
+Is～Path　で、SdfPathが何をしてしているのかチェックできる。  
+  
+### SdfPath操作
+
+```python
+# 子に対して引数の階層を追加する
+cldPath = sdfPath.AppendChild('hoge')
+# 子に対してAttributeを追加する
+cldAttrPath = sdfPath.AppendProperty('hogeAttr')
+```
+
 ## Attribute操作
 
 ### Attributeを作る/セットする

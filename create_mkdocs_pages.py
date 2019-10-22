@@ -66,7 +66,7 @@ def get_summary_word(path):
     """
     引数のPathのMarkdownファイルにあるサマリー用の名前を取得する
     """
-
+    print(path)
     with codecs.open(path, 'r', 'utf-8') as f:
         lines = f.readlines()
 
@@ -124,18 +124,18 @@ def create_pages(summary_path, root_path, indent_space="  "):
             for file in files:
                 recursive_file_check(path + "/" + file)
         else:
-            bn = os.path.splitext(os.path.basename(path))[0]
-
-            if bn != "SUMMARY" and bn != "index":
-                relative_path = path.replace("\\", "/").replace(root_path + "/", "")
-                buff = relative_path.split('/')
-                summary_keyword = get_summary_word(path)
-                if not isWriting(path):
-                    if summary_keyword == "":
-                        summary_keyword = bn
-                    if is_exclusion_path(path) is False:
-                        if len(relative_path.split("/")) > 1:
-                            write_val.append((len(buff)) * indent_space + u"- {0}: {1}".format(summary_keyword, relative_path))
+            bn, ext = os.path.splitext(os.path.basename(path))
+            if ext == ".md":
+                if bn != "SUMMARY" and bn != "index":
+                    relative_path = path.replace("\\", "/").replace(root_path + "/", "")
+                    buff = relative_path.split('/')
+                    summary_keyword = get_summary_word(path)
+                    if not isWriting(path):
+                        if summary_keyword == "":
+                            summary_keyword = bn
+                        if is_exclusion_path(path) is False:
+                            if len(relative_path.split("/")) > 1:
+                                write_val.append((len(buff)) * indent_space + u"- {0}: {1}".format(summary_keyword, relative_path))
 
     recursive_file_check(root_path)
 
