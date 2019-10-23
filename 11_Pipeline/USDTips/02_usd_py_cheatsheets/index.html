@@ -4120,6 +4120,71 @@ Transform処理をしたい場合はXformCommonAPIを使用する。</p>
 
 <p>Referenceで読み込みたいusdをPrimに対してセットする</p>
 <h3 id="83-inherits">8.3. Inherits</h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># クラスを定義して保存する</span>
+<span class="n">classPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s1">&#39;/TestClass&#39;</span><span class="p">)</span>
+<span class="n">attr</span> <span class="o">=</span> <span class="n">classPrim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
+<span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH</span> <span class="o">+</span> <span class="s1">&#39;usdClass.usda&#39;</span><span class="p">)</span>
+
+<span class="c1"># 定義したクラスをSubLayerでロードして、継承する</span>
+<span class="n">inheritStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="n">rootLayer</span> <span class="o">=</span> <span class="n">inheritStage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
+<span class="n">rootLayer</span><span class="o">.</span><span class="n">subLayerPaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">USD_PATH</span> <span class="o">+</span> <span class="s1">&#39;usdClass.usda&#39;</span><span class="p">]</span>
+
+<span class="n">prim</span> <span class="o">=</span> <span class="n">inheritStage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/hoge&#39;</span><span class="p">)</span>
+<span class="n">path</span>  <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/TestClass&#39;</span><span class="p">)</span>
+<span class="n">prim</span><span class="o">.</span><span class="n">GetInherits</span><span class="p">()</span><span class="o">.</span><span class="n">AddInherit</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">inheritStage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+
+<p>継承したいクラスが別ファイルに存在する場合は<br />
+ファイルをサブレイヤーでロードして、それから継承先のPrimに対して<br />
+GetInherits().AddInherit(path)<br />
+で読み込む。  </p>
+<p>出力結果はこんな感じに。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">#usda</span><span class="w"> </span><span class="mf">1.0</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        @C:/pyEnv/JupyterUSD_py27/usd/usdClass.usda@</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+
+<span class="n">def</span><span class="w"> </span><span class="ss">&quot;hoge&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">prepend</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;/</span><span class="n">TestClass</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="84-sublayer">8.4. SubLayer</h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
