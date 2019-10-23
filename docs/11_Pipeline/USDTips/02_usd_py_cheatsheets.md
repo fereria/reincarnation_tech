@@ -306,6 +306,47 @@ Referenceで読み込みたいusdをPrimに対してセットする
 
 ### Inherits
 
+```python
+# クラスを定義して保存する
+classPrim = stage.CreateClassPrim('/TestClass')
+attr = classPrim.CreateAttribute('hoge', Sdf.ValueTypeNames.Bool)
+attr.Set(True)
+stage.GetRootLayer().Export(USD_PATH + 'usdClass.usda')
+
+# 定義したクラスをSubLayerでロードして、継承する
+inheritStage = Usd.Stage.CreateInMemory()
+rootLayer = inheritStage.GetRootLayer()
+rootLayer.subLayerPaths = [USD_PATH + 'usdClass.usda']
+
+prim = inheritStage.DefinePrim('/hoge')
+path  = Sdf.Path('/TestClass')
+prim.GetInherits().AddInherit(path)
+
+print(inheritStage.GetRootLayer().ExportToString())
+```
+
+継承したいクラスが別ファイルに存在する場合は  
+ファイルをサブレイヤーでロードして、それから継承先のPrimに対して  
+GetInherits().AddInherit(path)  
+で読み込む。  
+  
+出力結果はこんな感じに。
+
+```usda
+#usda 1.0
+(
+    subLayers = [
+        @C:/pyEnv/JupyterUSD_py27/usd/usdClass.usda@
+    ]
+)
+
+def "hoge" (
+    prepend inherits = </TestClass>
+)
+{
+}
+```
+
 ### SubLayer
 
 ```python
