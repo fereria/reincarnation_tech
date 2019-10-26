@@ -40,7 +40,7 @@
     
     
       
-        <title>USDの基本構造（Stage/Layer/Prim) - Reincarnation+#Tech</title>
+        <title>USD の基本構造（Stage/Layer/Prim) - Reincarnation+#Tech</title>
       
     
     
@@ -108,7 +108,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../../#usdstagelayerprim" tabindex="1" class="md-skip">
+      <a href="../../../#usd-stagelayerprim" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -134,7 +134,7 @@
                 Reincarnation+#Tech
               </span>
               <span class="md-header-nav__topic">
-                USDの基本構造（Stage/Layer/Prim)
+                USD の基本構造（Stage/Layer/Prim)
               </span>
             
           
@@ -2117,8 +2117,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../USDTips/00_create_custom_schema/" title="00 create custom schema" class="md-nav__link">
-      00 create custom schema
+    <a href="../../USDTips/00_create_custom_schema/" title="オリジナルの New Schema Classを作る" class="md-nav__link">
+      オリジナルの New Schema Classを作る
     </a>
   </li>
 
@@ -2143,6 +2143,18 @@
   <li class="md-nav__item">
     <a href="../../USDTips/02_usd_py_cheatsheets/" title="UPythonUSDチートシート" class="md-nav__link">
       UPythonUSDチートシート
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../USDTips/03_usd_format_cheatsheets/" title="USDフォーマットチートシート" class="md-nav__link">
+      USDフォーマットチートシート
     </a>
   </li>
 
@@ -3054,8 +3066,49 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-stage" title="1. Stage" class="md-nav__link">
-    1. Stage
+  <a href="#1" title="1. ステージ" class="md-nav__link">
+    1. ステージ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. レイヤー" class="md-nav__link">
+    2. レイヤー
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3. レイヤーとプリム" class="md-nav__link">
+    3. レイヤーとプリム
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" title="4. プリムとアトリビュート" class="md-nav__link">
+    4. プリムとアトリビュート
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" title="4.1. プリムスペック" class="md-nav__link">
+    4.1. プリムスペック
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" title="5. そんなかんじで、、、" class="md-nav__link">
+    5. そんなかんじで、、、
   </a>
   
 </li>
@@ -3085,26 +3138,131 @@
                   <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_Pipeline/USD/04_layer_stage.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="usdstagelayerprim">USDの基本構造（Stage/Layer/Prim)</h1>
+                <h1 id="usd-stagelayerprim">USD の基本構造（Stage/Layer/Prim)</h1>
 <!--WRITING_NOW-->
 
 <!-- SUMMARY:USDの基本構造（Layer/Stage/Prim) -->
 
-<p>前回 <a href="02_02_whats_USD.md">USDとは</a> でUSDとはなにかという概要を説明しましたが<br />
-今回はより具体的なデータの構造の開設になります。  </p>
+<p>前回 <a href="02_02_whats_USD.md">USD とは</a> で USD とはなにかという概要を説明しましたが<br />
+今回はより具体的なデータの構造の開設になります。</p>
 <p>説明するのは、「ステージ・レイヤー・プリム」についてです。
-USDのシーン構造は、この３つが基本的な枠組みになります。  </p>
-<p>今回はそれを、公式サンプルの「<a href="http://graphics.pixar.com/usd/downloads.html">KITCHEN SET</a>」と、usdview<br />
+USD のシーン構造は、この３つが基本的な枠組みになります。</p>
+<p>と、usdview<br />
 を使用して説明していこうと思います。</p>
-<h2 id="1-stage">1. Stage</h2>
+<h2 id="1">1. ステージ</h2>
 <p>まずはステージから。<br />
-ステージとは、Mayaでいうところの「シーン（ファイル）」にあたります。<br />
-概要で説明した通り、USDは１つのファイルではなく<br />
-複数のUSDファイルを合成（コンポジション）することによって<br />
-シーングラフを構成します。  </p>
+ステージとは、Maya でいうところの「シーン（ファイル）」にあたります。<br />
+概要で説明した通り、USD は１つのファイルではなく<br />
+複数の USD ファイルを合成（コンポジション）することによって<br />
+シーングラフを構成します。</p>
 <p><img alt="" src="https://gyazo.com/c3a9376a9f033eb771c597d343adba14.png" /></p>
-<p>キッチンセットをusd viewを使用して開いてみた図がこちら。<br />
-この赤枠部分は、今開いているSceneGraphになります。  </p>
+<p>まず、公式サンプルの「<a href="http://graphics.pixar.com/usd/downloads.html">KITCHEN SET</a>」を usd view を使用して開いてみます。
+この赤枠部分は、今開いている SceneGraph になります。</p>
+<p><img alt="" src="https://gyazo.com/e715060557382ce1326b52ed4467b5b9.png" /></p>
+<p>このステージがどのように構成されているかというと、　 KITCHEN SET フォルダ下の assets<br />
+フォルダを見るとわかる通り、ものすごい大量の USD ファイルのアセットがあるのがわかります。</p>
+<p><img alt="" src="https://gyazo.com/5154312b4d9f2180afc69bb24f1f29fd.png" /></p>
+<p>こんな感じで、これらの USD ファイルが、合成され、その結果作られるのが「ステージ」というわけです。</p>
+<h2 id="2">2. レイヤー</h2>
+<p>では、そのステージ内では、読み込まれている USD はどういう扱いでどのようになっているのか。<br />
+USD ファイルは、「レイヤー」と呼ばれて扱われます。<br />
+これは、Photoshop などの「レイヤー」の概念を 3D にしたようなものです。</p>
+<p><img alt="" src="https://gyazo.com/dd15ebe060496f242ab5b2364d99f1a3.png" /></p>
+<p>たとえば、こんな感じの PhotoShop のレイヤーがあって</p>
+<p><img alt="" src="https://gyazo.com/247f6db58baf44d90ca8c8d4ab9acb34.png" /></p>
+<p>こんな絵が表示されたとします。</p>
+<p><img alt="" src="https://gyazo.com/70cc3a42fa6b4aa8d8d0f19bcc2c1da6.png" /></p>
+<p>このレイヤーに表示された絵は、レイヤーそれぞれでも「絵」として成立していますが、</p>
+<p><img alt="" src="https://gyazo.com/c48ecc431e5828a010cfba4fec3401af.png" /></p>
+<p>合成方法によってはこんな感じに重ねられて、元の絵から変わるかもしれませんし</p>
+<p><img alt="" src="https://gyazo.com/8d6b8d3e64a102e1db7adabd35f7ce8b.png" /></p>
+<p>途中でエフェクトが乗って、こんなことになるかもしれません。<br />
+つまり、これ１枚だけでは最終的にはどのように合成されるかわかりません。</p>
+<p>この考え方と同じく、 <strong>「ステージを構成する元となっている usd ファイル」</strong> を<br />
+<strong>「レイヤー」</strong> と呼び、レイヤーを重ねることで１つのステージ（シーン）を構成<br />
+するのが USD の基本構造になります。</p>
+<h2 id="3">3. レイヤーとプリム</h2>
+<p>各レイヤーには、Photoshop における「レイヤーに書かれた絵」にあたる<br />
+「プリム」と呼ばれる定義が書かれています。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="n">usda</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+
+<span class="n">def</span> <span class="ss">&quot;Model&quot;</span>
+<span class="err">{</span>
+    <span class="n">def</span> <span class="n">Sphere</span> <span class="ss">&quot;Sphere&quot;</span>
+    <span class="err">{</span>
+
+    <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>例えばこんな感じ。</p>
+<p><img alt="" src="https://gyazo.com/617e1db212dd26e1a28c3b475597b8a5.png" /></p>
+<p>この USD ファイルを開いてみると、Sphere が１つ表示されます。</p>
+<p><img alt="" src="https://gyazo.com/69e142e7a01f25230f73fa896148d7c0.png" /></p>
+<p>シーングラフを確認すると、このようになっています。</p>
+<p><img alt="" src="https://gyazo.com/67a63d672c0393d222a54b6cb7275c26.png" /></p>
+<p>これがどういう状況かというと、<br />
+sphere.usda という「Sphere がある」と記述されたレイヤーをもつステージになります。</p>
+<p><img alt="" src="https://gyazo.com/d372e9d3128bb9569f499c7ac24b4a3f.png" /></p>
+<p>上の例は１レイヤーのみでしたが、<br />
+複数のレイヤーになった場合も、考え方は PhotoShop と同じです。<br />
+複数の場合は、PhotoShop のレイヤーが合成されて、最終的な絵が出力されるのと同じように、<br />
+USD の各レイヤーごとの要素が合成されて、最終的な絵が表示されます。</p>
+<h2 id="4">4. プリムとアトリビュート</h2>
+<p>プリムとは、レイヤーに記述された定義と上で説明しましたが、もう少し詳しく説明<br />
+していきたいと思います。  </p>
+<p>プリムとは、 <strong>ステージ上の USD 内のデータ（アトリビュートなど）を格納するためのコンテナ</strong> のことで</p>
+<p><img alt="" src="https://gyazo.com/5a60eca0a75bdce45b0d167adda25ae4.png" /></p>
+<p>XML でいうところのタグ（↑ でいうところの COLLADA であったり asset と書かれている部分）のようなものです。</p>
+<p><img alt="" src="https://gyazo.com/94d94a60515a652e9e0361d95bfbbacd.png" /></p>
+<p>usdview でシーンを見た時のシーングラフの１要素が「プリム」です。</p>
+<p><img alt="" src="https://gyazo.com/4deeb00852f0a291a6033a6e98cbcded.png" /></p>
+<p>各プリムは、プロパティ（アトリビュート）を保持します。<br />
+このあたりの構造は、Maya におけるノードとアトリビュートと同じで、<br />
+各ノードタイプごとに特定のアトリビュートを持つように<br />
+USD でも、各プリムのタイプ（スキーマ）ごとに特定のプロパティ（アトリビュート）を持ちます。</p>
+<p>USD は、このプリムとアトリビュートの構造によって構成されています。</p>
+<h3 id="41">4.1. プリムスペック</h3>
+<p>ここで重要なのは、プリムとは <strong>「ステージ上であらわされるコンテナ」</strong> であり、<br />
+<strong>「レイヤーではない」</strong> ということです。</p>
+<p>これだけ書くとなんだそりゃ？？？ですね。</p>
+<p>USD は、複数のレイヤーを合成することでステージを作ると説明しました。<br />
+各情報はレイヤー（usd ファイル）に記述されているのですが<br />
+そのレイヤー段階では、「最終的な結果」がわからない状態です。<br />
+レイヤーの項目での PhotoShop のたとえのとおり、それぞれのレイヤーは独立した絵になっているが<br />
+最終的な見た目と異なるのと同じように...です。</p>
+<p><img alt="" src="https://gyazo.com/a3e2e76893dcdc9304cce43ed48ef32c.png" /></p>
+<p>USD 的にはどういう風になっているかというと、
+ざっくりと書くとこんな感じになっています。</p>
+<p>各レイヤーごとに定義が書かれていて（緑の Sphere 作った、赤くした、形は Cube だった...など）<br />
+それらが合成された結果、ステージができあがり、プリムができあがります。</p>
+<p>この、最終的なプリムになる前段階の「定義（各レイヤーごとの意見）」のことを「プリムスペック」<br />
+と呼び、その合成された結果が「プリム」となります。</p>
+<h2 id="5">5. そんなかんじで、、、</h2>
+<p>ここまでが、USD の基本的な構成要素に関係する用語説明になります。</p>
+<p>USD ファイルを合成した結果がステージ、ステージの元になった USD ファイルがレイヤー。<br />
+レイヤーに記述された定義（主張）をプリムスペックとよび<br />
+そのレイヤーが合成されて出来上がったステージになったときの定義をプリムと呼びます。</p>
+<p>ここまでさんざん「合成」というワードが出てきている通り<br />
+USD とは合成によって構成されるファイルフォーマットです。<br />
+合成によってシーンが構築され、各プリム（ノード）が生成されてシーンファイルが構築されます。</p>
+<p>この合成こそが USD の真骨頂であり、<br />
+<strong>どのように合成するか　どのように usd ファイルを構成するか</strong><br />
+それが、あらゆるパイプラインの設計次第であり<br />
+設計次第であらゆるパイプラインに対応できることが USD のすごいことになります。</p>
+<p>というわけで、なんとなく構造を説明したところで<br />
+次回からは、その USD の合成処理  </p>
+<p><a href="../05_comp_arc/">コンポジションアーク</a>  </p>
+<p>について説明していきたいと思います。  </p>
                 
                   
                 
