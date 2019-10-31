@@ -40,7 +40,7 @@
     
     
       
-        <title>USD の基本構造（Stage/Layer/Prim) - Reincarnation+#Tech</title>
+        <title>USDの基本構造（Layer/Stage/Prim) - Reincarnation+#Tech</title>
       
     
     
@@ -134,7 +134,7 @@
                 Reincarnation+#Tech
               </span>
               <span class="md-header-nav__topic">
-                USD の基本構造（Stage/Layer/Prim)
+                USDの基本構造（Layer/Stage/Prim)
               </span>
             
           
@@ -206,7 +206,9 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -283,7 +285,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../" title="Pipeline" class="md-tabs__link">
+        <a href="../../" title="Pipeline" class="md-tabs__link md-tabs__link--active">
           Pipeline
         </a>
       
@@ -1993,10 +1995,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
     <label class="md-nav__link" for="nav-7">
       Pipeline
@@ -2036,10 +2040,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" checked>
     
     <label class="md-nav__link" for="nav-7-3">
       USD
@@ -2084,6 +2090,103 @@
     <a href="../02_whats_USD/" title="USDとは" class="md-nav__link">
       USDとは
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        USDの基本構造（Layer/Stage/Prim)
+      </label>
+    
+    <a href="./" title="USDの基本構造（Layer/Stage/Prim)" class="md-nav__link md-nav__link--active">
+      USDの基本構造（Layer/Stage/Prim)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. ステージ" class="md-nav__link">
+    1. ステージ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. レイヤー" class="md-nav__link">
+    2. レイヤー
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3. レイヤーとプリム" class="md-nav__link">
+    3. レイヤーとプリム
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" title="4. プリムとアトリビュート" class="md-nav__link">
+    4. プリムとアトリビュート
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" title="4.1. プリムスペック" class="md-nav__link">
+    4.1. プリムスペック
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" title="5. そんなかんじで、、、" class="md-nav__link">
+    5. そんなかんじで、、、
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="コメント" class="md-nav__link md-nav__link--active">
+            コメント
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -3139,16 +3242,13 @@
                 
                 
                 <h1 id="usd-stagelayerprim">USD の基本構造（Stage/Layer/Prim)</h1>
-<!--WRITING_NOW-->
-
 <!-- SUMMARY:USDの基本構造（Layer/Stage/Prim) -->
 
 <p>前回 <a href="02_02_whats_USD.md">USD とは</a> で USD とはなにかという概要を説明しましたが<br />
 今回はより具体的なデータの構造の開設になります。</p>
 <p>説明するのは、「ステージ・レイヤー・プリム」についてです。
 USD のシーン構造は、この３つが基本的な枠組みになります。</p>
-<p>と、usdview<br />
-を使用して説明していこうと思います。</p>
+<p>このあたりを、usdviewとサンプルを使用して説明していこうと思います。</p>
 <h2 id="1">1. ステージ</h2>
 <p>まずはステージから。<br />
 ステージとは、Maya でいうところの「シーン（ファイル）」にあたります。<br />
@@ -3295,6 +3395,41 @@ USD とは合成によって構成されるファイルフォーマットです�
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../02_whats_USD/" title="USDとは" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前
+                </span>
+                USDとは
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../USDTips/00_create_custom_schema/" title="オリジナルの New Schema Classを作る" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  次
+                </span>
+                オリジナルの New Schema Classを作る
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
