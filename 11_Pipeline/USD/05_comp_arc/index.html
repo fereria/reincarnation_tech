@@ -3389,16 +3389,6 @@ USD のコンポジションアークは、この合成順序が明確に決め�
 レイヤーとレイヤーの「合成時のオーバーラップ・コンフリクト」の解決を
 <strong>どのような順序で合成方法を解決すればよいかPixar社の長い制作の歴史のなかで見いだされた最適解</strong><br />
 の原則になります。  </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>原則の説明を書きますが、多分個別のコンポ仕様を見てからのほうがわかりやすいかとおもいます。<br />
-個別の説明はもうしばらくお待ちください...</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>このあたりは、<a href="https://www.slideshare.net/takahitotejima/usd-79288174">手島さんのCEDEC2017スライド</a>の<br />
-50-52ページあたりがとてもわかりやすいです</p>
-</div>
 <h3 id="31-sdfpath">3.1. SdfPathについて</h3>
 <p>この原則を説明する前に、SdfPathについて説明します。<br />
 SdfPathとは、USD内のシーングラフの階層構造をファイルパスのように表したもので、  </p>
@@ -3409,6 +3399,16 @@ SdfPathとは、USD内のシーングラフの階層構造をファイルパス�
 <p>そして、このLIVRPSの原則も　このSdfPathで指定されるプリムやアトリビュートが<br />
 重複して指定された場合「どちらが有効になるのか」というのを示しています。  </p>
 <p>合成の解決は、このSdfPathが同じ場合のプリムやアトリビュートに対して行われていきます。  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>原則の説明を書きますが、多分個別のコンポ仕様を見てからのほうがわかりやすいかとおもいます。<br />
+個別の説明はもうしばらくお待ちください...</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>このあたりは、<a href="https://www.slideshare.net/takahitotejima/usd-79288174">手島さんのCEDEC2017スライド</a>の<br />
+50-52ページあたりがとてもわかりやすいです</p>
+</div>
 <h3 id="32">3.2. 解決のサンプル</h3>
 <p>まずこのLIVRPSは、L（Local）側が一番優先で、定義がなければ I V ... といった感じに評価していきます。</p>
 <h4 id="321">3.2.1. 一番シンプルなパターン</h4>
