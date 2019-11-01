@@ -2137,6 +2137,19 @@
     2. レイヤー
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" title="2.1. 作業単位としてのレイヤー" class="md-nav__link">
+    2.1. 作業単位としてのレイヤー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2187,6 +2200,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../05_comp_arc/" title="コンポジションアークとは" class="md-nav__link">
+      コンポジションアークとは
+    </a>
   </li>
 
         
@@ -3180,6 +3205,19 @@
     2. レイヤー
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" title="2.1. 作業単位としてのレイヤー" class="md-nav__link">
+    2.1. 作業単位としてのレイヤー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3246,7 +3284,7 @@
 今回はより具体的なデータの構造の開設になります。</p>
 <p>説明するのは、「ステージ・レイヤー・プリム」についてです。
 USD のシーン構造は、この３つが基本的な枠組みになります。</p>
-<p>このあたりを、usdviewとサンプルを使用して説明していこうと思います。</p>
+<p>このあたりを、usdview とサンプルを使用して説明していこうと思います。</p>
 <h2 id="1">1. ステージ</h2>
 <p>まずはステージから。<br />
 ステージとは、Maya でいうところの「シーン（ファイル）」にあたります。<br />
@@ -3279,6 +3317,46 @@ USD ファイルは、「レイヤー」と呼ばれて扱われます。<br />
 <p>この考え方と同じく、 <strong>「ステージを構成する元となっている usd ファイル」</strong> を<br />
 <strong>「レイヤー」</strong> と呼び、レイヤーを重ねることで１つのステージ（シーン）を構成<br />
 するのが USD の基本構造になります。</p>
+<h3 id="21">2.1. 作業単位としてのレイヤー</h3>
+<p>構造とステージに関しての関係は上の通りですが、作業者視点で見た場合はどうなるでしょうか。<br />
+USD のレイヤーとは＝ 1 つの USD ファイルです。<br />
+1 つのステージは複数のレイヤーで構成されていますが、<br />
+<strong>すべてが USD なのでどこのファイルも開くことができます。</strong><br />
+つまりは、レイヤーとは「最終的に合成されてステージになる材料」であり<br />
+作業者視点から見ると「作業するファイル・エントリー部分」になります。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>レイヤー</td>
+<td>＝</td>
+<td>ファイル</td>
+<td>＝</td>
+<td>担当者の編集・バージョン管理する単位</td>
+</tr>
+<tr>
+<td>レイヤーの合成</td>
+<td>＝</td>
+<td>ステージ</td>
+<td>＝</td>
+<td>シーングラフ</td>
+</tr>
+</tbody>
+</table>
+<p>合成されて1つのシーングラフとして構築されていくものですが、<br />
+それぞれのレイヤー単位でも成立し、作業者の作業ファイルであり管理されるデータになっている...<br />
+というのが、USDにおけるレイヤーとステージの関係性で重要になってくる所かとおもいます。  </p>
+<p>担当者ごとにファイルを分割し、レイヤーごとに決まったルールで合成することができれば<br />
+同時に作業することができる！！というのが考え方の基本というわけです。<br />
+（とはいえ、そんな単純な話でもないが...）  </p>
 <h2 id="3">3. レイヤーとプリム</h2>
 <p>各レイヤーには、Photoshop における「レイヤーに書かれた絵」にあたる<br />
 「プリム」と呼ばれる定義が書かれています。</p>
@@ -3317,7 +3395,7 @@ sphere.usda という「Sphere がある」と記述されたレイヤーをも�
 USD の各レイヤーごとの要素が合成されて、最終的な絵が表示されます。</p>
 <h2 id="4">4. プリムとアトリビュート</h2>
 <p>プリムとは、レイヤーに記述された定義と上で説明しましたが、もう少し詳しく説明<br />
-していきたいと思います。  </p>
+していきたいと思います。</p>
 <p>プリムとは、 <strong>ステージ上の USD 内のデータ（アトリビュートなど）を格納するためのコンテナ</strong> のことで</p>
 <p><img alt="" src="https://gyazo.com/5a60eca0a75bdce45b0d167adda25ae4.png" /></p>
 <p>XML でいうところのタグ（↑ でいうところの COLLADA であったり asset と書かれている部分）のようなものです。</p>
@@ -3358,9 +3436,9 @@ USD とは合成によって構成されるファイルフォーマットです�
 それが、あらゆるパイプラインの設計次第であり<br />
 設計次第であらゆるパイプラインに対応できることが USD のすごいことになります。</p>
 <p>というわけで、なんとなく構造を説明したところで<br />
-次回からは、その USD の合成処理  </p>
-<p><a href="../05_comp_arc/">コンポジションアーク</a>  </p>
-<p>について説明していきたいと思います。  </p>
+次回からは、その USD の合成処理</p>
+<p><a href="../05_comp_arc/">コンポジションアーク</a></p>
+<p>について説明していきたいと思います。</p>
                 
                   
                 
@@ -3412,13 +3490,13 @@ USD とは合成によって構成されるファイルフォーマットです�
           </a>
         
         
-          <a href="../../USDTips/00_create_custom_schema/" title="オリジナルの New Schema Classを作る" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../05_comp_arc/" title="コンポジションアークとは" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
-                オリジナルの New Schema Classを作る
+                コンポジションアークとは
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
