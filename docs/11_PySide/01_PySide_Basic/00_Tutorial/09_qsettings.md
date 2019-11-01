@@ -1,6 +1,7 @@
+---
+title: QSettingsを使用してUIの情報を保存する
+---
 # QSettingsを使用してUIの情報を保存する
-
-<!-- SUMMARY:QSettingsを使用してUIの情報を保存する -->
 
 UIの各種Widgetの情報を、終了時に保存しておきたい場合はQSettingクラスを使用します。  
 サンプルに使用するuiファイルは [こちら](https://snippets.cacher.io/snippet/0021421020ef095007ce)

@@ -1,6 +1,7 @@
+---
+title: 基本Widgetを使ってみる(2):RadioButton
+---
 # 基本Widgetを使ってみる(2):RadioButton
-
-<!-- SUMMARY:基本Widgetを使ってみる(2)_RadioButton -->
 
 複数の選択肢からなにかを選ぶときに使用するのがRadioButton。  
 その基本的な使い方を解説。  

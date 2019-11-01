@@ -1,6 +1,7 @@
+---
+title: 基本Widgetを使ってみる(3):ComboBox_基本編
+---
 # 基本Widgetを使ってみる(3):ComboBox_基本編
-
-<!-- SUMMARY: 基本Widgetを使ってみる(3)_ComboBox_基本編-->
 
 ![](https://gyazo.com/46ed1187e4b03d1fc1390b851ea50157.png)
 

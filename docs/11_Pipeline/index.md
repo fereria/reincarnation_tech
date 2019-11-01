@@ -1,3 +1,6 @@
+---
+title: Pipeline
+---
 # Pipeline
 
 パイプラインページでは、主にUSD等のパイプラインに関係する  

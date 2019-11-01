@@ -1,6 +1,8 @@
+---
+title: QtDesignerでUIを作る
+---
 # QtDesignerでUIを作る
 
-<!-- SUMMARY:QtDesignerでUIを作る -->
 
 次は、[PySideで単独アプリケーションを作る](01_start.md) で作成したApplicationに、QtDesignerで作成したGUIを  
 追加していきます。  

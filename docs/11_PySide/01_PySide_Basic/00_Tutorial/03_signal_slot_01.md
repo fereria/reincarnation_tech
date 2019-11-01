@@ -1,5 +1,7 @@
+---
+title: SignalとSlotについて(1)
+---
 # SignalとSlotについて(1)
-<!-- SUMMARY:SignalとSlotについて(1) -->
 
 Button等のWidgetを作成した場合、  
 「ボタンを押したら###する」だったり「リストを選択したら###する」  

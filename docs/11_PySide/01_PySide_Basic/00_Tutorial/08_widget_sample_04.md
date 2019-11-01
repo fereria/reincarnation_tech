@@ -1,5 +1,7 @@
+---
+title: 基本Widgetを使ってみる(4):ListView
+---
 # 基本Widgetを使ってみる(4):ListView
-<!-- SUMMARY:基本Widgetを使ってみる(4)_ListView -->
 
 次は、これまたよく使うであろうListから指定の行を選択できる  
 ListViewを説明していきたいと思います。  

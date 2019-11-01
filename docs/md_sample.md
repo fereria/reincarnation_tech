@@ -1,3 +1,7 @@
+---
+title: Menuに表示される内容
+hero: Tagの上あたりに表示される文字
+---
 # Markdownの書き方サンプル
 
 1. aaa

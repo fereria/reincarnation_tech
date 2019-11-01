@@ -103,7 +103,7 @@ def replace_title_folder_name(name):
 
 def create_pages(summary_path, root_path, indent_space="  "):
 
-    write_val = ["nav:", indent_space + u"- 更新履歴: update_log.md"]
+    write_val = ["nav:", indent_space + u"- 更新履歴: update_log.md",indent_space + u"- Markdownサンプル: md_sample.md"]
 
     def recursive_file_check(path):
 
@@ -132,8 +132,8 @@ def create_pages(summary_path, root_path, indent_space="  "):
                     summary_keyword = get_summary_word(path)
                     if not isWriting(path):
                         if summary_keyword == "":
-                            summary_keyword = bn
-                        if is_exclusion_path(path) is False:
+                            write_val.append((len(buff)) * indent_space + u"- {0}".format(relative_path))
+                        elif is_exclusion_path(path) is False:
                             if len(relative_path.split("/")) > 1:
                                 write_val.append((len(buff)) * indent_space + u"- {0}: {1}".format(summary_keyword, relative_path))
 

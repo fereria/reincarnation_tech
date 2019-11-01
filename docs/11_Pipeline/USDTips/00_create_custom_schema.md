@@ -1,6 +1,7 @@
+---
+title: オリジナルの New Schema Classを作る
+---
 # オリジナルの New Schema Classを作る
-
-<!-- SUMMARY:オリジナルの New Schema Classを作る -->
 
 USD のスキーマは自分で新しく定義することができます。  
 今回は、1からスキーマを作成してPython上から呼び出しをできるようにしてみます。  

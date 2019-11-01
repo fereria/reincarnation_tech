@@ -1,6 +1,7 @@
+---
+title: PySideで単独アプリケーションを作る
+---
 # PySideで単独アプリケーションを作る
-
-<!-- SUMMARY:PySideで単独アプリケーションを作る-->
 
 まずは、Mayaではなく単独のPySideのGUIツールを表示します。  
 

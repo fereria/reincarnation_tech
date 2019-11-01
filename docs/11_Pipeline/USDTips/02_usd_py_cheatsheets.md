@@ -1,6 +1,7 @@
+---
+title: UPythonUSDチートシート
+---
 # PythonUSDチートシート
-
-<!-- SUMMARY: PythonUSDチートシート-->
 
 Pythonを使用してUSDを操作するやり方がだいぶ分かってきたので  
 よく使う物とかをまとめ。  
@@ -68,6 +69,53 @@ stage.Flatten().ExporToString()
 上のようにする。
 当然のことながら、複雑なコンポを行っている場合Flattenするとファイルサイズは増大する。  
 
+## Stage関係
+
+### ステージ内のPrimをトラバースする
+
+```python
+compStage = Usd.Stage.Open(USD_PATH_ROOT + "/sample.usda")
+for prim in compStage.Traverse():
+    print(prim)
+```
+
+![](https://gyazo.com/2468b325e58decbcf91ac72958e2f594.png)
+
+実行すると、このようなシーングラフなら
+
+![](https://gyazo.com/771700cca1cad4e759e13a20ff4ee16a.png)
+
+このように全Primを深さ優先で取得することができる。
+
+### Layerをミュートする
+
+```python
+# Layerのusdファイルは identifer で取得できる
+# パス指定でLayerをミュート（コンポ処理から除外）できる
+compStage.MuteLayer(layer.identifier)
+```
+
+ミュートは現在のステージ上のみで有効で、USDファイル内には保存されない。  
+→ ミュートした状態でFlattenすると、ミュート状態のレイヤーは無効化される。
+
+## Layer関係
+
+### RootLayerを取得
+
+![](https://gyazo.com/0082ca726d91f41458870e24dc0ea818.png)
+
+```python
+openUsd = Usd.Stage.Open(USD_PATH + "/baseUSD.usda")
+print(openUsd.GetRootLayer())
+```
+CompositionのRootのLayer(.usda)を取得する。  
+ここで取得出来る Sdf.Find()で取得出来るLayerのPrimは  
+いわゆるPrimSpec。
+
+### 指定Layerオブジェクトの usdファイルパスを取得する
+```python
+print(layer.identifier)
+```
 ## Prim操作
 
 ### Prim/Class/Overを作る
