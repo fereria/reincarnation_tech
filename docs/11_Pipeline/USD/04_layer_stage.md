@@ -4,7 +4,7 @@ title: USD の基本構造（Stage/Layer/Prim)
 
 # USD の基本構造（Stage/Layer/Prim)
 
-前回 [USD とは](02_02_whats_USD.md) で USD とはなにかという概要を説明しましたが  
+前回 [USD とは](02_whats_USD.md) で USD とはなにかという概要を説明しましたが  
 今回はより具体的なデータの構造の開設になります。
 
 説明するのは、「ステージ・レイヤー・プリム」についてです。
