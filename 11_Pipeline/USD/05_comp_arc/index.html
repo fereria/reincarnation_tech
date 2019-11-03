@@ -2160,8 +2160,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-sdfpath" title="3.1. SdfPathについて" class="md-nav__link">
-    3.1. SdfPathについて
+  <a href="#31-sdfpath" title="3.1. SdfPath について" class="md-nav__link">
+    3.1. SdfPath について
   </a>
   
 </li>
@@ -2226,6 +2226,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../06_comp_arc_subLayer/" title="CompArc(1) サブレイヤー" class="md-nav__link">
+      CompArc(1) サブレイヤー
+    </a>
   </li>
 
         
@@ -3230,8 +3242,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-sdfpath" title="3.1. SdfPathについて" class="md-nav__link">
-    3.1. SdfPathについて
+  <a href="#31-sdfpath" title="3.1. SdfPath について" class="md-nav__link">
+    3.1. SdfPath について
   </a>
   
 </li>
@@ -3318,7 +3330,7 @@
 <p>この「合成」処理こそ USD の強さの所以であり大きな特徴で<br />
 その合成方法のことを、 <strong>「コンポジションアーク」</strong> と呼びます。</p>
 <h2 id="1">1. コンポジションの種類</h2>
-<p>とりあえずはどんな物があるのかを紹介。  </p>
+<p>とりあえずはどんな物があるのかを紹介。</p>
 <table>
 <thead>
 <tr>
@@ -3328,7 +3340,7 @@
 </thead>
 <tbody>
 <tr>
-<td>サブレイヤー</td>
+<td><a href="./">サブレイヤー</a></td>
 <td>いわゆる import や include のようなもの。 <br> あるレイヤーに対して、 <br>指定のレイヤーを階層を含めて合成する</td>
 </tr>
 <tr>
@@ -3345,7 +3357,7 @@
 </tr>
 <tr>
 <td>ペイロード</td>
-<td>効果はリファレンスと同じ。<br>違いは、読み込み時にフラグを入れるとロードを Off した状態でステージを開く。<br>大量のusdaを合成しているときに一部だけ修正したい時など<br>OFFにしてからシーンを開くことで<br>シーンロードを短縮できる。</td>
+<td>効果はリファレンスと同じ。<br>違いは、読み込み時にフラグを入れるとロードを Off した状態でステージを開く。<br>大量の usda を合成しているときに一部だけ修正したい時など<br>OFF にしてからシーンを開くことで<br>シーンロードを短縮できる。</td>
 </tr>
 <tr>
 <td>特殊化</td>
@@ -3355,14 +3367,14 @@
 </table>
 <p>特殊化は基本あまり使わないので説明は割愛。（私もわかっていない）<br />
 計 6 個が USD の合成方法になります。<br />
-USD は、これらの「ルール」を組み合わせて１つのステージを構築していきます。  </p>
+USD は、これらの「ルール」を組み合わせて１つのステージを構築していきます。</p>
 <p>このコンポジションは、上の簡単な説明にあるとおり<br />
-それぞれ特徴があり、これらを組み合わせることで設計したパイプラインを実現していくことになります。  </p>
+それぞれ特徴があり、これらを組み合わせることで設計したパイプラインを実現していくことになります。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>一応方法と簡単な説明だけだとわかりにくいので<br />
-詳細はこの記事の次から個別にサンプルも含めて紹介していく予定です</p>
 </div>
+<p>一応方法と簡単な説明だけだとわかりにくいので<br />
+ 詳細はこの記事の次から個別にサンプルも含めて紹介していく予定です</p>
 <h2 id="2">2. 合成順序の決まり事</h2>
 <p>コンポジションアークには複数のルールがるということがわかりました。<br />
 しかし、ここで１つ疑問がおきます。<br />
@@ -3377,40 +3389,40 @@ USD は、これらの「ルール」を組み合わせて１つのステージ�
 （この個別の意見が、いわゆる「スぺック」とつくもの 例）プリムスペック、アトリビュートスペック等）</p>
 <p>上の図の場合は、すべてがサブレイヤーによって合成されています。<br />
 その場合は、「後のほうが強い（後から読んだものが、元からあった情報を上書きする）」状態になります。</p>
-<p>では、別々のコンポジションアークの場合はどうなるでしょうか。  </p>
+<p>では、別々のコンポジションアークの場合はどうなるでしょうか。</p>
 <p>コンポジションアークは、しばしば<strong>「数術演算子」</strong>にたとえられます。<br />
 足し算、引き算、かけ算、割り算とありますが、これらが同時にあった場合<br />
 どれから計算するかが決められているように<br />
 USD のコンポジションアークは、この合成順序が明確に決められています。</p>
 <p>それが、「LIVRPS 原則」と呼ばれるものです。</p>
 <h2 id="3-livrps">3. LIVRPS 原則</h2>
-<p>LIVRPSの原則とは、<br />
+<p>LIVRPS の原則とは、<br />
 <strong>L</strong>ocal <strong>I</strong>nherits <strong>V</strong>ariants <strong>R</strong>eference <strong>P</strong>ayload <strong>S</strong>pecialize の頭文字をとって LIVRPS となっていて<br />
 レイヤーとレイヤーの「合成時のオーバーラップ・コンフリクト」の解決を
-<strong>どのような順序で合成方法を解決すればよいかPixar社の長い制作の歴史のなかで見いだされた最適解</strong><br />
-の原則になります。  </p>
-<h3 id="31-sdfpath">3.1. SdfPathについて</h3>
-<p>この原則を説明する前に、SdfPathについて説明します。<br />
-SdfPathとは、USD内のシーングラフの階層構造をファイルパスのように表したもので、  </p>
+<strong>どのような順序で合成方法を解決すればよいか Pixar 社の長い制作の歴史のなかで見いだされた最適解</strong><br />
+の原則になります。</p>
+<h3 id="31-sdfpath">3.1. SdfPath について</h3>
+<p>この原則を説明する前に、SdfPath について説明します。<br />
+SdfPath とは、USD 内のシーングラフの階層構造をファイルパスのように表したもので、</p>
 <p><img alt="" src="https://gyazo.com/30421949a6fc930c26075d5ad0f57867.png" /></p>
 <p>このように、 / をルートとして、指定のプリムまたはアトリビュートまでを<br />
-パスとして表し、このSdfPathを使用して値を取得したりセットしたり、プリムを指定したり<br />
-することができます。  </p>
-<p>そして、このLIVRPSの原則も　このSdfPathで指定されるプリムやアトリビュートが<br />
-重複して指定された場合「どちらが有効になるのか」というのを示しています。  </p>
-<p>合成の解決は、このSdfPathが同じ場合のプリムやアトリビュートに対して行われていきます。  </p>
+パスとして表し、この SdfPath を使用して値を取得したりセットしたり、プリムを指定したり<br />
+することができます。</p>
+<p>そして、この LIVRPS の原則も　この SdfPath で指定されるプリムやアトリビュートが<br />
+重複して指定された場合「どちらが有効になるのか」というのを示しています。</p>
+<p>合成の解決は、この SdfPath が同じ場合のプリムやアトリビュートに対して行われていきます。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
+</div>
 <p>原則の説明を書きますが、多分個別のコンポ仕様を見てからのほうがわかりやすいかとおもいます。<br />
-個別の説明はもうしばらくお待ちください...</p>
-</div>
+ 個別の説明はもうしばらくお待ちください...</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>このあたりは、<a href="https://www.slideshare.net/takahitotejima/usd-79288174">手島さんのCEDEC2017スライド</a>の<br />
-50-52ページあたりがとてもわかりやすいです</p>
 </div>
+<p>このあたりは、<a href="https://www.slideshare.net/takahitotejima/usd-79288174">手島さんの CEDEC2017 スライド</a>の<br />
+ 50-52 ページあたりがとてもわかりやすいです</p>
 <h3 id="32">3.2. 解決のサンプル</h3>
-<p>まずこのLIVRPSは、L（Local）側が一番優先で、定義がなければ I V ... といった感じに評価していきます。</p>
+<p>まずこの LIVRPS は、L（Local）側が一番優先で、定義がなければ I V ... といった感じに評価していきます。</p>
 <h4 id="321">3.2.1. 一番シンプルなパターン</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -3434,7 +3446,7 @@ SdfPathとは、USD内のシーングラフの階層構造をファイルパス�
     <span class="n">custom</span> <span class="nb">bool</span> <span class="n">testValue</span> = <span class="nb">False</span>
 }
 
-<span class="n">def</span> <span class="s">&quot;hoge&quot;</span> 
+<span class="n">def</span> <span class="s">&quot;hoge&quot;</span>
 {
     <span class="n">def</span> <span class="s">&quot;fuga&quot;</span> (
         <span class="n">prepend</span> <span class="n">inherits</span> = <span class="s">&lt;/TestClass&gt;</span>
@@ -3446,14 +3458,14 @@ SdfPathとは、USD内のシーングラフの階層構造をファイルパス�
 </pre></div>
 </td></tr></table>
 
-<p>1つのusdaファイル内に継承元のクラスがあり、それを継承したプリムがあり<br />
+<p>1 つの usda ファイル内に継承元のクラスがあり、それを継承したプリムがあり<br />
 そのプリムに対して値がセットされている例。</p>
 <p><img alt="" src="https://gyazo.com/9c6d2f20d92327eacbc4e27e36855a16.png" />
-図にするとこんな感じです。（四角部分がPrim）  </p>
+図にするとこんな感じです。（四角部分が Prim）</p>
 <p>この状態でみると、<br />
-testValue が2つ定義されているのがわかります。  </p>
-<p>この場合にtestValueを取得しようした場合、どちらが優先になるのか？というと、<br />
-「Local」のほうが「Inherits（継承）」より優先なので「True」が取得できます。  </p>
+testValue が 2 つ定義されているのがわかります。</p>
+<p>この場合に testValue を取得しようした場合、どちらが優先になるのか？というと、<br />
+「Local」のほうが「Inherits（継承）」より優先なので「True」が取得できます。</p>
 <h4 id="322">3.2.2. 複数のコンポジションアークが重なった場合</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -3482,8 +3494,8 @@ testValue が2つ定義されているのがわかります。  </p>
 </td></tr></table>
 
 <p>もし、このように、 hoge プリムでなにも定義されていない場合<br />
-次はInheritsを解決しにいくので、この場合「False」が帰ってきます。  </p>
-<p>この例だととてもシンプルですが、では複数が重複した場合はどうなるでしょうか。  </p>
+次は Inherits を解決しにいくので、この場合「False」が帰ってきます。</p>
+<p>この例だととてもシンプルですが、では複数が重複した場合はどうなるでしょうか。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -3498,7 +3510,7 @@ testValue が2つ定義されているのがわかります。  </p>
 </pre></div>
 </td></tr></table>
 
-<p>まず、 class.usda があり  </p>
+<p>まず、 class.usda があり</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -3523,8 +3535,8 @@ testValue が2つ定義されているのがわかります。  </p>
 </pre></div>
 </td></tr></table>
 
-<p>こんな感じの refSample.usda <br />
-があったとします。  </p>
+<p>こんな感じの refSample.usda<br />
+があったとします。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -3563,22 +3575,22 @@ testValue が2つ定義されているのがわかります。  </p>
 </pre></div>
 </td></tr></table>
 
-<p>それぞれをReferenceとInheritsで合成します。  </p>
+<p>それぞれを Reference と Inherits で合成します。</p>
 <p><img alt="" src="https://gyazo.com/bf5aeae34c0757abd918ed48bf3410d7.png" /></p>
-<p>合成結果はこうなります。  </p>
+<p>合成結果はこうなります。</p>
 <p><img alt="" src="https://i.gyazo.com/4b50e96cce4b974e0f66c9ad34c555d8.png" /></p>
-<p>図に表すとこんな感じ。  </p>
+<p>図に表すとこんな感じ。</p>
 <p>このサンプルの場合 refSample の SdfPath /hoge/fuga の testIntVal = 10 と<br />
 class.usda の /TestClass の testIntVal = 100<br />
 が、同じアトリビュートになります。<br />
 これは、<br />
-継承によって合成しているusda の hogeプリムが、 TestClass を「継承」して同じ値を持つため<br />
+継承によって合成している usda の hoge プリムが、 TestClass を「継承」して同じ値を持つため<br />
 /hoge/fuga に testIntVal = 100 がセットされた状態になるからです。<br />
-この場合はどうなるかというと、  </p>
-<p>Localにはない　Inheritsにはある（TestClass）　Referenceがある  なので<br />
-LIVRPSの原則によって「Inherits（継承）」のほうが強いので、取得出来るのは「10」になります。  </p>
+この場合はどうなるかというと、</p>
+<p>Local にはない　 Inherits にはある（TestClass）　 Reference がある なので<br />
+LIVRPS の原則によって「Inherits（継承）」のほうが強いので、取得出来るのは「10」になります。</p>
 <h4 id="323">3.2.3. コンポジション先にまた別のコンポジションがあった場合</h4>
-<p>上の例だと、Localからみて ReferenceかInheritsかでしたが、  </p>
+<p>上の例だと、Local からみて Reference か Inherits かでしたが、</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -3597,7 +3609,7 @@ LIVRPSの原則によって「Inherits（継承）」のほうが強いので、
 </pre></div>
 </td></tr></table>
 
-<p>というファイルを開いた時、  </p>
+<p>というファイルを開いた時、</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -3644,7 +3656,7 @@ LIVRPSの原則によって「Inherits（継承）」のほうが強いので、
 </pre></div>
 </td></tr></table>
 
-<p>このような referenceA.usda があり  </p>
+<p>このような referenceA.usda があり</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -3665,31 +3677,31 @@ LIVRPSの原則によって「Inherits（継承）」のほうが強いので、
 </pre></div>
 </td></tr></table>
 
-<p>このusda を読んでいたとします。  </p>
+<p>この usda を読んでいたとします。</p>
 <p><img alt="" src="https://gyazo.com/bafb407cf05a6f34f8751fef0cca1a45.png" /></p>
-<p>図にするとこんな感じ。  </p>
-<p>Referenceの先に「Reference」と「Inherits」がある状態で、アトリビュートが重複しています。<br />
+<p>図にするとこんな感じ。</p>
+<p>Reference の先に「Reference」と「Inherits」がある状態で、アトリビュートが重複しています。<br />
 このように「Reference」の先にまた別のコンポジションが存在している場合は<br />
 どういう扱いになるかというと<br />
 「R」を解決したあとに、また L I V R... というふうに原則の「L」を優先として<br />
 優先順序を解決していきます。<br />
 なので、今回の場合「Reference」があったさきに「Reference」と「Inherits」があったら<br />
-「Inherits」が優先になるので「100」が取得できます。  </p>
-<p>なお、今回はアトリビュートでの合成を例にしましたが、プリムに関しても同様の解決方法になります。  </p>
+「Inherits」が優先になるので「100」が取得できます。</p>
+<p>なお、今回はアトリビュートでの合成を例にしましたが、プリムに関しても同様の解決方法になります。</p>
 <h2 id="4">4. まとめ</h2>
-<p>ここまで見たとおり、USDのコンポジションは<br />
+<p>ここまで見たとおり、USD のコンポジションは<br />
 一貫したルールによってプリムやアトリビュート定義の
 これは、階層が深くなっていったりコンポジションの関係性複雑になっていっても<br />
-一貫したUSDのコンポジションの絶対ルールであり<br />
-このルールが厳密かつ一貫しているからこそ「強力かつ柔軟」な合成を可能にしています。  </p>
+一貫した USD のコンポジションの絶対ルールであり<br />
+このルールが厳密かつ一貫しているからこそ「強力かつ柔軟」な合成を可能にしています。</p>
 <p>たとえ、意図しない合成（間違ってアトリビュートやプリムが上書きされた場合など）が発生した<br />
 場合であっても、原則によって処理されるので<br />
 原則に反って問題のオーバーラップなどを解決しにいくことができます。<br />
-また、すべてのUSDの合成は非破壊によって行われるのでデータが損なわれることはありません。  </p>
+また、すべての USD の合成は非破壊によって行われるのでデータが損なわれることはありません。</p>
 <p>このコンポジションアークの機能を組み合わせると、<br />
 多くのパイプラインに対応することが可能になり<br />
 同時作業時のデータコントロールや、いわゆる「コンカレントパイプライン」とよばれる<br />
-あらゆる工程の作業者が同時並行で作業するようなパイプラインを実現することができます。  </p>
+あらゆる工程の作業者が同時並行で作業するようなパイプラインを実現することができます。</p>
                 
                   
                 
@@ -3741,13 +3753,13 @@ LIVRPSの原則によって「Inherits（継承）」のほうが強いので、
           </a>
         
         
-          <a href="../../USDTips/00_create_custom_schema/" title="オリジナルの New Schema Classを作る" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../06_comp_arc_subLayer/" title="CompArc(1) サブレイヤー" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
-                オリジナルの New Schema Classを作る
+                CompArc(1) サブレイヤー
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
