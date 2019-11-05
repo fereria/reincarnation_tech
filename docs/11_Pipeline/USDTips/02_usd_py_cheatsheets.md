@@ -204,7 +204,7 @@ attr.Set(False)
 color_attr = prim.CreateAttribute("color", Sdf.ValueTypeNames.Color3d)
 color_attr.Set(Gf.Vec3d(1, 1, 1))
 ```
-ValueTypeNamesでの型指定方法は[こちら](01_01_usd_py_docs.md)を参照。  
+ValueTypeNamesでの型指定方法は[こちら](01_usd_py_docs.md)を参照。  
 ColorやVectorなどの型はGfモジュールにある定義を使用してセットする。
 
 ### Attributeから値を取得する
