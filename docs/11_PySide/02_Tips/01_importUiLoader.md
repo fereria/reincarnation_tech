@@ -1,6 +1,9 @@
+---
+title: SUMMARY:UILoaderで.uiをロードする
+---
+
 # UILoaderで.uiをロードする
 
-<!-- SUMMARY:UILoaderで.uiをロードする -->
 
 PySide1と2を併用することが多い都合、今までやっていた .py へコンバートしてから  
 使う方法はなにかと不便だったので、あらためて.uiファイルのまま使用する方法を調べました。

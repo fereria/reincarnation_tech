@@ -1,5 +1,7 @@
+---
+title: TreeViewの中身を正規表現で検索する
+---
 # TreeViewの中身を正規表現で検索する
-<!-- SUMMARY:TreeViewの中身を正規表現で検索する -->
 
 ![](https://i.gyazo.com/fc6e532b3432ea0e6117821e0c539856.gif)
 

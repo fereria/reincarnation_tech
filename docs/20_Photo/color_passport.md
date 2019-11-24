@@ -1,6 +1,7 @@
+---
+title: color passport で lightroom のプロファイルを作る
+---
 # color passport で lightroom のプロファイルを作る
-
-<!-- SUMMARY:color passport で lightroom のプロファイルを作る -->
 
 ## ColorPassport とは？
 

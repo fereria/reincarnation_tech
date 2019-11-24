@@ -1,6 +1,7 @@
+---
+title: MayaPySideで重複Windowを出さない方法（改
+---
 # MayaPySideで重複Windowを出さない方法（改
-
-<!-- SUMMARY:MayaPySideで重複Windowを出さない方法（改 -->
 
 http://flame-blaze.net/archives/4703  
   

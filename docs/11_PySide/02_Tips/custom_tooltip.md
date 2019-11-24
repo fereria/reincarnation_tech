@@ -1,6 +1,7 @@
+---
+title: PySideのTooltipを自作する
+---
 # PySideのTooltipを自作する
-
-<!-- SUMMARY:PySideのTooltipを自作する -->
 
 いわゆるオブジェクトにカーソルがあたるとHelpが表示される「Tooltip」ですが  
 PySideデフォルトのTooltipは非常に使いにくいので、自前で作ってみます。  

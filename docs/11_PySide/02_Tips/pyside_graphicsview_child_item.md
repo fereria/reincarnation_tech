@@ -1,6 +1,8 @@
+---
+title: PySide の GraphicsView で Item を親子化したときの問題
+---
 # PySide の GraphicsView で Item を親子化したときの問題
 
-<!-- SUMMARY:PySideのGraphicsViewで親子化 -->
 
 ## 問題
 

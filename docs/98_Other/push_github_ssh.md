@@ -1,6 +1,7 @@
+---
+title: VSCode から SSH 経由で Push
+---
 # VSCode から SSH 経由で Push
-
-<!-- SUMMARY:VSCode から SSH 経由で Push -->
 
 表題のことをやろうとしたらものすごくハマったのでメモ。
 

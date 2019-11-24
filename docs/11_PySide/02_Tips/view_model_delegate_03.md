@@ -1,6 +1,7 @@
+---
+title: TableViewの編集画面でDialogを使用する
+---
 # TableViewの編集画面でDialogを使用する
-
-<!-- SUMMARY:TableViewの編集画面でDialogを使用する -->
 
 ![](https://gyazo.com/cd0d297fa4a146f56c0e22470854f343.png)
 

@@ -1,6 +1,7 @@
+---
+title: PySideのTableViewでDelegateを使う(2) paintする
+---
 # PySideのTableViewでDelegateを使う(2) paintする
-
-<!-- SUMMARY:PySideのTableViewでDelegateを使う(2) paintする -->
 
 前回の [TableViewでDelegateを使う（1）](view_model_delegate_01.md) のデータをすこし修正して  
 各セルごとの描画やらを色々作ってみました。  

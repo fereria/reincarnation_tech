@@ -1,5 +1,7 @@
+---
+title: QtCore.QAbstractItemModelを使用したカスタムモデルの作成
+---
 # QtCore.QAbstractItemModelを使用したカスタムモデルの作成
-<!-- SUMMARY: QtCore.QAbstractItemModelを使用したカスタムモデルの作成-->
 
 今回は、AbstractItemModelを使用してカスタムModelを作成してから  
 TreeViewを構成するやり方について。  

@@ -1,6 +1,7 @@
+---
+title: mkdocsでのMarkdown記載サンプル
+---
 # mkdocsでのMarkdown記載サンプル
-
-<!-- SUMMARY:mkdocsでのMarkdown記載サンプル -->
 
 FootNoteのテスト [^1]
 

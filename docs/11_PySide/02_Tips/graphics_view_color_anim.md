@@ -1,6 +1,7 @@
+---
+title: GraphicsViewでQColorをアニメーションさせる
+---
 # GraphicsViewでQColorをアニメーションさせる
-
-<!-- SUMMARY:GraphicsViewでQColorをアニメーションさせる -->
 
 タイトルの通り。  
 GraphicsViewのアイテムの色などをアニメーションさせるやり方を  

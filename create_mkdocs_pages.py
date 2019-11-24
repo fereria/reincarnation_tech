@@ -26,7 +26,8 @@ FOLDER_REPLACE_STRING = {
     "imitate": u"HoPySide_BasicPySide_Basicudini写経",
     "Env_Maya": u"Maya作業環境構築",
     "PySide_Basic": u"PySide_基本編",
-    "python_module": u"Pythonモジュールの使い方"
+    "python_module": u"Pythonモジュールの使い方",
+    "pipeline_study": "Pipeline/Workflow学習・考察"
 
 }
 
@@ -103,7 +104,7 @@ def replace_title_folder_name(name):
 
 def create_pages(summary_path, root_path, indent_space="  "):
 
-    write_val = ["nav:", indent_space + u"- 更新履歴: update_log.md",indent_space + u"- Markdownサンプル: md_sample.md"]
+    write_val = ["nav:", indent_space + u"- 更新履歴: update_log.md", indent_space + u"- Markdownサンプル: md_sample.md"]
 
     def recursive_file_check(path):
 

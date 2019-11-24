@@ -1,6 +1,8 @@
+---
+title: PySideのTableViewでDelegateを使う(1)
+---
 # PySideのTableViewでDelegateを使う(1)
 
-<!-- SUMMARY:PySideのTableViewでDelegateを使う(1) -->
 
 ![](https://i.gyazo.com/40c502878496d47beaaaac90e7af6cc9.gif)
 

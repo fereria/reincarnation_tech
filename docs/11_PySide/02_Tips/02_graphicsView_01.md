@@ -1,6 +1,7 @@
+---
+title: GraphicsViewの基本(Sceneをスケールする)
+---
 # GraphicsViewの基本(Sceneをスケールする)
-
-<!-- SUMMARY:GraphicsViewの基本(Sceneをスケールする)-->
 
 GraphicsViewを使用して、色々オブジェクトを配置したり移動したりする方法を  
 わりとちゃんと調べることにしました。  

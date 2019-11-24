@@ -1,6 +1,15 @@
+---
+title: Houdini のショートカット
+---
+
 # Houdini のショートカット
 
-<!-- SUMMARY:Houdiniのショートカット -->
+## Viewport 上
+
+|     |                |
+| --- | -------------- |
+| D   | Display Option |
+| S   | Select         |
 
 ## Select
 
@@ -14,10 +23,9 @@
 | 3   | Select Edges                               |
 | 4   | Select Primitives                          |
 
-
 ## Network
 
-|     |                      |
-| --- | -------------------- |
-| R   | Display/Renderに指定 |
-| L   | ノードを整列         |
+|     |                       |
+| --- | --------------------- |
+| R   | Display/Render に指定 |
+| L   | ノードを整列          |
