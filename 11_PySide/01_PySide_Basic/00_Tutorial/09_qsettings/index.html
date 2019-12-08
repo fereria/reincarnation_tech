@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3417,7 +3369,7 @@
                 <h1 id="qsettingsui">QSettingsを使用してUIの情報を保存する</h1>
 <p>UIの各種Widgetの情報を、終了時に保存しておきたい場合はQSettingクラスを使用します。<br />
 サンプルに使用するuiファイルは <a href="https://snippets.cacher.io/snippet/0021421020ef095007ce">こちら</a></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>  1
   2
   3
   4
@@ -3630,11 +3582,10 @@
 <p>こんな感じになります。  </p>
 <h2 id="1">1. 基本的な使い方</h2>
 <p>まず、情報を保存したい場合は QSettingsオブジェクトを作成します。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="p">(</span><span class="s2">&quot;setting.ini&quot;</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="o">.</span><span class="n">IniFormat</span><span class="p">)</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="p">(</span><span class="s2">&quot;setting.ini&quot;</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="o">.</span><span class="n">IniFormat</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>保存ファイルのフォーマットは、ini以外にもレジストリなども選べますが<br />
+保存ファイルのフォーマットは、ini以外にもレジストリなども選べますが<br />
 iniで出力するのが色々と楽なので今回はiniを使用します。<br />
 引数の1つめがiniファイルのフルパス＋名前を指定します。  </p>
 <h3 id="11">1.1. 保存する</h3>
@@ -3655,13 +3606,12 @@ iniに保存された情報がない場合はNoneが帰ってきます。<br />
 <h3 id="31-listview">3.1. ListViewの場合</h3>
 <p>ListViewの「選択を変える」コマンドの setCurrentIndex は、<br />
 取得も設定も ModelIndexを使用します。<br />
-そのため、  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span><span class="o">.</span><span class="n">row</span><span class="p">())</span>
+そのため、<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span><span class="o">.</span><span class="n">row</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-
-<p>保存時は、 indexのrow()でintを取得し保存します。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+保存時は、 indexのrow()でintを取得し保存します。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="k">if</span> <span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">())</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">())),</span> <span class="mi">0</span><span class="p">)</span>
@@ -3674,14 +3624,13 @@ ListViewにセットしているModelの index関数を使用して、ModelIndex
 その取得したModelIndexをsetCurrentINdexを使用してセットするようにします。  </p>
 <h3 id="32-radiobutton">3.2. RadioButtonの場合</h3>
 <p>radioButtonは、ButtonGroupを使用して選択肢のグルーピングを行います。<br />
-ので、選択情報も  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;grp&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">btnGrp</span><span class="o">.</span><span class="n">checkedId</span><span class="p">())</span>
+ので、選択情報も<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;grp&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">btnGrp</span><span class="o">.</span><span class="n">checkedId</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-
-<p>ButtonGroupのcheckedIdを使用して保存します。  </p>
+ButtonGroupのcheckedIdを使用して保存します。  </p>
 <p>復帰させる場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="c1"># RadioButtonの選択を復帰</span>
         <span class="k">if</span> <span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;grp&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -3692,8 +3641,8 @@ ListViewにセットしているModelの index関数を使用して、ModelIndex
 <p>ButtonGroupのbuttonでRadioButtonオブジェクトを取得できるので<br />
 取得したオブジェクトに対してsetCheckedをすればOKです。  </p>
 <h3 id="33-splittergeometrywindow">3.3. Splitter/Geometry（Window位置）の場合</h3>
-<p>SplitterやWindow位置は保存用の固有コマンドがあるのでソレを使用して保存します。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p>SplitterやWindow位置は保存用の固有コマンドがあるのでソレを使用して保存します。<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Splitterの位置保存</span>
@@ -3702,10 +3651,9 @@ ListViewにセットしているModelの index関数を使用して、ModelIndex
 <span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">saveGeometry</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-
-<p>ほぞんされる値はバイナリ値になりますが<br />
+ほぞんされる値はバイナリ値になりますが<br />
 その辺はあまり意識しないでもOKです。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Splitterの位置を復帰</span>
@@ -3714,14 +3662,12 @@ ListViewにセットしているModelの index関数を使用して、ModelIndex
 <span class="bp">self</span><span class="o">.</span><span class="n">restoreGeometry</span><span class="p">(</span><span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
-
-<p>復帰するときは restore～を実行することで元に戻せます。</p>
+復帰するときは restore～を実行することで元に戻せます。</p>
 <p>今回はGUIの値の復帰に使用していましたが  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">,</span><span class="s1">&#39;fugafuga&#39;</span><span class="p">)</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">,</span><span class="s1">&#39;fugafuga&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>のようにすれば、Widgetの値にかかわらずに値を保存出来るので<br />
+のようにすれば、Widgetの値にかかわらずに値を保存出来るので<br />
 外部ファイルに書いておきたい物がある場合は<br />
 使用すると便利かなぁと思います。</p>
                 
@@ -3848,7 +3794,7 @@ ListViewにセットしているModelの index関数を使用して、ModelIndex
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

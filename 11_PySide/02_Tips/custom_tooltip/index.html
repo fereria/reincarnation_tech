@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3350,8 +3302,8 @@ PySideデフォルトのTooltipは非常に使いにくいので、自前で作�
 ここにUPしました。  </p>
 <p>今回は主にカスタムTooltip部分と、Item部分をまとめ。</p>
 <h2 id="1-tooltipui">1. Tooltip用UIを作る</h2>
-<p>上のコードのうち、ポイントになるのが表示されるTooltip部分。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p>上のコードのうち、ポイントになるのが表示されるTooltip部分。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3438,8 +3390,7 @@ PySideデフォルトのTooltipは非常に使いにくいので、自前で作�
         <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">getText</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-
-<p>このポイントは setWindowFlagsで設定している <strong>QtCore.Qt.FramelessWindowHint</strong> と、<br />
+このポイントは setWindowFlagsで設定している <strong>QtCore.Qt.FramelessWindowHint</strong> と、<br />
 ウィンドウを透明にする <strong>QtCore.Qt.WA_TranslucentBackground</strong> の2つです。  </p>
 <p>試しにこの2つをOFFにすると</p>
 <p><img alt="" src="https://gyazo.com/a27f187b3bf538311e01f806ffa2eaca.png" /></p>
@@ -3450,7 +3401,7 @@ PySideデフォルトのTooltipは非常に使いにくいので、自前で作�
 ので、ある程度マウスから外した所にだしたほうが安全です。  </p>
 <h2 id="2-item">2. Itemを作る</h2>
 <p>次に GraphicsItemを継承したカスタムのItemを作ります。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3559,12 +3510,11 @@ PySideデフォルトのTooltipは非常に使いにくいので、自前で作�
 <li>出たら閉じる</li>
 </ol>
 <p>ようにします。<br />
-ですが、これだけだとHoverイベントが発生してくれないので</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">setAcceptHoverEvents</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+ですが、これだけだとHoverイベントが発生してくれないので
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">setAcceptHoverEvents</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>HoverEventをOnにしてあげます。  </p>
+HoverEventをOnにしてあげます。  </p>
 <p>今回はテスト用なのでものすごいアレなPopupですが、<br />
 paintEvent内でちゃんと描画さえ書いてあげれば表示までのラグなどもなく<br />
 好きな感じでToolTipを出せるようになります。  </p>
@@ -3700,7 +3650,7 @@ paintEvent内でちゃんと描画さえ書いてあげれば表示までのラ�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

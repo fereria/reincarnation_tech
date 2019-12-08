@@ -2360,54 +2360,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3435,7 +3387,7 @@
 <p>以下詳しく。</p>
 <h2 id="2">2. サンプル</h2>
 <h3 id="21">2.1. シンプルな構造の場合</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3471,7 +3423,7 @@
 Fugaプリムにはアトリビュートがありませんが、BaseClassを継承することによって<br />
 BaseClassのアトリビュートがFugaのアトリビュートを引き継いでいることが分かります。  </p>
 <h3 id="22">2.2. 複数でつかってみる</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3516,8 +3468,7 @@ def &quot;FugaB&quot;
 }
 </pre></div>
 </td></tr></table>
-
-<p>クラスを使用すると、1つのデフォルトプリムを複数のプリムで共有することができます。<br />
+クラスを使用すると、1つのデフォルトプリムを複数のプリムで共有することができます。<br />
 ので、このようにベースのプリムを複数のプリムで使用すると</p>
 <p><img alt="" src="https://gyazo.com/6d00dba212071b67a1a57f4c761e703d.png" /></p>
 <p>このように2つのプリムができ、両方とも hoge アトリビュートを持ちますが  </p>
@@ -3527,7 +3478,7 @@ def &quot;FugaB&quot;
 <h3 id="23-def-class">2.3. def と classの違い</h3>
 <p>上のサンプルを見ると、継承元のプリム定義は「class」になっているのがわかるかとおもいます。<br />
 ですが、継承を使用するときはclassを使用しなければいけないかといえばそういうわけでもなく  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3550,8 +3501,7 @@ def &quot;FugaB&quot;
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>このように def で定義したとしても  </p>
+このように def で定義したとしても  </p>
 <p><img alt="" src="https://gyazo.com/4902f904a0c033033f2446a3bc640031.png" /></p>
 <p>このように継承の機能を使用することが出来ます。<br />
 （あるプリムを指定して値を継承させる）  </p>
@@ -3560,7 +3510,7 @@ def &quot;FugaB&quot;
 <h2 id="3">3. 継承元に子プリムがある場合</h2>
 <p>上の例だと継承元プリムと継承先プリムの関係は＝になりました。<br />
 では、継承元側に子プリムがあった場合はどうなるか？というと</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3597,7 +3547,7 @@ def &quot;FugaB&quot;
 <p><img alt="" src="https://gyazo.com/a9a1baa2118247d788f696f3afb0d9fa.png" /></p>
 <p>このように、継承先にも子プリムが作成されます。  </p>
 <h3 id="31">3.1. 継承先にも子プリムがある場合</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3643,7 +3593,7 @@ def &quot;FugaB&quot;
 このあたりの処理は、考え方的にはクラスと関数の関係に近いようで<br />
 親クラス側の関数が継承先で使用できる、さらに継承先のクラスに関数を追加することで<br />
 拡張する...それと同じなのかなと思います。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3690,23 +3640,21 @@ def &quot;FugaB&quot;
 }
 </pre></div>
 </td></tr></table>
-
-<p>実際に確認してみると、継承先のほうに同じプリムがあると  </p>
+実際に確認してみると、継承先のほうに同じプリムがあると  </p>
 <p><img alt="" src="https://gyazo.com/e96b167fa51689650155443075223029.png" /></p>
 <p>こんな感じでオーバーライドされます。  </p>
 <h2 id="4-usd">4. 別のusdに定義されたプリムを継承したい場合</h2>
 <p>ここまでで、継承の挙動がなんとなく分かってきたかとおもいますが<br />
 見直してみると、継承を指定している部分の  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">prepend</span> <span class="k">inherits</span> <span class="o">=</span> <span class="o">&lt;/</span><span class="n">ClassName</span><span class="o">&gt;</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">prepend</span> <span class="k">inherits</span> <span class="o">=</span> <span class="o">&lt;/</span><span class="n">ClassName</span><span class="o">&gt;</span>
 </pre></div>
 </td></tr></table>
-
-<p>この部分を見ると、SdfPathで継承元のプリムをしているのが分かります。<br />
+この部分を見ると、SdfPathで継承元のプリムをしているのが分かります。<br />
 同じレイヤー内（usdaファイル内）ではなく別のレイヤーに記述されているプリムを<br />
 継承で扱いたい場合はどうすれば良いか？というと<br />
 継承したいクラスの書かれたusdファイルをサブレイヤーで合成し<br />
 その合成のあとに継承をします。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3719,10 +3667,9 @@ def &quot;FugaB&quot;
 }
 </pre></div>
 </td></tr></table>
-
-<p>例えばこのクラスが class.usda に書かれていたとします。  </p>
+例えばこのクラスが class.usda に書かれていたとします。  </p>
 <p>コレを別のレイヤーで使いたい場合は  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3747,8 +3694,7 @@ def &quot;FugaB&quot;
 <span class="err">}</span><span class="w"></span>
 </pre></div>
 </td></tr></table>
-
-<p>こうすると、<br />
+こうすると、<br />
 先述の合成の原則から L(サブレイヤーによる合成)後、I（継承）が行われるので  </p>
 <p><img alt="" src="https://gyazo.com/947bcc20c8eef28464df5450ee722232.png" /></p>
 <p>同じレイヤーに書かれているのと同じように、プリムの継承をすることが出来ます。  </p>
@@ -3876,7 +3822,7 @@ def &quot;FugaB&quot;
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

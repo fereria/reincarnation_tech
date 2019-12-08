@@ -2367,54 +2367,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3545,7 +3497,7 @@ SdfPath とは、USD 内のシーングラフの階層構造をファイルパ�
 <h3 id="32">3.2. 解決のサンプル</h3>
 <p>まずこの LIVRPS は、L（Local）側が一番優先で、定義がなければ I V ... といった感じに評価していきます。</p>
 <h4 id="321">3.2.1. 一番シンプルなパターン</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3588,7 +3540,7 @@ testValue が 2 つ定義されているのがわかります。</p>
 <p>この場合に testValue を取得しようした場合、どちらが優先になるのか？というと、<br />
 「Local」のほうが「Inherits（継承）」より優先なので「True」が取得できます。</p>
 <h4 id="322">3.2.2. 複数のコンポジションアークが重なった場合</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3617,7 +3569,7 @@ testValue が 2 つ定義されているのがわかります。</p>
 <p>もし、このように、 hoge プリムでなにも定義されていない場合<br />
 次は Inherits を解決しにいくので、この場合「False」が帰ってきます。</p>
 <p>この例だととてもシンプルですが、では複数が重複した場合はどうなるでしょうか。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3632,7 +3584,7 @@ testValue が 2 つ定義されているのがわかります。</p>
 </td></tr></table>
 
 <p>まず、 class.usda があり</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3658,7 +3610,7 @@ testValue が 2 つ定義されているのがわかります。</p>
 
 <p>こんな感じの refSample.usda<br />
 があったとします。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3712,7 +3664,7 @@ class.usda の /TestClass の testIntVal = 100<br />
 LIVRPS の原則によって「Inherits（継承）」のほうが強いので、取得出来るのは「10」になります。</p>
 <h4 id="323">3.2.3. コンポジション先にまた別のコンポジションがあった場合</h4>
 <p>上の例だと、Local からみて Reference か Inherits かでしたが、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3731,7 +3683,7 @@ LIVRPS の原則によって「Inherits（継承）」のほうが強いので�
 </td></tr></table>
 
 <p>というファイルを開いた時、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3778,7 +3730,7 @@ LIVRPS の原則によって「Inherits（継承）」のほうが強いので�
 </td></tr></table>
 
 <p>このような referenceA.usda があり</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3947,7 +3899,7 @@ LIVRPS の原則によって「Inherits（継承）」のほうが強いので�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

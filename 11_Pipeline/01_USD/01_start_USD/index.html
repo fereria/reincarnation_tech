@@ -2347,54 +2347,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3420,13 +3372,12 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 しかしこちらにはusdviewは入っていないので<br />
 別途Python2用のUSD（nvidiaビルド）をダウンロードしておき<br />
 そちらからusdviewを開いておきます。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">d</span> <span class="n">I</span><span class="p">:</span><span class="err">\</span><span class="n">jupyter_notebook_root</span>
 <span class="n">jupyter</span> <span class="n">notebook</span>
 </pre></div>
 </td></tr></table>
-
-<p>とりあえず、こんな感じで固定の場所でJupyterを起動できるBatchを作り<br />
+とりあえず、こんな感じで固定の場所でJupyterを起動できるBatchを作り<br />
 裏でnotebookを起動しておきます。<br />
 しかし、このnotebookをブラウザから使用すると、</p>
 <p><img alt="" src="https://gyazo.com/b3a8bf3a0e527f61b217b5cab8d82e9d.png" /></p>
@@ -3436,25 +3387,23 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 <p>Pythonの Jupyter Server URIの設定を開き、<br />
 裏で起動しているNotebookのURLを入力します。  </p>
 <p>が、Tokenを入れたりするのが面倒だったので</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="c1">--generate-config</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="c1">--generate-config</span>
 </pre></div>
 </td></tr></table>
-
-<p>まず、Configを作り、  </p>
+まず、Configを作り、  </p>
 <p>C:/Users/&lt;ユーザー名&gt;/.jupyter  </p>
-<p>下にある、 jupyter_notebook_config.py の中の  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<p>下にある、 jupyter_notebook_config.py の中の<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
 </td></tr></table>
-
-<p>Tokenを消しておいて、  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;sha1:～～～～&quot;</span>
+Tokenを消しておいて、  </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;sha1:～～～～&quot;</span>
 </pre></div>
 </td></tr></table>
 
 <p>パスワードをいれておきます。  </p>
 <p>パスワードは</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;import IPython;print(IPython.lib.passwd())&quot;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;import IPython;print(IPython.lib.passwd())&quot;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3464,7 +3413,7 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 <h2 id="2-vscode">2. VSCodeでいろいろやる</h2>
 <p><img alt="" src="https://gyazo.com/f0178ed34c457eb832a04ea1ead65f11.png" /></p>
 <p>まず、VSCodeでどうやってセルを指定するかというと、処理を分けたいところで  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span> <span class="o">%%</span> 
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span> <span class="o">%%</span> 
 </pre></div>
 </td></tr></table>
 
@@ -3476,11 +3425,10 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 <h2 id="3-usd">3. USDの中身を確認する</h2>
 <h2 id="4">4. プリントする</h2>
 <p>まず、usdviewで開く前に　USDファイルの中身をプリントで確認してみます。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-
-<p>たびたび確認をしたくなるので、ここだけをセルで分けておいて<br />
+たびたび確認をしたくなるので、ここだけをセルで分けておいて<br />
 必要に応じてプリントしてみます。</p>
 <p><img alt="" src="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png" /></p>
 <p>こんな感じで、現在のUSDファイル（正確にはレイヤー）を<br />
@@ -3491,14 +3439,14 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 <h3 id="41">4.1. 保存する</h3>
 <p>保存するときは StageをExportします。<br />
 ここも度々やるのでセルにしておくと便利です。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/refTest.usda&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/refTest.usda&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>こんな感じで出力します。  </p>
 <p>USDは、開くときにNewOpenしてSaveすることもできるのですが<br />
 すでにファイルがある場合エラーになってしまったりと微妙に面倒だったので  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># 一度メモリ上にファイルを作り</span>
@@ -3507,12 +3455,11 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;PATH&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>こんな感じでメモリ上にシーンを作り、最後にExportする方が<br />
+こんな感じでメモリ上にシーンを作り、最後にExportする方が<br />
 毎回新規シーンでテストできてお手軽かなと思います。（たぶん）  </p>
 <h3 id="42-usdview">4.2. usdviewで開く</h3>
 <p>Exportしたら、usdviewでファイルを開きます。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">usdview</span> <span class="n">I</span><span class="p">:</span><span class="err">\</span><span class="n">usd_test</span><span class="err">\</span><span class="n">refTest</span><span class="p">.</span><span class="n">usda</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">usdview</span> <span class="n">I</span><span class="p">:</span><span class="err">\</span><span class="n">usd_test</span><span class="err">\</span><span class="n">refTest</span><span class="p">.</span><span class="n">usda</span>
 </pre></div>
 </td></tr></table>
 
@@ -3667,7 +3614,7 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

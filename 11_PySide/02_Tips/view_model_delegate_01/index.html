@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3550,7 +3502,7 @@
 <p>Modelについては、 <a href="../custom_model/">QtCore.QAbstractItemModelを使用したカスタムモデルの作成</a> に書いてますが、<br />
 今回はその内容に＋してTableModel用に拡張した内容の補足。  </p>
 <h3 id="11-header">1.1. Header</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3569,23 +3521,21 @@
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>TableViewの場合は、列・行それぞれにHeaderが表示できます。<br />
+TableViewの場合は、列・行それぞれにHeaderが表示できます。<br />
 ので、Headerに何を表示するかは orientation を使用することで指定することができます。  </p>
 <h3 id="12-flags">1.2. flags</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">flags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsEditable</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsSelectable</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsEnabled</span>
 </pre></div>
 </td></tr></table>
-
-<p>flagsでは、そのセルごとの編集フラグを指定できます。<br />
+flagsでは、そのセルごとの編集フラグを指定できます。<br />
 今回はセルごとに編集できるようにしたいので Editable,Selectable,Enabled を指定しておきます。<br />
 ここを指定しなければ、編集不可状態になってしまいます。  </p>
 <h3 id="13">1.3. セルの順番を変える</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3643,7 +3593,7 @@ Modelの行はListで持っているので<br />
 <p><img alt="" src="https://gyazo.com/4a4f6aa7b788989bf7ebaca790d84261.png" /></p>
 <p>Delegateがない場合は、Model内の data でDisplayRoleでreturn した値が描画されるだけでした。<br />
 しかし、Delegateを使用した場合はセルごとにQPainterを使用してよりカスタムした表示をおこなうことができます。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3711,18 +3661,16 @@ Modelの行はListで持っているので<br />
 
 <p>描画部分は paint関数をオーバーライドすることで作成します。<br />
 TableViewの場合は、列ごとに何を表示するかを変える必要があります。  </p>
-<p>各セルに「表示したい」データというのは、Modelクラスのdata(QtCore.Qt.DataRole) で指定した方法で受け取ります。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+<p>各セルに「表示したい」データというのは、Modelクラスのdata(QtCore.Qt.DataRole) で指定した方法で受け取ります。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
 </pre></div>
 </td></tr></table>
-
-<p>この場合 QtCore.Qt.DisplayRole で指定した値になります。<br />
-値を取得できたら、実際の描画をします。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">rect</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">TextWordWrap</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
+この場合 QtCore.Qt.DisplayRole で指定した値になります。<br />
+値を取得できたら、実際の描画をします。<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">rect</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">TextWordWrap</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-
-<p>その値を文字列として表示したい場合はQPainterのdrawText()で描画すればOKです。  </p>
+その値を文字列として表示したい場合はQPainterのdrawText()で描画すればOKです。  </p>
 <h3 id="31-widgets">3.1. セルに対してWidgetsを配置したい</h3>
 <p>drawRectなどを使用して描画することもできますが、よくあるWidgetsはデフォルトで用意されていて<br />
 それをセルの中に配置することができます。<br />
@@ -3739,7 +3687,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
 <p>まずは、クリックしたときになにかする場合。<br />
 例えばセルに対してチェックボックスを表示させて、そのチェックをクリックしたら<br />
 中の値を変えるなど。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3788,7 +3736,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
 </ul>
 <p>この３つの関数を使用します。  </p>
 <h4 id="421-createeditor">4.2.1. createEditor</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3818,7 +3766,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
 配置するWidgetsは「parent」を指定することでそのセル位置にWidgetsを配置できます。<br />
 (入れないとセル位置ではなくView全体に配置されます)  </p>
 <h4 id="422-seteditor">4.2.2. setEditor</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3849,11 +3797,10 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
             <span class="n">editor</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>createEditorで作成したWidgetsに対して、「現在の値」をセットするのが setEditorData。<br />
+createEditorで作成したWidgetsに対して、「現在の値」をセットするのが setEditorData。<br />
 いわゆるここが「編集する一歩手前」状態になります。  </p>
 <h4 id="423-setmodeldata">4.2.3. setModelData</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -4019,7 +3966,7 @@ ViewとModelとDelegateを合わせてつかうことで<br />
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

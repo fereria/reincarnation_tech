@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3370,12 +3322,12 @@ SSH 化してみた。<br />
 <h2 id="1-ssh">1. SSH の認証用の鍵ファイルを作る</h2>
 <p>まずは、認証用の鍵を作成する。</p>
 <p>コマンドプロンプトで、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="o">&lt;</span><span class="n">user_name</span><span class="o">&gt;</span><span class="err">\</span><span class="p">.</span><span class="n">ssh</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="o">&lt;</span><span class="n">user_name</span><span class="o">&gt;</span><span class="err">\</span><span class="p">.</span><span class="n">ssh</span>
 </pre></div>
 </td></tr></table>
 
 <p>に移動して</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="k">C</span> <span class="ss">&quot;メールアドレス&quot;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="k">C</span> <span class="ss">&quot;メールアドレス&quot;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3390,13 +3342,13 @@ Title には　 MyPC 　のようなにのキーなのかを入力し、<br />
 Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する。</p>
 <h2 id="2-config">2. config 作成</h2>
 <p>Git で、ssh を使用して接続するときのオプションを config ファイルに記入する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="o">&lt;</span><span class="n">user_name</span><span class="o">&gt;</span><span class="err">\</span><span class="p">.</span><span class="n">ssh</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="o">&lt;</span><span class="n">user_name</span><span class="o">&gt;</span><span class="err">\</span><span class="p">.</span><span class="n">ssh</span>
 </pre></div>
 </td></tr></table>
 
 <p>下に、config ファイル（拡張子なしのテキスト）を作成。
 その中に</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">Host</span> <span class="n">github</span><span class="p">.</span><span class="n">com</span>
@@ -3410,7 +3362,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 こうしておくと、github.com で SSH 接続する場合、<br />
 この設定に書かれている id_rsa などの設定で接続できるようになる。
 続いて、この config が Git で使われるようにシンボリックリンクを作成する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">mklink</span> <span class="ss">&quot;C:\Program Files\Git\etc\ssh\ssh_config&quot;</span> <span class="ss">&quot;C:\Users\&lt;user_name&gt;\.ssh\config&quot;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">mklink</span> <span class="ss">&quot;C:\Program Files\Git\etc\ssh\ssh_config&quot;</span> <span class="ss">&quot;C:\Users\&lt;user_name&gt;\.ssh\config&quot;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3422,7 +3374,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 うーむ、なんだろうと調べていったら<br />
 そもそも ssh-add でキーを登録していないと NG だった。<br />
 が、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Error</span> <span class="n">connecting</span> <span class="k">to</span> <span class="n">agent</span><span class="p">:</span> <span class="k">No</span> <span class="n">such</span> <span class="n">file</span> <span class="k">or</span> <span class="n">directory</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Error</span> <span class="n">connecting</span> <span class="k">to</span> <span class="n">agent</span><span class="p">:</span> <span class="k">No</span> <span class="n">such</span> <span class="n">file</span> <span class="k">or</span> <span class="n">directory</span>
 </pre></div>
 </td></tr></table>
 
@@ -3432,12 +3384,12 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 <p>Windows のサービスから OpenSSH Authentication Agent のプロパティを開いて<br />
 開始＋スタートアップからも起動できるようにしておく。</p>
 <p>ここまでやってから、接続できるかテストしてみる。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">T</span><span class="w"> </span><span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">T</span><span class="w"> </span><span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
 </pre></div>
 </td></tr></table>
 
 <p>こんな感じで実行して、うまくいっていれば</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Hi</span> <span class="n">fereria</span><span class="o">!</span> <span class="n">You</span><span class="err">&#39;</span><span class="n">ve</span> <span class="n">successfully</span> <span class="n">authenticated</span><span class="p">,</span> <span class="n">but</span> <span class="n">GitHub</span> <span class="n">does</span> <span class="k">not</span> <span class="n">provide</span> <span class="n">shell</span> <span class="k">access</span><span class="p">.</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Hi</span> <span class="n">fereria</span><span class="o">!</span> <span class="n">You</span><span class="err">&#39;</span><span class="n">ve</span> <span class="n">successfully</span> <span class="n">authenticated</span><span class="p">,</span> <span class="n">but</span> <span class="n">GitHub</span> <span class="n">does</span> <span class="k">not</span> <span class="n">provide</span> <span class="n">shell</span> <span class="k">access</span><span class="p">.</span>
 </pre></div>
 </td></tr></table>
 
@@ -3446,7 +3398,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 この部分のアカウント名は git@で固定なので注意が必要。</p>
 <p>接続はできたので、SSH 鍵の登録はおそらく問題はなさそう。<br />
 うまくいかない場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">vT</span><span class="w"> </span><span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">vT</span><span class="w"> </span><span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
 </pre></div>
 </td></tr></table>
 
@@ -3459,7 +3411,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 <p>どうやら、Git で上で指定した Windows の OpenSSH ではないものが使用されている場合<br />
 そもそも設定した SSH 設定が使われていないので接続できないようだった。<br />
 ので、Git の設定を変更して、Windows の OpenSSH を使用するようにする。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global core.sshCommand &quot;C:/Windows/System32/OpenSSH/ssh.exe&quot;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global core.sshCommand &quot;C:/Windows/System32/OpenSSH/ssh.exe&quot;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3601,7 +3553,7 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

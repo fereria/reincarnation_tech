@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3329,7 +3281,7 @@
 <p>Others で任意の外部コマンドを実行出来るようにする。</p>
 <p><img alt="" src="https://gyazo.com/ccd4fa6d92357e6fc1b38c56fe5c179f.png" /></p>
 <p>実行すると、.vscode 下に task.json が作成される。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3367,14 +3319,14 @@
 ここで実行されるのは、task.json 内で指定した command がコンソール上で実行される。</p>
 <h2 id="1">1. ためしにタスクを作って見る</h2>
 <p>Gitbook のサマリーを自動作成するタスクを作成。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">book</span> <span class="n">sm</span> <span class="o">-</span><span class="n">r</span> <span class="n">docs</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">book</span> <span class="n">sm</span> <span class="o">-</span><span class="n">r</span> <span class="n">docs</span>
 </pre></div>
 </td></tr></table>
 
 <p>まずは普通にサマリーを作成する。<br />
 ただし、このコマンドで作成すると、現在の ROOT を基準にして階層を作るため<br />
 一端 docs 下にサマリーを作り、その後ルートに移動させたい。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">call</span> <span class="n">create_summary</span><span class="p">.</span><span class="n">bat</span>
 <span class="k">move</span> <span class="o">%~</span><span class="n">dp0</span><span class="err">\</span><span class="n">docs</span><span class="err">\</span><span class="n">SUMMARY</span><span class="p">.</span><span class="n">md</span> <span class="o">%~</span><span class="n">dp0</span><span class="err">\</span><span class="n">SUMMARY</span><span class="p">.</span><span class="n">md</span>
 </pre></div>
@@ -3383,7 +3335,7 @@
 <p>ただ、1 つのコマンドで実行すると book コマンドを実行したところで処理が止まってしまうので<br />
 別の bat を作成して、call で呼び出し。<br />
 その実行後、作成したサマリーをルートに移動する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3411,7 +3363,7 @@
 <p>毎度設定するのはめんどくさいので、簡単に実行出来るように<br />
 ビルドタスクに指定する。<br />
 その場合は、tasks.json 内の task の{}内に</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>      <span class="s2">&quot;group&quot;</span><span class="err">:</span> <span class="p">{</span>
@@ -3550,7 +3502,7 @@
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

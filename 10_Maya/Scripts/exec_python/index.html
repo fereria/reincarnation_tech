@@ -2320,54 +2320,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3351,19 +3303,19 @@
 
 <h2 id="1">1. とりあえず、さくっと実行</h2>
 <p>Python で、.py ファイルを import ではなくそのまま実行したい場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">execfile</span><span class="p">(</span><span class="s2">&quot;&lt;python_path&gt;&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">execfile</span><span class="p">(</span><span class="s2">&quot;&lt;python_path&gt;&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>このようにします。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="k">print</span> <span class="sa">u</span><span class="s2">&quot;はろーわーるど&quot;</span>
 </pre></div>
 </td></tr></table>
 
 <p>このファイルを</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">execfile</span><span class="p">(</span><span class="s2">&quot;S:/test_file.py&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">execfile</span><span class="p">(</span><span class="s2">&quot;S:/test_file.py&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3372,7 +3324,7 @@
 <p>中のコードが実行されます。</p>
 <p>この execfile は、import で実行するときと基本的なルールは同じで<br />
 1 行目の</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span> <span class="o">-</span><span class="n">_</span><span class="o">-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">utf</span><span class="o">-</span><span class="mi">8</span> <span class="o">-</span><span class="n">_</span><span class="o">-</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span> <span class="o">-</span><span class="n">_</span><span class="o">-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">utf</span><span class="o">-</span><span class="mi">8</span> <span class="o">-</span><span class="n">_</span><span class="o">-</span>
 </pre></div>
 </td></tr></table>
 
@@ -3389,7 +3341,7 @@
 このエンコード設定と同じになってる必要があります。<br />
 ↑ のように、ファイル自体は「Shift JIS」になっているのに、<br />
 ファイルそのものが utf-8 になっている場合は、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3404,7 +3356,7 @@
 </td></tr></table>
 
 <p>このようにエラーになってしまいます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span> <span class="o">-*-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">shift</span><span class="o">-</span><span class="n">jis</span> <span class="o">-*-</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span> <span class="o">-*-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">shift</span><span class="o">-</span><span class="n">jis</span> <span class="o">-*-</span>
 </pre></div>
 </td></tr></table>
 
@@ -3414,7 +3366,7 @@
 <h2 id="3-python">3. 文字コードエラーを発生させずに無理矢理 Python ファイルを実行する</h2>
 <p>execfile を使用せずに、1 行目の #encoding 設定を書かずに実行したい場合は、<br />
 Mel ファイルから実行するという手もあります。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3454,7 +3406,7 @@ fopen で python ファイルをテキストとして読み込み、文字を改
 <p>Maya のデフォルトエンコードについては ↓<br />
 <a href="http://help.autodesk.com/view/MAYAUL/2016/JPN/?guid=GUID-88109151-076A-4AB1-836A-85370B32A256">http://help.autodesk.com/view/MAYAUL/2016/JPN/?guid=GUID-88109151-076A-4AB1-836A-85370B32A256</a></p>
 <h2 id="4-execfile">4. execfile のおまけ</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="k">def</span> <span class="nf">test_hello</span><span class="p">():</span>
@@ -3465,7 +3417,7 @@ fopen で python ファイルをテキストとして読み込み、文字を改
 <p>execfile で Python ファイルを実行したときは、グローバルに書かれた内容が実行されるだけで<br />
 書かれている関数は実行されない。<br />
 ↑ のように書かれた関数を execfile で実行してから使用したい場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">G</span><span class="o">=</span><span class="p">{}</span>
@@ -3479,17 +3431,17 @@ fopen で python ファイルをテキストとして読み込み、文字を改
 execfile の 2、3 つめの引数に、空の Dict を入れると<br />
 その中に execfile 内の関数・変数が代入されます。<br />
 中で定義されている関数は Local 関数扱いなので 3 つめの引数「L」に入ります。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s1">&#39;test_hello&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">test_hello</span> <span class="n">at</span> <span class="mh">0x0000015C7B715F98</span><span class="o">&gt;</span><span class="p">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s1">&#39;test_hello&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">test_hello</span> <span class="n">at</span> <span class="mh">0x0000015C7B715F98</span><span class="o">&gt;</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Dict 型はこのようになっていて、関数名の Key に中に Function が入ってます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">HOGEHOGE</span> <span class="o">=</span> <span class="s2">&quot;fugafuga&quot;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">HOGEHOGE</span> <span class="o">=</span> <span class="s2">&quot;fugafuga&quot;</span>
 </pre></div>
 </td></tr></table>
 
 <p>関数以外に、変数を定義してから使いたい場合も同様で</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s1">&#39;HOGEHOGE&#39;</span><span class="p">:</span> <span class="s1">&#39;fugafuga&#39;</span><span class="p">,</span> <span class="s1">&#39;test_hello&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">test_hello</span> <span class="n">at</span> <span class="mh">0x0000015C7B715F98</span><span class="o">&gt;</span><span class="p">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s1">&#39;HOGEHOGE&#39;</span><span class="p">:</span> <span class="s1">&#39;fugafuga&#39;</span><span class="p">,</span> <span class="s1">&#39;test_hello&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">test_hello</span> <span class="n">at</span> <span class="mh">0x0000015C7B715F98</span><span class="o">&gt;</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -3623,7 +3575,7 @@ importlib を使う方が良いです。</p>
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

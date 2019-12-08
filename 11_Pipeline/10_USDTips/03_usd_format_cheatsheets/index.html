@@ -2444,54 +2444,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3599,8 +3551,8 @@
 こちらはUSDフォーマットの内部構造の記述についてのAsciiファイルとして記述した場合のチートシートです。  </p>
 <h2 id="1-usdpath">1. Usdファイル内でのPathの記述方法</h2>
 <p>USD内で外部ファイルを読んでいる場合は @@ で囲う。<br />
-例）Reference等</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+例）Reference等
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3615,9 +3567,8 @@
 <span class="err">}</span><span class="w"></span>
 </pre></div>
 </td></tr></table>
-
-<p>USD内のSdfPathを指定する場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+USD内のSdfPathを指定する場合は</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3628,11 +3579,10 @@
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>&lt;&gt;で囲う。<br />
+&lt;&gt;で囲う。<br />
 / から始まる場合はRootからの絶対パス、なにもない場合は現在のPrimからの相対パスになる。  </p>
 <h2 id="2">2. 最低限の構造</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="n">usda</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="n">usda</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
 </pre></div>
 </td></tr></table>
 
@@ -3640,7 +3590,7 @@
 コレがあれば、すべてUSDファイルとしてロードできます。  </p>
 <h2 id="3-prim">3. Primを定義する</h2>
 <h3 id="31-prim">3.1. スキーマなしでPrimを定義</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3651,9 +3601,8 @@
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>Primと呼ばれるタグを作成する</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+Primと呼ばれるタグを作成する</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3666,10 +3615,9 @@
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>Primは、このように {} の中に def を記述することでネストできる。  </p>
+Primは、このように {} の中に def を記述することでネストできる。  </p>
 <h3 id="32-typeprim">3.2. スキーマ（Type指定）付きでPrimを定義する</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">def</span> <span class="n">Xform</span> <span class="ss">&quot;hoge&quot;</span>
 <span class="err">{</span>
@@ -3678,29 +3626,27 @@
 </td></tr></table>
 
 <h2 id="4">4. クラスを定義する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="s">&quot;className&quot;</span>
 {
 }
 </pre></div>
 </td></tr></table>
-
-<p>クラスで定義されているものは、usdview等でシーンを読んでもシーングラフには表示されない。  </p>
+クラスで定義されているものは、usdview等でシーンを読んでもシーングラフには表示されない。  </p>
 <h2 id="5-over">5. Overを定義する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">over</span> <span class="ss">&quot;name&quot;</span>
 <span class="err">{</span>
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>Overの場合は、Primと違い<br />
+Overの場合は、Primと違い<br />
 すでにPrimがある場合のみ値を上書きする。<br />
 定義されているPrimがない場合はなにもしない。</p>
 <h2 id="6-defaultprim">6. DefaultPrimを指定する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3720,7 +3666,7 @@
 
 <p>DefaultPrimとは、リファレンスでusdを読み込んだ場合の起点になるPrimの事。  </p>
 <h2 id="7">7. アトリビュートに値をセットする</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3733,11 +3679,10 @@
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>アトリビュートを追加する場合、Primの{}の中に 型 名前 = 値<br />
+アトリビュートを追加する場合、Primの{}の中に 型 名前 = 値<br />
 のように指定する。  </p>
 <h2 id="8-metadata">8. Metadataを追加する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3771,7 +3716,7 @@
 指定したい場合は それぞれの定義の後に () を入れて、その中にアトリビュートを追加するように<br />
 記述する。  </p>
 <h2 id="9-customdata">9. CustomDataを追加する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3790,12 +3735,11 @@
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>customData = {} を使うと、好きに自分の入れたいMeta情報をレイヤー、プリム、アトリビュートに対して<br />
+customData = {} を使うと、好きに自分の入れたいMeta情報をレイヤー、プリム、アトリビュートに対して<br />
 追加できる。  </p>
 <h2 id="10">10. リファレンスでモデルを読み込む</h2>
 <h3 id="101-defaultprim">10.1. DefaultPrimが指定されている場合</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3810,13 +3754,12 @@
 <span class="err">}</span><span class="w"></span>
 </pre></div>
 </td></tr></table>
-
-<p>リファレンスで読み込む場合は、読み込む先のPrimのMetadataに prepend references = ### で<br />
+リファレンスで読み込む場合は、読み込む先のPrimのMetadataに prepend references = ### で<br />
 ファイルを指定する。<br />
 ファイルパスは @@でかこって表現する。<br />
 ファイルパスは、現在の usd ファイルからの相対または絶対パスで指定する。  </p>
 <h3 id="102-referencesprim">10.2. references時にPrimを指定する場合</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3831,11 +3774,10 @@
 <span class="err">}</span><span class="w"></span>
 </pre></div>
 </td></tr></table>
-
-<p>DefaultPrimの指定がない、あるいはそれ以外のPrimを狙ってリファレンスしたい場合は<br />
+DefaultPrimの指定がない、あるいはそれ以外のPrimを狙ってリファレンスしたい場合は<br />
 ファイル指定の後に &lt;&gt;で囲ってSdfPathを指定する。  </p>
 <h2 id="11-sublayer">11. SubLayerで読み込む</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3853,7 +3795,7 @@
 を追加して、配列で読み込みたいファイルパスを指定する。<br />
 ファイルパスは @@ で囲う。  </p>
 <h2 id="12">12. リレーションを追加する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3894,7 +3836,7 @@
 <p>リレーションを追加したい場合は、 アトリビュートを rel で宣言して、<br />
 リレーション先のSdfPathを配列で指定する。  </p>
 <h2 id="13-inherits">13. 継承(Inherits)する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3907,7 +3849,7 @@
 </td></tr></table>
 
 <p>継承の場合は、継承したいPrimのMetadataに対して prepend inherits = SdfPath を追加する。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3937,7 +3879,7 @@
 ので、例えば別ファイルに定義されているclass や defを継承したい場合は<br />
 subLayerで読み込んでから inheritsで指定をする。  </p>
 <h2 id="14-variantset">14. VariantSetを定義する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3998,13 +3940,12 @@ subLayerで読み込んでから inheritsで指定をする。  </p>
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>variantSetは、 variantSet で定義する。<br />
+variantSetは、 variantSet で定義する。<br />
 定義したvariantSetをPrimで使う場合は、Metadata内に prepend variantSets = "名前"<br />
 を追加する。<br />
 そのvariantSetのうち、選択されているセットは variants で、選択中の値を指定する。  </p>
 <h2 id="15">15. アニメーションの定義</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -4039,13 +3980,12 @@ subLayerで読み込んでから inheritsで指定をする。  </p>
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>コレを手で書くことはないと思うけど念のため。<br />
+コレを手で書くことはないと思うけど念のため。<br />
 スタートフレームとエンドフレームは、レイヤーのMetadataに記載。<br />
 Key情報は、timeSamplesにDict型で記載。  </p>
 <p>xformOpOrderは、どういう順序でTransformを行うのかを指定する。  </p>
 <h2 id="16">16. マテリアルのアサイン</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -4104,8 +4044,7 @@ Key情報は、timeSamplesにDict型で記載。  </p>
 }
 </pre></div>
 </td></tr></table>
-
-<p>これもまぁ手では書かないけど念のため。  </p>
+これもまぁ手では書かないけど念のため。  </p>
 <p>Materialアサインはリレーションによって定義されている。<br />
 MeshデータはリレーションでBind先のMaterial情報を保持し、<br />
 Materialは、ShaderとのConnectionで値を受け取る。  </p>
@@ -4233,7 +4172,7 @@ Materialは、ShaderとのConnectionで値を受け取る。  </p>
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

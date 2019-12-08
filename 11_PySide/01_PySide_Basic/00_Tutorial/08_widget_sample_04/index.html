@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3439,7 +3391,7 @@ ListViewを説明していきたいと思います。  </p>
 そちらのほうが導入はしやすいですが、あえてListViewで説明していきます。</p>
 </div>
 <h2 id="1">1. サンプルコード</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3583,16 +3535,15 @@ ListViewを説明していきたいと思います。  </p>
 そのため、デフォルトだとなにも表示されないし、表示する項目をセットする<br />
 それっぽい関数なども存在しません。  </p>
 <p>そのかわりに、実際のデータ管理部分を受け持っている「Model」クラスを作成して、<br />
-こちら側でデータの管理を行うようにします。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+こちら側でデータの管理を行うようにします。<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QStringListModel</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">([</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="s1">&#39;bbb&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>今回のサンプルでは、この部分がModelを作成している部分になります。  </p>
+今回のサンプルでは、この部分がModelを作成している部分になります。  </p>
 <p>モデルはかなり色々とカスタマイズできますが、ソレをするとわけが分からなく<br />
 なるので、今回は最もシンプルな「QStringListModel」を使用して<br />
 基本的な動作を解説します。  </p>
@@ -3615,7 +3566,7 @@ ListをViewに表示しています。  </p>
 ぐらいの認識を持ちつつ、実際の使い方をみていきます。  </p>
 <h3 id="31-list">3.1. Listに追加する</h3>
 <p><img alt="" src="https://gyazo.com/8aca6264238c22da6e49a14fdc435bad.gif" /></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3637,32 +3588,30 @@ QStringListModelの場合は、内部的にはlist型を持っているので、
 再度setStringListで登録してあげれば<br />
 Listに新しい項目が追加することができます。  </p>
 <h3 id="32-str">3.2. 現在選択している項目をstrで取得する</h3>
-<p>Listをクリックしたときに、現在選択している項目を取得したい場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p>Listをクリックしたときに、現在選択している項目を取得したい場合は
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">listClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="c1"># 現在選択している文字列を取得する</span>
         <span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-
-<p>このようにします。<br />
+このようにします。<br />
 clicked のSlotを設定すると、argsでindexを取得することができます。<br />
 このindexは、現在選択されているデータにアクセスするためのタグのような<br />
 ものになっています。<br />
 <a href="https://doc.qt.io/qtforpython/PySide2/QtCore/QModelIndex.html#PySide2.QtCore.QModelIndex">https://doc.qt.io/qtforpython/PySide2/QtCore/QModelIndex.html#PySide2.QtCore.QModelIndex</a><br />
 このindexはQModelIndexオブジェクトで、ここからデータを取得したい場合は
 index.data() にアクセスすればOKです。  </p>
-<p>スロットではなく、選択しているデータを取得したい場合は、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span>
+<p>スロットではなく、選択しているデータを取得したい場合は、
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span>
 </pre></div>
 </td></tr></table>
-
-<p>これでindexを取得できるので、取得した後に index.data() で<br />
+これでindexを取得できるので、取得した後に index.data() で<br />
 データを取得してくればOKです。  </p>
 <h3 id="33-match">3.3. リストから指定の文字を探してきてMatchしたら選択</h3>
 <p><img alt="" src="https://gyazo.com/0d9c51a5e4ba54170664ac5737b4a90c.gif" /></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3679,8 +3628,7 @@ index.data() にアクセスすればOKです。  </p>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </pre></div>
 </td></tr></table>
-
-<p>Listから指定の文字でindexを探したい場合は matchを使用します。<br />
+Listから指定の文字でindexを探したい場合は matchを使用します。<br />
 これは若干使い方がわかりにくいですが、  </p>
 <p><img alt="" src="https://gyazo.com/62e2dd0b433391a79f7ab13228cd418e.png" /></p>
 <p>まず、どこから探すかの起点になるIndexを作成し（この場合一番上が row=0 column=0)<br />
@@ -3692,7 +3640,7 @@ index.data() にアクセスすればOKです。  </p>
 ここでは「Modelからなにを取得したいかのフラグ」と思えばOKです。</p>
 </div>
 <p>matchを使わない方法としては</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3705,8 +3653,7 @@ index.data() にアクセスすればOKです。  </p>
             <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>list.index('moji')<br />
+list.index('moji')<br />
 を使用することでlist型のどこに指定の文字が入っているかを数字で取得して<br />
 index(row,column) のrowにその数字を入れてIndexを取得してきてから<br />
 setCurrentIndexするやり方もできます。<br />
@@ -3842,7 +3789,7 @@ ListViewに限らずView周りはPySideのなかでもかなり奥が深い分�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

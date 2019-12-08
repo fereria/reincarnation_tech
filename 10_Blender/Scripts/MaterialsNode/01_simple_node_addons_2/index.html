@@ -2356,54 +2356,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3435,7 +3387,7 @@
 注意しないと行けないのは「RNA」プロパティと呼ばれる構造と<br />
 UIにウィジェットというかパーツを追加する方法の2つです。  </p>
 <p>まずコード。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3539,15 +3491,14 @@ UIにウィジェットというかパーツを追加する方法の2つです�
 MayaのAddAttrとは違って、同種のノードタイプに一律でプロパティを拡張することができます。  </p>
 <p>既存のオブジェクトに対して設定するように、自分で作成したカスタムノードに対してプロパティを<br />
 作りたい場合は、このRNAプロパティの追加をします。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">text</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
                           <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                           <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Text to show, if set will overide file&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>プロパティはクラスの変数として指定してあげます。<br />
+プロパティはクラスの変数として指定してあげます。<br />
 <a href="https://docs.blender.org/api/blender2.8/bpy.types.Property.html#bpy.types.Property">プロパティ関係はこのHelp参照</a></p>
 <h2 id="4">4. 関数をオーバーライドする</h2>
 <p>プラグインを作る場合は、
@@ -3567,7 +3518,7 @@ MayaのAddAttrとは違って、同種のノードタイプに一律でプロパ
 <p>Blenderのクラスは、「draw_XXXX」になっているものがUIへの描画になっている模様。  </p>
 <h3 id="41-draw_buttons">4.1. draw_buttons</h3>
 <p>まず、draw_buttonsがノード自体に各種ウィジェットを実装するための関数です。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3599,7 +3550,7 @@ label自体は、改行コードが使えないため<br />
 <p><img alt="" src="https://gyazo.com/2aada53efeab9471bbf15f2fc7753a96.png" /></p>
 <p>draw_buttons_extは、「N」を押したときにウィンドウの右側に表示されるトグルスライドバーの<br />
 なかのUIパーツを追加するための関数です。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3617,7 +3568,7 @@ propはRNAプロパティにつなげたUIを表示するときに使用しま�
 propの第二引数でtextを指定しています。  </p>
 <p>もう1つのoperatorは、ボタンを追加するコマンドで、<br />
 実行するコマンドは、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3800,7 +3751,7 @@ InterfaceのTextRenderingの「InterfaceFont」を<br />
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

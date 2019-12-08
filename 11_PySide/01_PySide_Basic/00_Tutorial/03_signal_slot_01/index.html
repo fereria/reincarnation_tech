@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3345,7 +3297,7 @@
 <p>例として前回の「ボタンを押す」をみてみます。<br />
 この場合「ボタンを押す」というのがSignal<br />
 push!!をプリントするのがSlotになります。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3370,15 +3322,13 @@ push!!をプリントするのがSlotになります。  </p>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;push!!&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>前回のサンプルを再度みてみます。<br />
+前回のサンプルを再度みてみます。<br />
 ボタンを押したときに実行する（push!!をプリントする）関数がいわゆるSlotになります。<br />
-この関数とWidgetを紐づけているのが</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_btn</span><span class="p">)</span>
+この関数とWidgetを紐づけているのが
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_btn</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>この部分で、<br />
+この部分で、<br />
 Widgetのオブジェクト.<Signal>.connect(Slotの関数)<br />
 このように書きます。  </p>
 <h2 id="1-signal">1. Signal</h2>
@@ -3426,7 +3376,7 @@ Signalは、その後ろには .connect() を入れて使用します。  </p>
 <p><img alt="" src="https://gyazo.com/5052ac9c7136206c09b4bcd36f7bf60e.png" /></p>
 <p>引数を送ることができる場合、Helpには arg__1 のような引数が記入してあります。<br />
 例として、LineEditを使用してみます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3451,8 +3401,7 @@ Signalは、その後ろには .connect() を入れて使用します。  </p>
         <span class="k">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p><img alt="" src="https://gyazo.com/8a4e8b99afaa63e6c4262c366265ba35.gif" /></p>
+<img alt="" src="https://gyazo.com/8a4e8b99afaa63e6c4262c366265ba35.gif" /></p>
 <p>LineEditには「テキストが変更された」ときに実行する textChanged があります。<br />
 このSignalは、引数として現在の入力されているテキストを受け取ることが出来るので<br />
 Slotの関数に受け取り用の引数を指定しておきます。  </p>
@@ -3587,7 +3536,7 @@ GUIを操作したときに動作を作成するための基本になります�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3379,7 +3331,7 @@
 見た目の描画を自由に作成することができます。<br />
 今回はこの描画部分でテストしていたときにけっこうハマった所をメモっておきます。</p>
 <h2 id="1">1. 背景色を変更する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3402,7 +3354,7 @@
 <p>まず、paint内で使用する色は別途変数で定義をしておきます。<br />
 なんで直書きしないかというと、コード内でどこにどの色を使用しているのかわかりやすくするためです。<br />
 私はなんとなくですがpythonファイルのあたまにまとめて記載するようにしています。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3465,7 +3417,7 @@ option.rect は、現在のセルの矩形を<br />
 私のサンプルは<br />
 <a href="http://modernuiicons.com/">http://modernuiicons.com/</a><br />
 このサイトのアイコンを使用しました。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3482,9 +3434,8 @@ option.rect は、現在のセルの矩形を<br />
             <span class="n">painter</span><span class="o">.</span><span class="n">drawPixmap</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">pix</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>まずpaint内の描画。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+まずpaint内の描画。  </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3503,7 +3454,7 @@ option.rect は、現在のセルの矩形を<br />
 別途関数にしておきます。<br />
 位置は、現在のセルの中央にimgSizeの大きさで表示するようにします。  </p>
 <p>そして、画像を drawPixmap で表示します。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3527,17 +3478,16 @@ option.rect は、現在のセルの矩形を<br />
 画像表示位置と同じ矩形でマウス位置が範囲内かどうかを判定して、<br />
 範囲内でクリックされている場合は、セルのBool値を変更します。  </p>
 <p>この部分も若干処理から変更していて<br />
-前回は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+前回は
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()]</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">(),</span> <span class="ow">not</span> <span class="n">currentValue</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
 </pre></div>
 </td></tr></table>
-
-<p>このように、modelのitems(表示しているオブジェクトの配列)のsetData で値を指定していましたが<br />
+このように、modelのitems(表示しているオブジェクトの配列)のsetData で値を指定していましたが<br />
 modelのsetData関数をオーバーライドした関数を作成し、<br />
 そちら経由で値を登録するようにしました。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3559,7 +3509,7 @@ setDataでセットして、 dataChangedとheaderDataChangedするほうが色�
 <p><img alt="" src="https://gyazo.com/93e3a1a85d1eed32523408e0775355c5.png" /></p>
 <p>こんな感じのLabelっぽい表示をしたかったので、Itemにステータスを追加して<br />
 それに応じて表示を変更するようにしました。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3605,7 +3555,7 @@ setDataでセットして、 dataChangedとheaderDataChangedするほうが色�
 
 <p>まず、StatusのEnumを作成（EnumはPython3から追加されたっぽい）<br />
 そして、どのStatusがどの色で文字なのかを指定するためのクラスとDictを作成しておきます。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3636,23 +3586,21 @@ setDataでセットして、 dataChangedとheaderDataChangedするほうが色�
             <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">TextWordWrap</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>そしてpaint内で描画処理を書きます。  </p>
+そしてpaint内で描画処理を書きます。  </p>
 <h2 id="3">3. セルのサイズをコントロールする</h2>
 <p>最後に一番ハマったのがセルサイズ。<br />
 今回は縦横サイズは固定で作りたかったので<br />
 固定にしつつも、中の情報に応じて大きさを変更するようにします。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">tableView</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeToContents</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tableView</span><span class="o">.</span><span class="n">verticalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeToContents</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>まず、MainWindowでtableViewを作っているところで<br />
+まず、MainWindowでtableViewを作っているところで<br />
 HeaderサイズのResizeModeをResizeToContentsに変更します。<br />
 このモードにすると、DelegateのSizeHintsをもとにした大きさに<br />
 セルのサイズが固定されるようになります。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3832,7 +3780,7 @@ modelの headerDataChanged のシグナルをすれば良いので<br />
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

@@ -2313,54 +2313,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3341,7 +3293,7 @@ PathはパラメーターがあるNode/パラメーター名。<br />
 アクセス用の名前が知りたい場合は、<br />
 取得したいパラメーター名をクリックし、PythonShellにDrag&amp;Dropすればフルパスが表示される。</p>
 <h2 id="1-node">1. Nodeのアトリビュートを取得する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;/obj/geo1/testgeometry_pighead1&#39;</span><span class="p">)</span>
 <span class="n">node</span><span class="o">.</span><span class="n">parm</span><span class="p">(</span><span class="s1">&#39;difficulty&#39;</span><span class="p">)</span>
 </pre></div>
@@ -3351,26 +3303,24 @@ PathはパラメーターがあるNode/パラメーター名。<br />
 <h2 id="2">2. プルダウンの中身を取得したい</h2>
 <p><img alt="" src="https://gyazo.com/b1e756b57d76af9a3f63952561baf791.png" /></p>
 <p>こんな感じのListの中の要素を取得したい場合。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parm</span><span class="p">(</span><span class="s1">&#39;difficulty&#39;</span><span class="p">)</span>
 <span class="n">p_temp</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">parmTemplate</span><span class="p">()</span>
 <span class="n">p_temp</span><span class="o">.</span><span class="n">menuItems</span><span class="p">()</span> <span class="c1"># Tupleで取得</span>
 </pre></div>
 </td></tr></table>
-
-<p>MenuParmTemplate形式で取得できる。  </p>
+MenuParmTemplate形式で取得できる。  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>パラメーターの中の要素を弄ったりするのもこのparmTemplateっぽい</p>
 </div>
 <h2 id="3">3. 値をセットする</h2>
 <p>指定のパラメーターに値をセットする場合は、 set を使用する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">param</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">param</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>このようにすると、Listの0番目が選択される。</p>
+このようにすると、Listの0番目が選択される。</p>
                 
                   
                 
@@ -3495,7 +3445,7 @@ PathはパラメーターがあるNode/パラメーター名。<br />
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

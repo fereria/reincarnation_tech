@@ -2320,54 +2320,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3353,7 +3305,7 @@
 <p>変換する場合は、Maya/bin 　下にある <mark>pyside2-uic</mark> を使用する。<br />
 ただしそのままではコマンドとして認識されないので<br />
 以下のように変換をする。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">cd</span> /d <span class="s2">&quot;C:\Program Files\Autodesk\Maya2018\bin&quot;</span>
 mayapy pyside2-uic -o <span class="p">&lt;</span>出力先<span class="p">&gt;</span>\main_ui.py <span class="p">&lt;</span>コンバート前の置き場<span class="p">&gt;</span>\main.ui
@@ -3363,7 +3315,7 @@ mayapy pyside2-uic -o <span class="p">&lt;</span>出力先<span class="p">&gt;</
 
 <h2 id="2-qtpy">2. Qt.py のインストール</h2>
 <p>PySide と PySide2 の違いを吸収するために、　 Qt.py 　モジュールを使用する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qt</span><span class="p">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="o">&lt;</span><span class="err">インストール先の</span><span class="n">PATH</span><span class="o">&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qt</span><span class="p">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="o">&lt;</span><span class="err">インストール先の</span><span class="n">PATH</span><span class="o">&gt;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3375,7 +3327,7 @@ pip の引数として -t ＜ PATH ＞　を使用すれば、指定の site-pac
 QtGui は、Painter、Brush、Pen、Image、Event のような Widget を作成する上での Core 的な部分が<br />
 QtGui になっている。</p>
 <h2 id="4">4. それ以外に書き換えが必要だった箇所</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">QHeaderView</span><span class="p">.</span><span class="n">setResizemode</span> <span class="o">-&gt;</span> <span class="n">setSectionResizeMode</span> <span class="p">(</span><span class="n">Section</span> <span class="err">を追加）</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">QHeaderView</span><span class="p">.</span><span class="n">setResizemode</span> <span class="o">-&gt;</span> <span class="n">setSectionResizeMode</span> <span class="p">(</span><span class="n">Section</span> <span class="err">を追加）</span>
 </pre></div>
 </td></tr></table>
                 
@@ -3502,7 +3454,7 @@ QtGui になっている。</p>
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

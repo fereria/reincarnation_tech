@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3323,7 +3275,7 @@
 <p>以前自分のBlogで、MayaのWindowを重複させない方法というのを書いたのですが<br />
 これだと一部問題があるので、問題ないように修正してみました。  </p>
 <h2 id="1">1. 以前の方法</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3350,8 +3302,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>以前の方法はこんな感じ。<br />
+以前の方法はこんな感じ。<br />
 なにをしているかというと、  </p>
 <ol>
 <li>自分自身の親（MayaのMainWindow）を取得して</li>
@@ -3362,7 +3313,7 @@
 <p>ということをしています。  </p>
 <p>このparent()関数は、Dialogの__init__の第一引数でしている親Windowを取得<br />
 してくれる関数で、↑のサンプルでいうところの  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3379,8 +3330,7 @@
         <span class="k">return</span> <span class="n">shiboken2</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">ptr</span><span class="p">),</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>shiboken2を使ってMayaの本体のQMainWindowで取得している<br />
+shiboken2を使ってMayaの本体のQMainWindowで取得している<br />
 Windowを、parent()で再度取得している形になります。  </p>
 <p>一応これでも閉じるのですが、<br />
 MayaのScriptEditor上で実行した場合や<br />
@@ -3390,7 +3340,7 @@ findChildren関数が動かないという問題がありました。<br />
 (低音さん(@rateionn) が原因を見つけてくれました、感謝)  </p>
 <h2 id="2">2. 改善版</h2>
 <p>というわけで改善版</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3425,8 +3375,7 @@ findChildren関数が動かないという問題がありました。<br />
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>findChildrenで、指定クラスの子を探すのではなく<br />
+findChildrenで、指定クラスの子を探すのではなく<br />
 全ての子オブジェクトのクラス名で判定して、同じなら閉じるようにすれば<br />
 reloadしようがScriptEditorで実行しようが問題ありません。  </p>
                 
@@ -3553,7 +3502,7 @@ reloadしようがScriptEditorで実行しようが問題ありません。  </p
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

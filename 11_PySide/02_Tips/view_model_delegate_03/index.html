@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3386,7 +3338,7 @@ Widgetsが作成作成されます。<br />
 <p>全コードはながいので↑にアップしました。  </p>
 <h2 id="1">1. 解説</h2>
 <h3 id="11-dialog">1.1. Dialogを作る</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3440,7 +3392,7 @@ __init__の中に setGeometryを入れてもうまく動きませんでした。
 <p>かわりに、showEventをオーバーライドして、 setGeometryで配置したい位置を<br />
 セットするようにしています。</p>
 <h3 id="12-ui">1.2. UIを呼び出す</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3493,7 +3445,7 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
 グローバル座標の数値を取得し、Dialogに対して表示位置のQPointをセットするようにしています。  </p>
 <h3 id="13">1.3. 値をセットする</h3>
 <p>Model内の関数として、↓を作成</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3507,7 +3459,7 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
 </pre></div>
 </td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3548,7 +3500,7 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
 <p>Dialogを閉じると、setModelData関数が呼ばれます。<br />
 ので、あとはほかのWidgetと同じくeditor(これはWidgetのオブジェクト)を<br />
 使用して、値を取得し、モデルに対してセットします。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3573,8 +3525,7 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSize</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">idealWidth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">15</span> <span class="o">*</span> <span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">lineCount</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
-
-<p>sizeHintで指定をしておけば、入力した行に応じてセルのサイズを変更できるようになります。<br />
+sizeHintで指定をしておけば、入力した行に応じてセルのサイズを変更できるようになります。<br />
 このあたりの説明は <a href="../view_model_delegate_02/">前回の説明</a> に説明がありますので<br />
 そちらを参照してください。  </p>
 <h3 id="14">1.4. 補足</h3>
@@ -3709,7 +3660,7 @@ TableViewの各セルをがっつり編集するDialogを作ることなんか�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

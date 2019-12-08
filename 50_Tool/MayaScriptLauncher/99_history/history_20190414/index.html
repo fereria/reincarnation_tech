@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3381,7 +3333,7 @@
 もう少し詳しく調べるのと、GitAPI まわりの使い方を調査しました。</p>
 <h2 id="1-applicationplugins-module_path">1. ApplicationPlugins 内でセットした MODULE_PATH は有効か？</h2>
 <p>PackageContents 内で MayaEnv を指定できるのを利用して</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">&lt;MayaEnv</span> <span class="na">expr=</span><span class="s">&quot;MAYA_MODULE_PATH+:=module&quot;</span> <span class="nt">/&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">&lt;MayaEnv</span> <span class="na">expr=</span><span class="s">&quot;MAYA_MODULE_PATH+:=module&quot;</span> <span class="nt">/&gt;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3397,7 +3349,7 @@ Maya の起動バッチを作成するか<br />
 不味い(´･ω･`)</p>
 <p><img alt="" src="https://gyazo.com/b49998d546d25572e312b2990d82ce6b.png" /></p>
 <p>まずは、テスト用のモジュールを作成。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">+</span> <span class="n">PLATFORM</span><span class="p">:</span><span class="n">win64</span> <span class="n">Maya_Module_Sample</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="n">sample_mod</span>
 <span class="n">PYTHONPATH</span> <span class="o">+</span><span class="p">:</span><span class="o">=</span> <span class="n">python</span>
 </pre></div>
@@ -3409,7 +3361,7 @@ module 関係は <a href="https://tm8r.hateblo.jp/entry/2016/10/18/222755">https
 なので、細かい mod の記載方法は割愛しますが、、、
 最後の「sample_mod」が、現在の mod フォルダからみた時の module 本体のフォルダパスを<br />
 表しています。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">getenv</span> <span class="nv">MAYA_MODULE_PATH</span><span class="c1">;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">getenv</span> <span class="nv">MAYA_MODULE_PATH</span><span class="c1">;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3417,7 +3369,7 @@ module 関係は <a href="https://tm8r.hateblo.jp/entry/2016/10/18/222755">https
 <p>この構成の module を追加の後、Maya を起動して環境変数を確認すると<br />
 ApplicationPlugins のフォルダの PATH が設定されてることがわかります。</p>
 <p>次に、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">getenv</span> <span class="nv">PYTHONPATH</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">getenv</span> <span class="nv">PYTHONPATH</span>
 </pre></div>
 </td></tr></table>
 
@@ -3467,12 +3419,12 @@ Maya なので Ma にしてみました。</p>
 API が理解出来なかったので調べてみたら、上のサイトを見つけました。<br />
 めっちゃわかりやすいです。</p>
 <h3 id="21">2.1. リポジトリにあるデータを確認する</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">contents</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">contents</span>
 </pre></div>
 </td></tr></table>
 
 <p>contents を実行すると、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3551,12 +3503,12 @@ API が理解出来なかったので調べてみたら、上のサイトを見�
 いわゆるコレがファイルやフォルダにつけられた、管理用の ID で<br />
 URL にアクセスしにいく場合は、この ID からたどっていく形になります。<br />
 そのたどるための URL が「git_url」のパスで、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">trees</span><span class="o">/</span><span class="mi">117</span><span class="n">a50c56175bb822f1c355856f1f93f6b97dd33</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">trees</span><span class="o">/</span><span class="mi">117</span><span class="n">a50c56175bb822f1c355856f1f93f6b97dd33</span>
 </pre></div>
 </td></tr></table>
 
 <p>この URL にアクセスすると</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3605,19 +3557,19 @@ URL にアクセスしにいく場合は、この ID からたどっていく形
 </td></tr></table>
 
 <p>url の Tree 下にあるファイルを取得出来ます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">contents</span><span class="o">/</span><span class="n">MaTM</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">contents</span><span class="o">/</span><span class="n">MaTM</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="n">py</span>
 </pre></div>
 </td></tr></table>
 
 <p>それ以外に、ファイルパス指定をするように URL でアクセスも可能。</p>
 <h3 id="22">2.2. ブランチの取得</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">duplicate_reference_tool</span><span class="o">/</span><span class="n">branches</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">duplicate_reference_tool</span><span class="o">/</span><span class="n">branches</span>
 </pre></div>
 </td></tr></table>
 
 <p>ブランチを取得したい場合なども、リポジトリの URL ＋取得したい物の名前<br />
 で取得が可能です。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3641,7 +3593,7 @@ URL にアクセスしにいく場合は、この ID からたどっていく形
 
 <p>結果はこんな感じ。</p>
 <p>そのブランチの中身をより詳しく見たい場合は</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">duplicate_reference_tool</span><span class="o">/</span><span class="n">branches</span><span class="o">/</span><span class="n">master</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">duplicate_reference_tool</span><span class="o">/</span><span class="n">branches</span><span class="o">/</span><span class="n">master</span>
 </pre></div>
 </td></tr></table>
 
@@ -3650,20 +3602,20 @@ URL にアクセスしにいく場合は、この ID からたどっていく形
 ドキュメントをちゃんと読まなくても、情報をとるだけなら直感的にいけます。<br />
 これはすごい。</p>
 <h3 id="23">2.3. コミットを取得</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">commits</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">commits</span>
 </pre></div>
 </td></tr></table>
 
 <p>コミットの一覧を取得したい場合も、基本は同じです。<br />
 コミットに対しても sha の ID が割り振られているので</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">commits</span><span class="o">/</span><span class="mi">97</span><span class="n">a58c3f4d7ced3eea6ed5b0e511b2cb04f1aee0</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">commits</span><span class="o">/</span><span class="mi">97</span><span class="n">a58c3f4d7ced3eea6ed5b0e511b2cb04f1aee0</span>
 </pre></div>
 </td></tr></table>
 
 <p>そのコミットごとの詳細を見る場合は、↑ のように sha の値を入れれば OK です。</p>
 <p><img alt="" src="https://gyazo.com/304c6e3ffe401b320bbe042686f53802.png" /></p>
 <p>各コミットに表示されているこの 7 桁の文字列は、この SHA の頭 7 文字をとったもので</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">zipball</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">fereria</span><span class="o">/</span><span class="n">MaTM_sample</span><span class="o">/</span><span class="n">zipball</span>
 </pre></div>
 </td></tr></table>
 
@@ -3801,7 +3753,7 @@ API を使用すれば比較的簡単に撮ってこれることがわかりま�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

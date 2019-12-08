@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3394,7 +3346,7 @@
 今回は、PySide で右クリックメニューを作る方法を説明したいと思います。</p>
 <h2 id="1">1. コード</h2>
 <p>まずはコード。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3525,7 +3477,7 @@
 以下、詳しい解説。</p>
 <h2 id="2-signal-slot">2. Signal-Slotを作る</h2>
 <p>まず、メニューを表示したい場合は、PySideのお約束の <a href="../03_signal_slot_01/">「Signal-Slot」</a> を作成します。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">setContextMenuPolicy</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">CustomContextMenu</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">customContextMenuRequested</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listContext</span><span class="p">)</span>
 </pre></div>
@@ -3540,7 +3492,7 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 ので、例えば今回のサンプルのように<br />
 2つのListViewがあった場合に、それぞれ別のメニューを表示出来るようにしたい場合<br />
 それぞれのWidgetsごとにこのContextMenuの設定を行います。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3572,13 +3524,12 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 単純に右クリックに割り当てただけだと、もちろんメニューは表示されません。<br />
 メニュー部分は QWidgets.QMneu クラスを使用します。  </p>
 <h3 id="21-menu">2.1. Menuを追加する</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">action_01</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s1">&#39;ほげほげ&#39;</span><span class="p">)</span>
 <span class="n">action_01</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
-
-<p>まず、実行させたいWidgetを親にしたMenuを作成します。<br />
+まず、実行させたいWidgetを親にしたMenuを作成します。<br />
 そして、メニューに追加するには addAction(メニュー名) を追加します。<br />
 追加すると、QActionオブジェクトが帰ってくるので<br />
 このメニューをクリックしたときに実行される関数（Slot）を<br />
@@ -3587,13 +3538,12 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 <p>このQActionというのは、各種メニュー、ツールボタン、キーボードのショートカット<br />
 等を介していろんなコマンドを呼び出すのに使用するものです。  </p>
 <h3 id="22">2.2. セパレーターを追加する</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">menu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">menu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
 </pre></div>
 </td></tr></table>
-
-<p>Menuの途中に線を入れたい場合は、入れたいところでこのSeparatorを追加します。  </p>
+Menuの途中に線を入れたい場合は、入れたいところでこのSeparatorを追加します。  </p>
 <h3 id="23">2.3. サブメニューを追加する</h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="n">subMenu</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s1">&#39;SubMenu&#39;</span><span class="p">)</span>
         <span class="n">action_03</span> <span class="o">=</span> <span class="n">subMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s1">&#39;さぶめにゅー1&#39;</span><span class="p">)</span>
@@ -3609,11 +3559,10 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 addMenuを追加すればOKです。  </p>
 <h3 id="24">2.4. 表示する</h3>
 <p>最後に、設定ができたら表示します。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">mapToGlobal</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">mapToGlobal</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
-
-<p>表示するには exec_(Menuを表示するPoint) を使用します。  </p>
+表示するには exec_(Menuを表示するPoint) を使用します。  </p>
 <p>customContextMenuRequested のSignalは、現在のマウスポジションを引数で受け取るのですが<br />
 このPointは現在のWidgetsのローカル座標が返ってきてしまいます。<br />
 しかしながら、ContextMenuの表示位置はグローバル座標である必要があります。  </p>
@@ -3622,16 +3571,15 @@ addMenuを追加すればOKです。  </p>
 Globalに変換してくれます。<br />
 ので、この関数を使用すればローカル座標だった pos を グローバルに変換して<br />
 正しい位置にメニューを表示することができます。  </p>
-<p>一応、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p>一応、
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># QCursorでカーソルのグローバルポジションを取得する</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QCursor</span><span class="p">()</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">pos</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
-
-<p>でも、同じ効果となります。</p>
+でも、同じ効果となります。</p>
                 
                   
                 
@@ -3756,7 +3704,7 @@ Globalに変換してくれます。<br />
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

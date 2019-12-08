@@ -2327,54 +2327,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3369,7 +3321,7 @@
 指定のプリムに接続する機能のことを言います。  </p>
 <p><img alt="" src="https://gyazo.com/013f4cb003fa0e6feaa142788f5e4a3a.png" /></p>
 <p>まず、このようなusdファイルを準備します。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3392,7 +3344,7 @@
 <p>中身はこんな感じ。<br />
 defaultPrimが指定されたSphere1つだけのファイルです。<br />
 このファイルをリファレンスで読み込んでみます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3435,7 +3387,7 @@ RootGrp以下のプリムがすべてマージされ、  </p>
 <p><img alt="" src="https://gyazo.com/dac0a1b3f1d246ef268be5cbd99359cc.png" /></p>
 <p>試しに、キッチンセットを --unloadedフラグ付きで読み込んでみると<br />
 なにも表示されません。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3468,8 +3420,7 @@ RootGrp以下のプリムがすべてマージされ、  </p>
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>何故かというと、キッチンセットのアセットの途中にかならずペイロードでのロードが<br />
+何故かというと、キッチンセットのアセットの途中にかならずペイロードでのロードが<br />
 含まれているからです。  </p>
 <p>なぜこんな機能があるのかというと、<br />
 複雑なステージになると、1ステージで数百・数千のUSDで構成されることもあるそうで<br />
@@ -3492,7 +3443,7 @@ RootGrp以下のプリムがすべてマージされ、  </p>
 <p>では、このような<br />
 1つのレイヤーにいろいろなプリムが入っていて<br />
 それらを選択して読み込みたい場合はどうすれば良いか。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3508,19 +3459,18 @@ def &quot;Grp&quot;{
 </pre></div>
 </td></tr></table>
 
-<p>その場合は、このように、 </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&lt;/</span><span class="n">PrimName</span><span class="o">&gt;</span>
+<p>その場合は、このように、 
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&lt;/</span><span class="n">PrimName</span><span class="o">&gt;</span>
 </pre></div>
 </td></tr></table>
-
-<p>読み込みたいレイヤー指定の後にSdfPathを指定することで<br />
+読み込みたいレイヤー指定の後にSdfPathを指定することで<br />
 指定のSdfPathのプリムをリファレンスすることが出来ます。</p>
 <h2 id="4">4. 他のコンポジションとの組み合わせ（バリアントとの組み合わせ）</h2>
 <p>コンポジションアークのプリムとアトリビュート合成の解決順序は<br />
 Local Inherits Variants Reference の順なので<br />
 リファレンスは4番目になります。（実質一番弱い）  </p>
 <p>では、今回のリファレンスも他と組み合わせたときにどうなるかを確認してみます。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3567,8 +3517,7 @@ def &quot;testPrim&quot; (
 }
 </pre></div>
 </td></tr></table>
-
-<p>前回のバリアントに対して、リファレンス構造をつけてみます。  </p>
+前回のバリアントに対して、リファレンス構造をつけてみます。  </p>
 <p><img alt="" src="https://i.gyazo.com/492bd725c5d17960038fc0de13d6373a.gif" /></p>
 <p>こうすると、どのようになるかというと<br />
 リファレンスのロードの前に、まずバリアントによるスイッチが選択されるようになります。<br />
@@ -3581,7 +3530,7 @@ V→Rなのかなぁと<br />
 <h2 id="5">5. リファレンス先のサブレイヤー</h2>
 <p>V→Rの順序の確認はできましたが<br />
 では、リファレンス先にコンポジションアークがあった場合はどうなるのか確認してみます。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3602,9 +3551,8 @@ V→Rなのかなぁと<br />
 <span class="err">}</span>
 </pre></div>
 </td></tr></table>
-
-<p>まず、こんな感じの SubA.usda を作成し</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+まず、こんな感じの SubA.usda を作成し</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3617,10 +3565,9 @@ V→Rなのかなぁと<br />
 <span class="p">)</span><span class="w"></span>
 </pre></div>
 </td></tr></table>
-
-<p>サブレイヤーで合成。<br />
+サブレイヤーで合成。<br />
 このファイルを ref_SubLayer.usda とします。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3631,8 +3578,7 @@ V→Rなのかなぁと<br />
 <span class="err">}</span><span class="w"></span>
 </pre></div>
 </td></tr></table>
-
-<p>そのファイルをリファレンスでロードしてみると、  </p>
+そのファイルをリファレンスでロードしてみると、  </p>
 <p><img alt="" src="https://gyazo.com/803949d35f17036055bf51e6c25991cc.png" /></p>
 <p>リファレンス先のサブレイヤーが合成され、その結果をリファレンスすることができました。<br />
 このように、リファレンス先に対してコンポジションがあった場合は<br />
@@ -3766,7 +3712,7 @@ USD内にアセットロードする時などに役に立ちます。  </p>
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

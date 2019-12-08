@@ -2334,54 +2334,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3378,25 +3330,23 @@
 <!-- SUMMARY:PipEnv の使い方 -->
 
 <h2 id="1">1. インストール方法</h2>
-<p>まず、通常のpipを使用してpython3にpipenvをインストールする。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pipenv</span>
+<p>まず、通常のpipを使用してpython3にpipenvをインストールする。<br />
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pipenv</span>
 </pre></div>
 </td></tr></table>
-
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="o">&lt;</span><span class="n">UserName</span><span class="o">&gt;</span><span class="err">\</span><span class="n">AppData</span><span class="err">\</span><span class="k">Local</span><span class="err">\</span><span class="n">Programs</span><span class="err">\</span><span class="n">Python</span><span class="err">\</span><span class="n">Python36</span><span class="err">\</span><span class="n">Scripts</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="o">&lt;</span><span class="n">UserName</span><span class="o">&gt;</span><span class="err">\</span><span class="n">AppData</span><span class="err">\</span><span class="k">Local</span><span class="err">\</span><span class="n">Programs</span><span class="err">\</span><span class="n">Python</span><span class="err">\</span><span class="n">Python36</span><span class="err">\</span><span class="n">Scripts</span>
 </pre></div>
 </td></tr></table>
-
-<p>次に、pipのあるフォルダにPATHを通す。  </p>
+次に、pipのあるフォルダにPATHを通す。  </p>
 <h2 id="2">2. インストール先を変更する</h2>
 <p>デフォルトだとHOME下に仮想環境が作成されてしまうので、
 プロジェクト下になるように環境変数で指定する</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>PIPENV_VENV_IN_PROJECT=true
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>PIPENV_VENV_IN_PROJECT=true
 </pre></div>
 </td></tr></table>
 
 <h2 id="3-versionpipenv">3. Versionを指定してPIPENVの環境を作成する</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pipenv --python 3.6
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>pipenv --python 3.6
 </pre></div>
 </td></tr></table>
 
@@ -3407,7 +3357,7 @@
 <h2 id="4-debug">4. Debugの構成を追加</h2>
 <p><img alt="" src="https://gyazo.com/58d9a1d4ded9b6048fd526213ee48923.png" /></p>
 <p>Debugの構成を追加して、launch.jsonを作成する。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3437,7 +3387,7 @@
 
 <p>作成されたlaunch.jsonの中身を↑に書き換える。  </p>
 <p>さらに、.vscode下にあるsetting.jsonの中身を</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
    <span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}/.venv/Scripts/python&quot;</span>
@@ -3489,7 +3439,7 @@
 </table>
 <h2 id="6">6. 設定済みファイルから環境を構築する</h2>
 <p>pipenvは、設定ファイルをベースに仮想環境を再構築することができます。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3532,11 +3482,10 @@
 すでに別の仮想環境を作っていた場合はファイルが作成されています。<br />
 ので、すでにあるファイルをコピペしてくるのでもOKです。  </p>
 <p>次に、コマンドプロンプトでフォルダに移動して</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pipenv</span> <span class="n">install</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pipenv</span> <span class="n">install</span>
 </pre></div>
 </td></tr></table>
-
-<p>を実行します。  </p>
+を実行します。  </p>
 <p>実行すると、 Pipfile に記載されているパッケージのうちインストールされていない物があれば<br />
 インストールされます。<br />
 空の場合、指定のPythonバージョンの環境構築も行われます。  </p>
@@ -3664,7 +3613,7 @@
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

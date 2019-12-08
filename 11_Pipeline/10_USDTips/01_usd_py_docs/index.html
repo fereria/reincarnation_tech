@@ -2326,54 +2326,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3368,7 +3320,7 @@ Pythonのコードを書く時にはまったりわかりにくいところな�
 こちらにあるのですが、基本C++なのと説明もとても難解なのでわかりにくいです。<br />
 ので、ものすごいざっくりとPythonへの読み替え方を説明。  </p>
 <p>まず、PythonのImportについて。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
 </pre></div>
 </td></tr></table>
 
@@ -3378,7 +3330,7 @@ Pythonのコードを書く時にはまったりわかりにくいところな�
 <p>ドキュメントの「Classes」下にライブラリのクラスや各種関数が並んでいるのですが<br />
 Pythonから使用する場合は頭の文字がimportで読み込むモジュール名になります。<br />
 上の画像のよく使う UsdStage の場合は UsdモジュールのStageになります。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 </pre></div>
@@ -3400,16 +3352,15 @@ UsdGeomXformは、<strong>UsdGeomImageableで UsdXformable</strong> です。<br
 <p>これに対して、末端の UsdGeomXform や UsdLuxDistantLight 、UsdGeomCameraなどのスキーマは<br />
 「ConcreteSchema」と呼ばれるスキーマで<br />
 実際にスキーマとして定義（Define）することができるスキーマになります。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>たとえばXformスキーマを定義したい場合はこうなります。  </p>
+たとえばXformスキーマを定義したい場合はこうなります。  </p>
 <p>UsdGeom.Xformable.Define(stage,'/hello')  </p>
 <p>これはエラーになります。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
@@ -3418,8 +3369,7 @@ UsdGeomXformは、<strong>UsdGeomImageableで UsdXformable</strong> です。<br
 <span class="n">xform</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span> <span class="c1"># UsdSchemaBaseで定義</span>
 </pre></div>
 </td></tr></table>
-
-<p>当然のことですが、XformはXformableの関数も使えます。<br />
+当然のことですが、XformはXformableの関数も使えます。<br />
 すべてのスキーマで共通して使用する GetPrimなどのような関数は UsdSchemaBaseに定義されているので<br />
 ドキュメントを見るときは、継承関係を確認します。  </p>
 <h3 id="12-tftoken">1.2. TfToken について</h3>
@@ -3433,11 +3383,10 @@ Usdでは文字列を非常に多く扱いますが、きちんと扱わない�
 Pythonの場合はそもそもこのTf.Tokenは存在しませんので<br />
 基本str型として読み替えを行います。  </p>
 <p>では、Python側ではTokenは無関係かというとそんなこともなくて  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p><img alt="" src="https://gyazo.com/0f14eee8eac5c49370c6f0d8e4fd53bf.png" /></p>
+<img alt="" src="https://gyazo.com/0f14eee8eac5c49370c6f0d8e4fd53bf.png" /></p>
 <p>各クラス内にはTokenクラスを取得定義されている関数名などを、文字列で取得することができます。  </p>
 <h3 id="13-usdattributetype">1.3. UsdのAttributeType定義について</h3>
 <p>Primに対してアトリビュートを追加したい場合には<br />
@@ -3448,11 +3397,10 @@ Pythonの場合はそもそもこのTf.Tokenは存在しませんので<br />
 このSdfValueTypeもPythonとC++では大きく違っていて、クラスメソッドの構成そのものがだいぶ<br />
 違うのでうまくいきません。  </p>
 <p>ではPythonの場合はどうするかというと</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">str_attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;testStr&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">str_attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;testStr&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>Pythonの場合、 Sdf.ValueTypeNames というEnumが存在していて<br />
+Pythonの場合、 Sdf.ValueTypeNames というEnumが存在していて<br />
 これを使用して型を定義します。<br />
 （しかしドキュメントにこの ValueTypeNames はない）  </p>
 <p>Asset AssetArray<br />
@@ -3616,7 +3564,7 @@ Vector3h  Vector3hArray  </p>
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

@@ -2251,54 +2251,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
-    
-    <label class="md-nav__link" for="nav-7-5">
-      Pipeline/Workflow学習・考察
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-5">
-        Pipeline/Workflow学習・考察
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_01/" title="Pipeline考えながら理解するUSD(1) - 序章" class="md-nav__link">
-      Pipeline考えながら理解するUSD(1) - 序章
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../11_Pipeline/99_pipeline_study/01_pipeline_study_02/" title="Pipeline考えながら理解するUSD(2) - Asset層" class="md-nav__link">
-      Pipeline考えながら理解するUSD(2) - Asset層
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -3365,7 +3317,7 @@
 GUIをクリックしたときに実行する内容が重くて、実行するごとにGUIが止まってしまうのを<br />
 なんとかしたい場合、QThreadを使用して処理を別スレッド化してあげます。  </p>
 <h2 id="1">1. サンプルコード</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>  1
   2
   3
   4
@@ -3581,7 +3533,7 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
 改めて調べてみました。  </p>
 <h2 id="2-signal">2. Signalの挙動の注意点</h2>
 <p>サブプロセスからSignalで数値を渡すときに、どのように値が渡されているか確認してみます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3600,7 +3552,7 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
 </td></tr></table>
 
 <p>Threadのrunを↑のように変更し  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
@@ -3613,13 +3565,12 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
 <p>実行結果がこちら。<br />
 python の id関数は、変数のメモリID(参照先)を確認することができます。<br />
 見ての通り、strの場合はSignalで渡される前と後とでは別のメモリを参照していることがわかります。  </p>
-<p>次に、試しに渡すのをstrからlistに変更してみます。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<p>次に、試しに渡すのをstrからlistに変更してみます。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>まず、Signalをlistに変更し、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+まず、Signalをlistに変更し、</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3634,14 +3585,13 @@ python の id関数は、変数のメモリID(参照先)を確認することが
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>runを変更します。</p>
+runを変更します。</p>
 <p><img alt="" src="https://gyazo.com/d357ea188831a2db1e29dcf409145ae4.png" /></p>
 <p>おわかりいただけるだろうか...
 strの場合は別のメモリを参照していたのが、<br />
 listの場合は同じメモリを参照しています。  </p>
 <p>これでなにが起きるかというと</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3660,7 +3610,7 @@ listの場合は同じメモリを参照しています。  </p>
 </td></tr></table>
 
 <p>runをこうして、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
@@ -3675,7 +3625,7 @@ listの場合は同じメモリを参照しています。  </p>
 まじかよ....  </p>
 <h2 id="3">3. 自作クラスオブジェクトの場合</h2>
 <p>では、自分で作ったクラスオブジェクトをSignalで送った場合はどうなるのか。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">TestObj</span><span class="p">:</span>
@@ -3686,12 +3636,11 @@ listの場合は同じメモリを参照しています。  </p>
 </td></tr></table>
 
 <p>単純なクラスを作成し、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="n">TestObj</span><span class="p">)</span>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="n">TestObj</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-
-<p>Signalで送れるようにして  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+Signalで送れるようにして  </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3710,7 +3659,7 @@ listの場合は同じメモリを参照しています。  </p>
 </td></tr></table>
 
 <p>runを書き換えて  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
@@ -3734,7 +3683,7 @@ immutableなものは変更不可な型の場合はメモリは共有されま�
 <p>意図している場合はOKですが、メインとサブのスレッドで書き換えは起きてほしくない<br />
 あくまでも別物として実行したい場合は、 copyモジュールのdeepcopyを使っておくのが<br />
 今のところ安パイなきがしました。  </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3888,7 +3837,7 @@ immutableなものは変更不可な型の場合はメモリは共有されま�
     
     
       
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","fereria.github.io/reincarnation_tech"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>
