@@ -1,9 +1,28 @@
 ---
 title: テストノートブック
 ---
+```python
+# Change directory to VSCode workspace root so that relative path loads work correctly. Turn this addition off with the DataScience.changeDirOnImportExport setting
+
+# ms-python.python added
+
+import os
+
+try:
+
+	os.chdir(os.path.join(os.getcwd(), '..\\..\pyEnv\JupyterUSD_py27'))
+
+	print(os.getcwd())
+
+except:
+
+	pass
+
+
+```
+
+
 #### [1]:
-
-
 
 
 ```python
@@ -14,11 +33,7 @@ from pxr import Usd, UsdGeom, Sdf, Gf
 ```
 
 
-
-
 #### [2]:
-
-
 
 
 ```python
@@ -28,9 +43,7 @@ stg.GetRootLayer().Export("D:/test.usda")
 
 ```
 
-
-
-!!! info
+!!! success
     ```
 
 
@@ -42,9 +55,8 @@ stg.GetRootLayer().Export("D:/test.usda")
 
     ```
 
+
 #### [3]:
-
-
 
 
 ```python
@@ -57,9 +69,7 @@ print(stage.ExportToString())
 
 ```
 
-
-
-!!! info
+!!! success
     ```
 
     #usda 1.0
@@ -77,9 +87,8 @@ print(stage.ExportToString())
 
     ```
 
+
 #### [5]:
-
-
 
 
 ```python
@@ -91,11 +100,7 @@ print(stage.ExportToString())
 
 
 
-
-
 #### [7]:
-
-
 
 
 ```python
@@ -103,10 +108,7 @@ test
 
 ```
 
-
-
-!!! info
-    ```
+!!! error
 
 
     ---------------------------------------------------------------------------
@@ -120,4 +122,4 @@ test
     NameError: name 'test' is not defined
 
 
-    ```
+

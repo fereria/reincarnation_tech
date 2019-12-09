@@ -13,16 +13,21 @@
 {% endif %}
 {% endblock in_prompt %}
 
-{% block input%}
-{% if cell.execution_count > 0 %}
-{{ super() }}
-{% endif %}
-{% endblock input%}
-
-{% block output %}
-!!! info
+{% block stream %}
+!!! success
     ```
-{{ super() }}
+{{ super()}}
     ```
-{%- endblock output %}
+{% endblock stream %}
 
+{% block execute_result%}
+!!! success
+    ```
+{{ super()}}
+    ```
+{% endblock execute_result%}
+
+{% block error %}
+!!! error
+{{ super() }}
+{% endblock error %}

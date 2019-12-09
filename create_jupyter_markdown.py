@@ -11,6 +11,8 @@ import re
 import glob
 import shutil
 
+BLOG_ROOT_DIR = "C:/reincarnation_tech"
+
 
 def createNoteBookMD(ipynbFile, root, exportPath):
 
@@ -38,7 +40,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
                           'nbconvert',
                           '--to', 'markdown',
                           '--output', md,
-                          '--template', 'C:/reincarnation_tech/jupyter_template.tpl',
+                          '--template', f'{BLOG_ROOT_DIR}/jupyter_template.tpl',
                           ipynbFile])
 
     p.wait()
@@ -56,12 +58,12 @@ def createNoteBookMD(ipynbFile, root, exportPath):
 
 if __name__ == "__main__":
 
-    root = "C:/reincarnation_tech/notebooks"
-    md = "C:/reincarnation_tech/docs/60_JupyterNotebook"
+    root = f"{BLOG_ROOT_DIR}/notebooks"
+    md = f"{BLOG_ROOT_DIR}/docs/60_JupyterNotebook"
 
     if os.path.exists(md):
         shutil.rmtree(md, True)
-        os.makedirs(md)
+    os.makedirs(md)
 
     ipynbFiles = glob.glob(root + "/*.ipynb")
 
