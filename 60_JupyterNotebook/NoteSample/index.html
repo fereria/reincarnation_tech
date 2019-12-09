@@ -2912,71 +2912,12 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        テストノートブック
-      </label>
     
     <a href="./" title="テストノートブック" class="md-nav__link md-nav__link--active">
       テストノートブック
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">目次</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-1" title="1. [1]:" class="md-nav__link">
-    1. [1]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-2" title="2. [2]:" class="md-nav__link">
-    2. [2]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-3" title="3. [3]:" class="md-nav__link">
-    3. [3]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-5" title="4. [5]:" class="md-nav__link">
-    4. [5]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-7" title="5. [7]:" class="md-nav__link">
-    5. [7]:
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-        <li class="md-nav__item">
-          <a href="#__comments" title="コメント" class="md-nav__link md-nav__link--active">
-            コメント
-          </a>
-        </li>
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -3276,56 +3217,8 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
   
-    <label class="md-nav__title" for="__toc">目次</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-1" title="1. [1]:" class="md-nav__link">
-    1. [1]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-2" title="2. [2]:" class="md-nav__link">
-    2. [2]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-3" title="3. [3]:" class="md-nav__link">
-    3. [3]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-5" title="4. [5]:" class="md-nav__link">
-    4. [5]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-7" title="5. [7]:" class="md-nav__link">
-    5. [7]:
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-        <li class="md-nav__item">
-          <a href="#__comments" title="コメント" class="md-nav__link md-nav__link--active">
-            コメント
-          </a>
-        </li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -3340,9 +3233,39 @@
                   <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/60_JupyterNotebook/NoteSample.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>テストノートブック</h1>
-                
-                <h4 id="1-1">1. [1]:</h4>
+                <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Change directory to VSCode workspace root so that relative path loads work correctly. Turn this addition off with the DataScience.changeDirOnImportExport setting</span>
+
+<span class="c1"># ms-python.python added</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">try</span><span class="p">:</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..\pyEnv\JupyterUSD_py27&#39;</span><span class="p">))</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+<span class="k">except</span><span class="p">:</span>
+
+    <span class="k">pass</span>
+</pre></div>
+</td></tr></table>
+
+<h4 id="1-1">1. [1]:</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
@@ -3356,12 +3279,9 @@
 </pre></div>
 </td></tr></table>
 
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">True</span>
-</pre></div>
-</td></tr></table>
-
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>True</p>
 </div>
 <h4 id="3-3">3. [3]:</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -3378,28 +3298,16 @@
 </pre></div>
 </td></tr></table>
 
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="n">usda</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="p">(</span>
-    <span class="n">doc</span> <span class="o">=</span> <span class="ss">&quot;&quot;&quot;Generated from Composed Stage of root layer </span>
-<span class="ss">&quot;&quot;&quot;</span>
-<span class="p">)</span>
-
-<span class="n">def</span> <span class="n">Sphere</span> <span class="ss">&quot;hello&quot;</span>
-<span class="err">{</span>
-<span class="err">}</span>
-</pre></div>
-</td></tr></table>
-
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<h1 id="usda-10">usda 1.0</h1>
+<p>(
+    doc = """Generated from Composed Stage of root layer 
+"""
+)</p>
+<p>def Sphere "hello"
+{
+}</p>
 </div>
 <h4 id="4-5">4. [5]:</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># hoge</span>
@@ -3411,28 +3319,13 @@
 </pre></div>
 </td></tr></table>
 
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">---------------------------------------------------------------------------</span>
-
-<span class="n">NameError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="k">call</span> <span class="k">last</span><span class="p">)</span>
-
-<span class="k">c</span><span class="p">:</span><span class="err">\</span><span class="n">pyEnv</span><span class="err">\</span><span class="n">JupyterUSD_py27</span><span class="err">\</span><span class="n">usd</span><span class="err">\</span><span class="n">pyDev</span><span class="err">\</span><span class="n">usdJupyter</span><span class="p">.</span><span class="n">py</span> <span class="k">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="c1">----&gt; 1 test</span>
-
-
-<span class="n">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;test&#39;</span> <span class="k">is</span> <span class="k">not</span> <span class="k">defined</span>
-</pre></div>
-</td></tr></table>
-
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<hr />
+<p>NameError                                 Traceback (most recent call last)</p>
+<p>c:\pyEnv\JupyterUSD_py27\usd\pyDev\usdJupyter.py in <module>()
+----&gt; 1 test</p>
+<p>NameError: name 'test' is not defined</p>
 </div>
                 
                   
