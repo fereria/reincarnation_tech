@@ -23,7 +23,7 @@ FOLDER_REPLACE_STRING = {
     "back-to-top-button": u"検証・考察",
     "study_materials": u"NodeEditorマテリアル学習",
     "study_scripts_reading": u"サンプルコード読んで学習",
-    "imitate": u"HoPySide_BasicPySide_Basicudini写経",
+    "imitate": u"Houdini写経",
     "Env_Maya": u"Maya作業環境構築",
     "PySide_Basic": u"PySide_基本編",
     "python_module": u"Pythonモジュールの使い方",
