@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3519,7 +3543,7 @@ TreeViewを構成するやり方について。  </p>
             <span class="n">p</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">treeItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 そのツリー構造を作成しているのが「setupModelData」関数です。<br />
 Itemを作成するときに親ノードにあたるItemを指定し、<br />
 オブジェクトを作成したらappendChildで親ノードの子にObjectをセットします。  </p>
@@ -3607,7 +3631,7 @@ createIndex(row,column,実体のオブジェクト) を渡すことでModelIndex
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QModelIndex</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 parentItemの実体のTreeItemオブジェクトを取得し、<br />
 childを取得、そしてそのChildの実体とrow,columnから<br />
 createIndexを使用してModelIndexを作成して返します。</p>
@@ -3631,7 +3655,7 @@ createIndexを使用してModelIndexを作成して返します。</p>
         <span class="n">item</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">internalPointer</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 dataは、表示する場所のindexとroleとよばれる「ふるまい方」を受け取って処理をします。<br />
 このroleは、Viewに関係するいろいろな情報の受け取り口になっています。<br />
 例えば「背景の色」であったり、「文字の色」であったり<br />

@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3392,7 +3416,7 @@ PySideデフォルトのTooltipは非常に使いにくいので、自前で作�
 ここにUPしました。  </p>
 <p>今回は主にカスタムTooltip部分と、Item部分をまとめ。</p>
 <h2 id="1-tooltipui">1. Tooltip用UIを作る</h2>
-<p>上のコードのうち、ポイントになるのが表示されるTooltip部分。
+<p>上のコードのうち、ポイントになるのが表示されるTooltip部分。<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -3479,7 +3503,7 @@ PySideデフォルトのTooltipは非常に使いにくいので、自前で作�
         <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
         <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">getText</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 このポイントは setWindowFlagsで設定している <strong>QtCore.Qt.FramelessWindowHint</strong> と、<br />
 ウィンドウを透明にする <strong>QtCore.Qt.WA_TranslucentBackground</strong> の2つです。  </p>
 <p>試しにこの2つをOFFにすると</p>
@@ -3600,10 +3624,10 @@ PySideデフォルトのTooltipは非常に使いにくいので、自前で作�
 <li>出たら閉じる</li>
 </ol>
 <p>ようにします。<br />
-ですが、これだけだとHoverイベントが発生してくれないので
+ですが、これだけだとHoverイベントが発生してくれないので<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">setAcceptHoverEvents</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 HoverEventをOnにしてあげます。  </p>
 <p>今回はテスト用なのでものすごいアレなPopupですが、<br />
 paintEvent内でちゃんと描画さえ書いてあげれば表示までのラグなどもなく<br />

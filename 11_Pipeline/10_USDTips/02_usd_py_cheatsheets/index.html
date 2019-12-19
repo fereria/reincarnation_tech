@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -4163,44 +4187,44 @@
 <h3 id="21-new">2.1. Newシーン</h3>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 usdaを作らずにとりあえずステージを作る場合。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 usdaを作って、新しいステージを作る。  </p>
 <h3 id="22-usd">2.2. USDを開く</h3>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 すでにあるUSDファイルをステージとして開く。</p>
 <h3 id="23">2.3. 保存する</h3>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 開いているusdをそのまま保存。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 メモリ上のみで作成しているUSDをExportする。<br />
 CreateNewして開いて保存する場合、すでにUSDがあるとErrorになってしまうが<br />
 こちらの場合はエラーにならない。</p>
 <h3 id="24-usd">2.4. 現在のUSDの中身を確認する</h3>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 ExportToStringをすると、げんざいのUSDをプリントすることができる  </p>
 <h3 id="25-usd">2.5. 全コンポ結果を反映したUSDを確認する</h3>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stage</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span><span class="o">.</span><span class="n">ExporToString</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 通常のExportToString()の場合、コンポ情報が残った状態で表示される。<br />
 が、すべてのコンポジションの結果をすべて判定（Flatten)した状態で見たい場合は<br />
-上のようにする。
+上のようにする。<br />
 当然のことながら、複雑なコンポを行っている場合Flattenするとファイルサイズは増大する。  </p>
 <h2 id="3-stage">3. Stage関係</h2>
 <h3 id="31-prim">3.1. ステージ内のPrimをトラバースする</h3>
@@ -4234,7 +4258,7 @@ ExportToStringをすると、げんざいのUSDをプリントすることがで
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">openUsd</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH</span> <span class="o">+</span> <span class="s2">&quot;/baseUSD.usda&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">openUsd</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 CompositionのRootのLayer(.usda)を取得する。<br />
 ここで取得出来る Sdf.Find()で取得出来るLayerのPrimは<br />
 いわゆるPrimSpec。</p>
@@ -4251,7 +4275,7 @@ CompositionのRootのLayer(.usda)を取得する。<br />
 <span class="n">stage</span><span class="o">.</span><span class="n">OverridePrim</span><span class="p">(</span><span class="s2">&quot;/over&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s2">&quot;/class&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/722a355c20219131879a48102413e1c4.png" /></p>
 <p>スキーマなしのPrimが作成される。  </p>
 <h3 id="52-stageprim">5.2. StageからPrimを取得する</h3>
@@ -4272,7 +4296,7 @@ CompositionのRootのLayer(.usda)を取得する。<br />
 <span class="c1"># Cubeを作る</span>
 <span class="n">cube</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/hello&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 ConcreteSchemaにはDefine関数があるので、↑のように定義する。</p>
 <h3 id="54-schemaprim">5.4. SchemaオブジェクトからPrimを取得</h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">prim</span> <span class="o">=</span> <span class="n">xform</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
@@ -4285,8 +4309,8 @@ ConcreteSchemaにはDefine関数があるので、↑のように定義する。
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sdfPath</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/base&quot;</span><span class="p">)</span>
 <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">sdfPath</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
-SdfPathは、 / スタートで Stage内のシーングラフを定義する。
+</td></tr></table><br />
+SdfPathは、 / スタートで Stage内のシーングラフを定義する。<br />
 定義したPathで、Primやスキーマの定義を作ることができる。</p>
 <h3 id="62-path">6.2. 各オブジェクトからPath取得</h3>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -4295,7 +4319,7 @@ SdfPathは、 / スタートで Stage内のシーングラフを定義する。
 <span class="n">xformPath</span> <span class="o">=</span> <span class="n">xform</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
 <span class="n">attrPath</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Pathを取得したいPrimやAttribute、Primオブジェクトで .GetPath() する。<br />
 AttributeのPathは /base.test のように . で表現される。  </p>
 <h3 id="63-sdfpath">6.3. SdfPathが何を指しているか確認する</h3>
@@ -4305,7 +4329,7 @@ AttributeのPathは /base.test のように . で表現される。  </p>
 <span class="k">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsPrimPath</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsTargetPath</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Is～Path　で、SdfPathが何をしてしているのかチェックできる。  </p>
 <h3 id="64-sdfpath">6.4. SdfPath操作</h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -4332,7 +4356,7 @@ Is～Path　で、SdfPathが何をしてしているのかチェックできる�
 <span class="n">color_attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Color3d</span><span class="p">)</span>
 <span class="n">color_attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">Gf</span><span class="o">.</span><span class="n">Vec3d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 ValueTypeNamesでの型指定方法は<a href="../01_usd_py_docs/">こちら</a>を参照。<br />
 ColorやVectorなどの型はGfモジュールにある定義を使用してセットする。</p>
 <h3 id="72-attribute">7.2. Attributeから値を取得する</h3>
@@ -4351,7 +4375,7 @@ ColorやVectorなどの型はGfモジュールにある定義を使用してセ�
 <span class="n">props</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPropertiesInNamespace</span><span class="p">(</span><span class="s1">&#39;ns&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 プロパティ名・アトリビュート名にはNamespaceをつけることができる。<br />
 つけかたは Namespace:hogehoge のように : で区切ればOK。<br />
 Namespaceをつけておくと、GetPropertiesInNamespace関数を使用して<br />
@@ -4363,7 +4387,7 @@ Namespaceをつけておくと、GetPropertiesInNamespace関数を使用して<b
 <span class="k">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetNamespace</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">SplitName</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 このNamespaceやプロパティ名は、プロパティオブジェクトで取得することができる。  </p>
 <h3 id="74-relationship">7.4. Relationshipを使用する</h3>
 <h4 id="741-relationship">7.4.1. Relationshipを作成</h4>
@@ -4386,14 +4410,14 @@ Namespaceをつけておくと、GetPropertiesInNamespace関数を使用して<b
 <h4 id="742-relationship">7.4.2. Relationship先を取得</h4>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">attrPath</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 GetTargets()を使用すると、接続先のSdfPathを取得できる。</p>
 <h3 id="75-sdfpathattribute">7.5. SdfPathからAttributeの値を取得する</h3>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">relPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetObjectAtPath</span><span class="p">(</span><span class="n">attrPath</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">relPrim</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 SdfPathからPrimまたはAttributeを取得したい場合は、StageのGetObjectAtPath()を使用する。<br />
 Objectで取得したばあい、Primの場合はPrimオブジェクトが帰ってくるし<br />
 AttributeだったらAttributeオブジェクトが帰ってくる。</p>
@@ -4425,8 +4449,8 @@ AttributeだったらAttributeオブジェクトが帰ってくる。</p>
 <span class="c1"># namespaceを指定した場合</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">SetCustomDataByKey</span><span class="p">(</span><span class="s1">&#39;test:userCustomMeta&#39;</span><span class="p">,</span> <span class="s1">&#39;fuga&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
-<img alt="" src="https://gyazo.com/23450b78037332d4b4022583c2efdb0b.png" />
+</td></tr></table><br />
+<img alt="" src="https://gyazo.com/23450b78037332d4b4022583c2efdb0b.png" /><br />
 CustomDataでNamespaceをつけると、Dict型をネストできる。<br />
 val['test']['userCustomData']<br />
 アクセスするときはこんな感じにできる。  </p>
@@ -4438,7 +4462,7 @@ val['test']['userCustomData']<br />
 <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/xform&#39;</span><span class="p">)</span>
 <span class="n">xform</span><span class="o">.</span><span class="n">AddTranslateOp</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Xformableクラスに各種Tranlsform操作用の関数があるので<br />
 それを使用すればTransformができる。  </p>
 <h3 id="92-primtransform">9.2. PrimからTransformする場合</h3>
@@ -4448,7 +4472,7 @@ Xformableクラスに各種Tranlsform操作用の関数があるので<br />
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="n">UsdGeom</span><span class="o">.</span><span class="n">XformCommonAPI</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span><span class="o">.</span><span class="n">SetRotate</span><span class="p">((</span><span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Xformオブジェクトではなく、Primオブジェクトから<br />
 Transform処理をしたい場合はXformCommonAPIを使用する。</p>
 <h2 id="10">10. コンポジション関係</h2>
@@ -4496,7 +4520,7 @@ Transform処理をしたい場合はXformCommonAPIを使用する。</p>
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">refPrimA</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/World/BookGrp/Book&quot;</span><span class="p">)</span>
 <span class="n">refPrimA</span><span class="o">.</span><span class="n">GetReferences</span><span class="p">()</span><span class="o">.</span><span class="n">AddReference</span><span class="p">(</span><span class="n">kitchenSetRoot</span> <span class="o">+</span> <span class="s1">&#39;Book/Book.usd&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Referenceで読み込みたいusdをPrimに対してセットする</p>
 <h3 id="103-inherits">10.3. Inherits</h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1

@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3631,7 +3655,7 @@ GitLabは、自分で作ったリポジトリを自分でフォークするこ�
 <p>Groupに自分のプルリクがマージされたら、その結果を自分のForkしたリポジトリに適応します。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 まずはmasterブランチに切り替えて  </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="k">add</span> <span class="n">upstream</span> <span class="o">&lt;</span><span class="n">URL</span><span class="o">&gt;</span>
 </pre></div>
@@ -3642,13 +3666,13 @@ GitLabは、自分で作ったリポジトリを自分でフォークするこ�
 <p>追加すると、Remoteに upstream が追加されます。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="k">fetch</span> <span class="n">upstream</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 追加したリモートをFetchして</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
 <span class="n">git</span> <span class="n">merge</span> <span class="n">upstream</span><span class="o">/</span><span class="n">master</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 upstreamのmasterを自分のmasterにマージします。  </p>
 <p><img alt="" src="https://gyazo.com/5577f0c9aa30fb4c277f87d028838a6b.png" /></p>
 <p>変更内容が取り込まれました。<br />
@@ -3659,7 +3683,7 @@ upstreamのmasterを自分のmasterにマージします。  </p>
 GUIを使用します。</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">gui</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/1a9f38cca286d2d43ab0989e02760827.png" /></p>
 <p>addするのとかはコマンドでやるのは地味にめんどくさいけど、GUIならわりと楽。<br />
 UnstagedChangesにファイルがある状態で「Stage Changed」するとコミットできる状態になるので<br />
@@ -3672,10 +3696,10 @@ UnstagedChangesにファイルがある状態で「Stage Changed」するとコ�
 <p><img alt="" src="https://gyazo.com/9a7109ed85b938889e6ea94984c74abc.png" /></p>
 <h2 id="4">4. ローカルブランチをマージする</h2>
 <p>ローカルブランチで、別ブランチを切った状態で作業しているときに<br />
-ほかのブランチをマージしたい場合は、とりこみ先でチェックアウトをして
+ほかのブランチをマージしたい場合は、とりこみ先でチェックアウトをして<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="err">取り込みたいリポジトリ名</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 これで、リポジトリを現在のブランチにマージすることができる。</p>
 <h2 id="5">5. ローカルリポジトリとリモートリポジトリで衝突した場合</h2>
 <p>衝突してしまったら、まずローカル側を逃がしてからPullしてマージする。</p>
@@ -3693,7 +3717,7 @@ UnstagedChangesにファイルがある状態で「Stage Changed」するとコ�
 <p>そしてリモートの状態をPullして最新の状態にする</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">git</span> <span class="n">stash</span> <span class="n">pop</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Stashに入れてた内容を元に戻す。<br />
 取り出したらコンフリクトが発生するので、必要に応じてマージしてからコミットする。<br />
 マージ処理はわりと自動でやってくれる。<br />

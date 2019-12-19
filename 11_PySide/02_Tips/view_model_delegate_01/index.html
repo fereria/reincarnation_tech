@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3610,7 +3634,7 @@
         <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">Vertical</span> <span class="ow">and</span> <span class="n">role</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 TableViewの場合は、列・行それぞれにHeaderが表示できます。<br />
 ので、Headerに何を表示するかは orientation を使用することで指定することができます。  </p>
 <h3 id="12-flags">1.2. flags</h3>
@@ -3620,7 +3644,7 @@ TableViewの場合は、列・行それぞれにHeaderが表示できます。<b
 
         <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsEditable</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsSelectable</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsEnabled</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 flagsでは、そのセルごとの編集フラグを指定できます。<br />
 今回はセルごとに編集できるようにしたいので Editable,Selectable,Enabled を指定しておきます。<br />
 ここを指定しなければ、編集不可状態になってしまいます。  </p>
@@ -3751,15 +3775,15 @@ Modelの行はListで持っているので<br />
 
 <p>描画部分は paint関数をオーバーライドすることで作成します。<br />
 TableViewの場合は、列ごとに何を表示するかを変える必要があります。  </p>
-<p>各セルに「表示したい」データというのは、Modelクラスのdata(QtCore.Qt.DataRole) で指定した方法で受け取ります。
+<p>各セルに「表示したい」データというのは、Modelクラスのdata(QtCore.Qt.DataRole) で指定した方法で受け取ります。<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 この場合 QtCore.Qt.DisplayRole で指定した値になります。<br />
 値を取得できたら、実際の描画をします。<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">rect</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">TextWordWrap</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 その値を文字列として表示したい場合はQPainterのdrawText()で描画すればOKです。  </p>
 <h3 id="31-widgets">3.1. セルに対してWidgetsを配置したい</h3>
 <p>drawRectなどを使用して描画することもできますが、よくあるWidgetsはデフォルトで用意されていて<br />
@@ -3886,7 +3910,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
             <span class="n">value</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">model</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">)</span>
             <span class="n">editor</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 createEditorで作成したWidgetsに対して、「現在の値」をセットするのが setEditorData。<br />
 いわゆるここが「編集する一歩手前」状態になります。  </p>
 <h4 id="423-setmodeldata">4.2.3. setModelData</h4>
@@ -3928,7 +3952,7 @@ Modelに値をセットします。<br />
 <h2 id="5">5. こんなかんじで...</h2>
 <p>Delegateを使用することで各セルごとの挙動を細かくカスタムできるようになりました。  </p>
 <p>複数のデータを編集したりするようなUIを作る場合<br />
-FormLayoutでWidgetsを配置していくのも手ですが、
+FormLayoutでWidgetsを配置していくのも手ですが、<br />
 ViewとModelとDelegateを合わせてつかうことで<br />
 データ本体はModelで管理し、データの入出力や表示は列ごとにDelegateでコントロール。<br />
 そして表示はViewで行えるようになります。  </p>

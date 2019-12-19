@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3492,8 +3516,8 @@ option.rect は、現在のセルの矩形を<br />
 それぞれ取得することができます。  </p>
 <p>指定のセル色を決めたら、 fillRect で　指定色でセルを塗りつぶします。  </p>
 <p>このpainterで何かをしたい場合は、<br />
-1. 塗りつぶし色をsetBrushで指定
-2. 線の色をsetPenで指定
+1. 塗りつぶし色をsetBrushで指定<br />
+2. 線の色をsetPenで指定<br />
 3. 描画する</p>
 <p>という順番で処理を書きます。<br />
 一度セットすると、次の処理でもセットされた色や塗りつぶし方法の指定が引き継がれるのに<br />
@@ -3523,7 +3547,7 @@ option.rect は、現在のセルの矩形を<br />
             <span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getCheckBoxRect</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
             <span class="n">painter</span><span class="o">.</span><span class="n">drawPixmap</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">pix</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 まずpaint内の描画。  </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -3568,12 +3592,12 @@ option.rect は、現在のセルの矩形を<br />
 画像表示位置と同じ矩形でマウス位置が範囲内かどうかを判定して、<br />
 範囲内でクリックされている場合は、セルのBool値を変更します。  </p>
 <p>この部分も若干処理から変更していて<br />
-前回は
+前回は<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()]</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">(),</span> <span class="ow">not</span> <span class="n">currentValue</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 このように、modelのitems(表示しているオブジェクトの配列)のsetData で値を指定していましたが<br />
 modelのsetData関数をオーバーライドした関数を作成し、<br />
 そちら経由で値を登録するようにしました。  </p>
@@ -3675,7 +3699,7 @@ setDataでセットして、 dataChangedとheaderDataChangedするほうが色�
             <span class="n">painter</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QFont</span><span class="p">(</span><span class="s2">&quot;メイリオ&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
             <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">TextWordWrap</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 そしてpaint内で描画処理を書きます。  </p>
 <h2 id="3">3. セルのサイズをコントロールする</h2>
 <p>最後に一番ハマったのがセルサイズ。<br />
@@ -3685,7 +3709,7 @@ setDataでセットして、 dataChangedとheaderDataChangedするほうが色�
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">tableView</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeToContents</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tableView</span><span class="o">.</span><span class="n">verticalHeader</span><span class="p">()</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeToContents</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 まず、MainWindowでtableViewを作っているところで<br />
 HeaderサイズのResizeModeをResizeToContentsに変更します。<br />
 このモードにすると、DelegateのSizeHintsをもとにした大きさに<br />

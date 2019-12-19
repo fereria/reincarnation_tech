@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3678,22 +3702,22 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
 が、PySideの場合なのかはわかりませんが<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 こんな感じで setProperty(プロパティ名、初期値)<br />
 のように指定する必要がありました。  </p>
 <p>そしてこのプロパティを使用する場合は<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="err">プロパティ名</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 のようにする必要があります。  </p>
 <h3 id="22-propertyanimation">2.2. PropertyAnimationの引数</h3>
 <p>アニメーションを行う　PropertyAnimation　ですが、<br />
 引数は　プロパティのあるオブジェクト、プロパティ名　のように指定します。<br />
-が、
+が、<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ani</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
-<img alt="" src="https://gyazo.com/644bde1386e5bafe9051158f400f13b6.png" />
+</td></tr></table><br />
+<img alt="" src="https://gyazo.com/644bde1386e5bafe9051158f400f13b6.png" /><br />
 これだとエラーになってしまいます。  </p>
 <p>対応方法は、エラーのSupported signaturesを見て分かるとおり<br />
 第二引数は「ByteArray」である必要があるので</p>
@@ -3710,18 +3734,18 @@ QObjectを継承している「 <strong>QGraphicsObject</strong> 」を使用す
 <h3 id="24">2.4. ずっとループする</h3>
 <p>PropertyAnimationには「何回ループするか」の設定はあるのですが<br />
 ずっとループしてほしいという設定はありません。<br />
-ので、ずっとループしたい場合は
+ので、ずっとループしたい場合は<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 このようにすればとりあえずできます。  </p>
 <p>が、これだと絶対に終了しなくなるので<br />
 今回はBoolでフラグを作って、ダブルクリックで停止と再開をできるようにしています。  </p>
 <h3 id="25">2.5. アニメーションカーブの指定</h3>
-<p>アニメーションカーブは
+<p>アニメーションカーブは<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">setEasingCurve</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QEasingCurve</span><span class="o">.</span><span class="n">OutCubic</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 これで指定できます。  </p>
 <p>今回は    </p>
 <p><img alt="" src="https://gyazo.com/e7cade6c28d215792ea8b5d16fdec7d5.png" />  </p>

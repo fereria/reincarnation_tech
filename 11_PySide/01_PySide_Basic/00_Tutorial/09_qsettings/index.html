@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3674,7 +3698,7 @@
 <p>まず、情報を保存したい場合は QSettingsオブジェクトを作成します。</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="p">(</span><span class="s2">&quot;setting.ini&quot;</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="o">.</span><span class="n">IniFormat</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 保存ファイルのフォーマットは、ini以外にもレジストリなども選べますが<br />
 iniで出力するのが色々と楽なので今回はiniを使用します。<br />
 引数の1つめがiniファイルのフルパス＋名前を指定します。  </p>
@@ -3699,7 +3723,7 @@ iniに保存された情報がない場合はNoneが帰ってきます。<br />
 そのため、<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span><span class="o">.</span><span class="n">row</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 保存時は、 indexのrow()でintを取得し保存します。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -3717,7 +3741,7 @@ ListViewにセットしているModelの index関数を使用して、ModelIndex
 ので、選択情報も<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;grp&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">btnGrp</span><span class="o">.</span><span class="n">checkedId</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 ButtonGroupのcheckedIdを使用して保存します。  </p>
 <p>復帰させる場合は</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -3740,7 +3764,7 @@ ButtonGroupのcheckedIdを使用して保存します。  </p>
 <span class="c1"># UIの位置保存</span>
 <span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">saveGeometry</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 ほぞんされる値はバイナリ値になりますが<br />
 その辺はあまり意識しないでもOKです。</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -3751,12 +3775,12 @@ ButtonGroupのcheckedIdを使用して保存します。  </p>
 <span class="c1"># UIの位置復帰</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">restoreGeometry</span><span class="p">(</span><span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 復帰するときは restore～を実行することで元に戻せます。</p>
 <p>今回はGUIの値の復帰に使用していましたが  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">,</span><span class="s1">&#39;fugafuga&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 のようにすれば、Widgetの値にかかわらずに値を保存出来るので<br />
 外部ファイルに書いておきたい物がある場合は<br />
 使用すると便利かなぁと思います。</p>

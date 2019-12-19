@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3632,7 +3656,7 @@ ListViewを説明していきたいと思います。  </p>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">([</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="s1">&#39;bbb&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 今回のサンプルでは、この部分がModelを作成している部分になります。  </p>
 <p>モデルはかなり色々とカスタマイズできますが、ソレをするとわけが分からなく<br />
 なるので、今回は最もシンプルな「QStringListModel」を使用して<br />
@@ -3678,25 +3702,25 @@ QStringListModelの場合は、内部的にはlist型を持っているので、
 再度setStringListで登録してあげれば<br />
 Listに新しい項目が追加することができます。  </p>
 <h3 id="32-str">3.2. 現在選択している項目をstrで取得する</h3>
-<p>Listをクリックしたときに、現在選択している項目を取得したい場合は
+<p>Listをクリックしたときに、現在選択している項目を取得したい場合は<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">listClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="c1"># 現在選択している文字列を取得する</span>
         <span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 このようにします。<br />
 clicked のSlotを設定すると、argsでindexを取得することができます。<br />
 このindexは、現在選択されているデータにアクセスするためのタグのような<br />
 ものになっています。<br />
 <a href="https://doc.qt.io/qtforpython/PySide2/QtCore/QModelIndex.html#PySide2.QtCore.QModelIndex">https://doc.qt.io/qtforpython/PySide2/QtCore/QModelIndex.html#PySide2.QtCore.QModelIndex</a><br />
-このindexはQModelIndexオブジェクトで、ここからデータを取得したい場合は
+このindexはQModelIndexオブジェクトで、ここからデータを取得したい場合は<br />
 index.data() にアクセスすればOKです。  </p>
-<p>スロットではなく、選択しているデータを取得したい場合は、
+<p>スロットではなく、選択しているデータを取得したい場合は、<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 これでindexを取得できるので、取得した後に index.data() で<br />
 データを取得してくればOKです。  </p>
 <h3 id="33-match">3.3. リストから指定の文字を探してきてMatchしたら選択</h3>
@@ -3717,7 +3741,7 @@ index.data() にアクセスすればOKです。  </p>
             <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Listから指定の文字でindexを探したい場合は matchを使用します。<br />
 これは若干使い方がわかりにくいですが、  </p>
 <p><img alt="" src="https://gyazo.com/62e2dd0b433391a79f7ab13228cd418e.png" /></p>
@@ -3742,7 +3766,7 @@ Listから指定の文字でindexを探したい場合は matchを使用しま�
             <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">strList</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">txt</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 list.index('moji')<br />
 を使用することでlist型のどこに指定の文字が入っているかを数字で取得して<br />
 index(row,column) のrowにその数字を入れてIndexを取得してきてから<br />

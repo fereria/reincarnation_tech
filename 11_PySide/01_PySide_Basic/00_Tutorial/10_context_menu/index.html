@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3618,7 +3642,7 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">action_01</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s1">&#39;ほげほげ&#39;</span><span class="p">)</span>
 <span class="n">action_01</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 まず、実行させたいWidgetを親にしたMenuを作成します。<br />
 そして、メニューに追加するには addAction(メニュー名) を追加します。<br />
 追加すると、QActionオブジェクトが帰ってくるので<br />
@@ -3630,7 +3654,7 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 <h3 id="22">2.2. セパレーターを追加する</h3>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">menu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Menuの途中に線を入れたい場合は、入れたいところでこのSeparatorを追加します。  </p>
 <h3 id="23">2.3. サブメニューを追加する</h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -3651,7 +3675,7 @@ addMenuを追加すればOKです。  </p>
 <p>最後に、設定ができたら表示します。</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">mapToGlobal</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 表示するには exec_(Menuを表示するPoint) を使用します。  </p>
 <p>customContextMenuRequested のSignalは、現在のマウスポジションを引数で受け取るのですが<br />
 このPointは現在のWidgetsのローカル座標が返ってきてしまいます。<br />
@@ -3661,14 +3685,14 @@ addMenuを追加すればOKです。  </p>
 Globalに変換してくれます。<br />
 ので、この関数を使用すればローカル座標だった pos を グローバルに変換して<br />
 正しい位置にメニューを表示することができます。  </p>
-<p>一応、
+<p>一応、<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># QCursorでカーソルのグローバルポジションを取得する</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QCursor</span><span class="p">()</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">pos</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 でも、同じ効果となります。</p>
                 
                   

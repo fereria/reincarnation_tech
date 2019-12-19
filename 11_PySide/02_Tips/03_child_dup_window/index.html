@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3391,7 +3415,7 @@
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 以前の方法はこんな感じ。<br />
 なにをしているかというと、  </p>
 <ol>
@@ -3419,7 +3443,7 @@
     <span class="k">if</span> <span class="n">ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">shiboken2</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">ptr</span><span class="p">),</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 shiboken2を使ってMayaの本体のQMainWindowで取得している<br />
 Windowを、parent()で再度取得している形になります。  </p>
 <p>一応これでも閉じるのですが、<br />
@@ -3464,7 +3488,7 @@ findChildren関数が動かないという問題がありました。<br />
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 findChildrenで、指定クラスの子を探すのではなく<br />
 全ての子オブジェクトのクラス名で判定して、同じなら閉じるようにすれば<br />
 reloadしようがScriptEditorで実行しようが問題ありません。  </p>

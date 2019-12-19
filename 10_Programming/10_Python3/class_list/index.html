@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3378,7 +3402,7 @@
 <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 まず、こんな感じにPythonのクラスのメンバ変数に「List」を定義する。<br />
 そうすると  </p>
 <p><img alt="" src="https://gyazo.com/771806fa0672becd645ed707a2f0ff49.png" /></p>
@@ -3418,7 +3442,7 @@
 この2つはクラスの変数という意味で似たものですが全然違うものなのを今日知りました。  </p>
 <p>上のほうは <strong>「クラス変数」</strong> と呼ばれるもので、別インスタンスであっても共通の値で<br />
 クラス内で使う場合は ClassName.value のようにして扱い、<br />
-インスタンスをまたいでメモリを共有する変数になる。
+インスタンスをまたいでメモリを共有する変数になる。<br />
 対して、下のほうは <strong>「インスタンス変数」</strong> と呼ばれるもので、インスタンス固有の値を持つようになる。<br />
 クラス内では、 self.value のように書くのは（当たり前だが） self = インスタンス<br />
 という意味で、自信のインスタンスのvalueを参照...という意味になる。  </p>
@@ -3431,7 +3455,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 このような書き方をしていると、クラス変数をインスタンス変数で上書きしてしまうので<br />
 あまり意味がなくなってしまう。<br />
 ので、インスタンス変数として使いたいなら <strong>init</strong> 内で初期化すべきだし<br />

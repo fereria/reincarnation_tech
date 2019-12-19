@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3463,10 +3487,10 @@
 QtDesignerを使用すると、WidgetをWindowに対して視覚的にわかりやすく並べることができます。</p>
 <h2 id="1-designer">1. Designerを起動する</h2>
 <p>PySide2をインストールすると、PySide2のインストールフォルダにQtDesignerがインストールされます。<br />
-インストールされる場所は、Python3.6の場合C直下ではないので
+インストールされる場所は、Python3.6の場合C直下ではないので<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">where</span> <span class="n">python</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 これでPythonのインストール場所を探し、<br />
 where で表示されたPython##のインストールフォルダ以下の  </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Python36</span><span class="err">\</span><span class="n">Lib</span><span class="err">\</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="err">\</span><span class="n">PySide2</span>
@@ -3513,7 +3537,7 @@ Widgetを配置していきます。  </p>
 <p>前回からの大きな変更点として、「作成したuiファイルを読み込む」行が追加されました。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">QUiLoader</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CURRENT_PATH</span><span class="p">,</span> <span class="s1">&#39;sample_btn_ui.ui&#39;</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 追加する行はこの行になります。<br />
 この「UiLoader」とは、QtDesignerで作成したUIを<br />
 「複数のWidgetを使って作ったカスタムWidget」として読み込むための関数になります。<br />
@@ -3530,7 +3554,7 @@ Signal-Slotと呼ばれる機能を使用します。<br />
 詳細は次回説明します。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_btn</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 QUiLoaderを使用してUIを読むときに「self.ui」にロードをしています。<br />
 ので、この場合は「self.ui.####」という形で、Designerで作成したWidgetにアクセスをすることができます。  </p>
 <p><img alt="" src="https://gyazo.com/dd496d9e609e3b7b54e336a4df500e45.png" /></p>

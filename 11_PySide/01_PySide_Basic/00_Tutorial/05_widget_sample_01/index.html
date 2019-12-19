@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3486,7 +3510,7 @@
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 このコマンドを実行すると、LineEditに入力されている文字列をプリントすることができます。  </p>
 <h2 id="1-widget">1. Widgetの機能を使う方法</h2>
 <h3 id="11">1.1. 取得・セット</h3>
@@ -3495,7 +3519,7 @@
 にアクセスすればOKです。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">self</span><span class="p">.</span><span class="n">lineEdit</span><span class="p">.</span><span class="nb">text</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 上のサンプルの場合、この部分です。<br />
 使いたいWidgetを知りたければ、とりあえず公式Helpを開きます。<br />
 <a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QLineEdit.html">https://doc.qt.io/qtforpython/PySide2/QtWidgets/QLineEdit.html</a><br />
@@ -3505,7 +3529,7 @@ LineEditのヘルプはこちら。<br />
 <p>次に、デフォルトですでに文字が入っているようにしたい場合はどうすればいいか。</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 その場合は、setTextを使用します。  </p>
 <p><img alt="" src="https://gyazo.com/00f817aa792826f89306399f24c94fd0.png" /></p>
 <p>実行すると、こんな感じでデフォルトで文字が入った状態になります。  </p>
@@ -3533,7 +3557,7 @@ Widget側のSlotを使用することができます</p>
 <p><img alt="" src="https://gyazo.com/eb3b6ec69fbee8ec25f8e5bb14dfd4be.gif" /></p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">selectAll</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 LineEditの場合は、 setTextやcut copy paste selectAll等がSlotとして用意されています。<br />
 ので、ボタンのconnect先にLineEditのSlotを指定すれば<br />
 ボタンを押せば～～～する　のような事を行うことが出来ます。  </p>
@@ -3542,7 +3566,7 @@ LineEditの場合は、 setTextやcut copy paste selectAll等がSlotとして用
 関数を使用します。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setMaxLength</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 例としてこんな感じ。  </p>
 <p><img alt="" src="https://gyazo.com/f779dd020bfae1f42cc4e1875b6dc039.png" /></p>
 <p>QtDesignerのプロパティエディタにあるWidgetの設定項目を、Python側で編集したい場合は<br />

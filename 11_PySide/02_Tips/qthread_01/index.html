@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3617,7 +3641,7 @@ GUIをクリックしたときに実行する内容が重くて、実行する�
 <p>ログを送信するのには、Signalを使用して<br />
 SignalでメインのGUIに文字を送信する形にしています。  </p>
 <p>これ自体は、ずいぶん昔に<br />
-<a href="http://flame-blaze.net/archives/4477">http://flame-blaze.net/archives/4477</a>
+<a href="http://flame-blaze.net/archives/4477">http://flame-blaze.net/archives/4477</a><br />
 Blogのほうに書いていたのですが、Thread周りが原因でUIがなにも言わずに落ちてしまったり<br />
 Signal周りの挙動やらをちゃんと理解できてなくてうわああああになることがあったので<br />
 改めて調べてみました。  </p>
@@ -3655,10 +3679,10 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
 <p>実行結果がこちら。<br />
 python の id関数は、変数のメモリID(参照先)を確認することができます。<br />
 見ての通り、strの場合はSignalで渡される前と後とでは別のメモリを参照していることがわかります。  </p>
-<p>次に、試しに渡すのをstrからlistに変更してみます。
+<p>次に、試しに渡すのをstrからlistに変更してみます。<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 まず、Signalをlistに変更し、</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -3674,10 +3698,10 @@ python の id関数は、変数のメモリID(参照先)を確認することが
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 runを変更します。</p>
 <p><img alt="" src="https://gyazo.com/d357ea188831a2db1e29dcf409145ae4.png" /></p>
-<p>おわかりいただけるだろうか...
+<p>おわかりいただけるだろうか...<br />
 strの場合は別のメモリを参照していたのが、<br />
 listの場合は同じメモリを参照しています。  </p>
 <p>これでなにが起きるかというと</p>
@@ -3728,7 +3752,7 @@ listの場合は同じメモリを参照しています。  </p>
 <p>単純なクラスを作成し、</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="n">TestObj</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Signalで送れるようにして  </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -3767,7 +3791,7 @@ listと同じくメモリが共有されているので、書き換えができ�
 immutableなものは変更不可な型の場合はメモリは共有されません。<br />
 (int,float,complex,string,tuple,bite等)<br />
 逆を言えば、それ以外は参照渡しで渡されてしまうわけです。<br />
-詳しいところは↓にわかりやすく書かれていました。
+詳しいところは↓にわかりやすく書かれていました。<br />
 <a href="https://crimnut.hateblo.jp/entry/2018/09/05/070000">https://crimnut.hateblo.jp/entry/2018/09/05/070000</a></p>
 <h2 id="4">4. じゃあどうすれば</h2>
 <p>意図している場合はOKですが、メインとサブのスレッドで書き換えは起きてほしくない<br />

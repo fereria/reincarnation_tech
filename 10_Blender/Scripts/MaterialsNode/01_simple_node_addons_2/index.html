@@ -1589,6 +1589,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3577,7 +3601,7 @@ UIにウィジェットというかパーツを追加する方法の2つです�
 <p>Blenderの各種プロパティを実装するときに使用するのが「RNAプロパティ」と呼ばれる物。<br />
 これは、Blenderのデータ構造を拡張するための構造体で、DTO(Data Transfer Object)とのこと。<br />
 と言う説明だけみても？？？ですが、<br />
-とりあえず、各オブジェクトに追加のプロパティを追加することができる機能という認識でよさそうです。  <a href="https://dskjal.com/blender/rna-vs-id-property.html">参考</a>
+とりあえず、各オブジェクトに追加のプロパティを追加することができる機能という認識でよさそうです。  <a href="https://dskjal.com/blender/rna-vs-id-property.html">参考</a><br />
 MayaのAddAttrとは違って、同種のノードタイプに一律でプロパティを拡張することができます。  </p>
 <p>既存のオブジェクトに対して設定するように、自分で作成したカスタムノードに対してプロパティを<br />
 作りたい場合は、このRNAプロパティの追加をします。  </p>
@@ -3587,11 +3611,11 @@ MayaのAddAttrとは違って、同種のノードタイプに一律でプロパ
                           <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                           <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Text to show, if set will overide file&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 プロパティはクラスの変数として指定してあげます。<br />
 <a href="https://docs.blender.org/api/blender2.8/bpy.types.Property.html#bpy.types.Property">プロパティ関係はこのHelp参照</a></p>
 <h2 id="4">4. 関数をオーバーライドする</h2>
-<p>プラグインを作る場合は、
+<p>プラグインを作る場合は、<br />
 <a href="https://docs.blender.org/api/blender2.8/bpy.types.Node.html">Nodeクラスのヘルプ</a>を参考にして、自分が実装したい関数を<br />
 オーバーライドして、自分のやりたい処理を作っていきます。  </p>
 <p>今回のサンプルの場合は</p>
@@ -3629,7 +3653,7 @@ MayaのAddAttrとは違って、同種のノードタイプに一律でプロパ
 </td></tr></table>
 
 <p>BlenderでUIにオブジェクトを追加したい場合は<br />
-<strong>追加したいレイアウト.追加するオブジェクト（option）</strong>
+<strong>追加したいレイアウト.追加するオブジェクト（option）</strong><br />
 このように指定します。<br />
 今回は、単純に文字を表示したいだけだったので、labelオブジェクトを追加しています。<br />
 forで複数のラベルを追加しているのは<br />

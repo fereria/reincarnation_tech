@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3541,13 +3565,13 @@ USD は、これらの「ルール」を組み合わせて１つのステージ�
 <h2 id="2">2. 合成順序の決まり事</h2>
 <p>コンポジションアークには複数のルールがるということがわかりました。<br />
 しかし、ここで１つ疑問がおきます。<br />
-それが、
+それが、<br />
 <strong>複数の合成方法が同時に存在していた場合はどうなるのだろう？</strong><br />
 ということです。</p>
 <p><img alt="" src="https://gyazo.com/a3e2e76893dcdc9304cce43ed48ef32c.png" /></p>
 <p>これは前回のプリムスペックの説明の時に書いた図で、合成方法は「サブレイヤー」によって<br />
 合成されている状態です。</p>
-<p>コンポジションの合成は「レイヤー」と「レイヤー」のそれぞれの <strong>意見（定義）</strong>
+<p>コンポジションの合成は「レイヤー」と「レイヤー」のそれぞれの <strong>意見（定義）</strong><br />
 をどのように「調停」し、最終的なステージにするか...という話です。<br />
 （この個別の意見が、いわゆる「スぺック」とつくもの 例）プリムスペック、アトリビュートスペック等）</p>
 <p>上の図の場合は、すべてがサブレイヤーによって合成されています。<br />
@@ -3561,7 +3585,7 @@ USD のコンポジションアークは、この合成順序が明確に決め�
 <h2 id="3-livrps">3. LIVRPS 原則</h2>
 <p>LIVRPS の原則とは、<br />
 <strong>L</strong>ocal <strong>I</strong>nherits <strong>V</strong>ariants <strong>R</strong>eference <strong>P</strong>ayload <strong>S</strong>pecialize の頭文字をとって LIVRPS となっていて<br />
-レイヤーとレイヤーの「合成時のオーバーラップ・コンフリクト」の解決を
+レイヤーとレイヤーの「合成時のオーバーラップ・コンフリクト」の解決を<br />
 <strong>どのような順序で合成方法を解決すればよいか Pixar 社の長い制作の歴史のなかで見いだされた最適解</strong><br />
 の原則になります。</p>
 <h3 id="31-sdfpath">3.1. SdfPath について</h3>
@@ -3623,7 +3647,7 @@ SdfPath とは、USD 内のシーングラフの階層構造をファイルパ�
 
 <p>1 つの usda ファイル内に継承元のクラスがあり、それを継承したプリムがあり<br />
 そのプリムに対して値がセットされている例。</p>
-<p><img alt="" src="https://gyazo.com/9c6d2f20d92327eacbc4e27e36855a16.png" />
+<p><img alt="" src="https://gyazo.com/9c6d2f20d92327eacbc4e27e36855a16.png" /><br />
 図にするとこんな感じです。（四角部分が Prim）</p>
 <p>この状態でみると、<br />
 testValue が 2 つ定義されているのがわかります。</p>
@@ -3853,7 +3877,7 @@ LIVRPS の原則によって「Inherits（継承）」のほうが強いので�
 <p>なお、今回はアトリビュートでの合成を例にしましたが、プリムに関しても同様の解決方法になります。</p>
 <h2 id="4">4. まとめ</h2>
 <p>ここまで見たとおり、USD のコンポジションは<br />
-一貫したルールによってプリムやアトリビュート定義の
+一貫したルールによってプリムやアトリビュート定義の<br />
 これは、階層が深くなっていったりコンポジションの関係性複雑になっていっても<br />
 一貫した USD のコンポジションの絶対ルールであり<br />
 このルールが厳密かつ一貫しているからこそ「強力かつ柔軟」な合成を可能にしています。</p>

@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3466,7 +3490,7 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">d</span> <span class="n">I</span><span class="p">:</span><span class="err">\</span><span class="n">jupyter_notebook_root</span>
 <span class="n">jupyter</span> <span class="n">notebook</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 とりあえず、こんな感じで固定の場所でJupyterを起動できるBatchを作り<br />
 裏でnotebookを起動しておきます。<br />
 しかし、このnotebookをブラウザから使用すると、</p>
@@ -3479,13 +3503,13 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 <p>が、Tokenを入れたりするのが面倒だったので</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="c1">--generate-config</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 まず、Configを作り、  </p>
 <p>C:/Users/&lt;ユーザー名&gt;/.jupyter  </p>
 <p>下にある、 jupyter_notebook_config.py の中の<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Tokenを消しておいて、  </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;sha1:～～～～&quot;</span>
 </pre></div>
@@ -3517,7 +3541,7 @@ Tokenを消しておいて、  </p>
 <p>まず、usdviewで開く前に　USDファイルの中身をプリントで確認してみます。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 たびたび確認をしたくなるので、ここだけをセルで分けておいて<br />
 必要に応じてプリントしてみます。</p>
 <p><img alt="" src="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png" /></p>
@@ -3544,7 +3568,7 @@ Tokenを消しておいて、  </p>
 <span class="c1"># Export</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;PATH&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 こんな感じでメモリ上にシーンを作り、最後にExportする方が<br />
 毎回新規シーンでテストできてお手軽かなと思います。（たぶん）  </p>
 <h3 id="42-usdview">4.2. usdviewで開く</h3>
@@ -3554,7 +3578,7 @@ Tokenを消しておいて、  </p>
 </td></tr></table>
 
 <p>Windowsでusdviewを使う場合のトラップなのか<br />
-引数で渡すusdファイルはフルパスである必要がある上、引数にusdファイルを必ず渡す必要があります。
+引数で渡すusdファイルはフルパスである必要がある上、引数にusdファイルを必ず渡す必要があります。<br />
 また、このツール起動が尋常じゃなく遅いので<br />
 初回のみ適当なファイルで開いておいて<br />
 ツール上のメニューからファイルをNewOpenしたりReloadしたりするのがオススメです。  </p>

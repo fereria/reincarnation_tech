@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3641,7 +3665,7 @@
 こちらはUSDフォーマットの内部構造の記述についてのAsciiファイルとして記述した場合のチートシートです。  </p>
 <h2 id="1-usdpath">1. Usdファイル内でのPathの記述方法</h2>
 <p>USD内で外部ファイルを読んでいる場合は @@ で囲う。<br />
-例）Reference等
+例）Reference等<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3656,7 +3680,7 @@
 <span class="err">{</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 USD内のSdfPathを指定する場合は</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -3668,7 +3692,7 @@ USD内のSdfPathを指定する場合は</p>
 <span class="err">{</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 &lt;&gt;で囲う。<br />
 / から始まる場合はRootからの絶対パス、なにもない場合は現在のPrimからの相対パスになる。  </p>
 <h2 id="2">2. 最低限の構造</h2>
@@ -3690,7 +3714,7 @@ USD内のSdfPathを指定する場合は</p>
 <span class="err">{</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Primと呼ばれるタグを作成する</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -3704,7 +3728,7 @@ Primと呼ばれるタグを作成する</p>
     <span class="err">}</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Primは、このように {} の中に def を記述することでネストできる。  </p>
 <h3 id="32-typeprim">3.2. スキーマ（Type指定）付きでPrimを定義する</h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -3722,7 +3746,7 @@ Primは、このように {} の中に def を記述することでネストで�
 {
 }
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 クラスで定義されているものは、usdview等でシーンを読んでもシーングラフには表示されない。  </p>
 <h2 id="5-over">5. Overを定義する</h2>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -3731,7 +3755,7 @@ Primは、このように {} の中に def を記述することでネストで�
 <span class="err">{</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 Overの場合は、Primと違い<br />
 すでにPrimがある場合のみ値を上書きする。<br />
 定義されているPrimがない場合はなにもしない。</p>
@@ -3768,7 +3792,7 @@ Overの場合は、Primと違い<br />
     <span class="n">bool</span> <span class="n">test</span> <span class="o">=</span> <span class="k">false</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 アトリビュートを追加する場合、Primの{}の中に 型 名前 = 値<br />
 のように指定する。  </p>
 <h2 id="8-metadata">8. Metadataを追加する</h2>
@@ -3824,7 +3848,7 @@ Overの場合は、Primと違い<br />
 <span class="err">{</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 customData = {} を使うと、好きに自分の入れたいMeta情報をレイヤー、プリム、アトリビュートに対して<br />
 追加できる。  </p>
 <h2 id="10">10. リファレンスでモデルを読み込む</h2>
@@ -3843,7 +3867,7 @@ customData = {} を使うと、好きに自分の入れたいMeta情報をレイ
 <span class="err">{</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 リファレンスで読み込む場合は、読み込む先のPrimのMetadataに prepend references = ### で<br />
 ファイルを指定する。<br />
 ファイルパスは @@でかこって表現する。<br />
@@ -3863,7 +3887,7 @@ customData = {} を使うと、好きに自分の入れたいMeta情報をレイ
 <span class="err">{</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 DefaultPrimの指定がない、あるいはそれ以外のPrimを狙ってリファレンスしたい場合は<br />
 ファイル指定の後に &lt;&gt;で囲ってSdfPathを指定する。  </p>
 <h2 id="11-sublayer">11. SubLayerで読み込む</h2>
@@ -4029,7 +4053,7 @@ subLayerで読み込んでから inheritsで指定をする。  </p>
     <span class="err">}</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 variantSetは、 variantSet で定義する。<br />
 定義したvariantSetをPrimで使う場合は、Metadata内に prepend variantSets = "名前"<br />
 を追加する。<br />
@@ -4069,7 +4093,7 @@ variantSetは、 variantSet で定義する。<br />
     <span class="err">}</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 コレを手で書くことはないと思うけど念のため。<br />
 スタートフレームとエンドフレームは、レイヤーのMetadataに記載。<br />
 Key情報は、timeSamplesにDict型で記載。  </p>
@@ -4133,7 +4157,7 @@ Key情報は、timeSamplesにDict型で記載。  </p>
     }
 }
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 これもまぁ手では書かないけど念のため。  </p>
 <p>Materialアサインはリレーションによって定義されている。<br />
 MeshデータはリレーションでBind先のMaterial情報を保持し、<br />

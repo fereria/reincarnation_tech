@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3557,7 +3581,7 @@ def &quot;FugaB&quot;
     int hoge = 200
 }
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 クラスを使用すると、1つのデフォルトプリムを複数のプリムで共有することができます。<br />
 ので、このようにベースのプリムを複数のプリムで使用すると</p>
 <p><img alt="" src="https://gyazo.com/6d00dba212071b67a1a57f4c761e703d.png" /></p>
@@ -3590,7 +3614,7 @@ def &quot;FugaB&quot;
 <span class="err">{</span>
 <span class="err">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 このように def で定義したとしても  </p>
 <p><img alt="" src="https://gyazo.com/4902f904a0c033033f2446a3bc640031.png" /></p>
 <p>このように継承の機能を使用することが出来ます。<br />
@@ -3729,7 +3753,7 @@ def &quot;FugaB&quot;
     }
 }
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 実際に確認してみると、継承先のほうに同じプリムがあると  </p>
 <p><img alt="" src="https://gyazo.com/e96b167fa51689650155443075223029.png" /></p>
 <p>こんな感じでオーバーライドされます。  </p>
@@ -3738,7 +3762,7 @@ def &quot;FugaB&quot;
 見直してみると、継承を指定している部分の  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">prepend</span> <span class="k">inherits</span> <span class="o">=</span> <span class="o">&lt;/</span><span class="n">ClassName</span><span class="o">&gt;</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 この部分を見ると、SdfPathで継承元のプリムをしているのが分かります。<br />
 同じレイヤー内（usdaファイル内）ではなく別のレイヤーに記述されているプリムを<br />
 継承で扱いたい場合はどうすれば良いか？というと<br />
@@ -3756,7 +3780,7 @@ def &quot;FugaB&quot;
     <span class="nb">int</span> <span class="n">hoge</span> = <span class="mi">100</span>
 }
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 例えばこのクラスが class.usda に書かれていたとします。  </p>
 <p>コレを別のレイヤーで使いたい場合は  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -3783,7 +3807,7 @@ def &quot;FugaB&quot;
 <span class="err">{</span><span class="w"></span>
 <span class="err">}</span><span class="w"></span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 こうすると、<br />
 先述の合成の原則から L(サブレイヤーによる合成)後、I（継承）が行われるので  </p>
 <p><img alt="" src="https://gyazo.com/947bcc20c8eef28464df5450ee722232.png" /></p>

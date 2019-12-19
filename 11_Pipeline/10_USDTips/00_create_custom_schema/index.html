@@ -1484,6 +1484,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+      Houdini18で追加されたLOPノードを調べてみた
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+      SOLARIS USD 用語対応表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3523,12 +3547,12 @@ USDのGitHubリポジトリからクローンしたプロジェクトをベー�
 <li>C:/Python27/Scripts</li>
 </ul>
 <p>この2つのPATHを通します。  </p>
-<p>次に、 pip を使用して
+<p>次に、 pip を使用して<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyside</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">PyOpenGL</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 この2つをインストールします。  </p>
 <p>そして最後に、</p>
 <p><img alt="" src="https://gyazo.com/a10b6ae596f249d65c96d1866c66f697.png" /></p>
@@ -3536,7 +3560,7 @@ USDのGitHubリポジトリからクローンしたプロジェクトをベー�
 クローンしたフォルダに移動して</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">python</span> <span class="n">build_scripts</span><span class="err">\</span><span class="n">build_usd</span><span class="p">.</span><span class="n">py</span> <span class="ss">&quot;&lt;Build先&gt;&quot;</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 コマンドを実行します。<br />
 <Build先>部分は、自分の好みのパスにします（例 I:/USD 等）  </p>
 <p>あとは1時間ほど待つと</p>
@@ -3689,7 +3713,7 @@ USD/extras/usd/examples/usdSchemaExamples<br />
     <span class="n">TF_WRAP</span><span class="p">(</span><span class="n">HogehogeFuga</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 まずは module.cpp の中の TF_WRAP_MODULEのなかに TF_WRAP( #### ) を作成したい<br />
 プロジェクト名＋クラス名にします。<br />
 今回は hogehoge ライブラリの Fuga クラスだったので HogehogeFuga になります。<br />
@@ -3716,7 +3740,7 @@ USD/extras/usd/examples/usdSchemaExamples<br />
         <span class="n">RegisterLibrary</span><span class="p">(</span><span class="n">TfToken</span><span class="p">(</span><span class="s">&quot;hogehoge&quot;</span><span class="p">),</span> <span class="n">TfToken</span><span class="p">(</span><span class="s">&quot;pxr.Hogehoge&quot;</span><span class="p">),</span> <span class="n">reqs</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 次が moduleDeps.cpp <br />
 このファイルは<br />
 上の TF_REGISTRY_FUNCTION 内にある RegisterLibrary にある TfToken("プロジェクト名"),TfToken("pxr.プロジェクト名") の部分を書き換えます。<br />
@@ -3727,7 +3751,7 @@ pxr. のあとのプロジェクト名は頭を大文字にします。  </p>
 <span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Tf</span>
 <span class="n">Tf</span><span class="o">.</span><span class="n">PrepareModule</span><span class="p">(</span><span class="n">_hogehoge</span><span class="p">,</span> <span class="nb">locals</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 <strong>init</strong>.py は、ビルド後にPtyhon側でモジュールをロードしたときに呼び出すためのファイルです。<br />
 これは一番上にある import _#### 部分と、 PrepareModule の１つめの引数を _プロジェクト名に書き換えます。  </p>
 <p>pch.h は書き換えなくてもOKです。  </p>
@@ -3818,7 +3842,7 @@ Python用は、wrapが頭につきます。  </p>
 <p>できあがったフォルダがこちら。  </p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>python build_scripts\build_usd.py <span class="s2">&quot;&lt;Build先&gt;&quot;</span>
 </pre></div>
-</td></tr></table>
+</td></tr></table><br />
 準備ができたら、 build_usd.py を使用してビルドします。  </p>
 <h3 id="13">1.3. ビルド結果を確認する</h3>
 <p>特にエラーがなく無事に完了すると、<br />
