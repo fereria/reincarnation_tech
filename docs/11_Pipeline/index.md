@@ -15,5 +15,5 @@ https://github.com/fereria/USDSample
 
 ## 各主要ページとか
 
-* [USDについて](USD/02_whats_USD.md)
+* [USDについて](01_USD/02_whats_USD.md)
 * [参考ページリンク](99_link.md)
