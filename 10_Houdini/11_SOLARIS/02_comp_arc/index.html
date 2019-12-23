@@ -214,7 +214,9 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -240,7 +242,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link md-tabs__link--active">
           Houdini
         </a>
       
@@ -1280,10 +1282,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Houdini
@@ -1455,10 +1459,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" checked>
     
     <label class="md-nav__link" for="nav-4-4">
       SOLARIS
@@ -1479,6 +1485,108 @@
     <a href="../01_solaris_open_usd/" title="SOLARISでUSDファイルを開く" class="md-nav__link">
       SOLARISでUSDファイルを開く
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        SOLARISでコンポジションアーク
+      </label>
+    
+    <a href="./" title="SOLARISでコンポジションアーク" class="md-nav__link md-nav__link--active">
+      SOLARISでコンポジションアーク
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. コンポジションアーク
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1. サブレイヤー
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    1.1.1. サブレイヤーのアウトプット
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-sublayermerge" class="md-nav__link">
+    1.2. SubLayerとMergeの違い
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-layer-flatten" class="md-nav__link">
+    1.2.1. Layer Flatten
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" class="md-nav__link md-nav__link--active">
+            コメント
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -3301,19 +3409,38 @@
     1.1. サブレイヤー
   </a>
   
-</li>
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#12-layers" class="md-nav__link">
-    1.2. ～Layers　とは(レイヤースタック)
+  <a href="#111" class="md-nav__link">
+    1.1.1. サブレイヤーのアウトプット
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#13-flatten" class="md-nav__link">
-    1.3. レイヤーのFlatten
+  <a href="#12-sublayermerge" class="md-nav__link">
+    1.2. SubLayerとMergeの違い
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-layer-flatten" class="md-nav__link">
+    1.2.1. Layer Flatten
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3347,9 +3474,7 @@
                   <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Houdini/11_SOLARIS/02_comp_arc.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <!--WRITING_NOW-->
-
-<h1 id="solaris">SOLARISでコンポジションアーク</h1>
+                <h1 id="solaris">SOLARISでコンポジションアーク</h1>
 <p>前回で、SOLARISの中でUSDファイルを開いてみましたが<br />
 今回からノードを使って具体的なUSDオーサリングをやっていこうと思います。  </p>
 <h2 id="1">1. コンポジションアーク</h2>
@@ -3379,103 +3504,100 @@ SOLARISではすべてのノードはUSDのレイヤーなのですが<br />
 そのレイヤーをつなげた場合の多くはこのサブレイヤーで合成されます。  </p>
 <p><img alt="" src="https://gyazo.com/0c7d1aa903918adb1356646f2d7ca9bd.png" /></p>
 <p>まずは単純なノードで見てみます。  </p>
-<p>Primitiveノードを作成して、CubeとConeを作ります。<br />
-そして、そのままだとばしょがかぶってしまうので edit で位置を移動しました。</p>
-<p><img alt="" src="https://gyazo.com/a93f1eef4a237c840977929d5de48ce0.png" /></p>
-<p>Primitiveノードは、USDの各要素（Prim）を作る事が出来るノードで</p>
-<p><img alt="" src="https://gyazo.com/a1586292a4e50e035458907c7ecf8f9f.png" /></p>
-<p>PrimitiveTypeでPrimのスキーマを指定出来ます。<br />
-（PrimitiveType = USDのスキーマ、Primitive ＝ USDのPrim）  </p>
-<p><img alt="" src="https://gyazo.com/d33ceef7bc1ae34c633fa4db7536fe86.png" /></p>
-<p>結果はこんな感じになります。  </p>
-<p><img alt="" src="https://gyazo.com/a0c952ff4a9fe835c9d12620bd903f92.png" /></p>
-<p>シーングラフはこんな感じ。  </p>
-<p>この感じで多くのHoudinistはこう思うと思います。  </p>
-<p>「これ、Mergeじゃない？」  </p>
-<p><img alt="" src="https://gyazo.com/815e6ff75304ef07b08c40f0bf3fa6fa.png" /></p>
-<p>まさにその通りで、SOLARIS内でMergeを使用するとSublayerと同じ挙動となります。  </p>
-<h3 id="12-layers">1.2. ～Layers　とは(レイヤースタック)</h3>
-<p><img alt="" src="https://gyazo.com/afd390f2cada2c8642069a42adcbb203.png" /></p>
-<p>このように、サブレイヤー合成をしているときにノードの右側に「3 Layers」のような<br />
-表示が出ているのがわかるとおもいます。<br />
-このあたりを理解するには、サブレイヤーとレイヤースタックについて理解する必要があります。  </p>
-<p>レイヤースタックとは、そのステージの「サブレイヤーをあつめたもの」です。  </p>
-<p><img alt="" src="https://gyazo.com/6bd5f3b5cc6ece3238b20a0366f360f8.png" /></p>
-<p>SOLARISでは、レイヤースタックを確認したい場合「Scene Graph Ditail」を使用します。<br />
-この Scene Graph Ditail は、 Scene Graph Path で選択しているPrimの詳細を表示してくれます。<br />
-この～～Layersというのは、このステージが「いくつのサブレイヤーで合成されているのか」を表している<br />
-ので、ルートPrim( / )を選択してみます。  </p>
-<p>そうすると、Detailの右側にある「Layer Stack」タブをクリックすると  </p>
-<ul>
-<li>edit1</li>
-<li>Cone</li>
-<li>Cube</li>
-</ul>
-<p>という3つのレイヤー（ノード名）が表示されているのがわかるとおもいます。  </p>
-<p><img alt="" src="https://gyazo.com/44e2e7f6f74474da4d773d9fc210d90f.png" /></p>
-<p>ので、 2Layers と書かれているmerge3ノードの Layer Stack を確認してみると<br />
-editはなく、その段階までの「Cone」と「Cube」の2つのPrimが表示されます。  </p>
-<p>つまりこれがなにを意味しているかというと、<br />
-このステージを構築するためにサブレイヤー合成しているレイヤーと<br />
-どの順番でそのレイヤーが合成されているのか？<br />
-というのが、このレイヤースタックを見ることで確認できます。  </p>
-<p>サブレイヤー合成の場合、このどういう順序で合成されるのかが重要になってきます。  </p>
-<p><img alt="" src="https://gyazo.com/e1630210d2deeb1c08ff8abd541b7b60.png" /></p>
-<p>例えば、こんな感じで同じ名前のPrimitiveを作るとします。<br />
-（ /Prim がPrimitive名というかUSDのPath）<br />
-この状態でサブレイヤー合成をするとどうなるかというと  </p>
-<p><img alt="" src="https://gyazo.com/07c94eabcffd4559c90b0689b53cc3cd.png" /></p>
-<p>合成結果のシーングラフは「Prim」というなまえのPrimitiveがあるだけです。  </p>
-<p><img alt="" src="https://gyazo.com/a24bc89f93868db5dc000cc0968a3904.png" /></p>
-<p>表示はどうなってるかというと、Cubeが表示されます。  </p>
-<p><img alt="" src="https://gyazo.com/2193f263d8fbea613a4dccc37fe6f839.png" /></p>
-<p>レイヤースタックを確認すると、<br />
-4 Cube -&gt; 5 Cone というふうになっています。  </p>
-<p>つまりは、サブレイヤー合成順序は後ろの数字から順番に重ねられていくことが分かります。  </p>
-<p><img alt="" src="https://gyazo.com/4fd085609030f0259858eb6e47502a40.png" /></p>
-<p>サブレイヤー合成したPrimitiveをEditで移動すると、Editが1になりました。<br />
-合成順として、サブレイヤーでPrimをマージして、その結果に対して<br />
-サブレイヤーでEditしているので、こういう順序になっているわけですね。  </p>
-<p><img alt="" src="https://gyazo.com/186841824f85d311e0a749ee3ce9f180.png" /></p>
-<p>サブレイヤーノードやマージノードでの接続順序を見てみると、<br />
-上→下の順番でサブレイヤー合成されていくことが分かります。  </p>
-<p>というわけで、Stageネットワーク上ではサブレイヤーでの合成が ～～Layersという形で表示され<br />
-どういう合成がされているのかをDetailで確認できることが分かりました。<br />
-サブレイヤーによる合成順序は、<br />
-<a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/06_comp_arc_subLayer">https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/06_comp_arc_subLayer</a><br />
-ここにまとめてあります。  </p>
-<p>このあたりが何故重要になってくるかというと、<br />
-大量のノードを接続していくと「意図しない」合成が発生することもあります。<br />
-それは、サブレイヤーの合成順序だったり他のコンポジションアークとの解決順序の問題だったりと<br />
-色々あるのですが、<br />
-「レイヤースタックだったりDetailを見ることで現状を確認出来る」<br />
-あるいみトラブルシューティングするときの手段になってくるわけです。  </p>
-<h3 id="13-flatten">1.3. レイヤーのFlatten</h3>
-<p>ここまでレイヤースタックを見てきましたが、</p>
-<p><img alt="" src="https://gyazo.com/03faedcc619cf957f0149a7af129c46a.png" /></p>
-<p>同じノードであってもLayersが表示されずに、レイヤースタックにレイヤーが追加されないことがあります。<br />
-それは「Flatten」と呼ばれる機能になります。  </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>USD側ではコンポジションのFlattenはあるけど、LayerのFlattenの概念は見つからず...<br />
-これはHoudini特有のもの？<br />
-要調査。</p>
-</div>
-<p><img alt="" src="https://gyazo.com/54cc4a4dff37a624ebc681bf5284077d.png" /></p>
-<p>これは、Mergeノードであれば「MergeStyle」で切り替えることができます。<br />
-Flattenとは、その名の通り「フラットにする」もので<br />
-USDでのFlattenとは、コンポジションアークの処理をすべてフラット（Import）して<br />
-1つのUSDにまとめる処理のことを指します。<br />
-レイヤーの場合は、おそらくレイヤースタックに積まれたサブレイヤー合成をまとめて<br />
-フラットな状態（単独のUSDファイル化）し、編集状態を固定化するもののようです。（たぶん）  </p>
-<p>USDの編集中、「現在編集中のレイヤー」のことを　Active Layerと呼びますが<br />
-FlattenLayerしていない場合、  </p>
-<p><img alt="" src="https://gyazo.com/2b49a57933128df75b43f22faa8fb9e6.png" /></p>
-<p>現在のアクティブレイヤーの状態を、調査しようとするとこんな感じで表示することができません。  </p>
-<p><img alt="" src="https://gyazo.com/c1a9d47d56c6e1596e1dc50513915fa4.png" /></p>
-<p>対して、Flattenすると<br />
-そのレイヤーの編集状態はいったんフラットにされて<br />
-ActiveLayerとして確認出来るようになります。  </p>
+<p><img alt="" src="https://gyazo.com/6cf48172d70f2f02679e6a26d5301802.png" /></p>
+<p>SubLayerノードは、Input1とそれ以外のMultiInputをつけつけています。  </p>
+<p><img alt="" src="https://gyazo.com/383eb4237bdb8aba0021e0a16aa15c02.png" /></p>
+<p>今のLayer状況を「Scene Graph Layers Panel」で確認すると、<br />
+Input1の入力の子としてMultiInputのLayerがついているような構造になっています。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">#usda</span><span class="w"> </span><span class="mf">1.0</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+<span class="n">        @CUBE.usda@,</span>
+<span class="n">        @SPHERE.usda@</span>
+<span class="n">    </span><span class="o">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+
+<span class="n">def</span><span class="w"> </span><span class="n">Xform</span><span class="w"> </span><span class="ss">&quot;BasePrim&quot;</span><span class="w"></span>
+<span class="err">{</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</pre></div>
+</td></tr></table>
+
+<p>USDのSubLayerをUSDAファイルで記述するとこうなります。<br />
+このファイルをノードで表すと、<br />
+ファイル自身がInput1で、subLayersでセットしているusdaファイルがMultiInputの入力になります。</p>
+<p><img alt="" src="https://gyazo.com/c04d6f005b208c3ce07aa3af4af9c710.png" /></p>
+<p>ただし、このレイヤーの解決順序はUSDの公式の順序ではなく<br />
+「Sublayer Position」で指定されたものを SubLayerの位置として認識します。<br />
+デフォルトの場合は、「Strongest Layer」になっていて<br />
+一番強いノード（この場合最後の入力である SPHERE）が出力されます。  </p>
+<p>通常のUSDと同じにしようとした場合「Strongest File Layer's Position」で<br />
+RootLayerのLocal（RootLayerに記載されているPrim）が優先されるのがデフォルトのUSD解決順序な気がします。  </p>
+<p><img alt="" src="https://gyazo.com/04d3363de97ef7c8cc8920e68f6eccfc.png" /></p>
+<p>このSubLayer時の優先順序（どの順番で合成されているのか）は、Scene Graph Detailの「レイヤースタック」で<br />
+確認することが出来ます。  </p>
+<p>レイヤースタックとは、すべてのサブレイヤーを集めたものです。<br />
+レイヤーのPrimitiveや各種プロパティ・アトリビュートの値はレイヤースタックに積まれた順<br />
+（上のスクショの例だと、上のほうが強い）で上書きされていきます。<br />
+シーングラフを構築するときに、どのようにそれぞれのレイヤーが「解決しているか」は<br />
+このレイヤースタックを確認することでわかります。</p>
+<h4 id="111">1.1.1. サブレイヤーのアウトプット</h4>
+<p>このSubLayerのアウトプットでなにを返すかというと</p>
+<p><img alt="" src="https://gyazo.com/17741f4878320e971ccb48891e4157da.png" /></p>
+<p>確認するには lopinputprims 関数を使用すればわかります。  </p>
+<p><img alt="" src="https://gyazo.com/80ecd2d49c9f26dcb6431a758f3642bb.png" /></p>
+<p>Collectionノードで確認してみると、「BasePrim」つまりは、Input1に入力されているPrimitiveが<br />
+編集されたPrimitiveとして取得されることが分かります。  </p>
+<p>あくまでも取得出来るのは「編集しているRootLayer」であり、<br />
+合成側のレイヤー（MultiInputに入力されている物）は含まないというのが注意する点です。<br />
+入力のPrimitiveを使用して、次のノードで何かをしたい場合（ lopinputprimsで取得する場合）<br />
+合成した結果すべてを得られるわけではありません。  </p>
+<p>なお、この出力されるPrimitiveは Sublayer Position を変更しても変わらずInput1のPrimitiveが帰ってきます。</p>
+<p><img alt="" src="https://gyazo.com/de942a02f5065a37feb04f13a41d108b.png" /></p>
+<p>似た挙動をするノードとして「Merge」がありますが<br />
+こちらはSubLayerとは違い、入力したノードを並列で扱い合成し<br />
+結果できたレイヤーを返します。<br />
+なので、 lopinputprims で次のノードで取得した場合<br />
+すべてのPrimitiveを取得することができます。  </p>
+<p><img alt="" src="https://gyazo.com/13ced403b9f124cac98bbe72c14e8307.png" /></p>
+<h3 id="12-sublayermerge">1.2. SubLayerとMergeの違い</h3>
+<p>SubLayerとMergeは挙動がほぼ同じで、結果のシーングラフも同じです。<br />
+ですが、上に書いたとおり結果出力されるノードなどに違いがあります。<br />
+それが確認できるのが「Scene Graph Layers Panel」です。  </p>
+<p><img alt="" src="https://gyazo.com/a6a5cdb5f6bac4a6bb5d44523844c08d.png" /></p>
+<p>まずは、SubLayerのレイヤー構造。<br />
+レイヤーの構造は、Input1 のレイヤーの子にMultiInputのノードが存在する状態です。</p>
+<p><img alt="" src="https://gyazo.com/c9370ffaacadc4ee2a6c66bfd9244449.png" /></p>
+<p>つぎにMergeを見てみると、<br />
+レイヤー構造は親子ではなく「並列」に扱われています。  </p>
+<h4 id="121-layer-flatten">1.2.1. Layer Flatten</h4>
+<p>サブレイヤーで合成されている各種レイヤーは ～ Layers　という形でノードの右下に表示されています。  </p>
+<p><img alt="" src="https://gyazo.com/1c0c0fef51af49f048fa627789ebed82.png" /></p>
+<p>このLayersの数は、SceneGraphLayersPanelの「Implicit」になっているレイヤーの数です。<br />
+この複数のレイヤーを「1つに結合」するのが LayerFlatten です。  </p>
+<p><img alt="" src="https://gyazo.com/f5122a6a03831d13500b2625f90f78aa.png" /></p>
+<p>ConfigureLayersノードの「FlatetenInput」を</p>
+<p><img alt="" src="https://gyazo.com/551e1df32b0baac4205472acf0b3347a.png" /></p>
+<p>Flatten Input Layers に切り替えると、</p>
+<p><img alt="" src="https://gyazo.com/6e2cedd9ba4d53054a7058431d03c275.png" /></p>
+<p>レイヤーは1つに統合されます。<br />
+ PhotoShopのレイヤー統合、あるいはAEのプリコンポーズのような処理で<br />
+ 各レイヤーをサブレイヤーで合成していった場合の結果を制御できるようにしてあります。  </p>
+<p>USDをSOLARISではなくそのまま使っていると問題になってくるのが、レイヤーのコンポジションの解決順序です。  </p>
+<p><a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/05_comp_arc/">https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/05_comp_arc/</a>  </p>
+<p>USDの解決順序は上のページの通りですが<br />
+ SOLARISでは要所要所のノードでFlatten、あるいはノードの接続順によるプロシージャルな解決制御<br />
+ をできるようにしているように感じました。  </p>
                 
                   
                 
@@ -3508,6 +3630,41 @@ ActiveLayerとして確認出来るようになります。  </p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../01_solaris_open_usd/" title="SOLARISでUSDファイルを開く" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前
+                </span>
+                SOLARISでUSDファイルを開く
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  次
+                </span>
+                Houdini18で追加されたLOPノードを調べてみた
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
