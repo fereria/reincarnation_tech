@@ -548,6 +548,42 @@ def Cube "cube2" (
 あくまでも、SOLARIS 内で入力を切り替えたい・スイッチしたい場合にのみ使うのが  
 この Switch ノードということかとおもいます。
 
+#### prune
+
+![](https://gyazo.com/28f423dff229866a96f21589800ea281.png)
+
+pruneは、入力のPrimitiveのうち **「条件に当てはまる」** Primitiveを無効 or 非表示にします。  
+
+![](https://gyazo.com/c6cfba365d4d3dde8a4bc4ef1f1fd533.png)
+
+Pruneノードの条件を指定すると
+
+![](https://gyazo.com/4667a9b6bbb63a549a7a66e12cdabeb1.png)
+
+条件に当てはまるノードが非表示になります。  
+
+![](https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png)
+
+デフォルトだと Make Invisible の場合は「非表示」になるし Deactivate だと「無効」になります。
+
+出力されるUSDファイルは、非表示なら
+```
+over "cube1"
+{
+    token visibility = "invisible"
+}
+```
+無効なら
+```
+over "cube1" (
+    active = false
+)
+{
+}
+```
+こうなります。
+
+
 ### Material 関係
 
 #### materiallibrary
