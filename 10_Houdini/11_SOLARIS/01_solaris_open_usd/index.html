@@ -1574,6 +1574,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#63-reference-20200105" class="md-nav__link">
+    6.3. Referenceノードで読む事での違い ※ 2020/01/05 追記
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1609,15 +1616,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#92-loadlayer" class="md-nav__link">
-    9.2. それ以外は「LoadLayer」
+  <a href="#92-reference" class="md-nav__link">
+    9.2. レイヤーをカプセル化したい場合は「Reference」
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#93" class="md-nav__link">
-    9.3. もちろん併用もできます
+  <a href="#93-loadlayer" class="md-nav__link">
+    9.3. それ以外は「LoadLayer」
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    9.4. もちろん併用もできます
   </a>
   
 </li>
@@ -3561,6 +3575,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#63-reference-20200105" class="md-nav__link">
+    6.3. Referenceノードで読む事での違い ※ 2020/01/05 追記
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3596,15 +3617,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#92-loadlayer" class="md-nav__link">
-    9.2. それ以外は「LoadLayer」
+  <a href="#92-reference" class="md-nav__link">
+    9.2. レイヤーをカプセル化したい場合は「Reference」
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#93" class="md-nav__link">
-    9.3. もちろん併用もできます
+  <a href="#93-loadlayer" class="md-nav__link">
+    9.3. それ以外は「LoadLayer」
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    9.4. もちろん併用もできます
   </a>
   
 </li>
@@ -3735,7 +3763,17 @@ USD では USD ファイルのことをレイヤーと呼ぶからです。</p>
 SOLARISのノードとして用意されている各種コンポジションアーク系のノードで<br />
 読み込んでみます。<br />
 このノードで読み込むと、コンポジションアークの機能と併せて<br />
-USDファイルをロードできます。</p>
+USDファイルをロードできます。<br />
+このように読んだ場合、ロード先のusdaファイル内のClassPrimは隠蔽され<br />
+オーバーライドしたりすることはできなくなります。<br />
+しかし、LoadLayerでロードしてから、そのノードをReferenceノードに接続する場合、<br />
+リファレンスで読み込みたいレイヤーを一度サブレイヤー合成し<br />
+その後に \&lt;/sdfPath...>こんな感じでシーン内にあるPrimを<br />
+リファレンスとしてロードする形になります。</p>
+<p>この場合、レイヤーはカプセル化されず、指定のレイヤー内の別Primもロードされるので<br />
+継承処理と同じように、リファレンス元のPrimをオーバーライドできるようになります。<br />
+詳しくは <a href="../03_comp_arc_inherits/">こちら</a>にて検証をまとめているので<br />
+参考にしてください。</p>
 <h3 id="61-sublayer">6.1. SubLayerで開く</h3>
 <p>まずは、Sublayerノードで開いてみます。  </p>
 <p><img alt="" src="https://gyazo.com/65d86205563105def4a757da5fd482d9.png" /></p>
@@ -3823,6 +3861,15 @@ $OSとは、ノード名のことなので、ノード名である reference1 �
 なので、コレを見ることで、このノードが今なにをしているのか、USD的になにをしているか<br />
 確認することが出来ます。  </p>
 <p>で、見る限りリファレンスで読み込んでるのが分かります。  </p>
+<h3 id="63-reference-20200105">6.3. Referenceノードで読む事での違い ※ 2020/01/05 追記</h3>
+<p>後々ノードの細かい挙動を調べているときに判明したことですが<br />
+リファレンスノードを使用してロードした場合と、LoadLayerを使用してロードしたあとに<br />
+ノードを接続してリファレンス化する場合とで大きな差があることがわかりました。<br />
+その「差」がなにかというと、<strong>「カプセル化するか否か」</strong>です。</p>
+<p>リファレンスノードでロードした場合は、USDAでみた場合<br />
+prepend references = @C:/pyEnv/JupyterUSD_py27/usd/Kitchen_set/Kitchen_set.usd@<br />
+こんな感じにファイルパス指定で、指定PathのUSDAのDefaultPrimまたはSdfPathで指定したPrim<br />
+をリファレンスでロードするようになります。</p>
 <h2 id="7-stagemanager">7. StageManager で開く</h2>
 <p><img alt="" src="https://gyazo.com/a3cbe3fa1431c43261fd9c6e2b227f6d.png" /></p>
 <p>最後に、コンポジションアーク以外での開き方。<br />
@@ -3870,7 +3917,14 @@ USDファイルをファイルではなく手書きで書いて読み込むこ�
 という場合は、複数のStageMnaagerを接続することも出来ます。<br />
 この場合、入力で受け取ったステージのシーングラフに対して＋αでアセットを足したりといった<br />
 ことが可能になります。  </p>
-<h3 id="92-loadlayer">9.2. それ以外は「LoadLayer」</h3>
+<h3 id="92-reference">9.2. レイヤーをカプセル化したい場合は「Reference」</h3>
+<p>リファレンスで読み込みたいレイヤーのDefaultPrimまたは指定のPrim以外を<br />
+「カプセル化」してロードしたい場合はReferenceノードを使用してロードします。<br />
+Referenceノードで読み込んだ場合は、指定Prim以外は隠蔽され<br />
+オーバーライドできなくなります。<br />
+なので、キャラクターを読み込みたい場合などは<br />
+リファレンスノードを使用してロードするのが良さそうです。</p>
+<h3 id="93-loadlayer">9.3. それ以外は「LoadLayer」</h3>
 <p>それ以外は、LoadLayer＋コンポジションアークのノード or それ以外のべんりノード（Graftなど）<br />
 を使用するのがオススメです。  </p>
 <p>LoadLayerで読むパターンは、このあとSOLARISのノードベースで何かしらの構造を構築したい<br />
@@ -3883,7 +3937,7 @@ USDファイルをファイルではなく手書きで書いて読み込むこ�
 <p>LoadLayerでかならず読みこんでコンポジションしておくと、<br />
 切り替えしやすかったり、「ファイルを読んでる」というのが明確化するので<br />
 個人的にはUSDファイルの単発でのロードはLoadLayerを使うのが良いかなと思います。  </p>
-<h3 id="93">9.3. もちろん併用もできます</h3>
+<h3 id="94">9.4. もちろん併用もできます</h3>
 <p>もちろんStageMnaagerとLoadLayer＋コンポジションアーク系ノードの併用も可能です。  </p>
 <p><img alt="" src="https://gyazo.com/ea296ad1a04c0989d6fd3d60428d4fbc.png" /></p>
 <p>まとめてStageMnagerでシーンを構築しつつ、細かいバリエーションはノードで作って<br />
