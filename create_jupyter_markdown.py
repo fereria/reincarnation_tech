@@ -35,8 +35,8 @@ def createNoteBookMD(ipynbFile, root, exportPath):
 
     md_path = re.sub(root, "", os.path.dirname(ipynbFile))
     md = os.path.join(exportPath, md_path, fileName)
-
-    p = subprocess.Popen(['jupyter',
+    
+    p = subprocess.Popen(['C:/Users/remiria/AppData/Local/Programs/Python/Python36/Scripts/jupyter',
                           'nbconvert',
                           '--to', 'markdown',
                           '--output', md,

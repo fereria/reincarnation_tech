@@ -1,6 +1,7 @@
+---
+title: Windows 環境で GitLab の CI/CD を実行する
+---
 # Windows 環境で GitLab の CI/CD を実行する
-
-<!-- SUMMARY:Windows 環境で GitLab の CI/CD を実行する -->
 
 Docker だと Linux 環境になってしまうので、Windows 用アプリの動作ができない  
 Maya などのような Windows で動くものの動作テストができないなどの問題があるので  

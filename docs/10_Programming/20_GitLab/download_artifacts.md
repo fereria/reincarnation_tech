@@ -1,6 +1,7 @@
+---
+title: Build 結果をダウンロードする
+---
 # Build 結果をダウンロードする
-
-<!-- SUMMARY:Build 結果をダウンロードする -->
 
 GitLab-CI のビルド結果をダウンロードしたい場合は、
 artifacts キーを使用する。

@@ -1,6 +1,7 @@
+---
+title: GitLab CI で nosetests
+---
 # GitLab CI で nosetests
-
-<!-- SUMMARY: GitLabCIでnosetests-->
 
 まず、 .gitlab-ci.yml を作成する。
 

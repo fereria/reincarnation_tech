@@ -1,6 +1,8 @@
+---
+title: GitBook の SUMMARY ファイルを自動作成
+---
 # GitBook の SUMMARY ファイルを自動作成
 
-<!-- SUMMARY:GitBookのSUMMARYファイルを自動作成 -->
 
 GitBook のサマリーファイルを作成するのが面倒なのと  
 自分のスタイルに合ったものが見つからなかったので  

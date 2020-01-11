@@ -1,6 +1,7 @@
+---
+title: Graphvizのノードの配置情報をパースする
+---
 # Graphvizのノードの配置情報をパースする
-
-<!-- SUMMARY:Graphvizのノードの配置情報をパースする -->
 
 PySideのNodeEditorのレイアウト部分にGraphvizを使っているケースが多かったので、  
 実行結果をパースしてNodeとして取得するる方法をテストしてみました。  

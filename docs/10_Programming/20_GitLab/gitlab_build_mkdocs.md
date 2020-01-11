@@ -1,5 +1,7 @@
+---
+title: GitLab+mkdocs+さくらサーバーで自動デプロイ
+---
 # GitLab+mkdocs+さくらサーバーで自動デプロイ
-<!-- SUMMARY:GitLab+mkdocs+さくらサーバーで自動デプロイ -->
 
 いままではmkdocsで作っていたドキュメントページは  
 GitHubPagesにアップ＋もとになるmdもGitHubにコミットをしていたのですが  
