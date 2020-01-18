@@ -12,6 +12,7 @@ import glob
 import shutil
 
 BLOG_ROOT_DIR = "C:/reincarnation_tech"
+GITHUB_ROOT = "https://github.com/fereria/reincarnation_tech/blob/master/"
 
 
 def createNoteBookMD(ipynbFile, root, exportPath):
@@ -35,7 +36,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
 
     md_path = re.sub(root, "", os.path.dirname(ipynbFile))
     md = os.path.join(exportPath, md_path, fileName)
-    
+
     p = subprocess.Popen(['C:/Users/remiria/AppData/Local/Programs/Python/Python36/Scripts/jupyter',
                           'nbconvert',
                           '--to', 'markdown',
@@ -45,7 +46,12 @@ def createNoteBookMD(ipynbFile, root, exportPath):
 
     p.wait()
 
-    title = ['---', f'title: {title}', '---']
+    buff = ipynbFile.split("/notebooks/")
+
+    title = ['---',
+             f'title: {title}',
+             '---',
+             f'ipynbFile: [{os.path.basename(ipynbFile)}]({GITHUB_ROOT}notebooks/{buff[1]})']
 
     with codecs.open(md, 'r', 'utf8') as f:
         lines = [x.replace("\n", "") for x in f.readlines()]
