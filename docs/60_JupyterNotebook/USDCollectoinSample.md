@@ -1,7 +1,7 @@
 ---
 title: USDCollectionの基本操作
 ---
-ipynbFile: [USDCollectoinSample__USDCollectionの基本操作.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USDCollectoinSample__USDCollectionの基本操作.ipynb)
+**ipynbFile** [USDCollectoinSample__USDCollectionの基本操作.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USDCollectoinSample__USDCollectionの基本操作.ipynb)
 #### [45]:
 
 

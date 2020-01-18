@@ -1,7 +1,7 @@
 ---
 title: USDのMeshをPythonで作る
 ---
-ipynbFile: [USDMeshTest__USDのMeshをPythonで作る.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USDMeshTest__USDのMeshをPythonで作る.ipynb)
+**ipynbFile** [USDMeshTest__USDのMeshをPythonで作る.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USDMeshTest__USDのMeshをPythonで作る.ipynb)
 #### [9]:
 
 

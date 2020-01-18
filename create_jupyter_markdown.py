@@ -36,6 +36,10 @@ def createNoteBookMD(ipynbFile, root, exportPath):
 
     md_path = re.sub(root, "", os.path.dirname(ipynbFile))
     md = os.path.join(exportPath, md_path, fileName)
+    md = exportPath + "/" + md_path + "/" + fileName
+    md = md.replace("//", "/")
+    if not os.path.exists(os.path.dirname(md)):
+        os.makedirs(os.path.dirname(md))
 
     p = subprocess.Popen(['C:/Users/remiria/AppData/Local/Programs/Python/Python36/Scripts/jupyter',
                           'nbconvert',
@@ -51,7 +55,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
     title = ['---',
              f'title: {title}',
              '---',
-             f'ipynbFile: [{os.path.basename(ipynbFile)}]({GITHUB_ROOT}notebooks/{buff[1]})']
+             f'**ipynbFile** [{os.path.basename(ipynbFile)}]({GITHUB_ROOT}notebooks/{buff[1]})']
 
     with codecs.open(md, 'r', 'utf8') as f:
         lines = [x.replace("\n", "") for x in f.readlines()]
@@ -62,16 +66,28 @@ def createNoteBookMD(ipynbFile, root, exportPath):
         f.write("\n".join(lines))
 
 
+def getIpynbFile():
+
+    retVal = []
+    for rootDir, dirs, files in os.walk(root):
+        for f in files:
+            if os.path.splitext(f)[1] == ".ipynb":
+                retVal.append(os.path.join(rootDir, f))
+    return retVal
+
+
 if __name__ == "__main__":
 
     root = f"{BLOG_ROOT_DIR}/notebooks"
-    md = f"{BLOG_ROOT_DIR}/docs/60_JupyterNotebook"
+    md_root = f"{BLOG_ROOT_DIR}/docs/60_JupyterNotebook"
 
-    if os.path.exists(md):
-        shutil.rmtree(md, True)
-    os.makedirs(md)
+    if os.path.exists(md_root):
+        shutil.rmtree(md_root, True)
+    os.makedirs(md_root)
 
-    ipynbFiles = glob.glob(root + "/*.ipynb")
+    # ipynbFiles = glob.glob(root + "/*.ipynb")
+    ipynbFiles = getIpynbFile()
+    print(ipynbFiles)
 
     for ipynb in ipynbFiles:
-        createNoteBookMD(ipynb, root, md)
+        createNoteBookMD(ipynb, root, md_root)

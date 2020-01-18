@@ -1,7 +1,7 @@
 ---
 title: テストノートブック
 ---
-ipynbFile: [NoteSample__テストノートブック.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/NoteSample__テストノートブック.ipynb)
+**ipynbFile** [NoteSample__テストノートブック.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/NoteSample__テストノートブック.ipynb)
 ```python
 # Change directory to VSCode workspace root so that relative path loads work correctly. Turn this addition off with the DataScience.changeDirOnImportExport setting
 

@@ -1,7 +1,7 @@
 ---
 title: functoolsの使い方
 ---
-ipynbFile: [functoolTest__functoolsの使い方.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/functoolTest__functoolsの使い方.ipynb)
+**ipynbFile** [functoolTest__functoolsの使い方.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/pythonBasic/functoolTest__functoolsの使い方.ipynb)
 #### [30]:
 
 
