@@ -3013,6 +3013,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../60_JupyterNotebook/USDMeshTest/" title="USDのMeshをPythonで作る" class="md-nav__link">
+      USDのMeshをPythonで作る
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -3434,73 +3446,7 @@ markdownのタイトルに日本語がつけられないので  </p>
 <p>出力されるmarkdown側は、--template 引数に対してjinjaテンプレートで作成した<br />
 テンプレートを設定することで、自分で見た目をカスタマイズすることができます。  </p>
 <p>ので、とりあえずmarkdownのテンプレートを作って見ました。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;markdown.tpl&#39;</span><span class="cp">%}</span><span class="x"></span>
-
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">header</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">header</span> <span class="cp">%}</span><span class="x"></span>
-
-<span class="x"># Markdownは表示しない</span>
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">markdowncell</span><span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">markdowncell</span><span class="cp">%}</span><span class="x"></span>
-
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">in_prompt</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">cell.execution_count</span> <span class="o">&gt;</span> <span class="m">0</span><span class="cp">%}</span><span class="x"></span>
-<span class="x">#### 2.1. [</span><span class="cp">{{</span> <span class="nv">cell.execution_count</span> <span class="k">if</span> <span class="nv">cell.execution_count</span> <span class="k">else</span> <span class="s1">&#39; &#39;</span> <span class="cp">}}</span><span class="x">]:</span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">in_prompt</span> <span class="cp">%}</span><span class="x"></span>
-
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">stream</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">!!! success</span>
-<span class="x">    ```</span>
-<span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span><span class="cp">}}</span><span class="x"></span>
-<span class="x">    ```</span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">stream</span> <span class="cp">%}</span><span class="x"></span>
-
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">execute_result</span><span class="cp">%}</span><span class="x"></span>
-<span class="x">!!! success</span>
-<span class="x">    ```</span>
-<span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span><span class="cp">}}</span><span class="x"></span>
-<span class="x">    ```</span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">execute_result</span><span class="cp">%}</span><span class="x"></span>
-
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">error</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">!!! error</span>
-<span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">error</span> <span class="cp">%}</span><span class="x"></span>
-</pre></div>
-</td></tr></table>
+<script src="https://embed.cacher.io/d8516ed40d63f842aead47915f2b4ca02a09ae46.js?a=ae7cea5f84ed07f91d22771e2bd04f81"></script>
 
 <p>テンプレートの作り方は、<br />
 まずは基本となるテンプレートをインポートし、上書きしたいブロックを追加していきます。  </p>
