@@ -30,6 +30,6 @@ Target には IK を動かすためのロケーター、PoleTarget にはポー�
 
 ![](https://gyazo.com/1d0691f263349f24d3510bdc1c277332.gif)
 
-{% hint style="info" %}
-PoleTarget をいれただけだと角度がズレてしまうので、現状 90 度を入れている。  
-{% endhint %}
+!!! info 
+    PoleTarget をいれただけだと角度がズレてしまうので、現状 90 度を入れている。  
+

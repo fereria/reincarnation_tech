@@ -35,7 +35,7 @@ PySideの各種Viewは、ProxyModelを使用することでリスト内の絞り
   
 ので、より細かく検索条件を分岐させる必要があります。  
   
-その分岐をするのが、 QSortFilterProxyModelのVirtual関数、「{{color(blue)::filterAcceptRow}}」 です。    
+その分岐をするのが、 QSortFilterProxyModelのVirtual関数、「filterAcceptRow」 です。    
 
   
 ```python

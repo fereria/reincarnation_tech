@@ -109,8 +109,5 @@ stop
 @enduml
 ```
 
-
-
-{{color(red)::some_text}}  
-{{color(blue)::some_text}}
-
+{% set greet = 'Hello' %}
+{{ greet }}, World!

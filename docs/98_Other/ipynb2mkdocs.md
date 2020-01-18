@@ -47,41 +47,7 @@ markdownName__日本語のタイトル名.ipynb
   
 ので、とりあえずmarkdownのテンプレートを作って見ました。
 
-```jinja
-{% extends 'markdown.tpl'%}
-
-{% block header %}
-{% endblock header %}
-
-# Markdownは表示しない
-{% block markdowncell%}
-{% endblock markdowncell%}
-
-{% block in_prompt %}
-{% if cell.execution_count > 0%}
-#### [{{ cell.execution_count if cell.execution_count else ' ' }}]:
-{% endif %}
-{% endblock in_prompt %}
-
-{% block stream %}
-!!! success
-    ```
-{{ super()}}
-    ```
-{% endblock stream %}
-
-{% block execute_result%}
-!!! success
-    ```
-{{ super()}}
-    ```
-{% endblock execute_result%}
-
-{% block error %}
-!!! error
-{{ super() }}
-{% endblock error %}
-```
+<script src="https://embed.cacher.io/d8516ed40d63f842aead47915f2b4ca02a09ae46.js?a=ae7cea5f84ed07f91d22771e2bd04f81"></script>
 
 テンプレートの作り方は、  
 まずは基本となるテンプレートをインポートし、上書きしたいブロックを追加していきます。  
