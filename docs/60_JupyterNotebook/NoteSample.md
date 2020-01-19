@@ -1,35 +1,15 @@
 ---
-title: テストノートブック
+title: テストノートブック2
 ---
-**ipynbFile** [NoteSample__テストノートブック.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/NoteSample__テストノートブック.ipynb)
-```python
-# Change directory to VSCode workspace root so that relative path loads work correctly. Turn this addition off with the DataScience.changeDirOnImportExport setting
-
-# ms-python.python added
-
-import os
-
-try:
-
-	os.chdir(os.path.join(os.getcwd(), '..\\..\pyEnv\JupyterUSD_py27'))
-
-	print(os.getcwd())
-
-except:
-
-	pass
-
-
-```
-
-
+**ipynbFile** [NoteSample__テストノートブック2.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/NoteSample__テストノートブック2.ipynb)
 #### [1]:
 
 
 ```python
 
-import os.path
-from pxr import Usd, UsdGeom, Sdf, Gf
+# 高階関数と呼び出し可能オブジェクトの操作
+import functools
+
 
 ```
 
@@ -38,21 +18,36 @@ from pxr import Usd, UsdGeom, Sdf, Gf
 
 
 ```python
+# partiald
+# 引数を与えた状態の関数を生成する
 
-stg =Usd.Stage.Open(r"C:\Users\remiria\Downloads\UsdSkelExamples\UsdSkelExamples\HumanFemale\HumanFemale.walk.usd")
-stg.GetRootLayer().Export("D:/test.usda")
+
+def hogehoge(*val):
+    print(val)
+
+
+a = functools.partial(hogehoge, 'aaa')
+
+for i in range(10):
+    a = functools.partial(a, i)
+    a()
 
 ```
 
 !!! success
     ```
 
-
-
-
-    True
-
-
+    ('aaa', 0)
+    ('aaa', 0, 1)
+    ('aaa', 0, 1, 2)
+    ('aaa', 0, 1, 2, 3)
+    ('aaa', 0, 1, 2, 3, 4)
+    ('aaa', 0, 1, 2, 3, 4, 5)
+    ('aaa', 0, 1, 2, 3, 4, 5, 6)
+    ('aaa', 0, 1, 2, 3, 4, 5, 6, 7)
+    ('aaa', 0, 1, 2, 3, 4, 5, 6, 7, 8)
+    ('aaa', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    
 
     ```
 
@@ -61,66 +56,44 @@ stg.GetRootLayer().Export("D:/test.usda")
 
 
 ```python
-# ファイルではなくメモリにシーンを作る
-stage = Usd.Stage.CreateInMemory()
-# シーンに対してPrimを追加する。
-xf = UsdGeom.Sphere.Define(stage, "/hello")
-# 結果を表示
-print(stage.ExportToString())
+# デコレータ
+
+
+def decoTest(f):
+    @functools.wraps(f)
+    def wrapper(*args, **kwargs):
+        print("Calling decorated function")
+        print(args)
+        print(kwargs)
+        print("ST")
+        ret = f(*args, **kwargs)
+        print("END")
+        return ret
+    return wrapper
+
+
+@decoTest
+def aaa(a, b, c, d=10):
+    print("aaa")
+
+
+aaa(10, 20, 30, d=20)
+
 
 ```
 
 !!! success
     ```
 
-    #usda 1.0
-    (
-        doc = """Generated from Composed Stage of root layer 
-    """
-    )
-    
-    def Sphere "hello"
-    {
-    }
-    
-    
+    Calling decorated function
+    (10, 20, 30)
+    {'d': 20}
+    ST
+    aaa
+    END
     
 
     ```
 
-
-#### [5]:
-
-
-```python
-
-# hoge
-
-
-```
-
-
-
-#### [7]:
-
-
-```python
-test
-
-```
-
-!!! error
-
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    c:\pyEnv\JupyterUSD_py27\usd\pyDev\usdJupyter.py in <module>()
-    ----> 1 test
-    
-
-    NameError: name 'test' is not defined
-
-
-
+# hogehoge
+fugafuga

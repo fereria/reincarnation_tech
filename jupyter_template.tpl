@@ -5,6 +5,7 @@
 
 # Markdownは表示しない
 {% block markdowncell%}
+{{ cell.source}}
 {% endblock markdowncell%}
 
 {% block in_prompt %}

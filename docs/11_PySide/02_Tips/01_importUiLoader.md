@@ -1,5 +1,5 @@
 ---
-title: SUMMARY:UILoaderで.uiをロードする
+title: UILoaderで.uiをロードする
 ---
 
 # UILoaderで.uiをロードする
