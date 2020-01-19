@@ -40,7 +40,7 @@
     
     
       
-        <title>テストノートブック</title>
+        <title>テストノートブック2</title>
       
     
     
@@ -146,7 +146,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                テストノートブック
+                テストノートブック2
               
             </span>
           
@@ -2593,8 +2593,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../11_PySide/02_Tips/01_importUiLoader/" title="SUMMARY:UILoaderで.uiをロードする" class="md-nav__link">
-      SUMMARY:UILoaderで.uiをロードする
+    <a href="../../11_PySide/02_Tips/01_importUiLoader/" title="UILoaderで.uiをロードする" class="md-nav__link">
+      UILoaderで.uiをロードする
     </a>
   </li>
 
@@ -2989,65 +2989,12 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        テストノートブック
-      </label>
     
-    <a href="./" title="テストノートブック" class="md-nav__link md-nav__link--active">
-      テストノートブック
+    <a href="./" title="テストノートブック2" class="md-nav__link md-nav__link--active">
+      テストノートブック2
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">目次</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-1" class="md-nav__link">
-    1. [1]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-2" class="md-nav__link">
-    2. [2]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-3" class="md-nav__link">
-    3. [3]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-5" class="md-nav__link">
-    4. [5]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-7" class="md-nav__link">
-    5. [7]:
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -3251,50 +3198,8 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
   
-    <label class="md-nav__title" for="__toc">目次</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-1" class="md-nav__link">
-    1. [1]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-2" class="md-nav__link">
-    2. [2]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-3" class="md-nav__link">
-    3. [3]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-5" class="md-nav__link">
-    4. [5]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-7" class="md-nav__link">
-    5. [7]:
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
   
 </nav>
                   </div>
@@ -3309,9 +3214,69 @@
                   <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/60_JupyterNotebook/NoteSample.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>テストノートブック</h1>
-                
-                <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/NoteSample__テストノートブック.ipynb">NoteSample__テストノートブック.ipynb</a><br />
+                <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/NoteSample__テストノートブック2.ipynb">NoteSample__テストノートブック2.ipynb</a></p>
+<h4 id="1-1">1. [1]:</h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># 高階関数と呼び出し可能オブジェクトの操作</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+</pre></div>
+</td></tr></table>
+
+<h4 id="2-2">2. [2]:</h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># partiald</span>
+<span class="c1"># 引数を与えた状態の関数を生成する</span>
+
+
+<span class="k">def</span> <span class="nf">hogehoge</span><span class="p">(</span><span class="o">*</span><span class="n">val</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">hogehoge</span><span class="p">,</span> <span class="s1">&#39;aaa&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+</div>
+<h4 id="3-3">3. [3]:</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -3326,56 +3291,35 @@
 12
 13
 14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Change directory to VSCode workspace root so that relative path loads work correctly. Turn this addition off with the DataScience.changeDirOnImportExport setting</span>
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># デコレータ</span>
 
-<span class="c1"># ms-python.python added</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">def</span> <span class="nf">decoTest</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Calling decorated function&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;ST&quot;</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;END&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 
-<span class="k">try</span><span class="p">:</span>
 
-    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..\pyEnv\JupyterUSD_py27&#39;</span><span class="p">))</span>
+<span class="nd">@decoTest</span>
+<span class="k">def</span> <span class="nf">aaa</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
 
-<span class="k">except</span><span class="p">:</span>
-
-    <span class="k">pass</span>
-</pre></div>
-</td></tr></table></p>
-<h4 id="1-1">1. [1]:</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
-<span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
-</pre></div>
-</td></tr></table>
-
-<h4 id="2-2">2. [2]:</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">stg</span> <span class="o">=</span><span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\remiria\Downloads\UsdSkelExamples\UsdSkelExamples\HumanFemale\HumanFemale.walk.usd&quot;</span><span class="p">)</span>
-<span class="n">stg</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;D:/test.usda&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">True</span>
-</pre></div>
-</td></tr></table>
-
-</div>
-<h4 id="3-3">3. [3]:</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># ファイルではなくメモリにシーンを作る</span>
-<span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
-<span class="c1"># シーンに対してPrimを追加する。</span>
-<span class="n">xf</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Sphere</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
-<span class="c1"># 結果を表示</span>
-<span class="k">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<span class="n">aaa</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3386,40 +3330,18 @@
 3
 4
 5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="n">usda</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="p">(</span>
-    <span class="n">doc</span> <span class="o">=</span> <span class="ss">&quot;&quot;&quot;Generated from Composed Stage of root layer </span>
-<span class="ss">&quot;&quot;&quot;</span>
-<span class="p">)</span>
-
-<span class="n">def</span> <span class="n">Sphere</span> <span class="ss">&quot;hello&quot;</span>
-<span class="err">{</span>
-<span class="err">}</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">Calling</span> <span class="nv">decorated</span> <span class="nv">function</span>
+<span class="ss">(</span><span class="mi">10</span>, <span class="mi">20</span>, <span class="mi">30</span><span class="ss">)</span>
+{<span class="s1">&#39;</span><span class="s">d</span><span class="s1">&#39;</span>: <span class="mi">20</span>}
+<span class="nv">ST</span>
+<span class="nv">aaa</span>
+<span class="k">END</span>
 </pre></div>
 </td></tr></table>
 
 </div>
-<h4 id="4-5">4. [5]:</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># hoge</span>
-</pre></div>
-</td></tr></table>
-
-<h4 id="5-7">5. [7]:</h4>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">test</span>
-</pre></div>
-</td></tr></table>
-
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<hr />
-<p>NameError                                 Traceback (most recent call last)</p>
-<p>c:\pyEnv\JupyterUSD_py27\usd\pyDev\usdJupyter.py in <module>()<br />
-----&gt; 1 test</p>
-<p>NameError: name 'test' is not defined</p>
-</div>
+<h1 id="hogehoge">hogehoge</h1>
+<p>fugafuga</p>
                 
                   
                 
