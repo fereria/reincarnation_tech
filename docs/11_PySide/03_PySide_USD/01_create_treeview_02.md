@@ -70,14 +70,13 @@ Dropを許可するようにします。
 そのindexを使用してModelに作成した addUsdReference関数から
 現在のPrimに対してReferenceを追加するようにします。
 今はTreeViewのItemにPrimのオブジェクトを持たせているので、
-ItemからDataを取得して、
-そのPrimに対してReferenceを追加します。
+ItemからDataを取得して、そのPrimに対してReferenceを追加します。
 追加するときには、選択中のPrimにReferenceで読み込むLayerのDefaultPrim名のPrimを
 作成して、その作成したPrimに対してReferenceを追加するようにします。
 
 ![](https://i.gyazo.com/67e31697c3f49d57d981dcdfc818643d.gif)
 
-DDのたびにTreeViewをアップデーすすることで、
+DDのたびにTreeViewをアップデートすることで、
 Reference構造もTreeViewに反映させることができます。
 
 ## ReferencのItemの色を変更・ReferenceしたUsd取得
@@ -112,7 +111,7 @@ class PrimItem(object):
         return self._prim
  
     def getFontColor(self):
- 
+        # リファレンスを含むPrimの場合は、文字の色を変える
         if self._prim.HasAuthoredReferences():
             return QColor(255, 121, 0)
         else:
@@ -142,22 +141,22 @@ class PrimItem(object):
                 return ""
 ```
 表示する文や色を判定するのはItemクラスで実装します。
-まず、Referencにによって作成されたかどうは HasAuthoredReferences で取得できます。
+まず、Referenceによって作成されたかどうかを、**HasAuthoredReferences** で取得できます。
 なので、これがTrueだった場合は文字の色を変更するようにします。
 
 もう１つ、そのPrimでReferenceされているレイヤーを取得して、TreeViewで表示したい。
 ので、data(column) 下で、判定するのを作りました。
 
-これが地味に苦戦して、APIリファレンスがPythonとC++とではだいぶ変更があって、
-関数などがだいぶ違いました。
+これが地味に苦戦して、APIリファレンスがPythonとC++とではだいぶ違いがあって、
+なにをどうやったら取得出来るかがドキュメントからはほぼ分かりませんでした。
 
-まず、リファレンスで作成されているPriののPrimStackを取得します。
-このPrimStackは、このPrimを定義するのに使用する「主張（Opinion）」を取得することができます。
+まず、リファレンスで作成されているPrimのPrimStackを取得します。
+このPrimStackは、このPrimを定義するための「主張（Opinion）」を取得することができます。
 
-このPrimStackは、その主張の元になっているレイヤーと、
-SdfPathをSdfReferenceオブジェクトで取得することが出来ます。
-SdfReferenceまわりはC+のドキュメントとだいぶ違っていて、Pythonの場合は
-prependItemsからassetPathで、元Pathを取得できます。
+このPrimStackは、その主張の元になっているレイヤーとSdfPathを
+SdfReferenceオブジェクトで取得することが出来ます。
+SdfReferenceまわりはC+のドキュメントとだいぶ違っていて、
+Pythonの場合はprependItemsからassetPathを使用して、元Pathを取得できます。
 （しかし、取得はできたけど本当にあってるのか・・・これ・・・）
 
 ```python
@@ -194,5 +193,6 @@ Primから必要な情報が取得できるようになったら
 やはりコンポジション込みで中の構造の取得方法とか調べると
 沼にはまってなかなか辛いです。
 あと、C++ドキュメントとPythonとの差がけっこうあって調べるのが難しいですね。
-最終的には、コマンドを実しながら print(dir(ref)) みたいに、関数を取得しつつ..の
-繰り返しでなんとかしてましたが、もう少し良い方法はないものか...
+最終的には、コマンドを実行しながら print(dir(ref)) みたいに、
+関数を取得して動作確認して...の繰り返しでなんとかしてましたが、
+もう少し良い方法はないものか...もうしばらく検証が必要だなとおもいました。
