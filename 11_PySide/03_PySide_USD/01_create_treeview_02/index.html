@@ -3431,12 +3431,11 @@ Dropを許可するようにします。</p>
 そのindexを使用してModelに作成した addUsdReference関数から<br />
 現在のPrimに対してReferenceを追加するようにします。<br />
 今はTreeViewのItemにPrimのオブジェクトを持たせているので、<br />
-ItemからDataを取得して、<br />
-そのPrimに対してReferenceを追加します。<br />
+ItemからDataを取得して、そのPrimに対してReferenceを追加します。<br />
 追加するときには、選択中のPrimにReferenceで読み込むLayerのDefaultPrim名のPrimを<br />
 作成して、その作成したPrimに対してReferenceを追加するようにします。</p>
 <p><img alt="" src="https://i.gyazo.com/67e31697c3f49d57d981dcdfc818643d.gif" /></p>
-<p>DDのたびにTreeViewをアップデーすすることで、<br />
+<p>DDのたびにTreeViewをアップデートすることで、<br />
 Reference構造もTreeViewに反映させることができます。</p>
 <h2 id="2-referencitemreferenceusd">2. ReferencのItemの色を変更・ReferenceしたUsd取得</h2>
 <p>このままだと、どこがReferenceだったかわかりにくいので<br />
@@ -3520,7 +3519,7 @@ Reference構造もTreeViewに反映させることができます。</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prim</span>
 
     <span class="k">def</span> <span class="nf">getFontColor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
+        <span class="c1"># リファレンスを含むPrimの場合は、文字の色を変える</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prim</span><span class="o">.</span><span class="n">HasAuthoredReferences</span><span class="p">():</span>
             <span class="k">return</span> <span class="n">QColor</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -3551,18 +3550,18 @@ Reference構造もTreeViewに反映させることができます。</p>
 </pre></div>
 </td></tr></table><br />
 表示する文や色を判定するのはItemクラスで実装します。<br />
-まず、Referencにによって作成されたかどうは HasAuthoredReferences で取得できます。<br />
+まず、Referenceによって作成されたかどうかを、<strong>HasAuthoredReferences</strong> で取得できます。<br />
 なので、これがTrueだった場合は文字の色を変更するようにします。</p>
 <p>もう１つ、そのPrimでReferenceされているレイヤーを取得して、TreeViewで表示したい。<br />
 ので、data(column) 下で、判定するのを作りました。</p>
-<p>これが地味に苦戦して、APIリファレンスがPythonとC++とではだいぶ変更があって、<br />
-関数などがだいぶ違いました。</p>
-<p>まず、リファレンスで作成されているPriののPrimStackを取得します。<br />
-このPrimStackは、このPrimを定義するのに使用する「主張（Opinion）」を取得することができます。</p>
-<p>このPrimStackは、その主張の元になっているレイヤーと、<br />
-SdfPathをSdfReferenceオブジェクトで取得することが出来ます。<br />
-SdfReferenceまわりはC+のドキュメントとだいぶ違っていて、Pythonの場合は<br />
-prependItemsからassetPathで、元Pathを取得できます。<br />
+<p>これが地味に苦戦して、APIリファレンスがPythonとC++とではだいぶ違いがあって、<br />
+なにをどうやったら取得出来るかがドキュメントからはほぼ分かりませんでした。</p>
+<p>まず、リファレンスで作成されているPrimのPrimStackを取得します。<br />
+このPrimStackは、このPrimを定義するための「主張（Opinion）」を取得することができます。</p>
+<p>このPrimStackは、その主張の元になっているレイヤーとSdfPathを<br />
+SdfReferenceオブジェクトで取得することが出来ます。<br />
+SdfReferenceまわりはC+のドキュメントとだいぶ違っていて、<br />
+Pythonの場合はprependItemsからassetPathを使用して、元Pathを取得できます。<br />
 （しかし、取得はできたけど本当にあってるのか・・・これ・・・）</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -3614,8 +3613,9 @@ Primから必要な情報が取得できるようになったら<br />
 <p>やはりコンポジション込みで中の構造の取得方法とか調べると<br />
 沼にはまってなかなか辛いです。<br />
 あと、C++ドキュメントとPythonとの差がけっこうあって調べるのが難しいですね。<br />
-最終的には、コマンドを実しながら print(dir(ref)) みたいに、関数を取得しつつ..の<br />
-繰り返しでなんとかしてましたが、もう少し良い方法はないものか...</p>
+最終的には、コマンドを実行しながら print(dir(ref)) みたいに、<br />
+関数を取得して動作確認して...の繰り返しでなんとかしてましたが、<br />
+もう少し良い方法はないものか...もうしばらく検証が必要だなとおもいました。</p>
                 
                   
                 
