@@ -3580,7 +3580,8 @@ C++だとそう簡単ではなく、ビルドをする必要があります。<b
 38
 39
 40
-41</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.1</span><span class="p">)</span>
+41
+42</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.1</span><span class="p">)</span>
 <span class="nb">project</span><span class="p">(</span><span class="s">testProj</span><span class="p">)</span>
 
 <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span> <span class="s">14</span><span class="p">)</span>
@@ -3599,7 +3600,7 @@ C++だとそう簡単ではなく、ビルドをする必要があります。<b
 <span class="nb">find_library</span><span class="p">(</span><span class="s">USD_USD</span> <span class="s">usd</span> <span class="s">HINTS</span> <span class="o">${</span><span class="nv">USD_LIBRARY_DIRECTORY</span><span class="o">}</span><span class="p">)</span>
 <span class="nb">find_library</span><span class="p">(</span><span class="s">USD_GEOM</span> <span class="s">usdGeom</span> <span class="s">HINTS</span> <span class="o">${</span><span class="nv">USD_LIBRARY_DIRECTORY</span><span class="o">}</span><span class="p">)</span>
 <span class="nb">find_library</span><span class="p">(</span><span class="s">TBB_LIB</span> <span class="s">tbb</span> <span class="s">HINTS</span> <span class="o">${</span><span class="nv">USD_LIBRARY_DIRECTORY</span><span class="o">}</span><span class="p">)</span>
-<span class="c"># find_package(PythonLibs REQUIRED)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">PythonLibs</span> <span class="s">2.7</span><span class="p">)</span>
 
 <span class="nb">add_executable</span><span class="p">(</span><span class="s">main_app</span> <span class="s">main.cpp</span><span class="p">)</span>
 <span class="nb">target_compile_options</span><span class="p">(</span><span class="s">main_app</span> <span class="s">PRIVATE</span> <span class="s">/DWIN32_LEAN_AND_MEAN</span><span class="p">)</span>
@@ -3615,6 +3616,7 @@ C++だとそう簡単ではなく、ビルドをする必要があります。<b
     <span class="s">main_app</span>
     <span class="o">${</span><span class="nv">PYTHON_ROOT_DIR</span><span class="o">}</span><span class="s">/libs/python27.lib</span>
     <span class="o">${</span><span class="nv">USD_LIBRARY_DIRECTORY</span><span class="o">}</span><span class="s">/boost_python-vc141-mt-1_65_1.lib</span>
+    <span class="o">${</span><span class="nv">PYTHON_LIBRARY</span><span class="o">}</span>
     <span class="o">${</span><span class="nv">TBB_LIB</span><span class="o">}</span>
     <span class="o">${</span><span class="nv">USD_SDF</span><span class="o">}</span>
     <span class="o">${</span><span class="nv">USD_TF</span><span class="o">}</span>
@@ -3635,6 +3637,10 @@ cppと同じフォルダに、 CMakeLists.txt を作り<br />
 このlinkライブラリのパスは、find_libraryで検索することができますが<br />
 boost_pythonはみつけたサンプルのとおりにやるとエラーになったので<br />
 自分のビルドしたUSDフォルダにあるboost_pythonのlibを書いてあります。</p>
+<p>...とおもったら色々勘違いしていただけで、REQUIREDではなく指定のバージョンにすれば<br />
+そのバージョンのpythonlibをみつけてくれるので、2.7にしておきました。(※追記)</p>
+<p>find_package自体は、.cmakeで検索コードを書いたりも出来るみたいなので<br />
+色々やってみたいです。</p>
 <p>もう1つトラップだったのが、<br />
 サンプルだとPythonLibも find_library で書かれていたのですが、<br />
 find_package(PythonLibs REQUIRED)<br />
