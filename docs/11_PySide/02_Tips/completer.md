@@ -162,7 +162,7 @@ class CustomQCompleter(QCompleter):
         return item.data(2)
 ```
 
-重要な所は2つで「splitPath」と「pathFromIndex」です。
+重要な所は2つで「**splitPath**」と「**pathFromIndex**」です。
 
 ### splitPath
 splitPathとは、LineEditで入力した値を引数で受け取り
@@ -218,3 +218,4 @@ splitPathとpathFromIndexでなにを返せば良いのかの関連性がつか�
 
 - https://stackoverflow.com/questions/5129211/qcompleter-custom-completion-rules
 - https://kiwamiden.com/how-to-make-autocomplete-of-pass-input
+
