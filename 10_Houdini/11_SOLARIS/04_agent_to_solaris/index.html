@@ -1616,7 +1616,7 @@
       
         <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
-    5. というわけで...
+    5. まとめ
   </a>
   
 </li>
@@ -3687,7 +3687,7 @@
       
         <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
-    5. というわけで...
+    5. まとめ
   </a>
   
 </li>
@@ -3797,10 +3797,16 @@ SOLARISから出力されたときに個別のusdとして出力されていま�
 注意が必要なのは、このcrowdsourceを読み込んでいるobjectmergeのusdはcrowdsourceは見ていなくて<br />
 個別のデータになっていることです。<br />
 あくまでも、このobjectMergeのデータ内でのみ完結しています。</p>
-<h2 id="5">5. というわけで...</h2>
+<h2 id="5">5. まとめ</h2>
 <p>SOLARISにAllで読み込むことで<br />
 群衆をSOLARISに持ち込むことが出来ますが、その場合不要のノードが大量に読み込まれてしまいました。<br />
-なので、Improt Scene(All)は不味い。</p>
+なので、Scene Improt(All)は不味い。</p>
+<p>Scene Import(All)の場合の挙動は、<br />
+・obj下にあるものはDisplayFlg関係なく、すべて持って行く<br />
+・obj下のGeometry1つ＝usのレイヤー扱い<br />
+・Geometry単位で完結していて、そこから外は参照していない？<br />
+ようなので、今回のように「Agentモデル」「Setup」「Sim」「Output（Group化）」のように複数階層存在する場合は<br />
+Outputとして作成したGeometryのみをSOLARISに持ち込まないとだめです。</p>
 <p>さてどうするかと思ったのですが</p>
 <p><img alt="" src="https://gyazo.com/45fec36eac893ebf798fe2d251648d2d.png" /></p>
 <p>素直にsopimport で各グループのジオメトリにしている object_mergeのノードを sopimportでロードして<br />
