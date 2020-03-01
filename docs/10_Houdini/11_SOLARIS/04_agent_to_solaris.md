@@ -130,11 +130,18 @@ SOLARISから出力されたときに個別のusdとして出力されていま�
 個別のデータになっていることです。
 あくまでも、このobjectMergeのデータ内でのみ完結しています。
 
-## というわけで...
+## まとめ
 
 SOLARISにAllで読み込むことで
 群衆をSOLARISに持ち込むことが出来ますが、その場合不要のノードが大量に読み込まれてしまいました。
-なので、Improt Scene(All)は不味い。
+なので、Scene Improt(All)は不味い。
+
+Scene Import(All)の場合の挙動は、
+・obj下にあるものはDisplayFlg関係なく、すべて持って行く
+・obj下のGeometry1つ＝usのレイヤー扱い
+・Geometry単位で完結していて、そこから外は参照していない？
+ようなので、今回のように「Agentモデル」「Setup」「Sim」「Output（Group化）」のように複数階層存在する場合は
+Outputとして作成したGeometryのみをSOLARISに持ち込まないとだめです。
 
 さてどうするかと思ったのですが
 
