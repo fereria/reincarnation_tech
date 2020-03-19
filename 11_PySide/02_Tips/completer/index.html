@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.1">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -120,7 +120,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#1" tabindex="1" class="md-skip">
+      <a href="#1" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -129,7 +129,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-header-nav__button md-logo">
+        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" aria-label="Reincarnation+#Tech" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -160,7 +160,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -371,7 +371,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../99_Link/Blender関係/" class="md-tabs__link">
+        <a href="../../../99_Link/Blender%E9%96%A2%E4%BF%82/" class="md-tabs__link">
           Link
         </a>
       
@@ -3634,7 +3634,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../99_Link/Blender関係/" title="Blender 関係 Link" class="md-nav__link">
+    <a href="../../../99_Link/Blender%E9%96%A2%E4%BF%82/" title="Blender 関係 Link" class="md-nav__link">
       Blender 関係 Link
     </a>
   </li>
@@ -3865,7 +3865,7 @@ Edit 部分が見づらかったので、マウス位置が画面右下になる
 37
 38
 39
-40</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">PopupSerchEdit</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+40</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">PopupSerchEdit</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="n">send</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
@@ -3905,7 +3905,7 @@ Edit 部分が見づらかったので、マウス位置が画面右下になる
         <span class="c1"># Enterしたら文字をEmitして閉じる</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>コードがこちら。</p>
@@ -3931,7 +3931,7 @@ UnfilteredPopupCompletion が、すべての候補を出すもの　になって
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="c1"># SimpleなAutoCompleteを作る</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>        <span class="c1"># SimpleなAutoCompleteを作る</span>
         <span class="n">comp</span> <span class="o">=</span> <span class="n">QCompleter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">comp</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="n">QStringListModel</span><span class="p">([</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">,</span> <span class="s1">&#39;fugafuga&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">]))</span>
         <span class="c1"># 全部表示: UnfilteredPopupCompletion</span>
@@ -3939,7 +3939,7 @@ UnfilteredPopupCompletion が、すべての候補を出すもの　になって
         <span class="c1"># POPUP表示: PopupCompletion</span>
         <span class="n">comp</span><span class="o">.</span><span class="n">setCompletionMode</span><span class="p">(</span><span class="n">QCompleter</span><span class="o">.</span><span class="n">UnfilteredPopupCompletion</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">setCompleter</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table><br />
 AutoCompleteに必要なのがこの部分。<br />
 構造は簡単で、候補に出したいModelをsetMomdelでセットし<br />
@@ -3968,7 +3968,7 @@ Modelのdataの「EditRole」の値が使用されます。（DisplayRoleでは�
 11
 12
 13
-14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="k">return</span> <span class="bp">None</span>
@@ -3982,7 +3982,7 @@ Modelのdataの「EditRole」の値が使用されます。（DisplayRoleでは�
         <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">EditRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">None</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table><br />
 こんな感じに、DisplayRoleと同じPrimNameを返すようにしておきます。</p>
 <h3 id="22-complete">2.2. Completeのカスタマイズ</h3>
@@ -4005,7 +4005,7 @@ Modelのdataの「EditRole」の値が使用されます。（DisplayRoleでは�
 16
 17
 18
-19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">CustomQCompleter</span><span class="p">(</span><span class="n">QCompleter</span><span class="p">):</span>
+19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomQCompleter</span><span class="p">(</span><span class="n">QCompleter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setCompletionMode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PopupCompletion</span><span class="p">)</span>
@@ -4024,7 +4024,7 @@ Modelのdataの「EditRole」の値が使用されます。（DisplayRoleでは�
         <span class="c1"># SdfPatにに置き換える</span>
         <span class="n">item</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>重要な所は2つで「<strong>splitPath</strong>」と「<strong>pathFromIndex</strong>」です。</p>
@@ -4071,6 +4071,7 @@ splitPathとpathFromIndexでなにを返せば良いのかの関連性がつか�
 </ul>
                 
                   
+                
                 
               
               
@@ -4126,18 +4127,18 @@ splitPathとpathFromIndexでなにを返せば良いのかの関連性がつか�
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/fereria" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/fereria" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://twitter.com/fereria" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://twitter.com/fereria" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
     
   </div>
 
@@ -4147,7 +4148,7 @@ splitPathとpathFromIndexでなにを返せば良いのかの関連性がつか�
       
     </div>
     
-      <script src="../../../assets/javascripts/application.8e03edeb.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
         
         
@@ -4162,7 +4163,7 @@ splitPathとpathFromIndexでなにを返せば良いのかの関連性がつか�
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
       

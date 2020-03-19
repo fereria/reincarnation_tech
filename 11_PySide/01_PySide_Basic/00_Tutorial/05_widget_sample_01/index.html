@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.1">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -120,7 +120,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#widget1lineedit" tabindex="1" class="md-skip">
+      <a href="#widget1lineedit" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -129,7 +129,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-header-nav__button md-logo">
+        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" aria-label="Reincarnation+#Tech" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -160,7 +160,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -371,7 +371,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../99_Link/Blender関係/" class="md-tabs__link">
+        <a href="../../../../99_Link/Blender%E9%96%A2%E4%BF%82/" class="md-tabs__link">
           Link
         </a>
       
@@ -3599,7 +3599,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../99_Link/Blender関係/" title="Blender 関係 Link" class="md-nav__link">
+    <a href="../../../../99_Link/Blender%E9%96%A2%E4%BF%82/" title="Blender 関係 Link" class="md-nav__link">
       Blender 関係 Link
     </a>
   </li>
@@ -3775,7 +3775,7 @@
 29
 30
 31
-32</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!python3</span>
+32</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
@@ -3807,7 +3807,7 @@
     <span class="n">a</span> <span class="o">=</span> <span class="n">UISample</span><span class="p">()</span>
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table><br />
 このコマンドを実行すると、LineEditに入力されている文字列をプリントすることができます。  </p>
 <h2 id="1-widget">1. Widgetの機能を使う方法</h2>
@@ -3815,8 +3815,8 @@
 <p>「値を取得する」だったり「セットする」だったり<br />
 追加したWidgetに対して何かしたい場合は、そのWidgetのオブジェクト（インスタンス？）<br />
 にアクセスすればOKです。  </p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">self</span><span class="p">.</span><span class="n">lineEdit</span><span class="p">.</span><span class="nb">text</span><span class="p">()</span>
-</pre></div>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">self</span><span class="p">.</span><span class="n">lineEdit</span><span class="p">.</span><span class="nb">text</span><span class="p">()</span>
+</code></pre></div>
 </td></tr></table><br />
 上のサンプルの場合、この部分です。<br />
 使いたいWidgetを知りたければ、とりあえず公式Helpを開きます。<br />
@@ -3825,8 +3825,8 @@ LineEditのヘルプはこちら。<br />
 クラスの構造的にはQWidetを継承しているだけなので、比較的シンプルな構造です。<br />
 <strong>現在入力されているものを取得</strong> したい場合は text() を使用すればOKなのがHelpを見れば分かります。  </p>
 <p>次に、デフォルトですでに文字が入っているようにしたい場合はどうすればいいか。</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
-</pre></div>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table><br />
 その場合は、setTextを使用します。  </p>
 <p><img alt="" src="https://gyazo.com/00f817aa792826f89306399f24c94fd0.png" /></p>
@@ -3838,12 +3838,12 @@ LineEditのヘルプはこちら。<br />
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>        <span class="c1"># __init__内に↓を記述</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>        <span class="c1"># __init__内に↓を記述</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">returnPressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pressReturn</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pressReturn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>returnPressed のシグナルを追加します。<br />
@@ -3853,8 +3853,8 @@ LineEditのヘルプはこちら。<br />
 <p>ボタンを押したらなにかをする のようにWidget側をトリガーにする他に<br />
 Widget側のSlotを使用することができます</p>
 <p><img alt="" src="https://gyazo.com/eb3b6ec69fbee8ec25f8e5bb14dfd4be.gif" /></p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">selectAll</span><span class="p">)</span>
-</pre></div>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">selectAll</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table><br />
 LineEditの場合は、 setTextやcut copy paste selectAll等がSlotとして用意されています。<br />
 ので、ボタンのconnect先にLineEditのSlotを指定すれば<br />
@@ -3862,8 +3862,8 @@ LineEditの場合は、 setTextやcut copy paste selectAll等がSlotとして用
 <h3 id="14">1.4. 何かをセットする</h3>
 <p>widgetに対してなにかをセットする場合は、 set####という名前になっている<br />
 関数を使用します。  </p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setMaxLength</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setMaxLength</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table><br />
 例としてこんな感じ。  </p>
 <p><img alt="" src="https://gyazo.com/f779dd020bfae1f42cc4e1875b6dc039.png" /></p>
@@ -3877,6 +3877,7 @@ Parametersが その引数をどの型で指定するか...という意味にな
 <p>次はたぶんRadioButton/CheckBoxあたり。</p>
                 
                   
+                
                 
               
               
@@ -3932,18 +3933,18 @@ Parametersが その引数をどの型で指定するか...という意味にな
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/fereria" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/fereria" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://twitter.com/fereria" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://twitter.com/fereria" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
     
   </div>
 
@@ -3953,7 +3954,7 @@ Parametersが その引数をどの型で指定するか...という意味にな
       
     </div>
     
-      <script src="../../../../assets/javascripts/application.8e03edeb.js"></script>
+      <script src="../../../../assets/javascripts/application.c33a9706.js"></script>
       
         
         
@@ -3968,7 +3969,7 @@ Parametersが その引数をどの型で指定するか...という意味にな
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../../../.."}})</script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

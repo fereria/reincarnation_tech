@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.1">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -120,7 +120,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#qtcoreqabstractitemmodel" tabindex="1" class="md-skip">
+      <a href="#qtcoreqabstractitemmodel" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -129,7 +129,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-header-nav__button md-logo">
+        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" aria-label="Reincarnation+#Tech" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -160,7 +160,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -371,7 +371,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../99_Link/Blender関係/" class="md-tabs__link">
+        <a href="../../../../99_Link/Blender%E9%96%A2%E4%BF%82/" class="md-tabs__link">
           Link
         </a>
       
@@ -3626,7 +3626,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../99_Link/Blender関係/" title="Blender 関係 Link" class="md-nav__link">
+    <a href="../../../../99_Link/Blender%E9%96%A2%E4%BF%82/" title="Blender 関係 Link" class="md-nav__link">
       Blender 関係 Link
     </a>
   </li>
@@ -3826,7 +3826,7 @@ TreeViewを構成するやり方について。  </p>
 13
 14
 15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        表示用のItemを再構築する</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3842,7 +3842,7 @@ TreeViewを構成するやり方について。  </p>
             <span class="n">treeItem</span> <span class="o">=</span> <span class="n">TreeItem</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
             <span class="n">p</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">treeItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table><br />
 そのツリー構造を作成しているのが「setupModelData」関数です。<br />
 Itemを作成するときに親ノードにあたるItemを指定し、<br />
@@ -3876,7 +3876,7 @@ TreeViewの場合は、TreeごとにこのCountが呼ばれ<br />
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QModelIndex</span><span class="p">()</span>
@@ -3885,7 +3885,7 @@ TreeViewの場合は、TreeごとにこのCountが呼ばれ<br />
         <span class="k">if</span> <span class="n">parentItem</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">rootItem</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QModelIndex</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">createIndex</span><span class="p">(</span><span class="n">parentItem</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">parentItem</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>parent関数は、引数のindexの親にあたるModelIndexをreturnするようにします。  </p>
@@ -3919,7 +3919,7 @@ createIndex(row,column,実体のオブジェクト) を渡すことでModelIndex
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">parent</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="n">parentItem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rootItem</span>
@@ -3930,7 +3930,7 @@ createIndex(row,column,実体のオブジェクト) を渡すことでModelIndex
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">createIndex</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">childItem</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QModelIndex</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table><br />
 parentItemの実体のTreeItemオブジェクトを取得し、<br />
 childを取得、そしてそのChildの実体とrow,columnから<br />
@@ -3946,7 +3946,7 @@ createIndexを使用してModelIndexを作成して返します。</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="k">return</span> <span class="bp">None</span>
@@ -3954,7 +3954,7 @@ createIndexを使用してModelIndexを作成して返します。</p>
             <span class="k">return</span> <span class="bp">None</span>
         <span class="n">item</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">internalPointer</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table><br />
 dataは、表示する場所のindexとroleとよばれる「ふるまい方」を受け取って処理をします。<br />
 このroleは、Viewに関係するいろいろな情報の受け取り口になっています。<br />
@@ -3977,6 +3977,7 @@ dataで最終的な出力形式を指定する...<br />
 </ul>
                 
                   
+                
                 
               
               
@@ -4032,18 +4033,18 @@ dataで最終的な出力形式を指定する...<br />
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/fereria" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/fereria" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://twitter.com/fereria" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://twitter.com/fereria" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
     
   </div>
 
@@ -4053,7 +4054,7 @@ dataで最終的な出力形式を指定する...<br />
       
     </div>
     
-      <script src="../../../../assets/javascripts/application.8e03edeb.js"></script>
+      <script src="../../../../assets/javascripts/application.c33a9706.js"></script>
       
         
         
@@ -4068,7 +4069,7 @@ dataで最終的な出力形式を指定する...<br />
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../../../.."}})</script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

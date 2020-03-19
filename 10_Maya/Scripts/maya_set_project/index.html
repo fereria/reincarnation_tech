@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.1">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
@@ -44,7 +44,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -55,12 +55,12 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -120,7 +120,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#cmds-maya-setproject" tabindex="1" class="md-skip">
+      <a href="#cmds-maya-setproject" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -129,7 +129,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-header-nav__button md-logo">
+        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" aria-label="Reincarnation+#Tech" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -160,7 +160,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -371,7 +371,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../99_Link/Blender関係/" class="md-tabs__link">
+        <a href="../../../99_Link/Blender%E9%96%A2%E4%BF%82/" class="md-tabs__link">
           Link
         </a>
       
@@ -3534,7 +3534,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../99_Link/Blender関係/" title="Blender 関係 Link" class="md-nav__link">
+    <a href="../../../99_Link/Blender%E9%96%A2%E4%BF%82/" title="Blender 関係 Link" class="md-nav__link">
       Blender 関係 Link
     </a>
   </li>
@@ -3651,7 +3651,7 @@
 23
 24
 25
-26</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+26</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="kn">as</span> <span class="nn">mc</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -3677,20 +3677,20 @@
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">default_rules</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
             <span class="n">mc</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">saveWorkspace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">path</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>プロジェクトセット自体は、</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">mc</span><span class="p">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">openWorkspace</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">mc</span><span class="p">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">openWorkspace</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>で指定をすることが出来る。</p>
 <p>しかし、<br />
 指定フォルダ以下の設定がされていない場合は、 scene や sourceimages などの<br />
 サブフォルダは作成されないので、新規でプロジェクトを作りたい場合などは</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">mc</span><span class="p">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="p">(</span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">default_rules</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="p">))</span><span class="w"></span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">mc</span><span class="p">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="p">(</span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">default_rules</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="p">))</span><span class="w"></span>
+</code></pre></div>
 </td></tr></table>
 
 <p>このコマンドを使用して、追加をする必要がある。<br />
@@ -3698,6 +3698,7 @@
 この場合の key は、ProjectSets 画面のパスを指定している文字の頭を小文字にしたもの。</p>
                 
                   
+                
                 
               
               
@@ -3753,18 +3754,18 @@
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/fereria" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/fereria" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://twitter.com/fereria" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://twitter.com/fereria" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
     
   </div>
 
@@ -3774,7 +3775,7 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/application.8e03edeb.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
         
         
@@ -3789,7 +3790,7 @@
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../../.."}})</script>
       
         <script src="../../../javascripts/extra.js"></script>
       
