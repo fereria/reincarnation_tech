@@ -3990,10 +3990,12 @@ PySideで作ってみました。</p>
 <p>ようにします。</p>
 <h2 id="3">3. コード</h2>
 <p>全コードはそこそこ長いので<br />
-<a href="https://snippets.cacher.io/snippet/89349b71822dedc44c70">https://snippets.cacher.io/snippet/89349b71822dedc44c70</a><br />
-全コードはこちらから。</p>
+<a href="https://snippets.cacher.io/snippet/89349b71822dedc44c70">https://snippets.cacher.io/snippet/89349b71822dedc44c70</a> Python3系<br />
+<a href="https://snippets.cacher.io/snippet/c326b9e4b9a245578a47">https://snippets.cacher.io/snippet/c326b9e4b9a245578a47</a> DCCツール用にPick部分を2系で書き直したもの</p>
+<p>全コードはこちらから。</p>
 <h2 id="4">4. 説明</h2>
 <p>というわけで中でやっていることの説明をば。</p>
+<p>解説部分はPython2系にて書いておきます（※3/29修正）</p>
 <p>まず、今回のような画面に対して何かを書いたりするような処理を作りたい場合<br />
 PySideの「mouseMoveEvent」を使用してイベントをしゅとくすれば良さそうですが<br />
 PySideのイベントはWindow外だとEventを拾ってくれません。<br />
@@ -4015,7 +4017,7 @@ PySideのイベントはWindow外だとEventを拾ってくれません。<br />
     <span class="n">getGradation</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ColorPick</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">setMouseTracking</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 
@@ -4062,7 +4064,7 @@ PySideのイベントはWindow外だとEventを拾ってくれません。<br />
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">getCurrentColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="n">QPoint</span><span class="p">):</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">getCurrentColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">originalPixmap</span><span class="o">.</span><span class="n">toImage</span><span class="p">()</span><span class="o">.</span><span class="n">pixelColor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -4229,7 +4231,8 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 26
 27
 28
-29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+29
+30</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 
         <span class="n">painter</span> <span class="o">=</span> <span class="n">QPainter</span><span class="p">()</span>
         <span class="n">painter</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -4255,7 +4258,8 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
             <span class="n">painter</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">QFont</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;メイリオ&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">QFont</span><span class="o">.</span><span class="n">Bold</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
             <span class="n">pen</span> <span class="o">=</span> <span class="n">QPen</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">pen</span><span class="p">)</span>
-            <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">17</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;RGB({color.red()},{color.green()},{color.blue()})&quot;</span><span class="p">)</span>
+            <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">17</span><span class="p">,</span> 
+                             <span class="s2">&quot;RGB({},{},{})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">()))</span>
 
         <span class="n">painter</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 </code></pre></div>
@@ -4326,7 +4330,7 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 60</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Gradation</span><span class="p">(</span><span class="n">QGraphicsScene</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Gradation</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">colorList</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -4355,7 +4359,7 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 <span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">UISample</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
@@ -4414,7 +4418,12 @@ QWidgetは一応全画面化できるものの、parentで親Widgetをしてし�
 <p>そして終わってすぐ早速Houdiniに入れてくれました。<br />
 個人的にはこのHoudiniへの追加方法が知りたいです。</p>
 <h2 id="7">7. 追記</h2>
-<p>上に書いたサンプルはPython3で書いてあるので、Python2系だとそのまま動きません。</p>
+<p>Python3で書いてましたがそれだとDCCツール的には混乱をうむので、記事は2系にしておきました。</p>
+<p>変更点は
+* super().<strong>init</strong>(parent) のように書いてたところを Python2系に戻す
+* f"{val},{val2}" のようにフォーマットを書いてたのを "".format(val,val2) にした
+* アノテーション書いてたところを消した func(val:Type) -&gt; func(val)<br />
+です。</p>
 <p>あとは、ピックする部分はもうちょい調整が必要なので、引き続き検証かなー</p>
                 
                   
@@ -4425,7 +4434,7 @@ QWidgetは一応全画面化できるものの、parentで親Widgetをしてし�
                   <div class="md-source-date">
                     <small>
                       
-                        最終更新日: 2020-03-28 16:37:35
+                        最終更新日: 2020-03-29 07:26:11
                       
                     </small>
                   </div>
