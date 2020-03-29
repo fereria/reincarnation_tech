@@ -2819,7 +2819,7 @@
         
           <li class="md-nav__item">
   <a href="#51-colorpickwindow" class="md-nav__link">
-    5.1. ColorPickWindowの継承元をなににするか
+    5.1. ColorPickWindow の継承元をなににするか
   </a>
   
 </li>
@@ -3929,7 +3929,7 @@
         
           <li class="md-nav__item">
   <a href="#51-colorpickwindow" class="md-nav__link">
-    5.1. ColorPickWindowの継承元をなににするか
+    5.1. ColorPickWindow の継承元をなににするか
   </a>
   
 </li>
@@ -3985,14 +3985,14 @@
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">あと前に見て、やってみたいなと思ったのが、SDのグラデーションスポイトの実装なんですが、これってPySideで出来ますかね？<a href="https://t.co/daZeJ5huCC">https://t.co/daZeJ5huCC</a></p>&mdash; 大翔士 (@d658t) <a href="https://twitter.com/d658t/status/1240625451636101120?ref_src=twsrc%5Etfw">March 19, 2020</a></blockquote>
 
 <p><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-<p>大翔士さん主催のPySide勉強会があったので、<br />
-その発表ネタにSDにあるというグラデーションピッカーがほしいという話があったので<br />
-PySideで作ってみました。</p>
+<p>大翔士さん主催の PySide 勉強会があったので、<br />
+その発表ネタに SD にあるというグラデーションピッカーがほしいという話があったので<br />
+PySide で作ってみました。</p>
 <h2 id="2">2. 挙動</h2>
-<p>まずはSDを起動してどういう結果がほしいのかを確認してみます。</p>
+<p>まずは SD を起動してどういう結果がほしいのかを確認してみます。</p>
 <p><img alt="" src="https://i.gyazo.com/17466eae3e54e262c52f21d56b619878.gif" /></p>
 <p>まず、グラデーションを選択する　を実行するとピックモードになり<br />
-ドラッグ中の色を取得して、移動距離に応じてColorが0-1位置に配置されるようになります。</p>
+ドラッグ中の色を取得して、移動距離に応じて Color が 0-1 位置に配置されるようになります。</p>
 <p>どの程度のしきい値でコントロールポイントを配置するかがグラデーションスポイトの制度という形で<br />
 設定できるようになっています。</p>
 <p>ということで、今回のスクリプトも</p>
@@ -4004,19 +4004,19 @@ PySideで作ってみました。</p>
 <p>ようにします。</p>
 <h2 id="3">3. コード</h2>
 <p>全コードはそこそこ長いので以下参照。<br />
-<a href="https://snippets.cacher.io/snippet/89349b71822dedc44c70">https://snippets.cacher.io/snippet/89349b71822dedc44c70</a> Python3系<br />
-<a href="https://snippets.cacher.io/snippet/c326b9e4b9a245578a47">https://snippets.cacher.io/snippet/c326b9e4b9a245578a47</a> DCCツール用にPick部分を2系で書き直したもの<br />
+<a href="https://snippets.cacher.io/snippet/89349b71822dedc44c70">https://snippets.cacher.io/snippet/89349b71822dedc44c70</a> Python3 系<br />
+<a href="https://snippets.cacher.io/snippet/c326b9e4b9a245578a47">https://snippets.cacher.io/snippet/c326b9e4b9a245578a47</a> DCC ツール用に Pick 部分を 2 系で書き直したもの<br />
 <a href="https://snippets.cacher.io/snippet/2c7496d1dbbdc093033c">https://snippets.cacher.io/snippet/2c7496d1dbbdc093033c</a> 大翔士さんによる修正版</p>
 <h2 id="4">4. 説明</h2>
 <p>というわけで中でやっていることの説明をば。</p>
-<p>解説部分はPython2系にて書いておきます（※3/29修正）</p>
+<p>解説部分は Python2 系にて書いておきます（※3/29 修正）</p>
 <p>まず、今回のような画面に対して何かを書いたりするような処理を作りたい場合<br />
-PySideの「mouseMoveEvent」を使用してイベントをしゅとくすれば良さそうですが<br />
-PySideのイベントはWindow外だとEventを拾ってくれません。<br />
+PySide の「mouseMoveEvent」を使用してイベントをしゅとくすれば良さそうですが<br />
+PySide のイベントは Window 外だと Event を拾ってくれません。<br />
 （画面外でもイベントを拾う方法は調べてもわからず...）</p>
 <p>というわけでこれをどうやって処理したらよいかというと、</p>
-<p><a href="../04_screen_shot/">PySideで範囲スクリーンショットを作る</a> でやったのと同じ処理で作ることができます。</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<p><a href="../04_screen_shot/">PySide で範囲スクリーンショットを作る</a> でやったのと同じ処理で作ることができます。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -4038,11 +4038,12 @@ PySideのイベントはWindow外だとEventを拾ってくれません。<br />
         <span class="bp">self</span><span class="o">.</span><span class="n">screen</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">primaryScreen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">originalPixmap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="o">.</span><span class="n">grabWindow</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">desktop</span><span class="p">()</span><span class="o">.</span><span class="n">winId</span><span class="p">())</span>
 </code></pre></div>
-</td></tr></table><br />
-それが、Pickerツール部分で<br />
-スクリーンを取得し、現在のScreenShotを撮影する処理をしています。</p>
+</td></tr></table>
+
+<p>それが、Picker ツール部分で<br />
+スクリーンを取得し、現在の ScreenShot を撮影する処理をしています。</p>
 <p>あと、今回はマウスの動きをトラッキングしたいので setMouseTracking(True) をいれておきます。</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4054,9 +4055,10 @@ PySideのイベントはWindow外だとEventを拾ってくれません。<br />
         <span class="n">rectSize</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">desktop</span><span class="p">()</span><span class="o">.</span><span class="n">screenGeometry</span><span class="p">()</span>
         <span class="n">painter</span><span class="o">.</span><span class="n">drawPixmap</span><span class="p">(</span><span class="n">rectSize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">originalPixmap</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table><br />
-そのスクリーンショットを、paintEvent内でWindow内に描画して</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+</td></tr></table>
+
+<p>そのスクリーンショットを、paintEvent 内で Window 内に描画して</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4066,16 +4068,17 @@ PySideのイベントはWindow外だとEventを拾ってくれません。<br />
         <span class="n">a</span><span class="o">.</span><span class="n">showFullScreen</span><span class="p">()</span>
         <span class="n">a</span><span class="o">.</span><span class="n">getGradation</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">setGradationColor</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table><br />
-そのスクリーンショットを描画したWindowを全画面表示します。</p>
+</td></tr></table>
+
+<p>そのスクリーンショットを描画した Window を全画面表示します。</p>
 <p>こうすることで、マウスのイベントを取得しつつ画面に対してなにかするということが<br />
 可能になります。</p>
-<p>注意点としては、スクリーンキャプチャは更新していないので、ColorPickを全画面表示した段階で<br />
+<p>注意点としては、スクリーンキャプチャは更新していないので、ColorPick を全画面表示した段階で<br />
 ウィンドウの表示は更新されない（静止画扱い）になります。<br />
 このあたりは書き方次第で回避策はあるかもしれません。</p>
 <p>これで、画面のドラッグをする部分の下準備ができました。</p>
 <h3 id="41">4.1. マウス位置の色を取得する</h3>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">getCurrentColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -4083,18 +4086,19 @@ PySideのイベントはWindow外だとEventを拾ってくれません。<br />
         <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">originalPixmap</span><span class="o">.</span><span class="n">toImage</span><span class="p">()</span><span class="o">.</span><span class="n">pixelColor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table><br />
-準備ができたので、実際に色の取得をしていきます。<br />
-色を取得するには、上の画像描画用に取得したScreenShotのイメージを使用します。<br />
-Pixmapのままだとピクセルカラーは取得できないので<br />
-toImageでQImageにしてから現在のピクセルカラーを取得します。</p>
+</td></tr></table>
+
+<p>準備ができたので、実際に色の取得をしていきます。<br />
+色を取得するには、上の画像描画用に取得した ScreenShot のイメージを使用します。<br />
+Pixmap のままだとピクセルカラーは取得できないので<br />
+toImage で QImage にしてから現在のピクセルカラーを取得します。</p>
 <h3 id="42">4.2. マウスの移動中の色を取得する</h3>
 <p>色の取得ができるようになったので、マウスの挙動を取得してきます。<br />
 取得するには<br />
 mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 この３つでそれぞれの処理を作ります。</p>
 <h4 id="421-mousepressevent">4.2.1. mousePressEvent</h4>
-<p>まずはここから。Pressすると、色の取得を開始したいので<br />
+<p>まずはここから。Press すると、色の取得を開始したいので<br />
 処理を開始できるようにフラグをたてて開始位置の色を取得します。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -4126,14 +4130,7 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 11
 12
 13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="c1"># GradColorを処理する</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span><span class="p">:</span>
             <span class="n">pos</span> <span class="o">=</span> <span class="n">QCursor</span><span class="p">()</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
@@ -4143,25 +4140,17 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
             <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getCurrentColor</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
             <span class="n">currentColor</span> <span class="o">=</span> <span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">())</span>
 
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">colorDifference</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">startColor</span><span class="p">,</span> <span class="n">currentColor</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">totalLength</span><span class="p">,</span> <span class="n">currentColor</span><span class="p">])</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">lastColor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-                <span class="c1"># 色の変化が指定以上だった場合はセットする</span>
-                <span class="k">if</span> <span class="n">colorDifference</span><span class="p">(</span><span class="n">lastColor</span><span class="p">,</span> <span class="n">currentColor</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">totalLength</span><span class="p">,</span> <span class="n">currentColor</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">totalLength</span><span class="p">,</span> <span class="n">currentColor</span><span class="p">])</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">currentPos</span> <span class="o">=</span> <span class="n">pos</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">repaint</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>MoveEventが今回のメイン処理です。<br />
-まず、ドラッグ中のみの実行なので isDrag = Trueのときのみ処理をさせます。<br />
+<p>MoveEvent が今回のメイン処理です。<br />
+まず、ドラッグ中のみの実行なので isDrag = True のときのみ処理をさせます。<br />
 そして、前のマウスポジションと今のマウスポジションの移動量を計算しておきます。</p>
-<p>そして、今のマウス下の色を取得して前のマウス位置の色との差を確認して<br />
-指定のしきい値よりも色の差がある場合は今までの移動量と色を配列にいれてます。</p>
+<p>ここではとりあえず全部の値を入れておき、あとで同じ色だった場合は外す処理を行います。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4176,7 +4165,7 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 </code></pre></div>
 </td></tr></table>
 
-<p>色の差の取得は、今回はシンプルに距離に応じて 0-1を返すようにしました。</p>
+<p>色の差の取得は、今回はシンプルに距離に応じて 0-1 を返すようにしました。</p>
 <h4 id="423-mousereleaseevent">4.2.3. mouseReleaseEvent</h4>
 <p>最後にマウスをはなしたときに今まで記録した内容をシグナルで返す処理を追加します。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -4219,21 +4208,22 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 </code></pre></div>
 </td></tr></table>
 
-<p>今回はグラーデーション位置は 0-1で取得したいので、マウスの総移動量で各<br />
+<p>今回はグラーデーション位置は 0-1 で取得したいので、マウスの総移動量で各<br />
 ポイントの移動量を割って 0-1 に値が収まるようにします。</p>
-<p>更に、グラデーションカラーの調整で前後の色を見るようにすることで<br />
-SDのグラデーション的な挙動をつくることができるようです。（大翔士さんの修正版に変更、ありがとうございます！）</p>
-<p>最後に、その結果をSignalで送信して、Windowを閉じて終了です。</p>
-<p>これで、<br />
+<p>更に、グラデーションカラーの調整で前後の色を見て、色の差が大きい場合のみreturnを返すようにすることで<br />
+SD のグラデーション的な挙動をつくることができるようです。（大翔士さんの修正版に変更、ありがとうございます！）</p>
+<p>最後に、その結果を Signal で送信して、Window を閉じて終了です。</p>
+<p>これで、</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">[[</span><span class="mi">0</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)],[</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]]</span>
 </code></pre></div>
-</td></tr></table><br />
-こんな感じの配列を、Signalで取得できるようになりました。</p>
+</td></tr></table>
+
+<p>こんな感じの配列を、Signal で取得できるようになりました。</p>
 <h3 id="43">4.3. 現在のピクセル色をマウス位置に表示する</h3>
 <p><img alt="" src="https://gyazo.com/8dc4ccdef266e61a3c0640d05d07a158.png" /></p>
 <p>メインの処理はできましたが、ピック中の色がわかるように<br />
 マウス位置に色を表示できるようにします。</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -4288,16 +4278,17 @@ SDのグラデーション的な挙動をつくることができるようです
             <span class="n">painter</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">QFont</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;メイリオ&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">QFont</span><span class="o">.</span><span class="n">Bold</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
             <span class="n">pen</span> <span class="o">=</span> <span class="n">QPen</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">pen</span><span class="p">)</span>
-            <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">17</span><span class="p">,</span> 
+            <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">17</span><span class="p">,</span>
                              <span class="s2">&quot;RGB({},{},{})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">()))</span>
 
         <span class="n">painter</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 </code></pre></div>
-</td></tr></table><br />
-描画部分は、まずスクリーンショットを全画面に表示させて<br />
+</td></tr></table>
+
+<p>描画部分は、まずスクリーンショットを全画面に表示させて<br />
 現在のマウス位置基準で右下あたりに文字と色の矩形を表示させるようにしました。</p>
-<p>とりあえずこれで必要な配列はできたので、HoudiniでツールをつくるなりすればOKですが<br />
-それだとわかりにくかったのでグラデーションのGUIをつくってみました。</p>
+<p>とりあえずこれで必要な配列はできたので、Houdini でツールをつくるなりすれば OK ですが<br />
+それだとわかりにくかったのでグラデーションの GUI をつくってみました。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -4428,35 +4419,37 @@ SDのグラデーション的な挙動をつくることができるようです
 <p>できあがった結果がこちら。</p>
 <h2 id="5">5. はまったところ</h2>
 <p>今回の実装ではいくつかのはマリポイントがありました。</p>
-<h3 id="51-colorpickwindow">5.1. ColorPickWindowの継承元をなににするか</h3>
-<p>PySideのGUIを作る場合は QMainWindow QDialog QWidget のいずれかを継承して<br />
-GUIを作るかと思います。</p>
-<p>が、今回のColorPickで全画面化したい場合は QMainWindow である必要がありました。</p>
-<p>QDialogの場合は、全画面化したとしてもタスクバーは消えてくれないため<br />
+<h3 id="51-colorpickwindow">5.1. ColorPickWindow の継承元をなににするか</h3>
+<p>PySide の GUI を作る場合は QMainWindow QDialog QWidget のいずれかを継承して<br />
+GUI を作るかと思います。</p>
+<p>が、今回の ColorPick で全画面化したい場合は QMainWindow である必要がありました。</p>
+<p>QDialog の場合は、全画面化したとしてもタスクバーは消えてくれないため<br />
 正しい挙動にならず、<br />
-QWidgetは一応全画面化できるものの、parentで親Widgetをしてしまうと<br />
-全画面化したいのに、親のWindow内以上にできず<br />
+QWidget は一応全画面化できるものの、parent で親 Widget をしてしまうと<br />
+全画面化したいのに、親の Window 内以上にできず<br />
 うまく起動できませんでした。</p>
 <h2 id="6">6. まとめ</h2>
 <p>というわけで、こんなかんじでピックツールができました。<br />
 個人的なポイントはスクリーンショットを全画面に表示するところで<br />
-ここがつかめていれば、あとは画面のQPixmapを取得して処理をすればOKなので<br />
+ここがつかめていれば、あとは画面の QPixmap を取得して処理をすれば OK なので<br />
 実装方法はわかりやすいのかなと思います。</p>
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">PySide勉強会のあんどうさん(<a href="https://twitter.com/fereria?ref_src=twsrc%5Etfw">@fereria</a>)の発表のおかげで、HoudiniにSubstance Designerのグラデーションスポイトを実装出来たよー！<br>詳しい実装方法についてはあんどうさんが記事にしてくれるそうです。<a href="https://twitter.com/hashtag/Houdini?src=hash&amp;ref_src=twsrc%5Etfw">#Houdini</a> <a href="https://twitter.com/hashtag/PySide?src=hash&amp;ref_src=twsrc%5Etfw">#PySide</a> <a href="https://t.co/KqPeaNfxDd">pic.twitter.com/KqPeaNfxDd</a></p>&mdash; 大翔士 (@d658t) <a href="https://twitter.com/d658t/status/1243855355030974465?ref_src=twsrc%5Etfw">March 28, 2020</a></blockquote>
 
 <p><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-<p>そして終わってすぐ早速Houdiniに入れてくれました。<br />
-個人的にはこのHoudiniへの追加方法が知りたいです。</p>
+<p>そして終わってすぐ早速 Houdini に入れてくれました。<br />
+個人的にはこの Houdini への追加方法が知りたいです。</p>
 <h2 id="7">7. 追記</h2>
-<p>Python3で書いてましたがそれだとDCCツール的には混乱をうむので、記事は2系にしておきました。</p>
-<p>変更点は
-* super().<strong>init</strong>(parent) のように書いてたところを Python2系に戻す
-* f"{val},{val2}" のようにフォーマットを書いてたのを "".format(val,val2) にした
-* アノテーション書いてたところを消した func(val:Type) -&gt; func(val)<br />
-です。</p>
+<p>Python3 で書いてましたがそれだと DCC ツール的には混乱をうむので、記事は 2 系にしておきました。</p>
+<p>変更点は</p>
+<ul>
+<li>super().<strong>init</strong>(parent) のように書いてたところを Python2 系に戻す</li>
+<li>f"{val},{val2}" のようにフォーマットを書いてたのを "".format(val,val2) にした</li>
+<li>アノテーション書いてたところを消した func(val:Type) -&gt; func(val)<br />
+  です。</li>
+</ul>
 <p>あとは、ピックする部分はもうちょい調整が必要なので、引き続き検証かなー</p>
 <h2 id="8-2-0329-1930">8. 追記２ 03/29 19:30</h2>
-<p>大翔士さんがさらに手を入れてよりSDに近いピッカーに進化しました。<br />
+<p>大翔士さんがさらに手を入れてより SD に近いピッカーに進化しました。<br />
 素晴らしい！！</p>
 <p><a href="https://snippets.cacher.io/snippet/2c7496d1dbbdc093033c">https://snippets.cacher.io/snippet/2c7496d1dbbdc093033c</a></p>
                 
@@ -4468,7 +4461,7 @@ QWidgetは一応全画面化できるものの、parentで親Widgetをしてし�
                   <div class="md-source-date">
                     <small>
                       
-                        最終更新日: 2020-03-29 07:26:11
+                        最終更新日: 2020-03-29 10:58:37
                       
                     </small>
                   </div>
