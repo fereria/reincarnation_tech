@@ -33,12 +33,16 @@ PySideで作ってみました。
 ## コード
 
 全コードはそこそこ長いので
-https://snippets.cacher.io/snippet/89349b71822dedc44c70
+https://snippets.cacher.io/snippet/89349b71822dedc44c70 Python3系
+https://snippets.cacher.io/snippet/c326b9e4b9a245578a47 DCCツール用にPick部分を2系で書き直したもの
+
 全コードはこちらから。
 
 ## 説明
 
 というわけで中でやっていることの説明をば。
+
+解説部分はPython2系にて書いておきます（※3/29修正）
 
 まず、今回のような画面に対して何かを書いたりするような処理を作りたい場合
 PySideの「mouseMoveEvent」を使用してイベントをしゅとくすれば良さそうですが
@@ -55,7 +59,7 @@ class ColorPick(QMainWindow):
     getGradation = Signal(list)
  
     def __init__(self, parent=None):
-        super().__init__(parent)
+        super(ColorPick,self).__init__(parent)
  
         self.setMouseTracking(True)
  
@@ -98,7 +102,7 @@ class ColorPick(QMainWindow):
 ### マウス位置の色を取得する
 
 ```python
-    def getCurrentColor(self, pos: QPoint):
+    def getCurrentColor(self, pos):
         x = pos.x()
         y = pos.y()
         return self.originalPixmap.toImage().pixelColor(x, y)
@@ -240,7 +244,8 @@ def colorDifference(src, dst):
             painter.setFont(QFont(u'メイリオ', 8, QFont.Bold, False))
             pen = QPen(Qt.white, 1)
             painter.setPen(pen)
-            painter.drawText(x + offset + 30, y + offset + 17, f"RGB({color.red()},{color.green()},{color.blue()})")
+            painter.drawText(x + offset + 30, y + offset + 17, 
+                             "RGB({},{},{})".format(color.red(), color.green(), color.blue()))
 
         painter.end()
 ```
@@ -254,7 +259,7 @@ def colorDifference(src, dst):
 class Gradation(QGraphicsScene):
  
     def __init__(self, parent=None):
-        super().__init__(parent)
+        super(Gradation,self).__init__(parent)
  
         self.colorList = []
  
@@ -283,7 +288,7 @@ class Gradation(QGraphicsScene):
 class UISample(QDialog):
  
     def __init__(self, parent=None):
-        super().__init__(parent)
+        super(UISample,self).__init__(parent)
  
         self.resize(350, 100)
  
@@ -348,3 +353,15 @@ QWidgetは一応全画面化できるものの、parentで親Widgetをしてし�
 
 そして終わってすぐ早速Houdiniに入れてくれました。
 個人的にはこのHoudiniへの追加方法が知りたいです。
+
+## 追記
+
+Python3で書いてましたがそれだとDCCツール的には混乱をうむので、記事は2系にしておきました。
+
+変更点は
+* super().__init__(parent) のように書いてたところを Python2系に戻す
+* f"{val},{val2}" のようにフォーマットを書いてたのを "".format(val,val2) にした
+* アノテーション書いてたところを消した func(val:Type) -> func(val)
+です。
+
+あとは、ピックする部分はもうちょい調整が必要なので、引き続き検証かなー
