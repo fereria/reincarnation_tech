@@ -2843,6 +2843,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#8-2-0329-1930" class="md-nav__link">
+    8. 追記２ 03/29 19:30
+  </a>
+  
+</li>
+      
       
       
       
@@ -3946,6 +3953,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#8-2-0329-1930" class="md-nav__link">
+    8. 追記２ 03/29 19:30
+  </a>
+  
+</li>
+      
       
       
       
@@ -3989,10 +4003,10 @@ PySideで作ってみました。</p>
 </ol>
 <p>ようにします。</p>
 <h2 id="3">3. コード</h2>
-<p>全コードはそこそこ長いので<br />
+<p>全コードはそこそこ長いので以下参照。<br />
 <a href="https://snippets.cacher.io/snippet/89349b71822dedc44c70">https://snippets.cacher.io/snippet/89349b71822dedc44c70</a> Python3系<br />
-<a href="https://snippets.cacher.io/snippet/c326b9e4b9a245578a47">https://snippets.cacher.io/snippet/c326b9e4b9a245578a47</a> DCCツール用にPick部分を2系で書き直したもの</p>
-<p>全コードはこちらから。</p>
+<a href="https://snippets.cacher.io/snippet/c326b9e4b9a245578a47">https://snippets.cacher.io/snippet/c326b9e4b9a245578a47</a> DCCツール用にPick部分を2系で書き直したもの<br />
+<a href="https://snippets.cacher.io/snippet/2c7496d1dbbdc093033c">https://snippets.cacher.io/snippet/2c7496d1dbbdc093033c</a> 大翔士さんによる修正版</p>
 <h2 id="4">4. 説明</h2>
 <p>というわけで中でやっていることの説明をば。</p>
 <p>解説部分はPython2系にて書いておきます（※3/29修正）</p>
@@ -4176,23 +4190,39 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
  9
 10
 11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="c1"># 1つ目は0なので、そのまま取り出す</span>
         <span class="n">retVal</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startColor</span><span class="p">]]</span>
 
         <span class="c1"># 正規化</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="p">:</span>
-            <span class="n">retVal</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">totalLength</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">prevDiff</span> <span class="o">=</span> <span class="n">colorDifference</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">nextDiff</span> <span class="o">=</span> <span class="n">colorDifference</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradation</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">prevDiff</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="ow">or</span> <span class="n">nextDiff</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">:</span>
+                    <span class="n">retVal</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">totalLength</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">retVal</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">totalLength</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
         <span class="c1"># マウスを話したらSignalで結果を返す</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">getGradation</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">retVal</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
 
 <p>今回はグラーデーション位置は 0-1で取得したいので、マウスの総移動量で各<br />
 ポイントの移動量を割って 0-1 に値が収まるようにします。</p>
+<p>更に、グラデーションカラーの調整で前後の色を見るようにすることで<br />
+SDのグラデーション的な挙動をつくることができるようです。（大翔士さんの修正版に変更、ありがとうございます！）</p>
 <p>最後に、その結果をSignalで送信して、Windowを閉じて終了です。</p>
 <p>これで、<br />
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">[[</span><span class="mi">0</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)],[</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]]</span>
@@ -4425,6 +4455,10 @@ QWidgetは一応全画面化できるものの、parentで親Widgetをしてし�
 * アノテーション書いてたところを消した func(val:Type) -&gt; func(val)<br />
 です。</p>
 <p>あとは、ピックする部分はもうちょい調整が必要なので、引き続き検証かなー</p>
+<h2 id="8-2-0329-1930">8. 追記２ 03/29 19:30</h2>
+<p>大翔士さんがさらに手を入れてよりSDに近いピッカーに進化しました。<br />
+素晴らしい！！</p>
+<p><a href="https://snippets.cacher.io/snippet/2c7496d1dbbdc093033c">https://snippets.cacher.io/snippet/2c7496d1dbbdc093033c</a></p>
                 
                   
                 
