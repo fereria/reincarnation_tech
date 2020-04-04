@@ -1,9 +1,7 @@
 ---
-title: USDEditTarget_EditTargetで指定レイヤーを操作
+title: EditTargetで指定レイヤーを操作
 ---
-**ipynbFile** [USDEditTarget_EditTargetで指定レイヤーを操作.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/USDEditTarget_EditTargetで指定レイヤーを操作.ipynb)
-hoge
-
+**ipynbFile** [USDEditTarget__EditTargetで指定レイヤーを操作.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/USDEditTarget__EditTargetで指定レイヤーを操作.ipynb)
 Root - layerA - layerB のようなサブレイヤー構成で  
 各レイヤーを取得する方法とかテスト。
 
