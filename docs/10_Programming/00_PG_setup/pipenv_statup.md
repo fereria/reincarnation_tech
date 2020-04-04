@@ -169,3 +169,21 @@ py -3.6 pipenv install
 行うことができます。
 
 VSCodeと組み合わせるとより快適になるので、とても便利です。
+
+## 追記
+
+```bat
+@echo off
+; path version
+mkdir %1
+cd /d %1
+C:\Windows\py.exe -3.6 -m pip install pipenv
+C:\Windows\py.exe -3.6 -m pipenv --python %2 install
+C:\Windows\py.exe -3.6 -m pipenv install pipenv
+```
+
+毎度プロジェクト作るときにコマンド叩くの面倒だったので、Batを書いた。
+
+これで 
+
+create_pipenvproj.bat D:\hogehoge 3.6 とかやるとかんたんにプロジェクトがつくれる!

@@ -6,7 +6,7 @@
     {
       "label": "start_serve",
       "type": "shell",
-      "command": "mkdocs serve",
+      "command": "${workspaceFolder}/serve.bat",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -14,19 +14,9 @@
       "problemMatcher": []
     },
     {
-      "label": "update_summary",
+      "label": "UpdatePage",
       "type": "shell",
-      "command": "deploy.bat",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "create_pages",
-      "type": "shell",
-      "command": "create_mkdocs_pages.py",
+      "command": "${workspaceFolder}/deploy.bat",
       "group": {
         "kind": "build",
         "isDefault": true
