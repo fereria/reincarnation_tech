@@ -1954,6 +1954,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9. 追記
+  </a>
+  
+</li>
+      
       
       
       
@@ -3837,6 +3844,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9. 追記
+  </a>
+  
+</li>
+      
       
       
       
@@ -4026,6 +4040,26 @@ pipenvが入れ終わったら、作った仮想環境をセットします。</
 専用の仮想環境をコマンド１つでモジュールのインストールまで一括で<br />
 行うことができます。</p>
 <p>VSCodeと組み合わせるとより快適になるので、とても便利です。</p>
+<h2 id="9">9. 追記</h2>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
+; <span class="k">path</span> version
+<span class="k">mkdir</span> <span class="nv">%1</span>
+<span class="k">cd</span> /d <span class="nv">%1</span>
+C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"> -3.6 -m pip install pipenv</span>
+C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"> -3.6 -m pipenv --python %2 install</span>
+C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"> -3.6 -m pipenv install pipenv</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>毎度プロジェクト作るときにコマンド叩くの面倒だったので、Batを書いた。</p>
+<p>これで </p>
+<p>create_pipenvproj.bat D:\hogehoge 3.6 とかやるとかんたんにプロジェクトがつくれる!</p>
                 
                   
                 
