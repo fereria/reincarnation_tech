@@ -1,6 +1,7 @@
+---
+title: VSCode のタスクを作成する
+---
 # VSCode のタスクを作成する
-
-<!-- SUMMARY:VSCode のタスクを作成する -->
 
 ![](https://gyazo.com/c7ebaf071cf1ffe0c835d38d781bacac.png)
 

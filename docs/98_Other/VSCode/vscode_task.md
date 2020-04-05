@@ -1,6 +1,7 @@
+---
+title: VSCodeでタスク管理
+---
 # VSCodeでタスク管理
-
-<!-- SUMMARY:VSCodeでタスク管理 -->
 
 VSCodeの拡張TODO+がタスク管理に良さそうだったので  
 色々と設定してみました。  

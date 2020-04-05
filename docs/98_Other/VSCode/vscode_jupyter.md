@@ -1,6 +1,7 @@
+---
+title: VSCodeでJupyter
+---
 # VSCodeでJupyter
-
-<!-- SUMMARY:VSCodeでJupyter -->
 
 数学関係の勉強をPythonで実行するために  
 話題のJupyterをVSCodeにインストールしてみました。  
