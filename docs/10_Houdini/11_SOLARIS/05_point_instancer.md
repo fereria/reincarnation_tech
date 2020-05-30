@@ -127,6 +127,12 @@ PrototypesへのIndexが保持されたじょうたいになっています。
 ビューポート上での表示も非常に軽く、大量のオブジェクトをばらまいてシーンを構成するときには
 非常に効果を発揮します。
 
+追記メモ
+https://graphics.pixar.com/usd/docs/api/class_usd_geom_point_instancer.html#details
+> The PointInstancer schema is designed to scale to billions of instances
+
+らしいので、数百万インスタンスどころではなかった。
+
 ## PointInstancerとCopyToPoint
 
 このPointInstancerと似た機能というかほぼ同じような結果になるノードが「CopyToPoint」ノードです。
