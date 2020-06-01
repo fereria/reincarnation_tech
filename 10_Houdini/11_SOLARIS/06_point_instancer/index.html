@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/03_comp_arc_inherits/">
+        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/06_point_instancer/">
       
       
         <meta name="author" content="Megumi Ando@Remiria">
@@ -40,7 +40,7 @@
     
     
       
-        <title>SOLARISでInherits(継承)/Reference(継承)を扱う</title>
+        <title>SOLARISでInstancerを使う(2) 編集編</title>
       
     
     
@@ -120,7 +120,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#solaris-inherits" tabindex="0" class="md-skip">
+      <a href="#1" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -146,7 +146,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                SOLARISでInherits(継承)/Reference(継承)を扱う
+                SOLARISでInstancerを使う(2) 編集編
               
             </span>
           
@@ -1514,83 +1514,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        SOLARISでInherits(継承)/Reference(継承)を扱う
-      </label>
-    
-    <a href="./" title="SOLARISでInherits(継承)/Reference(継承)を扱う" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../03_comp_arc_inherits/" title="SOLARISでInherits(継承)/Reference(継承)を扱う" class="md-nav__link">
       SOLARISでInherits(継承)/Reference(継承)を扱う
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目次</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    1. 継承のノード
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-class-def" class="md-nav__link">
-    2. Class と Def の違い
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 継承について
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-solaris" class="md-nav__link">
-    4. SOLARIS 内での扱い方
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-loadlayer" class="md-nav__link">
-    4.1. loadLayerでの読み込み
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -1622,11 +1550,59 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../06_point_instancer/" title="SOLARISでInstancerを使う(2) 編集編" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        SOLARISでInstancerを使う(2) 編集編
+      </label>
+    
+    <a href="./" title="SOLARISでInstancerを使う(2) 編集編" class="md-nav__link md-nav__link--active">
       SOLARISでInstancerを使う(2) 編集編
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 入れ替える
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 移動・拡大縮小・回転をしたい
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prim" class="md-nav__link">
+    3. Primとして切り出す
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -3814,50 +3790,28 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">目次</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1. 継承のノード
+    1. 入れ替える
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-class-def" class="md-nav__link">
-    2. Class と Def の違い
+  <a href="#2" class="md-nav__link">
+    2. 移動・拡大縮小・回転をしたい
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 継承について
+  <a href="#3-prim" class="md-nav__link">
+    3. Primとして切り出す
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-solaris" class="md-nav__link">
-    4. SOLARIS 内での扱い方
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-loadlayer" class="md-nav__link">
-    4.1. loadLayerでの読み込み
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3877,200 +3831,64 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Houdini/11_SOLARIS/03_comp_arc_inherits.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Houdini/11_SOLARIS/06_point_instancer.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="solaris-inherits">SOLARIS で Inherits(継承)を扱う</h1>
-<p>SOLARIS の中での USD コンポジションアークは、ほぼサブレイヤー・リファレンス・バリアント<br />
-の 3 つで成り立っていて、なんか継承の影が薄いなーということで<br />
-せっかくなので継承について調べてみました。</p>
-<h2 id="1">1. 継承のノード</h2>
-<p>まず、SOLARIS 上で継承を使いたい場合は<br />
-独自ノードではなく Reference ノード内の ReferenceType を使用します。</p>
-<p><img alt="" src="https://gyazo.com/3ed522a786d457a1acfdf98c96b8f36d.png" /></p>
-<p>ReferenceType の Inherits From First Input を選択すると<br />
-Input1 のノードを継承して新しく Primitive を作成します。</p>
-<h2 id="2-class-def">2. Class と Def の違い</h2>
-<p>継承の説明をする前に、USD の Primitive の定義をする場合、<br />
-「def」という Specifier(指定子)を使用しますが<br />
-def 意外にも「class」という指定子が存在します。<br />
-コレが一体どう違いが出るかというと、</p>
-<p><img alt="" src="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png" /></p>
-<p>このように、定義するとシーングラフ上に表示されるものの<br />
-名前の左側にかがみもちみたいなアイコンが表示され、ビューポートにはなにも表示されません。<br />
-class の場合は、あくまでも定義だけで実体を作らず<br />
-Reference や Inherits を使用することで<br />
-class で定義している Primitive を作成することが出来ます。</p>
-<h2 id="3">3. 継承について</h2>
-<p>そもそも USD の継承はなにかというと、その名の通りある Primitive の構造を「継承」して<br />
-あたらしい Primitive を作成します。<br />
-挙動的にはほぼ Reference と同じですが、その挙動には若干の違いがあります。</p>
-<p>まず、Reference。<br />
-Reference は完全なカプセル化された別のレイヤーを、指定の Primitive に対してロードします。<br />
-「カプセル化」がなにかというと、</p>
-<p><img alt="" src="https://gyazo.com/abe1f03c14eb9860d18acba61564c6a2.png" /></p>
-<p>まず、こんなサンプルを用意します。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="o">#</span><span class="n">usda</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="p">(</span>
-    <span class="n">defaultPrim</span> <span class="o">=</span> <span class="ss">&quot;Obj&quot;</span>
-<span class="p">)</span>
-<span class="k">class</span> <span class="k">Cube</span> <span class="ss">&quot;ObjBase&quot;</span><span class="err">{}</span>
-
-<span class="n">def</span> <span class="ss">&quot;Obj&quot;</span><span class="p">(</span><span class="k">references</span><span class="o">=&lt;/</span><span class="n">ObjBase</span><span class="o">&gt;</span><span class="p">)</span><span class="err">{}</span>
-</code></pre></div>
-</td></tr></table>
-
-<p>Reference ノードでは、↑ のようなファイルをロードしておきます。<br />
-そして、片側の inlineusd で</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">Sphere</span> <span class="s">&quot;ObjBase&quot;</span>
-{
-}
-</code></pre></div>
-</td></tr></table>
-
-<p>こうします。<br />
-この 2 つをサブレイヤーで合成してみます。<br />
-「Reference」の場合、<br />
-<img alt="" src="https://gyazo.com/95b84ecd4714255fea7597bcc58666d0.png" /><br />
-結果は Cube になります。<br />
-<img alt="" src="https://gyazo.com/a93988890062bf95905bff56ce47593d.png" /><br />
-シーングラフをみても、Class 定義はなくロードされた Primitive のみが表示されます。</p>
-<p>Reference で読み込まれてるレイヤー内の構造がカプセル化されているので<br />
-あとからサブレイヤーでファイルをロードしたとしても、<br />
-<img alt="" src="https://gyazo.com/b149ebd89d2c87713455b6c313035363.png" /><br />
-合成はされるものの、リファレンス内の構造には影響を与えません。</p>
-<p>これを</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="o">#</span><span class="n">usda</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="p">(</span>
-    <span class="n">defaultPrim</span> <span class="o">=</span> <span class="ss">&quot;Obj&quot;</span>
-<span class="p">)</span>
-<span class="k">class</span> <span class="k">Cube</span> <span class="ss">&quot;ObjBase&quot;</span><span class="err">{}</span>
-
-<span class="n">def</span> <span class="ss">&quot;Obj&quot;</span><span class="p">(</span><span class="k">inherits</span><span class="o">=&lt;/</span><span class="n">ObjBase</span><span class="o">&gt;</span><span class="p">)</span><span class="err">{}</span>
-</code></pre></div>
-</td></tr></table>
-
-<p>このように「継承」にしてみます。</p>
-<p><img alt="" src="https://gyazo.com/ddffc80dc903d4d7bbd76db180e3fb28.png" /></p>
-<p>すると、サブレイヤーの結果は Sphere に変わりました。<br />
-つまりは、Merge ノードを使用して合成した class Sphere "BaseObj" {} が<br />
-Reference ノードを使用して読み込んだレイヤー内の class を上書きしている...ということがわかります。<br />
-この差が、Reference と Inherits の大きな違いになります。</p>
-<h2 id="4-solaris">4. SOLARIS 内での扱い方</h2>
-<p>ここまでが USD 的な挙動でしたが<br />
-では実際に SOLARIS 上での挙動を調べてみます。</p>
-<p><img alt="" src="https://gyazo.com/e31a8ff3a7fe359848543aa128581d24.png" /></p>
-<p>まずはこんな感じで class 指定子で Class を定義します。</p>
-<p><img alt="" src="https://gyazo.com/a7b53ffc68a27085e9614eb449785bb3.png" /></p>
-<p>Primitive ノードを使用すると、指定の Type で def または class を作成できます。<br />
-ので、今回は Cube を Class で作成します。</p>
-<p><img alt="" src="https://gyazo.com/3b08a8faa09279b3acaa7e01d7e5c7ad.png" /></p>
-<p>Inherits は単独のノードではなく Reference ノードのオプションで切り替えできます。<br />
-切り替えたら、継承元の Primitive を指定します。</p>
-<p>なお、Reference と Inherits の違いとして、Reference は別のレイヤー（別の usd）を指定して<br />
-ロードすることが出来ますが、Inherits は同じレイヤー内の Primitive を指定する<br />
-必要があります。<br />
-ので、別ファイルで定義している場合はサブレイヤーで合成してから inherits =&lt;～～&gt;で<br />
-Primitive を指定する必要があります。</p>
-<p>で。</p>
-<p>Inherits で継承した結果</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">Cube</span> <span class="s">&quot;TestClassA&quot;</span>
-{
-}
-
-<span class="n">def</span> <span class="s">&quot;Inherits&quot;</span> (
-    <span class="n">prepend</span> <span class="n">inherits</span> = <span class="s">&lt;/TestClassA&gt;</span>
-)
-{
-}
-</code></pre></div>
-</td></tr></table>
-
-<p>こんな感じの usda が作成されます。</p>
-<p><img alt="" src="https://gyazo.com/950e06b355b39a04cc3f51ad37023b0e.png" /></p>
-<p>結果のシーングラフ。<br />
-Inherits という名前の Cube が作成されました。</p>
-<p><img alt="" src="https://gyazo.com/5f3dbf0b535e9a4e164732c0169c368e.png" /></p>
-<p>この継承したレイヤーを USD ROP で出力します。</p>
-<p><img alt="" src="https://gyazo.com/fe31288229a60c9f434557f69eefe10b.png" /></p>
-<p>そのファイルをRefernceノードでロードすると、<br />
-このようにClass定義はなくなり、ファイル内の指定のPrimitive（通常はDefaultPrim）のみが<br />
-表示されます。<br />
-しかし、表示はされていないものの、継承元の TestClassA クラスはオーバーライド可能で<br />
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">Sphere</span> <span class="s">&quot;TestClassA&quot;</span>
-{
-}
-</code></pre></div>
-</td></tr></table><br />
-このようなファイルをサブレイヤー合成すると、</p>
-<p><img alt="" src="https://gyazo.com/40d836b0c63eb4969d1639f136f694ee.png" /></p>
-<p>こんな感じで合成され</p>
-<p><img alt="" src="https://gyazo.com/906b3fc84f75c9a91320c9cb1595ec9f.png" /></p>
-<p>結果はSphereに変わります。</p>
-<p><img alt="" src="https://gyazo.com/76cdcad45e0256c13183dc15ff170314.png" /></p>
-<p>しかし、これを Reference From First Input にしてから再度出力して、<br />
-同じノードを確認すると</p>
-<p><img alt="" src="https://gyazo.com/3883cd57f7e755a63e633749ef1434ba.png" /></p>
-<p>同じ構成であっても、オーバーライドされずにreference4はCubeのまま</p>
-<p><img alt="" src="https://gyazo.com/6bcc7060d30110560ba73c1c6c79fcef.png" /></p>
-<p>Reference内のClassは隠蔽された状態になります。</p>
-<p>これが、ReferenceとInheritsの挙動の差のようです。</p>
-<h3 id="41-loadlayer">4.1. loadLayerでの読み込み</h3>
-<p><img alt="" src="https://gyazo.com/79ae7a0058c30649d105bb2e1dd7d63b.png" /></p>
-<p>レイヤーを読み込む場合、Referenceノードの場合は<br />
-Classは隠蔽され、シーングラフには表示されず、継承したクラスをオーバーライドする等は<br />
-出来ません。</p>
-<p>loadLayer＋Referenceノードを使用してリファレンス化した場合</p>
-<p><img alt="" src="https://gyazo.com/b1618979ee926c0bd1c22258e355af88.png" /></p>
-<p>こうすると</p>
-<p><img alt="" src="https://gyazo.com/44f3c51dc5bf107a8b511d26861cdf88.png" /></p>
-<p>こうなります。<br />
-ファイルでReferenceを読み込むのではなく<br />
-LoadLayerでReferenceノードにつなぐと<br />
-あくまでも、同じレイヤー内にあるPrimitiveをリファレンスでロードした状態と同じになり<br />
-レイヤー内の隠蔽はされず<br />
-この場合は、</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">Sphere</span> <span class="s">&quot;ObjBase&quot;</span>
-{
-}
-</code></pre></div>
-</td></tr></table><br />
-こんな感じのレイヤーをサブレイヤー合成すると<br />
-合成されてオブジェクトがCubeからSphereになります。</p>
-<p>LoadLayerで読み込んでReferenceノードでリファレンス化（複製）しても<br />
-挙動は同じなのかなと思っていましたが、挙動は違っていて</p>
-<p>LoadLayer＋Referenceノードにノード接続の場合は<br />
-サブレイヤーで合成されたあと、同じレイヤー内にあるPrimitiveをReferenceしている状態で<br />
-Referenceノードの場合はPrimitiveで reference=@Path@\&lt;/SdfPath>している状態ということか。</p>
-<p>というわけで、レイヤーでカプセル化してロードしたい場合は<br />
-Referenceノードを使用してロードするのが正解でした。<br />
-ノードでの表現方法、まだまだ難しい....`</p>
+                  <h1>SOLARISでInstancerを使う(2) 編集編</h1>
+                
+                <p><a href="../05_point_instancer/">前回</a>PointInstancerを使用して、オブジェクトをばらまくことはできたので<br />
+今回はそのばらまいたオブジェクトを編集していこうと思います。</p>
+<h2 id="1">1. 入れ替える</h2>
+<p>前回のままだと、オブジェクトはランダムに配置されている状態で<br />
+個別の編集はできません。</p>
+<p><img alt="" src="https://gyazo.com/7c8308a876405c1709ed42535be6b0bc.png" /></p>
+<p>そのオブジェクトを、個別に切り替えたい場合は、 editprototypeノードを使用します。  </p>
+<p><img alt="" src="https://gyazo.com/1e371724c17c7a796d86b959c443925f.png" /></p>
+<p>使い方はかんたんで、Instances に、モデルを入れ替えたいInstanceのパスを入れます。</p>
+<p><img alt="" src="https://gyazo.com/629d70cc383c5bca2e27ef00949026d3.png" /></p>
+<p>インスタンスのIDは、Instancesの右のこれでを押すことで<br />
+インスタンスオブジェクトをビューポートで選択できるようになるので</p>
+<p><img alt="" src="https://gyazo.com/11b77c96e2e227afea88122ab41c31fa.png" /></p>
+<p>右クリックでCopy Pathsを押せばPathを取得することができます。</p>
+<p><img alt="" src="https://i.gyazo.com/db8a29dd8bb9759f9f641974f4b3ec60.gif" /></p>
+<p>あとはReplaceWithのPrototype Index を切り替えると、指定のオブジェクトに<br />
+切り替えることができます。</p>
+<h2 id="2">2. 移動・拡大縮小・回転をしたい</h2>
+<p><img alt="" src="https://gyazo.com/c891d4af604a23d717655bbb47ea7452.png" /></p>
+<p>個別のInstanceの位置を調整したい場合は、 modifypointinstancesノードを使用します。</p>
+<p><img alt="" src="https://gyazo.com/f4740a2c801eb26015316e25564853e5.png" /></p>
+<p>このノードも edit prototypes と同様に、Point Instances で編集したいInstance<br />
+を選択します。<br />
+あとは、普通のオブジェクトと同様に移動などができるようになります。<br />
+なお、Pivotは原点になるようなので、回転や拡大縮小が謎なことになります。<br />
+なので一工夫が必要そうです。</p>
+<h2 id="3-prim">3. Primとして切り出す</h2>
+<p>Instanceではなく、通常のPrimとしてPointInstancerのオブジェクトを使いたい場合は</p>
+<p><img alt="" src="https://gyazo.com/7677b28f91eceaf63d08e36be364d7ae.png" /></p>
+<p>extractinstancesノードを使用します。</p>
+<p><img alt="" src="https://gyazo.com/b8929697ea96e726835b58667509cdee.png" /></p>
+<p>Instancesで切り出したいInstanceを選択することで、 Primitive Path に<br />
+オブジェクトを切り出すことができます。</p>
+<p><img alt="" src="https://gyazo.com/daf73a0ef169a8cee2242e64f6340e0f.png" /></p>
+<p>結果、こんな感じになります。</p>
+<p>Extractinstancesを使うと、実体のPrimになるので、<br />
+後は普通に色々変更を事ができます。</p>
+<p><a href="https://www.youtube.com/watch?v=Y3QEK6fV8W4&amp;t=15577s">https://www.youtube.com/watch?v=Y3QEK6fV8W4&amp;t=15577s</a></p>
+<p>少し前に公開されていたHoudiniHive SOLARIS では、<br />
+配置されているInstanceをこのノードで切り出して、</p>
+<p><img alt="" src="https://gyazo.com/e92509be9afbf1e0d84d8c59d48ddf96.png" /></p>
+<p>Pruneで自分以外のノードを消して、SOPModifyにわたすことで、<br />
+破壊やSIMをつけて、SOLARISに戻す...といったことを実現していました。</p>
+<p>Instanceで大量にばらまきつつ<br />
+Extract Instances でオブジェクトの種類を調整して<br />
+Modify Point Instances で、個別に位置調整をして<br />
+SOPでこねくり回したい部分は Extract Instances と Prune、SOPModifyのコンボで<br />
+SOP側で編集してSOLARISに戻してレンダリング...</p>
+<p>LOPでのレイアウトとSOPでの作り込み　そんな役割分担で<br />
+大規模なシーンの構築などができるようになりそうです。</p>
+<p>SOPでのPoints配置諸々も色々やりかたや方針を教えてもらったので<br />
+ぼちぼち触っていきたいです。</p>
+<p>Instanceingメニュー内のノードの使い方がようやく理解できて満足！</p>
                 
                   
                 
@@ -4080,7 +3898,7 @@ Referenceノードを使用してロードするのが正解でした。<br />
                   <div class="md-source-date">
                     <small>
                       
-                        最終更新日: 2019-12-30 08:03:54
+                        最終更新日: 2020-06-01 15:48:10
                       
                     </small>
                   </div>
@@ -4102,7 +3920,7 @@ Referenceノードを使用してロードするのが正解でした。<br />
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../02_comp_arc/" title="SOLARISでコンポジションアーク" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../05_point_instancer/" title="SOLARISでInstancerを使う(1) 配置編" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -4111,19 +3929,19 @@ Referenceノードを使用してロードするのが正解でした。<br />
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                SOLARISでコンポジションアーク
+                SOLARISでInstancerを使う(1) 配置編
               </span>
             </div>
           </a>
         
         
-          <a href="../04_agent_to_solaris/" title="Houdiniの群衆をSOLARISに持って行ってみよう(1)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
-                Houdiniの群衆をSOLARISに持って行ってみよう(1)
+                Houdini18で追加されたLOPノードを調べてみた
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
