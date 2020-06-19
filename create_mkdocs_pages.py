@@ -1,4 +1,4 @@
-#!python3.6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+#!python3.6
 # -*- coding: utf-8 -*-
 
 import os
@@ -16,17 +16,17 @@ MKDOCS_BASE  = "mkdocs_base.yml"
 
 # 日本語のIndexにしたいものは、フォルダ名から↓の名前に置換する
 FOLDER_REPLACE_STRING = {
-    "basic_operation": u"基本操作",
-    "data_structure": u"データ構造",
-    "terms": u"用語",
-    "modifier": u"モディファイアの使い方",
-    "back-to-top-button": u"検証・考察",
-    "study_materials": u"NodeEditorマテリアル学習",
-    "study_scripts_reading": u"サンプルコード読んで学習",
-    "imitate": u"Houdini写経",
-    "Env_Maya": u"Maya作業環境構築",
-    "PySide_Basic": u"PySide_基本編",
-    "python_module": u"Pythonモジュールの使い方",
+    "basic_operation": "基本操作",
+    "data_structure": "データ構造",
+    "terms": "用語",
+    "modifier": "モディファイアの使い方",
+    "back-to-top-button": "検証・考察",
+    "study_materials": "NodeEditorマテリアル学習",
+    "study_scripts_reading": "サンプルコード読んで学習",
+    "imitate": "Houdini写経",
+    "Env_Maya": "Maya作業環境構築",
+    "PySide_Basic": "PySide_基本編",
+    "python_module": "Pythonモジュールの使い方",
     "pipeline_study": "Pipeline/Workflow学習・考察"
 
 }
@@ -67,7 +67,6 @@ def get_summary_word(path):
     """
     引数のPathのMarkdownファイルにあるサマリー用の名前を取得する
     """
-    print(path)
     with codecs.open(path, 'r', 'utf-8') as f:
         lines = f.readlines()
 
@@ -111,15 +110,13 @@ def create_pages(summary_path, root_path, indent_space="  "):
         if os.path.isdir(path):
             # Folderのとき
             if root_path != path:
-                gb_path = path.replace("\\", "/").replace(root_path + "/", "")
-                # プリント処理
-                if has_markdown(path):
-                    buff    = gb_path.split("/")
-                    indent  = (len(buff)) * indent_space
-                    if is_exclusion_path(path) is False:
-                        write_val.append(indent + "- " + replace_title_folder_name(re.sub("^[0-9][0-9]_", "", buff[-1])) + ":")
-                        if os.path.exists(path + "/index.md"):
-                            write_val.append(indent + "  - " + buff[0] + "/index.md")
+                dirname = path.split("/")[-1]
+                if dirname not in EXCLUSION:
+                    title = re.sub("[0-9][0-9]_", "", dirname)
+                    for i in FOLDER_REPLACE_STRING.keys():
+                        title = title.replace(i, FOLDER_REPLACE_STRING[i])
+                    with codecs.open(path + "/.pages", 'w', 'utf-8') as f:
+                        f.write(f"title: {title}")
 
             files = os.listdir(path)
             for file in files:
@@ -139,12 +136,6 @@ def create_pages(summary_path, root_path, indent_space="  "):
                                 write_val.append((len(buff)) * indent_space + u"- {0}: {1}".format(summary_keyword, relative_path))
 
     recursive_file_check(root_path)
-
-    yml_base = get_mkdocs_yml()
-    yml_base = yml_base + "\n".join(write_val)
-
-    with codecs.open(MKDOCS, 'w+', "utf-8") as f:
-        f.write(yml_base)
 
 
 if __name__ == "__main__":

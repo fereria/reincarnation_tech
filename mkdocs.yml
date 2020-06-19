@@ -1,284 +1,67 @@
-extra:
-  search:
-    language: jp
-  social:
-  - link: https://github.com/fereria
-    type: github
-  - link: https://twitter.com/fereria
-    type: twitter
-extra_css:
-  - https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
-  - stylesheets/extra.css
-  - https://unpkg.com/mermaid@8.0.0/dist/mermaid.css
-extra_javascript:
-  - javascripts/extra.js
-  - https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js
-google_analytics:
-  - UA-134257918-1
-  - auto
-plugins:
-  - git-revision-date-localized:
-      type: iso_datetime
-      locale: ja
-  - search
-  
-markdown_extensions:
-  - hbfm.number_headers
-  - hbfm.quote_uri_hash  
-  - hbfm.inline_coloring
-  - footnotes
-  - pymdownx.tilde
-  - meta
-  - pymdownx.mark
-  - pymdownx.magiclink
-  - pymdownx.emoji
-  - fontawesome_markdown
-  - pymdownx.keys
-  - pymdownx.superfences  
-  - markdown.extensions.nl2br
-  - def_list
-  - plantuml_markdown:
-      server: http://www.plantuml.com/plantuml
-  - admonition
-  - codehilite:
-      linenums: true
-      use_pygments: true
-  - markdown_blockdiag:
-      format: svg      
+site_name: Reincarnation+#Tech
 repo_url: https://github.com/fereria/reincarnation_tech
 site_url: https://fereria.github.io/reincarnation_tech
 site_author: Megumi Ando@Remiria
-site_name: Reincarnation+#Tech
+
 theme:
-  favicon: 'favicon.ico'
-  feature:
-    tabs: true
+  favicon: "favicon.ico"
   language: ja
   name: material
   palette:
     accent: Green
     primary: Green
-nav:
-  - 更新履歴: update_log.md
-  - Markdownサンプル: md_sample.md
-  - Blender:
-    - 10_Blender/index.md
-    - 基本操作:
-      - レンダリングカメラを操作する: 10_Blender/basic_operation/blender_render_cam.md
-      - BlenderからMayaにデータを移植する: 10_Blender/basic_operation/export_to_maya.md
-      - Faceに対してマテリアルをアサイン: 10_Blender/basic_operation/face_assign.md
-      - モディファイアの使い方:
-        - モディファイアを使用する: 10_Blender/basic_operation/modifier/00_start_modifier.md
-      - Pivot位置の調整: 10_Blender/basic_operation/object_pivot.md
-      - オブジェクトを対象にスナップさせる: 10_Blender/basic_operation/snap_object.md
-    - Compositing:
-      - コンポジットを使用する(基本編): 10_Blender/Compositing/00_start_comp.md
-    - データ構造:
-      - オブジェクトの共有・構造・ユーザーについて: 10_Blender/data_structure/collection_object.md
-      - Data-Blockについて: 10_Blender/data_structure/data_block.md
-      - Data-BlockのUser,Link,Proxy: 10_Blender/data_structure/user_link_proxy.md
-    - EEVEE:
-      - NodeEditorのNodeまとめ: 10_Blender/EEVEE/00_node.md
-      - トゥーンのアウトラインを作成する(基本): 10_Blender/EEVEE/addJ_outline.md
-      - AmbientOcclusionを使用する: 10_Blender/EEVEE/create_ao.md
-      - DepthOfFuildを使用する: 10_Blender/EEVEE/create_dof.md
-      - Volumetric(Fog)を使用する: 10_Blender/EEVEE/create_fog.md
-      - 透明なガラス質感マテリアルを作成する: 10_Blender/EEVEE/create_glass.md
-      - SSSを設定する: 10_Blender/EEVEE/create_sss.md
-      - MixRGBノードのメモ: 10_Blender/EEVEE/mix_rgb.md
-      - ReflectionProbeとIrradianceVolume: 10_Blender/EEVEE/reflection_prove.md
-      - ScreenSpaceReflectionsを使用した反射: 10_Blender/EEVEE/ssr_reflection.md
-      - NodeEditorマテリアル学習:
-        - NodeだけでDotテクスチャを作る: 10_Blender/EEVEE/study_materials/00_toon_01_simple_dot.md
-    - Effect:
-      - パーティクルを作成する: 10_Blender/Effect/particle_start_01.md
-    - Modeling:
-      - PolyBuildの使い方: 10_Blender/Modeling/poly_build.md
-    - Rigging:
-      - Boneを作成してBindする: 10_Blender/Rigging/00_create_Armature.md
-      - Boneの調整・設定: 10_Blender/Rigging/01_bone.md
-      - AutoRigPro:
-        - AutoRigProのとりあえずの使い方: 10_Blender/Rigging/AutoRigPro/00_auto_rig_pro_001.md
-        - LinkとProxyを使用してAnim用シーンを作る(1): 10_Blender/Rigging/AutoRigPro/01_make_proxy.md
-      - ShapeKey(BlendShape)を作成する: 10_Blender/Rigging/blend_shape.md
-      - コントローラーを作成する: 10_Blender/Rigging/create_controller.md
-      - IKを作成する: 10_Blender/Rigging/create_ik.md
-      - Driverを作成する: 10_Blender/Rigging/drivers.md
-    - Scripts:
-      - Blenderの開発環境を作る: 10_Blender/Scripts/00_VS_code_blender.md
-      - VSCodeでアドオン開発: 10_Blender/Scripts/01_VSCode_addon.md
-      - BlenderのスクリプトをVSCodeから実行: 10_Blender/Scripts/05_VSCode_send_script.md
-      - Data-Blockをスクリプトから確認: 10_Blender/Scripts/10_Data_block_access.md
-      - MaterialsNode:
-        - Blenderのマテリアルノードを作成する（1）: 10_Blender/Scripts/MaterialsNode/00_simple_node_addons.md
-        - Blenderのマテリアルノードを作成する（2）: 10_Blender/Scripts/MaterialsNode/01_simple_node_addons_2.md
-    - Shortcut:
-      - 10_Blender/Shortcut/blender_pie_menu.md
-      - Blenderの各種ショートカット: 10_Blender/Shortcut/blender_shortcut.md
-      - 10_Blender/Shortcut/blender_shortcut_materials.md
-      - モデリング時のショートカット: 10_Blender/Shortcut/blender_short_cut_modeling.md
-  - Houdini:
-    - 10_Houdini/index.md
-    - Basic:
-      - 初めてのHoudini_基本操作01: 10_Houdini/00_Basic/00_start_houdini.md
-      - VtxPointPrimitiveMeshPolygonについて: 10_Houdini/00_Basic/02_mesh_polygon.md
-      - HoudiniのGroup_01: 10_Houdini/00_Basic/03_group.md
-      - HDAの作り方: 10_Houdini/00_Basic/04_HDA.md
-      - 10_Houdini/00_Basic/99_shortcut.md
-    - VOP:
-      - VEXをVOPに置き換える_01_ノイズ: 10_Houdini/10_VOP/01_vex_to_vop_noise.md
-      - Attributeを追加してVOPで使用する: 10_Houdini/10_VOP/02_add_attribute.md
-      - パラメーターを追加する: 10_Houdini/10_VOP/03_add_param.md
-    - SOLARIS:
-      - 10_Houdini/11_SOLARIS/01_solaris_open_usd.md
-      - 10_Houdini/11_SOLARIS/02_comp_arc.md
-      - 10_Houdini/11_SOLARIS/03_comp_arc_inherits.md
-      - 10_Houdini/11_SOLARIS/04_agent_to_solaris.md
-      - 10_Houdini/11_SOLARIS/05_point_instancer.md
-      - 10_Houdini/11_SOLARIS/06_point_instancer.md
-      - 10_Houdini/11_SOLARIS/07_layer.md
-      - 10_Houdini/11_SOLARIS/90_solaris_lop_node.md
-      - 10_Houdini/11_SOLARIS/99_solaris_usd_glossary.md
-    - Python:
-      - PythonでHoudiniのパラメーターを取得・セットする: 10_Houdini/20_Python/get_param_01.md
-    - Houdini写経:
-      - Houdini写経01_RBD_ClueConstraint: 10_Houdini/50_imitate/00_glue_constraint_rbd.md
-      - 10_Houdini/50_imitate/01_ifend.md
-  - Maya:
-    - Maya作業環境構築:
-      - VSCodeでリモートデバッグ環境を作る: 10_Maya/Env_Maya/VSCode_debug.md
-    - Scripts:
-      - スクリプト関係の問題が起きたときの対処法: 10_Maya/Scripts/99_error_memo.md
-      - DrivenKeyを取得する: 10_Maya/Scripts/driven_key.md
-      - Pythonファイル(.py)を実行する: 10_Maya/Scripts/exec_python.md
-      - Materials関係のTips: 10_Maya/Scripts/material_tips.md
-      - cmds_MayaのSetProjectをする: 10_Maya/Scripts/maya_set_project.md
-      - pymel_Mayaのビューポートの描画をワイヤーフレームにする: 10_Maya/Scripts/maya_wireframe.md
-      - aya2017以降でのPySideの使い方: 10_Maya/Scripts/pyside_2017_.md
-  - Programming:
-    - PG_setup:
-      - 10_Programming/00_PG_setup/00_npm_install.md
-      - 10_Programming/00_PG_setup/pipenv_statup.md
-    - Python2:
-      - メニューに表示される名前: 10_Programming/10_Python2/gitbook_create_summary.md
-      - 10_Programming/10_Python2/super_class.md
-    - Python3:
-      - 10_Programming/10_Python3/class_list.md
-      - 10_Programming/10_Python3/graphviz_parse.md
-      - 10_Programming/10_Python3/py_import.md
-    - GitLab:
-      - 10_Programming/20_GitLab/docker_gitlab_ci.md
-      - 10_Programming/20_GitLab/download_artifacts.md
-      - 10_Programming/20_GitLab/gitlab_build_mkdocs.md
-      - 10_Programming/20_GitLab/gitlab_windows.md
-      - 10_Programming/20_GitLab/gitlab_windows_nose.md
-    - Documentation:
-      - mkdocsを設定する: 10_Programming/99_Documentation/00_mkdocs_setting.md
-  - Pipeline:
-    - 11_Pipeline/index.md
-    - USD:
-      - 11_Pipeline/01_USD/00_install_USD.md
-      - 11_Pipeline/01_USD/01_start_USD.md
-      - 11_Pipeline/01_USD/02_whats_USD.md
-      - 11_Pipeline/01_USD/04_layer_stage.md
-      - 11_Pipeline/01_USD/05_comp_arc.md
-      - 11_Pipeline/01_USD/06_comp_arc_subLayer.md
-      - 11_Pipeline/01_USD/07_comp_arc_inherits.md
-      - 11_Pipeline/01_USD/08_comp_arc_Variant.md
-      - 11_Pipeline/01_USD/09_comp_arc_reference.md
-      - 11_Pipeline/01_USD/10_ListEditing.md
-    - USDTips:
-      - 11_Pipeline/10_USDTips/00_create_custom_schema.md
-      - 11_Pipeline/10_USDTips/01_usd_py_docs.md
-      - 11_Pipeline/10_USDTips/02_usd_py_cheatsheets.md
-      - 11_Pipeline/10_USDTips/03_usd_format_cheatsheets.md
-    - USD_Programming:
-      - CPP:
-        - 11_Pipeline/30_USD_Programming/CPP/00_start_cpp.md
-      - Python:
-        - 11_Pipeline/30_USD_Programming/Python/01_editTarget.md
-        - 11_Pipeline/30_USD_Programming/Python/02_reparentPrim.md
-    - 11_Pipeline/99_link.md
-  - PySide:
-    - 11_PySide/index.md
-    - PySide_基本編:
-      - Tutorial:
-        - 11_PySide/01_PySide_Basic/00_Tutorial/01_start.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/02_create_designer.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/03_signal_slot_01.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/04_widgets.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/05_widget_sample_01.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/06_widget_sample_02.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/07_widget_sample_03.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/08_widget_sample_04.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/09_qsettings.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/10_context_menu.md
-        - 11_PySide/01_PySide_Basic/00_Tutorial/11_status_bar.md
-    - Tips:
-      - 11_PySide/02_Tips/01_child_dup_window.md
-      - 11_PySide/02_Tips/02_completer.md
-      - 11_PySide/02_Tips/03_custom_tooltip.md
-      - 11_PySide/02_Tips/04_screen_shot.md
-      - 11_PySide/02_Tips/05_gradation_picker.md
-      - 11_PySide/02_Tips/06_qthread_01.md
-      - GraphicsView:
-        - 11_PySide/02_Tips/GraphicsView/graphicsView_01.md
-        - 11_PySide/02_Tips/GraphicsView/graphics_view_color_anim.md
-        - 11_PySide/02_Tips/GraphicsView/pyside_graphicsview_child_item.md
-      - StyleSheet:
-        - 11_PySide/02_Tips/StyleSheet/01_stylesheet_basic.md
-      - ViewModelDelegate:
-        - 11_PySide/02_Tips/ViewModelDelegate/custom_model.md
-        - 11_PySide/02_Tips/ViewModelDelegate/tree_view_proxy.md
-        - 11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_01.md
-        - 11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_02.md
-        - 11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_03.md
-    - PySide_USD:
-      - 11_PySide/03_PySide_USD/01_create_treeview_01.md
-      - 11_PySide/03_PySide_USD/01_create_treeview_02.md
-  - Photo:
-    - 20_Photo/color_passport.md
-    - 20_Photo/create_hdr_01.md
-    - 20_Photo/create_hdr_02.md
-  - Tool:
-    - 50_Tool/index.md
-    - MayaScriptLauncher:
-      - overview:
-        - ツールの基本仕様: 50_Tool/MayaScriptLauncher/00_overview/00_app_folder_rule.md
-      - history:
-        - Mayaのツール配布環境を作りたい_02_色々考察: 50_Tool/MayaScriptLauncher/99_history/history_20190412.md
-        - Mayaのツール配布環境を作りたい_03_基本構造: 50_Tool/MayaScriptLauncher/99_history/history_20190413.md
-        - Mayaのツール配布環境を作りたい_04_Modの挙動とGitAPI: 50_Tool/MayaScriptLauncher/99_history/history_20190414.md
-  - JupyterNotebook:
-    - 60_JupyterNotebook/NoteSample.md
-    - pythonBasic:
-      - 60_JupyterNotebook/pythonBasic/functoolTest.md
-    - USD:
-      - 60_JupyterNotebook/USD/gltf2UsdMesh.md
-      - 60_JupyterNotebook/USD/USDCollectoinSample.md
-      - 60_JupyterNotebook/USD/USDEditTarget.md
-      - 60_JupyterNotebook/USD/USDMaterial_01.md
-      - 60_JupyterNotebook/USD/USDMeshTest.md
-      - 60_JupyterNotebook/USD/UsdReference1.md
-      - 60_JupyterNotebook/USD/UsdSkel_01.md
-      - 60_JupyterNotebook/USD/variantset.md
-  - Other:
-    - 98_Other/99_mkdocs_sample.md
-    - 98_Other/git_command.md
-    - 98_Other/hyper-v.md
-    - 98_Other/ipynb2mkdocs.md
-    - 98_Other/push_github_ssh.md
-    - VSCode:
-      - 98_Other/VSCode/vscode_cacher.md
-      - 98_Other/VSCode/vscode_create_task.md
-      - 98_Other/VSCode/vscode_extension.md
-      - 98_Other/VSCode/vscode_jupyter.md
-      - 98_Other/VSCode/vscode_note.md
-      - 98_Other/VSCode/vscode_snippet_sc.md
-      - 98_Other/VSCode/vscode_task.md
-  - Link:
-    - 99_Link/Blender関係.md
-    - 99_Link/Houdini.md
-    - 99_Link/Maya.md
-    - 99_Link/Shader.md
-  - md_sample.md
+
+  features:
+    - tabs
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/fereria
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/fereria
+
+extra_css:
+  - https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
+  - stylesheets/extra.css
+  - https://unpkg.com/mermaid@8.0.0/dist/mermaid.css
+
+extra_javascript:
+  - javascripts/extra.js
+  - https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js
+
+google_analytics:
+  - UA-134257918-1
+  - auto
+
+plugins:
+  - git-revision-date-localized:
+      type: iso_datetime
+      locale: ja
+  - search:
+      lang:
+        - en
+        - ja
+  - awesome-pages
+
+markdown_extensions:
+  - hbfm.number_headers
+  - hbfm.quote_uri_hash
+  - hbfm.inline_coloring
+  - pymdownx.tilde
+  - pymdownx.mark
+  - pymdownx.magiclink
+  - pymdownx.emoji
+  - pymdownx.keys
+  - pymdownx.superfences
+  - markdown.extensions.nl2br
+  - fontawesome_markdown  
+  - def_list
+  - admonition
+  - meta
+  - footnotes  
+  - codehilite:
+      linenums: true
+      use_pygments: true
+  - markdown_blockdiag:
+      format: svg

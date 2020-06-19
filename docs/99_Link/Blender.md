@@ -1,5 +1,6 @@
 ---
-title: Blender 関係 Link
+title: Blender
+hide: true
 ---
 # Blender 関係 Link
 
