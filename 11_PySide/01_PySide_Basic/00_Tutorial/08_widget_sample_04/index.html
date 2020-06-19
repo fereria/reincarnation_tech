@@ -1,14 +1,12 @@
 
 
 
-
 <!doctype html>
 <html lang="ja" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_PySide/01_PySide_Basic/00_Tutorial/08_widget_sample_04/">
@@ -16,27 +14,8 @@
       
         <meta name="author" content="Megumi Ando@Remiria">
       
-      
-        <meta name="lang:clipboard.copy" content="クリップボードへコピー">
-      
-        <meta name="lang:clipboard.copied" content="コピーしました">
-      
-        <meta name="lang:search.language" content="jp">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="何も見つかりませんでした">
-      
-        <meta name="lang:search.result.one" content="1件見つかりました">
-      
-        <meta name="lang:search.result.other" content="#件見つかりました">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
-      
       <link rel="shortcut icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.3.0">
     
     
       
@@ -44,9 +23,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6e35a1a6.min.css">
       
-        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a46bcfb3.min.css">
       
       
         
@@ -55,16 +34,13 @@
       
     
     
-      <script src="../../../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -76,101 +52,83 @@
     
       
         
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "UA-134257918-1", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="green" data-md-color-accent="green">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
-        
-      </defs>
-    </svg>
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#widget4listview" tabindex="0" class="md-skip">
-        Skip to content
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#widget4listview" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" aria-label="Reincarnation+#Tech" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon"></i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Reincarnation+#Tech
-            </span>
-            <span class="md-header-nav__topic">
-              
-                基本Widgetを使ってみる(4):ListView
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-header-nav__button md-logo" aria-label="Reincarnation+#Tech">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Reincarnation+#Tech
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              基本Widgetを使ってみる(4):ListView
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            検索キーワードを入力してください
+            Initializing search
           </div>
           <ol class="md-search-result__list"></ol>
         </div>
@@ -178,49 +136,47 @@
     </div>
   </div>
 </div>
+    
+    
+      <div class="md-header-nav__source">
         
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            
-
-
-  
-
-<a href="https://github.com/fereria/reincarnation_tech/" title="リポジトリへ" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
+<a href="https://github.com/fereria/reincarnation_tech/" title="リポジトリへ" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
   <div class="md-source__repository">
     GitHub
   </div>
 </a>
-          </div>
-        </div>
-      
-    </div>
+      </div>
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
         
+          
 
   
 
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
+  <li class="md-tabs__item">
+    
+      <a href="../../../.." class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
       
         
       
@@ -332,19 +288,6 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../../50_Tool/" class="md-tabs__link">
-          Tool
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
         <a href="../../../../60_JupyterNotebook/NoteSample/" class="md-tabs__link">
           JupyterNotebook
         </a>
@@ -379,43 +322,36 @@
   
 
       
-        
-      
     </ul>
   </div>
 </nav>
+        
       
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://fereria.github.io/reincarnation_tech" title="Reincarnation+#Tech" class="md-nav__button md-logo" aria-label="Reincarnation+#Tech">
       
-        <i class="md-icon"></i>
-      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
     </a>
     Reincarnation+#Tech
   </label>
   
     <div class="md-nav__source">
       
-
-
-  
-
-<a href="https://github.com/fereria/reincarnation_tech/" title="リポジトリへ" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
+<a href="https://github.com/fereria/reincarnation_tech/" title="リポジトリへ" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
   <div class="md-source__repository">
     GitHub
   </div>
@@ -430,8 +366,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../update_log.md" title="更新履歴" class="md-nav__link">
-      更新履歴
+    <a href="../../../.." title="Introduction" class="md-nav__link">
+      Introduction
     </a>
   </li>
 
@@ -442,8 +378,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../md_sample/" title="Markdownサンプル" class="md-nav__link">
-      Markdownサンプル
+    <a href="../../../../md_sample/" title="Menuに表示される内容" class="md-nav__link">
+      Menuに表示される内容
     </a>
   </li>
 
@@ -455,13 +391,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Blender
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Blender" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Blender
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -486,133 +428,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
     
     <label class="md-nav__link" for="nav-3-2">
-      基本操作
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-2">
-        基本操作
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/basic_operation/blender_render_cam/" title="レンダリングカメラを操作する" class="md-nav__link">
-      レンダリングカメラを操作する
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/basic_operation/export_to_maya/" title="BlenderからMayaにデータを移植する" class="md-nav__link">
-      BlenderからMayaにデータを移植する
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/basic_operation/face_assign/" title="Faceに対してマテリアルをアサイン" class="md-nav__link">
-      Faceに対してマテリアルをアサイン
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2-4" type="checkbox" id="nav-3-2-4">
-    
-    <label class="md-nav__link" for="nav-3-2-4">
-      モディファイアの使い方
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-2-4">
-        モディファイアの使い方
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/basic_operation/modifier/00_start_modifier/" title="モディファイアを使用する" class="md-nav__link">
-      モディファイアを使用する
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/basic_operation/object_pivot/" title="Pivot位置の調整" class="md-nav__link">
-      Pivot位置の調整
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/basic_operation/snap_object/" title="オブジェクトを対象にスナップさせる" class="md-nav__link">
-      オブジェクトを対象にスナップさせる
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
-    
-    <label class="md-nav__link" for="nav-3-3">
       Compositing
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-3">
+    <nav class="md-nav" aria-label="Compositing" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Compositing
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -642,73 +470,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
     
-    <label class="md-nav__link" for="nav-3-4">
-      データ構造
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-4">
-        データ構造
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/data_structure/collection_object/" title="オブジェクトの共有・構造・ユーザーについて" class="md-nav__link">
-      オブジェクトの共有・構造・ユーザーについて
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/data_structure/data_block/" title="Data-Blockについて" class="md-nav__link">
-      Data-Blockについて
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/data_structure/user_link_proxy/" title="Data-BlockのUser,Link,Proxy" class="md-nav__link">
-      Data-BlockのUser,Link,Proxy
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
-    
-    <label class="md-nav__link" for="nav-3-5">
+    <label class="md-nav__link" for="nav-3-3">
       EEVEE
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-5">
+    <nav class="md-nav" aria-label="EEVEE" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         EEVEE
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -744,8 +518,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/EEVEE/create_ao/" title="AmbientOcclusionを使用する" class="md-nav__link">
-      AmbientOcclusionを使用する
+    <a href="../../../../10_Blender/EEVEE/create_ao/" title="AmbientOcclusion を使用する" class="md-nav__link">
+      AmbientOcclusion を使用する
     </a>
   </li>
 
@@ -756,8 +530,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/EEVEE/create_dof/" title="DepthOfFuildを使用する" class="md-nav__link">
-      DepthOfFuildを使用する
+    <a href="../../../../10_Blender/EEVEE/create_dof/" title="DepthOfFuild を使用する" class="md-nav__link">
+      DepthOfFuild を使用する
     </a>
   </li>
 
@@ -792,8 +566,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/EEVEE/create_sss/" title="SSSを設定する" class="md-nav__link">
-      SSSを設定する
+    <a href="../../../../10_Blender/EEVEE/create_sss/" title="SSS を設定する" class="md-nav__link">
+      SSS を設定する
     </a>
   </li>
 
@@ -804,8 +578,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/EEVEE/mix_rgb/" title="MixRGBノードのメモ" class="md-nav__link">
-      MixRGBノードのメモ
+    <a href="../../../../10_Blender/EEVEE/mix_rgb/" title="MixRGB ノードのメモ" class="md-nav__link">
+      MixRGB ノードのメモ
     </a>
   </li>
 
@@ -816,8 +590,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/EEVEE/reflection_prove/" title="ReflectionProbeとIrradianceVolume" class="md-nav__link">
-      ReflectionProbeとIrradianceVolume
+    <a href="../../../../10_Blender/EEVEE/reflection_prove/" title="ReflectionProbe と IrradianceVolume" class="md-nav__link">
+      ReflectionProbe と IrradianceVolume
     </a>
   </li>
 
@@ -828,8 +602,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/EEVEE/ssr_reflection/" title="ScreenSpaceReflectionsを使用した反射" class="md-nav__link">
-      ScreenSpaceReflectionsを使用した反射
+    <a href="../../../../10_Blender/EEVEE/ssr_reflection/" title="ScreenSpaceReflections を使用した反射" class="md-nav__link">
+      ScreenSpaceReflections を使用した反射
     </a>
   </li>
 
@@ -841,13 +615,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5-11" type="checkbox" id="nav-3-5-11">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3-11" type="checkbox" id="nav-3-3-11">
     
-    <label class="md-nav__link" for="nav-3-5-11">
+    <label class="md-nav__link" for="nav-3-3-11">
       NodeEditorマテリアル学習
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-5-11">
+    <nav class="md-nav" aria-label="NodeEditorマテリアル学習" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-3-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         NodeEditorマテリアル学習
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -882,13 +662,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
     
-    <label class="md-nav__link" for="nav-3-6">
+    <label class="md-nav__link" for="nav-3-4">
       Effect
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-6">
+    <nav class="md-nav" aria-label="Effect" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Effect
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -918,13 +704,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
     
-    <label class="md-nav__link" for="nav-3-7">
+    <label class="md-nav__link" for="nav-3-5">
       Modeling
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-7">
+    <nav class="md-nav" aria-label="Modeling" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Modeling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -936,8 +728,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Modeling/poly_build/" title="PolyBuildの使い方" class="md-nav__link">
-      PolyBuildの使い方
+    <a href="../../../../10_Blender/Modeling/poly_build/" title="PolyBuild の使い方" class="md-nav__link">
+      PolyBuild の使い方
     </a>
   </li>
 
@@ -954,13 +746,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
     
-    <label class="md-nav__link" for="nav-3-8">
+    <label class="md-nav__link" for="nav-3-6">
       Rigging
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-8">
+    <nav class="md-nav" aria-label="Rigging" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Rigging
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -972,8 +770,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Rigging/00_create_Armature/" title="Boneを作成してBindする" class="md-nav__link">
-      Boneを作成してBindする
+    <a href="../../../../10_Blender/Rigging/00_create_Armature/" title="Bone を作成して Bind する" class="md-nav__link">
+      Bone を作成して Bind する
     </a>
   </li>
 
@@ -984,39 +782,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Rigging/01_bone/" title="Boneの調整・設定" class="md-nav__link">
-      Boneの調整・設定
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8-3" type="checkbox" id="nav-3-8-3">
-    
-    <label class="md-nav__link" for="nav-3-8-3">
-      AutoRigPro
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-8-3">
-        AutoRigPro
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/Rigging/AutoRigPro/00_auto_rig_pro_001/" title="AutoRigProのとりあえずの使い方" class="md-nav__link">
-      AutoRigProのとりあえずの使い方
+    <a href="../../../../10_Blender/Rigging/01_bone/" title="Bone の調整・設定" class="md-nav__link">
+      Bone の調整・設定
     </a>
   </li>
 
@@ -1027,25 +794,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Rigging/AutoRigPro/01_make_proxy/" title="LinkとProxyを使用してAnim用シーンを作る(1)" class="md-nav__link">
-      LinkとProxyを使用してAnim用シーンを作る(1)
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../10_Blender/Rigging/blend_shape/" title="ShapeKey(BlendShape)を作成する" class="md-nav__link">
-      ShapeKey(BlendShape)を作成する
+    <a href="../../../../10_Blender/Rigging/blend_shape/" title="ShapeKey(BlendShape) を作成する" class="md-nav__link">
+      ShapeKey(BlendShape) を作成する
     </a>
   </li>
 
@@ -1068,8 +818,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Rigging/create_ik/" title="IKを作成する" class="md-nav__link">
-      IKを作成する
+    <a href="../../../../10_Blender/Rigging/create_ik/" title="IK を作成する" class="md-nav__link">
+      IK を作成する
     </a>
   </li>
 
@@ -1080,9 +830,63 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Rigging/drivers/" title="Driverを作成する" class="md-nav__link">
-      Driverを作成する
+    <a href="../../../../10_Blender/Rigging/drivers/" title="Driver を作成する" class="md-nav__link">
+      Driver を作成する
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-6-7" type="checkbox" id="nav-3-6-7">
+    
+    <label class="md-nav__link" for="nav-3-6-7">
+      AutoRigPro
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="AutoRigPro" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        AutoRigPro
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/Rigging/AutoRigPro/00_auto_rig_pro_001/" title="AutoRigPro でセットアップをする 1 とりあえずの使い方" class="md-nav__link">
+      AutoRigPro でセットアップをする 1 とりあえずの使い方
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/Rigging/AutoRigPro/01_make_proxy/" title="Link と Proxy を使用して Anim 用シーンを作る 1" class="md-nav__link">
+      Link と Proxy を使用して Anim 用シーンを作る 1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1098,13 +902,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
     
-    <label class="md-nav__link" for="nav-3-9">
+    <label class="md-nav__link" for="nav-3-7">
       Scripts
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-9">
+    <nav class="md-nav" aria-label="Scripts" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Scripts
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1116,8 +926,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Scripts/00_VS_code_blender/" title="Blenderの開発環境を作る" class="md-nav__link">
-      Blenderの開発環境を作る
+    <a href="../../../../10_Blender/Scripts/00_VS_code_blender/" title="Blender の開発環境を作る" class="md-nav__link">
+      Blender の開発環境を作る
     </a>
   </li>
 
@@ -1128,8 +938,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Scripts/01_VSCode_addon/" title="VSCodeでアドオン開発" class="md-nav__link">
-      VSCodeでアドオン開発
+    <a href="../../../../10_Blender/Scripts/01_VSCode_addon/" title="VSCode でアドオン開発" class="md-nav__link">
+      VSCode でアドオン開発
     </a>
   </li>
 
@@ -1140,8 +950,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Scripts/05_VSCode_send_script/" title="BlenderのスクリプトをVSCodeから実行" class="md-nav__link">
-      BlenderのスクリプトをVSCodeから実行
+    <a href="../../../../10_Blender/Scripts/05_VSCode_send_script/" title="Blender のスクリプトを VSCode から実行" class="md-nav__link">
+      Blender のスクリプトを VSCode から実行
     </a>
   </li>
 
@@ -1152,8 +962,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Scripts/10_Data_block_access/" title="Data-Blockをスクリプトから確認" class="md-nav__link">
-      Data-Blockをスクリプトから確認
+    <a href="../../../../10_Blender/Scripts/10_Data_block_access/" title="Data-Block をスクリプトから確認" class="md-nav__link">
+      Data-Block をスクリプトから確認
     </a>
   </li>
 
@@ -1165,13 +975,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9-5" type="checkbox" id="nav-3-9-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-7-5" type="checkbox" id="nav-3-7-5">
     
-    <label class="md-nav__link" for="nav-3-9-5">
+    <label class="md-nav__link" for="nav-3-7-5">
       MaterialsNode
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-9-5">
+    <nav class="md-nav" aria-label="MaterialsNode" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-7-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         MaterialsNode
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1183,8 +999,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Scripts/MaterialsNode/00_simple_node_addons/" title="Blenderのマテリアルノードを作成する（1）" class="md-nav__link">
-      Blenderのマテリアルノードを作成する（1）
+    <a href="../../../../10_Blender/Scripts/MaterialsNode/00_simple_node_addons/" title="Blender のマテリアルノードを作成する（1）" class="md-nav__link">
+      Blender のマテリアルノードを作成する（1）
     </a>
   </li>
 
@@ -1195,8 +1011,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Scripts/MaterialsNode/01_simple_node_addons_2/" title="Blenderのマテリアルノードを作成する（2）" class="md-nav__link">
-      Blenderのマテリアルノードを作成する（2）
+    <a href="../../../../10_Blender/Scripts/MaterialsNode/01_simple_node_addons_2/" title="Blender のマテリアルノードを作成する（2）" class="md-nav__link">
+      Blender のマテリアルノードを作成する（2）
     </a>
   </li>
 
@@ -1218,13 +1034,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-10" type="checkbox" id="nav-3-10">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
     
-    <label class="md-nav__link" for="nav-3-10">
+    <label class="md-nav__link" for="nav-3-8">
       Shortcut
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-10">
+    <nav class="md-nav" aria-label="Shortcut" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Shortcut
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1248,8 +1070,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Shortcut/blender_shortcut/" title="Blenderの各種ショートカット" class="md-nav__link">
-      Blenderの各種ショートカット
+    <a href="../../../../10_Blender/Shortcut/blender_short_cut_modeling/" title="モデリング時のショートカット" class="md-nav__link">
+      モデリング時のショートカット
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/Shortcut/blender_shortcut/" title="Blender の各種ショートカットまとめ" class="md-nav__link">
+      Blender の各種ショートカットまとめ
     </a>
   </li>
 
@@ -1266,14 +1100,200 @@
   </li>
 
         
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+    
+    <label class="md-nav__link" for="nav-3-9">
+      基本操作
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="基本操作" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        基本操作
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Blender/Shortcut/blender_short_cut_modeling/" title="モデリング時のショートカット" class="md-nav__link">
-      モデリング時のショートカット
+    <a href="../../../../10_Blender/basic_operation/blender_render_cam/" title="レンダリングカメラを操作する" class="md-nav__link">
+      レンダリングカメラを操作する
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/basic_operation/export_to_maya/" title="Blender から Maya にデータを移植する" class="md-nav__link">
+      Blender から Maya にデータを移植する
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/basic_operation/face_assign/" title="Face に対してマテリアルをアサイン" class="md-nav__link">
+      Face に対してマテリアルをアサイン
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/basic_operation/object_pivot/" title="Pivot 位置の調整" class="md-nav__link">
+      Pivot 位置の調整
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/basic_operation/snap_object/" title="オブジェクトを対象にスナップさせる" class="md-nav__link">
+      オブジェクトを対象にスナップさせる
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-9-6" type="checkbox" id="nav-3-9-6">
+    
+    <label class="md-nav__link" for="nav-3-9-6">
+      モディファイアの使い方
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="モディファイアの使い方" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-9-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        モディファイアの使い方
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/basic_operation/modifier/00_start_modifier/" title="モディファイアを使用する" class="md-nav__link">
+      モディファイアを使用する
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-10" type="checkbox" id="nav-3-10">
+    
+    <label class="md-nav__link" for="nav-3-10">
+      データ構造
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="データ構造" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        データ構造
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/data_structure/collection_object/" title="オブジェクトの共有・構造・ユーザーについて" class="md-nav__link">
+      オブジェクトの共有・構造・ユーザーについて
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/data_structure/data_block/" title="Data-Block について" class="md-nav__link">
+      Data-Block について
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../10_Blender/data_structure/user_link_proxy/" title="Data-Block の User,Link,Proxy" class="md-nav__link">
+      Data-Block の User,Link,Proxy
     </a>
   </li>
 
@@ -1295,13 +1315,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Houdini
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Houdini" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Houdini
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1326,13 +1352,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
     
     <label class="md-nav__link" for="nav-4-2">
       Basic
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Basic" data-md-level="2">
       <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Basic
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1344,8 +1376,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Houdini/00_Basic/00_start_houdini/" title="初めてのHoudini_基本操作01" class="md-nav__link">
-      初めてのHoudini_基本操作01
+    <a href="../../../../10_Houdini/00_Basic/00_start_houdini/" title="初めての Houdini 基本用語と構造" class="md-nav__link">
+      初めての Houdini 基本用語と構造
     </a>
   </li>
 
@@ -1356,8 +1388,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Houdini/00_Basic/02_mesh_polygon/" title="VtxPointPrimitiveMeshPolygonについて" class="md-nav__link">
-      VtxPointPrimitiveMeshPolygonについて
+    <a href="../../../../10_Houdini/00_Basic/02_mesh_polygon/" title="Vtx Point Primitive Mesh Polygon について" class="md-nav__link">
+      Vtx Point Primitive Mesh Polygon について
     </a>
   </li>
 
@@ -1368,8 +1400,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Houdini/00_Basic/03_group/" title="HoudiniのGroup_01" class="md-nav__link">
-      HoudiniのGroup_01
+    <a href="../../../../10_Houdini/00_Basic/03_group/" title="Houdini の Group" class="md-nav__link">
+      Houdini の Group
     </a>
   </li>
 
@@ -1380,8 +1412,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Houdini/00_Basic/04_HDA/" title="HDAの作り方" class="md-nav__link">
-      HDAの作り方
+    <a href="../../../../10_Houdini/00_Basic/04_HDA/" title="HDA の作り方" class="md-nav__link">
+      HDA の作り方
     </a>
   </li>
 
@@ -1410,13 +1442,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
     
     <label class="md-nav__link" for="nav-4-3">
       VOP
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="VOP" data-md-level="2">
       <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         VOP
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1428,8 +1466,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Houdini/10_VOP/01_vex_to_vop_noise/" title="VEXをVOPに置き換える_01_ノイズ" class="md-nav__link">
-      VEXをVOPに置き換える_01_ノイズ
+    <a href="../../../../10_Houdini/10_VOP/01_vex_to_vop_noise/" title="VEX を VOP に置き換える 01 ノイズ" class="md-nav__link">
+      VEX を VOP に置き換える 01 ノイズ
     </a>
   </li>
 
@@ -1440,8 +1478,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Houdini/10_VOP/02_add_attribute/" title="Attributeを追加してVOPで使用する" class="md-nav__link">
-      Attributeを追加してVOPで使用する
+    <a href="../../../../10_Houdini/10_VOP/02_add_attribute/" title="Attribute を追加して VOP で使用する" class="md-nav__link">
+      Attribute を追加して VOP で使用する
     </a>
   </li>
 
@@ -1470,13 +1508,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
     
     <label class="md-nav__link" for="nav-4-4">
       SOLARIS
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="SOLARIS" data-md-level="2">
       <label class="md-nav__title" for="nav-4-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         SOLARIS
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1602,13 +1646,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
     
     <label class="md-nav__link" for="nav-4-5">
       Python
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Python" data-md-level="2">
       <label class="md-nav__title" for="nav-4-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Python
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1638,13 +1688,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
     
     <label class="md-nav__link" for="nav-4-6">
       Houdini写経
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Houdini写経" data-md-level="2">
       <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Houdini写経
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1656,8 +1712,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Houdini/50_imitate/00_glue_constraint_rbd/" title="Houdini写経01_RBD_ClueConstraint" class="md-nav__link">
-      Houdini写経01_RBD_ClueConstraint
+    <a href="../../../../10_Houdini/50_imitate/00_glue_constraint_rbd/" title="Houdini 写経 01 RBD_ClueConstraint" class="md-nav__link">
+      Houdini 写経 01 RBD_ClueConstraint
     </a>
   </li>
 
@@ -1691,13 +1747,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Maya
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Maya" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Maya
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1710,13 +1772,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
     
     <label class="md-nav__link" for="nav-5-1">
       Maya作業環境構築
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Maya作業環境構築" data-md-level="2">
       <label class="md-nav__title" for="nav-5-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Maya作業環境構築
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1746,13 +1814,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       Scripts
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Scripts" data-md-level="2">
       <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Scripts
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1776,8 +1850,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Maya/Scripts/driven_key/" title="DrivenKeyを取得する" class="md-nav__link">
-      DrivenKeyを取得する
+    <a href="../../../../10_Maya/Scripts/driven_key/" title="[pymel] DrivenKey を取得する" class="md-nav__link">
+      [pymel] DrivenKey を取得する
     </a>
   </li>
 
@@ -1788,8 +1862,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Maya/Scripts/exec_python/" title="Pythonファイル(.py)を実行する" class="md-nav__link">
-      Pythonファイル(.py)を実行する
+    <a href="../../../../10_Maya/Scripts/exec_python/" title="Python ファイル(.py)を実行する" class="md-nav__link">
+      Python ファイル(.py)を実行する
     </a>
   </li>
 
@@ -1800,8 +1874,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Maya/Scripts/material_tips/" title="Materials関係のTips" class="md-nav__link">
-      Materials関係のTips
+    <a href="../../../../10_Maya/Scripts/material_tips/" title="Materials 関係の Tips" class="md-nav__link">
+      Materials 関係の Tips
     </a>
   </li>
 
@@ -1812,8 +1886,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Maya/Scripts/maya_set_project/" title="cmds_MayaのSetProjectをする" class="md-nav__link">
-      cmds_MayaのSetProjectをする
+    <a href="../../../../10_Maya/Scripts/maya_set_project/" title="[cmds] Maya の SetProject をする" class="md-nav__link">
+      [cmds] Maya の SetProject をする
     </a>
   </li>
 
@@ -1824,8 +1898,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Maya/Scripts/maya_wireframe/" title="pymel_Mayaのビューポートの描画をワイヤーフレームにする" class="md-nav__link">
-      pymel_Mayaのビューポートの描画をワイヤーフレームにする
+    <a href="../../../../10_Maya/Scripts/maya_wireframe/" title="[pymel] Maya のビューポートの描画をワイヤーフレームにする" class="md-nav__link">
+      [pymel] Maya のビューポートの描画をワイヤーフレームにする
     </a>
   </li>
 
@@ -1836,8 +1910,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Maya/Scripts/pyside_2017_/" title="aya2017以降でのPySideの使い方" class="md-nav__link">
-      aya2017以降でのPySideの使い方
+    <a href="../../../../10_Maya/Scripts/pyside_2017_/" title="Maya2017 以降での PySide の使い方" class="md-nav__link">
+      Maya2017 以降での PySide の使い方
     </a>
   </li>
 
@@ -1859,13 +1933,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Programming
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Programming" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Programming
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1878,13 +1958,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1">
     
     <label class="md-nav__link" for="nav-6-1">
       PG_setup
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="PG_setup" data-md-level="2">
       <label class="md-nav__title" for="nav-6-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         PG_setup
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1926,13 +2012,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
     
     <label class="md-nav__link" for="nav-6-2">
       Python2
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Python2" data-md-level="2">
       <label class="md-nav__title" for="nav-6-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Python2
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1944,8 +2036,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Programming/10_Python2/gitbook_create_summary/" title="メニューに表示される名前" class="md-nav__link">
-      メニューに表示される名前
+    <a href="../../../../10_Programming/10_Python2/gitbook_create_summary/" title="GitBook の SUMMARY ファイルを自動作成" class="md-nav__link">
+      GitBook の SUMMARY ファイルを自動作成
     </a>
   </li>
 
@@ -1974,13 +2066,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
     
     <label class="md-nav__link" for="nav-6-3">
       Python3
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Python3" data-md-level="2">
       <label class="md-nav__title" for="nav-6-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Python3
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2034,13 +2132,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
     
     <label class="md-nav__link" for="nav-6-4">
       GitLab
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="GitLab" data-md-level="2">
       <label class="md-nav__title" for="nav-6-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         GitLab
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2118,13 +2222,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
     
     <label class="md-nav__link" for="nav-6-5">
       Documentation
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Documentation" data-md-level="2">
       <label class="md-nav__title" for="nav-6-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Documentation
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2136,8 +2246,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../10_Programming/99_Documentation/00_mkdocs_setting/" title="mkdocsを設定する" class="md-nav__link">
-      mkdocsを設定する
+    <a href="../../../../10_Programming/99_Documentation/00_mkdocs_setting/" title="mkdocs を設定する" class="md-nav__link">
+      mkdocs を設定する
     </a>
   </li>
 
@@ -2159,13 +2269,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
       Pipeline
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Pipeline" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Pipeline
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2188,15 +2304,33 @@
           
 
 
+  <li class="md-nav__item">
+    <a href="../../../../11_Pipeline/99_link/" title="USD関係参考資料" class="md-nav__link">
+      USD関係参考資料
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
     
-    <label class="md-nav__link" for="nav-7-2">
+    <label class="md-nav__link" for="nav-7-3">
       USD
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-2">
+    <nav class="md-nav" aria-label="USD" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         USD
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2234,6 +2368,18 @@
   <li class="md-nav__item">
     <a href="../../../../11_Pipeline/01_USD/02_whats_USD/" title="USDとは" class="md-nav__link">
       USDとは
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../11_Pipeline/01_USD/03_schema/" title="スキーマとは？" class="md-nav__link">
+      スキーマとは？
     </a>
   </li>
 
@@ -2322,6 +2468,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../11_Pipeline/01_USD/50_whats_Hydra/" title="Hydraとは？" class="md-nav__link">
+      Hydraとは？
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2334,13 +2492,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
     
-    <label class="md-nav__link" for="nav-7-3">
+    <label class="md-nav__link" for="nav-7-4">
       USDTips
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-3">
+    <nav class="md-nav" aria-label="USDTips" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         USDTips
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2406,13 +2570,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5" type="checkbox" id="nav-7-5">
     
-    <label class="md-nav__link" for="nav-7-4">
+    <label class="md-nav__link" for="nav-7-5">
       USD_Programming
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-4">
+    <nav class="md-nav" aria-label="USD_Programming" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         USD_Programming
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2425,13 +2595,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4-1" type="checkbox" id="nav-7-4-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5-1" type="checkbox" id="nav-7-5-1">
     
-    <label class="md-nav__link" for="nav-7-4-1">
+    <label class="md-nav__link" for="nav-7-5-1">
       CPP
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-7-4-1">
+    <nav class="md-nav" aria-label="CPP" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-5-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         CPP
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2461,13 +2637,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-4-2" type="checkbox" id="nav-7-4-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5-2" type="checkbox" id="nav-7-5-2">
     
-    <label class="md-nav__link" for="nav-7-4-2">
+    <label class="md-nav__link" for="nav-7-5-2">
       Python
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-7-4-2">
+    <nav class="md-nav" aria-label="Python" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-5-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Python
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2507,18 +2689,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../11_Pipeline/99_link/" title="USD関係参考資料" class="md-nav__link">
-      USD関係参考資料
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -2533,13 +2703,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
       PySide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="PySide" data-md-level="1">
       <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         PySide
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2566,13 +2742,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
     
     <label class="md-nav__link" for="nav-8-2">
       PySide_基本編
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="PySide_基本編" data-md-level="2">
       <label class="md-nav__title" for="nav-8-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         PySide_基本編
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2587,13 +2769,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-1" type="checkbox" id="nav-8-2-1" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2-1" type="checkbox" id="nav-8-2-1" checked>
     
     <label class="md-nav__link" for="nav-8-2-1">
       Tutorial
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="Tutorial" data-md-level="3">
       <label class="md-nav__title" for="nav-8-2-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Tutorial
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2692,13 +2880,16 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         基本Widgetを使ってみる(4):ListView
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
       </label>
     
     <a href="./" title="基本Widgetを使ってみる(4):ListView" class="md-nav__link md-nav__link--active">
@@ -2706,13 +2897,18 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目次">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目次</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目次
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -2727,7 +2923,7 @@
     2. Modelについて
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2. Modelについて">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2747,7 +2943,7 @@
     3. 具体的なよく使う関数
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3. 具体的なよく使う関数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2782,10 +2978,6 @@
   </a>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -2830,6 +3022,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../12_tabwidget/" title="TabWidgetの使い方" class="md-nav__link">
+      TabWidgetの使い方
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2847,13 +3051,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
     
     <label class="md-nav__link" for="nav-8-3">
       Tips
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Tips" data-md-level="2">
       <label class="md-nav__title" for="nav-8-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Tips
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2938,13 +3148,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3-7" type="checkbox" id="nav-8-3-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-3-7" type="checkbox" id="nav-8-3-7">
     
     <label class="md-nav__link" for="nav-8-3-7">
       GraphicsView
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="GraphicsView" data-md-level="3">
       <label class="md-nav__title" for="nav-8-3-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         GraphicsView
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2998,13 +3214,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3-8" type="checkbox" id="nav-8-3-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-3-8" type="checkbox" id="nav-8-3-8">
     
     <label class="md-nav__link" for="nav-8-3-8">
       StyleSheet
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="StyleSheet" data-md-level="3">
       <label class="md-nav__title" for="nav-8-3-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         StyleSheet
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3034,13 +3256,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3-9" type="checkbox" id="nav-8-3-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-3-9" type="checkbox" id="nav-8-3-9">
     
     <label class="md-nav__link" for="nav-8-3-9">
       ViewModelDelegate
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+    <nav class="md-nav" aria-label="ViewModelDelegate" data-md-level="3">
       <label class="md-nav__title" for="nav-8-3-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         ViewModelDelegate
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3123,13 +3351,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
     
     <label class="md-nav__link" for="nav-8-4">
       PySide_USD
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="PySide_USD" data-md-level="2">
       <label class="md-nav__title" for="nav-8-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         PySide_USD
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3176,13 +3410,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
     <label class="md-nav__link" for="nav-9">
       Photo
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Photo" data-md-level="1">
       <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Photo
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3236,169 +3476,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
     
     <label class="md-nav__link" for="nav-10">
-      Tool
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-10">
-        Tool
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../50_Tool/" title="Tool 作成まとめ" class="md-nav__link">
-      Tool 作成まとめ
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-2" type="checkbox" id="nav-10-2">
-    
-    <label class="md-nav__link" for="nav-10-2">
-      MayaScriptLauncher
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-10-2">
-        MayaScriptLauncher
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-2-1" type="checkbox" id="nav-10-2-1">
-    
-    <label class="md-nav__link" for="nav-10-2-1">
-      overview
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-10-2-1">
-        overview
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../50_Tool/MayaScriptLauncher/00_overview/00_app_folder_rule/" title="ツールの基本仕様" class="md-nav__link">
-      ツールの基本仕様
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-2-2" type="checkbox" id="nav-10-2-2">
-    
-    <label class="md-nav__link" for="nav-10-2-2">
-      history
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-10-2-2">
-        history
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../50_Tool/MayaScriptLauncher/99_history/history_20190412/" title="Mayaのツール配布環境を作りたい_02_色々考察" class="md-nav__link">
-      Mayaのツール配布環境を作りたい_02_色々考察
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../50_Tool/MayaScriptLauncher/99_history/history_20190413/" title="Mayaのツール配布環境を作りたい_03_基本構造" class="md-nav__link">
-      Mayaのツール配布環境を作りたい_03_基本構造
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../50_Tool/MayaScriptLauncher/99_history/history_20190414/" title="Mayaのツール配布環境を作りたい_04_Modの挙動とGitAPI" class="md-nav__link">
-      Mayaのツール配布環境を作りたい_04_Modの挙動とGitAPI
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
-    
-    <label class="md-nav__link" for="nav-11">
       JupyterNotebook
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-11">
+    <nav class="md-nav" aria-label="JupyterNotebook" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         JupyterNotebook
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3423,65 +3513,23 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-2" type="checkbox" id="nav-11-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10-2" type="checkbox" id="nav-10-2">
     
-    <label class="md-nav__link" for="nav-11-2">
-      pythonBasic
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-11-2">
-        pythonBasic
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../60_JupyterNotebook/pythonBasic/functoolTest/" title="functoolsの使い方" class="md-nav__link">
-      functoolsの使い方
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11-3" type="checkbox" id="nav-11-3">
-    
-    <label class="md-nav__link" for="nav-11-3">
+    <label class="md-nav__link" for="nav-10-2">
       USD
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-11-3">
+    <nav class="md-nav" aria-label="USD" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         USD
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../../60_JupyterNotebook/USD/gltf2UsdMesh/" title="gltfからUsdMeshを作る" class="md-nav__link">
-      gltfからUsdMeshを作る
-    </a>
-  </li>
-
         
           
           
@@ -3561,8 +3609,62 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../../60_JupyterNotebook/USD/gltf2UsdMesh/" title="gltfからUsdMeshを作る" class="md-nav__link">
+      gltfからUsdMeshを作る
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../../60_JupyterNotebook/USD/variantset/" title="Variantの挙動を調べる_1" class="md-nav__link">
       Variantの挙動を調べる_1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10-3" type="checkbox" id="nav-10-3">
+    
+    <label class="md-nav__link" for="nav-10-3">
+      pythonBasic
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="pythonBasic" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        pythonBasic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../60_JupyterNotebook/pythonBasic/functoolTest/" title="functoolsの使い方" class="md-nav__link">
+      functoolsの使い方
     </a>
   </li>
 
@@ -3584,13 +3686,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
     
-    <label class="md-nav__link" for="nav-12">
+    <label class="md-nav__link" for="nav-11">
       Other
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-12">
+    <nav class="md-nav" aria-label="Other" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Other
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3663,13 +3771,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12-6" type="checkbox" id="nav-12-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11-6" type="checkbox" id="nav-11-6">
     
-    <label class="md-nav__link" for="nav-12-6">
+    <label class="md-nav__link" for="nav-11-6">
       VSCode
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-12-6">
+    <nav class="md-nav" aria-label="VSCode" data-md-level="2">
+      <label class="md-nav__title" for="nav-11-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         VSCode
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3776,13 +3890,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
     
-    <label class="md-nav__link" for="nav-13">
+    <label class="md-nav__link" for="nav-12">
       Link
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-13">
+    <nav class="md-nav" aria-label="Link" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Link
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3794,8 +3914,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../99_Link/Blender%E9%96%A2%E4%BF%82/" title="Blender 関係 Link" class="md-nav__link">
-      Blender 関係 Link
+    <a href="../../../../99_Link/Blender%E9%96%A2%E4%BF%82/" title="Blender" class="md-nav__link">
+      Blender
     </a>
   </li>
 
@@ -3830,26 +3950,14 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../../99_Link/Shader/" title="Shader??Link" class="md-nav__link">
-      Shader??Link
+    <a href="../../../../99_Link/Shader/" title="Shader" class="md-nav__link">
+      Shader
     </a>
   </li>
 
         
       </ul>
     </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../../../md_sample/" title="Menuに表示される内容" class="md-nav__link">
-      Menuに表示される内容
-    </a>
   </li>
 
     
@@ -3864,13 +3972,18 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="目次">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">目次</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目次
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -3885,7 +3998,7 @@
     2. Modelについて
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2. Modelについて">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3905,7 +4018,7 @@
     3. 具体的なよく使う関数
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="3. 具体的なよく使う関数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3941,10 +4054,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -3957,7 +4066,12 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_PySide/01_PySide_Basic/00_Tutorial/08_widget_sample_04.md" title="編集" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_PySide/01_PySide_Basic/00_Tutorial/08_widget_sample_04.md" title="編集" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
                 
                 
                 <h1 id="widget4listview">基本Widgetを使ってみる(4):ListView</h1>
@@ -3971,69 +4085,7 @@ ListViewを説明していきたいと思います。  </p>
 そちらのほうが導入はしやすいですが、あえてListViewで説明していきます。</p>
 </div>
 <h2 id="1">1. サンプルコード</h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!python3</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -4097,7 +4149,6 @@ ListViewを説明していきたいと思います。  </p>
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div>
-</td></tr></table>
 
 <p><img alt="" src="https://gyazo.com/078f4613697cb63717fd408f2ea9b2da.png" /></p>
 <p>実行すると、このようなGUIが表示されます。  </p>
@@ -4116,13 +4167,10 @@ ListViewを説明していきたいと思います。  </p>
 それっぽい関数なども存在しません。  </p>
 <p>そのかわりに、実際のデータ管理部分を受け持っている「Model」クラスを作成して、<br />
 こちら側でデータの管理を行うようにします。<br />
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QStringListModel</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QStringListModel</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">([</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="s1">&#39;bbb&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div><br />
 今回のサンプルでは、この部分がModelを作成している部分になります。  </p>
 <p>モデルはかなり色々とカスタマイズできますが、ソレをするとわけが分からなく<br />
 なるので、今回は最もシンプルな「QStringListModel」を使用して<br />
@@ -4132,7 +4180,24 @@ ListViewを説明していきたいと思います。  </p>
 使い方は、上のサンプルのようにmodelオブジェクトを作成し、<br />
 setStringListでstrのListをセットして、lisetViewに対してsetModelで<br />
 登録すればOKです。  </p>
-<p><img alt="uml diagram" class="uml" src="data:image/png;base64,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" title="" /></p>
+<div class="highlight"><pre><span></span><code>@startuml
+
+agent ListView
+agent QStringListModel
+agent list
+
+ListView -right-&gt; QStringListModel
+QStringListModel -right-&gt; ListView
+QStringListModel -right-&gt; list
+list -right-&gt; QStringListModel
+
+note bottom of ListView : ユーザーが触る部分
+note top of QStringListModel : Viewに表示するデータをlist型で管理する
+note bottom of list : Viewで表示する実際のデータ
+
+@enduml
+</code></pre></div>
+
 <p>構造的には↑のようになっていて、<br />
 ユーザーが触る「表示部分（ListView)」と、データを管理する部分（QStringListModel）<br />
 そして表側からは見えないですが、<br />
@@ -4146,13 +4211,7 @@ ListをViewに表示しています。  </p>
 ぐらいの認識を持ちつつ、実際の使い方をみていきます。  </p>
 <h3 id="31-list">3.1. Listに追加する</h3>
 <p><img alt="" src="https://gyazo.com/8aca6264238c22da6e49a14fdc435bad.gif" /></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="n">strList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stringList</span><span class="p">()</span>
@@ -4160,7 +4219,6 @@ ListをViewに表示しています。  </p>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">(</span><span class="n">strList</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </code></pre></div>
-</td></tr></table>
 
 <p>登録しているのはこの部分になります。<br />
 QStringListModelの場合は、内部的にはlist型を持っているので、<br />
@@ -4169,13 +4227,10 @@ QStringListModelの場合は、内部的にはlist型を持っているので、
 Listに新しい項目が追加することができます。  </p>
 <h3 id="32-str">3.2. 現在選択している項目をstrで取得する</h3>
 <p>Listをクリックしたときに、現在選択している項目を取得したい場合は<br />
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">listClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">listClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="c1"># 現在選択している文字列を取得する</span>
         <span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div><br />
 このようにします。<br />
 clicked のSlotを設定すると、argsでindexを取得することができます。<br />
 このindexは、現在選択されているデータにアクセスするためのタグのような<br />
@@ -4184,21 +4239,13 @@ clicked のSlotを設定すると、argsでindexを取得することができ�
 このindexはQModelIndexオブジェクトで、ここからデータを取得したい場合は<br />
 index.data() にアクセスすればOKです。  </p>
 <p>スロットではなく、選択しているデータを取得したい場合は、<br />
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span>
+</code></pre></div><br />
 これでindexを取得できるので、取得した後に index.data() で<br />
 データを取得してくればOKです。  </p>
 <h3 id="33-match">3.3. リストから指定の文字を探してきてMatchしたら選択</h3>
 <p><img alt="" src="https://gyazo.com/0d9c51a5e4ba54170664ac5737b4a90c.gif" /></p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Listから指定の文字の行を探して、見つかったら選択</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="n">stIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -4206,8 +4253,7 @@ index.data() にアクセスすればOKです。  </p>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div><br />
 Listから指定の文字でindexを探したい場合は matchを使用します。<br />
 これは若干使い方がわかりにくいですが、  </p>
 <p><img alt="" src="https://gyazo.com/62e2dd0b433391a79f7ab13228cd418e.png" /></p>
@@ -4220,19 +4266,13 @@ Listから指定の文字でindexを探したい場合は matchを使用しま�
 ここでは「Modelからなにを取得したいかのフラグ」と思えばOKです。</p>
 </div>
 <p>matchを使わない方法としては</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">strList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stringList</span><span class="p">()</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">txt</span> <span class="ow">in</span> <span class="n">strList</span><span class="p">:</span>
             <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">strList</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">txt</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div><br />
 list.index('moji')<br />
 を使用することでlist型のどこに指定の文字が入っているかを数字で取得して<br />
 index(row,column) のrowにその数字を入れてIndexを取得してきてから<br />
@@ -4247,17 +4287,17 @@ ListViewに限らずView周りはPySideのなかでもかなり奥が深い分�
 <p>が、難しい！  </p>
                 
                   
-                
-                
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      最終更新日: 2019-11-01 16:15:38
+    
+  </small>
+</div>
                   
-                  <hr>
-                  <div class="md-source-date">
-                    <small>
-                      
-                        最終更新日: 2019-11-01 16:15:38
-                      
-                    </small>
-                  </div>
                 
               
               
@@ -4274,34 +4314,34 @@ ListViewに限らずView周りはPySideのなかでもかなり奥が深い分�
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../07_widget_sample_03/" title="基本Widgetを使ってみる(3):ComboBox_基本編" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="../07_widget_sample_03/" title="基本Widgetを使ってみる(3):ComboBox_基本編" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   前
                 </span>
                 基本Widgetを使ってみる(3):ComboBox_基本編
-              </span>
+              </div>
             </div>
           </a>
         
         
-          <a href="../09_qsettings/" title="QSettingsを使用してUIの情報を保存する" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../09_qsettings/" title="QSettingsを使用してUIの情報を保存する" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
                 QSettingsを使用してUIの情報を保存する
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
             </div>
           </a>
         
@@ -4312,19 +4352,31 @@ ListViewに限らずView周りはPySideのなかでもかなり奥が深い分�
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
   <div class="md-footer-social">
-    <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/fereria" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+      
+      
+        
+        
+      
+      <a href="https://github.com/fereria" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
     
-      <a href="https://twitter.com/fereria" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/fereria" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
     
   </div>
 
@@ -4334,22 +4386,18 @@ ListViewに限らずView周りはPySideのなかでもかなり奥が深い分�
       
     </div>
     
-      <script src="../../../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a14cc5fd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f"}</script>
       
-        
-        
-          
-          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
-          
-            
-              
-              
-            
-          
-          
-        
-      
-      <script>app.initialize({version:"1.1",url:{base:"../../../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../../../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../../../assets/javascripts/worker/search.7a2ea5ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="../../../../javascripts/extra.js"></script>
       
