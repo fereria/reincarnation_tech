@@ -27,9 +27,6 @@ https://scrapbox.io/remi-tech/
 
 個々に書いてる内容も徐々に移植します。
 
-### 本家
+https://reincarnation.fanbox.cc/
 
-http://flame-blaze.net
-
-旅行関係がメイン。  
-時々 CG 関係のことも投下するかも。
+BlogはFanboxに以降予定。
