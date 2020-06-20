@@ -3995,13 +3995,13 @@ assets/Book/Book.geom.usd<br />
 <p>このように、いくつかの選択肢から1つを選ぶとプリムの中身をスイッチできるのが「バリアントセット」<br />
 です。  </p>
 <h2 id="1">1. 基本構造</h2>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-def &quot;testPrim&quot; (
-    prepend variantSets = &quot;hogehoge&quot;
-)
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">variantSets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hogehoge&quot;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>バリアントセットは、切り替えを追加したいプリムに対して追加します。<br />
@@ -4011,27 +4011,27 @@ def &quot;testPrim&quot; (
 <p><img alt="" src="https://gyazo.com/5f19a3c61c650ee6a9929b642f31a3bd.png" /></p>
 <p>空のvariant が追加されました。  </p>
 <h3 id="11">1.1. 切り替え設定を追加する</h3>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-def &quot;testPrim&quot; (
-    variants = {
-        string hogehoge = &quot;green&quot;
-    }
-    prepend variantSets = &quot;hogehoge&quot;
-)
-{
-    variantSet &quot;hogehoge&quot; = {
-        &quot;blue&quot; {
-            string testAttr = &quot;blue&quot;
-        }
-        &quot;green&quot; {
-            string testAttr = &quot;green&quot;
-        }
-        &quot;red&quot; {
-            string testAttr = &quot;red&quot;
-        }
-    }
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">variants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="na">hogehoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;green&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">variantSets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hogehoge&quot;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">variantSet</span><span class="w"> </span><span class="s">&quot;hogehoge&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;blue&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="na">testAttr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;green&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="na">testAttr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;green&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;red&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="na">testAttr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>なんの選択肢もない場合はただの空の入れ物だけがある状態なので<br />
@@ -4077,27 +4077,27 @@ Vよりも強いため値が上書きされていることが分かります。 
 <h3 id="13">1.3. 子プリムの切り替え</h3>
 <p>上の例だと、プリムにあるアトリビュートをセットする機能にも見えますが<br />
 そういうわけではなく、</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-def &quot;testPrim&quot; (
-    variants = {
-        string hogehoge = &quot;green&quot;
-    }
-    prepend variantSets = &quot;hogehoge&quot;
-)
-{
-    variantSet &quot;hogehoge&quot; = {
-        &quot;blue&quot; {
-            def &quot;Blue&quot;{}
-        }
-        &quot;green&quot; {
-            def &quot;Green&quot;{}
-        }
-        &quot;red&quot; {
-            def &quot;Red&quot;{}
-        }
-    }
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">variants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="na">hogehoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;green&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">variantSets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hogehoge&quot;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">variantSet</span><span class="w"> </span><span class="s">&quot;hogehoge&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;blue&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;Blue&quot;</span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;green&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;Green&quot;</span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;red&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;Red&quot;</span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>このように、各バリアントセットの設定部分に対してプリムを定義することで</p>

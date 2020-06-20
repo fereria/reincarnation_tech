@@ -3948,16 +3948,16 @@
 <h4 id="2-19">2. [19]:</h4>
 <div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/ref&quot;</span><span class="p">)</span>
 <span class="c1"># PrimがReferencによって定義されてるか</span>
-<span class="k">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">HasAuthoredReferences</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">HasAuthoredReferences</span><span class="p">())</span>
 <span class="c1"># Primを構成するLayerを取得</span>
-<span class="k">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetPrimStack</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetPrimStack</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">findLayer</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimStack</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">findLayer</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">findLayer</span><span class="p">)</span>
     <span class="c1"># SdfPathを取得</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">findLayer</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">findLayer</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
     <span class="c1"># AssetPathを取得</span>
     <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">findLayer</span><span class="o">.</span><span class="n">referenceList</span><span class="o">.</span><span class="n">prependedItems</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">ref</span><span class="o">.</span><span class="n">assetPath</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ref</span><span class="o">.</span><span class="n">assetPath</span><span class="p">)</span>
 </code></pre></div>
 
 <div class="admonition success">

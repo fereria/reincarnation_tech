@@ -4053,17 +4053,17 @@ SOLARISではすべてのノードはUSDのレイヤーなのですが<br />
 <p><img alt="" src="https://gyazo.com/383eb4237bdb8aba0021e0a16aa15c02.png" /></p>
 <p>今のLayer状況を「Scene Graph Layers Panel」で確認すると、<br />
 Input1の入力の子としてMultiInputのLayerがついているような構造になっています。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
-(
-    subLayers = [
-        @CUBE.usda@,
-        @SPHERE.usda@
-    ]
-)
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="si">@CUBE.usda@</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="si">@SPHERE.usda@</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-def Xform &quot;BasePrim&quot;
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;BasePrim&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>USDのSubLayerをUSDAファイルで記述するとこうなります。<br />

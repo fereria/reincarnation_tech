@@ -3976,8 +3976,8 @@
 <span class="sd">    @return: QtGui.QMainWindow instance of the top level Maya windows</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ptr</span> <span class="o">=</span> <span class="n">omUI</span><span class="o">.</span><span class="n">MQtUtil</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">shiboken2</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">ptr</span><span class="p">),</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">shiboken2</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="n">long</span><span class="p">(</span><span class="n">ptr</span><span class="p">),</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">)</span>
 </code></pre></div><br />
 shiboken2を使ってMayaの本体のQMainWindowで取得している<br />
 Windowを、parent()で再度取得している形になります。  </p>

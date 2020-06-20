@@ -4052,7 +4052,7 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
 
 <span class="k">class</span> <span class="nc">testWindow</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">testWindow</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
@@ -4071,8 +4071,8 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
 
 <span class="k">class</span> <span class="nc">Scene</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QGraphicsScene</span><span class="p">):</span>
 
-    <span class="n">mouse_pos</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="n">sel_item</span>  <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">mouse_pos</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">sel_item</span>  <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
@@ -4081,15 +4081,15 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
 
 <span class="k">class</span> <span class="nc">TestItem</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QGraphicsObject</span><span class="p">):</span>
 
-    <span class="n">rect</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">rect</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rect</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rect</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TestItem</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__rect</span> <span class="o">=</span> <span class="n">rect</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ani</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;color&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">setDuration</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
@@ -4104,20 +4104,20 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
         <span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boundingRect</span><span class="p">()))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">setAcceptHoverEvents</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setAcceptHoverEvents</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">animStop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">animLoop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">animStopped</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">boundingRect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -4161,7 +4161,7 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
 こんな感じで setProperty(プロパティ名、初期値)<br />
 のように指定する必要がありました。  </p>
 <p>そしてこのプロパティを使用する場合は<br />
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="err">プロパティ名</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="n">プロパティ名</span><span class="p">)</span>
 </code></pre></div><br />
 のようにする必要があります。  </p>
 <h3 id="22-propertyanimation">2.2. PropertyAnimationの引数</h3>

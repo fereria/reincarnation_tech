@@ -4079,46 +4079,46 @@ USDは１つのusdファイルだけではなく、複数のusdファイルが�
 説明しつつ、USDのStageとLayerについて改めて調べてみようと思います。</p>
 <h2 id="1">1. サンプル</h2>
 <p>サンプルUSDファイルとして、下の３つを作成します。</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-(
-    subLayers = [
-        @layerA.usda@
-    ]
-)
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="si">@layerA.usda@</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-def &quot;testPrim&quot;
-{
-    string hoge = &quot;Root&quot;
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Root&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 Root.usda</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-(
-    subLayers = [
-        @layerB.usda@
-    ]
-)
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="si">@layerB.usda@</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-def &quot;testPrim&quot;
-{
-    string hoge = &quot;layerA&quot;
-    int val = 20
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;layerA&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 layerA.usda</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-def &quot;testPrim&quot;
-{
-    string hoge = &quot;layerB&quot;
-    int val = 10
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;layerB&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-def &quot;addTest&quot;
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;addTest&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 layerB.usda</p>
 <p><img alt="" src="https://gyazo.com/a48c5f5153ea9df1022e7125f66b595c.png" /></p>
@@ -4156,7 +4156,7 @@ GetRootLayerは現在のStage上のRootLayer(開いたusda)を取得すること
 クラスです。</p>
 <p><div class="highlight"><pre><span></span><code><span class="n">target</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetEditTarget</span><span class="p">()</span>
 <span class="c1"># 編集ターゲットのusdaPathを確認</span>
-<span class="k">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
 <span class="c1"># 保存</span>
 <span class="n">target</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
 </code></pre></div><br />
@@ -4173,10 +4173,10 @@ GetRootLayerは現在のStage上のRootLayer(開いたusda)を取得すること
 <p>では、RootLayer以外を編集したい場合はどうするかというと<br />
 SetEditTargetで編集したいLayerを指定してあげればOKです。</p>
 <p>上はDefinePrimでPrimを定義していますが、</p>
-<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 <span class="c1"># 10</span>
 <span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="k">print</span><span class="p">(</span><span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 <span class="c1"># 20</span>
 </code></pre></div>
 
@@ -4242,13 +4242,13 @@ print(dir(Sdf.Find(～～)))のようにしても、ものによって使える�
 <p><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">)</span>
 <span class="c1"># Primのアトリビュートを取得</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;hoge&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 <span class="c1"># アトリビュートのStack（主張をつんだもの）</span>
 <span class="n">stack</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">GetPropertyStack</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">TimeCode</span><span class="p">())</span>
 
 <span class="c1"># 一番強い主張</span>
-<span class="k">print</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
 </code></pre></div><br />
 指定のプロパティがどのような主張を持っていて結果どうなったかを<br />
 見たい場合はｐGetPropertyStackを確認します。</p>
@@ -4273,11 +4273,11 @@ rootLayerが最も強い主張をもっていて、最終的にコンポジシ�
 <span class="n">primSpec</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">)</span>
 <span class="c1"># このPrimのAttribute</span>
 <span class="c1"># 定義があるか</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span> <span class="ow">in</span> <span class="n">primSpec</span><span class="o">.</span><span class="n">attributes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span> <span class="ow">in</span> <span class="n">primSpec</span><span class="o">.</span><span class="n">attributes</span><span class="p">)</span>
 <span class="n">attrSpec</span> <span class="o">=</span> <span class="n">primSpec</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;hoge&#39;</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">attrSpec</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">attrSpec</span><span class="p">)</span>
 <span class="c1"># 値を確認</span>
-<span class="k">print</span><span class="p">(</span><span class="n">attrSpec</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">attrSpec</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 </code></pre></div>
 
 <p>ここのあたりもC++とPythonとで全く挙動が違っていて<br />

@@ -4193,10 +4193,10 @@ PySide のイベントは Window 外だと Event を拾ってくれません。<
 
     <span class="n">getGradation</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ColorPick</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">setMouseTracking</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setMouseTracking</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">screen</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">primaryScreen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">originalPixmap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="o">.</span><span class="n">grabWindow</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">desktop</span><span class="p">()</span><span class="o">.</span><span class="n">winId</span><span class="p">())</span>
@@ -4248,7 +4248,7 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 <p>まずはここから。Press すると、色の取得を開始したいので<br />
 処理を開始できるようにフラグをたてて開始位置の色を取得します。</p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currentPos</span> <span class="o">=</span> <span class="n">QCursor</span><span class="p">()</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
         <span class="c1"># クリックしたタイミングを0としてグラデーションをピックする</span>
         <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getCurrentColor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currentPos</span><span class="p">)</span>
@@ -4291,7 +4291,7 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 <p>最後にマウスをはなしたときに今まで記録した内容をシグナルで返す処理を追加します。</p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="c1"># 1つ目は0なので、そのまま取り出す</span>
         <span class="n">retVal</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startColor</span><span class="p">]]</span>
 
@@ -4347,11 +4347,11 @@ SD のグラデーション的な挙動をつくることができるようで�
             <span class="n">rect</span> <span class="o">=</span> <span class="n">QRect</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
             <span class="n">painter</span><span class="o">.</span><span class="n">drawRect</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
 
-            <span class="n">painter</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">QFont</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;メイリオ&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">QFont</span><span class="o">.</span><span class="n">Bold</span><span class="p">,</span> <span class="bp">False</span><span class="p">))</span>
+            <span class="n">painter</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">QFont</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;メイリオ&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">QFont</span><span class="o">.</span><span class="n">Bold</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
             <span class="n">pen</span> <span class="o">=</span> <span class="n">QPen</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">pen</span><span class="p">)</span>
             <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">17</span><span class="p">,</span>
-                             <span class="s2">&quot;RGB({},{},{})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">()))</span>
+                             <span class="s2">&quot;RGB(</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">()))</span>
 
         <span class="n">painter</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 </code></pre></div>
@@ -4362,7 +4362,7 @@ SD のグラデーション的な挙動をつくることができるようで�
 それだとわかりにくかったのでグラデーションの GUI をつくってみました。</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Gradation</span><span class="p">(</span><span class="n">QGraphicsScene</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Gradation</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">colorList</span> <span class="o">=</span> <span class="p">[]</span>
@@ -4391,7 +4391,7 @@ SD のグラデーション的な挙動をつくることができるようで�
 <span class="c1"># グラーデーション確認用GUIを作る</span>
 <span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">UISample</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>

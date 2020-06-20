@@ -4004,7 +4004,7 @@ GUIをクリックしたときに実行する内容が重くて、実行する�
 <span class="k">class</span> <span class="nc">TextEdit</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QWidget</span><span class="p">):</span>
     <span class="n">count</span>   <span class="o">=</span> <span class="mi">0</span>
     <span class="n">maxLine</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">TextEdit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">QUiLoader</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CURRENT_PATH</span><span class="p">,</span> <span class="s1">&#39;thread_sample.ui&#39;</span><span class="p">))</span>
@@ -4053,11 +4053,11 @@ GUIをクリックしたときに実行する内容が重くて、実行する�
 
     <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">QtCore</span><span class="o">.</span><span class="n">QThread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">mutex</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QMutex</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Threadオブジェクトが削除されたときにThreadを停止する(念のため)</span>
@@ -4066,12 +4066,12 @@ GUIをクリックしたときに実行する内容が重くて、実行する�
 
     <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QMutexLocker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mutex</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">with</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QMutexLocker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mutex</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -4108,7 +4108,7 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
         <span class="n">countNum</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
             <span class="n">send</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">countNum</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">send</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">send</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">send</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
@@ -4116,7 +4116,7 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
 <p>Threadのrunを↑のように変更し  </p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
 </code></pre></div>
 
 <p>メイン側をこうしてみます。</p>
@@ -4132,7 +4132,7 @@ python の id関数は、変数のメモリID(参照先)を確認することが
 
         <span class="n">hoge</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div><br />
@@ -4146,15 +4146,15 @@ listの場合は同じメモリを参照しています。  </p>
 
         <span class="n">hoge</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 
 <p>runをこうして、</p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
         <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;hoge&quot;</span><span class="p">)</span>
 </code></pre></div>
 
@@ -4179,15 +4179,15 @@ Signalで送れるようにして  </p>
 
         <span class="n">hoge</span> <span class="o">=</span> <span class="n">TestObj</span><span class="p">()</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">hoge</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">hoge</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 
 <p>runを書き換えて  </p>
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
         <span class="n">line</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="s2">&quot;hoge&quot;</span>
 </code></pre></div>
 
@@ -4211,8 +4211,8 @@ immutableなものは変更不可な型の場合はメモリは共有されま�
 
         <span class="n">hoge</span> <span class="o">=</span> <span class="n">TestObj</span><span class="p">()</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">hoge</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">hoge</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>

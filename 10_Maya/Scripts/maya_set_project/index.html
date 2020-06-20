@@ -3881,7 +3881,7 @@
 
 <div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="kn">as</span> <span class="nn">mc</span>
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">mc</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 
@@ -3889,21 +3889,21 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Mayaのプロジェクトを作成する</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/workspace.mel&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">mc</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">openWorkspace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/workspace.mel&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">mc</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">openWorkspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">mc</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">openWorkspace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">mc</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">openWorkspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">default_rules</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;scene&quot;</span><span class="p">:</span> <span class="s2">&quot;scenes&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;images&quot;</span><span class="p">:</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;movie&quot;</span><span class="p">:</span> <span class="s2">&quot;playblast&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;sourceImages&quot;</span><span class="p">:</span> <span class="s2">&quot;sourceimages&quot;</span><span class="p">}</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">default_rules</span><span class="p">:</span>
             <span class="n">mc</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">fr</span><span class="o">=</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_rules</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">default_rules</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">default_rules</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">default_rules</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
-            <span class="n">mc</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">saveWorkspace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">mc</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">saveWorkspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">path</span>
 </code></pre></div>
 

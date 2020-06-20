@@ -3986,7 +3986,7 @@ def Xform &quot;test&quot;
 
 
 <span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
@@ -4002,7 +4002,7 @@ def Xform &quot;test&quot;
 
 <span class="k">class</span> <span class="nc">PrimItem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prim</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parentItem</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parentItem</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_prim</span> <span class="o">=</span> <span class="n">prim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parentItem</span> <span class="o">=</span> <span class="n">parentItem</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_childItems</span> <span class="o">=</span> <span class="p">[]</span>
@@ -4013,7 +4013,7 @@ def Xform &quot;test&quot;
     <span class="k">def</span> <span class="nf">getChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_childItems</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_childItems</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">getChildren</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -4041,7 +4041,7 @@ def Xform &quot;test&quot;
 <span class="k">class</span> <span class="nc">UsdStageModel</span><span class="p">(</span><span class="n">QAbstractItemModel</span><span class="p">):</span>
     <span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PrimName&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">,</span> <span class="s2">&quot;SdfPath&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usdPath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usdPath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
         <span class="c1"># self.setupModelData(data.split(&#39;\n&#39;), self.rootItem)</span>
@@ -4052,10 +4052,10 @@ def Xform &quot;test&quot;
     <span class="k">def</span> <span class="nf">createModelTree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="c1"># {SdfPath:Item}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rootItem</span> <span class="o">=</span> <span class="n">PrimItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">),</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rootItem</span> <span class="o">=</span> <span class="n">PrimItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">prims</span> <span class="o">=</span> <span class="p">{</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">rootItem</span><span class="p">}</span>
         <span class="k">for</span> <span class="n">prim</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">prims</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">prims</span><span class="p">)</span>
             <span class="n">parentPath</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetParent</span><span class="p">()</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
             <span class="n">item</span> <span class="o">=</span> <span class="n">PrimItem</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="n">prims</span><span class="p">[</span><span class="n">parentPath</span><span class="p">])</span>
             <span class="n">prims</span><span class="p">[</span><span class="n">parentPath</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -4067,10 +4067,10 @@ def Xform &quot;test&quot;
     <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
-            <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">role</span> <span class="o">!=</span> <span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
         <span class="n">item</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">internalPointer</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>

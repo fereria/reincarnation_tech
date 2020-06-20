@@ -4509,17 +4509,17 @@ import(All)を使用するのが良さそうです。</p>
 <p>もう 1 つ、このノードの特徴として<br />
 作成する Primitive の Specifier(指定子)を変更することが出来ます。</p>
 <p>指定子とは</p>
-<div class="highlight"><pre><span></span><code>def Xform &quot;hoge&quot;
-{
-}
+<div class="highlight"><pre><span></span><code><span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;hoge&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-class Xform &quot;fuga&quot;
-{
-}
+<span class="k k-Tokens">class</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;fuga&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-over Xform &quot;homu&quot;
-{
-}
+<span class="k k-Tokens">over</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;homu&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>このような USD の定義が会った場合の「def/class/over」の部分のことです。<br />
@@ -4587,17 +4587,17 @@ SceneGraphPath で作成した CollectionPrimitive を選択して、SceneGraphD
 <p>たとえば、Collection Name を hogehoge にしてみると、</p>
 <p><img alt="" src="https://gyazo.com/956c237b2249a9ce82ffac0903c61ec8.png" /></p>
 <p>このように変化します。</p>
-<div class="highlight"><pre><span></span><code>def &quot;collections&quot; (
-    apiSchemas = [&quot;CollectionAPI:hogehoge&quot;]
-)
-{
-    uniform token collection:hogehoge:expansionRule = &quot;explicitOnly&quot;
-    rel collection:hogehoge:includes = [
-        &lt;/cube1&gt;,
-        &lt;/cube2&gt;,
-        &lt;/cube3&gt;,
-    ]
-}
+<div class="highlight"><pre><span></span><code><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;collections&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n n-Builtins">apiSchemas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;CollectionAPI:hogehoge&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Token">uniform</span><span class="w"> </span><span class="kt">token</span><span class="w"> </span><span class="na">collection:hogehoge:expansionRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;explicitOnly&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">rel</span><span class="w"> </span><span class="na">collection:hogehoge:includes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="nn">&lt;/cube1&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nn">&lt;/cube2&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nn">&lt;/cube3&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>usda を確認するとこうなっています。<br />

@@ -3992,7 +3992,7 @@
 <p>その分岐をするのが、 QSortFilterProxyModelのVirtual関数、「filterAcceptRow」 です。    </p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestProxyFilter</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QSortFilterProxyModel</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TestProxyFilter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">filterAcceptsRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
@@ -4001,7 +4001,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">GroupItem</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">TestProxyFilter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">filterAcceptsRow</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
         <span class="c1"># それ以外は検索で消えてほしくないのでTrueにする</span>
-        <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
 
 <p>filterAcceptsRow関数は、表示するかどうかを各Itemごとに判定して<br />
@@ -4041,7 +4041,7 @@ Roleは、 UserRole を使用しても良いし、すでに使っている場合
 <div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
-            <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
         <span class="n">item</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">internalPointer</span><span class="p">()</span>
 
@@ -4051,7 +4051,7 @@ Roleは、 UserRole を使用しても良いし、すでに使っている場合
         <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">PROXY_FILTER_ROLE</span><span class="p">:</span>
             <span class="c1"># とりあえず同じものを返す</span>
             <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
 
 <p>そして、Modelの data で、PROXY_FILTER_ROLEだった場合は、検索対象にしたい<br />

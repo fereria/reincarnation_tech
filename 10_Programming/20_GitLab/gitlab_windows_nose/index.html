@@ -3950,7 +3950,7 @@ before_script 内で pipenv の基本環境のセッティングを行い、仮�
 <div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">num1</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;num1 is None&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
 </code></pre></div>
@@ -3968,7 +3968,7 @@ before_script 内で pipenv の基本環境のセッティングを行い、仮�
 
 <span class="k">def</span> <span class="nf">setup_func</span><span class="p">():</span>
     <span class="c1"># 好きなことをする</span>
-    <span class="k">print</span> <span class="s2">&quot;setup!!&quot;</span>
+    <span class="nb">print</span> <span class="s2">&quot;setup!!&quot;</span>
 
 <span class="c1"># -----------------------------------------------------#</span>
 <span class="c1"># テストケース実行後に実行する関数</span>
@@ -3976,7 +3976,7 @@ before_script 内で pipenv の基本環境のセッティングを行い、仮�
 
 <span class="k">def</span> <span class="nf">teardown_func</span><span class="p">():</span>
     <span class="c1"># 好きなことをする</span>
-    <span class="k">print</span> <span class="s2">&quot;finish!!&quot;</span>
+    <span class="nb">print</span> <span class="s2">&quot;finish!!&quot;</span>
 
 <span class="c1"># -----------------------------------------------------#</span>
 <span class="c1"># 以下テスト関数</span>

@@ -4038,21 +4038,21 @@
 やり方を教えてもらったのでメモをば。</p>
 <h2 id="1">1. 準備</h2>
 <p>まずはかんたんなusdaファイルを用意します。</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-def &quot;A&quot;{
-    def &quot;B&quot;{}
-    def &quot;C&quot;{}
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">{}</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 これを</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-def &quot;A&quot;{
-    def &quot;B&quot;{
-        def &quot;C&quot;{}
-    }
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">{}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 こう。</p>
 <p><img alt="" src="https://gyazo.com/ba1c15de5821d0413a48f851acdfd0a4.png" /></p>
@@ -4106,12 +4106,12 @@ Namespaceつまりはステージまたはレイヤーの階層構造を編集�
 <h2 id="4-sublayernamespace">4. SubLayer時のNamespace操作</h2>
 <p>注意点ですが、このBatchNamespaceEditを実行するのがSdfLayerだということ。<br />
 なので、Primの定義があるレイヤーをサブレイヤーでロードした<br />
-<div class="highlight"><pre><span></span><code>#usda 1.0
-(
-    subLayers = [
-        @namespaceEdit.usda@
-    ]
-)
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="si">@namespaceEdit.usda@</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div><br />
 こんなファイルを作成して、このレイヤーに対して Apply(BatchNamespaceEdit) を実行したとしても<br />
 Falseになってしまい正しく実行できません。</p>

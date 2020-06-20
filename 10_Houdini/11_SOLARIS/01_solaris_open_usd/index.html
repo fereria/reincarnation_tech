@@ -4341,22 +4341,22 @@ Referenceで読み込むUSDのPrimitiveを読み込みます。<br />
 $OSとは、ノード名のことなので、ノード名である reference1 下に子のプリミティブが読み込まれています。  </p>
 <p><img alt="" src="https://gyazo.com/47e20b46bcea9c6562f67f7b98b05c4e.png" /></p>
 <p>試しに リファレンスノードを右クリックし、LOP Actions &gt; Inspect Active Layer を開いてみます。</p>
-<p><div class="highlight"><pre><span></span><code>#sdf 1.4.32
+<p><div class="highlight"><pre><span></span><code><span class="c1">#sdf 1.4.32</span><span class="w"></span>
 
-def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
-    customData = {
-        string HoudiniCreatorNode = &quot;/stage/reference1&quot;
-        string[] HoudiniEditorNodes = [&quot;/stage/reference1&quot;]
-    }
-)
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span>HoudiniLayerInfo<span class="w"> </span><span class="s">&quot;HoudiniLayerInfo&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">customData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="na">HoudiniCreatorNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/stage/reference1&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">string[]</span><span class="w"> </span><span class="na">HoudiniEditorNodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;/stage/reference1&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-def &quot;reference1&quot; (
-    prepend references = @C:/pyEnv/JupyterUSD_py27/usd/Kitchen_set/Kitchen_set.usd@
-)
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;reference1&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">references</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="si">@C:/pyEnv/JupyterUSD_py27/usd/Kitchen_set/Kitchen_set.usd@</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 このメニューを開くと、現在のノードの編集状況（＝ノードのUSDファイル）を<br />
 アスキーファイルで確認できます。  </p>

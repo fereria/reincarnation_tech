@@ -4005,7 +4005,7 @@
 <h4 id="3-47">3. [47]:</h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># expansionRule は explicitOnly(指定Pathを明確に指定？)</span>
 <span class="c1"># expandPrims は rel-targets以下のすべてのPrim こっちがデフォルト</span>
-<span class="k">print</span><span class="p">(</span><span class="n">newScn</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">newScn</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div>
 
 <div class="admonition success">
@@ -4029,11 +4029,11 @@ def Xform &quot;World&quot; (
 <h4 id="4-48">4. [48]:</h4>
 <div class="highlight"><pre><span></span><code><span class="n">collection</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
 <span class="c1"># Collection名取得</span>
-<span class="k">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
 <span class="c1"># CollectionまでのPathを取得</span>
-<span class="k">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">GetCollectionPath</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">GetCollectionPath</span><span class="p">())</span>
 <span class="c1"># CollectionはRelation構造になってるので、ソレを利用してPrimを取得</span>
-<span class="k">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">GetIncludesRel</span><span class="p">()</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">GetIncludesRel</span><span class="p">()</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">())</span>
 </code></pre></div>
 
 <div class="admonition success">
@@ -4046,7 +4046,7 @@ def Xform &quot;World&quot; (
 </div>
 <h4 id="5-49">5. [49]:</h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Getでも取得できるぽい</span>
-<span class="k">print</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">))</span>
 </code></pre></div>
 
 <div class="admonition success">

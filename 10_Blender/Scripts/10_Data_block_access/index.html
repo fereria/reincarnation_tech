@@ -4030,7 +4030,7 @@ Brushes や Cameras 等が、ノードの種類にあたり<br />
 <span class="n">C</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
 <p>bpy.data.&lt;取得したい Data-Block&gt;　このように書く。<br />
@@ -4070,18 +4070,18 @@ Data-Block の数分クラスがあるので<br />
 <span class="n">D</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span> <span class="c1"># Data-Blockの作成・取得は bpy.dataから。</span>
 
 <span class="k">for</span> <span class="n">ob</span> <span class="ow">in</span> <span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">ob</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ob</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">D</span><span class="o">.</span><span class="n">meshes</span><span class="p">:</span>  <span class="c1"># bpy.types.bpy_prop_collection いわゆるData-Blockを取得用の配列</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">users</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">users</span><span class="p">)</span>
     <span class="c1"># アサインされてるMaterialsを取得</span>
     <span class="k">for</span> <span class="n">mat</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">materials</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
     <span class="c1"># 頂点取得</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span>
     <span class="c1"># Edge取得</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="4">4. 参考</h2>

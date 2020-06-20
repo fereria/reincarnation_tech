@@ -4244,7 +4244,7 @@ Modelの行はListで持っているので<br />
         <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">btn</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QStyleOptionButton</span><span class="p">()</span>
             <span class="n">btn</span><span class="o">.</span><span class="n">state</span> <span class="o">|=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QStyle</span><span class="o">.</span><span class="n">State_Enabled</span>
-            <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">()</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">btn</span><span class="o">.</span><span class="n">state</span> <span class="o">|=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QStyle</span><span class="o">.</span><span class="n">State_On</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">btn</span><span class="o">.</span><span class="n">state</span> <span class="o">|=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QStyle</span><span class="o">.</span><span class="n">State_Off</span>
@@ -4262,7 +4262,7 @@ Modelの行はListで持っているので<br />
             <span class="n">bar</span><span class="o">.</span><span class="n">minimum</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">bar</span><span class="o">.</span><span class="n">maximum</span> <span class="o">=</span> <span class="mi">100</span>
             <span class="n">bar</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
-            <span class="n">bar</span><span class="o">.</span><span class="n">textVisible</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">bar</span><span class="o">.</span><span class="n">textVisible</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">bar</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span>
             <span class="n">bar</span><span class="o">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span>
             <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="o">.</span><span class="n">style</span><span class="p">()</span><span class="o">.</span><span class="n">drawControl</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QStyle</span><span class="o">.</span><span class="n">CE_ProgressBar</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">painter</span><span class="p">)</span>            
@@ -4305,8 +4305,8 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
                     <span class="n">currentValue</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()]</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
                     <span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()]</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">(),</span> <span class="ow">not</span> <span class="n">currentValue</span><span class="p">)</span>
                     <span class="n">model</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
-                    <span class="k">return</span> <span class="bp">True</span>
-        <span class="k">return</span> <span class="bp">False</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div>
 
 <p>まず、処理は列ごとに処理を分けたいので index.column() ごとに判定を行います。<br />
@@ -4372,7 +4372,7 @@ createEditorで作成したWidgetsに対して、「現在の値」をセット�
 <span class="sd">        編集した値を、Modelを経由して実体のオブジェクトに対してセットする</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">value</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
@@ -4380,7 +4380,7 @@ createEditorで作成したWidgetsに対して、「現在の値」をセット�
         <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()]</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
 </code></pre></div>
 

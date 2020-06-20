@@ -4025,19 +4025,19 @@
 
 <h2 id="1-material">1. Material を作成・アサインする</h2>
 <h3 id="11-pymel">1.1. Pymel の場合</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="kn">as</span> <span class="nn">pm</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
 <span class="n">shader</span> <span class="p">,</span> <span class="n">shadingEngine</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">createSurfaceShader</span><span class="p">(</span><span class="s2">&quot;lambert&quot;</span><span class="p">)</span>
 <span class="c1"># forceElement にはノード名を入れる（string or list or pyNode)</span>
 <span class="n">pm</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">shadingEngine</span><span class="p">,</span><span class="n">forceElement</span><span class="o">=</span><span class="s2">&quot;pCube1&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="12-mayacmds">1.2. maya.cmds の場合</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="kn">as</span> <span class="nn">mc</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">mc</span>
 
-<span class="n">shader</span>        <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">shadingNode</span><span class="p">(</span><span class="s2">&quot;lambert&quot;</span><span class="p">,</span><span class="n">asShader</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">shadingEngine</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">noSurfaceShader</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">renderable</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">empty</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">shader</span>        <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">shadingNode</span><span class="p">(</span><span class="s2">&quot;lambert&quot;</span><span class="p">,</span><span class="n">asShader</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">shadingEngine</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">noSurfaceShader</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">renderable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">mc</span><span class="o">.</span><span class="n">connectAttr</span><span class="p">(</span><span class="n">shader</span> <span class="o">+</span> <span class="s2">&quot;.outColor&quot;</span><span class="p">,</span> <span class="n">shadingEngine</span> <span class="o">+</span> <span class="s2">&quot;.surfaceShader&quot;</span><span class="p">)</span>
-<span class="n">mc</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="s2">&quot;pCube1&quot;</span><span class="p">,</span><span class="n">e</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">forceElement</span><span class="o">=</span><span class="n">shadingEngine</span><span class="p">)</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="s2">&quot;pCube1&quot;</span><span class="p">,</span><span class="n">e</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">forceElement</span><span class="o">=</span><span class="n">shadingEngine</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="2">2. 使用されているマテリアルか調べる</h2>
@@ -4048,25 +4048,25 @@
 
     <span class="n">sg_list</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="n">mat_name</span> <span class="o">+</span> <span class="s2">&quot;.outColor&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sg_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">False</span>
-    <span class="k">if</span> <span class="n">mc</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">sg_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">q</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">False</span>
-    <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">mc</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">sg_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">q</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
 
 <h3 id="22-pymel">2.2. pymel の場合</h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_used_materials</span><span class="p">(</span><span class="n">mat_name</span><span class="p">):</span>
 
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mat_name</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mat_name</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">mat_name</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="n">mat_name</span><span class="p">)</span>
 
     <span class="n">sg_nodes</span> <span class="o">=</span> <span class="n">mat_name</span><span class="o">.</span><span class="n">outColor</span><span class="o">.</span><span class="n">connections</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sg_nodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="kc">False</span>
     <span class="n">sg</span> <span class="o">=</span> <span class="n">sg_nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">members</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">False</span>
-    <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
                 
                   

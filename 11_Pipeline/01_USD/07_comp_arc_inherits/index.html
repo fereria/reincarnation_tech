@@ -4057,19 +4057,19 @@
 <p>以下詳しく。</p>
 <h2 id="2">2. サンプル</h2>
 <h3 id="21">2.1. シンプルな構造の場合</h3>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-class &quot;BaseClass&quot;
-{
-    int hoge = 100
-}
+<span class="k k-Tokens">class</span><span class="w"> </span><span class="s">&quot;BaseClass&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-def &quot;Fuga&quot;
-(
-    prepend inherits = &lt;/BaseClass&gt;
-)
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;Fuga&quot;</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/BaseClass&gt;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>継承を使った場合のレイヤーの最もシンプルな例がこちら。  </p>
@@ -4080,28 +4080,28 @@ def &quot;Fuga&quot;
 Fugaプリムにはアトリビュートがありませんが、BaseClassを継承することによって<br />
 BaseClassのアトリビュートがFugaのアトリビュートを引き継いでいることが分かります。  </p>
 <h3 id="22">2.2. 複数でつかってみる</h3>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-class &quot;BaseClass&quot;
-{
-    int hoge = 100
-}
+<span class="k k-Tokens">class</span><span class="w"> </span><span class="s">&quot;BaseClass&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-def &quot;FugaA&quot;
-(
-    prepend inherits = &lt;/BaseClass&gt;
-)
-{
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;FugaA&quot;</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/BaseClass&gt;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-}
+<span class="p">}</span><span class="w"></span>
 
-def &quot;FugaB&quot;
-(
-    prepend inherits = &lt;/BaseClass&gt;
-)
-{
-    int hoge = 200
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;FugaB&quot;</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/BaseClass&gt;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 クラスを使用すると、1つのデフォルトプリムを複数のプリムで共有することができます。<br />
 ので、このようにベースのプリムを複数のプリムで使用すると</p>
@@ -4134,22 +4134,22 @@ def &quot;FugaA&quot;
 <h2 id="3">3. 継承元に子プリムがある場合</h2>
 <p>上の例だと継承元プリムと継承先プリムの関係は＝になりました。<br />
 では、継承元側に子プリムがあった場合はどうなるか？というと</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-class &quot;BaseClass&quot;
-{
-    int hoge = 100
+<span class="k k-Tokens">class</span><span class="w"> </span><span class="s">&quot;BaseClass&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w"></span>
 
-    def &quot;Foo&quot;
-    {}
-}
+<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;Foo&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-def &quot;Fuga&quot;
-(
-    prepend inherits = &lt;/BaseClass&gt;
-)
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;Fuga&quot;</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/BaseClass&gt;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p><img alt="" src="https://gyazo.com/a9a1baa2118247d788f696f3afb0d9fa.png" /></p>
@@ -4220,27 +4220,27 @@ def &quot;Fuga&quot;
 継承で扱いたい場合はどうすれば良いか？というと<br />
 継承したいクラスの書かれたusdファイルをサブレイヤーで合成し<br />
 その合成のあとに継承をします。  </p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-class &quot;BaseClass&quot;
-{
-    int hoge = 100
-}
+<span class="k k-Tokens">class</span><span class="w"> </span><span class="s">&quot;BaseClass&quot;</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 例えばこのクラスが class.usda に書かれていたとします。  </p>
 <p>コレを別のレイヤーで使いたい場合は  </p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
-(
-    subLayers = [@class.usda@]
-)
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="si">@class.usda@</span><span class="p">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-def &quot;Fuga&quot;
-(
-    prepend inherits = &lt;/BaseClass&gt;
-)
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;Fuga&quot;</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/BaseClass&gt;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div><br />
 こうすると、<br />
 先述の合成の原則から L(サブレイヤーによる合成)後、I（継承）が行われるので  </p>

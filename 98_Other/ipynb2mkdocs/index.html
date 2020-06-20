@@ -4017,12 +4017,12 @@ SuccessとError部分はわかりやすくブロック化すること。  </p>
                           <span class="s1">&#39;nbconvert&#39;</span><span class="p">,</span>
                           <span class="s1">&#39;--to&#39;</span><span class="p">,</span> <span class="s1">&#39;markdown&#39;</span><span class="p">,</span>
                           <span class="s1">&#39;--output&#39;</span><span class="p">,</span> <span class="n">md</span><span class="p">,</span>
-                          <span class="s1">&#39;--template&#39;</span><span class="p">,</span> <span class="n">f</span><span class="s1">&#39;{BLOG_ROOT_DIR}/jupyter_template.tpl&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;--template&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">BLOG_ROOT_DIR</span><span class="si">}</span><span class="s1">/jupyter_template.tpl&#39;</span><span class="p">,</span>
                           <span class="n">ipynbFile</span><span class="p">])</span>
 
     <span class="n">p</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
 
-    <span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;---&#39;</span><span class="p">,</span> <span class="n">f</span><span class="s1">&#39;title: {title}&#39;</span><span class="p">,</span> <span class="s1">&#39;---&#39;</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;---&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;title: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;---&#39;</span><span class="p">]</span>
 
     <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
@@ -4035,11 +4035,11 @@ SuccessとError部分はわかりやすくブロック化すること。  </p>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 
-    <span class="n">root</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;{BLOG_ROOT_DIR}/notebooks&quot;</span>
-    <span class="n">md</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;{BLOG_ROOT_DIR}/docs/60_JupyterNotebook&quot;</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BLOG_ROOT_DIR</span><span class="si">}</span><span class="s2">/notebooks&quot;</span>
+    <span class="n">md</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BLOG_ROOT_DIR</span><span class="si">}</span><span class="s2">/docs/60_JupyterNotebook&quot;</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">md</span><span class="p">):</span>
-        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">md</span><span class="p">)</span>
 
     <span class="n">ipynbFiles</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/*.ipynb&quot;</span><span class="p">)</span>

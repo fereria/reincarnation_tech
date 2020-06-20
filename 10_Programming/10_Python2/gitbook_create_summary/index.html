@@ -4021,8 +4021,8 @@ GitHub にコミットする前に実行するようにしました。</p>
                     <span class="n">indent</span>  <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">indent_space</span>
                     <span class="n">write_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s2">&quot;- &quot;</span> <span class="o">+</span> <span class="n">replace_title_folder_name</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;^[0-9][0-9]_&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">buff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
             <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-            <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-                <span class="n">recursive_file_check</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">file</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="n">recursive_file_check</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># SUMMARYに記載するMarkdownまでのパス</span>
@@ -4033,7 +4033,7 @@ GitHub にコミットする前に実行するようにしました。</p>
                 <span class="n">summary_keyword</span> <span class="o">=</span> <span class="n">get_summary_word</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">summary_keyword</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
                     <span class="n">summary_keyword</span> <span class="o">=</span> <span class="n">bn</span>
-                <span class="n">write_val</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">indent_space</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;- [{0}]({1})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">summary_keyword</span><span class="p">,</span> <span class="n">relative_path</span><span class="p">))</span>
+                <span class="n">write_val</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">indent_space</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;- [</span><span class="si">{0}</span><span class="s2">](</span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">summary_keyword</span><span class="p">,</span> <span class="n">relative_path</span><span class="p">))</span>
 
     <span class="n">recursive_file_check</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
 
@@ -4051,7 +4051,7 @@ GitHub にコミットする前に実行するようにしました。</p>
 
     <span class="c1"># サマリーのタイトル名の行を取得する</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;&lt;!--.*SUMMARY:.*--&gt;&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;&lt;!--.*SUMMARY:.*--&gt;&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">buff</span> <span class="o">=</span> <span class="n">i</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&lt;!--&quot;</span><span class="p">,</span> <span class="s2">&quot;--&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">]:</span>
                 <span class="n">buff</span> <span class="o">=</span> <span class="n">buff</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -4075,16 +4075,16 @@ GitHub にコミットする前に実行するようにしました。</p>
     <span class="n">buff</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;/*.md&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
-    <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
 
 
 <span class="k">def</span> <span class="nf">is_exclusion_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="c1"># 除外ファイルの場合Trueを返す</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">EXCLUSION</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

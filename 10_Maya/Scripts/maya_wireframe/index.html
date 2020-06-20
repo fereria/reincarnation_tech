@@ -3879,16 +3879,16 @@
                 <h1 id="pymel-maya">[pymel] Maya のビューポートの描画をワイヤーフレームにする</h1>
 <!-- SUMMARY:pymel_Mayaのビューポートの描画をワイヤーフレームにする -->
 
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="kn">as</span> <span class="nn">pm</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
 
 <span class="k">def</span> <span class="nf">changeWireFrame</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    強制的にワイヤーフレーム表示に変更</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">selectPanel</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">getPanel</span><span class="p">(</span><span class="n">wf</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">selectPanel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">selectPanel</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">getPanel</span><span class="p">(</span><span class="n">wf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">selectPanel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">selectPanel</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;modelEditor&quot;</span><span class="p">:</span>
-            <span class="n">pm</span><span class="o">.</span><span class="n">modelEditor</span><span class="p">(</span><span class="n">selectPanel</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">da</span><span class="o">=</span><span class="s2">&quot;wireframe&quot;</span><span class="p">)</span>
+            <span class="n">pm</span><span class="o">.</span><span class="n">modelEditor</span><span class="p">(</span><span class="n">selectPanel</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">da</span><span class="o">=</span><span class="s2">&quot;wireframe&quot;</span><span class="p">)</span>
             <span class="n">pm</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 </code></pre></div>
                 

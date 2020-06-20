@@ -3943,7 +3943,7 @@
 
 
 <span class="k">def</span> <span class="nf">hogehoge</span><span class="p">(</span><span class="o">*</span><span class="n">val</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
 
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">hogehoge</span><span class="p">,</span> <span class="s1">&#39;aaa&#39;</span><span class="p">)</span>
@@ -3973,21 +3973,21 @@
 
 
 <span class="k">def</span> <span class="nf">decoTest</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-    <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Calling decorated function&quot;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;ST&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calling decorated function&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ST&quot;</span><span class="p">)</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;END&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;END&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ret</span>
     <span class="k">return</span> <span class="n">wrapper</span>
 
 
 <span class="nd">@decoTest</span>
 <span class="k">def</span> <span class="nf">aaa</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">)</span>
 
 
 <span class="n">aaa</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>

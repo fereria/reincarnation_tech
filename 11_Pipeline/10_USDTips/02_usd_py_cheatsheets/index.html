@@ -4761,7 +4761,7 @@ usdaを作って、新しいステージを作る。  </p>
 CreateNewして開いて保存する場合、すでにUSDがあるとErrorになってしまうが<br />
 こちらの場合はエラーにならない。</p>
 <h3 id="24-usd">2.4. 現在のUSDの中身を確認する</h3>
-<p><div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div><br />
 ExportToStringをすると、げんざいのUSDをプリントすることができる  </p>
 <h3 id="25-usd">2.5. 全コンポ結果を反映したUSDを確認する</h3>
@@ -4775,7 +4775,7 @@ ExportToStringをすると、げんざいのUSDをプリントすることがで
 <h3 id="31-prim">3.1. ステージ内のPrimをトラバースする</h3>
 <div class="highlight"><pre><span></span><code><span class="n">compStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/sample.usda&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">prim</span> <span class="ow">in</span> <span class="n">compStage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
 
 <p><img alt="" src="https://gyazo.com/2468b325e58decbcf91ac72958e2f594.png" /></p>
@@ -4794,13 +4794,13 @@ ExportToStringをすると、げんざいのUSDをプリントすることがで
 <h3 id="41-rootlayer">4.1. RootLayerを取得</h3>
 <p><img alt="" src="https://gyazo.com/0082ca726d91f41458870e24dc0ea818.png" /></p>
 <p><div class="highlight"><pre><span></span><code><span class="n">openUsd</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH</span> <span class="o">+</span> <span class="s2">&quot;/baseUSD.usda&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">openUsd</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">openUsd</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">())</span>
 </code></pre></div><br />
 CompositionのRootのLayer(.usda)を取得する。<br />
 ここで取得出来る Sdf.Find()で取得出来るLayerのPrimは<br />
 いわゆるPrimSpec。</p>
 <h3 id="42-layer-usd">4.2. 指定Layerオブジェクトの usdファイルパスを取得する</h3>
-<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="5-prim">5. Prim操作</h2>
@@ -4813,7 +4813,7 @@ CompositionのRootのLayer(.usda)を取得する。<br />
 <p>スキーマなしのPrimが作成される。  </p>
 <h3 id="52-stageprim">5.2. StageからPrimを取得する</h3>
 <div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/hogehoge&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="53-prim">5.3. スキーマありのPrimを定義する</h3>
@@ -4843,9 +4843,9 @@ SdfPathは、 / スタートで Stage内のシーングラフを定義する。<
 Pathを取得したいPrimやAttribute、Primオブジェクトで .GetPath() する。<br />
 AttributeのPathは /base.test のように . で表現される。  </p>
 <h3 id="63-sdfpath">6.3. SdfPathが何を指しているか確認する</h3>
-<p><div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsPropertyPath</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsPrimPath</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsTargetPath</span><span class="p">())</span>
+<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsPropertyPath</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsPrimPath</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsTargetPath</span><span class="p">())</span>
 </code></pre></div><br />
 Is～Path　で、SdfPathが何をしてしているのかチェックできる。  </p>
 <h3 id="64-sdfpath">6.4. SdfPath操作</h3>
@@ -4859,7 +4859,7 @@ Is～Path　で、SdfPathが何をしてしているのかチェックできる�
 <h3 id="71-attribute">7.1. Attributeを作る/セットする</h3>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Boolの場合</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
-<span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1"># Colorの場合</span>
 <span class="n">color_attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Color3d</span><span class="p">)</span>
 <span class="n">color_attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">Gf</span><span class="o">.</span><span class="n">Vec3d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -4868,23 +4868,23 @@ ValueTypeNamesでの型指定方法は<a href="../01_usd_py_docs/">こちら</a>
 ColorやVectorなどの型はGfモジュールにある定義を使用してセットする。</p>
 <h3 id="72-attribute">7.2. Attributeから値を取得する</h3>
 <div class="highlight"><pre><span></span><code><span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 </code></pre></div>
 
 <h3 id="73-namespace">7.3. Namespaceを使用する</h3>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># Namespaceつきのアトリビュートを作る</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;ns:testVal&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
 <span class="n">props</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPropertiesInNamespace</span><span class="p">(</span><span class="s1">&#39;ns&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
 </code></pre></div><br />
 プロパティ名・アトリビュート名にはNamespaceをつけることができる。<br />
 つけかたは Namespace:hogehoge のように : で区切ればOK。<br />
 Namespaceをつけておくと、GetPropertiesInNamespace関数を使用して<br />
 指定のNamespaceのプロパティやアトリビュートを取得することができる。  </p>
 <h4 id="731-namespacenmaespace">7.3.1. NamespaceやNmaespace無しのプロパティ名を取得</h4>
-<p><div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetBaseName</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetNamespace</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">SplitName</span><span class="p">())</span>
+<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetBaseName</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetNamespace</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">SplitName</span><span class="p">())</span>
 </code></pre></div><br />
 このNamespaceやプロパティ名は、プロパティオブジェクトで取得することができる。  </p>
 <h3 id="74-relationship">7.4. Relationshipを使用する</h3>
@@ -4904,7 +4904,7 @@ Namespaceをつけておくと、GetPropertiesInNamespace関数を使用して<b
 GetTargets()を使用すると、接続先のSdfPathを取得できる。</p>
 <h3 id="75-sdfpathattribute">7.5. SdfPathからAttributeの値を取得する</h3>
 <p><div class="highlight"><pre><span></span><code><span class="n">relPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetObjectAtPath</span><span class="p">(</span><span class="n">attrPath</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">relPrim</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">relPrim</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 </code></pre></div><br />
 SdfPathからPrimまたはAttributeを取得したい場合は、StageのGetObjectAtPath()を使用する。<br />
 Objectで取得したばあい、Primの場合はPrimオブジェクトが帰ってくるし<br />
@@ -4914,7 +4914,7 @@ AttributeだったらAttributeオブジェクトが帰ってくる。</p>
 <p>MetadataはPrimやAttributeなどに対して設定できる付加情報。  </p>
 <h3 id="81-metadata">8.1. Metadataの取得</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 指定のPrim・Attribute・PropertyのMetadataをDictで取得</span>
-<span class="k">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetAllMetadata</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetAllMetadata</span><span class="p">())</span>
 </code></pre></div>
 
 <h3 id="82-metadata">8.2. Metadataに値をセットする</h3>
@@ -4925,7 +4925,7 @@ AttributeだったらAttributeオブジェクトが帰ってくる。</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># 指定のオブジェクトに対してCustomDataを指定する</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">SetCustomDataByKey</span><span class="p">(</span><span class="s1">&#39;userCustomMeta&#39;</span><span class="p">,</span> <span class="s1">&#39;fuga&#39;</span><span class="p">)</span>
 <span class="c1"># 取得する</span>
-<span class="k">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetCustomData</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetCustomData</span><span class="p">())</span>
 <span class="c1"># namespaceを指定した場合</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">SetCustomDataByKey</span><span class="p">(</span><span class="s1">&#39;test:userCustomMeta&#39;</span><span class="p">,</span> <span class="s1">&#39;fuga&#39;</span><span class="p">)</span>
 </code></pre></div><br />
@@ -4979,7 +4979,7 @@ Referenceで読み込みたいusdをPrimに対してセットする</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># クラスを定義して保存する</span>
 <span class="n">classPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s1">&#39;/TestClass&#39;</span><span class="p">)</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">classPrim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
-<span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH</span> <span class="o">+</span> <span class="s1">&#39;usdClass.usda&#39;</span><span class="p">)</span>
 
 <span class="c1"># 定義したクラスをSubLayerでロードして、継承する</span>
@@ -4991,7 +4991,7 @@ Referenceで読み込みたいusdをPrimに対してセットする</p>
 <span class="n">path</span>  <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/TestClass&#39;</span><span class="p">)</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">GetInherits</span><span class="p">()</span><span class="o">.</span><span class="n">AddInherit</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">inheritStage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">inheritStage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div>
 
 <p>継承したいクラスが別ファイルに存在する場合は<br />
@@ -4999,18 +4999,18 @@ Referenceで読み込みたいusdをPrimに対してセットする</p>
 GetInherits().AddInherit(path)<br />
 で読み込む。  </p>
 <p>出力結果はこんな感じに。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
-(
-    subLayers = [
-        @C:/pyEnv/JupyterUSD_py27/usd/usdClass.usda@
-    ]
-)
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="si">@C:/pyEnv/JupyterUSD_py27/usd/usdClass.usda@</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 
-def &quot;hoge&quot; (
-    prepend inherits = &lt;/TestClass&gt;
-)
-{
-}
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;hoge&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">&lt;/TestClass&gt;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h3 id="104-sublayer">10.4. SubLayer</h3>
