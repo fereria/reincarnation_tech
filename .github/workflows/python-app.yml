@@ -5,28 +5,34 @@ name: Python application
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.6
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.6
-    - name: Install Pipenv
-      run: |
-        pip install pipenv
-        pipenv install
-        
-    - name: Mkdocs
-      run: |
-        pipenv run mkdocs gh-deploy
-      
     
+    steps:
+      - name: Git config
+        run: |
+          git config --global core.symlinks true
+          git config --global user.name "Megumi Ando"
+          git config --global user.email "remiria@flame-daybreak.net"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.6
+        with:
+          python-version: 3.6
+      - name: Install Pipenv
+        run: |
+          pip install pipenv
+          pipenv install
+
+      - name: Mkdocs
+        run: |
+          pipenv run mkdocs gh-deploy
