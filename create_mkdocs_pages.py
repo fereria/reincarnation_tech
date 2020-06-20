@@ -8,7 +8,6 @@ import os
 import os.path
 import re
 import codecs
-import yaml
 import glob
 import sys
 
