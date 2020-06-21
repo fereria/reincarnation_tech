@@ -1,10 +1,6 @@
-path: docs/98_Other
-source: mkdocs_setting.md
-
-# mkdocs を設定する
-
-<!-- SUMMARY: mkdocsを設定する -->
-
+---
+title: mkdocs を設定する
+---
 テクニカル系の内容をまとめるための記事作成用に  
 静的サイト生成ツールの mkdocs を使用してみました。
 
