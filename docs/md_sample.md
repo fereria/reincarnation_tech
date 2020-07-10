@@ -38,3 +38,10 @@ pip install mkdocs
 ## 参考
   
   * https://qiita.com/mebiusbox2/items/a61d42878266af969e3c
+
+## マクロを作る
+
+{{ twitter('https://twitter.com/fereria/status/1164544426967875584') }}
+
+URLで埋め込み
+
