@@ -41,7 +41,13 @@ pip install mkdocs
 
 ## マクロを作る
 
-{{ twitter('https://twitter.com/fereria/status/1164544426967875584') }}
+{{ 'https://twitter.com/fereria/status/1164544426967875584'|twitter }}
 {{ fontstyle('hoge',1.5,'#00ff00') }}
 
 URL で埋め込み
+
+## Filter
+
+{{'hogehoge'|upper}}
+
+{{hogevalue}}
