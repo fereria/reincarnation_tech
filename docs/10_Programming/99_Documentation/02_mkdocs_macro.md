@@ -57,7 +57,7 @@ define_env 関数を作ります。
 例えばこんな感じの定義を作り、@env.macro のデコレーターをつけます。
 
 ```
-{{"fontstyle('ここに文字を書く',1.2,'#ff0000')|macroprint"}}
+{{"fontstyle('ここに文字を書く',1.2,'#ff0000')"|macroprint}}
 ```
 
 mkdocsにこのように書くと
