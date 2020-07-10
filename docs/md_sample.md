@@ -2,12 +2,13 @@
 title: Menuに表示される内容
 hero: Tagの上あたりに表示される文字
 ---
-# Markdownの書き方サンプル
+
+# Markdown の書き方サンプル
 
 1. aaa
 2. bbb
 
-----
+---
 
 ```python
 print "hello World"
@@ -18,11 +19,10 @@ pip install mkdocs
 ```
 
 !!! Warning
-    わーにん！わーにん！
-    
+わーにん！わーにん！
+  
 !!! Note
-    これはノートです。    
-
+これはノートです。
 
 ++ctrl+alt+delete++
 
@@ -31,17 +31,17 @@ pip install mkdocs
 :smile:  
 :fa-coffee:
 
-==MARK TEST== hogehoge  
+==MARK TEST== hogehoge
 
 ![](https://gyazo.com/42ff00b4fe5ad7bc8e1742cdad3aaafc.png)
 
 ## 参考
-  
-  * https://qiita.com/mebiusbox2/items/a61d42878266af969e3c
+
+- https://qiita.com/mebiusbox2/items/a61d42878266af969e3c
 
 ## マクロを作る
 
 {{ twitter('https://twitter.com/fereria/status/1164544426967875584') }}
+{{ fontstyle('hoge',1.5,'#00ff00') }}
 
-URLで埋め込み
-
+URL で埋め込み
