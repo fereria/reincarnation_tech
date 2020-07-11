@@ -4139,6 +4139,14 @@ define_env 関数を作ります。<br />
 </code></pre></div>
 
 <p>例えばこんな感じの定義を作り、@env.macro のデコレーターをつけます。</p>
+<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">testHoge</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s1">&#39;return hogehoge</span>
+    <span class="c1"># デコレーターを使わない場合</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">macro</span><span class="p">(</span><span class="n">testHoge</span><span class="p">,</span> <span class="s1">&#39;hogevalue&#39;</span><span class="p">)</span>
+</code></pre></div><br />
+あるいは、デコレーターを使わない場合は、env.macroの第１引数で関数を渡し<br />
+第２引数で呼び出し用の {{return hogehoge}}に指定する文字列を指定しておきます。</p>
+<p>出来上がったマクロは、</p>
 <div class="highlight"><pre><span></span><code>{{fontstyle(&#39;ここに文字を書く&#39;,1.2,&#39;#ff0000&#39;)}}
 </code></pre></div>
 
@@ -4148,12 +4156,6 @@ define_env 関数を作ります。<br />
 <p>このように文字サイズを変えることができます。<br />
 フォントサイズや色はmarkdownだと難しいので、こうやってマクロをかけるのは<br />
 とても便利です。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">testHoge</span><span class="p">():</span>
-        <span class="k">return</span> <span class="s1">&#39;return hogehoge</span>
-    <span class="c1"># デコレーターを使わない場合</span>
-    <span class="n">env</span><span class="o">.</span><span class="n">macro</span><span class="p">(</span><span class="n">testHoge</span><span class="p">,</span> <span class="s1">&#39;hogevalue&#39;</span><span class="p">)</span>
-</code></pre></div>
-
 <h2 id="2">2. フィルターを作る</h2>
 <p>フィルターとは、 Jinja2 の機能で<br />
 <div class="highlight"><pre><span></span><code>{{name|lower}}
@@ -4190,7 +4192,7 @@ return で文字列を返せば何でもできるので、mkdocsのかゆいと�
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2020-07-10 23:39:13
+      最終更新日: 2020-07-11 10:55:33
     
   </small>
 </div>
