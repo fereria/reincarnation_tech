@@ -56,6 +56,18 @@ define_env 関数を作ります。
 
 例えばこんな感じの定義を作り、@env.macro のデコレーターをつけます。
 
+```python
+    def testHoge():
+        return 'return hogehoge
+    # デコレーターを使わない場合
+    env.macro(testHoge, 'hogevalue')
+
+```
+あるいは、デコレーターを使わない場合は、env.macroの第１引数で関数を渡し
+第２引数で呼び出し用の {{hogevalue|macroprint}}に指定する文字列を指定しておきます。
+
+出来上がったマクロは、
+
 ```
 {{"fontstyle('ここに文字を書く',1.2,'#ff0000')"|macroprint}}
 ```
@@ -68,13 +80,6 @@ mkdocsにこのように書くと
 フォントサイズや色はmarkdownだと難しいので、こうやってマクロをかけるのは  
 とても便利です。
 
-```python
-    def testHoge():
-        return 'return hogehoge
-    # デコレーターを使わない場合
-    env.macro(testHoge, 'hogevalue')
-
-```
 
 ## フィルターを作る
 
