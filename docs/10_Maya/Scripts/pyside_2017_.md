@@ -1,6 +1,6 @@
-# Maya2017 以降での PySide の使い方
-
-<!-- SUMMARY: aya2017以降でのPySideの使い方-->
+---
+title: Maya2017 以降での PySide の使い方
+---
 
 ## .ui を .py に変換する
 

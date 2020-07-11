@@ -1,6 +1,6 @@
-# [pymel] Maya のビューポートの描画をワイヤーフレームにする
-
-<!-- SUMMARY:pymel_Mayaのビューポートの描画をワイヤーフレームにする -->
+---
+title: Maya のビューポートの描画をワイヤーフレームにする
+---
 
 ```python
 import pymel.core as pm

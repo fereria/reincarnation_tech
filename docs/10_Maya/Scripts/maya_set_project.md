@@ -1,6 +1,6 @@
-# [cmds] Maya の SetProject をする
-
-<!-- SUMMARY:cmds_MayaのSetProjectをする -->
+---
+title: cmds_MayaのSetProjectをする
+---
 
 ```python
 # -*- coding: utf-8 -*-

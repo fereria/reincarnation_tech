@@ -1,5 +1,5 @@
 ---
-title: mkdocsにJupyterNotebookの結果(ipynb)を表示する
+title: mkdocsにJupyterNotebookの結果を表示する
 ---
 
 表題の通り。  

@@ -1,6 +1,6 @@
-# [pymel] DrivenKey を取得する
-
-<!-- SUMMARY:DrivenKey を取得する -->
+---
+title: DrivenKey を取得する
+---
 
 ```python
 import pymel.core as pm

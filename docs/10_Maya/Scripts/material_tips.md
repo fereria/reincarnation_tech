@@ -1,6 +1,6 @@
-# Materials 関係の Tips
-
-<!-- SUMMARY: Materials 関係の Tips-->
+---
+title: Materials 関係の Tips
+---
 
 ## Material を作成・アサインする
 
