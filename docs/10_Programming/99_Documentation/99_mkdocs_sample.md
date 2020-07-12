@@ -32,7 +32,7 @@ stage.GetRootLayer().Export("I:/test.usda")
 blockdiag {
 A -> B -> C -> D;
 A -> E -> F -> G;
-- [ ] }
+}
 
 ++ctrl+alt+delete++
 
