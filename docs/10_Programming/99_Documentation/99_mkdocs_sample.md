@@ -72,4 +72,6 @@ A -> E -> F -> G;
 {{ 'https://twitter.com/fereria/status/1164544426967875584'|twitter }}
 {{ fontstyle('hoge',1.5,'#00ff00') }}
 
+{{'1484e59d53c93f7264a757961c9fa738'|gist}}
+
 [^1]: 一番下に解説が追加される
