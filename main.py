@@ -1,4 +1,7 @@
 import os
+import os.path
+import re
+import codecs
 from datetime import datetime
 from git import Repo
 
@@ -8,6 +11,14 @@ def returnHoge():
 
 
 def define_env(env):
+
+    def getTitle(md):
+        if os.path.exists(md):
+            with codecs.open(md, 'r', 'utf8') as f:
+                for i in f.readlines():
+                    if re.search("^title:", i):
+                        return i.strip().split(":")[1]
+        return None
 
     @env.macro
     def update_info(num, header="##"):
@@ -22,7 +33,16 @@ def define_env(env):
             if len(buff) > 2:
                 # 更新コメントがちゃんと書いてあったら詳細を書く
                 msg += buff[2:]
-
+            # 更新ページ
+            files = commit.stats.files.keys()
+            for f in files:
+                ext = os.path.splitext(f)[1]
+                if ext == ".md":
+                    link = re.sub("^docs/", "", f.replace("\\", "/"))
+                    title = getTitle(os.getcwd() + "/" + f)
+                    if not title:
+                        title = link
+                    msg.append(f"* [{title}]({link})")
         return "\n".join(msg)
 
     @env.macro
