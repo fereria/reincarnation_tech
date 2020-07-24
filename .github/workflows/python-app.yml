@@ -42,6 +42,8 @@ jobs:
           pipenv install
 
       - name: Mkdocs
+        env:
+          TZ: Asia/Tokyo
         run: |
           python create_mkdocs_pages.py
           pipenv run mkdocs gh-deploy
