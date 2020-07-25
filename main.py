@@ -38,6 +38,12 @@ def define_env(env):
             for f in files:
                 ext = os.path.splitext(f)[1]
                 if ext == ".md":
+                    if re.search("{.* => .*}", f):
+                        # FilePathを移動したパターンの場合
+                        buff = f.split("}")
+                        buff2 = buff[0].replace("{", "").split(" => ")
+                        f = buff2[1] + buff[1]
+                        msg.append(f"{buff[1]} を {buff2[0]}から{buff2[1]} に移動\n")
                     link = re.sub("^docs/", "", f.replace("\\", "/"))
                     title = getTitle(os.getcwd() + "/" + f)
                     if not title:
