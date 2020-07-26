@@ -1,6 +1,6 @@
-# VEX を VOP に置き換える 01 ノイズ
-
-<!-- SUMMARY:VEX を VOP に置き換える_01_ノイズ -->
+---
+title: VEX を VOP に置き換える 01 ノイズ
+---
 
 VEX チュートリアルをもとにして VOP に置き換えてみました。
 参考元のチュートリアルは [こちらを参考](https://houdini.prisms.xyz/wiki/index.php?title=JoyOfVex8)にしました。

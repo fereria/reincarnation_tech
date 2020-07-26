@@ -1,6 +1,6 @@
-# Vtx Point Primitive Mesh Polygon について
-
-<!-- SUMMARY:Vtx Point Primitive Mesh Polygon について -->
+---
+title: Vtx Point Primitive Mesh Polygon について
+---
 
 Houdini を調べていると、Maya 以上に細かくノードやコンポーネントに  
 名前が付いていて？？？になることが多いです。

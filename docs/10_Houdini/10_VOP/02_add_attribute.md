@@ -1,6 +1,6 @@
-# Attribute を追加して VOP で使用する
-
-<!-- SUMMARY:Attributeを追加してVOPで使用する -->
+---
+title: Attribute を追加して VOP で使用する
+---
 
 ## チャンネルとアトリビュート
 

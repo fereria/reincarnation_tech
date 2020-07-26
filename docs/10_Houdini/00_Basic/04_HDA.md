@@ -1,6 +1,6 @@
-# HDA の作り方
-
-<!-- SUMMARY:HDAの作り方 -->
+---
+title: HDA の作り方
+---
 
 ## HDA とは？
 

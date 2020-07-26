@@ -1,6 +1,6 @@
-# Houdini の Group
-
-<!-- SUMMARY:HoudiniのGroup_01 -->
+---
+title: Houdini の Group
+---
 
 Houdini の機能でまず最初に面食らったのがこの Group。  
 Maya とかだと単純にノードをまとめるとか、Null として空ノードとして  

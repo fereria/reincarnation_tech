@@ -1,6 +1,6 @@
-# 初めての Houdini 基本用語と構造
-
-<!-- SUMMARY:初めてのHoudini_基本操作01 -->
+---
+title: 初めての Houdini 基本用語と構造
+---
 
 Maya使いでHoudini完全初心者が、使い方で調べていった内容を書きためていきます。  
   
