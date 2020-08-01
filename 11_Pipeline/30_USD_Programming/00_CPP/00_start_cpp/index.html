@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/Python/02_reparentPrim/">
+        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/00_CPP/00_start_cpp/">
       
       
         <meta name="author" content="Megumi Ando@Remiria">
@@ -19,7 +19,7 @@
     
     
       
-        <title>PrimをReparentする</title>
+        <title>C++でUSDのコードを書こう(準備編)</title>
       
     
     
@@ -98,7 +98,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              PrimをReparentする
+              C++でUSDのコードを書こう(準備編)
             
           </span>
         </div>
@@ -2756,10 +2756,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5-1" type="checkbox" id="nav-7-5-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5-1" type="checkbox" id="nav-7-5-1" checked>
     
     <label class="md-nav__link" for="nav-7-5-1">
       CPP
@@ -2781,11 +2783,111 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../CPP/00_start_cpp/" title="C++でUSDのコードを書こう(準備編)" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        C++でUSDのコードを書こう(準備編)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="C++でUSDのコードを書こう(準備編)" class="md-nav__link md-nav__link--active">
       C++でUSDのコードを書こう(準備編)
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    コードを書く
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    cmakeを書く
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はまりポイント
+  </a>
+  
+    <nav class="md-nav" aria-label="はまりポイント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windowh" class="md-nav__link">
+    window.h マクロ定義問題
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dwin32_lean_and_mean" class="md-nav__link">
+    DWIN32_LEAN_AND_MEAN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    Debugモードでのエラー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lib" class="md-nav__link">
+    lib入れ忘れ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    というわけで...
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -2798,12 +2900,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5-2" type="checkbox" id="nav-7-5-2" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5-2" type="checkbox" id="nav-7-5-2">
     
     <label class="md-nav__link" for="nav-7-5-2">
       Python
@@ -2827,7 +2927,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../01_editTarget/" title="EditTargetでLayerを操作する" class="md-nav__link">
+    <a href="../../01_Python/01_editTarget/" title="EditTargetでLayerを操作する" class="md-nav__link">
       EditTargetでLayerを操作する
     </a>
   </li>
@@ -2837,103 +2937,53 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        PrimをReparentする
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
-      </label>
-    
-    <a href="./" title="PrimをReparentする" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../01_Python/02_reparentPrim/" title="PrimをReparentする" class="md-nav__link">
       PrimをReparentする
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
     
-      
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-5-3" type="checkbox" id="nav-7-5-3">
+    
+    <label class="md-nav__link" for="nav-7-5-3">
+      USDPlugin
       <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
       </span>
-      目次
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    準備
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    基本的な移動方法
-  </a>
-  
-    <nav class="md-nav" aria-label="基本的な移動方法">
-      <ul class="md-nav__list">
+    <nav class="md-nav" aria-label="USDPlugin" data-md-level="3">
+      <label class="md-nav__title" for="nav-7-5-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        USDPlugin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
         
-          <li class="md-nav__item">
-  <a href="#namespace" class="md-nav__link">
-    Namespaceとは
-  </a>
-  
-</li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    移動以外の操作
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sublayernamespace" class="md-nav__link">
-    SubLayer時のNamespace操作
-  </a>
-  
-    <nav class="md-nav" aria-label="SubLayer時のNamespace操作">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    サブレイヤーで読み込んだ先に定義がある場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    参考
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../10_USDPlugin/00_usdVIew_tutorial/" title="USDViewのプラグイン作成チュートリアルをやろう" class="md-nav__link">
+      USDViewのプラグイン作成チュートリアルをやろう
+    </a>
   </li>
 
         
@@ -4159,22 +4209,50 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    準備
+    コードを書く
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    cmakeを書く
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    基本的な移動方法
+    はまりポイント
   </a>
   
-    <nav class="md-nav" aria-label="基本的な移動方法">
+    <nav class="md-nav" aria-label="はまりポイント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#namespace" class="md-nav__link">
-    Namespaceとは
+  <a href="#windowh" class="md-nav__link">
+    window.h マクロ定義問題
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dwin32_lean_and_mean" class="md-nav__link">
+    DWIN32_LEAN_AND_MEAN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    Debugモードでのエラー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lib" class="md-nav__link">
+    lib入れ忘れ
   </a>
   
 </li>
@@ -4186,33 +4264,13 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    移動以外の操作
+    というわけで...
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sublayernamespace" class="md-nav__link">
-    SubLayer時のNamespace操作
-  </a>
-  
-    <nav class="md-nav" aria-label="SubLayer時のNamespace操作">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    サブレイヤーで読み込んだ先に定義がある場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
     参考
   </a>
   
@@ -4230,7 +4288,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_Pipeline/30_USD_Programming/Python/02_reparentPrim.md" title="編集" class="md-content__button md-icon">
+                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_Pipeline/30_USD_Programming/00_CPP/00_start_cpp.md" title="編集" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -4238,150 +4296,150 @@
                   
                 
                 
-                  <h1>PrimをReparentする</h1>
+                  <h1>C++でUSDのコードを書こう(準備編)</h1>
                 
-                <p>USDの親子構造をあとから編集したい...<br />
-みたいなことは当然のことながらやりたくなります。<br />
-しかしドキュメントを読み漁ってもみつからずうわーんになっていたので泣きついて<br />
-やり方を教えてもらったのでメモをば。</p>
-<h2 id="_1">準備<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>まずはかんたんなusdaファイルを用意します。</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+                <p>C++はやらなきゃと思いながらもよくわからん！！と放置してきたところがあるのですが<br />
+そもそも始めることすら出来なくて放置してました。<br />
+が、、、せっかくUSDをはじめたので、PythonだけではなくC++でもコードが書けるように<br />
+色々とビルドできるようにするまでの環境を、調べながらつくってみました。</p>
+<h2 id="_1">コードを書く<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>とりあえずこんなコードを動くようにしてみます。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define NOMINMAX</span>
 
-<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">{}</span><span class="w"></span>
-<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">{}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
-これを</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pxr/usd/usd/stage.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pxr/usd/sdf/path.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pxr/usd/usdGeom/sphere.h&quot;</span><span class="cp"></span>
 
-<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">{}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
-こう。</p>
-<p><img alt="" src="https://gyazo.com/ba1c15de5821d0413a48f851acdfd0a4.png" /></p>
-<p>図にするとこんな感じにしたいとします。</p>
-<h2 id="_2">基本的な移動方法<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>Mayaなどの場合は cmds.parent(子,親) などでノードの移動ができますが<br />
-USDの場合は若干異なります。<br />
-どう違うかというと、PrimやLayerオブジェクトで行うのではなく<br />
-<a href="https://graphics.pixar.com/usd/docs/api/class_sdf_batch_namespace_edit.html">SdfBatchNamespaceEdit</a>と呼ばれる、Namespace（あとで説明）の操作をカプセル化したクラスを介して<br />
-Primの移動（Reparent）を行います。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\work\usd_py36\usd\namespaceEdit.usda&quot;</span><span class="p">)</span>
-<span class="n">layer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
-<span class="n">edit</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">BatchNamespaceEdit</span><span class="p">()</span>
-<span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/C&quot;</span><span class="p">,</span> <span class="s2">&quot;/A/B/C&quot;</span><span class="p">)</span>
-<span class="n">layer</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
-</code></pre></div><br />
-BatchNamespaceEditは、「Batch」と名のつくとおり移動処理を複数積み上げてから<br />
-編集したいレイヤーに対してApplyすることで、Primの階層を編集することができます。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/C&quot;</span><span class="p">,</span> <span class="s2">&quot;/A/B/C&quot;</span><span class="p">)</span>
-<span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/D&quot;</span><span class="p">,</span> <span class="s2">&quot;/A/B/D&quot;</span><span class="p">)</span>
-</code></pre></div><br />
-Batchなので複数の操作を書くことができます。<br />
-<div class="highlight"><pre><span></span><code>[Sdf.NamespaceEdit(Sdf.Path(&#39;/A/C&#39;),Sdf.Path(&#39;/A/B/C&#39;),-1),
- Sdf.NamespaceEdit(Sdf.Path(&#39;/A/D&#39;),Sdf.Path(&#39;/A/B/D&#39;),-1)]
-</code></pre></div><br />
-どんな操作が積まれているかは、Pythonの場合は edits で確認できます。（C++とは違う）  </p>
-<p>Prim操作を探しているときに NamespaceEdit は見つけていたのですが<br />
-うまく行かないしそもそもターゲット指定していないのにどうやってつかうんだ...<br />
-と思っていたのですが、Batchに渡すための１つの操作が NamespaceEditでした。<br />
-ひどいトラップ...</p>
-<h3 id="namespace">Namespaceとは<a class="headerlink" href="#namespace" title="Permanent link">¶</a></h3>
-<p>USDのNamespaceとは <a href="https://graphics.pixar.com/usd/docs/USD-Glossary.html">Glossary</a>によると</p>
-<blockquote>
-<p>Namespace is simply the term USD uses to describe <br />
-the set of prim paths that provide the identities for prims on a Stage, or PrimSpecs in a Layer.</p>
-</blockquote>
-<p>木構造内のあるPrim (レイヤーの場合はPrimSpec)を識別するのに使うものです。<br />
-（AというNamespaceにあるB、等）<br />
-つまりは、上のBatchNamespaceEditというのは、<br />
-Namespaceつまりはステージまたはレイヤーの階層構造を編集するためのものだよーということです。<br />
-なお、このNamespaceの位置を表すのがSdfPathになります。</p>
-<h2 id="_3">移動以外の操作<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>BatchNamespaceEditでは、Primの移動以外にもNamespace関係の操作を実行することができて<br />
-<div class="highlight"><pre><span></span><code><span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/B/D&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">emptyPath</span><span class="p">)</span> <span class="c1"># 削除</span>
-<span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/B/C&quot;</span><span class="p">,</span><span class="s2">&quot;/A/B/C_rename&quot;</span><span class="p">)</span>
-</code></pre></div><br />
-こうすると、Primの削除やリネームを行うことができます。<br />
-これ以外にもVariantのReparentやプロパティのリネームなどもできるので<br />
-シーングラフやプロパティの構造を大きく変更したい場合は、この方法を使うと<br />
-できることが増えそうです。</p>
-<h2 id="sublayernamespace">SubLayer時のNamespace操作<a class="headerlink" href="#sublayernamespace" title="Permanent link">¶</a></h2>
-<p>注意点ですが、このBatchNamespaceEditを実行するのがSdfLayerだということ。<br />
-なので、Primの定義があるレイヤーをサブレイヤーでロードした<br />
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
-<span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="si">@namespaceEdit.usda@</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div><br />
-こんなファイルを作成して、このレイヤーに対して Apply(BatchNamespaceEdit) を実行したとしても<br />
-Falseになってしまい正しく実行できません。</p>
-<p>なので、サブレイヤーをしている場合は<br />
-<div class="highlight"><pre><span></span><code><span class="c1"># Primの定義があるレイヤーを取得して、そのレイヤーに対してApply</span>
-<span class="n">stack</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">stack</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
-</code></pre></div><br />
-定義があるレイヤーを取得して、そのターゲットに対してApplyします。  </p>
-<h3 id="_4">サブレイヤーで読み込んだ先に定義がある場合<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
-
-(
-    subLayers = [
-        @namespaceEdit.usda@
-    ]
-)
-
-over &quot;A&quot;{
-    over &quot;B&quot;{}
-    over &quot;C&quot;{}
-    over &quot;D&quot;{}
-}
-</code></pre></div><br />
-定義がない場合はなにもおきないですが、<br />
-例えばこんな感じでサブレイヤーに対してPrimが定義されている場合<br />
-EditNamespaceをするとどうなるかというと</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;A&quot;
-{
-    def &quot;B&quot;
-    {
-        over &quot;C_rename&quot;
-        {
-        }
-    }
-
-    def &quot;C&quot;
-    {
-    }
-
-    def &quot;D&quot;
-    {
-    }
-}
-</code></pre></div><br />
-こうなりました。<br />
-あくまでも編集ターゲットにしたレイヤーの定義のみ変更されます。  </p>
-<p>なので、これだと具合が悪い（コンポジションした結果に対してPrim移動をしたい）場合は</p>
-<div class="highlight"><pre><span></span><code><span class="n">flatten</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
-<span class="n">flatten</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">auto</span> <span class="n">stage</span> <span class="o">=</span> <span class="n">pxr</span><span class="o">::</span><span class="n">UsdStage</span><span class="o">::</span><span class="n">CreateInMemory</span><span class="p">();</span>
+  <span class="k">auto</span> <span class="n">sphere</span> <span class="o">=</span> <span class="n">pxr</span><span class="o">::</span><span class="n">UsdGeomSphere</span><span class="o">::</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">pxr</span><span class="o">::</span><span class="n">SdfPath</span><span class="p">(</span><span class="s">&quot;/TestSphere&quot;</span><span class="p">));</span>
+  <span class="n">stage</span><span class="o">-&gt;</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Export</span><span class="p">(</span><span class="s">&quot;D:/test_sphere.usda&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>FlattenしてからEditするか</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
-    <span class="n">layer</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
+<p>同じコードをPythonで書くと、こうなります。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdGeom</span><span class="p">,</span><span class="n">Usd</span>
+
+<span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="n">sphere</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="s2">&quot;/TestSphere&quot;</span><span class="p">)</span>
+<span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;D:/test_sphere.usda&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Pythonの場合は、書いたらそのまま実行すればOKなのですが<br />
+C++だとそう簡単ではなく、ビルドをする必要があります。<br />
+なので、このコードをビルドするためのcmakeを書いていきます。</p>
+<h2 id="cmake">cmakeを書く<a class="headerlink" href="#cmake" title="Permanent link">¶</a></h2>
+<p><a href="https://cmake.org/">https://cmake.org/</a></p>
+<p>まずは、cmakeをダウンロードしてインストールします。</p>
+<p><div class="highlight"><pre><span></span><code>cmake_minimum_required(VERSION 3.1)
+project(testProj)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(USD_INSTALL_ROOT D:/python_lib/usd_py27)
+set(PYTHON_ROOT_DIR C:/Python27)
+
+set(USD_LIBRARY_DIRECTORY ${USD_INSTALL_ROOT}/lib)
+set(USD_INCLUDE_DIRECTORY ${USD_INSTALL_ROOT}/include)
+set(BOOST_INCLUDE_DIRECTORY ${USD_INSTALL_ROOT}/include/boost-1_65_1)
+
+# ライブラリのPath取得
+find_library(USD_SDF sdf HINTS ${USD_LIBRARY_DIRECTORY})
+find_library(USD_TF tf HINTS ${USD_LIBRARY_DIRECTORY})
+find_library(USD_USD usd HINTS ${USD_LIBRARY_DIRECTORY})
+find_library(USD_GEOM usdGeom HINTS ${USD_LIBRARY_DIRECTORY})
+find_library(TBB_LIB tbb HINTS ${USD_LIBRARY_DIRECTORY})
+find_package(PythonLibs 2.7)
+
+add_executable(main_app main.cpp)
+target_compile_options(main_app PRIVATE /DWIN32_LEAN_AND_MEAN)
+target_include_directories(
+    main_app
+    PUBLIC
+    ${PYTHON_INCLUDE_PATH}
+    ${USD_INCLUDE_DIRECTORY}
+    ${BOOST_INCLUDE_DIRECTORY}
+    ${PYTHON_ROOT_DIR}/include
+)
+target_link_libraries(
+    main_app
+    ${USD_LIBRARY_DIRECTORY}/boost_python-vc141-mt-1_65_1.lib
+    ${PYTHON_LIBRARY}
+    ${TBB_LIB}
+    ${USD_SDF}
+    ${USD_TF}
+    ${USD_USD}
+    ${USD_GEOM}
+)
 </code></pre></div><br />
-LayerStackに対してeditするとかでもいけそうです。</p>
-<p>しかし、Prim移動を行うのが BatchNamespaceEditというのはさすがにわかるかあぁぁぁ！！！！<br />
-になりましたよ...</p>
-<h2 id="_5">参考<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+cppと同じフォルダに、 CMakeLists.txt を作り<br />
+中身を↑のようにします。</p>
+<p>まずは、cppをビルドするためのプロジェクトを作ります。<br />
+いわゆるVisualStudioの slnファイル（ソリューション）がこれにあたります。</p>
+<p>そしてその中に追加するプロジェクトを add_executable で追加します。<br />
+この第一引数が、プロジェクト名になり、</p>
+<p><img alt="" src="https://gyazo.com/56ebe3e8aa739a3943df57699105cc5b.png" /></p>
+<p>こんな感じで追加されます。<br />
+さらに、そのプロジェクトに対して、使用するライブラリとIncludeフォルダを指定します。<br />
+このlinkライブラリのパスは、find_libraryで検索することができますが<br />
+boost_pythonはみつけたサンプルのとおりにやるとエラーになったので<br />
+自分のビルドしたUSDフォルダにあるboost_pythonのlibを書いてあります。</p>
+<p>もう1つトラップだったのが、<br />
+サンプルだとPythonLibも find_library で書かれていたのですが、<br />
+find_package(PythonLibs REQUIRED)<br />
+コレで書くと、python3.7のライブラリが引っかかってしまったので<br />
+とりあえずフルパスで追加するようにしました。</p>
+<p>...とおもったら色々勘違いしていただけで、REQUIREDではなく指定のバージョンにすれば<br />
+そのバージョンのpythonlibをみつけてくれるので、2.7にしておきました。(※追記)</p>
+<p>find_package自体は、.cmakeで検索コードを書いたりも出来るみたいなので<br />
+色々やってみたいです。</p>
+<p>で。<br />
+サンプルに必要な Sdf UsdGeom Stage のlibを追加して準備完了。</p>
+<p>おなじフォルダに build フォルダを作り、コマンドラインで buildフォルダに移動します。</p>
+<p><div class="highlight"><pre><span></span><code>cmake -G &quot;Visual Studio 15 2017 Win64&quot; -DCMAKE_BUILD_TYPE=Release --build ..
+</code></pre></div><br />
+そしてコマンド実行。<br />
+今回はVisualStudio 2017 Win64でビルドしたいので、 -G でバージョンを指定します。<br />
+さらに、Debug版だと tbb で盛大にビルドエラーになるので今回はReleaseにします。</p>
+<p>実行すると、buildフォルダ下にソリューションファイルができあがるので、<br />
+VisualStudioで開き、あとは ソリューションエクスプローラーから main_app を右クリック<br />
+そしてビルドすれば完了です。</p>
+<h2 id="_2">はまりポイント<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>C++初心者な自分が盛大にはまったポイントがいくつかあります。</p>
+<h3 id="windowh">window.h マクロ定義問題<a class="headerlink" href="#windowh" title="Permanent link">¶</a></h3>
+<p><a href="https://yohhoy.hatenadiary.jp/entry/20120115/p1">https://yohhoy.hatenadiary.jp/entry/20120115/p1</a></p>
+<p>まず1つめが、window.hの定義マクロ問題。<br />
+window.hが「min/max」という超被りそうな名前のマクロを定義してしまうため<br />
+盛大にエラーを吐いてビルド出来ませんでした。<br />
+というわけで、回避策として #define NOMINMAX を定義。</p>
+<h3 id="dwin32_lean_and_mean">DWIN32_LEAN_AND_MEAN<a class="headerlink" href="#dwin32_lean_and_mean" title="Permanent link">¶</a></h3>
+<p>もう1つ、window.h が「small」という名のマクロを定義してしまうことで発生する<br />
+ビルドエラーを回避するために、DWIN32_LEAN_AND_MEAN を追加。</p>
+<h3 id="debug">Debugモードでのエラー<a class="headerlink" href="#debug" title="Permanent link">¶</a></h3>
+<p>最後にDebugモード時に、tbb周りのマクロ定義で盛大にエラーになってしまう問題。<br />
+なので、cmake コマンドでソリューションを作る時に -DCMAKE_BUILD_TYPE=Release<br />
+フラグを追加して回避しました。</p>
+<h3 id="lib">lib入れ忘れ<a class="headerlink" href="#lib" title="Permanent link">¶</a></h3>
+<p>これも超基本ですが、途中でSphereを作るUsdGeomSphereを追加した場合、 sphere.h を<br />
+インクルードしたらエラーになってしまいはじめはかなり困りました。<br />
+が、よく考えてみると target_link_libraries で usdGeom.libをリンクしないと<br />
+だめじゃん！ってことに気がついて追加したらいけました。</p>
+<h2 id="_3">というわけで...<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>とりあえず色々と分からないことがあるものの、書き始められるだけの環境はできました。<br />
+なんだかんだで理解するだけで1ヶ月以上かかりました。。。C++難しい。</p>
+<p>ビルドが通るようになって以降は、ドキュメント自体はC++で書かれていることもあって<br />
+（一応文法もわかるので）Pythonで書いたサンプルをC++に移植するとかは出来るようになりました。<br />
+一番難しいのはビルドだったのではないかと思います。</p>
+<p>とにもかくにも動くようにはなったので、<br />
+しばらくはC++の基本を勉強しつつC++でUSDのデータを作って見るのを試してみようと思います。</p>
+<h2 id="_4">参考<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="https://github.com/ColinKennedy/USD-Cookbook/tree/master/features/batch_namespace_edit">https://github.com/ColinKennedy/USD-Cookbook/tree/master/features/batch_namespace_edit</a></li>
+<li><a href="https://qiita.com/janus_wel/items/a673793d448c72cbc95e">https://qiita.com/janus_wel/items/a673793d448c72cbc95e</a></li>
+<li><a href="https://qiita.com/shohirose/items/45fb49c6b429e8b204ac">https://qiita.com/shohirose/items/45fb49c6b429e8b204ac</a></li>
+<li><a href="https://github.com/ColinKennedy/USD-Cookbook/tree/master/concepts/mesh_with_materials/cpp">https://github.com/ColinKennedy/USD-Cookbook/tree/master/concepts/mesh_with_materials/cpp</a></li>
+<li><a href="https://www.wagavulin.jp/entry/2017/02/20/082608">https://www.wagavulin.jp/entry/2017/02/20/082608</a></li>
 </ul>
                 
                   
@@ -4391,7 +4449,7 @@ LayerStackに対してeditするとかでもいけそうです。</p>
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2020-05-27 16:10:58
+      最終更新日: 2020-08-01 15:45:28
     
   </small>
 </div>
@@ -4414,7 +4472,7 @@ LayerStackに対してeditするとかでもいけそうです。</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../01_editTarget/" title="EditTargetでLayerを操作する" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../../10_USDTips/03_usd_format_cheatsheets/" title="USDフォーマットチートシート" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -4423,19 +4481,19 @@ LayerStackに対してeditするとかでもいけそうです。</p>
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                EditTargetでLayerを操作する
+                USDフォーマットチートシート
               </div>
             </div>
           </a>
         
         
-          <a href="../../../../11_PySide/" title="Index" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../01_Python/01_editTarget/" title="EditTargetでLayerを操作する" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
-                Index
+                EditTargetでLayerを操作する
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
