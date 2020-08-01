@@ -30,6 +30,10 @@ title: USD関係参考資料
 - https://qiita.com/takahito-tejima/items/3c2fa4a4a83aa04b9a0e
 - https://www.slideshare.net/takahitotejima/usd-79288174
 
+## Github参考リポジトリ
+
+- https://github.com/ColinKennedy/USD-Cookbook
+
 ### Blender
 
 - https://code.blender.org/2019/07/first-steps-with-universal-scene-description/
