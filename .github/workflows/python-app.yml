@@ -44,6 +44,8 @@ jobs:
       - name: Mkdocs
         env:
           TZ: Asia/Tokyo
+        with:
+          timezone: Asia/Tokyo
         run: |
           python create_mkdocs_pages.py
           pipenv run mkdocs gh-deploy
