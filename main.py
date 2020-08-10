@@ -80,10 +80,11 @@ def define_env(env):
         return x.upper()
 
     @env.macro
-    def fukidashi(comment, icon="remiria"):
+    def fukidashi(comment, icon="default"):
         # 参考: https://saruwakakun.com/html-css/reference/speech-bubble
         path = {
-            "remiria": "https://gyazo.com/a9c6c9adfb619505393a13240d010325.jpg"
+            "remiria": "https://gyazo.com/a9c6c9adfb619505393a13240d010325.jpg",
+            "default": "https://gyazo.com/3df214f13e2b6b8a4e903a0f9a3a35c0.png"
         }
         return FUKIDASHI_HTML.format(comment=comment, icon=path[icon])
 
