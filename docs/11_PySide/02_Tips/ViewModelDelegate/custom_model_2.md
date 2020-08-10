@@ -63,10 +63,6 @@ Python が異常終了したりしてしまい
 
 ## Model のアップデート方法
 
-全コードは長いので
-https://snippets.cacher.io/snippet/631af0caf686255ebd58
-こちらを参照。
-
 モデルの更新をする場合は layoutChanged.emit() でシグナルを Emit するのではなく
 https://doc.qt.io/qtforpython/PySide2/QtCore/QAbstractItemModel.html#PySide2.QtCore.PySide2.QtCore.QAbstractItemModel.beginInsertColumns
 begin###～～から始まる関数群を使用することです。
