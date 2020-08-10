@@ -5,6 +5,18 @@ import codecs
 from datetime import datetime
 from git import Repo
 
+FUKIDASHI_HTML = """<div class="balloon5">
+  <div class="faceicon">
+    <img src="{icon}">
+  </div>
+  <div class="chatting">
+    <div class="says">
+      <p>{comment}</p>
+    </div>
+  </div>
+</div>
+"""
+
 
 def returnHoge():
     return 'return hogehoge'
@@ -66,6 +78,14 @@ def define_env(env):
     @env.filter
     def upper(x):
         return x.upper()
+
+    @env.macro
+    def fukidashi(comment, icon="remiria"):
+        # 参考: https://saruwakakun.com/html-css/reference/speech-bubble
+        path = {
+            "remiria": "https://gyazo.com/a9c6c9adfb619505393a13240d010325.jpg"
+        }
+        return FUKIDASHI_HTML.format(comment=comment, icon=path[icon])
 
     env.macro('return hogehoge', 'hogevalue')
 
