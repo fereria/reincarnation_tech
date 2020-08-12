@@ -20,6 +20,12 @@ FootNote のテスト [^1]
 
 !!! example
     Example
+    
+### 画像
+
+![](/img/icon.jpg)
+
+/から始めれば絶対パス扱いになる。
 
 ```python
 from pxr import Usd, UsdGeom, Sdf, Gf, OrigSchema
@@ -43,13 +49,18 @@ A -> E -> F -> G;
 
 :fish:
 :frog:
-:grass-cheers:
-:building:
+
+### fontawesome
+
+:fa-building:
+:fa-android:
+:fa-copy:
+:fa-folder:
+
+:fa-angle-right:
 
 ==MARK TEST== hogehoge
 ~~sample~~
-
-![](https://gyazo.com/42ff00b4fe5ad7bc8e1742cdad3aaafc.png)
 
 - [ ] test
 - [ ] check2
@@ -77,5 +88,3 @@ A -> E -> F -> G;
 [^1]: 一番下に解説が追加される
 
 {{fukidashi("ここに吹き出しの中の文字を入れると\n表示できる。")}}
-
-
