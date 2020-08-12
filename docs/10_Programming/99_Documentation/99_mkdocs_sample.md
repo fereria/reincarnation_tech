@@ -40,12 +40,7 @@ A -> B -> C -> D;
 A -> E -> F -> G;
 }
 
-blockdiag {
-  orientation = portrait
 
-  A -> B -> C;
-       B -> D;
-}
 
 ++ctrl+alt+delete++
 

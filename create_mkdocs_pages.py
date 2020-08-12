@@ -25,8 +25,8 @@ FOLDER_REPLACE_STRING = {
     "PySide_Basic": "PySide_基本編",
     "python_module": "Pythonモジュールの使い方",
     "pipeline_study": "Pipeline/Workflow学習・考察",
-    "defaultLib": "標準ライブラリ"
-
+    "defaultLib": "標準ライブラリ",
+    "template_code": "コピペで使うやつ"
 }
 
 # 無視するフォルダ
