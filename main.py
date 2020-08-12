@@ -79,6 +79,10 @@ def define_env(env):
     def upper(x):
         return x.upper()
 
+    @env.filter
+    def img(path):
+        return f"![](https://fereria.github.io/reincarnation_tech/img/{path})"
+
     @env.macro
     def fukidashi(comment, icon="default"):
         # 参考: https://saruwakakun.com/html-css/reference/speech-bubble

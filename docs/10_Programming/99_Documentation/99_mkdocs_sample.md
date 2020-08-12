@@ -23,9 +23,9 @@ FootNote のテスト [^1]
     
 ### 画像
 
-![](/img/icon.jpg)
+{{'icon.jpg'|img}}
 
-/から始めれば絶対パス扱いになる。
+マクロにした。
 
 ```python
 from pxr import Usd, UsdGeom, Sdf, Gf, OrigSchema
