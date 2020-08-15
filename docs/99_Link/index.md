@@ -39,6 +39,10 @@ title: Link集
 
 - http://www.chadvernon.com/blog/
 
+## PySide
+- [PySide API Docs](https://doc.qt.io/qtforpython/)
+- [Qt Docs](https://doc.qt.io/)
+
 ## 便利サービス
 
 - https://www.cacher.io/
@@ -47,15 +51,20 @@ title: Link集
 
 見つけたサイトから順次追加
 
-- https://takavfx.github.io/Takanori-Note/
-- https://tm8r.hateblo.jp/
-- http://hesperas.blog134.fc2.com/
-- https://rateionn.growi.cloud/
-- https://unpyside.wixsite.com/unpyside
-- https://graphics.hatenablog.com/
-- https://effect.hatenablog.com/
-- https://note.com/it_ks
-- https://memo.vec4d.xyz/home
+- https://takavfx.github.io/Takanori-Note/ (Takanori.Kさん)
+- https://tm8r.hateblo.jp/ (トモハラさん)
+- http://hesperas.blog134.fc2.com/ (SEN-Aさん)
+- https://rateionn.growi.cloud/ (低音さん)
+- https://unpyside.com/ (UNPySide Maya PySide - りんご酸さん)
+- https://graphics.hatenablog.com/ (hal1932さん)
+- https://effect.hatenablog.com/ (mokoさん)
+- https://note.com/it_ks (ksさん)
+- https://memo.vec4d.xyz/home (八田和磨さん)
+- https://tablogweb.wordpress.com/ (タブログ。 yamadaさん)
+
+## テクい企業Blog
+
+- http://techblog.sega.jp/
 
 ## 素材
 
