@@ -9,23 +9,23 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/">
+        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/00_CPP/01_asset_resolver_01/">
       
       
         <meta name="author" content="Megumi Ando@Remiria">
       
-      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="shortcut icon" href="../../../../favicon.ico">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.3.0">
     
     
       
-        <title>Pipeline</title>
+        <title>Custom AssetResolver を作ろう</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6e35a1a6.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6e35a1a6.min.css">
       
-        <link rel="stylesheet" href="../assets/stylesheets/palette.a46bcfb3.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a46bcfb3.min.css">
       
       
         
@@ -45,7 +45,7 @@
     
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
     
       
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pipeline" class="md-skip">
+        <a href="#assetresolver" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -98,7 +98,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Pipeline
+              Custom AssetResolver を作ろう
             
           </span>
         </div>
@@ -169,7 +169,7 @@
         
   <li class="md-tabs__item">
     
-      <a href=".." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         Introduction
       </a>
     
@@ -183,7 +183,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../10_Blender/" class="md-tabs__link">
+        <a href="../../../../10_Blender/" class="md-tabs__link">
           Blender
         </a>
       
@@ -196,7 +196,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../10_Houdini/" class="md-tabs__link">
+        <a href="../../../../10_Houdini/" class="md-tabs__link">
           Houdini
         </a>
       
@@ -213,7 +213,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../10_Maya/Env_Maya/VSCode_debug/" class="md-tabs__link">
+        <a href="../../../../10_Maya/Env_Maya/VSCode_debug/" class="md-tabs__link">
           Maya
         </a>
       
@@ -232,7 +232,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../10_Programming/00_PG_setup/00_npm_install/" class="md-tabs__link">
+        <a href="../../../../10_Programming/00_PG_setup/00_npm_install/" class="md-tabs__link">
           Programming
         </a>
       
@@ -247,7 +247,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="./" class="md-tabs__link md-tabs__link--active">
+        <a href="../../../" class="md-tabs__link md-tabs__link--active">
           Pipeline
         </a>
       
@@ -260,7 +260,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../11_PySide/" class="md-tabs__link">
+        <a href="../../../../11_PySide/" class="md-tabs__link">
           PySide
         </a>
       
@@ -273,7 +273,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../20_Photo/color_passport/" class="md-tabs__link">
+        <a href="../../../../20_Photo/color_passport/" class="md-tabs__link">
           Photo
         </a>
       
@@ -286,7 +286,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../60_JupyterNotebook/NoteSample/" class="md-tabs__link">
+        <a href="../../../../60_JupyterNotebook/NoteSample/" class="md-tabs__link">
           JupyterNotebook
         </a>
       
@@ -299,7 +299,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../98_Other/git_command/" class="md-tabs__link">
+        <a href="../../../../98_Other/git_command/" class="md-tabs__link">
           Other
         </a>
       
@@ -312,7 +312,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../99_Link/" class="md-tabs__link">
+        <a href="../../../../99_Link/" class="md-tabs__link">
           Link
         </a>
       
@@ -364,7 +364,7 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Introduction" class="md-nav__link">
+    <a href="../../../.." title="Introduction" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -376,7 +376,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../update_docs/" title="更新履歴" class="md-nav__link">
+    <a href="../../../../update_docs/" title="更新履歴" class="md-nav__link">
       更新履歴
     </a>
   </li>
@@ -413,7 +413,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/" title="Blender" class="md-nav__link">
+    <a href="../../../../10_Blender/" title="Blender" class="md-nav__link">
       Blender
     </a>
   </li>
@@ -450,7 +450,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Compositing/00_start_comp/" title="コンポジットを使用する(基本編)" class="md-nav__link">
+    <a href="../../../../10_Blender/Compositing/00_start_comp/" title="コンポジットを使用する(基本編)" class="md-nav__link">
       コンポジットを使用する(基本編)
     </a>
   </li>
@@ -492,7 +492,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/00_node/" title="NodeEditorのNodeまとめ" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/00_node/" title="NodeEditorのNodeまとめ" class="md-nav__link">
       NodeEditorのNodeまとめ
     </a>
   </li>
@@ -504,7 +504,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/addJ_outline/" title="トゥーンのアウトラインを作成する(基本)" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/addJ_outline/" title="トゥーンのアウトラインを作成する(基本)" class="md-nav__link">
       トゥーンのアウトラインを作成する(基本)
     </a>
   </li>
@@ -516,7 +516,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/create_ao/" title="AmbientOcclusion を使用する" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/create_ao/" title="AmbientOcclusion を使用する" class="md-nav__link">
       AmbientOcclusion を使用する
     </a>
   </li>
@@ -528,7 +528,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/create_dof/" title="DepthOfFuild を使用する" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/create_dof/" title="DepthOfFuild を使用する" class="md-nav__link">
       DepthOfFuild を使用する
     </a>
   </li>
@@ -540,7 +540,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/create_fog/" title="Volumetric(Fog)を使用する" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/create_fog/" title="Volumetric(Fog)を使用する" class="md-nav__link">
       Volumetric(Fog)を使用する
     </a>
   </li>
@@ -552,7 +552,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/create_glass/" title="透明なガラス質感マテリアルを作成する" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/create_glass/" title="透明なガラス質感マテリアルを作成する" class="md-nav__link">
       透明なガラス質感マテリアルを作成する
     </a>
   </li>
@@ -564,7 +564,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/create_sss/" title="SSS を設定する" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/create_sss/" title="SSS を設定する" class="md-nav__link">
       SSS を設定する
     </a>
   </li>
@@ -576,7 +576,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/mix_rgb/" title="MixRGB ノードのメモ" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/mix_rgb/" title="MixRGB ノードのメモ" class="md-nav__link">
       MixRGB ノードのメモ
     </a>
   </li>
@@ -588,7 +588,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/reflection_prove/" title="ReflectionProbe と IrradianceVolume" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/reflection_prove/" title="ReflectionProbe と IrradianceVolume" class="md-nav__link">
       ReflectionProbe と IrradianceVolume
     </a>
   </li>
@@ -600,7 +600,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/ssr_reflection/" title="ScreenSpaceReflections を使用した反射" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/ssr_reflection/" title="ScreenSpaceReflections を使用した反射" class="md-nav__link">
       ScreenSpaceReflections を使用した反射
     </a>
   </li>
@@ -637,7 +637,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/EEVEE/study_materials/00_toon_01_simple_dot/" title="NodeだけでDotテクスチャを作る" class="md-nav__link">
+    <a href="../../../../10_Blender/EEVEE/study_materials/00_toon_01_simple_dot/" title="NodeだけでDotテクスチャを作る" class="md-nav__link">
       NodeだけでDotテクスチャを作る
     </a>
   </li>
@@ -684,7 +684,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Effect/particle_start_01/" title="パーティクルを作成する" class="md-nav__link">
+    <a href="../../../../10_Blender/Effect/particle_start_01/" title="パーティクルを作成する" class="md-nav__link">
       パーティクルを作成する
     </a>
   </li>
@@ -726,7 +726,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Modeling/poly_build/" title="PolyBuild の使い方" class="md-nav__link">
+    <a href="../../../../10_Blender/Modeling/poly_build/" title="PolyBuild の使い方" class="md-nav__link">
       PolyBuild の使い方
     </a>
   </li>
@@ -768,7 +768,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Rigging/00_create_Armature/" title="Bone を作成して Bind する" class="md-nav__link">
+    <a href="../../../../10_Blender/Rigging/00_create_Armature/" title="Bone を作成して Bind する" class="md-nav__link">
       Bone を作成して Bind する
     </a>
   </li>
@@ -780,7 +780,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Rigging/01_bone/" title="Bone の調整・設定" class="md-nav__link">
+    <a href="../../../../10_Blender/Rigging/01_bone/" title="Bone の調整・設定" class="md-nav__link">
       Bone の調整・設定
     </a>
   </li>
@@ -792,7 +792,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Rigging/blend_shape/" title="ShapeKey(BlendShape) を作成する" class="md-nav__link">
+    <a href="../../../../10_Blender/Rigging/blend_shape/" title="ShapeKey(BlendShape) を作成する" class="md-nav__link">
       ShapeKey(BlendShape) を作成する
     </a>
   </li>
@@ -804,7 +804,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Rigging/create_controller/" title="コントローラーを作成する" class="md-nav__link">
+    <a href="../../../../10_Blender/Rigging/create_controller/" title="コントローラーを作成する" class="md-nav__link">
       コントローラーを作成する
     </a>
   </li>
@@ -816,7 +816,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Rigging/create_ik/" title="IK を作成する" class="md-nav__link">
+    <a href="../../../../10_Blender/Rigging/create_ik/" title="IK を作成する" class="md-nav__link">
       IK を作成する
     </a>
   </li>
@@ -828,7 +828,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Rigging/drivers/" title="Driver を作成する" class="md-nav__link">
+    <a href="../../../../10_Blender/Rigging/drivers/" title="Driver を作成する" class="md-nav__link">
       Driver を作成する
     </a>
   </li>
@@ -865,7 +865,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Rigging/AutoRigPro/00_auto_rig_pro_001/" title="AutoRigPro でセットアップをする 1 とりあえずの使い方" class="md-nav__link">
+    <a href="../../../../10_Blender/Rigging/AutoRigPro/00_auto_rig_pro_001/" title="AutoRigPro でセットアップをする 1 とりあえずの使い方" class="md-nav__link">
       AutoRigPro でセットアップをする 1 とりあえずの使い方
     </a>
   </li>
@@ -877,7 +877,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Rigging/AutoRigPro/01_make_proxy/" title="Link と Proxy を使用して Anim 用シーンを作る 1" class="md-nav__link">
+    <a href="../../../../10_Blender/Rigging/AutoRigPro/01_make_proxy/" title="Link と Proxy を使用して Anim 用シーンを作る 1" class="md-nav__link">
       Link と Proxy を使用して Anim 用シーンを作る 1
     </a>
   </li>
@@ -924,7 +924,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Scripts/00_VS_code_blender/" title="Blender の開発環境を作る" class="md-nav__link">
+    <a href="../../../../10_Blender/Scripts/00_VS_code_blender/" title="Blender の開発環境を作る" class="md-nav__link">
       Blender の開発環境を作る
     </a>
   </li>
@@ -936,7 +936,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Scripts/01_VSCode_addon/" title="VSCode でアドオン開発" class="md-nav__link">
+    <a href="../../../../10_Blender/Scripts/01_VSCode_addon/" title="VSCode でアドオン開発" class="md-nav__link">
       VSCode でアドオン開発
     </a>
   </li>
@@ -948,7 +948,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Scripts/05_VSCode_send_script/" title="Blender のスクリプトを VSCode から実行" class="md-nav__link">
+    <a href="../../../../10_Blender/Scripts/05_VSCode_send_script/" title="Blender のスクリプトを VSCode から実行" class="md-nav__link">
       Blender のスクリプトを VSCode から実行
     </a>
   </li>
@@ -960,7 +960,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Scripts/10_Data_block_access/" title="Data-Block をスクリプトから確認" class="md-nav__link">
+    <a href="../../../../10_Blender/Scripts/10_Data_block_access/" title="Data-Block をスクリプトから確認" class="md-nav__link">
       Data-Block をスクリプトから確認
     </a>
   </li>
@@ -997,7 +997,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Scripts/MaterialsNode/00_simple_node_addons/" title="Blender のマテリアルノードを作成する（1）" class="md-nav__link">
+    <a href="../../../../10_Blender/Scripts/MaterialsNode/00_simple_node_addons/" title="Blender のマテリアルノードを作成する（1）" class="md-nav__link">
       Blender のマテリアルノードを作成する（1）
     </a>
   </li>
@@ -1009,7 +1009,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Scripts/MaterialsNode/01_simple_node_addons_2/" title="Blender のマテリアルノードを作成する（2）" class="md-nav__link">
+    <a href="../../../../10_Blender/Scripts/MaterialsNode/01_simple_node_addons_2/" title="Blender のマテリアルノードを作成する（2）" class="md-nav__link">
       Blender のマテリアルノードを作成する（2）
     </a>
   </li>
@@ -1056,7 +1056,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Shortcut/blender_pie_menu/" title="PieメニューのShortCutまとめ" class="md-nav__link">
+    <a href="../../../../10_Blender/Shortcut/blender_pie_menu/" title="PieメニューのShortCutまとめ" class="md-nav__link">
       PieメニューのShortCutまとめ
     </a>
   </li>
@@ -1068,7 +1068,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Shortcut/blender_short_cut_modeling/" title="モデリング時のショートカット" class="md-nav__link">
+    <a href="../../../../10_Blender/Shortcut/blender_short_cut_modeling/" title="モデリング時のショートカット" class="md-nav__link">
       モデリング時のショートカット
     </a>
   </li>
@@ -1080,7 +1080,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Shortcut/blender_shortcut/" title="Blender の各種ショートカットまとめ" class="md-nav__link">
+    <a href="../../../../10_Blender/Shortcut/blender_shortcut/" title="Blender の各種ショートカットまとめ" class="md-nav__link">
       Blender の各種ショートカットまとめ
     </a>
   </li>
@@ -1092,7 +1092,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/Shortcut/blender_shortcut_materials/" title="NodeEditor関係のショートカット" class="md-nav__link">
+    <a href="../../../../10_Blender/Shortcut/blender_shortcut_materials/" title="NodeEditor関係のショートカット" class="md-nav__link">
       NodeEditor関係のショートカット
     </a>
   </li>
@@ -1134,7 +1134,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/basic_operation/blender_render_cam/" title="レンダリングカメラを操作する" class="md-nav__link">
+    <a href="../../../../10_Blender/basic_operation/blender_render_cam/" title="レンダリングカメラを操作する" class="md-nav__link">
       レンダリングカメラを操作する
     </a>
   </li>
@@ -1146,7 +1146,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/basic_operation/export_to_maya/" title="Blender から Maya にデータを移植する" class="md-nav__link">
+    <a href="../../../../10_Blender/basic_operation/export_to_maya/" title="Blender から Maya にデータを移植する" class="md-nav__link">
       Blender から Maya にデータを移植する
     </a>
   </li>
@@ -1158,7 +1158,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/basic_operation/face_assign/" title="Face に対してマテリアルをアサイン" class="md-nav__link">
+    <a href="../../../../10_Blender/basic_operation/face_assign/" title="Face に対してマテリアルをアサイン" class="md-nav__link">
       Face に対してマテリアルをアサイン
     </a>
   </li>
@@ -1170,7 +1170,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/basic_operation/object_pivot/" title="Pivot 位置の調整" class="md-nav__link">
+    <a href="../../../../10_Blender/basic_operation/object_pivot/" title="Pivot 位置の調整" class="md-nav__link">
       Pivot 位置の調整
     </a>
   </li>
@@ -1182,7 +1182,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/basic_operation/snap_object/" title="オブジェクトを対象にスナップさせる" class="md-nav__link">
+    <a href="../../../../10_Blender/basic_operation/snap_object/" title="オブジェクトを対象にスナップさせる" class="md-nav__link">
       オブジェクトを対象にスナップさせる
     </a>
   </li>
@@ -1219,7 +1219,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/basic_operation/modifier/00_start_modifier/" title="モディファイアを使用する" class="md-nav__link">
+    <a href="../../../../10_Blender/basic_operation/modifier/00_start_modifier/" title="モディファイアを使用する" class="md-nav__link">
       モディファイアを使用する
     </a>
   </li>
@@ -1266,7 +1266,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/data_structure/collection_object/" title="オブジェクトの共有・構造・ユーザーについて" class="md-nav__link">
+    <a href="../../../../10_Blender/data_structure/collection_object/" title="オブジェクトの共有・構造・ユーザーについて" class="md-nav__link">
       オブジェクトの共有・構造・ユーザーについて
     </a>
   </li>
@@ -1278,7 +1278,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/data_structure/data_block/" title="Data-Block について" class="md-nav__link">
+    <a href="../../../../10_Blender/data_structure/data_block/" title="Data-Block について" class="md-nav__link">
       Data-Block について
     </a>
   </li>
@@ -1290,7 +1290,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Blender/data_structure/user_link_proxy/" title="Data-Block の User,Link,Proxy" class="md-nav__link">
+    <a href="../../../../10_Blender/data_structure/user_link_proxy/" title="Data-Block の User,Link,Proxy" class="md-nav__link">
       Data-Block の User,Link,Proxy
     </a>
   </li>
@@ -1337,7 +1337,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/" title="Houdini" class="md-nav__link">
+    <a href="../../../../10_Houdini/" title="Houdini" class="md-nav__link">
       Houdini
     </a>
   </li>
@@ -1374,7 +1374,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/00_Basic/00_start_houdini/" title="初めての Houdini 基本用語と構造" class="md-nav__link">
+    <a href="../../../../10_Houdini/00_Basic/00_start_houdini/" title="初めての Houdini 基本用語と構造" class="md-nav__link">
       初めての Houdini 基本用語と構造
     </a>
   </li>
@@ -1386,7 +1386,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/00_Basic/02_mesh_polygon/" title="Vtx Point Primitive Mesh Polygon について" class="md-nav__link">
+    <a href="../../../../10_Houdini/00_Basic/02_mesh_polygon/" title="Vtx Point Primitive Mesh Polygon について" class="md-nav__link">
       Vtx Point Primitive Mesh Polygon について
     </a>
   </li>
@@ -1398,7 +1398,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/00_Basic/03_group/" title="Houdini の Group" class="md-nav__link">
+    <a href="../../../../10_Houdini/00_Basic/03_group/" title="Houdini の Group" class="md-nav__link">
       Houdini の Group
     </a>
   </li>
@@ -1410,7 +1410,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/00_Basic/04_HDA/" title="HDA の作り方" class="md-nav__link">
+    <a href="../../../../10_Houdini/00_Basic/04_HDA/" title="HDA の作り方" class="md-nav__link">
       HDA の作り方
     </a>
   </li>
@@ -1422,7 +1422,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/00_Basic/99_shortcut/" title="Houdini のショートカット" class="md-nav__link">
+    <a href="../../../../10_Houdini/00_Basic/99_shortcut/" title="Houdini のショートカット" class="md-nav__link">
       Houdini のショートカット
     </a>
   </li>
@@ -1464,7 +1464,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/10_VOP/01_vex_to_vop_noise/" title="VEX を VOP に置き換える 01 ノイズ" class="md-nav__link">
+    <a href="../../../../10_Houdini/10_VOP/01_vex_to_vop_noise/" title="VEX を VOP に置き換える 01 ノイズ" class="md-nav__link">
       VEX を VOP に置き換える 01 ノイズ
     </a>
   </li>
@@ -1476,7 +1476,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/10_VOP/02_add_attribute/" title="Attribute を追加して VOP で使用する" class="md-nav__link">
+    <a href="../../../../10_Houdini/10_VOP/02_add_attribute/" title="Attribute を追加して VOP で使用する" class="md-nav__link">
       Attribute を追加して VOP で使用する
     </a>
   </li>
@@ -1488,7 +1488,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/10_VOP/03_add_param/" title="パラメーターを追加する" class="md-nav__link">
+    <a href="../../../../10_Houdini/10_VOP/03_add_param/" title="パラメーターを追加する" class="md-nav__link">
       パラメーターを追加する
     </a>
   </li>
@@ -1530,7 +1530,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/01_solaris_open_usd/" title="SOLARISでUSDファイルを開く" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/01_solaris_open_usd/" title="SOLARISでUSDファイルを開く" class="md-nav__link">
       SOLARISでUSDファイルを開く
     </a>
   </li>
@@ -1542,7 +1542,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/02_comp_arc/" title="SOLARISでコンポジションアーク" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/02_comp_arc/" title="SOLARISでコンポジションアーク" class="md-nav__link">
       SOLARISでコンポジションアーク
     </a>
   </li>
@@ -1554,7 +1554,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/03_comp_arc_inherits/" title="SOLARISでInherits(継承)/Reference(継承)を扱う" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/03_comp_arc_inherits/" title="SOLARISでInherits(継承)/Reference(継承)を扱う" class="md-nav__link">
       SOLARISでInherits(継承)/Reference(継承)を扱う
     </a>
   </li>
@@ -1566,7 +1566,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/04_agent_to_solaris/" title="Houdiniの群衆をSOLARISに持って行ってみよう(1)" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/04_agent_to_solaris/" title="Houdiniの群衆をSOLARISに持って行ってみよう(1)" class="md-nav__link">
       Houdiniの群衆をSOLARISに持って行ってみよう(1)
     </a>
   </li>
@@ -1578,7 +1578,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/05_point_instancer/" title="SOLARISでInstancerを使う(1) 配置編" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/05_point_instancer/" title="SOLARISでInstancerを使う(1) 配置編" class="md-nav__link">
       SOLARISでInstancerを使う(1) 配置編
     </a>
   </li>
@@ -1590,7 +1590,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/06_point_instancer/" title="SOLARISでInstancerを使う(2) 編集編" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/06_point_instancer/" title="SOLARISでInstancerを使う(2) 編集編" class="md-nav__link">
       SOLARISでInstancerを使う(2) 編集編
     </a>
   </li>
@@ -1602,7 +1602,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/07_layer/" title="SOLARISでのLayerの扱い" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/07_layer/" title="SOLARISでのLayerの扱い" class="md-nav__link">
       SOLARISでのLayerの扱い
     </a>
   </li>
@@ -1614,7 +1614,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/08_solaris_variant/" title="SOLARIS で VariantSet" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/08_solaris_variant/" title="SOLARIS で VariantSet" class="md-nav__link">
       SOLARIS で VariantSet
     </a>
   </li>
@@ -1626,7 +1626,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" title="Houdini18で追加されたLOPノードを調べてみた" class="md-nav__link">
       Houdini18で追加されたLOPノードを調べてみた
     </a>
   </li>
@@ -1638,7 +1638,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
+    <a href="../../../../10_Houdini/11_SOLARIS/99_solaris_usd_glossary/" title="SOLARIS USD 用語対応表" class="md-nav__link">
       SOLARIS USD 用語対応表
     </a>
   </li>
@@ -1680,7 +1680,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/20_Python/get_param_01/" title="PythonでHoudiniのパラメーターを取得・セットする" class="md-nav__link">
+    <a href="../../../../10_Houdini/20_Python/get_param_01/" title="PythonでHoudiniのパラメーターを取得・セットする" class="md-nav__link">
       PythonでHoudiniのパラメーターを取得・セットする
     </a>
   </li>
@@ -1722,7 +1722,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/50_imitate/00_glue_constraint_rbd/" title="Houdini 写経 01 RBD_ClueConstraint" class="md-nav__link">
+    <a href="../../../../10_Houdini/50_imitate/00_glue_constraint_rbd/" title="Houdini 写経 01 RBD_ClueConstraint" class="md-nav__link">
       Houdini 写経 01 RBD_ClueConstraint
     </a>
   </li>
@@ -1734,7 +1734,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Houdini/50_imitate/01_ifend/" title="Houdini 写経 02" class="md-nav__link">
+    <a href="../../../../10_Houdini/50_imitate/01_ifend/" title="Houdini 写経 02" class="md-nav__link">
       Houdini 写経 02
     </a>
   </li>
@@ -1806,7 +1806,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Maya/Env_Maya/VSCode_debug/" title="VSCodeでリモートデバッグ環境を作る" class="md-nav__link">
+    <a href="../../../../10_Maya/Env_Maya/VSCode_debug/" title="VSCodeでリモートデバッグ環境を作る" class="md-nav__link">
       VSCodeでリモートデバッグ環境を作る
     </a>
   </li>
@@ -1848,7 +1848,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Maya/Scripts/99_error_memo/" title="スクリプト関係の問題が起きたときの対処法" class="md-nav__link">
+    <a href="../../../../10_Maya/Scripts/99_error_memo/" title="スクリプト関係の問題が起きたときの対処法" class="md-nav__link">
       スクリプト関係の問題が起きたときの対処法
     </a>
   </li>
@@ -1860,7 +1860,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Maya/Scripts/driven_key/" title="DrivenKey を取得する" class="md-nav__link">
+    <a href="../../../../10_Maya/Scripts/driven_key/" title="DrivenKey を取得する" class="md-nav__link">
       DrivenKey を取得する
     </a>
   </li>
@@ -1872,7 +1872,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Maya/Scripts/exec_python/" title="Python ファイル(.py)を実行する" class="md-nav__link">
+    <a href="../../../../10_Maya/Scripts/exec_python/" title="Python ファイル(.py)を実行する" class="md-nav__link">
       Python ファイル(.py)を実行する
     </a>
   </li>
@@ -1884,7 +1884,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Maya/Scripts/material_tips/" title="Materials 関係の Tips" class="md-nav__link">
+    <a href="../../../../10_Maya/Scripts/material_tips/" title="Materials 関係の Tips" class="md-nav__link">
       Materials 関係の Tips
     </a>
   </li>
@@ -1896,7 +1896,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Maya/Scripts/maya_set_project/" title="cmds_MayaのSetProjectをする" class="md-nav__link">
+    <a href="../../../../10_Maya/Scripts/maya_set_project/" title="cmds_MayaのSetProjectをする" class="md-nav__link">
       cmds_MayaのSetProjectをする
     </a>
   </li>
@@ -1908,7 +1908,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Maya/Scripts/maya_wireframe/" title="Maya のビューポートの描画をワイヤーフレームにする" class="md-nav__link">
+    <a href="../../../../10_Maya/Scripts/maya_wireframe/" title="Maya のビューポートの描画をワイヤーフレームにする" class="md-nav__link">
       Maya のビューポートの描画をワイヤーフレームにする
     </a>
   </li>
@@ -1920,7 +1920,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Maya/Scripts/pyside_2017_/" title="Maya2017 以降での PySide の使い方" class="md-nav__link">
+    <a href="../../../../10_Maya/Scripts/pyside_2017_/" title="Maya2017 以降での PySide の使い方" class="md-nav__link">
       Maya2017 以降での PySide の使い方
     </a>
   </li>
@@ -1992,7 +1992,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/00_PG_setup/00_npm_install/" title="npm の基本" class="md-nav__link">
+    <a href="../../../../10_Programming/00_PG_setup/00_npm_install/" title="npm の基本" class="md-nav__link">
       npm の基本
     </a>
   </li>
@@ -2004,7 +2004,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/00_PG_setup/pipenv_statup/" title="pipenvを使用したPython開発環境の作り方" class="md-nav__link">
+    <a href="../../../../10_Programming/00_PG_setup/pipenv_statup/" title="pipenvを使用したPython開発環境の作り方" class="md-nav__link">
       pipenvを使用したPython開発環境の作り方
     </a>
   </li>
@@ -2046,7 +2046,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/10_Python2/gitbook_create_summary/" title="GitBook の SUMMARY ファイルを自動作成" class="md-nav__link">
+    <a href="../../../../10_Programming/10_Python2/gitbook_create_summary/" title="GitBook の SUMMARY ファイルを自動作成" class="md-nav__link">
       GitBook の SUMMARY ファイルを自動作成
     </a>
   </li>
@@ -2058,7 +2058,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/10_Python2/super_class/" title="Python のクラスで多重継承した場合の**init**順序" class="md-nav__link">
+    <a href="../../../../10_Programming/10_Python2/super_class/" title="Python のクラスで多重継承した場合の**init**順序" class="md-nav__link">
       Python のクラスで多重継承した場合の**init**順序
     </a>
   </li>
@@ -2100,7 +2100,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/10_Python3/class_list/" title="クラスのインスタンス変数とクラス変数" class="md-nav__link">
+    <a href="../../../../10_Programming/10_Python3/class_list/" title="クラスのインスタンス変数とクラス変数" class="md-nav__link">
       クラスのインスタンス変数とクラス変数
     </a>
   </li>
@@ -2112,7 +2112,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/10_Python3/graphviz_parse/" title="Graphvizのノードの配置情報をパースする" class="md-nav__link">
+    <a href="../../../../10_Programming/10_Python3/graphviz_parse/" title="Graphvizのノードの配置情報をパースする" class="md-nav__link">
       Graphvizのノードの配置情報をパースする
     </a>
   </li>
@@ -2124,7 +2124,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/10_Python3/py_import/" title="Import 関係の構造" class="md-nav__link">
+    <a href="../../../../10_Programming/10_Python3/py_import/" title="Import 関係の構造" class="md-nav__link">
       Import 関係の構造
     </a>
   </li>
@@ -2191,7 +2191,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/11_PythonLib/PIL/00_rotate_image/" title="PIL_EXIFの回転情報に合わせて画像を回転する" class="md-nav__link">
+    <a href="../../../../10_Programming/11_PythonLib/PIL/00_rotate_image/" title="PIL_EXIFの回転情報に合わせて画像を回転する" class="md-nav__link">
       PIL_EXIFの回転情報に合わせて画像を回転する
     </a>
   </li>
@@ -2233,7 +2233,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/11_PythonLib/defaultLib/00_argparse/" title="Pythonで引数をパースする" class="md-nav__link">
+    <a href="../../../../10_Programming/11_PythonLib/defaultLib/00_argparse/" title="Pythonで引数をパースする" class="md-nav__link">
       Pythonで引数をパースする
     </a>
   </li>
@@ -2280,7 +2280,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/20_GitLab/docker_gitlab_ci/" title="Docker で Runner を使用する\_セットアップ編" class="md-nav__link">
+    <a href="../../../../10_Programming/20_GitLab/docker_gitlab_ci/" title="Docker で Runner を使用する\_セットアップ編" class="md-nav__link">
       Docker で Runner を使用する\_セットアップ編
     </a>
   </li>
@@ -2292,7 +2292,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/20_GitLab/download_artifacts/" title="Build 結果をダウンロードする" class="md-nav__link">
+    <a href="../../../../10_Programming/20_GitLab/download_artifacts/" title="Build 結果をダウンロードする" class="md-nav__link">
       Build 結果をダウンロードする
     </a>
   </li>
@@ -2304,7 +2304,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/20_GitLab/gitlab_build_mkdocs/" title="GitLab+mkdocs+さくらサーバーで自動デプロイ" class="md-nav__link">
+    <a href="../../../../10_Programming/20_GitLab/gitlab_build_mkdocs/" title="GitLab+mkdocs+さくらサーバーで自動デプロイ" class="md-nav__link">
       GitLab+mkdocs+さくらサーバーで自動デプロイ
     </a>
   </li>
@@ -2316,7 +2316,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/20_GitLab/gitlab_windows/" title="Windows 環境で GitLab の CI/CD を実行する" class="md-nav__link">
+    <a href="../../../../10_Programming/20_GitLab/gitlab_windows/" title="Windows 環境で GitLab の CI/CD を実行する" class="md-nav__link">
       Windows 環境で GitLab の CI/CD を実行する
     </a>
   </li>
@@ -2328,7 +2328,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/20_GitLab/gitlab_windows_nose/" title="GitLab CI で nosetests" class="md-nav__link">
+    <a href="../../../../10_Programming/20_GitLab/gitlab_windows_nose/" title="GitLab CI で nosetests" class="md-nav__link">
       GitLab CI で nosetests
     </a>
   </li>
@@ -2370,7 +2370,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/99_Documentation/00_mkdocs_setting/" title="mkdocs を設定する" class="md-nav__link">
+    <a href="../../../../10_Programming/99_Documentation/00_mkdocs_setting/" title="mkdocs を設定する" class="md-nav__link">
       mkdocs を設定する
     </a>
   </li>
@@ -2382,7 +2382,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/99_Documentation/01_mkdocs_autobuild/" title="続、mkdocsを設定する(自動ビルド)" class="md-nav__link">
+    <a href="../../../../10_Programming/99_Documentation/01_mkdocs_autobuild/" title="続、mkdocsを設定する(自動ビルド)" class="md-nav__link">
       続、mkdocsを設定する(自動ビルド)
     </a>
   </li>
@@ -2394,7 +2394,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/99_Documentation/02_mkdocs_macro/" title="mkdocsのマクロプラグインを使う" class="md-nav__link">
+    <a href="../../../../10_Programming/99_Documentation/02_mkdocs_macro/" title="mkdocsのマクロプラグインを使う" class="md-nav__link">
       mkdocsのマクロプラグインを使う
     </a>
   </li>
@@ -2406,7 +2406,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/99_Documentation/03_ipynb2mkdocs/" title="mkdocsにJupyterNotebookの結果を表示する" class="md-nav__link">
+    <a href="../../../../10_Programming/99_Documentation/03_ipynb2mkdocs/" title="mkdocsにJupyterNotebookの結果を表示する" class="md-nav__link">
       mkdocsにJupyterNotebookの結果を表示する
     </a>
   </li>
@@ -2418,7 +2418,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/99_Documentation/04_mkdocs_updatelog/" title="mkdocsの更新履歴を表示する" class="md-nav__link">
+    <a href="../../../../10_Programming/99_Documentation/04_mkdocs_updatelog/" title="mkdocsの更新履歴を表示する" class="md-nav__link">
       mkdocsの更新履歴を表示する
     </a>
   </li>
@@ -2430,7 +2430,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/99_Documentation/99_mkdocs_sample/" title="mkdocsでのMarkdown記載サンプル" class="md-nav__link">
+    <a href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/" title="mkdocsでのMarkdown記載サンプル" class="md-nav__link">
       mkdocsでのMarkdown記載サンプル
     </a>
   </li>
@@ -2472,7 +2472,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../10_Programming/99_template_code/python/" title="Python" class="md-nav__link">
+    <a href="../../../../10_Programming/99_template_code/python/" title="Python" class="md-nav__link">
       Python
     </a>
   </li>
@@ -2519,60 +2519,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Pipeline
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
-      </label>
-    
-    <a href="./" title="Pipeline" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../../" title="Pipeline" class="md-nav__link">
       Pipeline
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    サンプルデータについて
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    各主要ページとか
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -2607,7 +2558,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/00_install_USD/" title="USDを使ってみる" class="md-nav__link">
+    <a href="../../../01_USD/00_install_USD/" title="USDを使ってみる" class="md-nav__link">
       USDを使ってみる
     </a>
   </li>
@@ -2619,7 +2570,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/01_start_USD/" title="USDをPythonから色々操作するための環境を作る" class="md-nav__link">
+    <a href="../../../01_USD/01_start_USD/" title="USDをPythonから色々操作するための環境を作る" class="md-nav__link">
       USDをPythonから色々操作するための環境を作る
     </a>
   </li>
@@ -2631,7 +2582,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/02_whats_USD/" title="USDとは" class="md-nav__link">
+    <a href="../../../01_USD/02_whats_USD/" title="USDとは" class="md-nav__link">
       USDとは
     </a>
   </li>
@@ -2643,7 +2594,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/04_layer_stage/" title="USD の基本構造（Stage/Layer/Prim)" class="md-nav__link">
+    <a href="../../../01_USD/04_layer_stage/" title="USD の基本構造（Stage/Layer/Prim)" class="md-nav__link">
       USD の基本構造（Stage/Layer/Prim)
     </a>
   </li>
@@ -2655,7 +2606,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/05_comp_arc/" title="コンポジションアークとは" class="md-nav__link">
+    <a href="../../../01_USD/05_comp_arc/" title="コンポジションアークとは" class="md-nav__link">
       コンポジションアークとは
     </a>
   </li>
@@ -2667,7 +2618,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/06_comp_arc_subLayer/" title="CompArc(1) サブレイヤー" class="md-nav__link">
+    <a href="../../../01_USD/06_comp_arc_subLayer/" title="CompArc(1) サブレイヤー" class="md-nav__link">
       CompArc(1) サブレイヤー
     </a>
   </li>
@@ -2679,7 +2630,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/07_comp_arc_inherits/" title="CompArc(2) 継承" class="md-nav__link">
+    <a href="../../../01_USD/07_comp_arc_inherits/" title="CompArc(2) 継承" class="md-nav__link">
       CompArc(2) 継承
     </a>
   </li>
@@ -2691,7 +2642,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/08_comp_arc_Variant/" title="CompArc(3) バリアントセット" class="md-nav__link">
+    <a href="../../../01_USD/08_comp_arc_Variant/" title="CompArc(3) バリアントセット" class="md-nav__link">
       CompArc(3) バリアントセット
     </a>
   </li>
@@ -2703,7 +2654,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/09_comp_arc_reference/" title="CompArc(4) リファレンス・ペイロード" class="md-nav__link">
+    <a href="../../../01_USD/09_comp_arc_reference/" title="CompArc(4) リファレンス・ペイロード" class="md-nav__link">
       CompArc(4) リファレンス・ペイロード
     </a>
   </li>
@@ -2715,7 +2666,7 @@
 
 
   <li class="md-nav__item">
-    <a href="01_USD/10_ListEditing/" title="List Editingについて" class="md-nav__link">
+    <a href="../../../01_USD/10_ListEditing/" title="List Editingについて" class="md-nav__link">
       List Editingについて
     </a>
   </li>
@@ -2757,7 +2708,7 @@
 
 
   <li class="md-nav__item">
-    <a href="10_USDTips/00_create_custom_schema/" title="オリジナルの New Schema Classを作る" class="md-nav__link">
+    <a href="../../../10_USDTips/00_create_custom_schema/" title="オリジナルの New Schema Classを作る" class="md-nav__link">
       オリジナルの New Schema Classを作る
     </a>
   </li>
@@ -2769,7 +2720,7 @@
 
 
   <li class="md-nav__item">
-    <a href="10_USDTips/01_usd_py_docs/" title="USDPythonドキュメントの読み方" class="md-nav__link">
+    <a href="../../../10_USDTips/01_usd_py_docs/" title="USDPythonドキュメントの読み方" class="md-nav__link">
       USDPythonドキュメントの読み方
     </a>
   </li>
@@ -2781,7 +2732,7 @@
 
 
   <li class="md-nav__item">
-    <a href="10_USDTips/02_usd_py_cheatsheets/" title="UPythonUSDチートシート" class="md-nav__link">
+    <a href="../../../10_USDTips/02_usd_py_cheatsheets/" title="UPythonUSDチートシート" class="md-nav__link">
       UPythonUSDチートシート
     </a>
   </li>
@@ -2793,7 +2744,7 @@
 
 
   <li class="md-nav__item">
-    <a href="10_USDTips/03_usd_format_cheatsheets/" title="USDフォーマットチートシート" class="md-nav__link">
+    <a href="../../../10_USDTips/03_usd_format_cheatsheets/" title="USDフォーマットチートシート" class="md-nav__link">
       USDフォーマットチートシート
     </a>
   </li>
@@ -2808,10 +2759,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4" checked>
     
     <label class="md-nav__link" for="nav-7-4">
       USD_Programming
@@ -2833,10 +2786,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4-1" type="checkbox" id="nav-7-4-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4-1" type="checkbox" id="nav-7-4-1" checked>
     
     <label class="md-nav__link" for="nav-7-4-1">
       CPP
@@ -2860,7 +2815,7 @@
 
 
   <li class="md-nav__item">
-    <a href="30_USD_Programming/00_CPP/00_start_cpp/" title="C++でUSDのコードを書こう(準備編)" class="md-nav__link">
+    <a href="../00_start_cpp/" title="C++でUSDのコードを書こう(準備編)" class="md-nav__link">
       C++でUSDのコードを書こう(準備編)
     </a>
   </li>
@@ -2870,11 +2825,117 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="30_USD_Programming/00_CPP/01_asset_resolver_01/" title="Custom AssetResolver を作ろう" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Custom AssetResolver を作ろう
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Custom AssetResolver を作ろう" class="md-nav__link md-nav__link--active">
       Custom AssetResolver を作ろう
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#assetresolver" class="md-nav__link">
+    AssetResolver とは？
+  </a>
+  
+    <nav class="md-nav" aria-label="AssetResolver とは？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assetresolver_1" class="md-nav__link">
+    AssetResolver での拡張例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    作ってみよう
+  </a>
+  
+    <nav class="md-nav" aria-label="作ってみよう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ビルド環境を作る
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C++のコードを書く
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ビルドする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pathutils" class="md-nav__link">
+    PathUtils
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    結果
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    参考
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -2914,7 +2975,7 @@
 
 
   <li class="md-nav__item">
-    <a href="30_USD_Programming/01_Python/01_editTarget/" title="EditTargetでLayerを操作する" class="md-nav__link">
+    <a href="../../01_Python/01_editTarget/" title="EditTargetでLayerを操作する" class="md-nav__link">
       EditTargetでLayerを操作する
     </a>
   </li>
@@ -2926,7 +2987,7 @@
 
 
   <li class="md-nav__item">
-    <a href="30_USD_Programming/01_Python/02_reparentPrim/" title="PrimをReparentする" class="md-nav__link">
+    <a href="../../01_Python/02_reparentPrim/" title="PrimをReparentする" class="md-nav__link">
       PrimをReparentする
     </a>
   </li>
@@ -2968,7 +3029,7 @@
 
 
   <li class="md-nav__item">
-    <a href="30_USD_Programming/10_USDPlugin/00_usdVIew_tutorial/" title="USDViewのプラグイン作成チュートリアルをやろう" class="md-nav__link">
+    <a href="../../10_USDPlugin/00_usdVIew_tutorial/" title="USDViewのプラグイン作成チュートリアルをやろう" class="md-nav__link">
       USDViewのプラグイン作成チュートリアルをやろう
     </a>
   </li>
@@ -3020,7 +3081,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/" title="Index" class="md-nav__link">
+    <a href="../../../../11_PySide/" title="Index" class="md-nav__link">
       Index
     </a>
   </li>
@@ -3082,7 +3143,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/01_start/" title="PySideで単独アプリケーションを作る" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/01_start/" title="PySideで単独アプリケーションを作る" class="md-nav__link">
       PySideで単独アプリケーションを作る
     </a>
   </li>
@@ -3094,7 +3155,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/02_create_designer/" title="QtDesignerでUIを作る" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/02_create_designer/" title="QtDesignerでUIを作る" class="md-nav__link">
       QtDesignerでUIを作る
     </a>
   </li>
@@ -3106,7 +3167,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/03_signal_slot_01/" title="SignalとSlotについて(1)" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/03_signal_slot_01/" title="SignalとSlotについて(1)" class="md-nav__link">
       SignalとSlotについて(1)
     </a>
   </li>
@@ -3118,7 +3179,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/04_widgets/" title="Widgetとカスタムウィジェットを作成する" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/04_widgets/" title="Widgetとカスタムウィジェットを作成する" class="md-nav__link">
       Widgetとカスタムウィジェットを作成する
     </a>
   </li>
@@ -3130,7 +3191,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/05_widget_sample_01/" title="基本Widgetを使ってみる(1):LineEdit" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/05_widget_sample_01/" title="基本Widgetを使ってみる(1):LineEdit" class="md-nav__link">
       基本Widgetを使ってみる(1):LineEdit
     </a>
   </li>
@@ -3142,7 +3203,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/06_widget_sample_02/" title="基本Widgetを使ってみる(2):RadioButton" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/06_widget_sample_02/" title="基本Widgetを使ってみる(2):RadioButton" class="md-nav__link">
       基本Widgetを使ってみる(2):RadioButton
     </a>
   </li>
@@ -3154,7 +3215,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/07_widget_sample_03/" title="基本Widgetを使ってみる(3):ComboBox_基本編" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/07_widget_sample_03/" title="基本Widgetを使ってみる(3):ComboBox_基本編" class="md-nav__link">
       基本Widgetを使ってみる(3):ComboBox_基本編
     </a>
   </li>
@@ -3166,7 +3227,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/08_widget_sample_04/" title="基本Widgetを使ってみる(4):ListView" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/08_widget_sample_04/" title="基本Widgetを使ってみる(4):ListView" class="md-nav__link">
       基本Widgetを使ってみる(4):ListView
     </a>
   </li>
@@ -3178,7 +3239,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/09_qsettings/" title="QSettingsを使用してUIの情報を保存する" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/09_qsettings/" title="QSettingsを使用してUIの情報を保存する" class="md-nav__link">
       QSettingsを使用してUIの情報を保存する
     </a>
   </li>
@@ -3190,7 +3251,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/10_context_menu/" title="コンテキストメニューを作る" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/10_context_menu/" title="コンテキストメニューを作る" class="md-nav__link">
       コンテキストメニューを作る
     </a>
   </li>
@@ -3202,7 +3263,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/01_PySide_Basic/00_Tutorial/11_status_bar/" title="QMainwindowのStatusBarを使う" class="md-nav__link">
+    <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/11_status_bar/" title="QMainwindowのStatusBarを使う" class="md-nav__link">
       QMainwindowのStatusBarを使う
     </a>
   </li>
@@ -3249,7 +3310,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/01_child_dup_window/" title="MayaPySideで重複Windowを出さない方法（改" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/01_child_dup_window/" title="MayaPySideで重複Windowを出さない方法（改" class="md-nav__link">
       MayaPySideで重複Windowを出さない方法（改
     </a>
   </li>
@@ -3261,7 +3322,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/02_completer/" title="QCompleterでLineEditに予測変換を入れる" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/02_completer/" title="QCompleterでLineEditに予測変換を入れる" class="md-nav__link">
       QCompleterでLineEditに予測変換を入れる
     </a>
   </li>
@@ -3273,7 +3334,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/03_custom_tooltip/" title="PySideのTooltipを自作する" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/03_custom_tooltip/" title="PySideのTooltipを自作する" class="md-nav__link">
       PySideのTooltipを自作する
     </a>
   </li>
@@ -3285,7 +3346,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/04_screen_shot/" title="PySideで範囲スクリーンショットを作る" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/04_screen_shot/" title="PySideで範囲スクリーンショットを作る" class="md-nav__link">
       PySideで範囲スクリーンショットを作る
     </a>
   </li>
@@ -3297,7 +3358,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/05_gradation_picker/" title="グラデーションピッカーを作る" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/05_gradation_picker/" title="グラデーションピッカーを作る" class="md-nav__link">
       グラデーションピッカーを作る
     </a>
   </li>
@@ -3309,7 +3370,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/06_qthread_01/" title="QThreadでマルチスレッドを使う(Signalの注意点)" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/06_qthread_01/" title="QThreadでマルチスレッドを使う(Signalの注意点)" class="md-nav__link">
       QThreadでマルチスレッドを使う(Signalの注意点)
     </a>
   </li>
@@ -3321,7 +3382,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/07_validator/" title="LineEditに入力チェック・修正機能を入れる" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/07_validator/" title="LineEditに入力チェック・修正機能を入れる" class="md-nav__link">
       LineEditに入力チェック・修正機能を入れる
     </a>
   </li>
@@ -3333,7 +3394,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/08_custom_Model/" title="QAbstractItemModelのdataの使い方" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/08_custom_Model/" title="QAbstractItemModelのdataの使い方" class="md-nav__link">
       QAbstractItemModelのdataの使い方
     </a>
   </li>
@@ -3345,7 +3406,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/09_rubber_band/" title="RubberBandを表示する" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/09_rubber_band/" title="RubberBandを表示する" class="md-nav__link">
       RubberBandを表示する
     </a>
   </li>
@@ -3357,7 +3418,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/10_custom_mdoel_sort/" title="QAbstractItemModelでSort" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/10_custom_mdoel_sort/" title="QAbstractItemModelでSort" class="md-nav__link">
       QAbstractItemModelでSort
     </a>
   </li>
@@ -3394,7 +3455,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/GraphicsView/graphicsView_01/" title="GraphicsViewの基本(Sceneをスケールする)" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/GraphicsView/graphicsView_01/" title="GraphicsViewの基本(Sceneをスケールする)" class="md-nav__link">
       GraphicsViewの基本(Sceneをスケールする)
     </a>
   </li>
@@ -3406,7 +3467,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/GraphicsView/graphics_view_color_anim/" title="GraphicsViewでQColorをアニメーションさせる" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/GraphicsView/graphics_view_color_anim/" title="GraphicsViewでQColorをアニメーションさせる" class="md-nav__link">
       GraphicsViewでQColorをアニメーションさせる
     </a>
   </li>
@@ -3418,7 +3479,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/GraphicsView/pyside_graphicsview_child_item/" title="PySide の GraphicsView で Item を親子化したときの問題" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/GraphicsView/pyside_graphicsview_child_item/" title="PySide の GraphicsView で Item を親子化したときの問題" class="md-nav__link">
       PySide の GraphicsView で Item を親子化したときの問題
     </a>
   </li>
@@ -3460,7 +3521,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/StyleSheet/01_stylesheet_basic/" title="PySideでStyleSheetを使って編集する(1)" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/StyleSheet/01_stylesheet_basic/" title="PySideでStyleSheetを使って編集する(1)" class="md-nav__link">
       PySideでStyleSheetを使って編集する(1)
     </a>
   </li>
@@ -3502,7 +3563,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/ViewModelDelegate/column_view/" title="ColumnViewを使おう" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/column_view/" title="ColumnViewを使おう" class="md-nav__link">
       ColumnViewを使おう
     </a>
   </li>
@@ -3514,7 +3575,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/ViewModelDelegate/custom_model/" title="QtCore.QAbstractItemModelを使用したカスタムモデルの作成" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/custom_model/" title="QtCore.QAbstractItemModelを使用したカスタムモデルの作成" class="md-nav__link">
       QtCore.QAbstractItemModelを使用したカスタムモデルの作成
     </a>
   </li>
@@ -3526,7 +3587,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/ViewModelDelegate/custom_model_2/" title="AbstractItemModelでItemを追加・削除" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/custom_model_2/" title="AbstractItemModelでItemを追加・削除" class="md-nav__link">
       AbstractItemModelでItemを追加・削除
     </a>
   </li>
@@ -3538,7 +3599,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/ViewModelDelegate/tree_view_proxy/" title="TreeViewの中身を正規表現で検索する" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/tree_view_proxy/" title="TreeViewの中身を正規表現で検索する" class="md-nav__link">
       TreeViewの中身を正規表現で検索する
     </a>
   </li>
@@ -3550,7 +3611,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_01/" title="PySideのTableViewでDelegateを使う(1)" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_01/" title="PySideのTableViewでDelegateを使う(1)" class="md-nav__link">
       PySideのTableViewでDelegateを使う(1)
     </a>
   </li>
@@ -3562,7 +3623,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_02/" title="PySideのTableViewでDelegateを使う(2) paintする" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_02/" title="PySideのTableViewでDelegateを使う(2) paintする" class="md-nav__link">
       PySideのTableViewでDelegateを使う(2) paintする
     </a>
   </li>
@@ -3574,7 +3635,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_03/" title="TableViewの編集画面でDialogを使用する" class="md-nav__link">
+    <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_03/" title="TableViewの編集画面でDialogを使用する" class="md-nav__link">
       TableViewの編集画面でDialogを使用する
     </a>
   </li>
@@ -3621,7 +3682,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/03_PySide_USD/01_create_treeview_01/" title="PySideでUSD関係のGUIを作ろう - SceneGraph(1)" class="md-nav__link">
+    <a href="../../../../11_PySide/03_PySide_USD/01_create_treeview_01/" title="PySideでUSD関係のGUIを作ろう - SceneGraph(1)" class="md-nav__link">
       PySideでUSD関係のGUIを作ろう - SceneGraph(1)
     </a>
   </li>
@@ -3633,7 +3694,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../11_PySide/03_PySide_USD/01_create_treeview_02/" title="PySideでUSD関係のGUIを作ろう - SceneGraph(2)" class="md-nav__link">
+    <a href="../../../../11_PySide/03_PySide_USD/01_create_treeview_02/" title="PySideでUSD関係のGUIを作ろう - SceneGraph(2)" class="md-nav__link">
       PySideでUSD関係のGUIを作ろう - SceneGraph(2)
     </a>
   </li>
@@ -3680,7 +3741,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../20_Photo/color_passport/" title="color passport で lightroom のプロファイルを作る" class="md-nav__link">
+    <a href="../../../../20_Photo/color_passport/" title="color passport で lightroom のプロファイルを作る" class="md-nav__link">
       color passport で lightroom のプロファイルを作る
     </a>
   </li>
@@ -3692,7 +3753,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../20_Photo/create_hdr_01/" title="全周パノラマを作る - 撮影編" class="md-nav__link">
+    <a href="../../../../20_Photo/create_hdr_01/" title="全周パノラマを作る - 撮影編" class="md-nav__link">
       全周パノラマを作る - 撮影編
     </a>
   </li>
@@ -3704,7 +3765,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../20_Photo/create_hdr_02/" title="全周パノラマを作る - 現像編" class="md-nav__link">
+    <a href="../../../../20_Photo/create_hdr_02/" title="全周パノラマを作る - 現像編" class="md-nav__link">
       全周パノラマを作る - 現像編
     </a>
   </li>
@@ -3746,7 +3807,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/NoteSample/" title="テストノートブック2" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/NoteSample/" title="テストノートブック2" class="md-nav__link">
       テストノートブック2
     </a>
   </li>
@@ -3783,7 +3844,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/USDCollectoinSample/" title="USDCollectionの基本操作" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/USDCollectoinSample/" title="USDCollectionの基本操作" class="md-nav__link">
       USDCollectionの基本操作
     </a>
   </li>
@@ -3795,7 +3856,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/USDEditTarget/" title="EditTargetで指定レイヤーを操作" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/USDEditTarget/" title="EditTargetで指定レイヤーを操作" class="md-nav__link">
       EditTargetで指定レイヤーを操作
     </a>
   </li>
@@ -3807,7 +3868,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/USDMaterial_01/" title="USDでMaterial_ShadingNetwork" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/USDMaterial_01/" title="USDでMaterial_ShadingNetwork" class="md-nav__link">
       USDでMaterial_ShadingNetwork
     </a>
   </li>
@@ -3819,7 +3880,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/USDMeshTest/" title="USDのMeshをPythonで作る" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/USDMeshTest/" title="USDのMeshをPythonで作る" class="md-nav__link">
       USDのMeshをPythonで作る
     </a>
   </li>
@@ -3831,7 +3892,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/USDPrimvar/" title="AttributeにPrimvarを指定する" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/USDPrimvar/" title="AttributeにPrimvarを指定する" class="md-nav__link">
       AttributeにPrimvarを指定する
     </a>
   </li>
@@ -3843,7 +3904,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/USDTextureAssign/" title="USDでTextureAssign" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/USDTextureAssign/" title="USDでTextureAssign" class="md-nav__link">
       USDでTextureAssign
     </a>
   </li>
@@ -3855,7 +3916,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/UsdReference1/" title="ReferenceをしているPrimからUsdのFilePathを取得" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/UsdReference1/" title="ReferenceをしているPrimからUsdのFilePathを取得" class="md-nav__link">
       ReferenceをしているPrimからUsdのFilePathを取得
     </a>
   </li>
@@ -3867,7 +3928,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/UsdSkel_01/" title="SOLARISでXformからUsdSkeletonを作る" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/UsdSkel_01/" title="SOLARISでXformからUsdSkeletonを作る" class="md-nav__link">
       SOLARISでXformからUsdSkeletonを作る
     </a>
   </li>
@@ -3879,7 +3940,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/gltf2UsdMesh/" title="gltfからUsdMeshを作る" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/gltf2UsdMesh/" title="gltfからUsdMeshを作る" class="md-nav__link">
       gltfからUsdMeshを作る
     </a>
   </li>
@@ -3891,7 +3952,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/USD/variantset/" title="Variantの挙動を調べる_1" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/USD/variantset/" title="Variantの挙動を調べる_1" class="md-nav__link">
       Variantの挙動を調べる_1
     </a>
   </li>
@@ -3933,7 +3994,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../60_JupyterNotebook/pythonBasic/functoolTest/" title="functoolsの使い方" class="md-nav__link">
+    <a href="../../../../60_JupyterNotebook/pythonBasic/functoolTest/" title="functoolsの使い方" class="md-nav__link">
       functoolsの使い方
     </a>
   </li>
@@ -3980,7 +4041,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/git_command/" title="Gitよく使うコマンドやら操作メモ" class="md-nav__link">
+    <a href="../../../../98_Other/git_command/" title="Gitよく使うコマンドやら操作メモ" class="md-nav__link">
       Gitよく使うコマンドやら操作メモ
     </a>
   </li>
@@ -3992,7 +4053,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/hyper-v/" title="Hpyer-V で仮想デスクトップを作成する" class="md-nav__link">
+    <a href="../../../../98_Other/hyper-v/" title="Hpyer-V で仮想デスクトップを作成する" class="md-nav__link">
       Hpyer-V で仮想デスクトップを作成する
     </a>
   </li>
@@ -4004,7 +4065,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/push_github_ssh/" title="VSCode から SSH 経由で Push" class="md-nav__link">
+    <a href="../../../../98_Other/push_github_ssh/" title="VSCode から SSH 経由で Push" class="md-nav__link">
       VSCode から SSH 経由で Push
     </a>
   </li>
@@ -4041,7 +4102,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/VSCode/vscode_cacher/" title="VSCodeでCacherを使う" class="md-nav__link">
+    <a href="../../../../98_Other/VSCode/vscode_cacher/" title="VSCodeでCacherを使う" class="md-nav__link">
       VSCodeでCacherを使う
     </a>
   </li>
@@ -4053,7 +4114,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/VSCode/vscode_create_task/" title="VSCode のタスクを作成する" class="md-nav__link">
+    <a href="../../../../98_Other/VSCode/vscode_create_task/" title="VSCode のタスクを作成する" class="md-nav__link">
       VSCode のタスクを作成する
     </a>
   </li>
@@ -4065,7 +4126,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/VSCode/vscode_edit/" title="VSCode 便利な機能" class="md-nav__link">
+    <a href="../../../../98_Other/VSCode/vscode_edit/" title="VSCode 便利な機能" class="md-nav__link">
       VSCode 便利な機能
     </a>
   </li>
@@ -4077,7 +4138,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/VSCode/vscode_extension/" title="VSCode の拡張機能を作る" class="md-nav__link">
+    <a href="../../../../98_Other/VSCode/vscode_extension/" title="VSCode の拡張機能を作る" class="md-nav__link">
       VSCode の拡張機能を作る
     </a>
   </li>
@@ -4089,7 +4150,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/VSCode/vscode_jupyter/" title="VSCodeでJupyter" class="md-nav__link">
+    <a href="../../../../98_Other/VSCode/vscode_jupyter/" title="VSCodeでJupyter" class="md-nav__link">
       VSCodeでJupyter
     </a>
   </li>
@@ -4101,7 +4162,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/VSCode/vscode_note/" title="VSCodeでノートをつける" class="md-nav__link">
+    <a href="../../../../98_Other/VSCode/vscode_note/" title="VSCodeでノートをつける" class="md-nav__link">
       VSCodeでノートをつける
     </a>
   </li>
@@ -4113,7 +4174,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/VSCode/vscode_snippet_sc/" title="キーバインドに指定スニペットを挿入を指定" class="md-nav__link">
+    <a href="../../../../98_Other/VSCode/vscode_snippet_sc/" title="キーバインドに指定スニペットを挿入を指定" class="md-nav__link">
       キーバインドに指定スニペットを挿入を指定
     </a>
   </li>
@@ -4125,7 +4186,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../98_Other/VSCode/vscode_task/" title="VSCodeでタスク管理" class="md-nav__link">
+    <a href="../../../../98_Other/VSCode/vscode_task/" title="VSCodeでタスク管理" class="md-nav__link">
       VSCodeでタスク管理
     </a>
   </li>
@@ -4172,7 +4233,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../99_Link/" title="Link集" class="md-nav__link">
+    <a href="../../../../99_Link/" title="Link集" class="md-nav__link">
       Link集
     </a>
   </li>
@@ -4197,8 +4258,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="目次">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon">
@@ -4209,15 +4268,76 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    サンプルデータについて
+  <a href="#assetresolver" class="md-nav__link">
+    AssetResolver とは？
   </a>
+  
+    <nav class="md-nav" aria-label="AssetResolver とは？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assetresolver_1" class="md-nav__link">
+    AssetResolver での拡張例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    作ってみよう
+  </a>
+  
+    <nav class="md-nav" aria-label="作ってみよう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    各主要ページとか
+    ビルド環境を作る
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C++のコードを書く
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ビルドする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pathutils" class="md-nav__link">
+    PathUtils
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    結果
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    参考
   </a>
   
 </li>
@@ -4234,7 +4354,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_Pipeline/index.md" title="編集" class="md-content__button md-icon">
+                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_Pipeline/30_USD_Programming/00_CPP/01_asset_resolver_01.md" title="編集" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -4242,17 +4362,272 @@
                   
                 
                 
-                <h1 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">¶</a></h1>
-<p>パイプラインページでは、主にUSD等のパイプラインに関係する<br />
-各種情報をまとめていきます。<br />
-（というよりほとんどUSD関連）  </p>
-<h2 id="_1">サンプルデータについて<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a href="https://github.com/fereria/USDSample">https://github.com/fereria/USDSample</a>  </p>
-<p>サンプルコードは、基本すべて上記のGitHubにアップします。  </p>
-<h2 id="_2">各主要ページとか<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+                  <h1>Custom AssetResolver を作ろう</h1>
+                
+                <p>夏休みのまとまった時間を使ってなにか新しいことでもやってみるかー　ってことで<br />
+C++のみで作れる USD の AssetResolver プラグインを作ってみました。</p>
+<h2 id="assetresolver">AssetResolver とは？<a class="headerlink" href="#assetresolver" title="Permanent link">¶</a></h2>
+<p>AssetResolver とは、USD 内のファイルパスの参照先の解決部分を拡張することができる機能です。</p>
+<p><img alt="" src="https://gyazo.com/d306a707c3d9aab0752ce0372c869012.png" /></p>
+<p>たとえば、ある usd ファイルが Char.usda というファイルをリファレンスで参照している場合。</p>
+<div class="highlight"><pre><span></span><code>def &quot;char&quot;{
+    def &quot;Char_A&quot;(prepend references = @Char.usda@){}
+}
+</code></pre></div>
+
+<p>こんな感じで @@ で囲んだ中に参照先の usda のファイルパスを記述します。<br />
+上の場合、デフォルトの場合相対パスとして扱われ<br />
+test.usda と同じフォルダにある Char.usda をリファレンスでロードしに行くようになります。</p>
+<p>あるいは、 <strong>PXR_AR_DEFAULT_SEARCH_PATH</strong> と呼ばれる環境変数に PATH が指定されている場合は<br />
+相対パス以下にファイルがない場合、DEFAULT_SEARCH_PATH に指定された順序で usda を検索しにいき、<br />
+見つかった PATH を usda のロード先としてファイルの PATH 解決を行います。</p>
+<h3 id="assetresolver_1">AssetResolver での拡張例<a class="headerlink" href="#assetresolver_1" title="Permanent link">¶</a></h3>
+<p>では、これを利用してどういうことができるかというと、</p>
+<p><a href="https://github.com/LumaPictures/usd-uri-resolver">https://github.com/LumaPictures/usd-uri-resolver</a><br />
+LumaPictures が GitHub 上で公開している USD-URI-resolver のように、</p>
+<p>@sql://<server_name><asset_path>@<br />
+このようにリファレンスのパス（アセットパス）をカスタマイズして、<br />
+SQL に usd ファイルの Path を問い合わせして、その DB の結果を元に USD のパスを返す...といったことや</p>
+<p><a href="https://github.com/westerndigitalcorporation/usd-s3-resolver">https://github.com/westerndigitalcorporation/usd-s3-resolver</a></p>
+<p>westerndigitalcorporation が公開している S3-Resolver のように<br />
+Amazon AWS に usda のファイルを問い合わせをして、PATH を解決するといったように</p>
+<p><img alt="" src="https://gyazo.com/576300414f58de8c16a559e41494b033.png" /></p>
+<p>単純に USD ファイルに記載された Windows などのファイルパスで USD の PATH を解決するのではなく<br />
+PATH解決に対して何かしらの処理をプラグイン内で行って<br />
+その結果でPATHを解決させられるのが AssetResolver という機能になります。</p>
+<h2 id="_1">作ってみよう<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>というわけで、URI-ResolverとS3-Resolverをベースにして<br />
+もう少しかんたんなAssetResolverを作ってみます。</p>
+<p>AssetResolverを作りたい場合は、PythonではなくC++で実装する必要があったので<br />
+今回はC++の勉強を兼ねてやってみました。</p>
+<h3 id="_2">ビルド環境を作る<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+<p>今回は独自環境をつくるのではなUSDのリポジトリ以下にある ビルドスクリプトを利用して<br />
+本体と一緒にビルドする形で作ってみます。</p>
+<p><img alt="" src="https://gyazo.com/672302d498c96f38989c32ff8461c90e.png" /></p>
+<p>extras 下に plugins を作り、その下に testResolver を作ります。<br />
+そしてその下に CMakerLists.txt と plugInfo.json あとはResolverのcppとヘッダーを作ります。</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span><span class="s">PXR_PACKAGE</span> <span class="s">sampleResolver</span><span class="p">)</span>
+
+<span class="nb">pxr_plugin</span><span class="p">(</span><span class="o">${</span><span class="nv">PXR_PACKAGE</span><span class="o">}</span>
+    <span class="s">LIBRARIES</span>
+        <span class="s">tf</span>
+        <span class="s">sdf</span>
+        <span class="s">usd</span>
+        <span class="s">vt</span>
+        <span class="s">ar</span>
+
+    <span class="s">INCLUDE_DIRS</span>
+        <span class="o">${</span><span class="nv">Boost_INCLUDE_DIRS</span><span class="o">}</span>
+        <span class="o">${</span><span class="nv">PYTHON_INCLUDE_DIRS</span><span class="o">}</span>
+
+    <span class="s">PUBLIC_HEADERS</span>
+        <span class="s">sampleResolver.h</span>
+
+    <span class="s">PUBLIC_CLASSES</span>
+        <span class="s">SampleResolver</span>
+
+    <span class="s">RESOURCE_FILES</span>
+        <span class="s">plugInfo.json</span>
+<span class="p">)</span>
+</code></pre></div><br />
+cmakeは、他のプラグインサンプルを参考に必要最低限のものを用意します。</p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;Plugins&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;Info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Types&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;SampleResolver&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;bases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ArResolver&quot;</span><span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+        <span class="nt">&quot;LibraryPath&quot;</span><span class="p">:</span> <span class="s2">&quot;../sampleResolver.dll&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;SampleResolver&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Root&quot;</span><span class="p">:</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;library&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div><br />
+plugInfo.jsonは、USDの環境に作成したAssetResolverプラグインをロードさせるためのファイルです。<br />
+Types の部分が、AssetResolverを使用するときのお約束部分で SampleResolver となっているところが<br />
+作成したResolverClassの名前です。</p>
+<p>LibraryPath は、 plugins 以下での resource フォルダと plugInfo.json のPATH<br />
+そしてプラグインの本体になる dll のPATHの指定になります。<br />
+このPATHは、plugInfo.jsonから見た場合のパスになっていて、</p>
+<p><img alt="" src="https://gyazo.com/75817ea61347a8cb29de9fcd3fa041a2.png" /></p>
+<p>USD/plugin/usd フォルダに dll がリリースされ、<br />
+plugInfo.jsonは \&lt;pluginName>/resources/plugInfo.json にリリースされます。<br />
+ので、 このRootは、 resources フォルダを指し、そのRootから見ての LibraryPathは ../sampleResolver.dll<br />
+となっているので、Root の１つ上の階層の usd フォルダ直下にあるものをロードする<br />
+という意味になります。</p>
+<h3 id="c">C++のコードを書く<a class="headerlink" href="#c" title="Permanent link">¶</a></h3>
+<p>次にC++のヘッダー。</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pxr/usd/ar/defaultResolver.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="n">PXR_NAMESPACE_OPEN_SCOPE</span>
+
+<span class="k">class</span> <span class="nc">SampleResolver</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ArDefaultResolver</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">SampleResolver</span><span class="p">();</span>
+    <span class="o">~</span><span class="n">SampleResolver</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">Resolve</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">path</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">ResolveWithAssetInfo</span><span class="p">(</span>
+        <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">path</span><span class="p">,</span>
+        <span class="n">ArAssetInfo</span> <span class="o">*</span><span class="n">assetInfo</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">PXR_NAMESPACE_CLOSE_SCOPE</span>
+</code></pre></div><br />
+カスタムのAssetResolverを作る場合は、ArDefaultResolverを継承したクラスを作成します。<br />
+そして、PATH解決をするための関数 Resolve と ResolveWithAssetInfo ２つを実装します。<br />
+(今回の場合はResolveはなくても良かった)</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;sampleResolver.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pxr/usd/ar/assetInfo.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pxr/usd/ar/resolverContext.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;pxr/base/tf/fileUtils.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;pxr/usd/ar/defaultResolver.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;pxr/usd/ar/defineResolver.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="n">PXR_NAMESPACE_OPEN_SCOPE</span>
+
+<span class="nf">AR_DEFINE_RESOLVER</span><span class="p">(</span><span class="n">SampleResolver</span><span class="p">,</span> <span class="n">ArResolver</span><span class="p">)</span>
+
+<span class="c1">// コンストラクタ</span>
+<span class="n">SampleResolver</span><span class="o">::</span><span class="n">SampleResolver</span><span class="p">()</span> <span class="o">:</span> <span class="n">ArDefaultResolver</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+<span class="c1">// デストラクタ</span>
+<span class="n">SampleResolver</span><span class="o">::~</span><span class="n">SampleResolver</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">SampleResolver</span><span class="o">::</span><span class="n">Resolve</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">path</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;PATH: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">path</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">path</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">SampleResolver</span><span class="o">::</span><span class="n">ResolveWithAssetInfo</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">path</span><span class="p">,</span> <span class="n">ArAssetInfo</span> <span class="o">*</span><span class="n">assetInfo</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">TfPathExists</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;AssetInfo PATH: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">path</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s">&quot;D:/USDsample/cube.usda&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">path</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PXR_NAMESPACE_CLOSE_SCOPE</span>
+</code></pre></div>
+
+<p>そして本体。<br />
+今回のサンプルでは、Referenceで参照しているUSDファイルが見つからない場合<br />
+指定のUSDAを無理やり表示させてみる...というサンプルです。</p>
+<p>このPATH解決をするには、 Resolve と ResolveWithAssetInfo という2つの関数があります。<br />
+当初は Resolve で return したPATHがReferenceのPATHとして使われるのかなと思っていたのですが<br />
+そういうわけではなく<br />
+Resolveは、現在の開いているレイヤーのPATH解決で<br />
+ReferenceのPATH解決は ResolveWithAssetInfo の return で返されるPATHでした。</p>
+<p>なので、 URI-Resolverなどは、 Resolve 内で ResolveWithAssetInfoを呼び<br />
+同じ処理を実行するようにしている？ようです。</p>
+<p>ResolveWithAssetInfoは、引数として処理しようとしているPATHと、そのPATHのAssetInfoが<br />
+渡されます。<br />
+C++初心者の理解として PATH の 方は const で編集不可<br />
+assetInfoはポインタ渡しで現在のAssetInfoが渡されているので<br />
+AssetResolverでPATH解決をするときに、AssetInfoを使用 or 書き換えを<br />
+この関数内で行うのかなと思います。</p>
+<h3 id="_3">ビルドする<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>ここまで準備ができたら USDビルドを実行します。<br />
+VisualStudioのコマンドプロンプトで<br />
+<div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py D:/USD
+</code></pre></div><br />
+ビルドスクリプトを実行すれば、本体のビルドと一緒に作成したプラグインもビルドしてくれます。</p>
+<p><img alt="" src="https://gyazo.com/4be4b274fe480b2bb53e3bc31c48a555.png" /></p>
+<p>dllは、plugin/usd 直下に作成され<br />
+plugInfo.json は sampleResolver/resources 下にコピーされます。</p>
+<h3 id="pathutils">PathUtils<a class="headerlink" href="#pathutils" title="Permanent link">¶</a></h3>
+<p>C++のPathまわりってどうするんだろう？？というのが<br />
+AssetResolverを使用していたときの疑問だったのですが、<br />
+USDはこのあたりのユーティリティが色々用意されているようなので、今回はそれを利用しました。</p>
+<p><a href="https://graphics.pixar.com/usd/docs/api/file_utils_8h.html">https://graphics.pixar.com/usd/docs/api/file_utils_8h.html</a><br />
+<a href="https://graphics.pixar.com/usd/docs/api/path_utils_8h.html">https://graphics.pixar.com/usd/docs/api/path_utils_8h.html</a><br />
+os.pathにあるようなものは、FileUtilsか、PathUtilsを使用すれば概ね望んだ結果が得られて</p>
+<p><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">USD_StringUtil</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// StringUtil/PathUtilテスト</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">paths</span> <span class="o">=</span> <span class="n">TfGlob</span><span class="p">(</span><span class="s">&quot;D:/USDSample/*.usda&quot;</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="nl">path</span> <span class="p">:</span> <span class="n">paths</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">path</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// pathUtil</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfNormPath</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfAbsPath</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfIsRelativePath</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfGetExtension</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// StingUtil</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfStringJoin</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfStringToUpper</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfStringContains</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;usda&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfGetPathName</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfStringReplace</span><span class="p">(</span><span class="s">&quot;hogehoge&quot;</span><span class="p">,</span> <span class="s">&quot;hoge&quot;</span><span class="p">,</span> <span class="s">&quot;fuga&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="c1">//env</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfGetenv</span><span class="p">(</span><span class="s">&quot;PATH&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><br />
+別途色々試してみましたが、GlobだったりBasenameだったり、Replace、Join、Upperなどが使えました。</p>
+<p>今回のAssetResolverの場合、使ったのはTfPathExists だけでしたが<br />
+指定の名前をReplaceして、そのPathを返すなど<br />
+PATH関係の処理は概ねこのユーティリティを使えば作れそうなのがわかりました。</p>
+<h3 id="_4">結果<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<p>ビルドができたら挙動を確認してみます。</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;reference1&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">references</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="si">@./sphere.usda@</span><span class="nn">&lt;/sphere1&gt;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div><br />
+まずはこんな感じのusdaを作り、</p>
+<div class="highlight"><pre><span></span><code>#usda 1.0
+
+def Cube &quot;sphere1&quot;
+{
+    double radius = 1
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+    uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
+}
+</code></pre></div>
+
+<p>あえて sphere.usda は作らず cube.usda を作っておきます。</p>
+<p>普通の場合は、ファイルが見つからずにエラーになってしまいますが、<br />
+<img alt="" src="https://gyazo.com/d2cdbe142faa269510125c58ae2a32d5.png" /><br />
+AssetResolverを作ったおかげで、ファイルは参照された状態になりますが<br />
+<img alt="" src="https://gyazo.com/fc981d77fe0e5c4cfeaff1b73e0cf13a.png" /><br />
+Copy Layer Path などで、実際にロードされているファイルを確認すると<br />
+sphere.usda ではなく cube.usda がロードされていることがわかります。</p>
+<p>あとは、自分の実際にやりたい処理に応じて Resolve または ResolveWithAssetInfo を<br />
+拡張していけばいろいろな処理を追加することができそうです。</p>
+<h2 id="_5">参考<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="01_USD/02_whats_USD/">USDについて</a></li>
-<li><a href="99_link.md">参考ページリンク</a></li>
+<li><a href="https://github.com/ColinKennedy/USD-Cookbook/tree/master/plugins/custom_resolver">https://github.com/ColinKennedy/USD-Cookbook/tree/master/plugins/custom_resolver</a></li>
 </ul>
                 
                   
@@ -4262,7 +4637,7 @@
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2019-12-23 15:52:31
+      最終更新日: 2020-08-16 14:25:12
     
   </small>
 </div>
@@ -4285,7 +4660,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../10_Programming/99_template_code/python/" title="Python" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../00_start_cpp/" title="C++でUSDのコードを書こう(準備編)" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -4294,19 +4669,19 @@
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                Python
+                C++でUSDのコードを書こう(準備編)
               </div>
             </div>
           </a>
         
         
-          <a href="01_USD/00_install_USD/" title="USDを使ってみる" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../01_Python/01_editTarget/" title="EditTargetでLayerを操作する" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
-                USDを使ってみる
+                EditTargetでLayerを操作する
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -4355,20 +4730,20 @@
       
     </div>
     
-      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="../assets/javascripts/bundle.a14cc5fd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f"}</script>
+      <script src="../../../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a14cc5fd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f"}</script>
       
       <script>
         app = initialize({
-          base: "..",
+          base: "../../../..",
           features: ["tabs"],
           search: Object.assign({
-            worker: "../assets/javascripts/worker/search.7a2ea5ba.min.js"
+            worker: "../../../../assets/javascripts/worker/search.7a2ea5ba.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
       
-        <script src="../javascripts/extra.js"></script>
+        <script src="../../../../javascripts/extra.js"></script>
       
     
   </body>
