@@ -95,5 +95,13 @@ def define_env(env):
     env.macro('return hogehoge', 'hogevalue')
 
     @env.filter
+    def green_badge(comment):
+        return f'<span class="green-badge">{comment}</span>'
+    
+    @env.filter
+    def blue_badge(comment):
+        return f'<span class="blue-badge">{comment}</span>'
+
+    @env.filter
     def macroprint(value):
         return "{{" + value + "}}"

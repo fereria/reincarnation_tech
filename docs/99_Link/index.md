@@ -55,12 +55,13 @@ title: Link集
 - https://tm8r.hateblo.jp/ (トモハラさん)
 - http://hesperas.blog134.fc2.com/ (SEN-Aさん)
 - https://rateionn.growi.cloud/ (低音さん)
-- https://unpyside.com/ (UNPySide Maya PySide - りんご酸さん)
+- https://unpyside.com/ (UNPySide Maya PySide - りんご酸さん) {{'PySide'|green_badge}}
 - https://graphics.hatenablog.com/ (hal1932さん)
 - https://effect.hatenablog.com/ (mokoさん)
 - https://note.com/it_ks (ksさん)
 - https://memo.vec4d.xyz/home (八田和磨さん)
 - https://tablogweb.wordpress.com/ (タブログ。 yamadaさん)
+- http://www.technical-artist.net/ (Yamabe Michiyoshiさん) {{'Houdini'|green_badge}}
 
 ## テクい企業Blog
 
