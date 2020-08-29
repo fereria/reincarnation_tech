@@ -70,6 +70,7 @@ title: Link集
 ## テクい企業Blog
 
 - http://techblog.sega.jp/
+- https://xta.co.jp/index.php/blog (株式会社TA）
 
 ## 素材
 
