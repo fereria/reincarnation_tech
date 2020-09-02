@@ -92,4 +92,4 @@ A -> E -> F -> G;
 {{fukidashi("ここに吹き出しの中の文字を入れると\n表示できる。")}}
 
 
-{{'ほげほげ'|green_badge}}
+{{'ほげほげ'|green_badge}} {{'ふがふが'|blue_badge}}
