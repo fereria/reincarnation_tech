@@ -67,7 +67,8 @@ title: Link集
 - https://tablogweb.wordpress.com/ (タブログ。 yamadaさん)
 - http://www.technical-artist.net/ (Yamabe Michiyoshiさん) {{'Houdini'|green_badge}}
 - https://yamahigashi.dev/ (Yamahigashiさん)
-https://intack2.github.io/til-note/ (Tack2さん)
+- https://intack2.github.io/til-note/ (Tack2さん)
+- https://shikousakugo.wordpress.com/ (よしむさん)
 
 ## テクい企業Blog
 
