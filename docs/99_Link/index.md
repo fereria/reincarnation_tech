@@ -66,10 +66,13 @@ title: Link集
 - https://memo.vec4d.xyz/home (八田和磨さん)
 - https://tablogweb.wordpress.com/ (タブログ。 yamadaさん)
 - http://www.technical-artist.net/ (Yamabe Michiyoshiさん) {{'Houdini'|green_badge}}
+- https://yamahigashi.dev/ (Yamahigashiさん)
+https://intack2.github.io/til-note/ (Tack2さん)
 
 ## テクい企業Blog
 
 - http://techblog.sega.jp/
+- https://xta.co.jp/index.php/blog (株式会社TA）
 
 ## 素材
 
