@@ -251,6 +251,8 @@ traverse(rootRef)
 index.DumpToDotGraph("D:/test.dot")
 ```
 
+![](https://gyazo.com/5f2f50f295856a245262f85d87f65e9f.png)
+
 
 #### [30]:
 
