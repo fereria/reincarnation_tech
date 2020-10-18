@@ -25,7 +25,6 @@ stage = Usd.Stage.Open(r"D:\Kitchen_set\Kitchen_set.usd")
 # PrimからIndexを取得し、PcpNodeRefを取得する
 prim = stage.GetPrimAtPath("/Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1")
 index = prim.GetPrimIndex()
-index.DumpToDotGraph("D:/graph.dot")
 rootRef = index.rootNode
 print(rootRef)
 ```
