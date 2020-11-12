@@ -1,7 +1,7 @@
 ---
 title: Variantの挙動を調べる_1
 ---
-**ipynbFile** [variantset__Variantの挙動を調べる_1.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/variantset__Variantの挙動を調べる_1.ipynb)
+**ipynbFile** [variantset01__Variantの挙動を調べる_1.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/variantset01__Variantの挙動を調べる_1.ipynb)
 #### [123]:
 
 
