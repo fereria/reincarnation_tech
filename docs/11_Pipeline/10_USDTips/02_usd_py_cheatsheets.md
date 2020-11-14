@@ -36,6 +36,12 @@ stage = Usd.Stage.Open(USD_PATH_ROOT + '/HelloWorld.usda')
 ```
 すでにあるUSDファイルをステージとして開く。
 
+### PayloadをロードせずにUSDを開く
+
+```python
+stage = Usd.Stage.Open(USD_PATH_ROOT + '/HelloWorld.usda',Usd.Stage.LoadNone)
+```
+
 ### 保存する
 
 ```python
@@ -86,6 +92,17 @@ for prim in compStage.Traverse():
 ![](https://gyazo.com/771700cca1cad4e759e13a20ff4ee16a.png)
 
 このように全Primを深さ優先で取得することができる。
+
+### PayloadがロードされていないノードもTraverseする
+Primの状態をチェックしつつ検索するには GetFilteredChildrenを使用する。
+このコマンドの場合は、引数にTraverseするノードの状態を指定することで
+該当するノードを取得することができる。
+```python
+for i in prim.GetFilteredChildren(Usd.PrimIsActive & Usd.PrimIsDefined & ~Usd.PrimIsAbstract):
+    print(i)
+```
+通常のTraverseやGetChildrenは、上のフラグに＋して Usd.PrimIsLoadedも ONになっている。
+なので、Payloadで読まれていないPrimは取得できない。
 
 ### Layerをミュートする
 
