@@ -2811,6 +2811,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#payloadusd" class="md-nav__link">
+    PayloadをロードせずにUSDを開く
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     保存する
   </a>
@@ -2847,6 +2854,13 @@
           <li class="md-nav__item">
   <a href="#prim" class="md-nav__link">
     ステージ内のPrimをトラバースする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payloadtraverse" class="md-nav__link">
+    PayloadがロードされていないノードもTraverseする
   </a>
   
 </li>
@@ -4707,6 +4721,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#payloadusd" class="md-nav__link">
+    PayloadをロードせずにUSDを開く
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     保存する
   </a>
@@ -4743,6 +4764,13 @@
           <li class="md-nav__item">
   <a href="#prim" class="md-nav__link">
     ステージ内のPrimをトラバースする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payloadtraverse" class="md-nav__link">
+    PayloadがロードされていないノードもTraverseする
   </a>
   
 </li>
@@ -5113,6 +5141,10 @@ usdaを作って、新しいステージを作る。  </p>
 <p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
 </code></pre></div><br />
 すでにあるUSDファイルをステージとして開く。</p>
+<h3 id="payloadusd">PayloadをロードせずにUSDを開く<a class="headerlink" href="#payloadusd" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">,</span><span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">LoadNone</span><span class="p">)</span>
+</code></pre></div>
+
 <h3 id="_2">保存する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
@@ -5146,6 +5178,15 @@ ExportToStringをすると、げんざいのUSDをプリントすることがで
 <p>実行すると、このようなシーングラフなら</p>
 <p><img alt="" src="https://gyazo.com/771700cca1cad4e759e13a20ff4ee16a.png" /></p>
 <p>このように全Primを深さ優先で取得することができる。</p>
+<h3 id="payloadtraverse">PayloadがロードされていないノードもTraverseする<a class="headerlink" href="#payloadtraverse" title="Permanent link">¶</a></h3>
+<p>Primの状態をチェックしつつ検索するには GetFilteredChildrenを使用する。<br />
+このコマンドの場合は、引数にTraverseするノードの状態を指定することで<br />
+該当するノードを取得することができる。<br />
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetFilteredChildren</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsActive</span> <span class="o">&amp;</span> <span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsDefined</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsAbstract</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div><br />
+通常のTraverseやGetChildrenは、上のフラグに＋して Usd.PrimIsLoadedも ONになっている。<br />
+なので、Payloadで読まれていないPrimは取得できない。</p>
 <h3 id="layer">Layerをミュートする<a class="headerlink" href="#layer" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Layerのusdファイルは identifer で取得できる</span>
 <span class="c1"># パス指定でLayerをミュート（コンポ処理から除外）できる</span>
@@ -5446,7 +5487,7 @@ GetInherits().AddInherit(path)<br />
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2019-11-24 03:29:28
+      最終更新日: 2020-11-14 05:35:32
     
   </small>
 </div>
