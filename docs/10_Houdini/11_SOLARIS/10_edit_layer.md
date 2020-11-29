@@ -1,5 +1,5 @@
 ---
-title: editLayerを使おう
+title: configureLayerを使おう
 ---
 
 SOLARISでUSDの構造を作るときに、「どこをどのように分けて構築するか」
