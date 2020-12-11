@@ -653,3 +653,9 @@ USDの構造は理解していても、じゃあ実際Houdini上でどうやっ�
 あとは、VEXも理解できたので
 このあたりの処理をHDA化したりPDGで処理したいみたいなこともいずれは
 試してみようかなと思います。
+
+## 参考
+
+* http://graphics.pixar.com/usd/downloads.html
+* [usdMakeFileVariantModelAsset.py](https://github.com/PixarAnimationStudios/USD/blob/release/extras/usd/examples/usdMakeFileVariantModelAsset/usdMakeFileVariantModelAsset.py)
+* https://www.sidefx.com/docs/houdini/solaris/tutorials.html
