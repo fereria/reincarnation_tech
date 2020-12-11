@@ -460,15 +460,15 @@ __class__Pig 以下に、 Pig以下にあるマテリアルの構造 Looks/Pig �
 
 今の状況を図にするとこうなっています。
 
-コンポジションが１つのPrimに対して複数ある場合は、 **「LVIRPS」の原則** によって
+コンポジションが１つのPrimに対して複数ある場合は、 **「LIVRPS」の原則** によって
 順番が解決していきます。
 それを踏まえて詳しく見ていきます。
 
 !!!info 
-    LVIRPSとは、コンポジションアークの解決順序の原則です。
+    LIVRPSとは、コンポジションアークの解決順序の原則です。
     **L** Local
+    **I** Inherits    
     **V** Variant
-    **I** Inherits
     **R** Reference
     **P** Payload
     **S** Specialize
@@ -547,7 +547,7 @@ Pig1 Pig2 両方似継承されて「最終的に赤く」なっているので�
 
 !!!info
     継承順が
-    Local -> Varint -> Inherits -> Reference -> Paylaods -> Specialize
+    Local -> Inherits -> Varint -> Reference -> Paylaods -> Specialize
     なのは、考えれば考えるほどうまくできてるよなぁ...と思うのが
     バリアントと継承の位置です。
     バリアントよりリファレンスが強いと、リファレンスの切り替えができなくなるし
