@@ -4990,15 +4990,15 @@ __class__Pig 以下に、 Pig以下にあるマテリアルの構造 Looks/Pig �
 <h4 id="_13">継承のしくみ<a class="headerlink" href="#_13" title="Permanent link">¶</a></h4>
 <p><img alt="" src="https://gyazo.com/4e3a77ab256e40ac1ba8600b927497c6.png" /></p>
 <p>今の状況を図にするとこうなっています。</p>
-<p>コンポジションが１つのPrimに対して複数ある場合は、 <strong>「LVIRPS」の原則</strong> によって<br />
+<p>コンポジションが１つのPrimに対して複数ある場合は、 <strong>「LIVRPS」の原則</strong> によって<br />
 順番が解決していきます。<br />
 それを踏まえて詳しく見ていきます。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>LVIRPSとは、コンポジションアークの解決順序の原則です。<br />
+<p>LIVRPSとは、コンポジションアークの解決順序の原則です。<br />
 <strong>L</strong> Local<br />
+<strong>I</strong> Inherits  <br />
 <strong>V</strong> Variant<br />
-<strong>I</strong> Inherits<br />
 <strong>R</strong> Reference<br />
 <strong>P</strong> Payload<br />
 <strong>S</strong> Specialize<br />
@@ -5056,7 +5056,7 @@ Pig1 Pig2 両方似継承されて「最終的に赤く」なっているので�
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>継承順が<br />
-Local -&gt; Varint -&gt; Inherits -&gt; Reference -&gt; Paylaods -&gt; Specialize<br />
+Local -&gt; Inherits -&gt; Varint -&gt; Reference -&gt; Paylaods -&gt; Specialize<br />
 なのは、考えれば考えるほどうまくできてるよなぁ...と思うのが<br />
 バリアントと継承の位置です。<br />
 バリアントよりリファレンスが強いと、リファレンスの切り替えができなくなるし<br />
@@ -5144,7 +5144,7 @@ usd のメタ情報が追加されます。<br />
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2020-12-11 14:57:03
+      最終更新日: 2020-12-11 15:25:23
     
   </small>
 </div>
