@@ -5002,7 +5002,7 @@ __class__Pig 以下に、 Pig以下にあるマテリアルの構造 Looks/Pig �
 <p>これだけだと何が起きたのが全くわかりません。<br />
 ので、図解してみます。</p>
 <h4 id="_13">継承のしくみ<a class="headerlink" href="#_13" title="Permanent link">¶</a></h4>
-<p><img alt="" src="https://gyazo.com/4e3a77ab256e40ac1ba8600b927497c6.png" /></p>
+<p><img alt="" src="https://gyazo.com/53fb5ac97ec3752f0988a7e10f63dfe5.png" /></p>
 <p>今の状況を図にするとこうなっています。</p>
 <p>コンポジションが１つのPrimに対して複数ある場合は、 <strong>「LIVRPS」の原則</strong> によって<br />
 順番が解決していきます。<br />
@@ -5022,25 +5022,33 @@ __class__Pig 以下に、 Pig以下にあるマテリアルの構造 Looks/Pig �
 <p>まず、読み込んでいるアセットの構造は左上のようになっています。<br />
 PigPrimが Root 以下にあるPrimを「継承」しています。<br />
 しかし、この段階だと継承もとのPrimは何も定義されていないのでなにも起きません。</p>
-<p>そして、サブレイヤーで合成された構造は右上です。<br />
-つまりPigと重ねると</p>
-<p><img alt="" src="https://gyazo.com/e489ba22f9d087e894e6c3ebd4c72af4.png" /></p>
-<p>この２つをサブレイヤー合成すると、こうなります。<br />
-この場合は、サブレイヤー→継承の順番で( Local -&gt; Reference )コンポジションされるので、</p>
-<p><img alt="" src="https://gyazo.com/1d8b648319e6bb44048b9c94d84eea40.png" /></p>
-<p>この__class__Pig の内容が 継承先のPigに合成されます。</p>
-<p>この処理の間に「リファレンス」が入った場合が今回の例で</p>
-<p><img alt="" src="https://gyazo.com/b71ef716dcc7c8b8227961afa564d433.png" /></p>
-<p>Pig.usda をリファレンスした「Pig1」Primは /__class__Pig を継承している<br />
-（ Layout/__class__Pig ではないのがミソ）ので<br />
-/__class__Pig にサブレイヤーした結果の「赤くする」レイヤーが<br />
-Pig1 Pig2 両方似継承されて「最終的に赤く」なっているのです。</p>
-<p>この場合「Inherits」のほうが「Reference」より強いので<br />
+<p>そして、サブレイヤーで合成された構造は右上です。</p>
+<p>この合成を順番に（弱い順に）見ていくと、</p>
+<p><img alt="" src="https://gyazo.com/6f09120fad5ea86a81a69da233e66da6.png" /></p>
+<p>まず、リファレンスで、「Pigアセット」が配置されます。</p>
+<p><img alt="" src="https://gyazo.com/bce8ced76e7e7a302b30df62b7cf737f.png" /></p>
+<p>アセットの段階で、 __class__Pig という空のClassを defaultPrimの「Pig（リファレンス元）」<br />
+が継承していたので、このようになっています。<br />
+（ Layout/__class__Pig ではないのがミソ）</p>
+<p><img alt="" src="https://gyazo.com/0e66b976a10100bf2b10461671dc9ddc.png" /></p>
+<p>この「リファレンス元で継承しておいた Root以下の __class__Pig に<br />
+サブレイヤーで「赤いマテリアルにする」というMaterialプリムを合成します。</p>
+<p><img alt="" src="https://gyazo.com/33864c65bc96e48c322d2b30d34ce154.png" /></p>
+<p>すると、リファレンスの段階で仕込んでいた「継承」の構造は<br />
+サブレイヤーで合成された __class__Pig 以下のPrimを合成します。</p>
+<p>Pig1とPig2というネームスペース以下にリファレンスされた「Pigアセット」は、<br />
+両方とも __class__Pig を継承しています。<br />
+そのため、両方に「赤いマテリアルのマテリアル」が継承されて「最終的に赤く」なっているのです。</p>
+<p>この場合「継承」のほうが「リファレンス」より強いので<br />
 「赤くするマテリアル」のほうが「Pig.usdaのマテリアル」より強いので<br />
 結果Pigが赤くなっています。</p>
-<p>このときの解決順序は Local -&gt; Inherits -&gt; Reference の順です。<br />
-もとのリファレンスのマテリアルよりも「赤くするマテリアル」の継承のほうが強いので<br />
-結果赤くなったというわけです。 </p>
+<p>「ローカル」のほうが「継承」より強いはずなのに、<br />
+なんでローカル（サブレイヤー）されたものが継承で使われるんだろう？となるかもしれませんが<br />
+あくまでもサブレイヤーで合成しているのは、<br />
+__class__Pig に対してであって /Layout/Pig2/Looks/Pig に対してサブレイヤーしているわけでは<br />
+ありません。<br />
+なので、この場合は、継承→継承した先のローカル (再帰的なコンポジションの解決)<br />
+という扱いになっています。</p>
 <p>見ての通り、この継承を使用すると<br />
 「１つのレイヤーに読み込んだ別のアセットをまとめて編集できる」<br />
 わけです。</p>
@@ -5164,7 +5172,7 @@ usd のメタ情報が追加されます。<br />
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2020-12-11 15:39:20
+      最終更新日: 2020-12-11 19:03:54
     
   </small>
 </div>
