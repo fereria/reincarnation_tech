@@ -472,7 +472,7 @@ __class__Pig 以下に、 Pig以下にあるマテリアルの構造 Looks/Pig �
     **R** Reference
     **P** Payload
     **S** Specialize
-    のそれぞれの頭文字をとって LVIRPS という。
+    のそれぞれの頭文字をとって LIVRPS という。
     １つのPrimに複数のコンポジションがある場合、 Lに近いほど優先されます。
 
 まず、読み込んでいるアセットの構造は左上のようになっています。
