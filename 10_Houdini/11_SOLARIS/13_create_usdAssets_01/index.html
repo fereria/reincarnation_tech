@@ -1834,6 +1834,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    さらなる使いみち
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1852,21 +1859,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     完成
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     まとめ
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     参考
   </a>
   
@@ -4636,6 +4643,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    さらなる使いみち
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4654,21 +4668,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     完成
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     まとめ
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     参考
   </a>
   
@@ -4741,7 +4755,7 @@ USDのコンポジションの理屈と合わせてまとめていければと�
 <p>まず、USDの大きな特徴として<br />
 USDはファイルを好きに分割することができます。<br />
 分割したファイルはコンポジションアークを利用して１つのシーングラフに合成することができます。<br />
-ので、まずUSDでAssetを構築する場合<br />
+ので、まずUSDでアセットを構築する場合<br />
 どういうファイル単位にするのか、どういうふうにコンポジションを構築すると<br />
 扱いやすいかを考える必要があります。</p>
 <p>この場合のセオリーは、個人的には２つあると思っていて</p>
@@ -4835,7 +4849,7 @@ Material用の階層（この場合はMaya準拠のLooks）を作成します。
 <p>豚のマテリアルを共有化したいケースはまぁさすがに無いとは思いますが<br />
 汎用的なマテリアルは他のモデルでも使いたい場合が出てくると思います。<br />
 そういう場合などは、マテリアルのUSDは別途出力しておいて、<br />
-それをAssetのレイヤーに合成して使用する...といった構造も作ることができます。</p>
+それをアセットのレイヤーに合成して使用する...といった構造も作ることができます。</p>
 <p><img alt="" src="https://gyazo.com/b03bac2d737f690e2a075803a41f4428.png" /></p>
 <p>この、Materialを作る　で作ったレイヤーは、<br />
 こんなふうにルート以下にMaterialがあるような構造になっています。<br />
@@ -5049,25 +5063,27 @@ __class__Pig に対してであって /Layout/Pig2/Looks/Pig に対してサブ�
 ありません。<br />
 なので、この場合は、継承→継承した先のローカル (再帰的なコンポジションの解決)<br />
 という扱いになっています。</p>
+<h4 id="_14">さらなる使いみち<a class="headerlink" href="#_14" title="Permanent link">¶</a></h4>
 <p>見ての通り、この継承を使用すると<br />
-「１つのレイヤーに読み込んだ別のアセットをまとめて編集できる」<br />
+<strong>「１つのレイヤーに読み込んだ別のアセットをまとめて編集できる」</strong> <br />
 わけです。</p>
 <p>例えば、あるシーンに本（Bookアセット）が１０００冊おいあり、<br />
 この本は５色（赤・青・黃・緑・黒＿のバリアントを持っていて、それがシーンにレイアウトされています。<br />
 <strong>この本のうち「赤い本」だけを調整したい</strong><br />
-となった場合、<br />
-すべての赤い本だけをサブレイヤーで書き換えをしたい場合</p>
+となった場合。<br />
+すべての赤い本だけをサブレイヤーで書き換えをしたいとすると、</p>
 <p>/Layout/Book1/Looks/RedBooksMaterial<br />
-/Layout/Book2/Looks/RedBooksMaterial<br />
-...<br />
-のように <strong>すべてのネームスペース以下のマテリアルを編集しなければいけません。</strong><br />
+/Layout/Book2/Looks/RedBooksMaterial</p>
+<p>のように <strong>すべてのネームスペース以下のマテリアルを編集しなければいけません。</strong><br />
 これはさすがに冗長です。</p>
 <p>ですが、</p>
 <p>/__class__Books というClassを Bookアセットのルートプリムに対して継承しておけば</p>
 <p>/__class__Books/Looks/RedBooksMaterial<br />
 に修正したマテリアルを定義すれば、すべての赤い本を調整することができるわけです。</p>
-<p>このとき、コンポジションの順序は「バリアント」より「継承」のほうが強いので<br />
-バリアントで選択された「赤い本」を継承によってオーバーライドすることができます。</p>
+<p>このとき、マテリアルには 継承・バリアント・リファレンス が関係しているわけですが、<br />
+コンポジションの順序は、元の本の「リファレンス」より「赤い本」を選ぶバリアントが強く、<br />
+その「バリアント」よりも「継承」のほうが強いので<br />
+バリアントで選択された「赤い本」を継承によって編集することができるわけです。</p>
 <p>これですべての赤い本が一律で調整できました。<br />
 しかし、これのうち１つの赤い本をピンポイントで調整したくなった場合はどうでしょうか。<br />
 その場合はサブレイヤー（Local）で値を編集すれば良いです。<br />
@@ -5121,7 +5137,7 @@ Local -&gt; Inherits -&gt; Varint -&gt; Reference -&gt; Paylaods -&gt; Specializ
 usd のメタ情報が追加されます。<br />
 このようにメタ情報を入れるようにすれば、どのバージョンのファイルなのかを明確化<br />
 することができます。</p>
-<h2 id="_14">完成<a class="headerlink" href="#_14" title="Permanent link">¶</a></h2>
+<h2 id="_15">完成<a class="headerlink" href="#_15" title="Permanent link">¶</a></h2>
 <p><img alt="" src="https://gyazo.com/5bb6d311a44b34c6f9206b2b63cb7a43.png" /></p>
 <p>いろいろやってきましたが、こんなかんじになりました。<br />
 できあがった hip ファイルは <i class="fa fa-download"></i><a href="https://1drv.ms/u/s!AlUBmJYsMwMhhOcoB7mqcctbgbO2GA?e=hGuenm">こちら</a></p>
@@ -5141,7 +5157,7 @@ usd のメタ情報が追加されます。<br />
 複数リファレンスでロードした場合でも「アンロード」で開けば高速に開いて<br />
 一部だけロードが必ずできるようになります。<br />
 また継承することで、大量にリファレンスされた場合でもまとめて調整が可能になります。</p>
-<h2 id="_15">まとめ<a class="headerlink" href="#_15" title="Permanent link">¶</a></h2>
+<h2 id="_16">まとめ<a class="headerlink" href="#_16" title="Permanent link">¶</a></h2>
 <p>長々とやっていきましたが、<br />
 これで一通り基本的なUSDの構造を活用したアセットが出来上がりました。</p>
 <p>USDの構造は理解していても、じゃあ実際Houdini上でどうやってやったものかと<br />
@@ -5158,7 +5174,7 @@ usd のメタ情報が追加されます。<br />
 <p>あとは、VEXも理解できたので<br />
 このあたりの処理をHDA化したりPDGで処理したいみたいなこともいずれは<br />
 試してみようかなと思います。</p>
-<h2 id="_16">参考<a class="headerlink" href="#_16" title="Permanent link">¶</a></h2>
+<h2 id="_17">参考<a class="headerlink" href="#_17" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="http://graphics.pixar.com/usd/downloads.html">http://graphics.pixar.com/usd/downloads.html</a></li>
 <li><a href="https://github.com/PixarAnimationStudios/USD/blob/release/extras/usd/examples/usdMakeFileVariantModelAsset/usdMakeFileVariantModelAsset.py">usdMakeFileVariantModelAsset.py</a></li>
@@ -5172,7 +5188,7 @@ usd のメタ情報が追加されます。<br />
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2020-12-11 19:03:54
+      最終更新日: 2020-12-12 02:34:10
     
   </small>
 </div>
