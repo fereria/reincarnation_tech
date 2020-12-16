@@ -480,3 +480,14 @@ mesh.CreateFaceVertexIndicesAttr([0, 1, 2, 0, 2, 3])
 # BoundingBoxをセット？
 mesh.CreateExtentAttr(UsdGeom.PointBased(mesh).ComputeExtent(mesh.GetPointsAttr().Get()))
 ```
+
+## Plugin関係
+
+### ロードされているPluginをリストする
+
+```python
+for i in Plug.Registry().GetAllPlugins():
+    print(i.name)
+    print(i.path)
+    print(i.resourcePath)
+```
