@@ -3262,6 +3262,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#plugin" class="md-nav__link">
+    Plugin関係
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin関係">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin_1" class="md-nav__link">
+    ロードされているPluginをリストする
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5196,6 +5216,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#plugin" class="md-nav__link">
+    Plugin関係
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin関係">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin_1" class="md-nav__link">
+    ロードされているPluginをリストする
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5575,6 +5615,14 @@ GetInherits().AddInherit(path)<br />
 <span class="c1"># BoundingBoxをセット？</span>
 <span class="n">mesh</span><span class="o">.</span><span class="n">CreateExtentAttr</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointBased</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span><span class="o">.</span><span class="n">ComputeExtent</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()))</span>
 </code></pre></div>
+
+<h2 id="plugin">Plugin関係<a class="headerlink" href="#plugin" title="Permanent link">¶</a></h2>
+<h3 id="plugin_1">ロードされているPluginをリストする<a class="headerlink" href="#plugin_1" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Plug</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">GetAllPlugins</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">resourcePath</span><span class="p">)</span>
+</code></pre></div>
                 
                   
                     
@@ -5583,7 +5631,7 @@ GetInherits().AddInherit(path)<br />
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2020-11-14 05:35:32
+      最終更新日: 2020-12-16 17:01:05
     
   </small>
 </div>
