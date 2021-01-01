@@ -223,4 +223,12 @@ stage.GetRootLayer().Export(r"D:\work\py37\sampleUSD\subset_addMat.usd")
 
 
 
-    ```
+    ```
+
+![](https://gyazo.com/cb0f205d1aa00b5650aaf4f403e70de8.png)
+
+こうなって
+
+![](https://gyazo.com/56a96ca6816a98490360d0814702f98b.png)
+
+こうなる。
