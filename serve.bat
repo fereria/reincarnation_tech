@@ -1,1 +1,1 @@
-py -3.6 -m mkdocs serve
+pipenv run mkdocs serve

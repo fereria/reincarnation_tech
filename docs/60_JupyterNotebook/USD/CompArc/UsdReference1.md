@@ -1,7 +1,7 @@
 ---
 title: ReferenceをしているPrimからUsdのFilePathを取得
 ---
-**ipynbFile** [UsdReference1__ReferenceをしているPrimからUsdのFilePathを取得.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/UsdReference1__ReferenceをしているPrimからUsdのFilePathを取得.ipynb)
+**ipynbFile** [UsdReference1__ReferenceをしているPrimからUsdのFilePathを取得.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/CompArc/UsdReference1__ReferenceをしているPrimからUsdのFilePathを取得.ipynb)
 #### [18]:
 
 

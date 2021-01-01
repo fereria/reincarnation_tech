@@ -45,7 +45,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
                           'nbconvert',
                           '--to', 'markdown',
                           '--output', md,
-                          '--template', f'{BLOG_ROOT_DIR}/jupyter_template.tpl',
+                          '--template', f'{BLOG_ROOT_DIR}/template/jupyter_template.tpl',
                           ipynbFile])
 
     p.wait()

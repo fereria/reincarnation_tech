@@ -1,7 +1,7 @@
 ---
 title: USDでTextureAssign
 ---
-**ipynbFile** [USDTextureAssign__USDでTextureAssign.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/USDTextureAssign__USDでTextureAssign.ipynb)
+**ipynbFile** [USDTextureAssign__USDでTextureAssign.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Material/USDTextureAssign__USDでTextureAssign.ipynb)
 #### [1]:
 
 

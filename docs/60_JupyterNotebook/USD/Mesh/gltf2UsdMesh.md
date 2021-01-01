@@ -1,7 +1,7 @@
 ---
 title: gltfからUsdMeshを作る
 ---
-**ipynbFile** [gltf2UsdMesh__gltfからUsdMeshを作る.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/gltf2UsdMesh__gltfからUsdMeshを作る.ipynb)
+**ipynbFile** [gltf2UsdMesh__gltfからUsdMeshを作る.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Mesh/gltf2UsdMesh__gltfからUsdMeshを作る.ipynb)
 #### [91]:
 
 

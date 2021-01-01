@@ -1,7 +1,7 @@
 ---
 title: USDAssetsの作り方、基本構造メモ
 ---
-**ipynbFile** [makefileVariant__USDAssetsの作り方、基本構造メモ.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/makefileVariant__USDAssetsの作り方、基本構造メモ.ipynb)
+**ipynbFile** [makefileVariant__USDAssetsの作り方、基本構造メモ.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/CompArc/makefileVariant__USDAssetsの作り方、基本構造メモ.ipynb)
 USDのサンプル examples/usdMakeFileVariantModelAsset/usdMakeFIleVarinatModelAsset.py
 の中身を確認する。
 

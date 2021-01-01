@@ -93,3 +93,4 @@ A -> E -> F -> G;
 
 
 {{'ほげほげ'|green_badge}} {{'ふがふが'|blue_badge}}
+

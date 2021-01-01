@@ -1,7 +1,7 @@
 ---
 title: USDでMaterial_ShadingNetwork
 ---
-**ipynbFile** [USDMaterial_01__USDでMaterial_ShadingNetwork.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/USDMaterial_01__USDでMaterial_ShadingNetwork.ipynb)
+**ipynbFile** [USDMaterial_01__USDでMaterial_ShadingNetwork.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Material/USDMaterial_01__USDでMaterial_ShadingNetwork.ipynb)
 #### [32]:
 
 
