@@ -1,240 +1,106 @@
 ---
-title: UsdSkelの構造を理解する
+title: SOLARISでXformからUsdSkeletonを作る
 ---
-**ipynbFile** [usdskel_01__UsdSkelの構造を理解する.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/usdskel_01__UsdSkelの構造を理解する.ipynb)
-#### [118]:
+**ipynbFile** [Usdskel_01__SOLARISでXformからUsdSkeletonを作る.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Usdskel_01__SOLARISでXformからUsdSkeletonを作る.ipynb)
+#### [44]:
 
 
 ```python
-from pxr import Usd,UsdSkel,UsdGeom
+
+from pxr import Usd, UsdGeom, Sdf, UsdSkel
+import re
+
+stage = Usd.Stage.Open("D:/work/usd_py36/usd/char_base.usda")
+
+hipRoot = "/xbot_fbx/mixamorig_Hips"
+
+
 ```
 
 
-#### [107]:
+#### [45]:
 
 
 ```python
-stage = Usd.Stage.Open(r"D:\SimpleSkelB.usd")
+
+# Skelを作る
+skelRoot = UsdSkel.Root.Define(stage, "/SkelRoot")
+skel = UsdSkel.Skeleton.Define(stage, "/SkelRoot/Skeleton")
+
 ```
 
 
-#### [108]:
+#### [46]:
 
 
 ```python
-rootPrim = stage.GetPrimAtPath("/World/Root")
-usdRoot = UsdSkel.Root(rootPrim)
+
+# XformになってるFbxのJoint階層をUsdSkel.Skeletoににするために
+# 必要な情報取得
+
+joints = []
+jointsName = []
+jointTransforms = []
+
+ns = "mixamorig"
+
+for prim in stage.Traverse():
+    primStr = prim.GetPath().pathString
+    if re.search("^" + hipRoot, primStr) is None:
+        continue
+    # NSなくす
+    joint = re.sub(f"{ns}_", "", primStr.replace("/xbot_fbx/", ""))
+    jointName = joint.split("/")[-1]
+    transformMatrix = UsdGeom.Xform.Get(stage, prim.GetPath()).GetLocalTransformation(True)
+    joints.append(joint)
+    jointsName.append(jointName)
+    jointTransforms.append(transformMatrix)
+
 ```
 
 
-#### [109]:
+#### [47]:
 
 
 ```python
-# UsdSkelSkeleton は、Skeletonのトポロジー定義し、BindPoseを保持する
-skel = UsdSkel.Skeleton(stage.GetPrimAtPath("/World/Root/joint1"))
-# Animation は、SkeletonとBlendShapeのアニメーションを保持する
-anim = UsdSkel.Animation(stage.GetPrimAtPath("/World/Root/joint1/Animation"))
-```
 
+# SKelに値をセット
+skel.CreateJointsAttr().Set(joints)
+skel.CreateJointNamesAttr().Set(jointsName)
+skel.CreateRestTransformsAttr(jointTransforms)
+skel.CreateBindTransformsAttr(jointTransforms)
 
-#### [110]:
-
-
-```python
-skelPrim = skel.GetPrim()
-# SkeletonのAnimationはRelationでAnimationPrimが指定されている
-animPath = skelPrim.GetRelationship("skel:animationSource").GetTargets()[0]
-# Animationの値はVector
-print(anim.GetRotationsAttr().Get())
-print(anim.GetTranslationsAttr().Get())
-print(anim.GetScalesAttr().Get())
-```
-
-!!! success
-    ```
-
-    [(1, 0, 0, 0), (1, 0, 0, 0)]
-    [(0, 0, 0), (0, 2, 0)]
-    [(1, 1, 1), (1, 1, 1)]
-    
-
-    ```
-
-
-#### [111]:
-
-
-```python
-# UsdSkelの構造を取得
-# UsdSkelは、SkeletonPrimのアトリビュートとしてSkeletonの構造を持つ
-for i in skel.GetJointsAttr().Get():
-    print(i)
-```
-
-!!! success
-    ```
-
-    joint1
-    joint1/joint2
-    
-
-    ```
-
-
-#### [112]:
-
-
-```python
-# Skelの構造は Topology を利用すると解析できる
-joints = skel.GetJointsAttr().Get()
-topology = UsdSkel.Topology(skel.GetJointsAttr().Get())
-
-# Joint数を取得
-print(topology.GetNumJoints())
-# 引数のIndexがRootかどうか返す
-print(topology.IsRoot(0))
-# 引数のIndexのParentのIndexを取得する
-print(joints[1])
-parentIndex = topology.GetParent(1)
-print(joints[parentIndex])
-
-# ParentのIndexを全部取得 -1 がRoot
-# print(topology.GetParentIndices())
 ```
 
 !!! success
     ```
 
-    2
+
+
+
+    Usd.Prim(</SkelRoot/Skeleton>).GetAttribute('bindTransforms')
+
+
+
+    ```
+
+
+#### [48]:
+
+
+```python
+stage.GetRootLayer().Export("D:/work/usd_py36/usd/createSkel.usda")
+
+```
+
+!!! success
+    ```
+
+
+
+
     True
-    joint1/joint2
-    joint1
-    
-
-    ```
 
 
-#### [113]:
-
-
-```python
-# JointsAttr の配列に対応するTransformのリスト
-# 配列はWorldSpaceのMatrix(GfMatrix4d)
-for i in skel.GetBindTransformsAttr().Get():
-    print(i)
-```
-
-!!! success
-    ```
-
-    ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-    ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 2, 0, 1) )
-    
-
-    ```
-
-
-#### [114]:
-
-
-```python
-meshPrim = stage.GetPrimAtPath("/World/Root/Geom/pCube1")
-
-bindingAPI = UsdSkel.BindingAPI(meshPrim)
-```
-
-
-#### [115]:
-
-
-```python
-# Mesh にBindされているJointをリストできる
-print(bindingAPI.GetJointsAttr().Get())
-# SkeletonPrimのPathを取得する
-bindingAPI.GetSkeletonRel().GetTargets() 
-```
-
-!!! success
-    ```
-
-    [joint1, joint1/joint2]
-    
-
-    ```
-
-!!! success
-    ```
-
-
-
-
-    [Sdf.Path('/World/Root/joint1')]
-
-
-
-    ```
-
-
-#### [119]:
-
-
-```python
-# WeightのついているMeshのVertexの値を確認してみる
-mesh = UsdGeom.Mesh(stage.GetPrimAtPath("/World/Root/Geom/pCube1"))
-```
-
-
-#### [125]:
-
-
-```python
-# 上の頂点のIndexは 2 3 4 5
-for i in mesh.GetPointsAttr().Get():
-    print(i)
-```
-
-!!! success
-    ```
-
-    (-0.5, -0.5, 0.5)
-    (0.5, -0.5, 0.5)
-    (-0.5, 0.5, 0.5)
-    (0.5, 0.5, 0.5)
-    (-0.5, 0.5, -0.5)
-    (0.5, 0.5, -0.5)
-    (-0.5, -0.5, -0.5)
-    (0.5, -0.5, -0.5)
-    
-
-    ```
-
-
-#### [129]:
-
-
-```python
-# MeshのSkin情報は primvars:skel:jointIndices と primvars:skel:jointWeights で保持されている。
-# indeces は、あるVtxの影響をしているJointのIndex weightはそのIndexの影響力のWeightを持つ
-# このIndexは、 VertexSize * JointNum 分のIndex
-indicesPrimvar = bindingAPI.GetJointIndicesPrimvar() # UsdGeomPrimvar
-weightPrimvar = bindingAPI.GetJointWeightsAttr() # UsdGeomPrimvar
-# Indexの並び順は
-# 上の頂点のWeight
-print(indicesPrimvar.Get(0)[4:6])
-print(weightPrimvar.Get(0)[4:6])
-# 下の頂点のWeight
-print(indicesPrimvar.Get(0)[0:2])
-print(weightPrimvar.Get(0)[0:2])
-```
-
-!!! success
-    ```
-
-    [1, 0]
-    [0.9998923, 0.00010770559]
-    [0, 1]
-    [0.99999505, 0.0000049471855]
-    
 
     ```
