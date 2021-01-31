@@ -1,7 +1,12 @@
 ---
 title: UsdSkelの構造を理解する
 ---
-**ipynbFile** [Usdskel_02__UsdSkelの構造を理解する.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Usdskel_02__UsdSkelの構造を理解する.ipynb)
+**ipynbFile** [usdskel_02__UsdSkelの構造を理解する.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/usdskel_02__UsdSkelの構造を理解する.ipynb)
+![](https://gyazo.com/3cff154efad7ae5d9276b781d0ac9703.png)
+
+こんな感じの最寄りのJointにweight1つけたシンプルなCubeでテスト
+
+
 #### [118]:
 
 
