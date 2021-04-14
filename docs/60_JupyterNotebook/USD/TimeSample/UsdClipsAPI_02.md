@@ -1,7 +1,7 @@
 ---
-title: UsdClipsAPI_02_TemplateAssetPathを使う
+title: TemplateAssetPathを使う
 ---
-**ipynbFile** [UsdClipsAPI_02_TemplateAssetPathを使う.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/TimeSample/UsdClipsAPI_02_TemplateAssetPathを使う.ipynb)
+**ipynbFile** [UsdClipsAPI_02__TemplateAssetPathを使う.ipynb](https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/TimeSample/UsdClipsAPI_02__TemplateAssetPathを使う.ipynb)
 #### [1]:
 
 
