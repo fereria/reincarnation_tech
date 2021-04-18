@@ -193,6 +193,49 @@ Clipのレイヤーが表示されているのがわかります。
 
 CurrentTimeを移動して再度確認すると、LayerStackのレイヤーも変わっています。
 
+## Template
+
+上の例だと、参照先のClipは、CurrentTimeとassetPathsのIndexによって紐付けされていました。
+そうではなく、 clip.#.usda のように、CurrentTimeの(あるいはマッピングされた)数字の
+Clipのレイヤーを参照しにいくようにするのがTemplateです。
+
+```usda
+#usda 1.0
+(
+    endTimeCode = 4
+    startTimeCode = 1
+)
+
+def "TestModel" (
+    clips = {
+        dictionary B = {
+            asset manifestAssetPath = @d:/work/py37/USD/manifest.usda@
+            string primPath = "/ModelB"
+            string templateAssetPath = "d:/work/py37/USD/clip/B/clip.#.usda"
+            double templateEndTime = 4
+            double templateStartTime = 1
+            double templateStride = 1
+        }
+    }
+)
+{
+    double a
+}
+
+```
+
+Templateの場合でも、ManifestとClipは共通ですが、Clipを読み込むPrimの
+構造が変わります。
+assetPaths で、配列で指定していたところが templateAssetPath に対して
+name.#.usda のように、数字部分を # で書き表したPathで指定し、
+そのTemplateのどの範囲をClipとして読み込むかをを startTime,endTimeで
+指定します。
+
+このようにすると、CurrentTimeが１なら clip.1.usda のClipを参照...といったような
+使い方ができます。
+これは、最初にあげられた使用例のうち
+巨大なデータを扱う場合などに、全フレームを別レイヤーとして作成したい場合などに
+使いやすいのではないかと思います。
 ## まとめ
 
 というわけで、まずは基本的な構造からみてきましたが
