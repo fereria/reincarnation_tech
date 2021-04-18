@@ -239,6 +239,17 @@ clipSets は List Editing なので、レイヤー合成でも追加・削除な
 組み合わせて１つのステージに組み立てることができます。
 Crowdなどのシーン構築などでは、この仕組を使うことでかなり柔軟な対応ができそうです。
 
+## Pythonでの操作方法
+
+このValueClip周りをPythonで扱いたい場合どうしたらいいのか？というと
+UsdClipsAPIという、ValueClipsを扱うためのAPIが用意されています。
+
+https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/CompArc/variantset01/
+https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/CompArc/variantset02/
+
+使用方法は、JupyterNotebookを使用してテストしたものがのこってるので
+こちらを参考にしてください。
+
 ## まとめ
 
 以上２回にわけてみてきたValueClipですが
