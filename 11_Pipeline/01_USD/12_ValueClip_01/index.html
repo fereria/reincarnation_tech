@@ -2802,6 +2802,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    Template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     まとめ
   </a>
@@ -4608,6 +4615,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    Template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     まとめ
   </a>
@@ -4786,6 +4800,43 @@ active で、今のCurrentTimeのときにどのレイヤーを使うかを指�
 Clipのレイヤーが表示されているのがわかります。</p>
 <p><img alt="" src="https://gyazo.com/9db2f01037beae86ba9a0054035c8205.png" /></p>
 <p>CurrentTimeを移動して再度確認すると、LayerStackのレイヤーも変わっています。</p>
+<h2 id="template">Template<a class="headerlink" href="#template" title="Permanent link">¶</a></h2>
+<p>上の例だと、参照先のClipは、CurrentTimeとassetPathsのIndexによって紐付けされていました。<br />
+そうではなく、 clip.#.usda のように、CurrentTimeの(あるいはマッピングされた)数字の<br />
+Clipのレイヤーを参照しにいくようにするのがTemplateです。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n n-Builtins">endTimeCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">    </span><span class="n n-Builtins">startTimeCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+
+<span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;TestModel&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k k-Tokens">clips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">dictionary</span><span class="w"> </span><span class="na">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kt">asset</span><span class="w"> </span><span class="na">manifestAssetPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="si">@d:/work/py37/USD/manifest.usda@</span><span class="w"></span>
+<span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="na">primPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/ModelB&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="na">templateAssetPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;d:/work/py37/USD/clip/B/clip.#.usda&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="na">templateEndTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="na">templateStartTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="na">templateStride</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span>a<span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Templateの場合でも、ManifestとClipは共通ですが、Clipを読み込むPrimの<br />
+構造が変わります。<br />
+assetPaths で、配列で指定していたところが templateAssetPath に対して<br />
+name.#.usda のように、数字部分を # で書き表したPathで指定し、<br />
+そのTemplateのどの範囲をClipとして読み込むかをを startTime,endTimeで<br />
+指定します。</p>
+<p>このようにすると、CurrentTimeが１なら clip.1.usda のClipを参照...といったような<br />
+使い方ができます。<br />
+これは、最初にあげられた使用例のうち<br />
+巨大なデータを扱う場合などに、全フレームを別レイヤーとして作成したい場合などに<br />
+使いやすいのではないかと思います。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>というわけで、まずは基本的な構造からみてきましたが<br />
 これを使えば、アニメーションのデータをアトリビュート・フレーム単位で<br />
@@ -4802,7 +4853,7 @@ Clipのレイヤーが表示されているのがわかります。</p>
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-04-17 14:45:48
+      最終更新日: 2021-04-18 07:49:53
     
   </small>
 </div>
