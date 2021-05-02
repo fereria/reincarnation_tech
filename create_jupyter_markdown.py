@@ -11,7 +11,6 @@ import re
 import glob
 import shutil
 
-BLOG_ROOT_DIR = "C:/reincarnation_tech"
 GITHUB_ROOT = "https://github.com/fereria/reincarnation_tech/blob/master/"
 
 
@@ -41,15 +40,18 @@ def createNoteBookMD(ipynbFile, root, exportPath):
     if not os.path.exists(os.path.dirname(md)):
         os.makedirs(os.path.dirname(md))
 
-    p = subprocess.Popen(['C:/Users/remiria/AppData/Local/Programs/Python/Python36/Scripts/jupyter',
-                          'nbconvert',
+    p = subprocess.Popen(['python',
+                          '-m', 'nbconvert',
                           '--to', 'markdown',
                           '--output', md,
-                          '--template', f'{BLOG_ROOT_DIR}/template/jupyter_template.tpl',
+                          '--template', 'template/jupyter_template.tpl',
                           ipynbFile])
 
-    p.wait()
+    print(f"convert ipynb to markdown -> {md}")
 
+    p.wait()
+    
+    # 行の頭にリポジトリへのリンクを追加
     buff = ipynbFile.split("/notebooks/")
 
     title = ['---',
@@ -78,8 +80,8 @@ def getIpynbFile():
 
 if __name__ == "__main__":
 
-    root = f"{BLOG_ROOT_DIR}/notebooks"
-    md_root = f"{BLOG_ROOT_DIR}/docs/60_JupyterNotebook"
+    root = f"./notebooks"
+    md_root = f"./docs/60_JupyterNotebook"
 
     if os.path.exists(md_root):
         shutil.rmtree(md_root, True)

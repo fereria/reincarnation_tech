@@ -12,14 +12,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Send Slack Start
         env:
           HOOK_URL: ${{ secrets.SlackURL }}
         run: |
           curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesのビルドを開始しました...\"}" ${HOOK_URL}
-    
+
       - name: Git config
         run: |
           git config --global core.symlinks true
@@ -39,7 +39,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pipenv --upgrade-strategy=only-if-needed
-      
+
       # 参考: https://intack2.github.io/til-note/Memo/GithubActions/
       - name: Cache pipenv virtualenv
         id: cache-pipenv
@@ -52,16 +52,18 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: pipenv install
 
+      - name: NbConvert
+        run: python create_jupyter_markdown.py
+
       - name: Mkdocs
         env:
           TZ: Asia/Tokyo
         run: |
           python create_mkdocs_pages.py
           pipenv run mkdocs gh-deploy
-          
+
       - name: Send Slack Finish
         env:
           HOOK_URL: ${{ secrets.SlackURL }}
         run: |
           curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新が完了しました！！\"}" ${HOOK_URL}
-      
