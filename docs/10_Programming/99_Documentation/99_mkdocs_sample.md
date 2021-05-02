@@ -94,3 +94,6 @@ A -> E -> F -> G;
 
 {{'ほげほげ'|green_badge}} {{'ふがふが'|blue_badge}}
 
+リポジトリ以下のipynbをロードしてmarkdownとして埋め込み
+
+{{embedIpynb("notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb")}}

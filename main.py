@@ -4,6 +4,8 @@ import re
 import codecs
 from datetime import datetime
 from git import Repo
+from nbconvert import MarkdownExporter, exporters
+import nbformat
 
 FUKIDASHI_HTML = """<div class="balloon5">
   <div class="faceicon">
@@ -84,6 +86,24 @@ def define_env(env):
         return f"![](https://fereria.github.io/reincarnation_tech/img/{path})"
 
     @env.macro
+    def embedIpynb(ipynbPath):
+        # 引数のipynbをmarkdownに変換して返す
+
+        path = os.getcwd() + "/" + ipynbPath  # root以下からのPathで指定
+        if os.path.exists(path):
+            try:
+                with open(path, 'r') as f:
+                    lines = f.readlines()
+                f = nbformat.reads("".join(lines), as_version=4)
+                exporter = MarkdownExporter()
+                (body, resources) = exporter.from_notebook_node(f)
+                return body
+            except:
+                return f"ConvertEerror!! ->{ipynbPath}"
+        else:
+            return f"Not Found -> {ipynbPath}"
+
+    @env.macro
     def fukidashi(comment, icon="default"):
         # 参考: https://saruwakakun.com/html-css/reference/speech-bubble
         path = {
@@ -97,7 +117,7 @@ def define_env(env):
     @env.filter
     def green_badge(comment):
         return f'<span class="green-badge">{comment}</span>'
-    
+
     @env.filter
     def blue_badge(comment):
         return f'<span class="blue-badge">{comment}</span>'
