@@ -11,6 +11,7 @@ import os.path
 import re
 import glob
 import shutil
+import sys
 
 GITHUB_ROOT = "https://github.com/fereria/reincarnation_tech/blob/master/"
 
@@ -81,10 +82,8 @@ def getIpynbFile():
 
 if __name__ == "__main__":
 
-    print(os.getcwd())
-
-    root = f"notebooks"
-    md_root = f"docs/60_JupyterNotebook"
+    root = f"{os.getcwd()}/notebooks"
+    md_root = f"{os.getcwd()}/docs/60_JupyterNotebook"
 
     if os.path.exists(md_root):
         shutil.rmtree(md_root, True)
@@ -92,7 +91,6 @@ if __name__ == "__main__":
 
     # ipynbFiles = glob.glob(root + "/*.ipynb")
     ipynbFiles = getIpynbFile()
-    print(ipynbFiles)
 
     for ipynb in ipynbFiles:
         createNoteBookMD(ipynb, root, md_root)
