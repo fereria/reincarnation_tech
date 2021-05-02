@@ -99,3 +99,6 @@ A -> E -> F -> G;
 リポジトリ以下のipynbをロードしてmarkdownとして埋め込み
 
 {{embedIpynb("notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb")}}
+
+一部だけ埋め込みたい場合
+{{embedIpynb("notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb",[1])}}

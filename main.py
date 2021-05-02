@@ -86,20 +86,26 @@ def define_env(env):
         return f"![](https://fereria.github.io/reincarnation_tech/img/{path})"
 
     @env.macro
-    def embedIpynb(ipynbPath):
+    def embedIpynb(ipynbPath, cells=None):
         # 引数のipynbをmarkdownに変換して返す
-
         path = os.getcwd() + "/" + ipynbPath  # root以下からのPathで指定
         if os.path.exists(path):
             try:
                 with open(path, 'r') as f:
                     lines = f.readlines()
                 f = nbformat.reads("".join(lines), as_version=4)
+                if cells:
+                    # 表示したいCellが指定されてる場合
+                    showCells = cells
+                else:
+                    # 指定がなければ全部表示
+                    showCells = [int(x['execution_count']) for x in f.cells]
+
                 buff = []
                 for i in f.cells:
                     if i['execution_count']:
-                        # まだ実行していないCellがある場合はスキップ
-                        buff.append(i)
+                        if int(i['execution_count']) in showCells:
+                            buff.append(i)
                 f.cells = buff
                 exporter = TemplateExporter(template_file="template/embed_markdown.tpl")
                 (body, reources) = exporter.from_notebook_node(f)
