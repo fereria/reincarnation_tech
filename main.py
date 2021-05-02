@@ -4,7 +4,7 @@ import re
 import codecs
 from datetime import datetime
 from git import Repo
-from nbconvert import MarkdownExporter, exporters
+from nbconvert import TemplateExporter, exporters
 import nbformat
 
 FUKIDASHI_HTML = """<div class="balloon5">
@@ -101,9 +101,15 @@ def define_env(env):
                         # まだ実行していないCellがある場合はスキップ
                         buff.append(i)
                 f.cells = buff
-                exporter = MarkdownExporter()
-                (body, resources) = exporter.from_notebook_node(f)
-                return body
+                exporter = TemplateExporter(template_file="template/embed_markdown.tpl")
+                (body, reources) = exporter.from_notebook_node(f)
+
+                buff = ["    " + x for x in body.split("\n") if x != ""]
+
+                text = [f"!!! example \"{os.path.basename(ipynbPath)}\"",
+                        *buff,
+                        f"    :fa-bookmark: [{os.path.basename(ipynbPath)}](https://github.com/fereria/reincarnation_tech/tree/master/{ipynbPath})"]
+                return "\n".join(text)
             except:
                 return f"ConvertEerror!! ->{ipynbPath}"
         else:
