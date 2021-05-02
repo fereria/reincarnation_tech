@@ -50,7 +50,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
     print(f"convert ipynb to markdown -> {md}")
 
     p.wait()
-    
+
     # 行の頭にリポジトリへのリンクを追加
     buff = ipynbFile.split("/notebooks/")
 
@@ -80,8 +80,8 @@ def getIpynbFile():
 
 if __name__ == "__main__":
 
-    root = f"./notebooks"
-    md_root = f"./docs/60_JupyterNotebook"
+    root = f"notebooks"
+    md_root = f"docs/60_JupyterNotebook"
 
     if os.path.exists(md_root):
         shutil.rmtree(md_root, True)
