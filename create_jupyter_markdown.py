@@ -6,6 +6,7 @@ import nbformat
 import codecs
 import subprocess
 
+import os
 import os.path
 import re
 import glob
@@ -79,6 +80,8 @@ def getIpynbFile():
 
 
 if __name__ == "__main__":
+
+    print(os.getcwd())
 
     root = f"notebooks"
     md_root = f"docs/60_JupyterNotebook"
