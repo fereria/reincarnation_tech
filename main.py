@@ -95,6 +95,12 @@ def define_env(env):
                 with open(path, 'r') as f:
                     lines = f.readlines()
                 f = nbformat.reads("".join(lines), as_version=4)
+                buff = []
+                for i in f.cells:
+                    if i['execution_count']:
+                        # まだ実行していないCellがある場合はスキップ
+                        buff.append(i)
+                f.cells = buff
                 exporter = MarkdownExporter()
                 (body, resources) = exporter.from_notebook_node(f)
                 return body
