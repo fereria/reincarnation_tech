@@ -6,12 +6,11 @@ name: Python application
 on:
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: docker://fereria/mkdocs:latest
 
     steps:
       - name: Send Slack Start
@@ -30,29 +29,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: Set up Python 3.6
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.6
-      - name: Install Pipenv
-        run: |
-          python -m pip install --upgrade pip
-          pip install pipenv
-
-      # 参考: https://intack2.github.io/til-note/Memo/GithubActions/
-      - name: Cache pipenv virtualenv
-        id: cache-pipenv
-        uses: actions/cache@v1
-        with:
-          path: ~/.local/share/virtualenvs
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-
-      - name: Install dependencies
-        if: steps.cache-pipenv.outputs.cache-hit != 'true'
-        run: |
-          pipenv install
-          pipenv install nbconvert
 
       - name: NbConvert
         run: python create_jupyter_markdown.py
