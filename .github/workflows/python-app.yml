@@ -38,7 +38,7 @@ jobs:
           TZ: Asia/Tokyo
         run: |
           python create_mkdocs_pages.py
-          pipenv run mkdocs gh-deploy
+          mkdocs gh-deploy
 
       - name: Send Slack Finish
         env:
