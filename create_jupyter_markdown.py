@@ -46,7 +46,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
                           '-m', 'nbconvert',
                           '--to', 'markdown',
                           '--output', md,
-                          '--template', 'template/jupyter_template.tpl',
+                          '--template', f'{os.getcwd()}/template/jupyter_template.tpl',
                           ipynbFile])
 
     print(f"convert ipynb to markdown -> {md}")

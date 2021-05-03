@@ -8,8 +8,8 @@
 {% endblock markdowncell%}
 
 {% block in_prompt %}
-{% if cell.execution_count > 0%}
-:fa-angle-double-right: {{ cell.execution_count if cell.execution_count else ' ' }}
+{% if cell.execution_count %}
+:fa-angle-double-right: In [{{ cell.execution_count if cell.execution_count else ' ' }}]:
 {% endif %}
 {% endblock in_prompt %}
 
