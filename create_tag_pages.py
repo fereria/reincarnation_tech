@@ -54,8 +54,10 @@ def create_pages(root_path):
     for root, dirs, files in os.walk(root_path):
         for file in files:
             path = os.path.join(root, file).replace("\\", "/")
-            if os.path.splitext(path)[1] == ".md":
-                tags += getTags(path)
+            dirname = path.split("/")[-1]
+            if dirname not in EXCLUSION:
+                if os.path.splitext(path)[1] == ".md":
+                    tags += getTags(path)
 
     tags = list(set(tags))
     # ページを作る
@@ -64,6 +66,7 @@ def create_pages(root_path):
     for tag in tags:
         with open(f"{tagDir}/{tag}.md", 'w') as f:
             f.write(TAG_PAGE.format(tag=tag))
+        print(f"create Tags Page-> {tag}.md")
 
 
 if __name__ == "__main__":
