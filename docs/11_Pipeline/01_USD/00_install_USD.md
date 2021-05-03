@@ -1,5 +1,7 @@
 ---
 title: USDを使ってみる
+tags:
+    - USD
 ---
 # USDを使ってみる
 
@@ -31,10 +33,10 @@ Pythonのバージョンが2と3がありますが、3のほうにはUSDViewが�
 ダウンロードが終わったら、必要なPATHを通します。  
 必要なのは2つ
 
-|変数名|PATH|
-|--|--|
-|PYTHONPATH|<downloadしたフォルダルート>/lib/python|
-|PATH|<downloadしたフォルダルート>/bin <br> <downloadしたフォルダルート>/lib|
+| 変数名     | PATH                                                                   |
+| ---------- | ---------------------------------------------------------------------- |
+| PYTHONPATH | <downloadしたフォルダルート>/lib/python                                |
+| PATH       | <downloadしたフォルダルート>/bin <br> <downloadしたフォルダルート>/lib |
 
 !!! info 
     lib下にPATHが通っていない場合は、

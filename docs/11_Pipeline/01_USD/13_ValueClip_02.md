@@ -1,5 +1,8 @@
 ---
 title: Value Clips を使おう(レイヤー合成編)
+tags:
+    - USD_APISchema
+    - USD
 ---
 
 [前回](./12_ValueClip_01.md) に引き続きValue Clips周りについて。
