@@ -5029,20 +5029,48 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/UsdSkel/usdskel_01__SOLARISでXformからUsdSkeletonを作る.ipynb">usdskel_01__SOLARISでXformからUsdSkeletonを作る.ipynb</a></p>
 <h4 id="44">[44]:<a class="headerlink" href="#44" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">UsdSkel</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">UsdSkel</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;D:/work/usd_py36/usd/char_base.usda&quot;</span><span class="p">)</span>
 
 <span class="n">hipRoot</span> <span class="o">=</span> <span class="s2">&quot;/xbot_fbx/mixamorig_Hips&quot;</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="45">[45]:<a class="headerlink" href="#45" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Skelを作る</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Skelを作る</span>
 <span class="n">skelRoot</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">Root</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/SkelRoot&quot;</span><span class="p">)</span>
 <span class="n">skel</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">Skeleton</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/SkelRoot/Skeleton&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="46">[46]:<a class="headerlink" href="#46" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># XformになってるFbxのJoint階層をUsdSkel.Skeletoににするために</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># XformになってるFbxのJoint階層をUsdSkel.Skeletoににするために</span>
 <span class="c1"># 必要な情報取得</span>
 
 <span class="n">joints</span> <span class="o">=</span> <span class="p">[]</span>
@@ -5063,25 +5091,34 @@
     <span class="n">jointsName</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jointName</span><span class="p">)</span>
     <span class="n">jointTransforms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transformMatrix</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="47">[47]:<a class="headerlink" href="#47" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># SKelに値をセット</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># SKelに値をセット</span>
 <span class="n">skel</span><span class="o">.</span><span class="n">CreateJointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">joints</span><span class="p">)</span>
 <span class="n">skel</span><span class="o">.</span><span class="n">CreateJointNamesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">jointsName</span><span class="p">)</span>
 <span class="n">skel</span><span class="o">.</span><span class="n">CreateRestTransformsAttr</span><span class="p">(</span><span class="n">jointTransforms</span><span class="p">)</span>
 <span class="n">skel</span><span class="o">.</span><span class="n">CreateBindTransformsAttr</span><span class="p">(</span><span class="n">jointTransforms</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/SkelRoot/Skeleton&gt;).GetAttribute(&#39;bindTransforms&#39;)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/SkelRoot/Skeleton&gt;).GetAttribute(&#39;bindTransforms&#39;)
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="48">[48]:<a class="headerlink" href="#48" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;D:/work/usd_py36/usd/createSkel.usda&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;D:/work/usd_py36/usd/createSkel.usda&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   
@@ -5091,7 +5128,7 @@
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-05-03 02:25:33
+      最終更新日: 2021-05-03 02:33:00
     
   </small>
 </div>

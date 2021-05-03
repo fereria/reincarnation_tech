@@ -5097,9 +5097,11 @@
 <p>を調べるにはどうしたらよいのだろう？？？というのが今回の記事の内容です。</p>
 <h3 id="_1">サブレイヤーの場合<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p>コンポジションが「サブレイヤー」によって合成されている場合は、</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimStack</span><span class="p">():</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimStack</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>指定のPrimのPrimStackを取得して、そのPrimを構築するためのSpecを取得する方法つかったり、<br />
 編集対象を取得して切り替える場合は、以前に説明を書いた<a href="../01_editTarget/">EditTargetでLayerを操作する</a>を利用して<br />
 編集レイヤーを取得してTargetを切り替えて編集する...という手を使うことができます。</p>
@@ -5116,7 +5118,46 @@
 <p>サンプルのキッチンセットから、冷蔵庫アセットを選択します。<br />
 このPrimがどのようなファイルによって構成されているのかPCPをつかって調べてみます。</p>
 <p>調べるには、DumpToIndex を使って Index 情報を Dump してみます。</p>
-<p><div class="highlight"><pre><span></span><code>Node 0:
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Node 0:
     Parent node:              NONE
     Type:                     root
     DependencyType:           root
@@ -5156,7 +5197,8 @@ Node 1:
     Contribute specs:         TRUE
     Has specs:                TRUE
     Has symmetry:             FALSE
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 長いので全部は貼りませんが、<br />
 IndexをDumpするとこのような情報が表示されます。</p>
 <p>このPrimIndexは、シーンディスクリプションのうち、ある特定のPrimに主張（Opinion）があるIndexで、<br />
@@ -5210,12 +5252,17 @@ UsdPrimの役割として分離されています。</p>
 <p>という<br />
 あるPrimを構成する要素を確認することができます。</p>
 <p>この構造を視覚化してみます。</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Pcp</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Pcp</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\Kitchen_set\Kitchen_set.usd&quot;</span><span class="p">)</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1&quot;</span><span class="p">)</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimIndex</span><span class="p">()</span>
 <span class="n">index</span><span class="o">.</span><span class="n">DumpToDotGraph</span><span class="p">(</span><span class="s2">&quot;D:/graph.dot&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まず、構成をしらべたいPrimを選択して、PrimIndexを取得します。</p>
 <p>Indexの DumpToDotGraph を使用するとGraphVizのフォーマットで情報を出力できるので、<br />
 それを使用してグラフを表示してみると、</p>
@@ -5223,7 +5270,17 @@ UsdPrimの役割として分離されています。</p>
 <p>このようになります。<br />
 rootNode から複数のコンポジションアークが木構造で表されてるのがわかります。</p>
 <p>コンポジションの構造が木構造になっているので、再帰を使用することで</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="c1"># コンポジションタイプ</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">arcType</span><span class="p">)</span> <span class="c1">#CompositionArc</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="c1">#SdfPath</span>
@@ -5235,6 +5292,7 @@ rootNode から複数のコンポジションアークが木構造で表され�
         <span class="n">traverse</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 <span class="n">traverse</span><span class="p">(</span><span class="n">rootRef</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>Primを構成する各レイヤーを検索することができます。</p>
 <h3 id="_2">レイヤースタックとコンポジション<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>上のDumpした結果をみると、コンポジションの中でも「サブレイヤー」が含まれていないことがわかります。</p>
@@ -5243,7 +5301,20 @@ rootNode から複数のコンポジションアークが木構造で表され�
 <p>まずはこんな感じの構成の usda を用意します。</p>
 <p>subLayerB.usda をサブレイヤーした subLayer.usda を root.usda にサブレイヤー<br />
 そしてsubLayerB.usda で定義しているPrim subLayerBを sublayerReference プリムに Reference します。</p>
-<div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimIndex</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimIndex</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">layerTraverse</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
@@ -5258,9 +5329,17 @@ rootNode から複数のコンポジションアークが木構造で表され�
 
 <span class="n">traverse</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">rootNode</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>PcpNodeRefから LayerStack を使用することで、レイヤーを取得できます。</p>
 <p>実行すると<br />
-<div class="highlight"><pre><span></span><code>&gt;&gt; / -&gt; /
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;&gt; / -&gt; /
 Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/root.usda&#39;)
 Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayer.usda&#39;)
 Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayerB.usda&#39;)
@@ -5268,16 +5347,20 @@ Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayerB.usda
 Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/root.usda&#39;)
 Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayer.usda&#39;)
 Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayerB.usda&#39;)
-</code></pre></div></p>
+</code></pre></div>
+</td></tr></table></p>
 <h2 id="_3">編集ターゲットを取得する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>では、このPcpを使用してあるPrimを構成するレイヤーの１つを取得して<br />
 変更できるようにしてみます。<br />
 基本的には<a href="../01_editTarget/">EditTargetを使用する</a>と同じように、UsdEditTargetを作れればよい<br />
 ので、PcpPrimIndexとPcpNodeRefを使用してEditTargetを取得します。</p>
-<div class="highlight"><pre><span></span><code><span class="n">et</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">EditTarget</span><span class="p">(</span><span class="n">rootRef</span><span class="o">.</span><span class="n">layerStack</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">rootRef</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">et</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">EditTarget</span><span class="p">(</span><span class="n">rootRef</span><span class="o">.</span><span class="n">layerStack</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">rootRef</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetEditTarget</span><span class="p">(</span><span class="n">et</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="err">～～～</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>取得方法はこのとおり。<br />
 PcpNodeRefからlayerStackを取得し、構成するレイヤーを取得します。<br />
 このlayerStackは、サブレイヤーの場合はこのStackにレイヤーが積まれた状態になっています。<br />

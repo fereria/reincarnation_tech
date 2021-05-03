@@ -5063,7 +5063,68 @@
 今回は、PySide で右クリックメニューを作る方法を説明したいと思います。</p>
 <h2 id="_2">コード<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>まずはコード。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -5126,14 +5187,17 @@
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/68b029442fd304786e4d08bc2d338b52.png" /></p>
 <p>実行すると、こんな感じのUIが表示されます。<br />
 以下、詳しい解説。</p>
 <h2 id="signal-slot">Signal-Slotを作る<a class="headerlink" href="#signal-slot" title="Permanent link">¶</a></h2>
 <p>まず、メニューを表示したい場合は、PySideのお約束の <a href="../03_signal_slot_01/">「Signal-Slot」</a> を作成します。  </p>
-<div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">setContextMenuPolicy</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">CustomContextMenu</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">setContextMenuPolicy</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">CustomContextMenu</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">customContextMenuRequested</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listContext</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>それがこの部分になります。<br />
 PySideでは、右クリックで表示されるメニューのことを「コンテキストメニュー」と呼びます。<br />
 今回のように、自分でこのコンテキストメニューを作りたい場合は<br />
@@ -5143,7 +5207,19 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 ので、例えば今回のサンプルのように<br />
 2つのListViewがあった場合に、それぞれ別のメニューを表示出来るようにしたい場合<br />
 それぞれのWidgetsごとにこのContextMenuの設定を行います。  </p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">listContext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">listContext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
 
         <span class="n">menu</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">)</span>
         <span class="n">action_01</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s1">&#39;ほげほげ&#39;</span><span class="p">)</span>
@@ -5157,13 +5233,16 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 
         <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">mapToGlobal</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <p>そんでもって、右クリックを押したときに呼ばれる関数を作成します。<br />
 単純に右クリックに割り当てただけだと、もちろんメニューは表示されません。<br />
 メニュー部分は QWidgets.QMneu クラスを使用します。  </p>
 <h3 id="menu">Menuを追加する<a class="headerlink" href="#menu" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">action_01</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s1">&#39;ほげほげ&#39;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">action_01</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s1">&#39;ほげほげ&#39;</span><span class="p">)</span>
 <span class="n">action_01</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まず、実行させたいWidgetを親にしたMenuを作成します。<br />
 そして、メニューに追加するには addAction(メニュー名) を追加します。<br />
 追加すると、QActionオブジェクトが帰ってくるので<br />
@@ -5173,14 +5252,18 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 <p>このQActionというのは、各種メニュー、ツールボタン、キーボードのショートカット<br />
 等を介していろんなコマンドを呼び出すのに使用するものです。  </p>
 <h3 id="_3">セパレーターを追加する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">menu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">menu</span><span class="o">.</span><span class="n">addSeparator</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table><br />
 Menuの途中に線を入れたい場合は、入れたいところでこのSeparatorを追加します。  </p>
 <h3 id="_4">サブメニューを追加する<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="n">subMenu</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s1">&#39;SubMenu&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="n">subMenu</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s1">&#39;SubMenu&#39;</span><span class="p">)</span>
         <span class="n">action_03</span> <span class="o">=</span> <span class="n">subMenu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s1">&#39;さぶめにゅー1&#39;</span><span class="p">)</span>
         <span class="n">action_03</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subMenu</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>サブメニューを作りたい場合は addMenuコマンドを使用します。<br />
 このコマンドを使用すると、QMenuオブジェクトが返ってきます。<br />
 ので、あとは上と同じくそのMenuオブジェクトに対して addActionでアクションを追加すると<br />
@@ -5189,8 +5272,9 @@ Menuの途中に線を入れたい場合は、入れたいところでこのSepa
 addMenuを追加すればOKです。  </p>
 <h3 id="_5">表示する<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <p>最後に、設定ができたら表示します。</p>
-<p><div class="highlight"><pre><span></span><code>    <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">mapToGlobal</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">mapToGlobal</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table><br />
 表示するには exec_(Menuを表示するPoint) を使用します。  </p>
 <p>customContextMenuRequested のSignalは、現在のマウスポジションを引数で受け取るのですが<br />
 このPointは現在のWidgetsのローカル座標が返ってきてしまいます。<br />
@@ -5201,10 +5285,13 @@ Globalに変換してくれます。<br />
 ので、この関数を使用すればローカル座標だった pos を グローバルに変換して<br />
 正しい位置にメニューを表示することができます。  </p>
 <p>一応、<br />
-<div class="highlight"><pre><span></span><code><span class="c1"># QCursorでカーソルのグローバルポジションを取得する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># QCursorでカーソルのグローバルポジションを取得する</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QCursor</span><span class="p">()</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">exec_</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">pos</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 でも、同じ効果となります。</p>
                 
                   

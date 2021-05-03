@@ -5151,16 +5151,19 @@ USDのGitHubリポジトリからクローンしたプロジェクトをベー�
 </ul>
 <p>この2つのPATHを通します。  </p>
 <p>次に、 pip を使用して<br />
-<div class="highlight"><pre><span></span><code>pip install pyside
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install pyside
 pip install PyOpenGL
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 この2つをインストールします。  </p>
 <p>そして最後に、</p>
 <p><img alt="" src="https://gyazo.com/a10b6ae596f249d65c96d1866c66f697.png" /></p>
 <p>開発者コマンドプロンプト for  VS 2017を開き、<br />
 クローンしたフォルダに移動して</p>
-<p><div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py &quot;&lt;Build先&gt;&quot;
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py &quot;&lt;Build先&gt;&quot;
+</code></pre></div>
+</td></tr></table><br />
 コマンドを実行します。<br />
 <Build先>部分は、自分の好みのパスにします（例 I:/USD 等）  </p>
 <p>あとは1時間ほど待つと</p>
@@ -5190,21 +5193,47 @@ pip install PyOpenGL
 <p>USD/extras/usd　下に、 custom というフォルダを作ります。<br />
 名前は何でもOKです。  </p>
 <p>次に、extras/usd 直下にある CMakeLists.txt に</p>
-<div class="highlight"><pre><span></span><code><span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">examples</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">examples</span><span class="p">)</span>
 <span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">tutorials</span><span class="p">)</span>
 <span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">custom</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/2c4edeed7bd9153523b4b673828a1805.png" /></p>
 <p>add_subdirectory(####) #### は作成したフォルダ名　を追加します。<br />
 そして、customフォルダしたに作成するスキーマの作業フォルダを作り、<br />
 customフォルダ下に CMakeLists.txt を作成して</p>
-<div class="highlight"><pre><span></span><code>add_subdirectory(hogehoge)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>add_subdirectory(hogehoge)
 </code></pre></div>
+</td></tr></table>
 <p>add_subdirectory を追加します。  </p>
 <h4 id="schemausda">schema.usda を作る<a class="headerlink" href="#schemausda" title="Permanent link">¶</a></h4>
 <p>フォルダができたら、次にカスタムスキーマのためのcppを作成する元になる<br />
 schema.usdaファイルを作成します。  </p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @usd/schema.usda@
@@ -5228,6 +5257,7 @@ class &quot;FugaPrim&quot; (
     int intAttr = 0
 }
 </code></pre></div>
+</td></tr></table>
 <p>ここで定義した内容が、カスタムスキーマの構造になります。  </p>
 <p>まず、必須なのが usbLayers = [～～～～]の部分と over "GLOBAL" 部分になります。<br />
 GLOBAL部分は、作成するプラグイン情報の定義を行う所で<br />
@@ -5242,8 +5272,9 @@ libraryName が必須要素になります。<br />
 . の場合は include 直下に、ライブラリ名の Headerが作成されます</p>
 </div>
 <p>準備ができたところで、この schema.usda を cpp と .h ファイルにコンバートします。</p>
-<div class="highlight"><pre><span></span><code>usdGenSchema S:\fav\import_data\github\USD\extras\usd\custom\hogehoge\schema.usda
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdGenSchema S:\fav\import_data\github\USD\extras\usd\custom\hogehoge\schema.usda
 </code></pre></div>
+</td></tr></table>
 <p>コンバートをするときは usdGenSchema に、作成した schema.usda を渡せばOKです。<br />
 Windowsのせいなのか、相対パスでは記述できないのだけ注意が必要です。  </p>
 <p><img alt="" src="https://gyazo.com/b806510f43362a68c1af4e499193c327.png" /></p>
@@ -5261,7 +5292,16 @@ USD/extras/usd/examples/usdSchemaExamples<br />
 </ul>
 <p>この4つをコピペします。<br />
 そして少し書き換えます。</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;Python.h&quot;</span><span class="cp"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;Python.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;pxr/pxr.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;pxr/base/tf/pyModule.h&quot;</span><span class="cp"></span>
 
@@ -5271,12 +5311,23 @@ USD/extras/usd/examples/usdSchemaExamples<br />
 <span class="p">{</span>
     <span class="n">TF_WRAP</span><span class="p">(</span><span class="n">HogehogeFuga</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まずは module.cpp の中の TF_WRAP_MODULEのなかに TF_WRAP( #### ) を作成したい<br />
 プロジェクト名＋クラス名にします。<br />
 今回は hogehoge ライブラリの Fuga クラスだったので HogehogeFuga になります。<br />
 頭の文字は大文字に代わるので注意。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="n">TF_REGISTRY_FUNCTION</span><span class="p">(</span><span class="n">TfScriptModuleLoader</span><span class="p">)</span> <span class="p">{</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">TF_REGISTRY_FUNCTION</span><span class="p">(</span><span class="n">TfScriptModuleLoader</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// List of direct dependencies for this library.</span>
     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">TfToken</span><span class="o">&gt;</span> <span class="n">reqs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">TfToken</span><span class="p">(</span><span class="s">&quot;sdf&quot;</span><span class="p">),</span>
@@ -5287,22 +5338,61 @@ USD/extras/usd/examples/usdSchemaExamples<br />
     <span class="n">TfScriptModuleLoader</span><span class="o">::</span><span class="n">GetInstance</span><span class="p">().</span>
         <span class="n">RegisterLibrary</span><span class="p">(</span><span class="n">TfToken</span><span class="p">(</span><span class="s">&quot;hogehoge&quot;</span><span class="p">),</span> <span class="n">TfToken</span><span class="p">(</span><span class="s">&quot;pxr.Hogehoge&quot;</span><span class="p">),</span> <span class="n">reqs</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 次が moduleDeps.cpp <br />
 このファイルは<br />
 上の TF_REGISTRY_FUNCTION 内にある RegisterLibrary にある TfToken("プロジェクト名"),TfToken("pxr.プロジェクト名") の部分を書き換えます。<br />
 pxr. のあとのプロジェクト名は頭を大文字にします。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">_hogehoge</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">_hogehoge</span>
 <span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Tf</span>
 <span class="n">Tf</span><span class="o">.</span><span class="n">PrepareModule</span><span class="p">(</span><span class="n">_hogehoge</span><span class="p">,</span> <span class="nb">locals</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 <strong>init</strong>.py は、ビルド後にPtyhon側でモジュールをロードしたときに呼び出すためのファイルです。<br />
 これは一番上にある import _#### 部分と、 PrepareModule の１つめの引数を _プロジェクト名に書き換えます。  </p>
 <p>pch.h は書き換えなくてもOKです。  </p>
 <h4 id="cmakeliststxt">CMakeLists.txt を作る<a class="headerlink" href="#cmakeliststxt" title="Permanent link">¶</a></h4>
 <p>次に、作成したcppをビルドをするためのCMakeLists.txt を作成します。<br />
 hoge フォルダ下に CMakeLists.txt を作り、</p>
-<div class="highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span><span class="s">PXR_PACKAGE</span> <span class="s">hogehoge</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span><span class="s">PXR_PACKAGE</span> <span class="s">hogehoge</span><span class="p">)</span>
 
 <span class="nb">pxr_plugin</span><span class="p">(</span><span class="o">${</span><span class="nv">PXR_PACKAGE</span><span class="o">}</span>
     <span class="s">LIBRARIES</span>
@@ -5339,6 +5429,7 @@ hoge フォルダ下に CMakeLists.txt を作り、</p>
         <span class="s">schema.usda:schema.usda</span>
 <span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>中身をこうします。  </p>
 <p>変更点は、1行目の  PXR_PACKAGE 部分（ビルドされた後のlib等の名前がこれになります）<br />
 PUBLIC_CLASSES　と　PYMODULE_CPPFILES　部分で、ここに作成するクラス名（hoge）を入れます。<br />
@@ -5347,8 +5438,9 @@ Python用は、wrapが頭につきます。  </p>
 <p>以上で準備が完了です。</p>
 <p><img alt="" src="https://gyazo.com/73abbebb98072118a03ba5a511195e3d.png" /></p>
 <p>できあがったフォルダがこちら。  </p>
-<p><div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py <span class="s2">&quot;&lt;Build先&gt;&quot;</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py <span class="s2">&quot;&lt;Build先&gt;&quot;</span>
+</code></pre></div>
+</td></tr></table><br />
 準備ができたら、 build_usd.py を使用してビルドします。  </p>
 <h3 id="_4">ビルド結果を確認する<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>特にエラーがなく無事に完了すると、<br />
@@ -5372,25 +5464,37 @@ Python用は、wrapが頭につきます。  </p>
 今は直下にフォルダができます。  </p>
 <h3 id="_5">テストしてみる<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <p>とりあえず出来上がったモジュールをPython側から使ってみます。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span>FugaPrim<span class="w"> </span><span class="s">&quot;Fuga&quot;</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">intAttr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>とりあえず、こんな感じでサンプルのUSDファイルを作ります。  </p>
 <p><img alt="" src="https://gyazo.com/cce0e2c321a11a1dead9824733c620bf.png" /></p>
 <p>UsdViewで開くとこうなります。<br />
 ここの FugaPrimが schema.usda で指定したクラス名になります。  </p>
 <p>できあがったusda ファイルをPythonでロードしてみます。  </p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
 <span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Hogehoge</span>
 
 <span class="n">stg</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;I:/test.usda&quot;</span><span class="p">)</span>
 <span class="n">cp</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/Fuga&quot;</span><span class="p">)</span>
 <span class="n">hoge</span><span class="o">.</span><span class="n">GetIntAttrAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>ビルドが上手くいっていて libにちゃんとPATHが通っていれば<br />
 作成したモジュールが使えるようになっています。<br />
 ので、あとはファイルを開き、FugaPrimのプリムを取得してから<br />

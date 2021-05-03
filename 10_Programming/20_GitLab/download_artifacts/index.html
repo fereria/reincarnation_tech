@@ -4976,7 +4976,16 @@
                 <h1 id="build">Build 結果をダウンロードする<a class="headerlink" href="#build" title="Permanent link">¶</a></h1>
 <p>GitLab-CI のビルド結果をダウンロードしたい場合は、<br />
 artifacts キーを使用する。</p>
-<div class="highlight"><pre><span></span><code>stages:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>stages:
   - test_paths
 
 test_paths:
@@ -4987,6 +4996,7 @@ test_paths:
     paths:
       - download_test.txt
 </code></pre></div>
+</td></tr></table>
 <p>シンプルな構造はこんな感じ。<br />
 artifacts で指定したパス（Git のルート以下のみ指定可）にあるファイルを</p>
 <p><img alt="" src="https://gyazo.com/20b577c43516838842c37dd3176c729f.png" /></p>

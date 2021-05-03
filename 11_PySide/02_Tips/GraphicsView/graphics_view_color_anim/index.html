@@ -5090,7 +5090,108 @@
 GraphicsViewのアイテムの色などをアニメーションさせるやり方を<br />
 調べてみました。  </p>
 <h2 id="_1">コード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -5193,6 +5294,7 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
 
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/c8bb0a55b87ccdea7a22a10c2056f48b.gif" /></p>
 <p>実行すると、こんな感じで白→青にアニメーションするようになります。  </p>
 <h2 id="_2">いくつかはまりポイント<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -5202,26 +5304,30 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
 ネットで調べた限りだと、出てくるプロパティは「Property関数」を使用して<br />
 作っている例しかありませんでした。<br />
 が、PySideの場合なのかはわかりませんが<br />
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">))</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table><br />
 こんな感じで setProperty(プロパティ名、初期値)<br />
 のように指定する必要がありました。  </p>
 <p>そしてこのプロパティを使用する場合は<br />
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="n">プロパティ名</span><span class="p">)</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="n">プロパティ名</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 のようにする必要があります。  </p>
 <h3 id="propertyanimation">PropertyAnimationの引数<a class="headerlink" href="#propertyanimation" title="Permanent link">¶</a></h3>
 <p>アニメーションを行う　PropertyAnimation　ですが、<br />
 引数は　プロパティのあるオブジェクト、プロパティ名　のように指定します。<br />
 が、<br />
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/644bde1386e5bafe9051158f400f13b6.png" /><br />
 これだとエラーになってしまいます。  </p>
 <p>対応方法は、エラーのSupported signaturesを見て分かるとおり<br />
 第二引数は「ByteArray」である必要があるので</p>
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;color&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;color&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>こうすればOKです。  </p>
 <h3 id="graphicsobject">GraphicsObjectを使う<a class="headerlink" href="#graphicsobject" title="Permanent link">¶</a></h3>
 <p>プロパティを使用するためには、QObjectを継承している必要があります。<br />
@@ -5232,15 +5338,17 @@ QObjectを継承している「 <strong>QGraphicsObject</strong> 」を使用す
 <p>PropertyAnimationには「何回ループするか」の設定はあるのですが<br />
 ずっとループしてほしいという設定はありません。<br />
 ので、ずっとループしたい場合は<br />
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 このようにすればとりあえずできます。  </p>
 <p>が、これだと絶対に終了しなくなるので<br />
 今回はBoolでフラグを作って、ダブルクリックで停止と再開をできるようにしています。  </p>
 <h3 id="_4">アニメーションカーブの指定<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>アニメーションカーブは<br />
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">setEasingCurve</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QEasingCurve</span><span class="o">.</span><span class="n">OutCubic</span><span class="p">)</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">setEasingCurve</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QEasingCurve</span><span class="o">.</span><span class="n">OutCubic</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 これで指定できます。  </p>
 <p>今回は    </p>
 <p><img alt="" src="https://gyazo.com/e7cade6c28d215792ea8b5d16fdec7d5.png" />  </p>

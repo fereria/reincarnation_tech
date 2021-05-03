@@ -5037,7 +5037,18 @@
 （親が検索にひっかからないと子は表示されないため）  </p>
 <p>ので、より細かく検索条件を分岐させる必要があります。  </p>
 <p>その分岐をするのが、 QSortFilterProxyModelのVirtual関数、「filterAcceptRow」 です。    </p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestProxyFilter</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QSortFilterProxyModel</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestProxyFilter</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QSortFilterProxyModel</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TestProxyFilter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -5050,6 +5061,7 @@
         <span class="c1"># それ以外は検索で消えてほしくないのでTrueにする</span>
         <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
+</td></tr></table>
 <p>filterAcceptsRow関数は、表示するかどうかを各Itemごとに判定して<br />
 表示するかどうかを bool で返します。</p>
 <p><img alt="" src="https://gyazo.com/c25434f14ff0abdcb10efdc47ae39b17.png" /></p>
@@ -5078,12 +5090,29 @@ ProxyModelでどのような条件がきたとしても「絶対表示する」�
 <p>まずは、Proxy側で setFilterRole に対してRoleを指定します。<br />
 Roleは、 UserRole を使用しても良いし、すでに使っている場合は↓のように + 1 したものを<br />
 別途定義するとかでもOKです。  </p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Proxyで使用するRoleを定義しておく。</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Proxyで使用するRoleを定義しておく。</span>
 <span class="n">PROXY_FILTER_ROLE</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="c1"># どのRoleをProxyの対象にするのかをセットしておく</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">proxymodel</span><span class="o">.</span><span class="n">setFilterRole</span><span class="p">(</span><span class="n">PROXY_FILTER_ROLE</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">):</span>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -5098,6 +5127,7 @@ Roleは、 UserRole を使用しても良いし、すでに使っている場合
             <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
         <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
+</td></tr></table>
 <p>そして、Modelの data で、PROXY_FILTER_ROLEだった場合は、検索対象にしたい<br />
 文字列を返すようにしておくと、ProxyModelでの絞り込み対象の文字列を<br />
 カスタマイズすることができます。  </p>

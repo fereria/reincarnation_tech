@@ -5194,30 +5194,37 @@ GitLabは、自分で作ったリポジトリを自分でフォークするこ�
 <p>以降は、まずフォークしたリポジトリに対してデータをアップしていきます。  </p>
 <h2 id="_2">基本的な操作<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <h3 id="_3">現在のブランチを確認する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>git branch
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git branch
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/1f6cb3de65eb4542ccf75a68280943c1.png" /></p>
 <h3 id="_4">ブランチを作る<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>git checkout -b hogehoge
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git checkout -b hogehoge
 </code></pre></div>
+</td></tr></table>
 <h3 id="_5">ブランチを切り替える<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>git checkout hogehoge
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git checkout hogehoge
 </code></pre></div>
+</td></tr></table>
 <p>checkout ##### で、指定した名前のブランチに切り替わる。<br />
 切り替えるときに、現在のブランチに編集済のファイルが存在する場合は</p>
 <p><img alt="" src="https://gyazo.com/c77c3523202e7e7b9b484803ca04bd8a.png" /></p>
 <p>エラーになってしまうので、コミットするかStash（一時退避場所）に逃がしておく必要がある。</p>
 <h3 id="stash">Stash（一時退避場所）にアップする<a class="headerlink" href="#stash" title="Permanent link">¶</a></h3>
 <p><img alt="" src="https://gyazo.com/95baa15f5178b3907ab2d0d6abd08ee7.png" /></p>
-<div class="highlight"><pre><span></span><code>git stash
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git stash
 </code></pre></div>
+</td></tr></table>
 <p>一時的に逃がす場合はStashに入れる。  </p>
 <h3 id="_6">コミット～プッシュする<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>編集結果をGitのリモートリポジトリにアップする</p>
-<div class="highlight"><pre><span></span><code>git add hogehoge.txt
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git add hogehoge.txt
 git commit -m &quot;hogehoge&quot;
 git push -u origin hogehoge
 </code></pre></div>
+</td></tr></table>
 <p>アップするには、まず add を使用して「変更した」というフラグを立てる。<br />
 そしてアップ対象をセットしたら、 commit で、ローカルリポジトリにコミットする。<br />
 -m で、コメントを記入する。<br />
@@ -5244,20 +5251,25 @@ git push -u origin hogehoge
 ここでコードレビューを行い、問題がなければマージを押します。  </p>
 <h3 id="groupfork">マージされたGroupのリポジトリをFork先にマージする<a class="headerlink" href="#groupfork" title="Permanent link">¶</a></h3>
 <p>Groupに自分のプルリクがマージされたら、その結果を自分のForkしたリポジトリに適応します。  </p>
-<p><div class="highlight"><pre><span></span><code>git checkout master
-</code></pre></div><br />
-まずはmasterブランチに切り替えて  </p>
-<div class="highlight"><pre><span></span><code>git remote add upstream &lt;URL&gt;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git checkout master
 </code></pre></div>
+</td></tr></table><br />
+まずはmasterブランチに切り替えて  </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git remote add upstream &lt;URL&gt;
+</code></pre></div>
+</td></tr></table>
 <p>remoteに、Group側のURLを追加します。  </p>
 <p><img alt="" src="https://gyazo.com/d741139c9500af6a2c7f45612cdf20ca.png" /></p>
 <p>追加すると、Remoteに upstream が追加されます。  </p>
-<p><div class="highlight"><pre><span></span><code>git fetch upstream
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git fetch upstream
+</code></pre></div>
+</td></tr></table><br />
 追加したリモートをFetchして</p>
-<p><div class="highlight"><pre><span></span><code>git pull
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git pull
 git merge upstream/master
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 upstreamのmasterを自分のmasterにマージします。  </p>
 <p><img alt="" src="https://gyazo.com/5577f0c9aa30fb4c277f87d028838a6b.png" /></p>
 <p>変更内容が取り込まれました。<br />
@@ -5266,8 +5278,9 @@ upstreamのmasterを自分のmasterにマージします。  </p>
 <p>コミットやPushは、コマンドでやるとステージするのが面倒だったり<br />
 コメントを日本語で入れるのが面倒だったりするので、<br />
 GUIを使用します。</p>
-<p><div class="highlight"><pre><span></span><code>git gui
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git gui
+</code></pre></div>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/1a9f38cca286d2d43ab0989e02760827.png" /></p>
 <p>addするのとかはコマンドでやるのは地味にめんどくさいけど、GUIならわりと楽。<br />
 UnstagedChangesにファイルがある状態で「Stage Changed」するとコミットできる状態になるので<br />
@@ -5281,20 +5294,25 @@ UnstagedChangesにファイルがある状態で「Stage Changed」するとコ�
 <h2 id="_10">ローカルブランチをマージする<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
 <p>ローカルブランチで、別ブランチを切った状態で作業しているときに<br />
 ほかのブランチをマージしたい場合は、とりこみ先でチェックアウトをして<br />
-<div class="highlight"><pre><span></span><code>git merge 取り込みたいリポジトリ名
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git merge 取り込みたいリポジトリ名
+</code></pre></div>
+</td></tr></table><br />
 これで、リポジトリを現在のブランチにマージすることができる。</p>
 <h2 id="_11">ローカルリポジトリとリモートリポジトリで衝突した場合<a class="headerlink" href="#_11" title="Permanent link">¶</a></h2>
 <p>衝突してしまったら、まずローカル側を逃がしてからPullしてマージする。</p>
-<div class="highlight"><pre><span></span><code>git stash
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git stash
 git stash list
 </code></pre></div>
+</td></tr></table>
 <p>まず、現在の編集情報をStashに逃がす。</p>
-<div class="highlight"><pre><span></span><code>git pull
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git pull
 </code></pre></div>
+</td></tr></table>
 <p>そしてリモートの状態をPullして最新の状態にする</p>
-<p><div class="highlight"><pre><span></span><code>git stash pop
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git stash pop
+</code></pre></div>
+</td></tr></table><br />
 Stashに入れてた内容を元に戻す。<br />
 取り出したらコンフリクトが発生するので、必要に応じてマージしてからコミットする。<br />
 マージ処理はわりと自動でやってくれる。<br />

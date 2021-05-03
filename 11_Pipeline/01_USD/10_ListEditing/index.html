@@ -5024,14 +5024,21 @@
                   <h1>List Editingについて</h1>
                 
                 <p>USDのリファレンスを扱っていると、</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;sphereA&quot; (
     prepend references = @sphere.usda@
 )
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こんなかんじで、 「prepend」という記述があることがあります。<br />
 prependとは「付加する」という意味で、文字通りPrimに対して「Referenceを付加」<br />
 するという記述になります。<br />
@@ -5050,7 +5057,14 @@ prependとは「付加する」という意味で、文字通りPrimに対して
 <p>とあるとおり、コンポジションアークによって複数のレイヤー（usdファイル）を合成したときに<br />
 配列タイプのアトリビュートなどを非破壊に編集するための機能を指します。</p>
 <p>たとえばUSDのリレーションの場合。</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 {
     rel aaa = [&lt;RelA&gt;,&lt;RelB&gt;]
 
@@ -5058,7 +5072,8 @@ prependとは「付加する」という意味で、文字通りPrimに対して
     def &quot;RelB&quot;{}
 
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まずは、ベースでこんな感じの構造があったとします。<br />
 <img alt="" src="https://gyazo.com/5a27d415242ced5e193337774ff709c7.png" /><br />
 HoudiniのSOLARIS上で要素を覗いてみると、<br />
@@ -5068,12 +5083,17 @@ aaのValueには、 test/RelA と test/RelB という２つの要素があるの
 サブレイヤーで合成するシーン側で「 aaa に加える」という処理を<br />
 編集できてほしいわけです。<br />
 そういう場合、</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 {
     prepend rel aaa = [&lt;RelC&gt;]
     def &quot;RelC&quot;{}
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このように prepend とつけることで</p>
 <p><img alt="" src="https://gyazo.com/ebeacff897375086b571d05fa1d9755d.png" /></p>
 <p>サブレイヤーで合成した結果をみると、<br />
@@ -5082,32 +5102,48 @@ prepend で追加した要素が、 aaa の先頭に追加されているのが�
 この List Editing とよばれる「prepend add delete」の効果になります。</p>
 <h3 id="prepend-append-delete">prepend append deleteの違い<a class="headerlink" href="#prepend-append-delete" title="Permanent link">¶</a></h3>
 <p>このListEditingの３つと、それがない場合どういう違いがおきるかというと、</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 {
     rel aaa = [&lt;RelC&gt;]
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まず、何もつかない場合。</p>
 <p><img alt="" src="https://gyazo.com/4f5bfb215111dfebfa4eda0357221152.png" /><br />
 この場合、配列のアトリビュートをそのままあった要素を無視して「上書き」します。</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 {
     append rel aaa = [&lt;RelC&gt;]
 
     def &quot;RelC&quot;{}
 
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 次に、append<br />
 この場合は、<br />
 <img alt="" src="https://gyazo.com/ac007e9309dd31d86353a1e49c73163e.png" /></p>
 <p>配列の最後に要素が追加されます。</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 {
     delete rel aaa = [&lt;RelB&gt;]
 
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 最後にdelete<br />
 <img alt="" src="https://gyazo.com/c68c399e804f723450f8a1dc45da2b3a.png" /><br />
 deleteの場合は、要素が配列から削除されます。</p>
@@ -5116,7 +5152,22 @@ deleteの場合は、要素が配列から削除されます。</p>
 <h2 id="listediting">コンポジションアークでの ListEditing の影響<a class="headerlink" href="#listediting" title="Permanent link">¶</a></h2>
 <p>リレーションの場合は、並び順に影響しましたが<br />
 では、コンポジションアークの場合はどうなるでしょうか。</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 (
     prepend references = &lt;/RefA&gt;
 )
@@ -5132,38 +5183,57 @@ def &quot;RefB&quot;
 {
     string name = &quot;RefB&quot;
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まずはこんなusdaを用意してみます。<br />
 <img alt="" src="https://gyazo.com/505e6f8111835ce8a45afb1dc7a6df38.png" /><br />
 この結果は、 RefAをリファレンスしているので「name」は「RefA」になります。</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 (
     prepend references = &lt;/RefB&gt;
 )
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このレイヤーに対して、 prepend で RefBを追加するレイヤーを作ってみます。</p>
 <p><img alt="" src="https://gyazo.com/60cfb84d259a216a712b61da54d1340a.png" /></p>
 <p>結果、リファレンスの評価の先頭に RefBがきたので、 nameは「RefB」になりました。</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 (
     append references = &lt;/RefB&gt;
 )
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 対して append した場合。<br />
 この場合は、リファレンスの評価順序の末端に RefBが追加されているので</p>
 <p><img alt="" src="https://gyazo.com/054f6a0e4981e9c87543ec30057d747b.png" /></p>
 <p>結果は RefA になります。</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
 (
     delete references = &lt;/RefA&gt;
 )
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 最後に、 deleteの場合。<br />
 この場合は当然のように RefAのリファレンスが消えるので</p>
 <p><img alt="" src="https://gyazo.com/18c6758e2eae0e77da7bd4f11642c310.png" /></p>

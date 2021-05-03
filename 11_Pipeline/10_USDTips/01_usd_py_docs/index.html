@@ -5037,17 +5037,20 @@ Pythonのコードを書く時にはまったりわかりにくいところな�
 こちらにあるのですが、基本C++なのと説明もとても難解なのでわかりにくいです。<br />
 ので、ものすごいざっくりとPythonへの読み替え方を説明。  </p>
 <p>まず、PythonのImportについて。  </p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
 </code></pre></div>
+</td></tr></table>
 <p>USDのモジュールは pxr モジュールで、その中の各種スキーマやツール類を<br />
 インポートします。  </p>
 <p><img alt="" src="https://gyazo.com/a6223e72a11b46a286779c46daea2a19.png" /></p>
 <p>ドキュメントの「Classes」下にライブラリのクラスや各種関数が並んでいるのですが<br />
 Pythonから使用する場合は頭の文字がimportで読み込むモジュール名になります。<br />
 上の画像のよく使う UsdStage の場合は UsdモジュールのStageになります。  </p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>こうなります。  </p>
 <h3 id="_1">スキーマ関係の継承関係について<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p><img alt="" src="https://gyazo.com/6e06ca52d8d759eed3011690a2eeaa75.png" /></p>
@@ -5064,17 +5067,23 @@ UsdGeomXformは、<strong>UsdGeomImageableで UsdXformable</strong> です。<br
 <p>これに対して、末端の UsdGeomXform や UsdLuxDistantLight 、UsdGeomCameraなどのスキーマは<br />
 「ConcreteSchema」と呼ばれるスキーマで<br />
 実際にスキーマとして定義（Define）することができるスキーマになります。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 たとえばXformスキーマを定義したい場合はこうなります。  </p>
 <p>UsdGeom.Xformable.Define(stage,'/hello')  </p>
 <p>これはエラーになります。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="n">xform</span><span class="o">.</span><span class="n">GetXformOpOrderAttr</span><span class="p">()</span> <span class="c1"># Xformableで定義</span>
 <span class="n">xform</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span> <span class="c1"># UsdSchemaBaseで定義</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 当然のことですが、XformはXformableの関数も使えます。<br />
 すべてのスキーマで共通して使用する GetPrimなどのような関数は UsdSchemaBaseに定義されているので<br />
 ドキュメントを見るときは、継承関係を確認します。  </p>
@@ -5089,8 +5098,9 @@ Usdでは文字列を非常に多く扱いますが、きちんと扱わない�
 Pythonの場合はそもそもこのTf.Tokenは存在しませんので<br />
 基本str型として読み替えを行います。  </p>
 <p>では、Python側ではTokenは無関係かというとそんなこともなくて  </p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/0f14eee8eac5c49370c6f0d8e4fd53bf.png" /></p>
 <p>各クラス内にはTokenクラスを取得定義されている関数名などを、文字列で取得することができます。  </p>
 <h3 id="usdattributetype">UsdのAttributeType定義について<a class="headerlink" href="#usdattributetype" title="Permanent link">¶</a></h3>
@@ -5102,8 +5112,9 @@ Pythonの場合はそもそもこのTf.Tokenは存在しませんので<br />
 このSdfValueTypeもPythonとC++では大きく違っていて、クラスメソッドの構成そのものがだいぶ<br />
 違うのでうまくいきません。  </p>
 <p>ではPythonの場合はどうするかというと</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">str_attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;testStr&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">str_attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;testStr&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 Pythonの場合、 Sdf.ValueTypeNames というEnumが存在していて<br />
 これを使用して型を定義します。<br />
 （しかしドキュメントにこの ValueTypeNames はない）  </p>

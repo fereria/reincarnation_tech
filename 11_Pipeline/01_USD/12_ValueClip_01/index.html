@@ -5022,7 +5022,17 @@
 アトリビュートを指定するためのレイヤーです。</p>
 <p><img alt="" src="https://gyazo.com/c2c6abc2935d152d221b15691bca6275.png" /></p>
 <p>まずはシンプルなCube1つがあるレイヤーを作成します。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     endTimeCode = 30
     startTimeCode = 1
@@ -5034,12 +5044,21 @@ def Cube &quot;TestModel&quot; ()
     uniform token[] xformOpOrder = [&quot;xformOp:rotateXYZ&quot;]
 }
 </code></pre></div>
+</td></tr></table>
 <p>ValueClipは、TimeSampling いわゆるアニメーションのための機能なので<br />
 startTimeCode endTimeCode を指定する必要があります。</p>
 <p>今の段階ではなんのアニメーションもありません。<br />
 これに対してValueClipを指定します。</p>
 <p>まずはClipを作ります。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;RotateAnimation&quot;
 {
@@ -5049,14 +5068,20 @@ def &quot;RotateAnimation&quot;
     }
 }
 </code></pre></div>
+</td></tr></table>
 <p>Primに対して、Rotateするアニメーションが指定されています。</p>
 <p>次に、Manifestを作ります。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 def &quot;RotateAnimation&quot;
 {
     float3 xformOp:rotateXYZ
 }
 </code></pre></div>
+</td></tr></table>
 <p>Manifestは、構造的にはClipのレイヤーと構造は同様ですが、<br />
 こちらには実際の値は持たず、「TimeSampleしたいアトリビュートのみ」が<br />
 記載されています。</p>
@@ -5071,7 +5096,25 @@ ClipにTimeSamplingがあるアトリビュートがあったとしても、<br 
 機能します。</p>
 <p>準備はできたので、<br />
 このClipとManifestを使うようにします。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     endTimeCode = 30
     startTimeCode = 1
@@ -5091,6 +5134,7 @@ def Cube &quot;TestModel&quot; (
     uniform token[] xformOpOrder = [&quot;xformOp:rotateXYZ&quot;]
 }
 </code></pre></div>
+</td></tr></table>
 <p>assetPaths というのが、Clipレイヤーのことで、<br />
 primPath とは、Clip内のどのPrimをClipの対象にするか？という情報になります。<br />
 active は、今のステージのフレーム のときに どのClipを使うのか？という情報です。<br />
@@ -5103,7 +5147,15 @@ Clipのレイヤーにあるアニメーションが、TestModelに適応され�
 ですが、これだけだと１つのClipが読み込まれただけなので<br />
 普通にコンポジションしたのとあまり違いがありません。</p>
 <p>次に、複数のClipを使用してみます。</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;RotateAnimation&quot;
 {
@@ -5112,9 +5164,29 @@ def &quot;RotateAnimation&quot;
         30: (0, 0, 359)
     }
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 さっきとは違い、Z軸で回転します。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     endTimeCode = 30
     startTimeCode = 1
@@ -5135,6 +5207,7 @@ def Cube &quot;TestModel&quot; (
     uniform token[] xformOpOrder = [&quot;xformOp:rotateXYZ&quot;]
 }
 </code></pre></div>
+</td></tr></table>
 <p>Clips を書き換えます。<br />
 Z軸回転するレイヤーを assetPaths に追加して、<br />
 active で、今のCurrentTimeのときにどのレイヤーを使うかを指定します。<br />
@@ -5151,7 +5224,27 @@ Clipのレイヤーが表示されているのがわかります。</p>
 <p>上の例だと、参照先のClipは、CurrentTimeとassetPathsのIndexによって紐付けされていました。<br />
 そうではなく、 clip.#.usda のように、CurrentTimeの(あるいはマッピングされた)数字の<br />
 Clipのレイヤーを参照しにいくようにするのがTemplateです。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 <span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n n-Builtins">endTimeCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
 <span class="w">    </span><span class="n n-Builtins">startTimeCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
@@ -5173,6 +5266,7 @@ Clipのレイヤーを参照しにいくようにするのがTemplateです。</
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span>a<span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>Templateの場合でも、ManifestとClipは共通ですが、Clipを読み込むPrimの<br />
 構造が変わります。<br />
 assetPaths で、配列で指定していたところが templateAssetPath に対して<br />

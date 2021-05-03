@@ -5113,10 +5113,13 @@ C++のみで作れる USD の AssetResolver プラグインを作ってみまし
 <p>AssetResolver とは、USD 内のファイルパスの参照先の解決部分を拡張することができる機能です。</p>
 <p><img alt="" src="https://gyazo.com/d306a707c3d9aab0752ce0372c869012.png" /></p>
 <p>たとえば、ある usd ファイルが Char.usda というファイルをリファレンスで参照している場合。</p>
-<div class="highlight"><pre><span></span><code>def &quot;char&quot;{
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;char&quot;{
     def &quot;Char_A&quot;(prepend references = @Char.usda@){}
 }
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じで @@ で囲んだ中に参照先の usda のファイルパスを記述します。<br />
 上の場合、デフォルトの場合相対パスとして扱われ<br />
 test.usda と同じフォルダにある Char.usda をリファレンスでロードしに行くようになります。</p>
@@ -5148,7 +5151,29 @@ PATH解決に対して何かしらの処理をプラグイン内で行って<br 
 <p><img alt="" src="https://gyazo.com/672302d498c96f38989c32ff8461c90e.png" /></p>
 <p>extras 下に plugins を作り、その下に testResolver を作ります。<br />
 そしてその下に CMakerLists.txt と plugInfo.json あとはResolverのcppとヘッダーを作ります。</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span><span class="s">PXR_PACKAGE</span> <span class="s">sampleResolver</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">set</span><span class="p">(</span><span class="s">PXR_PACKAGE</span> <span class="s">sampleResolver</span><span class="p">)</span>
 
 <span class="nb">pxr_plugin</span><span class="p">(</span><span class="o">${</span><span class="nv">PXR_PACKAGE</span><span class="o">}</span>
     <span class="s">LIBRARIES</span>
@@ -5171,9 +5196,26 @@ PATH解決に対して何かしらの処理をプラグイン内で行って<br 
     <span class="s">RESOURCE_FILES</span>
         <span class="s">plugInfo.json</span>
 <span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 cmakeは、他のプラグインサンプルを参考に必要最低限のものを用意します。</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;Plugins&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="nt">&quot;Info&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -5190,7 +5232,8 @@ cmakeは、他のプラグインサンプルを参考に必要最低限のもの
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 plugInfo.jsonは、USDの環境に作成したAssetResolverプラグインをロードさせるためのファイルです。<br />
 Types の部分が、AssetResolverを使用するときのお約束部分で SampleResolver となっているところが<br />
 作成したResolverClassの名前です。</p>
@@ -5205,7 +5248,30 @@ plugInfo.jsonは \&lt;pluginName>/resources/plugInfo.json にリリースされ�
 という意味になります。</p>
 <h3 id="c">C++のコードを書く<a class="headerlink" href="#c" title="Permanent link">¶</a></h3>
 <p>次にC++のヘッダー。</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;pxr/usd/ar/defaultResolver.h&gt;</span><span class="cp"></span>
 
@@ -5229,11 +5295,52 @@ plugInfo.jsonは \&lt;pluginName>/resources/plugInfo.json にリリースされ�
 <span class="p">};</span>
 
 <span class="n">PXR_NAMESPACE_CLOSE_SCOPE</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 カスタムのAssetResolverを作る場合は、ArDefaultResolverを継承したクラスを作成します。<br />
 そして、PATH解決をするための関数 Resolve と ResolveWithAssetInfo ２つを実装します。<br />
 (今回の場合はResolveはなくても良かった)</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;sampleResolver.h&quot;</span><span class="cp"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;sampleResolver.h&quot;</span><span class="cp"></span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;pxr/usd/ar/assetInfo.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;pxr/usd/ar/resolverContext.h&gt;</span><span class="cp"></span>
@@ -5275,6 +5382,7 @@ plugInfo.jsonは \&lt;pluginName>/resources/plugInfo.json にリリースされ�
 
 <span class="n">PXR_NAMESPACE_CLOSE_SCOPE</span>
 </code></pre></div>
+</td></tr></table>
 <p>そして本体。<br />
 今回のサンプルでは、Referenceで参照しているUSDファイルが見つからない場合<br />
 指定のUSDAを無理やり表示させてみる...というサンプルです。</p>
@@ -5294,8 +5402,9 @@ AssetResolverでPATH解決をするときに、AssetInfoを使用 or 書き換�
 <h3 id="_3">ビルドする<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>ここまで準備ができたら USDビルドを実行します。<br />
 VisualStudioのコマンドプロンプトで<br />
-<div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py D:/USD
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py D:/USD
+</code></pre></div>
+</td></tr></table><br />
 ビルドスクリプトを実行すれば、本体のビルドと一緒に作成したプラグインもビルドしてくれます。</p>
 <p><img alt="" src="https://gyazo.com/4be4b274fe480b2bb53e3bc31c48a555.png" /></p>
 <p>dllは、plugin/usd 直下に作成され<br />
@@ -5307,7 +5416,30 @@ USDはこのあたりのユーティリティが色々用意されているよ�
 <p><a href="https://graphics.pixar.com/usd/docs/api/file_utils_8h.html">https://graphics.pixar.com/usd/docs/api/file_utils_8h.html</a><br />
 <a href="https://graphics.pixar.com/usd/docs/api/path_utils_8h.html">https://graphics.pixar.com/usd/docs/api/path_utils_8h.html</a><br />
 os.pathにあるようなものは、FileUtilsか、PathUtilsを使用すれば概ね望んだ結果が得られて</p>
-<p><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">USD_StringUtil</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">USD_StringUtil</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="c1">// StringUtil/PathUtilテスト</span>
 
@@ -5331,23 +5463,38 @@ os.pathにあるようなものは、FileUtilsか、PathUtilsを使用すれば�
     <span class="c1">//env</span>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">TfGetenv</span><span class="p">(</span><span class="s">&quot;PATH&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 別途色々試してみましたが、GlobだったりBasenameだったり、Replace、Join、Upperなどが使えました。</p>
 <p>今回のAssetResolverの場合、使ったのはTfPathExists だけでしたが<br />
 指定の名前をReplaceして、そのPathを返すなど<br />
 PATH関係の処理は概ねこのユーティリティを使えば作れそうなのがわかりました。</p>
 <h3 id="_4">結果<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>ビルドができたら挙動を確認してみます。</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;reference1&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">references</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="si">@./sphere.usda@</span><span class="nn">&lt;/sphere1&gt;</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まずはこんな感じのusdaを作り、</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def Cube &quot;sphere1&quot;
 {
@@ -5356,6 +5503,7 @@ def Cube &quot;sphere1&quot;
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
 </code></pre></div>
+</td></tr></table>
 <p>あえて sphere.usda は作らず cube.usda を作っておきます。</p>
 <p>普通の場合は、ファイルが見つからずにエラーになってしまいますが、<br />
 <img alt="" src="https://gyazo.com/d2cdbe142faa269510125c58ae2a32d5.png" /><br />

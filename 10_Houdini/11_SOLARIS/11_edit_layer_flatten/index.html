@@ -5045,7 +5045,26 @@ CubeとSphereがそれぞれあるような状態。<br />
 両方消えてしまいました。</p>
 <p>これは、USDのレイヤーそれぞれは非破壊でオーサリングした情報を持っています。<br />
 で、この Prune3 側のレイヤーがどうなってるかというと</p>
-<div class="highlight"><pre><span></span><code>#sdf 1.4.32
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#sdf 1.4.32
 (
     framesPerSecond = 24
     metersPerUnit = 1
@@ -5066,6 +5085,7 @@ over &quot;sphere1&quot;
     token visibility = &quot;invisible&quot;
 }
 </code></pre></div>
+</td></tr></table>
 <p>Pruneで消したPrimには「visibility」が invisible （非表示）が指定されています。<br />
 で、この invisible したものがつぎのマージノードで<br />
 サブレイヤーされてしまうので<br />

@@ -4970,9 +4970,11 @@
                   <h1>スクリプト関係の問題が起きたときの対処法</h1>
                 
                 <h2 id="pyside2-maya-mainwindow">PySide2 で Maya の MainWindow を取得したい<a class="headerlink" href="#pyside2-maya-mainwindow" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">Qt</span> <span class="kn">import</span> <span class="n">QtCompat</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">Qt</span> <span class="kn">import</span> <span class="n">QtCompat</span>
 <span class="n">QtCompat</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="err">～～～～～～</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>shiboken2 だと <mark>You need a shiboken-based type.</mark> エラーが出てしまう場合は<br />
 QtCompat を使用すれば OK。</p>
 <ul>

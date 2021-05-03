@@ -5008,20 +5008,29 @@
 結果、スニペット登録＋その内容を ShortCut に登録するという対応にしてみた。</p>
 <h3 id="_3">スニペット<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>まず、ユーザースニペットで改行を追加する。</p>
-<div class="highlight"><pre><span></span><code>&quot;br_line&quot;: {
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;br_line&quot;: {
     &quot;prefix&quot;: &quot;br_line&quot;,
     &quot;body&quot;: &quot;  \n&quot;
   }
 </code></pre></div>
+</td></tr></table>
 <p>markdown 内に、↑ を追加する。<br />
 これで、 br_line といれれば改行になる。<br />
 しかし、そもそもいちいち半角にしなければいけないのが面倒なので、SC で呼び出せるようにする。</p>
-<div class="highlight"><pre><span></span><code>  {
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  {
     &quot;key&quot;: &quot;ctrl+m&quot;,
     &quot;command&quot;: &quot;editor.action.insertSnippet&quot;,
     &quot;args&quot;: { &quot;langId&quot;: &quot;markdown&quot;, &quot;name&quot;: &quot;br_line&quot; }
   }
 </code></pre></div>
+</td></tr></table>
 <p>keybindings.json 内に、↑ を追加する。<br />
 コマンドは insertSnippets、スニペット名は引数で指定をする。</p>
 <p>この設定をすると、ショートカットを押すときにスニペットが表示される<br />

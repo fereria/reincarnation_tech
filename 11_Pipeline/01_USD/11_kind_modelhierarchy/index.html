@@ -5156,12 +5156,17 @@
 </blockquote>
 <p>公式の用語集をみると、Prim単位で指定することができるメタデータの一種とのことです。<br />
 Kind 自体はシンプルな文字列（Token）で表されています。</p>
-<div class="highlight"><pre><span></span><code>def Xform &quot;SamplePrim&quot; (
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def Xform &quot;SamplePrim&quot; (
     kind = &quot;component&quot;
 )
 {
 }
 </code></pre></div>
+</td></tr></table>
 <p>Kindを指定すると、このようになります。<br />
 Kind は他のメタデータと同じように Prim に対して指定することができます。<br />
 この Kind は、後述する <strong>ModelHierarchy</strong> という概念に応じて指定の役割を持っていて<br />
@@ -5280,7 +5285,26 @@ Assemblyの中でも、背景とキャラとプロップとで別の種類を指
 拡張するには、USDのPluginを作成します。</p>
 <h3 id="plugin">Pluginを作る<a class="headerlink" href="#plugin" title="Permanent link">¶</a></h3>
 <p>作るには、Pluginを作成します。</p>
-<p><div class="highlight"><pre><span></span><code>{
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{
   &quot;Plugins&quot;: [
     {
       &quot;Info&quot;: {
@@ -5300,7 +5324,8 @@ Assemblyの中でも、背景とキャラとプロップとで別の種類を指
     }
   ]
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 内容はHelpの内容を持ってきたものです。<br />
 このjsonを plugInfo.json として保存して、<br />
 USD以下 <strong>plugin/usd/####/resources/plugInfo.json</strong> に保存します。</p>
@@ -5312,17 +5337,21 @@ kindを追加しています。</p>
 した kind を追加しています。</p>
 <p>プラグイン作成は以上で完了です。<br />
 実際に動いているか確認してみます。</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
 <span class="n">api</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ModelAPI</span><span class="p">(</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">prim</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">SetKind</span><span class="p">(</span><span class="s1">&#39;chargroup&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 試しにusdviewで開いたモデルに、作成したKindをセットします。</p>
 <p><img alt="" src="https://gyazo.com/341b1b7995beea7768286c64b517cd12.png" /></p>
 <p>セットできました。<br />
 ただし、このセットはPluginで追加していなくても追加が可能です。</p>
 <p>ですが、<br />
-<div class="highlight"><pre><span></span><code><span class="n">usdviewApi</span><span class="o">.</span><span class="n">prim</span><span class="o">.</span><span class="n">IsGroup</span><span class="p">()</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">usdviewApi</span><span class="o">.</span><span class="n">prim</span><span class="o">.</span><span class="n">IsGroup</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table><br />
 セットしたPrimに対して IsGroup()を実行すると、 Trueが帰ってくるようになります。<br />
 これは、ベースとなる kind に assembly を指定しているので<br />
 group に属する assembly に属しているため、IsGroupでTrueになっています。</p>

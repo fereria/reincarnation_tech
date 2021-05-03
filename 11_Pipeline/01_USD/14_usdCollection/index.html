@@ -5074,27 +5074,46 @@ Namespaceに関係なくオブジェクトをコントロールできるよう�
 <p><img alt="" src="https://gyazo.com/3448d8a4f77c8f03839fbc65ba82abd6.png" /></p>
 <p><img alt="" src="https://gyazo.com/14ee2d0a9604441a41f8292c981fb119.png" /></p>
 <p>このようなシンプルなレイヤーを用意します。</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Collectionを作る</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Collectionを作る</span>
 <span class="n">collection</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/collectionSample&quot;</span><span class="p">)</span>
 <span class="n">collectionName</span> <span class="o">=</span> <span class="s2">&quot;sampleCollection&quot;</span>
 <span class="n">api</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span><span class="n">collectionName</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 そして、Collectionを作成したいPrimに<br />
 UsdCollectionAPIを利用してCollectionを適応します。</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;collectionSample&quot; (
     prepend apiSchemas = [&quot;CollectionAPI:sampleCollection&quot;]
 )
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 適応できました。<br />
 ですが、これだけだとまだからのSetを用意したにすぎないので<br />
 Primを指定してみます。</p>
-<div class="highlight"><pre><span></span><code>api.IncludePath(Sdf.Path(&quot;/World/SamplePrims/Cube&quot;))
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>api.IncludePath(Sdf.Path(&quot;/World/SamplePrims/Cube&quot;))
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+</td></tr></table>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;collectionSample&quot; (
     prepend apiSchemas = [&quot;CollectionAPI:sampleCollection&quot;]
@@ -5102,7 +5121,8 @@ def &quot;collectionSample&quot; (
 {
     prepend rel collection:sampleCollection:includes = &lt;/World/SamplePrims/Cube&gt;
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 追加されました。<br />
 指定したPrimへのリレーションに、IncludePathが追加されたのがわかります。</p>
 <p>Collectionを追加すると、追加したPrimに対して「collection」のNamespace以下に<br />
@@ -5113,8 +5133,9 @@ def &quot;collectionSample&quot; (
 １つのPrimに対して複数のCollectionが追加できるようになるわけですね。</p>
 <h2 id="prim">Primの取得<a class="headerlink" href="#prim" title="Permanent link">¶</a></h2>
 <h3 id="collectionprim">Collectionに入れたPrimの取得方法<a class="headerlink" href="#collectionprim" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">GetIncludesRel</span><span class="p">()</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">())</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">GetIncludesRel</span><span class="p">()</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">())</span>
+</code></pre></div>
+</td></tr></table><br />
 IncludePathの指定は、リレーションで定義されているので、<br />
 CollectionAPIのGetIncludesRelでリレーションを取得すると<br />
 かんたんにCollectionに含まれているPrimを取得することができます。</p>
@@ -5126,12 +5147,15 @@ CollectionAPIのGetIncludesRelでリレーションを取得すると<br />
 <p>そうした時はExcludePath（除外指定）と、ExpansionRule（どのように展開するか）<br />
 を指定した上で、ComputeMembershipQueryを使うことで<br />
 Collectionに含まれるPrimを取得することができます。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">api</span><span class="o">.</span><span class="n">ExcludePath</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/World/SamplePrims/Cube/ExcludeCube&quot;</span><span class="p">))</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">api</span><span class="o">.</span><span class="n">ExcludePath</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/World/SamplePrims/Cube/ExcludeCube&quot;</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table><br />
 まずは、サンプルのレイヤーのうち、Cube/ExcludeCube以下を除外するようにします。</p>
-<div class="highlight"><pre><span></span><code><span class="n">expansionRule</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">CreateExpansionRuleAttr</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">expansionRule</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">CreateExpansionRuleAttr</span><span class="p">()</span>
 <span class="n">expansionRule</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;expandPrims&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>そしてExpansionRuleを指定します。<br />
 これが、指定Prim以下の子すべてなのかだったり、そのPrimのみ指定だったりといった<br />
 選択をどのように展開するかを指定するアトリビュートになります。</p>
@@ -5159,32 +5183,40 @@ Collectionに含まれるPrimを取得することができます。</p>
 </table>
 <p>選択肢はこの３つです。</p>
 <p>次に、このCollectionを利用してPrimを取得します。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">query</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ComputeMembershipQuery</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">query</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ComputeMembershipQuery</span><span class="p">()</span>
 <span class="c1"># expandPrimsで指定されてるので、IncludePath以下にありExcludeに含まれないPrimがリストされる</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">ComputeIncludedObjects</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="n">stage</span><span class="p">))</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 apiからComputeMembershipQueryで、検査くるためのQueryを取得します。<br />
 そして、それを利用してComputeIncludeObjectsを実行すると<br />
 引数で指定したstage内のうち、Collectionに該当するPrimを取得できます。</p>
-<p><div class="highlight"><pre><span></span><code>[Usd.Prim(&lt;/World/SamplePrims/Cube&gt;), Usd.Prim(&lt;/World/SamplePrims/Cube/pCube1&gt;), Usd.Prim(&lt;/World/SamplePrims/Cube/pCube3&gt;)]
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[Usd.Prim(&lt;/World/SamplePrims/Cube&gt;), Usd.Prim(&lt;/World/SamplePrims/Cube/pCube1&gt;), Usd.Prim(&lt;/World/SamplePrims/Cube/pCube3&gt;)]
+</code></pre></div>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/fe048cc982d07021c48b918b820adb89.png" /></p>
 <p>結果、ExcludePathで指定したExcludeCubeとpCube2のPrimは除外され<br />
 それ以外の結果が取得できました。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">expansionRule</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;explicitOnly&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">expansionRule</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;explicitOnly&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 これを explicitOnlyに変えると、<br />
-<div class="highlight"><pre><span></span><code>[Usd.Prim(&lt;/World/SamplePrims/Cube&gt;)]
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[Usd.Prim(&lt;/World/SamplePrims/Cube&gt;)]
+</code></pre></div>
+</td></tr></table><br />
 子以下は含まれなくなりました。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">expansionRule</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;expandPrimsAndProperties&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">expansionRule</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;expandPrimsAndProperties&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 最後に、Propertiesまで展開するとどうなるかというと<br />
 <img alt="" src="https://gyazo.com/3fa9e7e8a4be40f01fd55ed5c0ef2b76.png" /><br />
 Attributeまでふくめてすべて取得することができました。</p>
 <p>このExpansionRuleは、MembershipQueryの<br />
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">GetAsPathExpansionRuleMap</span><span class="p">())</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">GetAsPathExpansionRuleMap</span><span class="p">())</span>
+</code></pre></div>
+</td></tr></table><br />
 ExpansionRuleMapで確認することができて、このRuleMapに従って<br />
 ステージ内のPrimを「コレクション」することができます。</p>
 <h2 id="pathcollection">PathがCollectionに含まれるかどうか調べる<a class="headerlink" href="#pathcollection" title="Permanent link">¶</a></h2>
@@ -5192,11 +5224,15 @@ ExpansionRuleMapで確認することができて、このRuleMapに従って<br
 あるSdfPathがCollectionに含まれているかを知りたい...といったケースも<br />
 発生するかとおもいます。</p>
 <p>その時は、ComputeMembershipQueryを利用して<br />
-<div class="highlight"><pre><span></span><code># 引数で指定したSdfPathがCollectionに含まれるか
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># 引数で指定したSdfPathがCollectionに含まれるか
 print(query.IsPathIncluded(&quot;/World/SamplePrims/Cube/pCube1&quot;))
 # 除外されたPrimの場合
 print(query.IsPathIncluded(&quot;/World/SamplePrims/Cube/ExcludeCube/pCube2&quot;))
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このようにPathが含まれるかをチェックすることができます。</p>
 <h2 id="houdini">Houdini<a class="headerlink" href="#houdini" title="Permanent link">¶</a></h2>
 <p>コードとusdaだけだとわかりにくいので、同様のことをHoudiniSOLARISで試してみます。</p>

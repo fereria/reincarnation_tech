@@ -5069,7 +5069,15 @@ Brushes や Cameras 等が、ノードの種類にあたり<br />
 <p>Blender の Data-Block は、 <strong>bpy.types.BlendData</strong> というクラスを継承した<br />
 各 Data-BLock のクラスオブジェクトを利用してアクセスする。<br />
 自分の取得したい Data-Block の BlendData オブジェクトを取得する場合は、</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">bpy</span>
 <span class="kn">from</span> <span class="nn">mathutils</span> <span class="kn">import</span> <span class="o">*</span>
@@ -5079,6 +5087,7 @@ Brushes や Cameras 等が、ノードの種類にあたり<br />
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>bpy.data.&lt;取得したい Data-Block&gt;　このように書く。<br />
 タイプ名は<br />
 <a href="https://docs.blender.org/api/blender2.8/bpy.types.BlendData.html">https://docs.blender.org/api/blender2.8/bpy.types.BlendData.html</a><br />
@@ -5108,7 +5117,26 @@ Data-Block の数分クラスがあるので<br />
 <p>Mesh アクセスは<br />
 <a href="https://docs.blender.org/api/blender2.8/bpy.types.Mesh.html#bpy.types.Mesh">https://docs.blender.org/api/blender2.8/bpy.types.Mesh.html#bpy.types.Mesh</a><br />
 ここにあるので、実際にアクセスしてみる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">bpy</span>
 <span class="kn">from</span> <span class="nn">mathutils</span> <span class="kn">import</span> <span class="o">*</span>
@@ -5129,6 +5157,7 @@ Data-Block の数分クラスがあるので<br />
     <span class="c1"># Edge取得</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="_2">参考<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://qiita.com/kenyoshi17/items/b93bbba6451e3c6017e5">https://qiita.com/kenyoshi17/items/b93bbba6451e3c6017e5</a></li>

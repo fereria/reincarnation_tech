@@ -4975,7 +4975,20 @@
                 
                 <h1 id="_1">クラスのインスタンス変数とクラス変数<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>PythonのクラスにListを使ったときに地味にはまったこと。</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
     <span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">Test</span><span class="p">()</span>
@@ -4989,14 +5002,27 @@
 <span class="c1"># 参照メモリがオブジェクトが違っても同じ</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まず、こんな感じにPythonのクラスのメンバ変数に「List」を定義する。<br />
 そうすると  </p>
 <p><img alt="" src="https://gyazo.com/771806fa0672becd645ed707a2f0ff49.png" /></p>
 <p>aのほうにしかappendしていないのに、bのほうのオブジェクトの変数にも<br />
 数値が入ってしまっている。<br />
 確認してみると、aオブジェクトもbオブジェクトも同じメモリを参照してる様子。  </p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestB</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestB</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -5010,6 +5036,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <p>このように、selfで初期化している場合は違うIDになりました。  </p>
 <p>今までは、上の書き方も下の書き方も同じものだと思って考えてたのですが、<br />
 この2つはクラスの変数という意味で似たものですが全然違うものなのを今日知りました。  </p>
@@ -5020,11 +5047,15 @@
 クラス内では、 self.value のように書くのは（当たり前だが） self = インスタンス<br />
 という意味で、自信のインスタンスのvalueを参照...という意味になる。  </p>
 <p>なので、</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestC</span><span class="p">:</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestC</span><span class="p">:</span>
     <span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このような書き方をしていると、クラス変数をインスタンス変数で上書きしてしまうので<br />
 あまり意味がなくなってしまう。<br />
 ので、インスタンス変数として使いたいなら <strong>init</strong> 内で初期化すべきだし<br />

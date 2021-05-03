@@ -5104,7 +5104,53 @@
 注意しないと行けないのは「RNA」プロパティと呼ばれる構造と<br />
 UIにウィジェットというかパーツを追加する方法の2つです。  </p>
 <p>まずコード。</p>
-<div class="highlight"><pre><span></span><code><span class="n">TW</span>         <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">TextWrapper</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">TW</span>         <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">TextWrapper</span><span class="p">()</span>
 <span class="n">TEXT_WIDTH</span> <span class="o">=</span> <span class="mi">3</span>
 
 <span class="k">class</span> <span class="nc">MyCustomNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
@@ -5152,6 +5198,7 @@ UIにウィジェットというかパーツを追加する方法の2つです�
         <span class="c1"># 別に作った機能を呼び出す</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="s2">&quot;node.generic_note_from_clipboard&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;From clipboard&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="rna">RNAプロパティについて<a class="headerlink" href="#rna" title="Permanent link">¶</a></h2>
 <p>Blenderの各種プロパティを実装するときに使用するのが「RNAプロパティ」と呼ばれる物。<br />
 これは、Blenderのデータ構造を拡張するための構造体で、DTO(Data Transfer Object)とのこと。<br />
@@ -5160,10 +5207,13 @@ UIにウィジェットというかパーツを追加する方法の2つです�
 MayaのAddAttrとは違って、同種のノードタイプに一律でプロパティを拡張することができます。  </p>
 <p>既存のオブジェクトに対して設定するように、自分で作成したカスタムノードに対してプロパティを<br />
 作りたい場合は、このRNAプロパティの追加をします。  </p>
-<p><div class="highlight"><pre><span></span><code>    <span class="n">text</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">text</span> <span class="o">=</span> <span class="n">StringProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
                           <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                           <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Text to show, if set will overide file&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 プロパティはクラスの変数として指定してあげます。<br />
 <a href="https://docs.blender.org/api/blender2.8/bpy.types.Property.html#bpy.types.Property">プロパティ関係はこのHelp参照</a></p>
 <h2 id="_2">関数をオーバーライドする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -5184,7 +5234,15 @@ MayaのAddAttrとは違って、同種のノードタイプに一律でプロパ
 <p>Blenderのクラスは、「draw_XXXX」になっているものがUIへの描画になっている模様。  </p>
 <h3 id="draw_buttons">draw_buttons<a class="headerlink" href="#draw_buttons" title="Permanent link">¶</a></h3>
 <p>まず、draw_buttonsがノード自体に各種ウィジェットを実装するための関数です。  </p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">draw_buttons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">draw_buttons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
         <span class="c1"># ノード内の設定項目を追加する</span>
         <span class="c1"># layout.label(text=self.text)</span>
         <span class="n">col</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">align</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -5194,6 +5252,7 @@ MayaのAddAttrとは違って、同種のノードタイプに一律でプロパ
             <span class="k">if</span> <span class="n">l</span><span class="p">:</span>
                 <span class="n">col</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">l</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>BlenderでUIにオブジェクトを追加したい場合は<br />
 <strong>追加したいレイアウト.追加するオブジェクト（option）</strong><br />
 このように指定します。<br />
@@ -5206,19 +5265,39 @@ label自体は、改行コードが使えないため<br />
 <p><img alt="" src="https://gyazo.com/2aada53efeab9471bbf15f2fc7753a96.png" /></p>
 <p>draw_buttons_extは、「N」を押したときにウィンドウの右側に表示されるトグルスライドバーの<br />
 なかのUIパーツを追加するための関数です。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">draw_buttons_ext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">draw_buttons_ext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
 
         <span class="n">layout</span><span class="o">.</span><span class="n">prop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Text&quot;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s2">&quot;GRIP&quot;</span><span class="p">)</span>
         <span class="c1"># 別に作った機能を呼び出す</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="s2">&quot;node.generic_note_from_clipboard&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;From clipboard&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>この「prop」と「operator」は特殊で、<br />
 propはRNAプロパティにつなげたUIを表示するときに使用します。<br />
 今回の場合、テキストを保存するためのプロパティ「text」を変更できるようにしたいので<br />
 propの第二引数でtextを指定しています。  </p>
 <p>もう1つのoperatorは、ボタンを追加するコマンドで、<br />
 実行するコマンドは、</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">pasteNoteFromClipboard</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">pasteNoteFromClipboard</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update note text from clipboard</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5235,6 +5314,7 @@ propの第二引数でtextを指定しています。  </p>
         <span class="n">node</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
         <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
 </code></pre></div>
+</td></tr></table>
 <p>このようなOperatorクラスを継承したクラスを作成し、その中のexecutre内に<br />
 ボタンを押したときの動作を実装します。  </p>
 <p>この関数と紐付けをするのが <mark>bl_idname</mark> で、 <strong>node.generic_note_from_clipboard</strong><br />

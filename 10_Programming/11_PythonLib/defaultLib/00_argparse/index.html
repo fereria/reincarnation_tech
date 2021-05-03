@@ -4972,7 +4972,39 @@
                   <h1>Pythonで引数をパースする</h1>
                 
                 <p>基本的な argparse の使い方をメモ。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
@@ -5006,8 +5038,21 @@
 <span class="nb">print</span> <span class="n">args</span><span class="o">.</span><span class="n">y</span>
 <span class="nb">print</span> <span class="n">args</span><span class="o">.</span><span class="n">add</span>
 </code></pre></div>
+</td></tr></table>
 <p>このスクリプトを hogehoge.py –h のようにすると</p>
-<div class="highlight"><pre><span></span><code>positional arguments:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>positional arguments:
   name                  hello world!!
 
 optional arguments:
@@ -5021,6 +5066,7 @@ optional arguments:
   -y
   --add ADD
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じで Help を出すことが出来ます。<br />
 引数で help=””設定をすると、この help にコメントが表示されます。</p>
 <p>パース結果は、 Namespace() クラスのオブジェクトとして帰ってきます。<br />

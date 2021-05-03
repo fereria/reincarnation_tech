@@ -5039,11 +5039,13 @@ SSH 化してみた。<br />
 <h2 id="ssh">SSH の認証用の鍵ファイルを作る<a class="headerlink" href="#ssh" title="Permanent link">¶</a></h2>
 <p>まずは、認証用の鍵を作成する。</p>
 <p>コマンドプロンプトで、</p>
-<div class="highlight"><pre><span></span><code>C:\Users\&lt;user_name&gt;\.ssh
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>C:\Users\&lt;user_name&gt;\.ssh
 </code></pre></div>
+</td></tr></table>
 <p>に移動して</p>
-<div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -C &quot;メールアドレス&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -C &quot;メールアドレス&quot;
 </code></pre></div>
+</td></tr></table>
 <p>同フォルダに鍵を作成。<br />
 .ssh フォルダ下に id_rsa.pub ファイルが作成されているので、中に書かれているテキストを<br />
 GitHub に登録する。</p>
@@ -5055,21 +5057,27 @@ Title には　 MyPC 　のようなにのキーなのかを入力し、<br />
 Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する。</p>
 <h2 id="config">config 作成<a class="headerlink" href="#config" title="Permanent link">¶</a></h2>
 <p>Git で、ssh を使用して接続するときのオプションを config ファイルに記入する。</p>
-<div class="highlight"><pre><span></span><code>C:\Users\&lt;user_name&gt;\.ssh
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>C:\Users\&lt;user_name&gt;\.ssh
 </code></pre></div>
+</td></tr></table>
 <p>下に、config ファイル（拡張子なしのテキスト）を作成。<br />
 その中に</p>
-<div class="highlight"><pre><span></span><code>Host github.com
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Host github.com
   User git
   Hostname github.com
   IdentityFile &quot;c:/Users/&lt;user_name&gt;/.ssh/id_rsa&quot;
 </code></pre></div>
+</td></tr></table>
 <p>このように書く。<br />
 こうしておくと、github.com で SSH 接続する場合、<br />
 この設定に書かれている id_rsa などの設定で接続できるようになる。<br />
 続いて、この config が Git で使われるようにシンボリックリンクを作成する。</p>
-<div class="highlight"><pre><span></span><code>mklink &quot;C:\Program Files\Git\etc\ssh\ssh_config&quot; &quot;C:\Users\&lt;user_name&gt;\.ssh\config&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>mklink &quot;C:\Program Files\Git\etc\ssh\ssh_config&quot; &quot;C:\Users\&lt;user_name&gt;\.ssh\config&quot;
 </code></pre></div>
+</td></tr></table>
 <p>ssh_config がすでにある場合は、削除する。<br />
 リンクが張られていない場合は、 .ssh 下に config を作成していても<br />
 そもそも使われていなかった。（ハマりポイント１）</p>
@@ -5078,26 +5086,30 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 うーむ、なんだろうと調べていったら<br />
 そもそも ssh-add でキーを登録していないと NG だった。<br />
 が、</p>
-<div class="highlight"><pre><span></span><code>Error connecting to agent: No such file or directory
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Error connecting to agent: No such file or directory
 </code></pre></div>
+</td></tr></table>
 <p>になってしまって、キーを追加することすらできなかった。（ハマりポイント２）<br />
 このエラーが出るときは、Windows のサービスでエージェントが起動していないのが原因だった。</p>
 <p><img alt="" src="https://gyazo.com/d2bfa27ea8e6c065adbc2df15f74e820.png" /></p>
 <p>Windows のサービスから OpenSSH Authentication Agent のプロパティを開いて<br />
 開始＋スタートアップからも起動できるようにしておく。</p>
 <p>ここまでやってから、接続できるかテストしてみる。</p>
-<div class="highlight"><pre><span></span><code>ssh -T git@github.com
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh -T git@github.com
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じで実行して、うまくいっていれば</p>
-<div class="highlight"><pre><span></span><code>Hi fereria! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Hi fereria! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
 </code></pre></div>
+</td></tr></table>
 <p>GitHub のアカウント名（fereria）とう表示がされる。<br />
 ログイン時の名前は、<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#114;&#101;&#114;&#105;&#97;&#64;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">&#102;&#101;&#114;&#101;&#114;&#105;&#97;&#64;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;</a> のようにしたくなるが、<br />
 この部分のアカウント名は git@で固定なので注意が必要。</p>
 <p>接続はできたので、SSH 鍵の登録はおそらく問題はなさそう。<br />
 うまくいかない場合は</p>
-<div class="highlight"><pre><span></span><code>ssh -vT git@github.com
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh -vT git@github.com
 </code></pre></div>
+</td></tr></table>
 <p>を実行すると、接続のテストを実行することができる。</p>
 <p><img alt="" src="https://gyazo.com/904444b478e9960f94afecc151f1cbb2.png" /></p>
 <p>public key の読み先が正しいかなども、確認することができる。</p>
@@ -5107,8 +5119,9 @@ Key に、id_rsa.pub の中身をコピペして、Add SSH Key を追加する�
 <p>どうやら、Git で上で指定した Windows の OpenSSH ではないものが使用されている場合<br />
 そもそも設定した SSH 設定が使われていないので接続できないようだった。<br />
 ので、Git の設定を変更して、Windows の OpenSSH を使用するようにする。</p>
-<div class="highlight"><pre><span></span><code>git config --global core.sshCommand &quot;C:/Windows/System32/OpenSSH/ssh.exe&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git config --global core.sshCommand &quot;C:/Windows/System32/OpenSSH/ssh.exe&quot;
 </code></pre></div>
+</td></tr></table>
 <p>この設定をしたら、無事接続できた。</p>
 <h2 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>ssh 接続でエラーがでてつながらない -&gt; サービスが起動してない場合、フォルダがない扱いになる</p>

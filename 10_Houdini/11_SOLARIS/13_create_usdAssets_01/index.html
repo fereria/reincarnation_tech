@@ -5393,7 +5393,15 @@ Kitchen_setというアセット（カテゴリ的にはこれはBGに当たる�
 <p>最近ずっと調べていた ConfigureLayerノードを作り</p>
 <p><img alt="" src="https://gyazo.com/ccc8c77b6b44e05300fdff2345bec17e.png" /></p>
 <p>Default Primitive を、ルート以下につくった アセット名のPrimに指定します。</p>
-<p><div class="highlight"><pre><span></span><code>#sdf 1.4.32
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#sdf 1.4.32
 (
     defaultPrim = &quot;Pig&quot;
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer 
@@ -5402,7 +5410,8 @@ Kitchen_setというアセット（カテゴリ的にはこれはBGに当たる�
     metersPerUnit = 1
     timeCodesPerSecond = 24
 )
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こうすると、レイヤーに defaultPrimが指定できました。<br />
 なぜこれを指定するかというと、この作成したusdファイルを<br />
 どこかのPrimに対してリファレンスしたい場合、このデフォルト指定をしておかないと<br />
@@ -5460,8 +5469,9 @@ SOLARIS上で構築していきつつ説明していきます。</p>
 <p>まずは <strong>ペイロード</strong> について。<br />
 ペイロードとはなにかというと、基本的な動作はリファレンスと共通ですが<br />
 「アンロード」指定でUSDを開いた場合、ペイロード化しているレイヤーはロードされなくなります。</p>
-<p><div class="highlight"><pre><span></span><code>usdview D:\USDsample\Kitchen_set\Kitchen_set.usd --unloaded
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdview D:\USDsample\Kitchen_set\Kitchen_set.usd --unloaded
+</code></pre></div>
+</td></tr></table><br />
 例として、キッチンセットをアンロード状態で開いてみます。<br />
 usdviewの引数に --unloaded して実行します。</p>
 <p><img alt="" src="https://gyazo.com/ac8092319fd8396164a40b8ad24cb7d0.png" /></p>
@@ -5706,7 +5716,20 @@ Local -&gt; Inherits -&gt; Varint -&gt; Reference -&gt; Paylaods -&gt; Specializ
 ここに無いパラメーターは、 Custom Data に仕込むことができて</p>
 <p><img alt="" src="https://gyazo.com/c6eb843866344eb42e36eedfa1236d27.png" /></p>
 <p>こんなかんじに入れると</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;Pig&quot; (
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;Pig&quot; (
     assetInfo = {
         string name = &quot;Pig&quot;
         string version = &quot;1.0&quot;
@@ -5720,7 +5743,8 @@ Local -&gt; Inherits -&gt; Varint -&gt; Reference -&gt; Paylaods -&gt; Specializ
 )
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 usd のメタ情報が追加されます。<br />
 このようにメタ情報を入れるようにすれば、どのバージョンのファイルなのかを明確化<br />
 することができます。</p>

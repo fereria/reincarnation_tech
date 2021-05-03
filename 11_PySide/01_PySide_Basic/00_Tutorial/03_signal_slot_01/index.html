@@ -5014,7 +5014,18 @@
 <p>例として前回の「ボタンを押す」をみてみます。<br />
 この場合「ボタンを押す」というのがSignal<br />
 push!!をプリントするのがSlotになります。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">UISample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
@@ -5026,12 +5037,14 @@ push!!をプリントするのがSlotになります。  </p>
     <span class="k">def</span> <span class="nf">click_btn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># 押したときの動作</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;push!!&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 前回のサンプルを再度みてみます。<br />
 ボタンを押したときに実行する（push!!をプリントする）関数がいわゆるSlotになります。<br />
 この関数とWidgetを紐づけているのが<br />
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_btn</span><span class="p">)</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_btn</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 この部分で、<br />
 Widgetのオブジェクト.<Signal>.connect(Slotの関数)<br />
 このように書きます。  </p>
@@ -5080,7 +5093,18 @@ Signalは、その後ろには .connect() を入れて使用します。  </p>
 <p><img alt="" src="https://gyazo.com/5052ac9c7136206c09b4bcd36f7bf60e.png" /></p>
 <p>引数を送ることができる場合、Helpには arg__1 のような引数が記入してあります。<br />
 例として、LineEditを使用してみます。</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">UISample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
@@ -5092,7 +5116,8 @@ Signalは、その後ろには .connect() を入れて使用します。  </p>
     <span class="k">def</span> <span class="nf">changeText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
         <span class="c1"># 押したときの動作</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/8a4e8b99afaa63e6c4262c366265ba35.gif" /></p>
 <p>LineEditには「テキストが変更された」ときに実行する textChanged があります。<br />
 このSignalは、引数として現在の入力されているテキストを受け取ることが出来るので<br />

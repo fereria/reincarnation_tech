@@ -5049,9 +5049,11 @@ Sx、Syというのが、ベクトル（X,Y,1)を拡大縮小するためのス�
 <p><img alt="" src="https://gyazo.com/50a8f3fe59c00c82d7cb725a035d9ec6.png" /></p>
 <p>10度まわした結果、数値が綺麗な数字ではなくなり、  </p>
 <p>スケールの今のスケール値を</p>
-<p><div class="highlight"><pre><span></span><code>    transform = self.transform()
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    transform = self.transform()
     cur_scale = (transform.m11(), transform.m22())
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このように取得使用とすると</p>
 <p><img alt="" src="https://gyazo.com/6196a8bad55610bcf832b2ccf5a27b51.png" /></p>
 <p>意図しない数値が返ってきてしまうのであまり望ましくありません。  </p>

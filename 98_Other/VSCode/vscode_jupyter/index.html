@@ -5023,7 +5023,25 @@
 <p>Jupyterの環境を作成する前に、Pipenvを使用して環境を構築します。  </p>
 <p><img alt="" src="https://gyazo.com/bb59a891a8dea4b109982792059b6795.png" /></p>
 <p>VSCodeのワークスペースを作成し、その下に「.venv」を作成します。  </p>
-<p><div class="highlight"><pre><span></span><code>[[source]]
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[[source]]
 url = &quot;https://pypi.org/simple&quot;
 verify_ssl = true
 name = &quot;pypi&quot;
@@ -5042,14 +5060,29 @@ pytest = &quot;*&quot;
 
 [requires]
 python_version = &quot;3.6&quot;
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 今回の環境はこんな感じにしています。<br />
 Pythonのバージョンは3.6です。  </p>
 <p>Jupyterに関して調べたときにはAnacondaで構築している例のほうが圧倒的に多いですが、<br />
 Pipenvを使用しても環境構築はできました。</p>
 <h2 id="_2">コードを作成する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>まず、実行するコードを書きます。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
 
 <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">solve</span>
 
@@ -5065,10 +5098,12 @@ Pipenvを使用しても環境構築はできました。</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>Jupyterは、「セル」と呼ばれる単位でスクリプトを実行していきます。<br />
 ざっくりというと、1つのPythonファイルだけど複数のコードを区切って記述できる機能で  </p>
-<p><div class="highlight"><pre><span></span><code># %%
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># %%
+</code></pre></div>
+</td></tr></table><br />
 コードの区切り部分にコレを記述しておくと、そこがセルの開始・終了地点扱いになります。<br />
 そして、  </p>
 <p><img alt="" src="https://gyazo.com/6276c083c75014b2aa1ea3928f648198.png" /></p>
@@ -5081,7 +5116,14 @@ Pipenvを使用しても環境構築はできました。</p>
 <p><img alt="" src="https://gyazo.com/54cfda0226941ef1714d0eb51267d7bb.png" /></p>
 <p>実行すると、こんな感じで現在の変数と、セルの実行結果が表示されます。  </p>
 <p>結果は、printをしていなくても表示される模様。  </p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
@@ -5090,15 +5132,21 @@ Pipenvを使用しても環境構築はできました。</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>Jupyterの便利なところは、こんな感じでグラフを表示するコードを書いた場合  </p>
 <p><img alt="" src="https://gyazo.com/9ba6509c311dc4f640b8835d9234eb2a.png" /></p>
 <p>Python Interactive画面にグラフを描画してくれるところ。  </p>
-<p><div class="highlight"><pre><span></span><code>#%% [markdown]
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#%% [markdown]
 
 # # HOGEHOGE
 # * fugafuga
 # * fugafuga
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 通常のJupyterの場合、セル内にMarkdownを書くと<br />
 Markdown扱いにしてくれますが<br />
 VSCodeの場合はコメントアウトが必要のようです。</p>
@@ -5110,8 +5158,9 @@ VSCodeの場合はコメントアウトが必要のようです。</p>
 <h2 id="notebook">notebookを起動して、実行する<a class="headerlink" href="#notebook" title="Permanent link">¶</a></h2>
 <p>Anacondaでインストールした場合は、Windowsのスタートアップからノートブックを起動<br />
 できるようですが、Pipenvの場合は特にないので  </p>
-<div class="highlight"><pre><span></span><code>.venv\Scripts\jupyter-notebook.exe
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>.venv\Scripts\jupyter-notebook.exe
 </code></pre></div>
+</td></tr></table>
 <p>この実行ファイルを実行します。  </p>
 <p><img alt="" src="https://gyazo.com/cbb77f6f598aeaad37b95f69730570bd.png" /></p>
 <p>実行すると、サーバーが起動してブラウザからJupyterを開くことができます。<br />

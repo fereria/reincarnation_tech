@@ -5099,13 +5099,27 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/TimeSample/UsdClipsAPI_02__TemplateAssetPathを使う.ipynb">UsdClipsAPI_02__TemplateAssetPathを使う.ipynb</a></p>
 <h4 id="1">[1]:<a class="headerlink" href="#1" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="2">[2]:<a class="headerlink" href="#2" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">ROOT_PATH</span> <span class="o">=</span> <span class="s2">&quot;d:/work/py37/USD/clip/&quot;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ROOT_PATH</span> <span class="o">=</span> <span class="s2">&quot;d:/work/py37/USD/clip/&quot;</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="5">[5]:<a class="headerlink" href="#5" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Clipを作る</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Clipを作る</span>
 <span class="n">A_1</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">FindOrOpen</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;A/clip.1.usda&#39;</span><span class="p">)</span>
 <span class="n">A_2</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">FindOrOpen</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;A/clip.2.usda&#39;</span><span class="p">)</span>
 <span class="n">A_3</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">FindOrOpen</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;A/clip.3.usda&#39;</span><span class="p">)</span>
@@ -5119,9 +5133,23 @@
 <span class="n">manifestB</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s2">&quot;/B/manifest_sample.usda&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">manifestB</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 over &quot;ModelA&quot;
 {
@@ -5136,9 +5164,16 @@ over &quot;ModelB&quot;
     double b
 }
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="6">[6]:<a class="headerlink" href="#6" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Clipを作るためのレイヤーを用意。</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Clipを作るためのレイヤーを用意。</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s2">&quot;stage.usda&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Reload</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
@@ -5146,9 +5181,20 @@ over &quot;ModelB&quot;
 <span class="c1"># ClipsAPIの引数で、Clipを追加したいSdfPathを指定する</span>
 <span class="n">clipAPI</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ClipsAPI</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     endTimeCode = 4
     startTimeCode = 1
@@ -5160,22 +5206,36 @@ def &quot;TestModel&quot;
     double b
 }
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="7">[7]:<a class="headerlink" href="#7" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Clipのレイヤーをセット</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Clipのレイヤーをセット</span>
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipAssetPaths</span><span class="p">([</span><span class="n">Sdf</span><span class="o">.</span><span class="n">AssetPath</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;A/clip.1.usda&#39;</span><span class="p">),</span>
                            <span class="n">Sdf</span><span class="o">.</span><span class="n">AssetPath</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;A/clip.2.usda&#39;</span><span class="p">),</span>
                            <span class="n">Sdf</span><span class="o">.</span><span class="n">AssetPath</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;A/clip.3.usda&#39;</span><span class="p">),</span>
                            <span class="n">Sdf</span><span class="o">.</span><span class="n">AssetPath</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;A/clip.4.usda&#39;</span><span class="p">)],</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipManifestAssetPath</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">AssetPath</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;A/manifest_sample.usda&#39;</span><span class="p">),</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="8">[8]:<a class="headerlink" href="#8" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Templateの場合。</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Templateの場合。</span>
 <span class="c1"># Templateを使用すると hogehoge.#.usda のように連番部分を # で表せる。</span>
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipTemplateAssetPath</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;B/clip.#.usda&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipTemplateStartTime</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
@@ -5183,44 +5243,88 @@ def &quot;TestModel&quot;
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipTemplateStride</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipManifestAssetPath</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">AssetPath</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;B/manifest_sample.usda&#39;</span><span class="p">),</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="9">[9]:<a class="headerlink" href="#9" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Clip側にある読み先のPrimを指定する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Clip側にある読み先のPrimを指定する</span>
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipPrimPath</span><span class="p">(</span><span class="s1">&#39;/ModelA&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipPrimPath</span><span class="p">(</span><span class="s1">&#39;/ModelB&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="10">[10]:<a class="headerlink" href="#10" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># CurrentTime時にどのClipを使用するかIndexを指定する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># CurrentTime時にどのClipを使用するかIndexを指定する</span>
 <span class="k">for</span> <span class="n">num</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">A_1</span><span class="p">,</span><span class="n">A_2</span><span class="p">,</span><span class="n">A_3</span><span class="p">,</span><span class="n">A_4</span><span class="p">]):</span>
     <span class="n">currentActive</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clipAPI</span><span class="o">.</span><span class="n">GetClipActive</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
     <span class="n">currentActive</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">num</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">num</span><span class="p">])</span>
     <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipActive</span><span class="p">(</span><span class="n">currentActive</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="11">[11]:<a class="headerlink" href="#11" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># 複数Clipsetを指定する場合。</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 複数Clipsetを指定する場合。</span>
 <span class="n">clipAPI</span><span class="o">.</span><span class="n">SetClipSets</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">StringListOp</span><span class="o">.</span><span class="n">Create</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]))</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="12">[12]:<a class="headerlink" href="#12" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">ROOT_PATH</span> <span class="o">+</span> <span class="s1">&#39;result.usda&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     endTimeCode = 4
     startTimeCode = 1
@@ -5250,11 +5354,13 @@ def &quot;TestModel&quot; (
     double b
 }
 </code></pre></div>
+</td></tr></table>
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <p><img alt="" src="https://gyazo.com/8a8b2889c355eb800b352855b433faea.png" /><br />
 clipSetsを指定すると、１つのPrimに対して複数のValueClipを指定できる</p>

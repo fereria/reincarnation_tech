@@ -4903,7 +4903,32 @@
                 
                   <h1>DrivenKey を取得する</h1>
                 
-                <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+                <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
 
 <span class="c1">#DrivenKeyを取得する</span>
 <span class="c1">#DrivenKeyは animCurveU* というノード</span>
@@ -4930,6 +4955,7 @@
     <span class="nb">print</span> <span class="n">key</span><span class="o">.</span><span class="n">getUnitlessInput</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="nb">print</span> <span class="n">key</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>DrivenKey のノードは animCurveU* とついている４つのノード。<br />
 アクセス方法は、基本通常の Key と変わらない。<br />
 ただし、入力側が Time ではなく Value のため　 getTime(index) ではなく getUnitlessIntpu(indes)になる。<br />

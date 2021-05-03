@@ -5054,7 +5054,22 @@ Model 側は、View 側からの変更を受け取り<br />
 Model はその変更を View 側に通知する必要があります。</p>
 <h2 id="_1">今までのやり方<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>今までどうやってたかというと、</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        表示用のItemを再構築する</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5071,6 +5086,7 @@ Model はその変更を View 側に通知する必要があります。</p>
             <span class="n">p</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">treeItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>self.layoutChanged.emit()</p>
 <p>を利用して、Model の構造が変わったから View を更新するように<br />
 通知していました。<br />
@@ -5088,7 +5104,23 @@ Python が異常終了したりしてしまい<br />
 <p>モデルの更新をする場合は layoutChanged.emit() でシグナルを Emit するのではなく<br />
 <a href="https://doc.qt.io/qtforpython/PySide2/QtCore/QAbstractItemModel.html#PySide2.QtCore.PySide2.QtCore.QAbstractItemModel.beginInsertColumns">https://doc.qt.io/qtforpython/PySide2/QtCore/QAbstractItemModel.html#PySide2.QtCore.PySide2.QtCore.QAbstractItemModel.beginInsertColumns</a><br />
 begin###～～から始まる関数群を使用することです。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        表示用のItemを再構築する</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5106,11 +5138,18 @@ begin###～～から始まる関数群を使用することです。</p>
             <span class="n">p</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">treeItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">endResetModel</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>まずはリセットから。<br />
 すべての Tree 構造をアップデートする場合は beginResetModel ～ endResetModel<br />
 これを、Model のデータ構造を操作する間を囲います。</p>
 <h3 id="_2">追加する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
 
         <span class="n">item</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">internalPointer</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">beginInsertRows</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">childCount</span><span class="p">(),</span> <span class="n">item</span><span class="o">.</span><span class="n">childCount</span><span class="p">())</span>
@@ -5118,6 +5157,7 @@ begin###～～から始まる関数群を使用することです。</p>
         <span class="n">item</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">endInsertRows</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>次が追加。<br />
 追加する場合は beginInsertRows() を使用します。<br />
 この場合は、追加する Item の親と、追加先の Index を指定します。</p>
@@ -5136,7 +5176,14 @@ begin###～～から始まる関数群を使用することです。</p>
 <p>こうすると、内部で columnsAboutToBeInserted()シグナルが Emit されて<br />
 指定部分だけが更新されます。</p>
 <h3 id="_3">削除する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">removeItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 
         <span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
@@ -5145,12 +5192,15 @@ begin###～～から始まる関数群を使用することです。</p>
             <span class="n">pItem</span><span class="o">.</span><span class="n">removeChild</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">row</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">endRemoveRows</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>削除側も理屈は同じで、変更する ModelIndex の指定と<br />
 Item 側の木構造から削除したい Item を削除するのを書きます。</p>
 <p>Item 側は配列から Item を削除すれば良いので</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">removeChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">removeChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">childItems</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>Child から指定の番号を pop しています。</p>
 <p><img alt="" src="https://i.gyazo.com/3ff82459ca7bd512b2df740348d82f78.gif" /></p>
 <p>結果。<br />

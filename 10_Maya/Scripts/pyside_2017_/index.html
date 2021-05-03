@@ -5015,14 +5015,18 @@
 <p>変換する場合は、Maya/bin 　下にある <mark>pyside2-uic</mark> を使用する。<br />
 ただしそのままではコマンドとして認識されないので<br />
 以下のように変換をする。</p>
-<div class="highlight"><pre><span></span><code><span class="k">cd</span> /d <span class="s2">&quot;C:\Program Files\Autodesk\Maya2018\bin&quot;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">cd</span> /d <span class="s2">&quot;C:\Program Files\Autodesk\Maya2018\bin&quot;</span>
 mayapy pyside2-uic -o <span class="p">&lt;</span>出力先<span class="p">&gt;</span>\main_ui.py <span class="p">&lt;</span>コンバート前の置き場<span class="p">&gt;</span>\main.ui
 <span class="k">cd</span> /d <span class="nv">%~dp0</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="qtpy">Qt.py のインストール<a class="headerlink" href="#qtpy" title="Permanent link">¶</a></h2>
 <p>PySide と PySide2 の違いを吸収するために、　 Qt.py 　モジュールを使用する。</p>
-<div class="highlight"><pre><span></span><code>pip install qt.py -t &lt;インストール先のPATH&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install qt.py -t &lt;インストール先のPATH&gt;
 </code></pre></div>
+</td></tr></table>
 <p>インストールは pip から行うことができる。<br />
 pip の引数として -t ＜ PATH ＞　を使用すれば、指定の site-packages 以下以外にも<br />
 インストールすることができる。</p>
@@ -5031,8 +5035,9 @@ pip の引数として -t ＜ PATH ＞　を使用すれば、指定の site-pac
 QtGui は、Painter、Brush、Pen、Image、Event のような Widget を作成する上での Core 的な部分が<br />
 QtGui になっている。</p>
 <h2 id="_1">それ以外に書き換えが必要だった箇所<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>QHeaderView.setResizemode -&gt; setSectionResizeMode (Section を追加）
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>QHeaderView.setResizemode -&gt; setSectionResizeMode (Section を追加）
 </code></pre></div>
+</td></tr></table>
                 
                   
                     

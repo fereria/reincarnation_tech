@@ -5131,7 +5131,46 @@
 Twitter で最初のテストを Up したときは、マウス位置が Window の左上で<br />
 Edit 部分が見づらかったので、マウス位置が画面右下になるようにしたのと<br />
 サンプル時は LineEdit をそのまま show()していたのを QDialog に置き換えました。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PopupSerchEdit</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PopupSerchEdit</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="n">send</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
@@ -5172,6 +5211,7 @@ Edit 部分が見づらかったので、マウス位置が画面右下になる
         <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>コードがこちら。</p>
 <p>で、今回のおにに書かれた「AutoComplete」自体はどうするかというと<br />
 デフォルトで「QCompleter」クラスが用意されているのでこれを使用します。</p>
@@ -5188,7 +5228,14 @@ PopupCompletion が、候補を Popup 表示するもの</p>
 UnfilteredPopupCompletion が、すべての候補を出すもの　になっています。</p>
 <p>使いやすいのはPopupかな...ということで、以降はPOPUPを使用します。</p>
 <h3 id="_2">基本の形<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code>        <span class="c1"># SimpleなAutoCompleteを作る</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="c1"># SimpleなAutoCompleteを作る</span>
         <span class="n">comp</span> <span class="o">=</span> <span class="n">QCompleter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">comp</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="n">QStringListModel</span><span class="p">([</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">,</span> <span class="s1">&#39;fugafuga&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">]))</span>
         <span class="c1"># 全部表示: UnfilteredPopupCompletion</span>
@@ -5196,7 +5243,8 @@ UnfilteredPopupCompletion が、すべての候補を出すもの　になって
         <span class="c1"># POPUP表示: PopupCompletion</span>
         <span class="n">comp</span><span class="o">.</span><span class="n">setCompletionMode</span><span class="p">(</span><span class="n">QCompleter</span><span class="o">.</span><span class="n">UnfilteredPopupCompletion</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">setCompleter</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 AutoCompleteに必要なのがこの部分。<br />
 構造は簡単で、候補に出したいModelをsetMomdelでセットし<br />
 （今回は特別に作っているけど、別のViewでつかってるModelを入れても良い）<br />
@@ -5211,7 +5259,20 @@ AutoCompleteに必要なのがこの部分。<br />
 <p>まず、予測変換時に使用する文字列はどのように設定されているかというと<br />
 Modelのdataの「EditRole」の値が使用されます。（DisplayRoleではないのに注意）<br />
 なので、Modelを<br />
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -5225,11 +5286,30 @@ Modelのdataの「EditRole」の値が使用されます。（DisplayRoleでは�
         <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">EditRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こんな感じに、DisplayRoleと同じPrimNameを返すようにしておきます。</p>
 <h3 id="complete">Completeのカスタマイズ<a class="headerlink" href="#complete" title="Permanent link">¶</a></h3>
 <p>次に、QCompleterを継承したカスタムQCompleterを作ります。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomQCompleter</span><span class="p">(</span><span class="n">QCompleter</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomQCompleter</span><span class="p">(</span><span class="n">QCompleter</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setCompletionMode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PopupCompletion</span><span class="p">)</span>
@@ -5249,6 +5329,7 @@ Modelのdataの「EditRole」の値が使用されます。（DisplayRoleでは�
         <span class="n">item</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>重要な所は2つで「<strong>splitPath</strong>」と「<strong>pathFromIndex</strong>」です。</p>
 <h3 id="splitpath">splitPath<a class="headerlink" href="#splitpath" title="Permanent link">¶</a></h3>
 <p>splitPathとは、LineEditで入力した値を引数で受け取り<br />

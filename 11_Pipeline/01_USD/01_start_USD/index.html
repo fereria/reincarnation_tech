@@ -5089,9 +5089,11 @@ AttributeEditorで数値をいれてコントール...のようなことはで�
 しかしこちらにはusdviewは入っていないので<br />
 別途Python2用のUSD（nvidiaビルド）をダウンロードしておき<br />
 そちらからusdviewを開いておきます。  </p>
-<p><div class="highlight"><pre><span></span><code>cd /d I:\jupyter_notebook_root
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd /d I:\jupyter_notebook_root
 jupyter notebook
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 とりあえず、こんな感じで固定の場所でJupyterを起動できるBatchを作り<br />
 裏でnotebookを起動しておきます。<br />
 しかし、このnotebookをブラウザから使用すると、</p>
@@ -5102,28 +5104,33 @@ jupyter notebook
 <p>Pythonの Jupyter Server URIの設定を開き、<br />
 裏で起動しているNotebookのURLを入力します。  </p>
 <p>が、Tokenを入れたりするのが面倒だったので</p>
-<p><div class="highlight"><pre><span></span><code>jupyter notebook --generate-config
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jupyter notebook --generate-config
+</code></pre></div>
+</td></tr></table><br />
 まず、Configを作り、  </p>
 <p>C:/Users/&lt;ユーザー名&gt;/.jupyter  </p>
 <p>下にある、 jupyter_notebook_config.py の中の<br />
-<div class="highlight"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-</code></pre></div><br />
-Tokenを消しておいて、  </p>
-<div class="highlight"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;sha1:～～～～&quot;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </code></pre></div>
+</td></tr></table><br />
+Tokenを消しておいて、  </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;sha1:～～～～&quot;</span>
+</code></pre></div>
+</td></tr></table>
 <p>パスワードをいれておきます。  </p>
 <p>パスワードは</p>
-<div class="highlight"><pre><span></span><code>python -c &quot;import IPython;print(IPython.lib.passwd())&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>python -c &quot;import IPython;print(IPython.lib.passwd())&quot;
 </code></pre></div>
+</td></tr></table>
 <p>このコマンドで生成できます。  </p>
 <p>で。  </p>
 <p>ここまで準備ができたら、あとはVSCode側でいろいろ検証していきます。  </p>
 <h2 id="vscode">VSCodeでいろいろやる<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
 <p><img alt="" src="https://gyazo.com/f0178ed34c457eb832a04ea1ead65f11.png" /></p>
 <p>まず、VSCodeでどうやってセルを指定するかというと、処理を分けたいところで  </p>
-<div class="highlight"><pre><span></span><code># %% 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># %% 
 </code></pre></div>
+</td></tr></table>
 <p>これを入れて上げればOKです。<br />
 あとは、実行したいときに「Run Cell」を押せばOKです。  </p>
 <p><img alt="" src="https://gyazo.com/c6c65af50bd2333a0c711671b179002a.png" />  </p>
@@ -5132,8 +5139,9 @@ Tokenを消しておいて、  </p>
 <h2 id="usd">USDの中身を確認する<a class="headerlink" href="#usd" title="Permanent link">¶</a></h2>
 <h2 id="_2">プリントする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>まず、usdviewで開く前に　USDファイルの中身をプリントで確認してみます。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div>
+</td></tr></table><br />
 たびたび確認をしたくなるので、ここだけをセルで分けておいて<br />
 必要に応じてプリントしてみます。</p>
 <p><img alt="" src="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png" /></p>
@@ -5145,22 +5153,28 @@ Tokenを消しておいて、  </p>
 <h3 id="_3">保存する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>保存するときは StageをExportします。<br />
 ここも度々やるのでセルにしておくと便利です。  </p>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/refTest.usda&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/refTest.usda&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じで出力します。  </p>
 <p>USDは、開くときにNewOpenしてSaveすることもできるのですが<br />
 すでにファイルがある場合エラーになってしまったりと微妙に面倒だったので  </p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># 一度メモリ上にファイルを作り</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 一度メモリ上にファイルを作り</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="c1"># Export</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;PATH&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こんな感じでメモリ上にシーンを作り、最後にExportする方が<br />
 毎回新規シーンでテストできてお手軽かなと思います。（たぶん）  </p>
 <h3 id="usdview">usdviewで開く<a class="headerlink" href="#usdview" title="Permanent link">¶</a></h3>
 <p>Exportしたら、usdviewでファイルを開きます。  </p>
-<div class="highlight"><pre><span></span><code>usdview I:\usd_test\refTest.usda
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdview I:\usd_test\refTest.usda
 </code></pre></div>
+</td></tr></table>
 <p>Windowsでusdviewを使う場合のトラップなのか<br />
 引数で渡すusdファイルはフルパスである必要がある上、引数にusdファイルを必ず渡す必要があります。<br />
 また、このツール起動が尋常じゃなく遅いので<br />

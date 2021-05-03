@@ -5006,7 +5006,55 @@ Windowの下のほうにメッセージやWidgetを追加することが出来�
 （WidgetというよりLayoutに近い）</p>
 <h2 id="_1">使い方<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず全体サンプル。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -5056,10 +5104,13 @@ Windowの下のほうにメッセージやWidgetを追加することが出来�
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="windowstatusbar">WindowにStatusBarを追加する<a class="headerlink" href="#windowstatusbar" title="Permanent link">¶</a></h2>
-<p><div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">QStatusBar</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">QStatusBar</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setStatusBar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>        
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まず、追加するにはこの２行で完了です。<br />
 StatusBarは他のWidgetとは違いQMainwindowのsetStatusBarで追加します。</p>
 <p>あとは、 self.status.showMessage("表示したいメッセージ") で、<br />
@@ -5068,7 +5119,15 @@ StatusBarにメッセージを表示することができます。</p>
 <p><img alt="" src="https://gyazo.com/927d3c4a089cf7340e889dfcf5077460.png" /></p>
 <p>StatusBarには、任意のWidgetを追加することが出来ます。<br />
 これを利用して、StatusBarを表示させたり出来ます。</p>
-<div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="n">QProgressBar</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="n">QProgressBar</span><span class="p">()</span>
         <span class="c1"># 幅を固定する</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">setSizePolicy</span><span class="p">(</span><span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Fixed</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Preferred</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">setMinimumWidth</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
@@ -5078,6 +5137,7 @@ StatusBarにメッセージを表示することができます。</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">addPermanentWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>追加方法は、まずWidgetを追加して addPermanentWidget で追加します。<br />
 この方法で追加すると、右寄せでWidgetが追加されます。<br />
 幅調整や、ProgressBaの設定は<br />
@@ -5085,8 +5145,9 @@ StatusBarにメッセージを表示することができます。</p>
 <del>addPermanentWidgetの存在を調べるのにかなりはまった</del></p>
 <p><img alt="" src="https://gyazo.com/8a3f7add58279eb20b2445a974654298.png" /></p>
 <p>このように、他のWidgetでもOKです。</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 addPermanentWidget ではなく addWidgetもありますが、この場合は左寄せになり<br />
 StatusBarのMessageに覆い被さるようにWidgetが追加されます。<br />
 なので、Messageではなく、QLabelをaddWidgetで追加して<br />

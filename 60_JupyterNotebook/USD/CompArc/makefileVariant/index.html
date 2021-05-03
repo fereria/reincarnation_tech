@@ -5151,45 +5151,63 @@ USDのサンプル examples/usdMakeFileVariantModelAsset/usdMakeFIleVarinatModel
 <p>VariantとPayloadとInheritsの組み合わせ。</p>
 <p>以下はサンプルの気になる部分の実行テスト。</p>
 <h4 id="1">[1]:<a class="headerlink" href="#1" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Tf</span><span class="p">,</span> <span class="n">Kind</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Usd</span> 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Tf</span><span class="p">,</span> <span class="n">Kind</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Usd</span> 
 </code></pre></div>
+</td></tr></table>
 <h4 id="2">[2]:<a class="headerlink" href="#2" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">Tf</span><span class="o">.</span><span class="n">IsValidIdentifier</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">Tf</span><span class="o">.</span><span class="n">IsValidIdentifier</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="3">[3]:<a class="headerlink" href="#3" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">assetName</span> <span class="o">=</span> <span class="s2">&quot;sampleData&quot;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">assetName</span> <span class="o">=</span> <span class="s2">&quot;sampleData&quot;</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="4">[4]:<a class="headerlink" href="#4" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;D:/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.usd&quot;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;D:/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.usd&quot;</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="5">[5]:<a class="headerlink" href="#5" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">args</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;format&#39;</span><span class="p">:</span><span class="s1">&#39;usda&#39;</span><span class="p">})</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">args</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;format&#39;</span><span class="p">:</span><span class="s1">&#39;usda&#39;</span><span class="p">})</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="6">[6]:<a class="headerlink" href="#6" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="9">[9]:<a class="headerlink" href="#9" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">rootPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="n">assetName</span><span class="p">))</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">rootPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="n">assetName</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>/sampleData
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>/sampleData
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="10">[10]:<a class="headerlink" href="#10" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">rootPath</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">absoluteRootPath</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">rootPath</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">absoluteRootPath</span>
 <span class="n">modelRootPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="n">rootPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="n">assetName</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="27">[27]:<a class="headerlink" href="#27" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">modelAPI</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ModelAPI</span><span class="p">(</span><span class="n">modelRootPrim</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">modelAPI</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ModelAPI</span><span class="p">(</span><span class="n">modelRootPrim</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="28">[28]:<a class="headerlink" href="#28" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Option用のResolvePathをセットする</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Option用のResolvePathをセットする</span>
 <span class="c1"># （あくまでもOptionとして使用されるもの？もの？）</span>
 <span class="n">modelAPI</span><span class="o">.</span><span class="n">SetAssetIdentifier</span><span class="p">(</span><span class="s1">&#39;D:/test.usda&#39;</span><span class="p">)</span>
 <span class="c1"># AssetPathで取得できる</span>
@@ -5197,30 +5215,55 @@ USDのサンプル examples/usdMakeFileVariantModelAsset/usdMakeFIleVarinatModel
 
 <span class="n">modelAPI</span><span class="o">.</span><span class="n">SetAssetName</span><span class="p">(</span><span class="n">assetName</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="39">[39]:<a class="headerlink" href="#39" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># 引数で指定したKindかどうかを判定</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 引数で指定したKindかどうかを判定</span>
 <span class="n">modelAPI</span><span class="o">.</span><span class="n">IsKind</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="40">[40]:<a class="headerlink" href="#40" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">classPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="n">rootPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="s2">&quot;_class_&quot;</span><span class="o">+</span><span class="n">assetName</span><span class="p">))</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">classPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="n">rootPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="s2">&quot;_class_&quot;</span><span class="o">+</span><span class="n">assetName</span><span class="p">))</span>
 <span class="n">modelRootPrim</span><span class="o">.</span><span class="n">GetInherits</span><span class="p">()</span><span class="o">.</span><span class="n">AddInherit</span><span class="p">(</span><span class="n">classPrim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="42">[42]:<a class="headerlink" href="#42" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;sampleData&quot;
 )
@@ -5239,6 +5282,7 @@ class &quot;_class_sampleData&quot;
 {
 }
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   

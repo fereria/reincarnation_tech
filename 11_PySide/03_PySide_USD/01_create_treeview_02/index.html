@@ -4991,7 +4991,34 @@
 こちら参照。</p>
 <h2 id="drag-drop">Drag &amp; Dropの構造を作る<a class="headerlink" href="#drag-drop" title="Permanent link">¶</a></h2>
 <p>まずは、TreeViewに対してDragDropでファイルを追加する仕組みをつくります。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">dragMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">dragMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasUrls</span><span class="p">():</span>
             <span class="c1"># USDファイルか確認</span>
@@ -5020,11 +5047,24 @@
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">dropEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setDropIndicatorShown</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>dragMoveEventとdropEventをオーバーライドして、USDファイルがDragされたときのみ<br />
 Dropを許可するようにします。</p>
 <p>ホバーしている下のItemは、 indexAt(Position) で Indexを取得して、<br />
 取得してから、</p>
-<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addUsdReference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usdPath</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addUsdReference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">usdPath</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 
         <span class="n">item</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">)</span>
         <span class="n">prim</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">getPrim</span><span class="p">()</span>
@@ -5037,7 +5077,8 @@ Dropを許可するようにします。</p>
         <span class="n">def_prim</span><span class="o">.</span><span class="n">GetReferences</span><span class="p">()</span><span class="o">.</span><span class="n">AddReference</span><span class="p">(</span><span class="n">usdPath</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">createModelTree</span><span class="p">()</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 そのindexを使用してModelに作成した addUsdReference関数から<br />
 現在のPrimに対してReferenceを追加するようにします。<br />
 今はTreeViewのItemにPrimのオブジェクトを持たせているので、<br />
@@ -5050,7 +5091,60 @@ Reference構造もTreeViewに反映させることができます。</p>
 <h2 id="referencitemreferenceusd">ReferencのItemの色を変更・ReferenceしたUsd取得<a class="headerlink" href="#referencitemreferenceusd" title="Permanent link">¶</a></h2>
 <p>このままだと、どこがReferenceだったかわかりにくいので<br />
 リファレンスで読み込んだPrimをわかるようにします。</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PrimItem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PrimItem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parentItem</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_prim</span> <span class="o">=</span> <span class="n">prim</span>
@@ -5104,7 +5198,8 @@ Reference構造もTreeViewに反映させることができます。</p>
                 <span class="k">return</span> <span class="s2">&quot;&quot;</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="s2">&quot;&quot;</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 表示する文や色を判定するのはItemクラスで実装します。<br />
 まず、Referenceによって作成されたかどうかを、<strong>HasAuthoredReferences</strong> で取得できます。<br />
 なので、これがTrueだった場合は文字の色を変更するようにします。</p>
@@ -5119,7 +5214,26 @@ SdfReferenceオブジェクトで取得することが出来ます。<br />
 SdfReferenceまわりはC+のドキュメントとだいぶ違っていて、<br />
 Pythonの場合はprependItemsからassetPathを使用して、元Pathを取得できます。<br />
 （しかし、取得はできたけど本当にあってるのか・・・これ・・・）</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TableDelegate</span><span class="p">(</span><span class="n">QItemDelegate</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TableDelegate</span><span class="p">(</span><span class="n">QItemDelegate</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -5139,7 +5253,8 @@ Pythonの場合はprependItemsからassetPathを使用して、元Pathを取得�
 
         <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">getFontColor</span><span class="p">())</span>
         <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">rect</span><span class="p">,</span> <span class="n">Qt</span><span class="o">.</span><span class="n">TextWordWrap</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()))</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Primから必要な情報が取得できるようになったら<br />
 あとは各Itemごとの描画をDelegateで作成します。</p>
 <p><img alt="" src="https://gyazo.com/8a1b00b97ff8180713a6a50319190f49.gif" /></p>

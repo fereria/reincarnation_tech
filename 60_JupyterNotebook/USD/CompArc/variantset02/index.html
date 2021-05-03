@@ -5071,22 +5071,36 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/CompArc/variantset02__Variantの挙動を調べる_2.ipynb">variantset02__Variantの挙動を調べる_2.ipynb</a></p>
 <h4 id="23">[23]:<a class="headerlink" href="#23" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="24">[24]:<a class="headerlink" href="#24" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/testPrim&#39;</span><span class="p">)</span>
 <span class="n">primB</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/refPrim&#39;</span><span class="p">)</span>
 
 <span class="n">primB</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;refPrimAddAttr&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s1">&#39;refPrim&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="25">[25]:<a class="headerlink" href="#25" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># VariantSetを定義する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># VariantSetを定義する</span>
 <span class="n">vset</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetVariantSets</span><span class="p">()</span><span class="o">.</span><span class="n">AddVariantSet</span><span class="p">(</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">)</span>
 <span class="n">vset</span><span class="o">.</span><span class="n">AddVariant</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">)</span>
 <span class="n">vset</span><span class="o">.</span><span class="n">AddVariant</span><span class="p">(</span><span class="s1">&#39;fuga&#39;</span><span class="p">)</span>
@@ -5095,23 +5109,37 @@
 <span class="c1"># VariantSetが設定されているPrimの取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">vset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>hogehoge
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>hogehoge
 Usd.Prim(&lt;/testPrim&gt;)
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="26">[26]:<a class="headerlink" href="#26" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># VarinatSetのリストを取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># VarinatSetのリストを取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetVariantSets</span><span class="p">()</span><span class="o">.</span><span class="n">GetNames</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>[&#39;hogehoge&#39;]
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[&#39;hogehoge&#39;]
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="27">[27]:<a class="headerlink" href="#27" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Variantで選択される値をセットする</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Variantで選択される値をセットする</span>
 <span class="c1"># セットするときは設定したいVariantを選択状態にする</span>
 <span class="n">vset</span><span class="o">.</span><span class="n">SetVariantSelection</span><span class="p">(</span><span class="s1">&#39;fuga&#39;</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">vset</span><span class="o">.</span><span class="n">GetVariantEditContext</span><span class="p">():</span>
@@ -5121,30 +5149,71 @@ Usd.Prim(&lt;/testPrim&gt;)
     <span class="n">childPath</span> <span class="o">=</span> <span class="n">vset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">)</span>
     <span class="n">cPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="n">childPath</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="28">[28]:<a class="headerlink" href="#28" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">vset</span><span class="o">.</span><span class="n">SetVariantSelection</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vset</span><span class="o">.</span><span class="n">SetVariantSelection</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">vset</span><span class="o">.</span><span class="n">GetVariantEditContext</span><span class="p">():</span>
     <span class="c1"># Variantが指定されているPrimに対してReferenceを追加したい場合も</span>
     <span class="c1"># with 内でGetReference AddReferenceすることでReferenceを追加できる。</span>
     <span class="c1"># MEMO:同じレイヤー内のPrimをリファレンスする場合は AddInternalReference を使う。</span>
     <span class="n">vset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span><span class="o">.</span><span class="n">GetReferences</span><span class="p">()</span><span class="o">.</span><span class="n">AddInternalReference</span><span class="p">(</span><span class="s1">&#39;/refPrim&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="29">[29]:<a class="headerlink" href="#29" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># 今の選択しているVariantNameを取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 今の選択しているVariantNameを取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">vset</span><span class="o">.</span><span class="n">GetVariantSelection</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>hoge
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>hoge
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="30">[30]:<a class="headerlink" href="#30" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;D:/test.usda&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;testPrim&quot; (
     variants = {
@@ -5175,11 +5244,13 @@ def &quot;refPrim&quot;
     custom string refPrimAddAttr = &quot;refPrim&quot;
 }
 </code></pre></div>
+</td></tr></table>
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   

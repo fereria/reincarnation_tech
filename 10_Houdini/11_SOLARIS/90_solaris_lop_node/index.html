@@ -5556,7 +5556,17 @@ import(All)を使用するのが良さそうです。</p>
 <p>もう 1 つ、このノードの特徴として<br />
 作成する Primitive の Specifier(指定子)を変更することが出来ます。</p>
 <p>指定子とは</p>
-<div class="highlight"><pre><span></span><code><span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;hoge&quot;</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;hoge&quot;</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -5568,6 +5578,7 @@ import(All)を使用するのが良さそうです。</p>
 <span class="p">{</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>このような USD の定義が会った場合の「def/class/over」の部分のことです。<br />
 種類は 3 つあり、通常の Primitive は def で、<br />
 def [PrimitiveType] [name] とすると、定義した Type の Primitive を作る事が出来ます。</p>
@@ -5633,7 +5644,17 @@ SceneGraphPath で作成した CollectionPrimitive を選択して、SceneGraphD
 <p>たとえば、Collection Name を hogehoge にしてみると、</p>
 <p><img alt="" src="https://gyazo.com/956c237b2249a9ce82ffac0903c61ec8.png" /></p>
 <p>このように変化します。</p>
-<div class="highlight"><pre><span></span><code><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;collections&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;collections&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n n-Builtins">apiSchemas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;CollectionAPI:hogehoge&quot;</span><span class="p">]</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -5645,6 +5666,7 @@ SceneGraphPath で作成した CollectionPrimitive を選択して、SceneGraphD
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>usda を確認するとこうなっています。<br />
 Collection は、リレーションで定義されているので<br />
 Python 等からアクセスする場合も色々とやりやすそうです。</p>
@@ -5698,8 +5720,9 @@ Collection Primitive は、Path を入れるとその場所に Primitive も自�
 <p><img alt="" src="https://gyazo.com/a3e26fcf09f8cf3e112d864684d71030.png" /></p>
 <p>instancetopoints で Point に対してインスタンス配置をしたい場合。<br />
 Prototypes は指定の入力のノードを Inputs として受け取りますが</p>
-<div class="highlight"><pre><span></span><code>`lopinputprims(&#39;.&#39;, 1)`
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>`lopinputprims(&#39;.&#39;, 1)`
 </code></pre></div>
+</td></tr></table>
 <p>デフォルトのこの lopinputprims で取得出来るのは「最後に編集した結果」の Primitive<br />
 です。<br />
 ランダムで配置する場合、複数 Primitive を入れたい場合<br />
@@ -5765,7 +5788,16 @@ ParentPrimitiveType が「Xform」の場合、<br />
 <p>ですが、Variant Set となにが違うかというと<br />
 こちらはあくまでも切り替えた結果の Primitive を返すだけで<br />
 USD の構造としての Variant Set は持ちません。</p>
-<div class="highlight"><pre><span></span><code>def Cube &quot;cube2&quot; (
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def Cube &quot;cube2&quot; (
     customData = {
         int HoudiniPrimEditorNodeId = 65
     }
@@ -5776,6 +5808,7 @@ USD の構造としての Variant Set は持ちません。</p>
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
 </code></pre></div>
+</td></tr></table>
 <p>なので、この Switch ノードの結果の usda を確認しても<br />
 含まれているのは Switch で選択されている Primitive 情報のみです。</p>
 <p>あくまでも、SOLARIS 内で入力を切り替えたい・スイッチしたい場合にのみ使うのが<br />
@@ -5790,18 +5823,27 @@ USD の構造としての Variant Set は持ちません。</p>
 <p><img alt="" src="https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png" /></p>
 <p>デフォルトだと Make Invisible の場合は「非表示」になるし Deactivate だと「無効」になります。</p>
 <p>出力されるUSDファイルは、非表示なら<br />
-<div class="highlight"><pre><span></span><code>over &quot;cube1&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>over &quot;cube1&quot;
 {
     token visibility = &quot;invisible&quot;
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 無効なら<br />
-<div class="highlight"><pre><span></span><code>over &quot;cube1&quot; (
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>over &quot;cube1&quot; (
     active = false
 )
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こうなります。</p>
 <h3 id="material">Material 関係<a class="headerlink" href="#material" title="Permanent link">¶</a></h3>
 <h4 id="materiallibrary">materiallibrary<a class="headerlink" href="#materiallibrary" title="Permanent link">¶</a></h4>
@@ -5842,9 +5884,11 @@ USD の Material/Shader として Import することができます。</p>
 <p>最後に紹介するのは Python Script。<br />
 このノードは、これまで構築したシーングラフのステージを Python の pxr モジュールの Stage で受け取り、<br />
 直接編集することが出来ます。</p>
-<div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>デフォルトではこのようになっています。<br />
 後はどうぞご自由に。。。。という感じですね。  </p>
 <p><a href="http://graphics.pixar.com/usd/docs/api/index.html">http://graphics.pixar.com/usd/docs/api/index.html</a>  </p>
@@ -5854,13 +5898,19 @@ USD の Material/Shader として Import することができます。</p>
 <p>しかし、シーングラフの操作に関してはかなり扱いやすく<br />
 関数やクラスの設計も直感的でわかりやすいです。<br />
 この充実度だけとっても USD を全力で使っていきたいと思える大きな理由でもあります。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
 
 <span class="n">collectionPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/collections&quot;</span><span class="p">)</span>
 <span class="n">colAPI</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="n">collectionPrim</span><span class="p">,</span><span class="s2">&quot;selected&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">prim</span> <span class="ow">in</span> <span class="n">colAPI</span><span class="o">.</span><span class="n">GetIncludesRel</span><span class="p">()</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">():</span>
     <span class="c1"># なんか処理を書く</span>
 </code></pre></div>
+</td></tr></table>
 <p>例として。<br />
 この Python ノードの前段階までで指定した Collection に含まれる Primitive を取得。<br />
 取得したノードにたいして処理したい場合なんかは<br />

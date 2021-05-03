@@ -5091,12 +5091,14 @@ QtDesignerを使用すると、WidgetをWindowに対して視覚的にわかり�
 <h2 id="designer">Designerを起動する<a class="headerlink" href="#designer" title="Permanent link">¶</a></h2>
 <p>PySide2をインストールすると、PySide2のインストールフォルダにQtDesignerがインストールされます。<br />
 インストールされる場所は、Python3.6の場合C直下ではないので<br />
-<div class="highlight"><pre><span></span><code>where python
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>where python
+</code></pre></div>
+</td></tr></table><br />
 これでPythonのインストール場所を探し、<br />
 where で表示されたPython##のインストールフォルダ以下の  </p>
-<div class="highlight"><pre><span></span><code>Python36\Lib\site-packages\PySide2
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Python36\Lib\site-packages\PySide2
 </code></pre></div>
+</td></tr></table>
 <p>このフォルダ以下にある  </p>
 <p><img alt="" src="https://gyazo.com/b6fbbba102e33eda115f5b74c6e5bac4.png" /></p>
 <p>designer.exeを実行します。  </p>
@@ -5135,8 +5137,9 @@ Widgetを配置していきます。  </p>
 
 <h3 id="_2">ロードする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>前回からの大きな変更点として、「作成したuiファイルを読み込む」行が追加されました。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">QUiLoader</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CURRENT_PATH</span><span class="p">,</span> <span class="s1">&#39;sample_btn_ui.ui&#39;</span><span class="p">))</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">QUiLoader</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CURRENT_PATH</span><span class="p">,</span> <span class="s1">&#39;sample_btn_ui.ui&#39;</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table><br />
 追加する行はこの行になります。<br />
 この「UiLoader」とは、QtDesignerで作成したUIを<br />
 「複数のWidgetを使って作ったカスタムWidget」として読み込むための関数になります。<br />
@@ -5151,8 +5154,9 @@ Widgetを配置していきます。  </p>
 <p>PySideで「ボタンを押す」のようなGuiの動作に対して指定の処理を起こしたい場合には<br />
 Signal-Slotと呼ばれる機能を使用します。<br />
 詳細は次回説明します。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_btn</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_btn</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 QUiLoaderを使用してUIを読むときに「self.ui」にロードをしています。<br />
 ので、この場合は「self.ui.####」という形で、Designerで作成したWidgetにアクセスをすることができます。  </p>
 <p><img alt="" src="https://gyazo.com/dd496d9e609e3b7b54e336a4df500e45.png" /></p>

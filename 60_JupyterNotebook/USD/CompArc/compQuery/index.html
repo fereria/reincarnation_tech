@@ -5057,30 +5057,51 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/CompArc/compQuery__UsdPrimCompositionQueryを使ってみる.ipynb">compQuery__UsdPrimCompositionQueryを使ってみる.ipynb</a></p>
 <h4 id="98">[98]:<a class="headerlink" href="#98" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="99">[99]:<a class="headerlink" href="#99" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\Kitchen_set\Kitchen_set.usd&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\Kitchen_set\Kitchen_set.usd&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="100">[100]:<a class="headerlink" href="#100" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/Kitchen_set/Props_grp/North_grp/SinkArea_grp/Sink_grp/BowlF_3&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/Kitchen_set/Props_grp/North_grp/SinkArea_grp/Sink_grp/BowlF_3&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="101">[101]:<a class="headerlink" href="#101" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># PCPを使うより、かんたんにコンポジションを取得できる</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># PCPを使うより、かんたんにコンポジションを取得できる</span>
 <span class="n">query</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">PrimCompositionQuery</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="102">[102]:<a class="headerlink" href="#102" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># フィルタをかけてコンポジションを取得@リファレンスの場合</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># フィルタをかけてコンポジションを取得@リファレンスの場合</span>
 <span class="nb">filter</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">PrimCompositionQuery</span><span class="o">.</span><span class="n">Filter</span><span class="p">()</span>
 <span class="nb">filter</span><span class="o">.</span><span class="n">arcTypeFilter</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">PrimCompositionQuery</span><span class="o">.</span><span class="n">ArcTypeFilter</span><span class="o">.</span><span class="n">Reference</span> <span class="c1"># Variant / Payload でも可 デフォルトはAllになっている</span>
 <span class="n">query</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">PrimCompositionQuery</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span><span class="nb">filter</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="103">[103]:<a class="headerlink" href="#103" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># これでもOK</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># これでもOK</span>
 <span class="n">query</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">PrimCompositionQuery</span><span class="o">.</span><span class="n">GetDirectReferences</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="104">[104]:<a class="headerlink" href="#104" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># コンポジションを取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># コンポジションを取得</span>
 <span class="n">compArc</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">GetCompositionArcs</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">compArc</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">comp</span><span class="o">.</span><span class="n">HasSpecs</span><span class="p">())</span>
@@ -5092,9 +5113,25 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">comp</span><span class="o">.</span><span class="n">GetIntroducingListEditor</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 Pcp.ArcTypeReference
 /Kitchen_set/Props_grp/North_grp/SinkArea_grp/Sink_grp/BowlF_3
 (&lt;pxr.Sdf.ListEditorProxy_SdfReferenceTypePolicy object at 0x0000013E4AF2C0F0&gt;, Sdf.Reference(&#39;./assets/Bowl/Bowl.usd&#39;))
@@ -5111,6 +5148,7 @@ False
 { &#39;added&#39;: [SdfReference(./Bowl.geom.usd, /Bowl, SdfLayerOffset(0, 1), {})]&#39;prepended&#39;: []&#39;appended&#39;: [], &#39;deleted&#39;: [], &#39;ordered&#39;: [] }
 ---
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   

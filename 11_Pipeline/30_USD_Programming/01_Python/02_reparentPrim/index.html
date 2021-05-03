@@ -5085,22 +5085,35 @@
 やり方を教えてもらったのでメモをば。</p>
 <h2 id="_1">準備<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まずはかんたんなusdaファイルを用意します。</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">{}</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">{}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 これを</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;A&quot;</span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">{}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こう。</p>
 <p><img alt="" src="https://gyazo.com/ba1c15de5821d0413a48f851acdfd0a4.png" /></p>
 <p>図にするとこんな感じにしたいとします。</p>
@@ -5110,21 +5123,30 @@ USDの場合は若干異なります。<br />
 どう違うかというと、PrimやLayerオブジェクトで行うのではなく<br />
 <a href="https://graphics.pixar.com/usd/docs/api/class_sdf_batch_namespace_edit.html">SdfBatchNamespaceEdit</a>と呼ばれる、Namespace（あとで説明）の操作をカプセル化したクラスを介して<br />
 Primの移動（Reparent）を行います。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\work\usd_py36\usd\namespaceEdit.usda&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\work\usd_py36\usd\namespaceEdit.usda&quot;</span><span class="p">)</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
 <span class="n">edit</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">BatchNamespaceEdit</span><span class="p">()</span>
 <span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/C&quot;</span><span class="p">,</span> <span class="s2">&quot;/A/B/C&quot;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 BatchNamespaceEditは、「Batch」と名のつくとおり移動処理を複数積み上げてから<br />
 編集したいレイヤーに対してApplyすることで、Primの階層を編集することができます。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/C&quot;</span><span class="p">,</span> <span class="s2">&quot;/A/B/C&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/C&quot;</span><span class="p">,</span> <span class="s2">&quot;/A/B/C&quot;</span><span class="p">)</span>
 <span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/D&quot;</span><span class="p">,</span> <span class="s2">&quot;/A/B/D&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Batchなので複数の操作を書くことができます。<br />
-<div class="highlight"><pre><span></span><code>[Sdf.NamespaceEdit(Sdf.Path(&#39;/A/C&#39;),Sdf.Path(&#39;/A/B/C&#39;),-1),
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[Sdf.NamespaceEdit(Sdf.Path(&#39;/A/C&#39;),Sdf.Path(&#39;/A/B/C&#39;),-1),
  Sdf.NamespaceEdit(Sdf.Path(&#39;/A/D&#39;),Sdf.Path(&#39;/A/B/D&#39;),-1)]
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 どんな操作が積まれているかは、Pythonの場合は edits で確認できます。（C++とは違う）  </p>
 <p>Prim操作を探しているときに NamespaceEdit は見つけていたのですが<br />
 うまく行かないしそもそもターゲット指定していないのにどうやってつかうんだ...<br />
@@ -5143,9 +5165,11 @@ Namespaceつまりはステージまたはレイヤーの階層構造を編集�
 なお、このNamespaceの位置を表すのがSdfPathになります。</p>
 <h2 id="_3">移動以外の操作<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>BatchNamespaceEditでは、Primの移動以外にもNamespace関係の操作を実行することができて<br />
-<div class="highlight"><pre><span></span><code><span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/B/D&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">emptyPath</span><span class="p">)</span> <span class="c1"># 削除</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/B/D&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">emptyPath</span><span class="p">)</span> <span class="c1"># 削除</span>
 <span class="n">edit</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;/A/B/C&quot;</span><span class="p">,</span><span class="s2">&quot;/A/B/C_rename&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こうすると、Primの削除やリネームを行うことができます。<br />
 これ以外にもVariantのReparentやプロパティのリネームなどもできるので<br />
 シーングラフやプロパティの構造を大きく変更したい場合は、この方法を使うと<br />
@@ -5153,23 +5177,44 @@ Namespaceつまりはステージまたはレイヤーの階層構造を編集�
 <h2 id="sublayernamespace">SubLayer時のNamespace操作<a class="headerlink" href="#sublayernamespace" title="Permanent link">¶</a></h2>
 <p>注意点ですが、このBatchNamespaceEditを実行するのがSdfLayerだということ。<br />
 なので、Primの定義があるレイヤーをサブレイヤーでロードした<br />
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 <span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="si">@namespaceEdit.usda@</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こんなファイルを作成して、このレイヤーに対して Apply(BatchNamespaceEdit) を実行したとしても<br />
 Falseになってしまい正しく実行できません。</p>
 <p>なので、サブレイヤーをしている場合は<br />
-<div class="highlight"><pre><span></span><code><span class="c1"># Primの定義があるレイヤーを取得して、そのレイヤーに対してApply</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Primの定義があるレイヤーを取得して、そのレイヤーに対してApply</span>
 <span class="n">stack</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">stack</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 定義があるレイヤーを取得して、そのターゲットに対してApplyします。  </p>
 <h3 id="_4">サブレイヤーで読み込んだ先に定義がある場合<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 (
     subLayers = [
@@ -5182,11 +5227,28 @@ over &quot;A&quot;{
     over &quot;C&quot;{}
     over &quot;D&quot;{}
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 定義がない場合はなにもおきないですが、<br />
 例えばこんな感じでサブレイヤーに対してPrimが定義されている場合<br />
 EditNamespaceをするとどうなるかというと</p>
-<p><div class="highlight"><pre><span></span><code>def &quot;A&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;A&quot;
 {
     def &quot;B&quot;
     {
@@ -5203,17 +5265,22 @@ EditNamespaceをするとどうなるかというと</p>
     {
     }
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こうなりました。<br />
 あくまでも編集ターゲットにしたレイヤーの定義のみ変更されます。  </p>
 <p>なので、これだと具合が悪い（コンポジションした結果に対してPrim移動をしたい）場合は</p>
-<div class="highlight"><pre><span></span><code><span class="n">flatten</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">flatten</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
 <span class="n">flatten</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>FlattenしてからEditするか</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
     <span class="n">layer</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">edit</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 LayerStackに対してeditするとかでもいけそうです。</p>
 <p>しかし、Prim移動を行うのが BatchNamespaceEditというのはさすがにわかるかあぁぁぁ！！！！<br />
 になりましたよ...</p>

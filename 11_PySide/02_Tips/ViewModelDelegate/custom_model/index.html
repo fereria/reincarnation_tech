@@ -5116,7 +5116,22 @@ TreeViewを構成するやり方について。  </p>
 <p>TreeViewの場合はこうなります。<br />
 今回のサンプルTreeItemですが、オブジェクトに <strong>childItems</strong> と <strong>parentItem</strong><br />
 変数を持ちます。  </p>
-<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        表示用のItemを再構築する</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5132,7 +5147,8 @@ TreeViewを構成するやり方について。  </p>
             <span class="n">treeItem</span> <span class="o">=</span> <span class="n">TreeItem</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
             <span class="n">p</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">treeItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 そのツリー構造を作成しているのが「setupModelData」関数です。<br />
 Itemを作成するときに親ノードにあたるItemを指定し、<br />
 オブジェクトを作成したらappendChildで親ノードの子にObjectをセットします。  </p>
@@ -5157,7 +5173,15 @@ Itemを作成するときに親ノードにあたるItemを指定し、<br />
 TreeViewの場合は、TreeごとにこのCountが呼ばれ<br />
 そのCount分Itemを表示します。</p>
 <h4 id="parent">parentについて<a class="headerlink" href="#parent" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QModelIndex</span><span class="p">()</span>
@@ -5167,6 +5191,7 @@ TreeViewの場合は、TreeごとにこのCountが呼ばれ<br />
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QModelIndex</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">createIndex</span><span class="p">(</span><span class="n">parentItem</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">parentItem</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>parent関数は、引数のindexの親にあたるModelIndexをreturnするようにします。  </p>
 <p><img alt="" src="https://gyazo.com/58169ce2a6467ef4351a007c9f0ce1e1.png" /></p>
 <p>ここで重要になるのがModelIndexについて。<br />
@@ -5188,7 +5213,17 @@ createIndex(row,column,実体のオブジェクト) を渡すことでModelIndex
 <h4 id="index">indexについて<a class="headerlink" href="#index" title="Permanent link">¶</a></h4>
 <p>基本はparentと同様ですが、こちらは parent から指定のrow/columnのModelIndexを取得します。  </p>
 <p><img alt="" src="https://gyazo.com/c5cd5041f0a3e63f005c558d852f1941.png" /></p>
-<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">parent</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="n">parentItem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rootItem</span>
@@ -5199,7 +5234,8 @@ createIndex(row,column,実体のオブジェクト) を渡すことでModelIndex
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">createIndex</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">childItem</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QModelIndex</span><span class="p">()</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 parentItemの実体のTreeItemオブジェクトを取得し、<br />
 childを取得、そしてそのChildの実体とrow,columnから<br />
 createIndexを使用してModelIndexを作成して返します。</p>
@@ -5207,7 +5243,14 @@ createIndexを使用してModelIndexを作成して返します。</p>
 <p>indexとparentを実装することで、最初に作成したItemのツリーをパースする構造はできました。<br />
 パースはできましたが、じゃあ実際に「なにを表示するのか」は data 関数を実装することで<br />
 指定をします。  </p>
-<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -5215,7 +5258,8 @@ createIndexを使用してModelIndexを作成して返します。</p>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="n">item</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">internalPointer</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 dataは、表示する場所のindexとroleとよばれる「ふるまい方」を受け取って処理をします。<br />
 このroleは、Viewに関係するいろいろな情報の受け取り口になっています。<br />
 例えば「背景の色」であったり、「文字の色」であったり<br />

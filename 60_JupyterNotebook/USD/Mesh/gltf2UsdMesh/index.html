@@ -5015,7 +5015,13 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Mesh/gltf2UsdMesh__gltfからUsdMeshを作る.ipynb">gltf2UsdMesh__gltfからUsdMeshを作る.ipynb</a></p>
 <h4 id="91">[91]:<a class="headerlink" href="#91" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">trimesh</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">trimesh</span>
 <span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span>
 
 <span class="n">gltf_file</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;D:\work\data_sample\susanne.glb&quot;</span>
@@ -5023,19 +5029,31 @@
 <span class="n">geo_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">gltf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">geo</span> <span class="o">=</span> <span class="n">gltf</span><span class="o">.</span><span class="n">geometry</span><span class="p">[</span><span class="n">geo_name</span><span class="p">]</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>unable to load textures without pillow!
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>unable to load textures without pillow!
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="92">[92]:<a class="headerlink" href="#92" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># 頂点取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 頂点取得</span>
 <span class="n">vtx</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">geo</span><span class="o">.</span><span class="n">vertices</span><span class="p">:</span>
     <span class="n">vtx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="93">[93]:<a class="headerlink" href="#93" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Faceを構成するIndexとVertexCountを取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Faceを構成するIndexとVertexCountを取得</span>
 <span class="n">indexes</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">vtxcount</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -5043,8 +5061,20 @@
     <span class="n">indexes</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
     <span class="n">vtxcount</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="94">[94]:<a class="headerlink" href="#94" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># to USDMesh</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># to USDMesh</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;/</span><span class="si">{</span><span class="n">geo_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;/</span><span class="si">{</span><span class="n">geo_name</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">geo_name</span><span class="si">}</span><span class="s1">Mesh&#39;</span><span class="p">)</span>
@@ -5057,10 +5087,12 @@
 <span class="c1"># BoundingBoxをセット？</span>
 <span class="n">mesh</span><span class="o">.</span><span class="n">CreateExtentAttr</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointBased</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span><span class="o">.</span><span class="n">ComputeExtent</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()))</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/Suzanne/SuzanneMesh&gt;).GetAttribute(&#39;extent&#39;)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/Suzanne/SuzanneMesh&gt;).GetAttribute(&#39;extent&#39;)
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   

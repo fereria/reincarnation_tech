@@ -5080,7 +5080,15 @@
 LayerStackとは、複数のLayerをサブレイヤーで合成するときのLayerを束ねたものです。<br />
 1Layerにはそれぞれいろんな定義（主張）が書かれていているわけですが<br />
 それがどういうふうな関係になっているのかを確認することができます。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
 
 <span class="c1"># Add code to modify the stage.</span>
@@ -5089,14 +5097,36 @@ LayerStackとは、複数のLayerをサブレイヤーで合成するときのLa
 <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 確認用のコードはこちら。</p>
 <p><img alt="" src="https://gyazo.com/7928a27a9ce948c490ae450206d0c522.png" /></p>
 <p>これを、まずはこんな感じでPythonノードに入れて、結果をみていきます。</p>
 <p>全部は長いので<br />
 <a href="https://snippets.cacher.io/snippet/b7130348f4ac41539759?t=U1ojSBLJ66yL6IovpVdLdABDfCtdx3">https://snippets.cacher.io/snippet/b7130348f4ac41539759?t=U1ojSBLJ66yL6IovpVdLdABDfCtdx3</a><br />
 こちらに結果は貼っておきましたが、一部抜粋で重要なところをみていきます。</p>
-<p><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007B132340&#39;)
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007B132340&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -5118,7 +5148,8 @@ def Sphere &quot;sphere1&quot; (
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 LayerStackを取得すると Sdf.Find という形でLayerオブジェクトを取得できます。<br />
 このLayerが、上のようなusdaの定義が記述されています。</p>
 <p>で、上のコードをよく見ると HoudiniEditorNodes というアトリビュートがあるのがわかりますが<br />
@@ -5132,7 +5163,28 @@ LayerStackを取得すると Sdf.Find という形でLayerオブジェクトを�
 <p>結果はこうなって<br />
 <a href="https://snippets.cacher.io/snippet/6141d563cd41b4502d3f">https://snippets.cacher.io/snippet/6141d563cd41b4502d3f</a><br />
 重要な部分だけ書き出すと</p>
-<p><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2FC0&#39;)
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2FC0&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -5154,9 +5206,31 @@ def Sphere &quot;sphere1&quot; (
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 これと<br />
-<div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2E80&#39;)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2E80&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -5178,9 +5252,19 @@ def Cube &quot;cube1&quot; (
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 これのように、1Layerごとに1つのノード、そしてそれぞれが</p>
-<div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E159800:root.usd&#39;)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E159800:root.usd&#39;)
 #usda 1.0
 (
     subLayers = [
@@ -5191,11 +5275,22 @@ def Cube &quot;cube1&quot; (
     ]
 )
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じでサブレイヤーで合成されているのがわかります。<br />
 つまりは、Houdiniのノードの右下に ～Layersが出ている場合、</p>
 <p><img alt="" src="https://gyazo.com/427a9abebd979a6def3c83e5a45f4561.png" /></p>
 <p>ノードの縁の色ごとに、1つのLayerとしてメモリー内でLayerが構築されている...ということになります。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
 
 <span class="c1"># Add code to modify the stage.</span>
@@ -5206,12 +5301,26 @@ def Cube &quot;cube1&quot; (
 <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 試しに、Pythonノードのコマンドをこんなふうにして<br />
 PythonノードでもPrimを定義してみると</p>
 <p><img alt="" src="https://gyazo.com/fdc10a6c4bd2172e7c706803b5e5ff95.png" /></p>
 <p>Pythonノード部分が 3Layers目になり</p>
-<p><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2D40&#39;)
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2D40&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -5225,7 +5334,8 @@ def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
 def &quot;hoge&quot;
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 LayerStackには、PythonscriptのHoudiniCreatorNode が追加され、<br />
 そこに PythonScriptで定義をしたPrimが追加されていることがわかります。</p>
 <h2 id="_2">どういうときにレイヤーが分かれるのか<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -5241,7 +5351,39 @@ LayerStackには、PythonscriptのHoudiniCreatorNode が追加され、<br />
 それぞれを個別のLayerとして扱ってサブレイヤーで合成する設定になっています。</p>
 <p><img alt="" src="https://gyazo.com/df7531ccc140ed5f5cc1bad410b99134.png" /></p>
 <p>それをFlatten Layersに変更すると、</p>
-<p><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:00000000BD376D40&#39;)
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:00000000BD376D40&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -5274,7 +5416,8 @@ def Sphere &quot;sphere1&quot; (
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 入力のLayer２つが1つのLayerにまとまった状態になります。</p>
 <p><img alt="" src="https://gyazo.com/8ab27ef99d1fa46c6e6fc4b2e794c92e.png" /></p>
 <p>この差がどういうところに影響するかというと、<br />
@@ -5290,7 +5433,56 @@ LOP Actionsの Inspect ActiveLayer (現在の編集ターゲットになって�
 <p><img alt="" src="https://gyazo.com/708c2eac7dd10e90e8f7535d4882848f.png" /></p>
 <p>結果。<br />
 Mergeとは違い、Graftした場合は　Layersという記述が増えず</p>
-<p><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:00000000701C5440&#39;)
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:00000000701C5440&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -5340,7 +5532,8 @@ def Xform &quot;root&quot; (
         }
     }
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 1つのLayerに、 Input1のノードもInput2のノードもまとまった状態になります。<br />
 これは <a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/Python/02_reparentPrim/">PrimのReparent</a>のときにわかったことですが<br />
 Reparentの処理はUSDのコンポジションには存在しない（Referenceであるノードに対して構造を追加することはある）わけで、<br />

@@ -5098,8 +5098,9 @@ py.exe とは、最近のPythonをインストールすると一緒にインス�
 複数のPythonをインストールしている場合の使用バージョンスイッチを用意にしてくれるものです。<br />
 exeは C:/Windows/py.exe に入っているので、コマンドライン上では py というコマンドで使用することができます。</p>
 <p>使い方は、<br />
-<div class="highlight"><pre><span></span><code>py -3.6 
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 
+</code></pre></div>
+</td></tr></table><br />
 このようにすると、指定のバージョンのPythonを使用できます。</p>
 <p>これを活用することで、環境変数のPythonPathを毎度変えたりすることなく<br />
 Pythonを使用することができます。</p>
@@ -5110,26 +5111,30 @@ py を使用することでも pip install を使用することができるの�
 そちらを利用して説明していきます。</p>
 <h2 id="_1">インストール方法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>というわけで、まずは pipenvを使えるようにインストールします。<br />
-<div class="highlight"><pre><span></span><code>py -3.6 -m pip install pipenv
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pip install pipenv
+</code></pre></div>
+</td></tr></table><br />
 今回は、python3.6を基準として扱うPythonとして使用するので -3.6 とします。</p>
 <p>インストールが完了すると</p>
-<p><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv ～～～
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv ～～～
+</code></pre></div>
+</td></tr></table><br />
 これで、pipenvを使用することができます。</p>
 <h2 id="_2">インストール先を変更する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>準備ができたら、次にpipenvの設定をします。<br />
 pipenvは、仮想環境を .venv 下に作成するのですが、<br />
 デフォルトだとHOME下に仮想環境が作成されてしまうので、プロジェクト下になるように環境変数で指定します。</p>
-<p><div class="highlight"><pre><span></span><code>PIPENV_VENV_IN_PROJECT=true
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PIPENV_VENV_IN_PROJECT=true
+</code></pre></div>
+</td></tr></table><br />
 この設定を入れておくと、現在のフォルダ下に .venv が作成されます。</p>
 <h2 id="versionpipenv">Versionを指定してPIPENVの環境を作成する<a class="headerlink" href="#versionpipenv" title="Permanent link">¶</a></h2>
 <p>準備ができたら、実際の環境を作っていきます。</p>
 <p>仮想環境を作りたいPythonのプロジェクトフォルダのルートに移動して、<br />
 以下のコマンドを実行します。</p>
-<div class="highlight"><pre><span></span><code>py -3.6 -m pipenv --python 3.6 install
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv --python 3.6 install
 </code></pre></div>
+</td></tr></table>
 <p>pipenvでの環境構築は、 --python ### install の ### ここで<br />
 仮想環境のバージョンを指定することができます。<br />
 上の場合は 3.6用の仮想環境をつくります。</p>
@@ -5137,11 +5142,13 @@ pipenvは、仮想環境を .venv 下に作成するのですが、<br />
 <p>構築が完了したら、このように .venv フォルダができあがります。<br />
 これでもとりあえずOKなのですが、<br />
 これだと毎回 py -3.6 pipenv のように書かないといけないので<br />
-<div class="highlight"><pre><span></span><code>py -3.6 -m pipenv install pipenv
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv install pipenv
+</code></pre></div>
+</td></tr></table><br />
 作成した仮想環境にも pipenv を入れておきます。</p>
-<p><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv shell
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv shell
+</code></pre></div>
+</td></tr></table><br />
 pipenvが入れ終わったら、作った仮想環境をセットします。</p>
 <h2 id="vscode">VSCodeの設定<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
 <p>まず、pipenvをインストールしたフォルダを開きます。</p>
@@ -5152,8 +5159,9 @@ pipenvが入れ終わったら、作った仮想環境をセットします。</
 <p><img alt="" src="https://gyazo.com/fa506a203231cada557b92957c4ad90d.png" /></p>
 <p>この設定をすると、VSCodeのターミナルを開いたときに自動的に .venv にアクティベートした<br />
 状態でコンソールを開いてくれるので</p>
-<p><div class="highlight"><pre><span></span><code>pipenv install pyside2
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pipenv install pyside2
+</code></pre></div>
+</td></tr></table><br />
 こんなかんじで、pipを使用するのと同じ感覚で仮想環境にモジュールをインストールすることができます。</p>
 <h2 id="pipenv_1">pipenvの主要なコマンド<a class="headerlink" href="#pipenv_1" title="Permanent link">¶</a></h2>
 <table>
@@ -5192,7 +5200,23 @@ pipenvが入れ終わったら、作った仮想環境をセットします。</
 </table>
 <h2 id="_3">設定済みファイルから環境を構築する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>pipenvは、設定ファイルをベースに仮想環境を再構築することができます。  </p>
-<div class="highlight"><pre><span></span><code>[[source]]
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[[source]]
 url = &quot;https://pypi.org/simple&quot;
 verify_ssl = true
 name = &quot;pypi&quot;
@@ -5210,6 +5234,7 @@ pyopengl = &quot;*&quot;
 [requires]
 python_version = &quot;2.7&quot;
 </code></pre></div>
+</td></tr></table>
 <p>まずは、空のフォルダに Pipfile という名前の空のテキストを作成します。<br />
 作成したファイルを開いて、↑のようにインストールしたいパッケージや、Pythonのバージョンを<br />
 記載して保存します。<br />
@@ -5217,8 +5242,9 @@ python_version = &quot;2.7&quot;
 すでに別の仮想環境を作っていた場合はファイルが作成されています。<br />
 ので、すでにあるファイルをコピペしてくるのでもOKです。  </p>
 <p>次に、コマンドプロンプトでフォルダに移動して</p>
-<p><div class="highlight"><pre><span></span><code>py -3.6 pipenv install
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 pipenv install
+</code></pre></div>
+</td></tr></table><br />
 を実行します。  </p>
 <p>実行すると、 Pipfile に記載されているパッケージのうちインストールされていない物があれば<br />
 インストールされます。<br />
@@ -5228,7 +5254,13 @@ python_version = &quot;2.7&quot;
 行うことができます。</p>
 <p>VSCodeと組み合わせるとより快適になるので、とても便利です。</p>
 <h2 id="_4">追記<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
 ; <span class="k">path</span> version
 <span class="k">mkdir</span> <span class="nv">%1</span>
 <span class="k">cd</span> /d <span class="nv">%1</span>
@@ -5236,6 +5268,7 @@ C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"
 C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"> -3.6 -m pipenv --python %2 install</span>
 C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"> -3.6 -m pipenv install pipenv</span>
 </code></pre></div>
+</td></tr></table>
 <p>毎度プロジェクト作るときにコマンド叩くの面倒だったので、Batを書いた。</p>
 <p>これで </p>
 <p>create_pipenvproj.bat D:\hogehoge 3.6 とかやるとかんたんにプロジェクトがつくれる!</p>

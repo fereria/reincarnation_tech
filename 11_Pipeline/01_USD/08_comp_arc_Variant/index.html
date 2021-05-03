@@ -5042,7 +5042,13 @@ assets/Book/Book.geom.usd<br />
 <p>このように、いくつかの選択肢から1つを選ぶとプリムの中身をスイッチできるのが「バリアントセット」<br />
 です。  </p>
 <h2 id="_1">基本構造<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">prepend</span><span class="w"> </span><span class="na">variantSets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hogehoge&quot;</span><span class="w"></span>
@@ -5050,6 +5056,7 @@ assets/Book/Book.geom.usd<br />
 <span class="p">{</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>バリアントセットは、切り替えを追加したいプリムに対して追加します。<br />
 このサンプルを usdview で表示すると  </p>
 <p><img alt="" src="https://gyazo.com/512be3e912a4d1616b48b4ac92e2982c.png" /></p>
@@ -5057,7 +5064,27 @@ assets/Book/Book.geom.usd<br />
 <p><img alt="" src="https://gyazo.com/5f19a3c61c650ee6a9929b642f31a3bd.png" /></p>
 <p>空のvariant が追加されました。  </p>
 <h3 id="_2">切り替え設定を追加する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">variants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -5079,6 +5106,7 @@ assets/Book/Book.geom.usd<br />
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>なんの選択肢もない場合はただの空の入れ物だけがある状態なので<br />
 これに対して選択肢を作成します。  </p>
 <p><img alt="" src="https://i.gyazo.com/44efb9290644d3b8c73f5bdd934f6d07.gif" /></p>
@@ -5086,7 +5114,31 @@ assets/Book/Book.geom.usd<br />
 <h3 id="lv">LとVの関係について<a class="headerlink" href="#lv" title="Permanent link">¶</a></h3>
 <p>前回の LocalとInheritsのように、このバリアントもコンポジションアークなので<br />
 原則によってアトリビュートやプリムが決定するわけですが  </p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;testPrim&quot; (
     variants = {
@@ -5112,6 +5164,7 @@ def &quot;testPrim&quot; (
     }
 }
 </code></pre></div>
+</td></tr></table>
 <p>このようにしてみるとどうなるかというと</p>
 <p><img alt="" src="https://gyazo.com/7e0c5b3ab1e00e0c818dbe6c6135a3c0.png" /></p>
 <p>アトリビュートの値は、 ???? になっているのがわかります。<br />
@@ -5121,7 +5174,27 @@ Vよりも強いため値が上書きされていることが分かります。 
 <h3 id="_3">子プリムの切り替え<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>上の例だと、プリムにあるアトリビュートをセットする機能にも見えますが<br />
 そういうわけではなく、</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">variants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -5143,6 +5216,7 @@ Vよりも強いため値が上書きされていることが分かります。 
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>このように、各バリアントセットの設定部分に対してプリムを定義することで</p>
 <p><img alt="" src="https://gyazo.com/88cbff2746d0f7b197f27d9a793169ab.png" /></p>
 <p>プリムの構造そのものを複数のパターン持つことが出来ます。<br />

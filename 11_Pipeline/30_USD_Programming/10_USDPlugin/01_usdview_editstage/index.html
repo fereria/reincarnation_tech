@@ -5018,7 +5018,77 @@
 Plugin を利用して書いてみます。</p>
 <p>フォルダ構成や plugInfo.json は前回と共通なのでスキップして本体のみ解説。<br />
 長いけど全コード</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Tf</span><span class="p">,</span> <span class="n">UsdGeom</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Tf</span><span class="p">,</span> <span class="n">UsdGeom</span>
 <span class="kn">from</span> <span class="nn">pxr.Usdviewq.plugin</span> <span class="kn">import</span> <span class="n">PluginContainer</span>
 
 <span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QPushButton</span>
@@ -5090,6 +5160,7 @@ Plugin を利用して書いてみます。</p>
 
 <span class="n">Tf</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">TutorialPluginContainer</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>usdview の Plugin に必要なのは</p>
 <ol>
 <li>PluginContainer を継承したクラス</li>
@@ -5110,8 +5181,9 @@ Plugin を利用して書いてみます。</p>
 このオブジェクトには、現在の USDView で開いている Stage や Window の情報、<br />
 CurrentFrame の値、View 設定などが含まれていて<br />
 これらを利用して処理を書くことができます。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">qMainWindow</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">qMainWindow</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>PySide の MainWindow は usdviewApi.qMainWindow で取得できます。<br />
 今回は QDialog で Stage に対して色々操作をしたかったので<br />
 QDialog には UsdviewApi オブジェクトを渡して<br />
@@ -5120,13 +5192,21 @@ __init__に対してそのオブジェクトの qMainWindow を渡すように�
 <p>usdView の TreeView に対して何かをしたい場合は self.usdviewApi.dataModel を利用します。<br />
 この dataModel を使用すれば、選択中の Prim オブジェクトを取得したり、<br />
 指定の Prim を選択状態にしたりできます。</p>
-<div class="highlight"><pre><span></span><code>    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">dataModel</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">getPrims</span><span class="p">())</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">dataModel</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">getPrims</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p>選択中の Prim は、 selection.getPrims() で取得ができます。</p>
 <p><img alt="" src="https://gyazo.com/a91faa582e88b6020517f786f43e0812.png" /></p>
 <p>ここで取得できるのは USD の Prim なので<br />
 あとは単独のツールで書くのと同じく処理を書けば OK です。</p>
-<div class="highlight"><pre><span></span><code>        <span class="n">prim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/createPrim&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="n">prim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/createPrim&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
             <span class="n">prim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/createPrim&quot;</span><span class="p">)</span>
 
@@ -5135,21 +5215,26 @@ __init__に対してそのオブジェクトの qMainWindow を渡すように�
         <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">stage</span><span class="p">,</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ChildNode_</span><span class="si">{</span><span class="n">childSize</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">dataModel</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">setPrim</span><span class="p">(</span><span class="n">xform</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>self.usdviewApi.stage で、現在の Stage を取得することができるので<br />
 新しい Prim を追加する場合などは、取得した Stage に対して DefinePrim であったり<br />
 UsdGeom.Define(stage,"<PATH>")<br />
 を利用してPrimを追加することができます。</p>
 <p>TreeViewに増やしたPrimを選択状態にしたい場合は、<br />
-<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">dataModel</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">setPrim</span><span class="p">(</span><span class="n">xform</span><span class="p">)</span>
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">dataModel</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">setPrim</span><span class="p">(</span><span class="n">xform</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table></p>
 <p>selection.setPrim(\&lt;primObj>)</p>
 <p>このように setPrim で、選択したいPrimを指定します。</p>
 <h3 id="viewportscreenshot">ViewPortのScreenShotをつくる<a class="headerlink" href="#viewportscreenshot" title="Permanent link">¶</a></h3>
 <p>この usdvieApiを利用すると、現在のViewportのスクリーンショットをかんたんに取ることができます。</p>
-<div class="highlight"><pre><span></span><code>        <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">GrabViewportShot</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">GrabViewportShot</span><span class="p">()</span>
         <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;D:/capture.jpg&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">PrintStatus</span><span class="p">(</span><span class="s2">&quot;Save Image -&gt; D:/capture.jpg&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>GrabViewportShot() で、Viewportの QImageオブジェクトを取得できます。<br />
 ので、あとは save(Path) で</p>
 <p><img alt="" src="https://i.gyazo.com/ee182d4498896a8625079f7c48337d6b.jpg" /></p>

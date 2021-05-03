@@ -5145,7 +5145,14 @@ PySide の ListView は複数カラムを持つことができませんので、
 <li>columnCount</li>
 </ul>
 <p>を実装する必要があるのですが、親子化なしの場合はどう作るかがわかりにくいですが</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">QModelIndex</span><span class="p">()):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">QModelIndex</span><span class="p">()):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">createIndex</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
@@ -5154,6 +5161,7 @@ PySide の ListView は複数カラムを持つことができませんので、
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">QModelIndex</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>特に親子化が不必要な場合は、上のように index と parent を作れば OK です。<br />
 （parent が QModelIndex()の場合は、いわゆるルート Item 扱いになるから）</p>
 <h2 id="datarole">data・Role について<a class="headerlink" href="#datarole" title="Permanent link">¶</a></h2>
@@ -5165,12 +5173,17 @@ PySide の場合はそれ以外にも「背景色」「文字色」「整列（�
 では、どのデータがやり取りされているのかというのを判断しているのは<br />
 なにかというと、それが「Role」と呼ばれるもので<br />
 data 関数の 2 つ目の引数としてうけとります。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">):</span>
 
         <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()]</span>
 
         <span class="c1"># 以下色々...</span>
 </code></pre></div>
+</td></tr></table>
 <p>data は様々な用途で呼ばれますが、「何に呼ばれたか」を判定するのが role で<br />
 その Role は <a href="https://doc.qt.io/qtforpython/PySide2/QtCore/Qt.html?highlight=pyside2%20qtcore%20qt%20itemdatarole#PySide2.QtCore.PySide2.QtCore.Qt.ItemDataRole">こちら</a>にリストがあります。<br />
 主なものとしては、表示される文字列の DisplayRole、背景色の BackgroundRole などがあります。</p>
@@ -5178,13 +5191,36 @@ data 関数の 2 つ目の引数としてうけとります。</p>
 セルの見た目をいい感じに変更することができるというわけです。</p>
 <p>その中から使えそうなものをテストしてみました。</p>
 <h3 id="displayrole">DisplayRole<a class="headerlink" href="#displayrole" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p>おそらく必須なのが DisplayRole<br />
 これの return した結果がセルの文字列として表示されます。</p>
 <p>列方向は、 index.column() で、何列目を処理しているかを受け取ることができるので</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Item</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Item</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">ItemStatus</span><span class="o">.</span><span class="n">Waiting</span><span class="p">):</span>
 
@@ -5207,16 +5243,29 @@ data 関数の 2 つ目の引数としてうけとります。</p>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__data</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;</span>
 </code></pre></div>
+</td></tr></table>
 <p>このように、表示したいアイテムのクラスを用意して、<br />
 取得したい値を返すようにしています。</p>
 <h3 id="backgroundrole">BackgroundRole<a class="headerlink" href="#backgroundrole" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="c1"># 背景色</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="c1"># 背景色</span>
         <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">BackgroundRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">getBackgroundColor</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/b9b196c53c9748a6a5214e43c9b23960.png" /></p>
 <p>BackgroundRole は、QColor を返すことで、背景色を変更することができます。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">getBackgroundColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">getBackgroundColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
 
         <span class="n">COLORS</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;Waiting&#39;</span><span class="p">:</span> <span class="n">QColor</span><span class="p">(</span><span class="mi">173</span><span class="p">,</span> <span class="mi">216</span><span class="p">,</span> <span class="mi">230</span><span class="p">),</span>
@@ -5227,68 +5276,97 @@ data 関数の 2 つ目の引数としてうけとります。</p>
         <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">COLORS</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">column</span><span class="p">)]</span>
 </code></pre></div>
+</td></tr></table>
 <p>使い方としては、ステータスごとに色を変えたい...みたいなときに<br />
 Item クラス側などに色を取得する関数を入れておくなどができます。</p>
 <h3 id="textcolorrole">TextColorRole<a class="headerlink" href="#textcolorrole" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">TextColorRole</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">TextColorRole</span><span class="p">:</span>
             <span class="c1"># 文字の色を変える</span>
             <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">QColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/5698b72cbe22d1e516913f3b4cf38664.png" /></p>
 <p>TextColorRole は、表示される文字の色を変更するときに使用します。</p>
 <h3 id="textalignmentrole">TextAlignmentRole<a class="headerlink" href="#textalignmentrole" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">TextAlignmentRole</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">TextAlignmentRole</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span>
 </code></pre></div>
+</td></tr></table>
 <p>AlignmentRole は、文字の整列をどうするか（右寄せ・左寄せ・センタリングなど）を<br />
 変更することができます。<br />
 ステータス表示とかは、センタリングしたほうが見た目が良いので<br />
 そういうときは指定の列のみセンタリングする...みたいな使い方ができます。</p>
 <h3 id="decorationrole">DecorationRole<a class="headerlink" href="#decorationrole" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">DecorationRole</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">DecorationRole</span><span class="p">:</span>
             <span class="c1"># アイコンを追加</span>
             <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">QPixmap</span><span class="p">(</span><span class="s2">&quot;D:/icons8-folder.svg&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>DecorationRole は、文字の左側にアイコンを指定することができる Role です。<br />
 <img alt="" src="https://gyazo.com/6811ce76f03787ea3c3a042f8279d531.png" /><br />
 表示したい Icon の QPixmap または QIcon または QColor を指定することができます。</p>
 <h3 id="tooltiprole">ToolTipRole<a class="headerlink" href="#tooltiprole" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">ToolTipRole</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">ToolTipRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">getToolTip</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>ToolTipRole は、セルにマウスオーバーしたときに表示される ToolTip を<br />
 変更することができる Role です。<br />
 これを使用すると、各セルごとに Tooltop の文言を<br />
 自由に変更することができます。</p>
 <h3 id="sizehintrole">SizeHintRole<a class="headerlink" href="#sizehintrole" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">SizeHintRole</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">SizeHintRole</span><span class="p">:</span>
             <span class="c1"># セルの大きさを返す</span>
             <span class="k">return</span> <span class="n">QSize</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>SizeHintRole は、各セルごとの大きさを指定することができます。</p>
-<div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">SampleListModel</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">SampleListModel</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setItemsExpandable</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setRootIsDecorated</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">header</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">header</span><span class="p">()</span>
         <span class="n">header</span><span class="o">.</span><span class="n">setSectionResizeMode</span><span class="p">(</span><span class="n">QHeaderView</span><span class="o">.</span><span class="n">ResizeToContents</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>この SizeHint でサイズを変えるのは、ResizeToContents を指定したときに<br />
 使用される値になります。</p>
 <h3 id="userrole">UserRole<a class="headerlink" href="#userrole" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">item</span>
 </code></pre></div>
+</td></tr></table>
 <p>最後は UserRole<br />
 UserRole は実際にデータを使うときに</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">doubleClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">doubleClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="c1"># ダブルクリックすると、クリックした行のItemを取得できる</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>ModelIndex から値を取得したいときなどに<br />
 表示する以外に値を渡せるようにしたい場合等に使用します。<br />
 上の例だと、Item オブジェクトを取得できるようになります。</p>

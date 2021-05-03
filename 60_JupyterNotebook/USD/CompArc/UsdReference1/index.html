@@ -4987,14 +4987,30 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/CompArc/UsdReference1__ReferenceをしているPrimからUsdのFilePathを取得.ipynb">UsdReference1__ReferenceをしているPrimからUsdのFilePathを取得.ipynb</a></p>
 <h4 id="18">[18]:<a class="headerlink" href="#18" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span>
 
 <span class="n">sample_usd</span> <span class="o">=</span> <span class="s2">&quot;D:/work/usd_py36/usd/ref.usda&quot;</span>
 
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">sample_usd</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="19">[19]:<a class="headerlink" href="#19" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/ref&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/ref&quot;</span><span class="p">)</span>
 <span class="c1"># PrimがReferencによって定義されてるか</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">HasAuthoredReferences</span><span class="p">())</span>
 <span class="c1"># Primを構成するLayerを取得</span>
@@ -5007,9 +5023,16 @@
     <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">findLayer</span><span class="o">.</span><span class="n">referenceList</span><span class="o">.</span><span class="n">prependedItems</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">ref</span><span class="o">.</span><span class="n">assetPath</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 [Sdf.Find(&#39;d:/work/usd_py36/usd/ref.usda&#39;, &#39;/ref&#39;), Sdf.Find(&#39;d:/work/usd_py36/usd/testDD.usda&#39;, &#39;/hogehoge&#39;)]
 Sdf.Find(&#39;d:/work/usd_py36/usd/ref.usda&#39;, &#39;/ref&#39;)
 /ref
@@ -5017,6 +5040,7 @@ D:/work/usd_py36/usd/testDD.usda
 Sdf.Find(&#39;d:/work/usd_py36/usd/testDD.usda&#39;, &#39;/hogehoge&#39;)
 /hogehoge
 </code></pre></div>
+</td></tr></table>
 </div>
 <p>GetPrimStackで得られる Sdf.Find は、Primを構成するPrimSpec？と<br />
 その元になるAssetPathを取得できる。<br />

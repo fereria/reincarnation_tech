@@ -4991,10 +4991,20 @@
 その結果を表示できるようにできます。<br />
 というのを前からあるのは知ってましたが、mkdocs をバージョンアップするついでに<br />
 使い方を色々調べてみました。</p>
-<div class="highlight"><pre><span></span><code>pip install mkdocs-macros-plugin
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install mkdocs-macros-plugin
 </code></pre></div>
+</td></tr></table>
 <p>まずはプラグインを pip でインストールします。</p>
-<p><div class="highlight"><pre><span></span><code>plugins:
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>plugins:
   - git-revision-date-localized:
       type: iso_datetime
       locale: ja
@@ -5004,38 +5014,50 @@
         - ja
   - awesome-pages
   - macros
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 そしてpluginsに macroを追加します。<br />
 これで準備は完了。</p>
 <p>次に呼び出し用のpythonを作ります。<br />
 mkdocsのプロジェクト直下に main.py を準備して、そこに</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">define_env</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">define_env</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
     <span class="c1"># マクロはここに書く</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 define_env 関数を作ります。<br />
 マクロプラグインが呼び出すための関数で、<br />
 マクロに必要な値がこの関数の引数として渡されます。</p>
 <h2 id="_1">マクロを作る<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>マクロとは、<br />
-<div class="highlight"><pre><span></span><code>{{hoge()}}
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{{hoge()}}
+</code></pre></div>
+</td></tr></table><br />
 こんな感じで {{ }} で main.py の define_env に書かれた関数を呼び出して<br />
 そのreturnを表示できるようになります。</p>
-<div class="highlight"><pre><span></span><code>    <span class="nd">@env</span><span class="o">.</span><span class="n">macro</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nd">@env</span><span class="o">.</span><span class="n">macro</span>
     <span class="k">def</span> <span class="nf">fontstyle</span><span class="p">(</span><span class="n">comment</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#000000&#39;</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&lt;div style=&quot;font-size:</span><span class="si">{</span><span class="n">size</span> <span class="o">*</span> <span class="mi">100</span><span class="si">}</span><span class="s1">%;color:</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s1">&quot;&gt;</span><span class="si">{</span><span class="n">comment</span><span class="si">}</span><span class="s1">&lt;/div&gt;&#39;</span>
 </code></pre></div>
+</td></tr></table>
 <p>例えばこんな感じの定義を作り、@env.macro のデコレーターをつけます。</p>
-<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">testHoge</span><span class="p">():</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">testHoge</span><span class="p">():</span>
         <span class="k">return</span> <span class="s1">&#39;return hogehoge</span>
     <span class="c1"># デコレーターを使わない場合</span>
     <span class="n">env</span><span class="o">.</span><span class="n">macro</span><span class="p">(</span><span class="n">testHoge</span><span class="p">,</span> <span class="s1">&#39;hogevalue&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 あるいは、デコレーターを使わない場合は、env.macroの第１引数で関数を渡し<br />
 第２引数で呼び出し用の {{return hogehoge}}に指定する文字列を指定しておきます。</p>
 <p>出来上がったマクロは、</p>
-<div class="highlight"><pre><span></span><code>{{fontstyle(&#39;ここに文字を書く&#39;,1.2,&#39;#ff0000&#39;)}}
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{{fontstyle(&#39;ここに文字を書く&#39;,1.2,&#39;#ff0000&#39;)}}
 </code></pre></div>
+</td></tr></table>
 <p>mkdocsにこのように書くと</p>
 <div style="font-size:120.0%;color:#ff0000">ここに文字を書く</div>
 
@@ -5044,19 +5066,24 @@ define_env 関数を作ります。<br />
 とても便利です。</p>
 <h2 id="_2">フィルターを作る<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>フィルターとは、 Jinja2 の機能で<br />
-<div class="highlight"><pre><span></span><code>{{name|lower}}
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{{name|lower}}
+</code></pre></div>
+</td></tr></table><br />
 こんなかんじで {{}} の1つ目の変数を2つ目の定義されたフィルターで変換して<br />
 結果を表示させることのできる機能です。</p>
-<p><div class="highlight"><pre><span></span><code>    <span class="nd">@env</span><span class="o">.</span><span class="n">filter</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nd">@env</span><span class="o">.</span><span class="n">filter</span>
     <span class="k">def</span> <span class="nf">twitter</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;a href=&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot;&gt;&lt;/a&gt;&lt;/blockquote&gt;&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&#39;</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 フィルターの作り方はかんたんで、<br />
 デコレーターで @env.filterをつけた関数を作り、入力の値を引数として<br />
 その結果を return します。</p>
-<div class="highlight"><pre><span></span><code>{{&#39;https://twitter.com/fereria/status/1164544426967875584&#39;|twitter}}
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{{&#39;https://twitter.com/fereria/status/1164544426967875584&#39;|twitter}}
 </code></pre></div>
+</td></tr></table>
 <p>上のTwitterフィルターは、値でTwitterのURLを渡すと</p>
 <blockquote class="twitter-tweet"><a href="https://twitter.com/fereria/status/1164544426967875584"></a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

@@ -5069,7 +5069,24 @@ cube2 が別のレイヤーとして作成されます。</p>
 <p><img alt="" src="https://gyazo.com/133158975ece65dce7009829abe258e8.png" /></p>
 <p>結果がこちら。<br />
 Cubeは cube.usda メイン部分は payload.usda という形で出力され、</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 <span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n n-Builtins">endTimeCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
 <span class="w">    </span>framesPerSecond<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">24</span><span class="w"></span>
@@ -5087,7 +5104,8 @@ Cubeは cube.usda メイン部分は payload.usda という形で出力され、
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 cubeをペイロードしたusdaが出力されます。</p>
 <p>つまり、 ConfigureLayerノードは<br />
 接続されたレイヤーに対して設定を変更する事ができるノードというわけですね。</p>
@@ -5095,7 +5113,22 @@ cubeをペイロードしたusdaが出力されます。</p>
 <p>例えばCube側のConfigureLayerをみてみます。<br />
 SavePathはそのレイヤーをどこに保存するのか、DefaultPrimitiveはレイヤーの<br />
 デフォルトPrimをなににするかの設定です。</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 <span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n n-Builtins">defaultPrim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cube2&quot;</span><span class="w"></span>
 <span class="w">    </span>framesPerSecond<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">24</span><span class="w"></span>
@@ -5111,7 +5144,8 @@ SavePathはそのレイヤーをどこに保存するのか、DefaultPrimitive�
 <span class="w">    </span><span class="kt">matrix4d</span><span class="w"> </span><span class="na">xformOp:transform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Token">uniform</span><span class="w"> </span><span class="kt">token[]</span><span class="w"> </span><span class="na">xformOpOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;xformOp:transform&quot;</span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 その結果出力されるレイヤー。<br />
 defaultPrimとして cube2 が指定されていることがわかります。</p>
 <p><img alt="" src="https://gyazo.com/f4b53179ff274c7c575b990cb93df9f5.png" /></p>
@@ -5120,7 +5154,20 @@ Payloadノードの Reference Primitive で「 Reference Dfault Primitive 」を
 ペイロードすることができます。</p>
 <p><img alt="" src="https://gyazo.com/a5f58dcd2c544a14b22d99622acd630e.png" /></p>
 <p>他の設定も色々いれてみると</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     &quot;Hello World&quot;
     customLayerData = {
@@ -5134,7 +5181,8 @@ Payloadノードの Reference Primitive で「 Reference Dfault Primitive 」を
     timeCodesPerSecond = 24
     upAxis = &quot;Y&quot;
 )
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 色々仕込むことができました。</p>
 <h2 id="_2">編集部分だけ別レイヤー出力<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>ConfigureLayerを使用すると、指定の部分のレイヤーの出力パスを編集し<br />
@@ -5157,12 +5205,17 @@ Exportしないようにするノードです。</p>
 <p><img alt="" src="https://gyazo.com/c1faa54fab8f2701ed25d451b368a0ae.png" /></p>
 <p>こんなかんじにモデルをInputして編集するときに、layerBreakを使用すると<br />
 InputのMesh情報はレイヤーには保存されず、編集情報のみが</p>
-<div class="highlight"><pre><span></span><code><span class="k k-Tokens">over</span><span class="w"> </span><span class="s">&quot;cube1&quot;</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k k-Tokens">over</span><span class="w"> </span><span class="s">&quot;cube1&quot;</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">matrix4d</span><span class="w"> </span><span class="na">xformOp:transform:edit1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Token">uniform</span><span class="w"> </span><span class="kt">token[]</span><span class="w"> </span><span class="na">xformOpOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;xformOp:transform&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;xformOp:transform:edit1&quot;</span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>over でレイヤーに保存されます。</p>
 <p><img alt="" src="https://gyazo.com/8960a7f8948b3c80d762391fd891c28f.png" /></p>
 <p>このlayerBreakがないと、編集対象がEditノードにないためすべてエラーになってしまいます。</p>

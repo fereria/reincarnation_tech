@@ -5071,7 +5071,13 @@ Reference は完全なカプセル化された別のレイヤーを、指定の 
 「カプセル化」がなにかというと、</p>
 <p><img alt="" src="https://gyazo.com/abe1f03c14eb9860d18acba61564c6a2.png" /></p>
 <p>まず、こんなサンプルを用意します。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Obj&quot;
 )
@@ -5079,12 +5085,16 @@ class Cube &quot;ObjBase&quot;{}
 
 def &quot;Obj&quot;(references=&lt;/ObjBase&gt;){}
 </code></pre></div>
+</td></tr></table>
 <p>Reference ノードでは、↑ のようなファイルをロードしておきます。<br />
 そして、片側の inlineusd で</p>
-<div class="highlight"><pre><span></span><code>class Sphere &quot;ObjBase&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class Sphere &quot;ObjBase&quot;
 {
 }
 </code></pre></div>
+</td></tr></table>
 <p>こうします。<br />
 この 2 つをサブレイヤーで合成してみます。<br />
 「Reference」の場合、<br />
@@ -5097,7 +5107,13 @@ def &quot;Obj&quot;(references=&lt;/ObjBase&gt;){}
 <img alt="" src="https://gyazo.com/b149ebd89d2c87713455b6c313035363.png" /><br />
 合成はされるものの、リファレンス内の構造には影響を与えません。</p>
 <p>これを</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Obj&quot;
 )
@@ -5105,6 +5121,7 @@ class Cube &quot;ObjBase&quot;{}
 
 def &quot;Obj&quot;(inherits=&lt;/ObjBase&gt;){}
 </code></pre></div>
+</td></tr></table>
 <p>このように「継承」にしてみます。</p>
 <p><img alt="" src="https://gyazo.com/ddffc80dc903d4d7bbd76db180e3fb28.png" /></p>
 <p>すると、サブレイヤーの結果は Sphere に変わりました。<br />
@@ -5129,7 +5146,15 @@ Reference ノードを使用して読み込んだレイヤー内の class を上
 Primitive を指定する必要があります。</p>
 <p>で。</p>
 <p>Inherits で継承した結果</p>
-<div class="highlight"><pre><span></span><code>class Cube &quot;TestClassA&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class Cube &quot;TestClassA&quot;
 {
 }
 
@@ -5139,6 +5164,7 @@ def &quot;Inherits&quot; (
 {
 }
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じの usda が作成されます。</p>
 <p><img alt="" src="https://gyazo.com/950e06b355b39a04cc3f51ad37023b0e.png" /></p>
 <p>結果のシーングラフ。<br />
@@ -5150,10 +5176,13 @@ Inherits という名前の Cube が作成されました。</p>
 このようにClass定義はなくなり、ファイル内の指定のPrimitive（通常はDefaultPrim）のみが<br />
 表示されます。<br />
 しかし、表示はされていないものの、継承元の TestClassA クラスはオーバーライド可能で<br />
-<div class="highlight"><pre><span></span><code>class Sphere &quot;TestClassA&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class Sphere &quot;TestClassA&quot;
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このようなファイルをサブレイヤー合成すると、</p>
 <p><img alt="" src="https://gyazo.com/40d836b0c63eb4969d1639f136f694ee.png" /></p>
 <p>こんな感じで合成され</p>
@@ -5182,10 +5211,13 @@ LoadLayerでReferenceノードにつなぐと<br />
 あくまでも、同じレイヤー内にあるPrimitiveをリファレンスでロードした状態と同じになり<br />
 レイヤー内の隠蔽はされず<br />
 この場合は、</p>
-<p><div class="highlight"><pre><span></span><code>class Sphere &quot;ObjBase&quot;
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class Sphere &quot;ObjBase&quot;
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こんな感じのレイヤーをサブレイヤー合成すると<br />
 合成されてオブジェクトがCubeからSphereになります。</p>
 <p>LoadLayerで読み込んでReferenceノードでリファレンス化（複製）しても<br />

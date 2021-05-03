@@ -5018,7 +5018,17 @@
 QValidatorを使用します。<br />
 このValidatorには、標準で QRegExpValidator, QDoubleValidator, QIntValidator があり、<br />
 これを使うとかんたんに入力チェックをすることができます。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
@@ -5030,12 +5040,14 @@ QValidatorを使用します。<br />
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>使い方は、LineEdit.setValidator()を使用して、使いたいValidatorをセットすればOKです。<br />
 上の例だと、IntValidatorなので「Intのみ」セットすることができます。</p>
 <p>Intだけ、Doubleだけ、、、ではなく、もう少しチェックの幅を広げたい場合は<br />
 QRegexpValidatorを使用します。</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">setValidator</span><span class="p">(</span><span class="n">QRegExpValidator</span><span class="p">(</span><span class="s1">&#39;[^A-Z]+&#39;</span><span class="p">))</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">setValidator</span><span class="p">(</span><span class="n">QRegExpValidator</span><span class="p">(</span><span class="s1">&#39;[^A-Z]+&#39;</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table><br />
 これは、その名の通り正規表現で入力できるかどうかチェックすることができます。<br />
 この例だと大文字は禁止...という意味になります。</p>
 <p>こんな感じで、標準のValidatorでも入力させない...というのはかんたんに作れますが<br />
@@ -5052,7 +5064,38 @@ QRegexpValidatorを使用します。</p>
 3. ただし - 以外の数字が入力されたら、勝手に - を挿入する<br />
 という挙動としてみます。</p>
 <p>以下コード。<br />
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SampleValidator</span><span class="p">(</span><span class="n">QValidator</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SampleValidator</span><span class="p">(</span><span class="n">QValidator</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -5084,7 +5127,8 @@ QRegexpValidatorを使用します。</p>
             <span class="k">return</span> <span class="n">QValidator</span><span class="o">.</span><span class="n">Invalid</span>
 
         <span class="k">return</span> <span class="n">QValidator</span><span class="o">.</span><span class="n">Acceptable</span>
-</code></pre></div></p>
+</code></pre></div>
+</td></tr></table></p>
 <p>QValidatorは、Virtual関数として「validate」と「fixup」が用意されています。<br />
 まずは validate。<br />
 こちらは、入力がされると自動的に呼ばれる関数です。</p>
@@ -5103,9 +5147,11 @@ QRegexpValidatorを使用します。</p>
 文字列を渡して、その中で値を修正して、LineEditにセットし直します。</p>
 <p>注意が必要なのは、こうして修正をしたときは再度チェックをしなければいけないところで<br />
 その場合は、fixupしたあとに </p>
-<div class="highlight"><pre><span></span><code>    <span class="bp">self</span><span class="o">.</span><span class="n">fixup</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="bp">self</span><span class="o">.</span><span class="n">fixup</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">QValidator</span><span class="o">.</span><span class="n">Invalid</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>こんなふうに、結果以外に input pos をあわせて tupleを渡す必要があります。<br />
 これをしないと、無限ループになってしまいエラーになります（すごいハマった）</p>
 <p>次に、電話番号の桁数以上に入力があったら許可しません。<br />

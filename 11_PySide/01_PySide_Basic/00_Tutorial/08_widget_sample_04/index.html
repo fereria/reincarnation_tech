@@ -5108,7 +5108,69 @@ ListViewを説明していきたいと思います。  </p>
 そちらのほうが導入はしやすいですが、あえてListViewで説明していきます。</p>
 </div>
 <h2 id="_1">サンプルコード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -5172,6 +5234,7 @@ ListViewを説明していきたいと思います。  </p>
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/078f4613697cb63717fd408f2ea9b2da.png" /></p>
 <p>実行すると、このようなGUIが表示されます。  </p>
 <h2 id="model">Modelについて<a class="headerlink" href="#model" title="Permanent link">¶</a></h2>
@@ -5189,10 +5252,13 @@ ListViewを説明していきたいと思います。  </p>
 それっぽい関数なども存在しません。  </p>
 <p>そのかわりに、実際のデータ管理部分を受け持っている「Model」クラスを作成して、<br />
 こちら側でデータの管理を行うようにします。<br />
-<div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QStringListModel</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QStringListModel</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">([</span><span class="s1">&#39;aaa&#39;</span><span class="p">,</span> <span class="s1">&#39;bbb&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 今回のサンプルでは、この部分がModelを作成している部分になります。  </p>
 <p>モデルはかなり色々とカスタマイズできますが、ソレをするとわけが分からなく<br />
 なるので、今回は最もシンプルな「QStringListModel」を使用して<br />
@@ -5202,7 +5268,22 @@ ListViewを説明していきたいと思います。  </p>
 使い方は、上のサンプルのようにmodelオブジェクトを作成し、<br />
 setStringListでstrのListをセットして、lisetViewに対してsetModelで<br />
 登録すればOKです。  </p>
-<div class="highlight"><pre><span></span><code>@startuml
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>@startuml
 
 agent ListView
 agent QStringListModel
@@ -5219,6 +5300,7 @@ note bottom of list : Viewで表示する実際のデータ
 
 @enduml
 </code></pre></div>
+</td></tr></table>
 <p>構造的には↑のようになっていて、<br />
 ユーザーが触る「表示部分（ListView)」と、データを管理する部分（QStringListModel）<br />
 そして表側からは見えないですが、<br />
@@ -5232,7 +5314,13 @@ ListをViewに表示しています。  </p>
 ぐらいの認識を持ちつつ、実際の使い方をみていきます。  </p>
 <h3 id="list">Listに追加する<a class="headerlink" href="#list" title="Permanent link">¶</a></h3>
 <p><img alt="" src="https://gyazo.com/8aca6264238c22da6e49a14fdc435bad.gif" /></p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="n">strList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stringList</span><span class="p">()</span>
@@ -5240,6 +5328,7 @@ ListをViewに表示しています。  </p>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">(</span><span class="n">strList</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>登録しているのはこの部分になります。<br />
 QStringListModelの場合は、内部的にはlist型を持っているので、<br />
 一度listを取り出して、新しく追加したい項目を append で追加して<br />
@@ -5247,10 +5336,13 @@ QStringListModelの場合は、内部的にはlist型を持っているので、
 Listに新しい項目が追加することができます。  </p>
 <h3 id="str">現在選択している項目をstrで取得する<a class="headerlink" href="#str" title="Permanent link">¶</a></h3>
 <p>Listをクリックしたときに、現在選択している項目を取得したい場合は<br />
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">listClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">listClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="c1"># 現在選択している文字列を取得する</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このようにします。<br />
 clicked のSlotを設定すると、argsでindexを取得することができます。<br />
 このindexは、現在選択されているデータにアクセスするためのタグのような<br />
@@ -5259,13 +5351,21 @@ clicked のSlotを設定すると、argsでindexを取得することができ�
 このindexはQModelIndexオブジェクトで、ここからデータを取得したい場合は<br />
 index.data() にアクセスすればOKです。  </p>
 <p>スロットではなく、選択しているデータを取得したい場合は、<br />
-<div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table><br />
 これでindexを取得できるので、取得した後に index.data() で<br />
 データを取得してくればOKです。  </p>
 <h3 id="match">リストから指定の文字を探してきてMatchしたら選択<a class="headerlink" href="#match" title="Permanent link">¶</a></h3>
 <p><img alt="" src="https://gyazo.com/0d9c51a5e4ba54170664ac5737b4a90c.gif" /></p>
-<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Listから指定の文字の行を探して、見つかったら選択</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="n">stIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -5273,7 +5373,8 @@ index.data() にアクセスすればOKです。  </p>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Listから指定の文字でindexを探したい場合は matchを使用します。<br />
 これは若干使い方がわかりにくいですが、  </p>
 <p><img alt="" src="https://gyazo.com/62e2dd0b433391a79f7ab13228cd418e.png" /></p>
@@ -5286,13 +5387,19 @@ Listから指定の文字でindexを探したい場合は matchを使用しま�
 ここでは「Modelからなにを取得したいかのフラグ」と思えばOKです。</p>
 </div>
 <p>matchを使わない方法としては</p>
-<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">strList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stringList</span><span class="p">()</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">txt</span> <span class="ow">in</span> <span class="n">strList</span><span class="p">:</span>
             <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">strList</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">txt</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 list.index('moji')<br />
 を使用することでlist型のどこに指定の文字が入っているかを数字で取得して<br />
 index(row,column) のrowにその数字を入れてIndexを取得してきてから<br />

@@ -5126,7 +5126,18 @@ USDは１つのusdファイルだけではなく、複数のusdファイルが�
 説明しつつ、USDのStageとLayerについて改めて調べてみようと思います。</p>
 <h2 id="_1">サンプル<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>サンプルUSDファイルとして、下の３つを作成します。</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
@@ -5138,9 +5149,22 @@ USDは１つのusdファイルだけではなく、複数のusdファイルが�
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Root&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Root.usda</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
@@ -5153,9 +5177,20 @@ Root.usda</p>
 <span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="na">hoge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;layerA&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="na">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 layerA.usda</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;testPrim&quot;</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -5166,14 +5201,17 @@ layerA.usda</p>
 <span class="k k-Tokens">def</span><span class="w"> </span><span class="s">&quot;addTest&quot;</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 layerB.usda</p>
 <p><img alt="" src="https://gyazo.com/a48c5f5153ea9df1022e7125f66b595c.png" /></p>
 <p>構造はこんなかんじのシンプルな構造を用意します。</p>
 <h2 id="_2">開く<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\work\usd_py36\usd\rootLayer.usda&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まずは、上のUSDファイルを開きます。</p>
 <p><img alt="" src="https://gyazo.com/5f66e9f4fe98f81081560b245eb45c1b.png" /></p>
 <p>構造はこんなかんじで、</p>
@@ -5185,9 +5223,11 @@ val  = 20</p>
 <h2 id="_3">編集する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>というわけで、開くことができたので中のファイルを編集してみます。</p>
 <h3 id="_4">開いているファイルを編集する<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/hoge&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/hoge&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 USDの編集はこのようにStageを経由して編集を行います。<br />
 これは今のステージに /hoge Prim を作る操作をしています。<br />
 そして保存時は「GetRootLayer」でレイヤーを取得して保存します。</p>
@@ -5201,30 +5241,46 @@ GetRootLayerは現在のStage上のRootLayer(開いたusda)を取得すること
 このあたりを理解するには「EditTarget」を理解する必要があります。</p>
 <p>EditTargetは、現在のStage内の「編集対象のレイヤー」へのアクセスをできるようにするための<br />
 クラスです。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">target</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetEditTarget</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">target</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetEditTarget</span><span class="p">()</span>
 <span class="c1"># 編集ターゲットのusdaPathを確認</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
 <span class="c1"># 保存</span>
 <span class="n">target</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 現在の編集ターゲットはGetEditTargetで取得することができます。<br />
 この場合、GetEditTarget = RootLayer になっています。</p>
-<div class="highlight"><pre><span></span><code><span class="n">targetB</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetEditTargetForLocalLayer</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">&#39;d:/work/usd_py36/usd/layerB.usda&#39;</span><span class="p">))</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">targetB</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetEditTargetForLocalLayer</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">&#39;d:/work/usd_py36/usd/layerB.usda&#39;</span><span class="p">))</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetEditTarget</span><span class="p">(</span><span class="n">targetB</span><span class="p">)</span>
 <span class="c1"># 試しに追加</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/addTest&quot;</span><span class="p">)</span>
 <span class="c1"># そして保存</span>
 <span class="n">targetB</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>では、RootLayer以外を編集したい場合はどうするかというと<br />
 SetEditTargetで編集したいLayerを指定してあげればOKです。</p>
 <p>上はDefinePrimでPrimを定義していますが、</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 <span class="c1"># 10</span>
 <span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 <span class="c1"># 20</span>
 </code></pre></div>
+</td></tr></table>
 <p>こうすると、指定のレイヤーのアトリビュートを書き換えることができます。</p>
 <p><img alt="" src="https://gyazo.com/a9bb18ca571cc7fd9a18769b4586c4a2.png" /></p>
 <p>ざっくりと書くとこんな感じで<br />
@@ -5237,14 +5293,16 @@ Layerオブジェクトを利用して編集を行います。</p>
 いくら書き換えても最終的なPrimには反映されないので<br />
 注意が必要です。</p>
 <h3 id="spec">Specとは<a class="headerlink" href="#spec" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">targetBPrim</span> <span class="o">=</span> <span class="n">targetB</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/testPrim&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">targetBPrim</span> <span class="o">=</span> <span class="n">targetB</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/testPrim&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 EditTargetの GetLayerを使用した場合、<br />
 通常の stage.GetRootLayer() とは違いGetPrimAtPathでPrimを取得すると</p>
 <p><img alt="" src="https://gyazo.com/2df47f719f8dda18e0a699556ed5c80d.png" /></p>
 <p>PrimSpecというオブジェクトになります。</p>
-<div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">))</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/af3e54f1385994c4b0a992a40198ebfa.png" /></p>
 <p>stage経由の場合は、 Primオブジェクトになります。</p>
 <p>ここでいうところのSpecというのがなにかというと、<br />
@@ -5258,32 +5316,45 @@ EditTargetの GetLayerを使用した場合、<br />
 print(dir(Sdf.Find(～～)))のようにしても、ものによって使える関数などが異なり<br />
 こいつはいったいなんなんだよ！！！と思っていました。</p>
 <p>が、 help関数を使用してみるとなんとなく実態がわかります。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">&#39;d:/work/usd_py36/usd/layerB.usda&#39;</span><span class="p">))</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">&#39;d:/work/usd_py36/usd/layerB.usda&#39;</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table><br />
 試しにHelp関数を使用してSdf.FindのHelpを見てみます。</p>
 <p><img alt="" src="https://gyazo.com/e3ca0b5d2a6e388f94590a2cb40abbb8.png" /></p>
 <p>Sdf.Find表示になっているものの実態はなにかというと、Layerだったり</p>
-<p><div class="highlight"><pre><span></span><code>print(targetB.GetLayer().GetPrimAtPath(&#39;/testPrim&#39;))
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>print(targetB.GetLayer().GetPrimAtPath(&#39;/testPrim&#39;))
+</code></pre></div>
+</td></tr></table><br />
 こうしたときの<br />
 <img alt="" src="https://gyazo.com/5852f350fb8d60bc6d509d3a5f3b547a.png" /><br />
 このばあいは<br />
-<div class="highlight"><pre><span></span><code>help(targetB.GetLayer().GetPrimAtPath(&#39;/testPrim&#39;))
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>help(targetB.GetLayer().GetPrimAtPath(&#39;/testPrim&#39;))
+</code></pre></div>
+</td></tr></table><br />
 こうすると</p>
 <p><img alt="" src="https://gyazo.com/e64d952293197949e1bd3d0f03c9bcc0.png" /></p>
 <p>こうなったりと、オブジェクトの実体は別のものになっているようです。<br />
 <del>わかりにくすぎるよPythonnnnnn!!!!!</del></p>
 <p>なので、GetEditTargetForLocalLayer の引数として渡している<br />
-<div class="highlight"><pre><span></span><code><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">&#39;d:/work/usd_py36/usd/layerB.usda&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">&#39;d:/work/usd_py36/usd/layerB.usda&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 は、Sdf.Layerオブジェクトを渡しているということになります。</p>
 <h3 id="_6">このアトリビュートはどこで「主張」されているのか？<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>各レイヤーが合成され、最終的なPrimが出来上がりますが<br />
 ではそのPrimが「どこのレイヤーで定義されているのか」というのを調べたくなることがあります。</p>
 <p>サンプルの hoge は layerA と layerB で定義されていることがわかりますが<br />
 これをPythonで確認してみます。</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">)</span>
 <span class="c1"># Primのアトリビュートを取得</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;hoge&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
@@ -5293,7 +5364,8 @@ print(dir(Sdf.Find(～～)))のようにしても、ものによって使える�
 <span class="c1"># 一番強い主張</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 指定のプロパティがどのような主張を持っていて結果どうなったかを<br />
 見たい場合はｐGetPropertyStackを確認します。</p>
 <p><img alt="" src="https://gyazo.com/c74967e595daa075bddcfef8e9b1bb2f.png" /></p>
@@ -5312,7 +5384,16 @@ rootLayerが最も強い主張をもっていて、最終的にコンポジシ�
 <h3 id="_7">レイヤーに「主張」があるかどうか<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <p>PrimからSpecを探すのはできましたが、今度は指定レイヤーにSpecがあるかどうか<br />
 調べたいこともあります。</p>
-<div class="highlight"><pre><span></span><code><span class="n">target</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetEditTargetForLocalLayer</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">&#39;d:/work/usd_py36/usd/layerB.usda&#39;</span><span class="p">))</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">target</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetEditTargetForLocalLayer</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">&#39;d:/work/usd_py36/usd/layerB.usda&#39;</span><span class="p">))</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span>
 <span class="n">primSpec</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">)</span>
 <span class="c1"># このPrimのAttribute</span>
@@ -5323,6 +5404,7 @@ rootLayerが最も強い主張をもっていて、最終的にコンポジシ�
 <span class="c1"># 値を確認</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">attrSpec</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>ここのあたりもC++とPythonとで全く挙動が違っていて<br />
 APIドキュメントが全く参考にならず苦戦しました。</p>
 <p>まずは、EditTargetを経由して<br />

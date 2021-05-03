@@ -5100,7 +5100,17 @@ SOLARISではすべてのノードはUSDのレイヤーなのですが<br />
 <p><img alt="" src="https://gyazo.com/383eb4237bdb8aba0021e0a16aa15c02.png" /></p>
 <p>今のLayer状況を「Scene Graph Layers Panel」で確認すると、<br />
 Input1の入力の子としてMultiInputのLayerがついているような構造になっています。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 <span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="si">@CUBE.usda@</span><span class="p">,</span><span class="w"></span>
@@ -5112,6 +5122,7 @@ Input1の入力の子としてMultiInputのLayerがついているような構�
 <span class="p">{</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <p>USDのSubLayerをUSDAファイルで記述するとこうなります。<br />
 このファイルをノードで表すと、<br />
 ファイル自身がInput1で、subLayersでセットしているusdaファイルがMultiInputの入力になります。</p>

@@ -5045,31 +5045,57 @@
 Root - layerA - layerB のようなサブレイヤー構成で<br />
 各レイヤーを取得する方法とかテスト。</p>
 <h4 id="1">[1]:<a class="headerlink" href="#1" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="2">[2]:<a class="headerlink" href="#2" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">Usd</span><span class="o">.</span><span class="n">StageCache</span><span class="p">()</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">Usd</span><span class="o">.</span><span class="n">StageCache</span><span class="p">()</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\work\usd_py36\usd\rootLayer.usda&quot;</span><span class="p">)</span>
 <span class="c1"># RootLayerのターゲット取得</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="3">[3]:<a class="headerlink" href="#3" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># レイヤー取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># レイヤー取得</span>
 
 <span class="n">layers</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetUsedLayers</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>[Sdf.Find(&#39;d:/work/usd_py36/usd/layerA.usda&#39;), Sdf.Find(&#39;anon:000001C85E39D3E0:rootLayer-session.usda&#39;), Sdf.Find(&#39;d:/work/usd_py36/usd/rootLayer.usda&#39;), Sdf.Find(&#39;d:/work/usd_py36/usd/layerB.usda&#39;)]
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[Sdf.Find(&#39;d:/work/usd_py36/usd/layerA.usda&#39;), Sdf.Find(&#39;anon:000001C85E39D3E0:rootLayer-session.usda&#39;), Sdf.Find(&#39;d:/work/usd_py36/usd/rootLayer.usda&#39;), Sdf.Find(&#39;d:/work/usd_py36/usd/layerB.usda&#39;)]
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="4">[4]:<a class="headerlink" href="#4" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># EditTarget関係</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># EditTarget関係</span>
 <span class="c1"># EditTarget取得　デフォルトはRoot</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetEditTarget</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="5">[5]:<a class="headerlink" href="#5" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Spec取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Spec取得</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">)</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;hoge&quot;</span><span class="p">)</span>
 <span class="n">attrB</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;val&quot;</span><span class="p">)</span>
@@ -5085,24 +5111,34 @@ Root - layerA - layerB のようなサブレイヤー構成で<br />
 <span class="c1"># セットされている値を取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">targetBPrim</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 10
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="6">[6]:<a class="headerlink" href="#6" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Root以外のレイヤーを編集ターゲットにする</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Root以外のレイヤーを編集ターゲットにする</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetEditTarget</span><span class="p">(</span><span class="n">targetB</span><span class="p">)</span>
 <span class="c1"># 試しに追加</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/addTest&quot;</span><span class="p">)</span>
 <span class="c1"># そして保存</span>
 <span class="n">targetB</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   
@@ -5112,7 +5148,7 @@ Root - layerA - layerB のようなサブレイヤー構成で<br />
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-05-03 02:25:33
+      最終更新日: 2021-05-03 02:33:00
     
   </small>
 </div>

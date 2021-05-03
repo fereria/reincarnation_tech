@@ -5077,10 +5077,17 @@ USDのステージを依頼たあとにアップデートする方法がよう�
 そのStageCacheにステージを入れておくと<br />
 あとでそのStageを取得できたりするらしい。  </p>
 <h4 id="1">[1]:<a class="headerlink" href="#1" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Pcp</span><span class="p">,</span><span class="n">UsdUtils</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Pcp</span><span class="p">,</span><span class="n">UsdUtils</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="2">[2]:<a class="headerlink" href="#2" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;S:\fav\work\programming\python\JupyterUSD\pyDev\usd\root.usda&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;S:\fav\work\programming\python\JupyterUSD\pyDev\usd\root.usda&#39;</span><span class="p">)</span>
 <span class="c1"># 一度ロードした内容を更新したい場合は、Reloadを実行する</span>
 <span class="c1"># これを実行しないと、途中でusdをアップデートしてもロードされない</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Reload</span><span class="p">()</span>
@@ -5088,52 +5095,75 @@ USDのステージを依頼たあとにアップデートする方法がよう�
 <span class="n">cache</span> <span class="o">=</span> <span class="n">UsdUtils</span><span class="o">.</span><span class="n">StageCache</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
 <span class="n">cacheID</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">stage</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="3">[3]:<a class="headerlink" href="#3" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/sublayerReference&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/sublayerReference&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="4">[4]:<a class="headerlink" href="#4" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/subLayerB&gt;)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/subLayerB&gt;)
 Usd.Prim(&lt;/subLayerA&gt;)
 Usd.Prim(&lt;/sublayerReference&gt;)
 Usd.Prim(&lt;/Cube&gt;)
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="5">[5]:<a class="headerlink" href="#5" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># キャッシュに入れていたStageを確認する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># キャッシュに入れていたStageを確認する</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">cache</span><span class="o">.</span><span class="n">GetAllStages</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Usd.Stage.Open(rootLayer=Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/root.usda&#39;), sessionLayer=Sdf.Find(&#39;anon:000002C12DA6C1B0:root-session.usda&#39;), pathResolverContext=Ar.DefaultResolverContext([&#39;S:\\fav\\work\\programming\\python\\JupyterUSD\\pyDev\\usd\\&#39;]))
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Usd.Stage.Open(rootLayer=Sdf.Find(&#39;s:/fav/work/programming/python/JupyterUSD/pyDev/usd/root.usda&#39;), sessionLayer=Sdf.Find(&#39;anon:000002C12DA6C1B0:root-session.usda&#39;), pathResolverContext=Ar.DefaultResolverContext([&#39;S:\\fav\\work\\programming\\python\\JupyterUSD\\pyDev\\usd\\&#39;]))
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="6">[6]:<a class="headerlink" href="#6" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># キャッシュからStageを探して取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># キャッシュからStageを探して取得</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="n">cacheID</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="7">[7]:<a class="headerlink" href="#7" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Stage内のPrimを確認</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Stage内のPrimを確認</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/subLayerB&gt;)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/subLayerB&gt;)
 Usd.Prim(&lt;/subLayerA&gt;)
 Usd.Prim(&lt;/sublayerReference&gt;)
 Usd.Prim(&lt;/Cube&gt;)
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="8">[8]:<a class="headerlink" href="#8" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># キャッシュをクリア</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># キャッシュをクリア</span>
 <span class="n">cache</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
                 
                   
                     
@@ -5142,7 +5172,7 @@ Usd.Prim(&lt;/Cube&gt;)
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-05-03 02:25:33
+      最終更新日: 2021-05-03 02:33:00
     
   </small>
 </div>

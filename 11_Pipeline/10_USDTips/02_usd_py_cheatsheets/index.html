@@ -5848,52 +5848,67 @@
 よく使う物とかをまとめ。  </p>
 <h2 id="_1">全般<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os.path</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="stage">Stage関係<a class="headerlink" href="#stage" title="Permanent link">¶</a></h2>
 <h3 id="new">Newシーン<a class="headerlink" href="#new" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table><br />
 usdaを作らずにとりあえずステージを作る場合。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 usdaを作って、新しいステージを作る。  </p>
 <h3 id="usd">USDを開く<a class="headerlink" href="#usd" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 すでにあるUSDファイルをステージとして開く。</p>
 <h3 id="payloadusd">PayloadをロードせずにUSDを開く<a class="headerlink" href="#payloadusd" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">,</span><span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">LoadNone</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">,</span><span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">LoadNone</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="_2">保存する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 開いているusdをそのまま保存。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s1">&#39;/HelloWorld.usda&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 メモリ上のみで作成しているUSDをExportする。<br />
 CreateNewして開いて保存する場合、すでにUSDがあるとErrorになってしまうが<br />
 こちらの場合はエラーにならない。</p>
 <h3 id="usd_1">現在のUSDの中身を確認する<a class="headerlink" href="#usd_1" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div>
+</td></tr></table><br />
 ExportToStringをすると、げんざいのUSDをプリントすることができる  </p>
 <h3 id="usd_2">全コンポ結果を反映したUSDを確認する<a class="headerlink" href="#usd_2" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span><span class="o">.</span><span class="n">ExporToString</span><span class="p">()</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span><span class="o">.</span><span class="n">ExporToString</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table><br />
 通常のExportToString()の場合、コンポ情報が残った状態で表示される。<br />
 が、すべてのコンポジションの結果をすべて判定（Flatten)した状態で見たい場合は<br />
 上のようにする。<br />
 当然のことながら、複雑なコンポを行っている場合Flattenするとファイルサイズは増大する。  </p>
 <h2 id="stage_1">Stage関係<a class="headerlink" href="#stage_1" title="Permanent link">¶</a></h2>
 <h3 id="prim">ステージ内のPrimをトラバースする<a class="headerlink" href="#prim" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">compStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/sample.usda&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">compStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s2">&quot;/sample.usda&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">prim</span> <span class="ow">in</span> <span class="n">compStage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/2468b325e58decbcf91ac72958e2f594.png" /></p>
 <p>実行すると、このようなシーングラフなら</p>
 <p><img alt="" src="https://gyazo.com/771700cca1cad4e759e13a20ff4ee16a.png" /></p>
@@ -5902,113 +5917,165 @@ ExportToStringをすると、げんざいのUSDをプリントすることがで
 <p>Primの状態をチェックしつつ検索するには GetFilteredChildrenを使用する。<br />
 このコマンドの場合は、引数にTraverseするノードの状態を指定することで<br />
 該当するノードを取得することができる。<br />
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetFilteredChildren</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsActive</span> <span class="o">&amp;</span> <span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsDefined</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsAbstract</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetFilteredChildren</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsActive</span> <span class="o">&amp;</span> <span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsDefined</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">Usd</span><span class="o">.</span><span class="n">PrimIsAbstract</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 通常のTraverseやGetChildrenは、上のフラグに＋して Usd.PrimIsLoadedも ONになっている。<br />
 なので、Payloadで読まれていないPrimは取得できない。</p>
 <h3 id="layer">Layerをミュートする<a class="headerlink" href="#layer" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Layerのusdファイルは identifer で取得できる</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Layerのusdファイルは identifer で取得できる</span>
 <span class="c1"># パス指定でLayerをミュート（コンポ処理から除外）できる</span>
 <span class="n">compStage</span><span class="o">.</span><span class="n">MuteLayer</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>ミュートは現在のステージ上のみで有効で、USDファイル内には保存されない。<br />
 → ミュートした状態でFlattenすると、ミュート状態のレイヤーは無効化される。</p>
 <h2 id="layer_1">Layer関係<a class="headerlink" href="#layer_1" title="Permanent link">¶</a></h2>
 <h3 id="rootlayer">RootLayerを取得<a class="headerlink" href="#rootlayer" title="Permanent link">¶</a></h3>
 <p><img alt="" src="https://gyazo.com/0082ca726d91f41458870e24dc0ea818.png" /></p>
-<p><div class="highlight"><pre><span></span><code><span class="n">openUsd</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH</span> <span class="o">+</span> <span class="s2">&quot;/baseUSD.usda&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">openUsd</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH</span> <span class="o">+</span> <span class="s2">&quot;/baseUSD.usda&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">openUsd</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 CompositionのRootのLayer(.usda)を取得する。<br />
 ここで取得出来る Sdf.Find()で取得出来るLayerのPrimは<br />
 いわゆるPrimSpec。</p>
 <h3 id="layer-usd">指定Layerオブジェクトの usdファイルパスを取得する<a class="headerlink" href="#layer-usd" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="prim_1">Prim操作<a class="headerlink" href="#prim_1" title="Permanent link">¶</a></h2>
 <h3 id="primclassover">Prim/Class/Overを作る<a class="headerlink" href="#primclassover" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/hogehoge&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/hogehoge&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">OverridePrim</span><span class="p">(</span><span class="s2">&quot;/over&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s2">&quot;/class&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/722a355c20219131879a48102413e1c4.png" /></p>
 <p>スキーマなしのPrimが作成される。  </p>
 <h3 id="stageprim">StageからPrimを取得する<a class="headerlink" href="#stageprim" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/hogehoge&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/hogehoge&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="prim_2">スキーマありのPrimを定義する<a class="headerlink" href="#prim_2" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="c1"># Xformを作る</span>
 <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/xform&#39;</span><span class="p">)</span>
 <span class="c1"># Cubeを作る</span>
 <span class="n">cube</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/hello&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 ConcreteSchemaにはDefine関数があるので、↑のように定義する。</p>
 <h3 id="schemaprim">SchemaオブジェクトからPrimを取得<a class="headerlink" href="#schemaprim" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">xform</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">xform</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="sdfpath">SdfPath関係<a class="headerlink" href="#sdfpath" title="Permanent link">¶</a></h2>
 <h3 id="sdfpath_1">SdfPathの基本操作<a class="headerlink" href="#sdfpath_1" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">sdfPath</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/base&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">sdfPath</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/base&quot;</span><span class="p">)</span>
 <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">sdfPath</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 SdfPathは、 / スタートで Stage内のシーングラフを定義する。<br />
 定義したPathで、Primやスキーマの定義を作ることができる。</p>
 <h3 id="path">各オブジェクトからPath取得<a class="headerlink" href="#path" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
 <span class="n">xformPath</span> <span class="o">=</span> <span class="n">xform</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
 <span class="n">attrPath</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Pathを取得したいPrimやAttribute、Primオブジェクトで .GetPath() する。<br />
 AttributeのPathは /base.test のように . で表現される。  </p>
 <h3 id="sdfpath_2">SdfPathが何を指しているか確認する<a class="headerlink" href="#sdfpath_2" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsPropertyPath</span><span class="p">())</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsPropertyPath</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsPrimPath</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="o">.</span><span class="n">IsTargetPath</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Is～Path　で、SdfPathが何をしてしているのかチェックできる。  </p>
 <h3 id="sdfpath_3">SdfPath操作<a class="headerlink" href="#sdfpath_3" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 子に対して引数の階層を追加する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 子に対して引数の階層を追加する</span>
 <span class="n">cldPath</span> <span class="o">=</span> <span class="n">sdfPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">)</span>
 <span class="c1"># 子に対してAttributeを追加する</span>
 <span class="n">cldAttrPath</span> <span class="o">=</span> <span class="n">sdfPath</span><span class="o">.</span><span class="n">AppendProperty</span><span class="p">(</span><span class="s1">&#39;hogeAttr&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="attribute">Attribute操作<a class="headerlink" href="#attribute" title="Permanent link">¶</a></h2>
 <h3 id="attribute_1">Attributeを作る/セットする<a class="headerlink" href="#attribute_1" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Boolの場合</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Boolの場合</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1"># Colorの場合</span>
 <span class="n">color_attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Color3d</span><span class="p">)</span>
 <span class="n">color_attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">Gf</span><span class="o">.</span><span class="n">Vec3d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 ValueTypeNamesでの型指定方法は<a href="../01_usd_py_docs/">こちら</a>を参照。<br />
 ColorやVectorなどの型はGfモジュールにある定義を使用してセットする。</p>
 <h3 id="attribute_2">Attributeから値を取得する<a class="headerlink" href="#attribute_2" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="namespace">Namespaceを使用する<a class="headerlink" href="#namespace" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># Namespaceつきのアトリビュートを作る</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Namespaceつきのアトリビュートを作る</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;ns:testVal&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
 <span class="n">props</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPropertiesInNamespace</span><span class="p">(</span><span class="s1">&#39;ns&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 プロパティ名・アトリビュート名にはNamespaceをつけることができる。<br />
 つけかたは Namespace:hogehoge のように : で区切ればOK。<br />
 Namespaceをつけておくと、GetPropertiesInNamespace関数を使用して<br />
 指定のNamespaceのプロパティやアトリビュートを取得することができる。  </p>
 <h4 id="namespacenmaespace">NamespaceやNmaespace無しのプロパティ名を取得<a class="headerlink" href="#namespacenmaespace" title="Permanent link">¶</a></h4>
-<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetBaseName</span><span class="p">())</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetBaseName</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetNamespace</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">SplitName</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このNamespaceやプロパティ名は、プロパティオブジェクトで取得することができる。  </p>
 <h3 id="relationship">Relationshipを使用する<a class="headerlink" href="#relationship" title="Permanent link">¶</a></h3>
 <h4 id="relationship_1">Relationshipを作成<a class="headerlink" href="#relationship_1" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># RelationshipでPrimを入れる</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># RelationshipでPrimを入れる</span>
 <span class="n">rel</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateRelationship</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
 <span class="n">rel</span><span class="o">.</span><span class="n">AddTarget</span><span class="p">(</span><span class="n">relSdfPath</span><span class="p">)</span>
 <span class="n">rel</span><span class="o">.</span><span class="n">AddTarget</span><span class="p">(</span><span class="n">relSdfPathB</span><span class="p">)</span>
@@ -6016,14 +6083,18 @@ Namespaceをつけておくと、GetPropertiesInNamespace関数を使用して<b
 <span class="n">relAttr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateRelationship</span><span class="p">(</span><span class="s1">&#39;attr_test&#39;</span><span class="p">)</span>
 <span class="n">relAttr</span><span class="o">.</span><span class="n">AddTarget</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="relationship_2">Relationship先を取得<a class="headerlink" href="#relationship_2" title="Permanent link">¶</a></h4>
-<p><div class="highlight"><pre><span></span><code><span class="n">attrPath</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">attrPath</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table><br />
 GetTargets()を使用すると、接続先のSdfPathを取得できる。</p>
 <h3 id="sdfpathattribute">SdfPathからAttributeの値を取得する<a class="headerlink" href="#sdfpathattribute" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">relPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetObjectAtPath</span><span class="p">(</span><span class="n">attrPath</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">relPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetObjectAtPath</span><span class="p">(</span><span class="n">attrPath</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">relPrim</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 SdfPathからPrimまたはAttributeを取得したい場合は、StageのGetObjectAtPath()を使用する。<br />
 Objectで取得したばあい、Primの場合はPrimオブジェクトが帰ってくるし<br />
 AttributeだったらAttributeオブジェクトが帰ってくる。</p>
@@ -6031,42 +6102,74 @@ AttributeだったらAttributeオブジェクトが帰ってくる。</p>
 <p><img alt="" src="https://gyazo.com/84e24a33184e60510b56236622ad5508.png" /></p>
 <p>MetadataはPrimやAttributeなどに対して設定できる付加情報。  </p>
 <h3 id="metadata_1">Metadataの取得<a class="headerlink" href="#metadata_1" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 指定のPrim・Attribute・PropertyのMetadataをDictで取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 指定のPrim・Attribute・PropertyのMetadataをDictで取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetAllMetadata</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="metadata_2">Metadataに値をセットする<a class="headerlink" href="#metadata_2" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">newScn</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="s1">&#39;comment&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">newScn</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="s1">&#39;comment&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="customdata">CustomDataを使用する<a class="headerlink" href="#customdata" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># 指定のオブジェクトに対してCustomDataを指定する</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 指定のオブジェクトに対してCustomDataを指定する</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">SetCustomDataByKey</span><span class="p">(</span><span class="s1">&#39;userCustomMeta&#39;</span><span class="p">,</span> <span class="s1">&#39;fuga&#39;</span><span class="p">)</span>
 <span class="c1"># 取得する</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetCustomData</span><span class="p">())</span>
 <span class="c1"># namespaceを指定した場合</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">SetCustomDataByKey</span><span class="p">(</span><span class="s1">&#39;test:userCustomMeta&#39;</span><span class="p">,</span> <span class="s1">&#39;fuga&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 <img alt="" src="https://gyazo.com/23450b78037332d4b4022583c2efdb0b.png" /><br />
 CustomDataでNamespaceをつけると、Dict型をネストできる。<br />
 val['test']['userCustomData']<br />
 アクセスするときはこんな感じにできる。  </p>
 <h2 id="transforrm">Transforrm操作<a class="headerlink" href="#transforrm" title="Permanent link">¶</a></h2>
 <h3 id="xform">Xformオブジェクトを使用する場合<a class="headerlink" href="#xform" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">xform</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/xform&#39;</span><span class="p">)</span>
 <span class="n">xform</span><span class="o">.</span><span class="n">AddTranslateOp</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Xformableクラスに各種Tranlsform操作用の関数があるので<br />
 それを使用すればTransformができる。  </p>
 <h3 id="primtransform">PrimからTransformする場合<a class="headerlink" href="#primtransform" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">path</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/xform&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">path</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/xform&quot;</span><span class="p">)</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="n">UsdGeom</span><span class="o">.</span><span class="n">XformCommonAPI</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span><span class="o">.</span><span class="n">SetRotate</span><span class="p">((</span><span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Xformオブジェクトではなく、Primオブジェクトから<br />
 Transform処理をしたい場合はXformCommonAPIを使用する。</p>
 <h2 id="_3">コンポジション関係<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <h3 id="variantset">VariantSet<a class="headerlink" href="#variantset" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">vset</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetVariantSets</span><span class="p">()</span><span class="o">.</span><span class="n">AddVariantSet</span><span class="p">(</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vset</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetVariantSets</span><span class="p">()</span><span class="o">.</span><span class="n">AddVariantSet</span><span class="p">(</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">)</span>
 <span class="n">vset</span><span class="o">.</span><span class="n">AddVariant</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">vset</span><span class="o">.</span><span class="n">AddVariant</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 <span class="n">vset</span><span class="o">.</span><span class="n">AddVariant</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
@@ -6085,13 +6188,31 @@ Transform処理をしたい場合はXformCommonAPIを使用する。</p>
 <span class="k">with</span> <span class="n">vset</span><span class="o">.</span><span class="n">GetVariantEditContext</span><span class="p">():</span>
     <span class="n">colorAttr</span><span class="o">.</span><span class="n">Set</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><pre><span></span><code><span class="n">refPrimA</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/World/BookGrp/Book&quot;</span><span class="p">)</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">refPrimA</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/World/BookGrp/Book&quot;</span><span class="p">)</span>
 <span class="n">refPrimA</span><span class="o">.</span><span class="n">GetReferences</span><span class="p">()</span><span class="o">.</span><span class="n">AddReference</span><span class="p">(</span><span class="n">kitchenSetRoot</span> <span class="o">+</span> <span class="s1">&#39;Book/Book.usd&#39;</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Referenceで読み込みたいusdをPrimに対してセットする</p>
 <h3 id="inherits">Inherits<a class="headerlink" href="#inherits" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># クラスを定義して保存する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># クラスを定義して保存する</span>
 <span class="n">classPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s1">&#39;/TestClass&#39;</span><span class="p">)</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">classPrim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -6108,12 +6229,24 @@ Referenceで読み込みたいusdをPrimに対してセットする</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">inheritStage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p>継承したいクラスが別ファイルに存在する場合は<br />
 ファイルをサブレイヤーでロードして、それから継承先のPrimに対して<br />
 GetInherits().AddInherit(path)<br />
 で読み込む。  </p>
 <p>出力結果はこんな感じに。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 <span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k k-Tokens">subLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="si">@C:/pyEnv/JupyterUSD_py27/usd/usdClass.usda@</span><span class="w"></span>
@@ -6126,13 +6259,31 @@ GetInherits().AddInherit(path)<br />
 <span class="p">{</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="sublayer">SubLayer<a class="headerlink" href="#sublayer" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">rootLayer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
 <span class="n">rootLayer</span><span class="o">.</span><span class="n">subLayerPaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">kitchenSetRoot</span> <span class="o">+</span> <span class="s2">&quot;/Book/Book.usd&quot;</span><span class="p">,</span> <span class="n">kitchenSetRoot</span> <span class="o">+</span> <span class="s2">&quot;/Ball/Ball.usd&quot;</span><span class="p">]</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="_4">アニメーション関係<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">newScn</span><span class="o">.</span><span class="n">SetStartTimeCode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">newScn</span><span class="o">.</span><span class="n">SetStartTimeCode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">newScn</span><span class="o">.</span><span class="n">SetEndTimeCode</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># Mem上に作成したUSDファイルを色々コントロール</span>
@@ -6148,8 +6299,28 @@ GetInherits().AddInherit(path)<br />
 <span class="n">spin</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">spin</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">360</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="_5">マテリアル関係<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">rootLayer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
 
 <span class="n">sphere</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Sphere</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/test/sphere&#39;</span><span class="p">)</span>
@@ -6170,8 +6341,20 @@ GetInherits().AddInherit(path)<br />
 <span class="c1"># Bind</span>
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="mesh">Mesh関係<a class="headerlink" href="#mesh" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/hoge&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/hoge&#39;</span><span class="p">)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/hoge/hogehoge&#39;</span><span class="p">)</span>
 
 <span class="c1"># %%</span>
@@ -6184,13 +6367,18 @@ GetInherits().AddInherit(path)<br />
 <span class="c1"># BoundingBoxをセット？</span>
 <span class="n">mesh</span><span class="o">.</span><span class="n">CreateExtentAttr</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointBased</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span><span class="o">.</span><span class="n">ComputeExtent</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()))</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="plugin">Plugin関係<a class="headerlink" href="#plugin" title="Permanent link">¶</a></h2>
 <h3 id="plugin_1">ロードされているPluginをリストする<a class="headerlink" href="#plugin_1" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Plug</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">GetAllPlugins</span><span class="p">():</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Plug</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">GetAllPlugins</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">resourcePath</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
                 
                   
                     

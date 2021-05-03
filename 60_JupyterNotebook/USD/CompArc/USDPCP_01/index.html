@@ -5113,25 +5113,40 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/CompArc/USDPCP_01__PcpAPIでコンポジションアークを調べる.ipynb">USDPCP_01__PcpAPIでコンポジションアークを調べる.ipynb</a></p>
 <h4 id="2">[2]:<a class="headerlink" href="#2" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Pcp</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Pcp</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="3">[3]:<a class="headerlink" href="#3" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\Kitchen_set\Kitchen_set.usd&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\Kitchen_set\Kitchen_set.usd&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="4">[4]:<a class="headerlink" href="#4" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># PrimからIndexを取得し、PcpNodeRefを取得する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># PrimからIndexを取得し、PcpNodeRefを取得する</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1&quot;</span><span class="p">)</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimIndex</span><span class="p">()</span>
 <span class="n">rootRef</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">rootNode</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rootRef</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>&lt;pxr.Pcp.NodeRef object at 0x00000252D7561608&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;pxr.Pcp.NodeRef object at 0x00000252D7561608&gt;
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="30">[30]:<a class="headerlink" href="#30" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">layerTree</span> <span class="o">=</span> <span class="n">layerStack</span><span class="o">.</span><span class="n">layerTree</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layerTree</span> <span class="o">=</span> <span class="n">layerStack</span><span class="o">.</span><span class="n">layerTree</span>
 <span class="c1"># subLayerも木構造を取得できる</span>
 <span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
@@ -5140,43 +5155,116 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 <span class="n">traverse</span><span class="p">(</span><span class="n">layerTree</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Sdf.Find(&#39;d:/Kitchen_set/Kitchen_set.usd&#39;)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;d:/Kitchen_set/Kitchen_set.usd&#39;)
 Sdf.LayerOffset()
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="31">[31]:<a class="headerlink" href="#31" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># identifier経由でLayerを取得する場合</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># identifier経由でLayerを取得する場合</span>
 <span class="n">identifier</span> <span class="o">=</span> <span class="n">layerStack</span><span class="o">.</span><span class="n">identifier</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">identifier</span><span class="o">.</span><span class="n">rootLayer</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Sdf.Find(&#39;d:/Kitchen_set/Kitchen_set.usd&#39;)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;d:/Kitchen_set/Kitchen_set.usd&#39;)
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="16">[16]:<a class="headerlink" href="#16" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># PrimIndexのPrimの子Prim,Propertyを取得</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># PrimIndexのPrimの子Prim,Propertyを取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">ComputePrimChildNames</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">ComputePrimPropertyNames</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">primStack</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">hasAnyPayloads</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>([&#39;Geom&#39;], [])
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>([&#39;Geom&#39;], [])
 [&#39;xformOp:translate&#39;, &#39;xformOpOrder&#39;]
 []
 True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="12">[12]:<a class="headerlink" href="#12" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Help on PrimIndex in module pxr.Pcp object:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Help on PrimIndex in module pxr.Pcp object:
 
 class PrimIndex(Boost.Python.instance)
  |  Method resolution order:
@@ -5234,14 +5322,29 @@ class PrimIndex(Boost.Python.instance)
  |  
  |  __weakref__
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="6">[6]:<a class="headerlink" href="#6" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># EditTarget取得してTargetLayerに指定する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># EditTarget取得してTargetLayerに指定する</span>
 <span class="n">et</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">EditTarget</span><span class="p">(</span><span class="n">rootRef</span><span class="o">.</span><span class="n">layerStack</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">rootRef</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetEditTarget</span><span class="p">(</span><span class="n">et</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="44">[44]:<a class="headerlink" href="#44" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># コンポジションを再帰で検索</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># コンポジションを再帰で検索</span>
 <span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="c1"># コンポジションタイプ</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">arcType</span><span class="p">)</span> <span class="c1">#CompositionArc</span>
@@ -5254,9 +5357,39 @@ class PrimIndex(Boost.Python.instance)
         <span class="n">traverse</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 <span class="n">traverse</span><span class="p">(</span><span class="n">rootRef</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Pcp.ArcTypeRoot
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Pcp.ArcTypeRoot
 /Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1
 @d:/Kitchen_set/Kitchen_set.usd@,@anon:0000027614F5B360:Kitchen_set-session.usda@&lt;/Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1&gt;
 &lt;pxr.Pcp.NodeRef object at 0x00000276493A73A0&gt;
@@ -5287,19 +5420,144 @@ Pcp.ArcTypeVariant
 &lt;pxr.Pcp.NodeRef object at 0x0000027648AEAFA8&gt;
 Sdf.Find(&#39;d:/Kitchen_set/assets/Refridgerator/Refridgerator.geom.usd&#39;)
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="21">[21]:<a class="headerlink" href="#21" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># PcpNodeRefをGraphvizでビジュアライズ</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># PcpNodeRefをGraphvizでビジュアライズ</span>
 <span class="n">index</span><span class="o">.</span><span class="n">DumpToDotGraph</span><span class="p">(</span><span class="s2">&quot;D:/test.dot&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/5f2f50f295856a245262f85d87f65e9f.png" /></p>
 <h4 id="30_1">[30]:<a class="headerlink" href="#30_1" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># PcpNdoeRefをテキストでDump</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># PcpNdoeRefをテキストでDump</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">DumpToString</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Node 0:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Node 0:
     Parent node:              NONE
     Type:                     root
     DependencyType:           root
@@ -5421,6 +5679,7 @@ Node 5:
     Has specs:                TRUE
     Has symmetry:             FALSE
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   
@@ -5430,7 +5689,7 @@ Node 5:
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-05-03 02:25:32
+      最終更新日: 2021-05-03 02:32:59
     
   </small>
 </div>

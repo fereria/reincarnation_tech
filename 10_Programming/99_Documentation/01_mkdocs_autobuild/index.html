@@ -5033,7 +5033,15 @@
 <p>mkdocsの元になってるmdやymlは全部GitHubにありますので、全部見たい人はそちらから。  </p>
 <p>今までとの大きな変更点は、フォルダ階層が mkdocs.yml に書いていたのが<br />
 なくなりました。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">git-revision-date-localized</span><span class="p">:</span>
       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iso_datetime</span>
       <span class="nt">locale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ja</span>
@@ -5042,7 +5050,8 @@
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">en</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ja</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">awesome-pages</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 nav:の定義自体はなくても平気なのですが、その場合<br />
 フォルダ名に日本語が入ってしまうので都合が悪い...ということで<br />
 スクリプトを使用してこのツリーを自動生成していました。</p>
@@ -5050,8 +5059,9 @@ nav:の定義自体はなくても平気なのですが、その場合<br />
 <p>このあたりの置き換わりが、awesome-pagesというプラグイン。<br />
 このプラグインをいれると、Folder以下に .pages というymlで書かれた定義を読み込んで<br />
 Folder名や、Folder以下のページの並び順を制御できるようになっています。</p>
-<p><div class="highlight"><pre><span></span><code>title: Documentation
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>title: Documentation
+</code></pre></div>
+</td></tr></table><br />
 これを利用して、並び替え制御用にいれた数字や日本語名の時間をしたFolderのTitleを<br />
 定義するようにしています。</p>
 <p><a href="https://github.com/fereria/reincarnation_tech/blob/master/create_mkdocs_pages.py">https://github.com/fereria/reincarnation_tech/blob/master/create_mkdocs_pages.py</a></p>
@@ -5060,10 +5070,13 @@ Folder名や、Folder以下のページの並び順を制御できるように�
 （後述のGithubActionで実行）</p>
 <p>mdの書くページのTitle名も、今までは自前の処理で作っていましたが、<br />
 markdownの冒頭に</p>
-<div class="highlight"><pre><span></span><code>---
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>---
 title: mkdocs を設定する
 ---
 </code></pre></div>
+</td></tr></table>
 <p>titleを指定することで、メニューのTitleにしてくれる機能ができたので<br />
 こちらで指定するようにしました。<br />
 おかげで自動生成のフローが大幅にスッキリしました。</p>
@@ -5073,7 +5086,28 @@ title: mkdocs を設定する
 自動ビルドするにはそれだとマズいので、pipenvでの環境構築をするようにしました。</p>
 <p>プロジェクトルートにPipfileを作り、<br />
 使用するプラグイン類はPipenv経由でインストールします。</p>
-<p><div class="highlight"><pre><span></span><code>[[source]]
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[[source]]
 name = &quot;pypi&quot;
 url = &quot;https://pypi.org/simple&quot;
 verify_ssl = true
@@ -5095,7 +5129,8 @@ hbfm = &quot;*&quot;
 
 [requires]
 python_version = &quot;3.6&quot;
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 Pipfileはこんな感じ。<br />
 mkdocsは結構バージョンによって動く・動かないが起きてしまうので<br />
 使用するバージョンは固定しておきます。</p>
@@ -5111,7 +5146,43 @@ Githubには無料で使えるCI環境があるので、ここにmkdocsをビル
 <p><img alt="" src="https://gyazo.com/b5107ed38526c2b5a80cbde4e60269aa.png" /></p>
 <p>まずは、ドキュメントのリポジトリルート下に .github/workflows というフォルダを作り、<br />
 その中に yml ファイルを作ります。  </p>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Python application</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Python application</span>
 
 <span class="nt">on</span><span class="p">:</span>
   <span class="nt">push</span><span class="p">:</span>
@@ -5149,6 +5220,7 @@ Githubには無料で使えるCI環境があるので、ここにmkdocsをビル
           <span class="no">python create_mkdocs_pages.py</span>
           <span class="no">pipenv run mkdocs gh-deploy</span>
 </code></pre></div>
+</td></tr></table>
 <p>そこに、実行する処理を書いていきます。  </p>
 <p>今回は、masterブランチにPushしたタイミングで、mkdocsのビルドを実行するようにします。<br />
 参考にしたのは<br />

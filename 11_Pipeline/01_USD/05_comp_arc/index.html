@@ -5214,7 +5214,22 @@ SdfPath とは、USD 内のシーングラフの階層構造をファイルパ�
 <h3 id="_4">解決のサンプル<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>まずこの LIVRPS は、L（Local）側が一番優先で、定義がなければ I V ... といった感じに評価していきます。</p>
 <h4 id="_5">一番シンプルなパターン<a class="headerlink" href="#_5" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 class &quot;TestClass&quot;
 {
@@ -5231,6 +5246,7 @@ def &quot;hoge&quot;
     }
 }
 </code></pre></div>
+</td></tr></table>
 <p>1 つの usda ファイル内に継承元のクラスがあり、それを継承したプリムがあり<br />
 そのプリムに対して値がセットされている例。</p>
 <p><img alt="" src="https://gyazo.com/9c6d2f20d92327eacbc4e27e36855a16.png" /><br />
@@ -5240,7 +5256,18 @@ testValue が 2 つ定義されているのがわかります。</p>
 <p>この場合に testValue を取得しようした場合、どちらが優先になるのか？というと、<br />
 「Local」のほうが「Inherits（継承）」より優先なので「True」が取得できます。</p>
 <h4 id="_6">複数のコンポジションアークが重なった場合<a class="headerlink" href="#_6" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 class &quot;TestClass&quot;
 {
@@ -5253,18 +5280,35 @@ def &quot;hoge&quot; (
 {
 }
 </code></pre></div>
+</td></tr></table>
 <p>もし、このように、 hoge プリムでなにも定義されていない場合<br />
 次は Inherits を解決しにいくので、この場合「False」が帰ってきます。</p>
 <p>この例だととてもシンプルですが、では複数が重複した場合はどうなるでしょうか。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 class &quot;TestClass&quot;
 {
     custom int testIntVal = 100
 }
 </code></pre></div>
+</td></tr></table>
 <p>まず、 class.usda があり</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;hoge&quot;
 )
@@ -5276,9 +5320,27 @@ def &quot;hoge&quot;
     }
 }
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じの refSample.usda<br />
 があったとします。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @class.usda@,
@@ -5297,6 +5359,7 @@ def &quot;hgoe&quot;
     }
 }
 </code></pre></div>
+</td></tr></table>
 <p>それぞれを Reference と Inherits で合成します。</p>
 <p><img alt="" src="https://gyazo.com/bf5aeae34c0757abd918ed48bf3410d7.png" /></p>
 <p>合成結果はこうなります。</p>
@@ -5313,7 +5376,14 @@ class.usda の /TestClass の testIntVal = 100<br />
 LIVRPS の原則によって「Inherits（継承）」のほうが強いので、取得出来るのは「10」になります。</p>
 <h4 id="_7">コンポジション先にまた別のコンポジションがあった場合<a class="headerlink" href="#_7" title="Permanent link">¶</a></h4>
 <p>上の例だと、Local からみて Reference か Inherits かでしたが、</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;hoge&quot;
 (
@@ -5322,8 +5392,30 @@ def &quot;hoge&quot;
 {
 }
 </code></pre></div>
+</td></tr></table>
 <p>というファイルを開いた時、</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;hoge&quot;
 )
@@ -5346,8 +5438,17 @@ def &quot;hgoe&quot;
     }
 }
 </code></pre></div>
+</td></tr></table>
 <p>このような referenceA.usda があり</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;fuga&quot;
 )
@@ -5357,6 +5458,7 @@ def &quot;fuga&quot;
      custom int testIntVal = 50
 }
 </code></pre></div>
+</td></tr></table>
 <p>この usda を読んでいたとします。</p>
 <p><img alt="" src="https://gyazo.com/bafb407cf05a6f34f8751fef0cca1a45.png" /></p>
 <p>図にするとこんな感じ。</p>

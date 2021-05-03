@@ -5234,14 +5234,21 @@ jointsのIndex（0:Hips とある場合は :より前の数字がIndex）にそ�
 <p>Skeletonは、BindPoseのみなのでアニメーションは保持しません。<br />
 アニメーションをセットしたい場合は、SkeletonPrimに対してAnimationPrimを<br />
 Relationで接続します。<br />
-<div class="highlight"><pre><span></span><code><span class="n">skelPrim</span> <span class="o">=</span> <span class="n">skel</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">skelPrim</span> <span class="o">=</span> <span class="n">skel</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
 <span class="c1"># SkeletonのAnimationはRelationでAnimationPrimが指定されている</span>
 <span class="n">animPath</span> <span class="o">=</span> <span class="n">skelPrim</span><span class="o">.</span><span class="n">GetRelationship</span><span class="p">(</span><span class="s2">&quot;skel:animationSource&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="c1"># Animationの値はVector</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetRotationsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetTranslationsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetScalesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
-</code></pre></div></p>
+</code></pre></div>
+</td></tr></table></p>
 <p>Relation接続先は skel:animationSource なので、<br />
 GetRelationshipでRelationを取得し、AddTarget で、AnimationPrimのSdfPathを<br />
 指定します。</p>
@@ -5251,7 +5258,18 @@ GetRelationshipでRelationを取得し、AddTarget で、AnimationPrimのSdfPath
 調べたい場合、文字列で検索したりするのはさすがに面倒です。</p>
 <p>このSkeleton内のJointの構造は UsdSkelTopologyを利用することで<br />
 把握することができます。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Skelの構造は Topology を利用すると解析できる</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Skelの構造は Topology を利用すると解析できる</span>
 <span class="n">joints</span> <span class="o">=</span> <span class="n">skel</span><span class="o">.</span><span class="n">GetJointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
 <span class="n">topology</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">Topology</span><span class="p">(</span><span class="n">skel</span><span class="o">.</span><span class="n">GetJointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 
@@ -5264,6 +5282,7 @@ GetRelationshipでRelationを取得し、AddTarget で、AnimationPrimのSdfPath
 <span class="n">parentIndex</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">GetParent</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">joints</span><span class="p">[</span><span class="n">parentIndex</span><span class="p">])</span>
 </code></pre></div>
+</td></tr></table>
 <p>Topologyに対して、jointsのリストを渡すと、<br />
 それ以降は あるJointの親がどれなのか などを、Topologyに指定したリストの<br />
 Indexで取得できます。</p>
@@ -5288,7 +5307,18 @@ VertexとVertexの間はprimvarによって補完されることになります�
 構造的にはこのように Mesh の Vertex 順に Skeleton の数だけ並び、、、というふうになります。<br />
 JointのIndexは順不同で、かならず 0 1 2 ... と増えていくわけではありません。<br />
 あくまでもあるVertexに対してのjoitnWeightsとの組み合わせになります。</p>
-<div class="highlight"><pre><span></span><code><span class="n">meshPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root/Geom/pCube1&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">meshPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root/Geom/pCube1&quot;</span><span class="p">)</span>
 <span class="n">bindingAPI</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">BindingAPI</span><span class="p">(</span><span class="n">meshPrim</span><span class="p">)</span>
 
 <span class="n">indicesPrimvar</span> <span class="o">=</span> <span class="n">bindingAPI</span><span class="o">.</span><span class="n">GetJointIndicesPrimvar</span><span class="p">()</span> <span class="c1"># UsdGeomPrimvar</span>
@@ -5301,6 +5331,7 @@ JointのIndexは順不同で、かならず 0 1 2 ... と増えていくわけ�
 <span class="nb">print</span><span class="p">(</span><span class="n">indicesPrimvar</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">weightPrimvar</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
+</td></tr></table>
 <p>Bindしたり、Bind情報を取得する場合は、BindingAPIを経由して取得します。<br />
 bindingAPIの GetJoitIndicesPrimvar と GetJointWeightsAttr を使用すると<br />
 値が取得できるし、CreateJointIndicesPrimvar CreateJointWeightsPrimvar で<br />

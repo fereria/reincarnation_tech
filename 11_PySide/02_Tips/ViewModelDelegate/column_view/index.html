@@ -5006,11 +5006,15 @@
 使い方を調べてみました。</p>
 <h2 id="_1">基本構造<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>基本的な Model の構造は TreeView と同じです。</p>
-<div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">QColumnView</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">QColumnView</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ColumnModel</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じで ColumnView を作り、Model をセットすれば OK です。</p>
 <p>TreeView の場合は Model で作られている木構造をすべて TreeView として表示しますが<br />
 ColumnView は木構造の親階層から選択していくことで子階層を表示するような挙動になります。</p>
@@ -5019,14 +5023,37 @@ ColumnView は木構造の親階層から選択していくことで子階層を
 Cacher にアップしましたが、ほぼ TreeView の Model と同じ構造で動きました。</p>
 <h2 id="model">Model を作る<a class="headerlink" href="#model" title="Permanent link">¶</a></h2>
 <p>動いたのですが、どうやって設定するようにするか考えた結果</p>
-<div class="highlight"><pre><span></span><code>        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a/b/c&quot;</span><span class="p">,</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a/b/c&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;a/b/d&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;a/e/f&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;b/d/c&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;てすと/はろー/ワールド&quot;</span><span class="p">]</span>
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じで、 / で各カラムの構造を指定するようにしてみました。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setupModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        表示用のItemを再構築する</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5046,22 +5073,35 @@ Cacher にアップしましたが、ほぼ TreeView の Model と同じ構造�
                     <span class="n">parent</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
                     <span class="n">parents</span><span class="p">[</span><span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">buff</span><span class="p">[:</span><span class="n">num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])]</span> <span class="o">=</span> <span class="n">p</span>
 </code></pre></div>
+</td></tr></table>
 <p>TreeView と同じ用に parent と addChild を使用して<br />
 Item オブジェクトで木構造を作ります。</p>
 <h2 id="_2">選択している項目を取得する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>ColumnView で選択した項目を、全て結合したテキストを取得したいとします。<br />
 ただ</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">showSelection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">showSelection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">selectedIndexes</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">getFullPath</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p>view.selectedIndexes() を実行した場合は<br />
 最後のカラムの選択 Index が取得されるだけでした。</p>
 <p>なので、Item に対してパスを取得する関数を追加で作成します。</p>
 <p>selectedIndexes から data を使用して Item を取得します。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">getFullPath</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">getFullPath</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span>
         <span class="n">retVal</span> <span class="o">=</span> <span class="p">[]</span>
@@ -5070,6 +5110,7 @@ Item オブジェクトで木構造を作ります。</p>
             <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span>
         <span class="k">return</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">retVal</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>Item は ColumnView に表示されている木構造が作られているので<br />
 自分自身を起点にして親を検索することで<br />
 選択状態を取得できます。</p>

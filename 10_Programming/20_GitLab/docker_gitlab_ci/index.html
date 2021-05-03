@@ -5009,13 +5009,16 @@
 <p>次に、GitLab-Runner をインストールする。</p>
 <p><a href="https://docs.gitlab.com/runner/install/windows.html">https://docs.gitlab.com/runner/install/windows.html</a></p>
 <p>手順は公式参考にして、 gitlab-runner の 64bit 用 exe をダウンロードして、</p>
-<div class="highlight"><pre><span></span><code>C:\GitLab-Runner
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>C:\GitLab-Runner
 </code></pre></div>
+</td></tr></table>
 <p>このフォルダにコピーする。<br />
 次に、管理者モードのコマンドプロンプトを開き、上のフォルダに移動後</p>
-<div class="highlight"><pre><span></span><code>gitlab-runner install
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gitlab-runner install
 gitlab-runner start
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/2b77af47149d63c1960cabdafc68445c.png" /></p>
 <p>GitLabRunner をサービスに登録する。<br />
 サービス登録が終わったら、GitLab への登録をする。</p>
@@ -5023,8 +5026,9 @@ gitlab-runner start
 <p><img alt="" src="https://gyazo.com/67e413b0a1f7938d1100515561c46a83.png" /></p>
 <p>Setup a specific Runner manually ないにある URL と Token を確認しつつ、<br />
 コマンドプロンプトに、</p>
-<div class="highlight"><pre><span></span><code>gitlab-runner register
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gitlab-runner register
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/bc932ba1d7252a7df04fb08d63cced8d.png" /></p>
 <p>と入力し、GitLab の URL→Token→ 登録名 →Tag 　を入力する。<br />
 入力すると、どのモードで実行するかを聞かれるので「docker」を選択する。</p>
@@ -5038,7 +5042,19 @@ SharedRunner に登録すると、複数プロジェクトでの共通になる�
 <p>準備ができたら、CI を走らせるための設定ファイルを作成する。<br />
 Git のプロジェクトルートに、 <strong>.gitlab-ci.yml</strong> ファイルを作成して<br />
 とりあえずコミットしてみる。</p>
-<div class="highlight"><pre><span></span><code>image: python:2.7
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>image: python:2.7
 
 stages:
   - build
@@ -5052,23 +5068,31 @@ build_job1:
     - pip install sphinx
     - ls
 </code></pre></div>
+</td></tr></table>
 <p>中身はとりあえずシンプルにこんな感じにする。<br />
 基本は</p>
-<div class="highlight"><pre><span></span><code>&lt;name&gt;:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;name&gt;:
  - コマンドプロンプトで実行するコマンド
 </code></pre></div>
+</td></tr></table>
 <p>のような構造になっている。<br />
 その中で、いくつか特殊ないみを持つものがある。</p>
 <p>image 　が、Docker のコンテナ名で<br />
 こんかいは Python2.7 でテストするのでその名前にしている。</p>
 <p>before_script が、メインの処理が始まる前に実行する内容。</p>
 <p>stages は、実際に実行する処理内容。</p>
-<div class="highlight"><pre><span></span><code>&lt;name&gt;:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;name&gt;:
   stage:&lt;stage_name&gt;
   script:
     - command1
     - command2
 </code></pre></div>
+</td></tr></table>
 <p>メインの処理内容は、こんな形が基本になっていて<br />
 ここの stage で書いた内容を stage:に記載する。</p>
 <p>.gitlab-ci.yml を、Git にコミットするとジョブが実行される。</p>

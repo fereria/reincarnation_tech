@@ -5025,13 +5025,29 @@ Python2系のサポート終了が近い影響なのか、各所で公開され�
 <p>インストール方法はそのままコピペでもOKですが、<br />
 私はダウンロードしたptvsd-4.2.10.zipを解凍してできたフォルダに<br />
 管理者モードのコマンドプロンプトで入り、  </p>
-<div class="highlight"><pre><span></span><code>&quot;C:\Program Files\Autodesk\Maya2018\bin\mayapy.exe&quot; setup.py install
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;C:\Program Files\Autodesk\Maya2018\bin\mayapy.exe&quot; setup.py install
 </code></pre></div>
+</td></tr></table>
 <p>setup.pyを利用してインストールしました。  </p>
 <h2 id="_1">デバッグモードを設定する<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p><img alt="" src="https://gyazo.com/db1dc29358c0bd83655b0a4f53156975.png" /></p>
 <p>VSCodeのDebug画面に移動して、「構成の追加...」をクリックします。  </p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -5048,9 +5064,11 @@ Python2系のサポート終了が近い影響なのか、各所で公開され�
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
+</td></tr></table>
 <p>launch.jsonを上のように書き換えます。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">ptvsd</span><span class="p">;</span><span class="n">ptvsd</span><span class="o">.</span><span class="n">enable_attach</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">),</span> <span class="n">redirect_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">ptvsd</span><span class="p">;</span><span class="n">ptvsd</span><span class="o">.</span><span class="n">enable_attach</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">),</span> <span class="n">redirect_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 最後に、userSetup.py内にリモートデバッグを有効にするためのコマンドを記入して準備は終了。  </p>
 <h2 id="_2">使用する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>準備ができたら、</p>

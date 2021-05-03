@@ -5074,17 +5074,37 @@ usdView も Python3 で使えるようになったのがとても美味しいで
 <p><img alt="" src="https://gyazo.com/d2ac458e4efe4162da35efb080c4dc13.png" /></p>
 <p>今回は extras 下に plugins フォルダを作り、その下に tutorialPlugin フォルダを作りました。<br />
 そして必要な CMakeLists.txt を配置していきます。</p>
-<div class="highlight"><pre><span></span><code>add_subdirectory(usd)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>add_subdirectory(usd)
 if (${PXR_BUILD_IMAGING})
     add_subdirectory(imaging)
 endif()
 add_subdirectory(plugins)
 </code></pre></div>
+</td></tr></table>
 <p>とりあえず extras の CmakeLists.txt に add_subdirectory(plugins) を追加し、</p>
-<div class="highlight"><pre><span></span><code>add_subdirectory(tutorialPlugin)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>add_subdirectory(tutorialPlugin)
 </code></pre></div>
+</td></tr></table>
 <p>plugins 下の CMakeLists.txt に tutorialPlugin を追加</p>
-<div class="highlight"><pre><span></span><code>set(PXR_PACKAGE tutorialPlugin)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>set(PXR_PACKAGE tutorialPlugin)
 
 install(
     FILES
@@ -5100,6 +5120,7 @@ install(
         plugin/usd/${PXR_PACKAGE}/resources
 )
 </code></pre></div>
+</td></tr></table>
 <p>tutorialPlugin の CMakeLists.txt はこうしときます。<br />
 今回は C++は使用していなくてコピーだけなので、 install だけ書いておきます。</p>
 <p><img alt="" src="https://gyazo.com/93f036e687a3114dc3475e2344fce3dc.png" /></p>
@@ -5118,24 +5139,43 @@ Print Message をクリックすると Hello World が表示されるように�
 <p>PluginContainerとは、USDViewのプラグインを作成するときの基底クラスで<br />
 Pluginを作る場合はこのクラスを継承したクラスを作成します。</p>
 <p>作成したクラスは、プラグインロードをさせるために<br />
-<div class="highlight"><pre><span></span><code>Tf.Type.Define(&lt;Class&gt;)
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Tf.Type.Define(&lt;Class&gt;)
+</code></pre></div>
+</td></tr></table><br />
 のように、Typeの定義をしておきます。</p>
 <h3 id="pluginfojson">plugInfo.json について<a class="headerlink" href="#pluginfojson" title="Permanent link">¶</a></h3>
 <p>とりあえず上の手順をとることで、usdView のプラグインをロードできるようになりました。<br />
 USD の場合、作成したプラグインを使えるようにしたい場合 plugin/usd 下に plugInfo.json を<br />
 配置することで読み込むことができるようになります。</p>
-<div class="highlight"><pre><span></span><code>{
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{
     &quot;Includes&quot;: [ &quot;*/resources/&quot; ]
 }
 </code></pre></div>
+</td></tr></table>
 <p>plugin/usd 下にある plugInfo.json には 上のように書かれていて<br />
 usd 直下にある ####/resources/plugInfo.json をロードしてくれます。</p>
 <p>今回は usdView のプラグインでしたが、カスタムスキーマやその他のプラグインも同様で<br />
 作成したカスタムスキーマを登録するための plugInfo.json を<br />
 この plugin/usd/###/resources/plugInfo.json に配置するようにすれば<br />
 使用できるようになるわけですね。</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;Plugins&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
@@ -5152,6 +5192,7 @@ usd 直下にある ####/resources/plugInfo.json をロードしてくれます�
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
+</td></tr></table>
 <p>usdviewの場合のplugInfo.json は上のようになっていて、</p>
 <p>"tutorialPlugin.TutorialPluginContainer"</p>
 <p>この部分がusdViewのプラグインのための PluginContainer をインポートするためのパス<br />

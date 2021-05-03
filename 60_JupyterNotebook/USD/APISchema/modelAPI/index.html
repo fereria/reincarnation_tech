@@ -5167,63 +5167,102 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/APISchema/modelAPI__modelAPIとKind.ipynb">modelAPI__modelAPIとKind.ipynb</a></p>
 <h4 id="36">[36]:<a class="headerlink" href="#36" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="2">[2]:<a class="headerlink" href="#2" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="9">[9]:<a class="headerlink" href="#9" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/testPrim&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetDefaultPrim</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="47">[47]:<a class="headerlink" href="#47" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># APIを取得する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># APIを取得する</span>
 <span class="n">Usd</span><span class="o">.</span><span class="n">ModelAPI</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/testPrim&#39;</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>Usd.ModelAPI(Usd.Prim(&lt;/testPrim&gt;))
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Usd.ModelAPI(Usd.Prim(&lt;/testPrim&gt;))
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="5">[5]:<a class="headerlink" href="#5" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># ModelAPI にPrimを渡してAPIを取得する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># ModelAPI にPrimを渡してAPIを取得する</span>
 <span class="n">api</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ModelAPI</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="39">[39]:<a class="headerlink" href="#39" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Primに対していろんなシーンに関連するMetadataを入れる</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Primに対していろんなシーンに関連するMetadataを入れる</span>
 <span class="n">api</span><span class="o">.</span><span class="n">SetAssetName</span><span class="p">(</span><span class="s1">&#39;testAsset&#39;</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">SetAssetVersion</span><span class="p">(</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">SetAssetInfo</span><span class="p">({</span><span class="s1">&#39;test&#39;</span><span class="p">:</span><span class="s1">&#39;hello world&#39;</span><span class="p">,</span>
                   <span class="s1">&#39;num&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
                   <span class="s1">&#39;hoge&#39;</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]})</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="40">[40]:<a class="headerlink" href="#40" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Kindを設定</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Kindを設定</span>
 <span class="n">api</span><span class="o">.</span><span class="n">SetKind</span><span class="p">(</span><span class="s1">&#39;component&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="41">[41]:<a class="headerlink" href="#41" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">IsKind</span><span class="p">(</span><span class="s1">&#39;component&#39;</span><span class="p">))</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">IsKind</span><span class="p">(</span><span class="s1">&#39;component&#39;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">IsModel</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">IsGroup</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 True
 False
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="42">[42]:<a class="headerlink" href="#42" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;testPrim&quot;
 )
@@ -5239,18 +5278,29 @@ def &quot;testPrim&quot; (
 {
 }
 </code></pre></div>
+</td></tr></table>
 </div>
 <h2 id="kind">Kindを取得する方法<a class="headerlink" href="#kind" title="Permanent link">¶</a></h2>
 <h4 id="48">[48]:<a class="headerlink" href="#48" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Kind</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Kind</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="51">[51]:<a class="headerlink" href="#51" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># 登録されているKindを取得する</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 登録されているKindを取得する</span>
 <span class="n">Kind</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">GetAllKinds</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>[&#39;charprop&#39;,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[&#39;charprop&#39;,
  &#39;chargroup&#39;,
  &#39;subcomponent&#39;,
  &#39;model&#39;,
@@ -5259,25 +5309,33 @@ def &quot;testPrim&quot; (
  &#39;assembly&#39;,
  &#39;newRootKind&#39;]
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="52">[52]:<a class="headerlink" href="#52" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Kindの階層構造を取得できる</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Kindの階層構造を取得できる</span>
 <span class="n">Kind</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">GetBaseKind</span><span class="p">(</span><span class="s1">&#39;component&#39;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>&#39;model&#39;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&#39;model&#39;
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="54">[54]:<a class="headerlink" href="#54" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">Kind</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">HasKind</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">))</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">Kind</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">HasKind</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Kind</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">HasKind</span><span class="p">(</span><span class="s1">&#39;charprop&#39;</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>False
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>False
 True
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   
@@ -5287,7 +5345,7 @@ True
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-05-03 02:25:32
+      最終更新日: 2021-05-03 02:32:59
     
   </small>
 </div>

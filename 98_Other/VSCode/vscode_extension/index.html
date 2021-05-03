@@ -4991,9 +4991,11 @@
 <p>VSCode の拡張は TypeScript で作成する。</p>
 <h2 id="_1">下準備<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、Extension の基本的な構造を作るための準備をする。</p>
-<div class="highlight"><pre><span></span><code>npm install -g yo generator-code
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>npm install -g yo generator-code
 yo code
 </code></pre></div>
+</td></tr></table>
 <p>npm を使用して、コマンドをインストール。<br />
 yo code で、実行できる。</p>
 <p><img alt="" src="https://gyazo.com/903242df85f1120f102a6537653d53b8.png" /></p>
@@ -5005,9 +5007,11 @@ yo code で、実行できる。</p>
 Y を押していく。（基本は名前のみ決めれば OK）</p>
 <p>実行が完了すると、カレントフォルダ下に指定の名前で<br />
 プロジェクトフォルダが作成される。</p>
-<div class="highlight"><pre><span></span><code>cd &lt;作成したフォルダ名&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd &lt;作成したフォルダ名&gt;
 code .
 </code></pre></div>
+</td></tr></table>
 <p>最後に、作成したパッケージ内にコマンドプロンプトで移動したのち、<br />
 code .　で VisualStudioCode を起動する。</p>
 <p><img alt="" src="https://gyazo.com/b79ac8fd1b3d0ce712058da2ebb3ac14.png" /></p>
@@ -5018,8 +5022,9 @@ code .　で VisualStudioCode を起動する。</p>
 どうやら、この画面は無視して「このままデバッグを続ける」を押しても<br />
 デバッグは実行可能だが、邪魔なので</p>
 <p>launch.json 内の Extension の{}内にある</p>
-<div class="highlight"><pre><span></span><code>&quot;preLaunchTask&quot;: &quot;npm: watch&quot;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;preLaunchTask&quot;: &quot;npm: watch&quot;
 </code></pre></div>
+</td></tr></table>
 <p>この行をいったん削除する。</p>
 <blockquote>
 <p>原因がわかり次第、元に戻す</p>

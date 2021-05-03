@@ -5065,24 +5065,41 @@
                 
                 <h2 id="material">Material を作成・アサインする<a class="headerlink" href="#material" title="Permanent link">¶</a></h2>
 <h3 id="pymel">Pymel の場合<a class="headerlink" href="#pymel" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
 <span class="n">shader</span> <span class="p">,</span> <span class="n">shadingEngine</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">createSurfaceShader</span><span class="p">(</span><span class="s2">&quot;lambert&quot;</span><span class="p">)</span>
 <span class="c1"># forceElement にはノード名を入れる（string or list or pyNode)</span>
 <span class="n">pm</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">shadingEngine</span><span class="p">,</span><span class="n">forceElement</span><span class="o">=</span><span class="s2">&quot;pCube1&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="mayacmds">maya.cmds の場合<a class="headerlink" href="#mayacmds" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">mc</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">mc</span>
 
 <span class="n">shader</span>        <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">shadingNode</span><span class="p">(</span><span class="s2">&quot;lambert&quot;</span><span class="p">,</span><span class="n">asShader</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">shadingEngine</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">noSurfaceShader</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">renderable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">mc</span><span class="o">.</span><span class="n">connectAttr</span><span class="p">(</span><span class="n">shader</span> <span class="o">+</span> <span class="s2">&quot;.outColor&quot;</span><span class="p">,</span> <span class="n">shadingEngine</span> <span class="o">+</span> <span class="s2">&quot;.surfaceShader&quot;</span><span class="p">)</span>
 <span class="n">mc</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="s2">&quot;pCube1&quot;</span><span class="p">,</span><span class="n">e</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">forceElement</span><span class="o">=</span><span class="n">shadingEngine</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="_1">使用されているマテリアルか調べる<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>Material の Assign は Sets(ShadingEngine）で管理している。<br />
 ので、アサインされているかどうかは、Sets に含まれているかどうかで判定することができる。</p>
 <h3 id="mayacmds_1">maya.cmds の場合<a class="headerlink" href="#mayacmds_1" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_used_materials</span><span class="p">(</span><span class="n">mat_name</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_used_materials</span><span class="p">(</span><span class="n">mat_name</span><span class="p">):</span>
 
     <span class="n">sg_list</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="n">mat_name</span> <span class="o">+</span> <span class="s2">&quot;.outColor&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sg_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -5091,8 +5108,20 @@
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
+</td></tr></table>
 <h3 id="pymel_1">pymel の場合<a class="headerlink" href="#pymel_1" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_used_materials</span><span class="p">(</span><span class="n">mat_name</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_used_materials</span><span class="p">(</span><span class="n">mat_name</span><span class="p">):</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mat_name</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">mat_name</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="n">mat_name</span><span class="p">)</span>
@@ -5105,6 +5134,7 @@
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div>
+</td></tr></table>
                 
                   
                     

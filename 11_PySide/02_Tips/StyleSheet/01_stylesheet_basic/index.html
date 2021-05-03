@@ -5003,27 +5003,36 @@
 今回は基本的な書き方（作り方）です。</p>
 <h2 id="_1">基本書式<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、PySideでStyleSheetを使用する場合は、</p>
-<p><div class="highlight"><pre><span></span><code><span class="nt">QGroupBox</span> <span class="p">{</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">QGroupBox</span> <span class="p">{</span>
     <span class="k">margin</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
     <span class="err">padding</span> <span class="err">15px</span><span class="p">;</span>
     <span class="err">border</span> <span class="err">1px</span> <span class="err">solid</span> <span class="err">#ccc</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 この QGroupBox の部分がWidgetsの名になっていて、その中に書かれている内容が<br />
 CSSで指定することができるパラメーターです。</p>
 <p>このようなフォーマットの文字列を<br />
-<div class="highlight"><pre><span></span><code>widgetObj.setStyleSheet(&quot;QGroupBox{～～～～}&quot;)
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>widgetObj.setStyleSheet(&quot;QGroupBox{～～～～}&quot;)
+</code></pre></div>
+</td></tr></table><br />
 WidgetsのsetStyleSheetを使用してセットします。</p>
 <p><img alt="" src="https://gyazo.com/2df42ad721ca76ffca7ab71bec2cf425.jpg" /></p>
 <p>その場合、たとえば赤で囲っている所にStyleSheetを適応した場合、子にあるおなじタイプのWidget<br />
 （このばあい同じGroupBox）にもStyleSheetの編集結果が適応されます。</p>
 <h2 id="widgets">指定のWidgetsのみに適応したい<a class="headerlink" href="#widgets" title="Permanent link">¶</a></h2>
 <p>では、子のWidgetsには反映させずに自分自身にのみセットしたい場合はどうすればいいかというと</p>
-<p><div class="highlight"><pre><span></span><code><span class="nt">QGroupBox</span><span class="p">#</span><span class="nn">groupBox</span><span class="p">{</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">QGroupBox</span><span class="p">#</span><span class="nn">groupBox</span><span class="p">{</span>
 <span class="err">～パラメータ～</span>
 <span class="p">}</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このように、#の後ろにWidgetのObject名を指定することで<br />
 指定のWidgetsのみStyleSheetを指定することができます。</p>
 <h2 id="stylesheet">外部ファイののStyleSheetを読み込む<a class="headerlink" href="#stylesheet" title="Permanent link">¶</a></h2>
@@ -5031,7 +5040,22 @@ WidgetsのsetStyleSheetを使用してセットします。</p>
 それだとまとめてStyleSheetを指定したり<br />
 StyleSheetの使い回しができません。</p>
 <p>ので、その場合は、</p>
-<p><div class="highlight"><pre><span></span><code><span class="nt">QGroupBox</span><span class="p">#</span><span class="nn">groupBox</span><span class="p">{</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">QGroupBox</span><span class="p">#</span><span class="nn">groupBox</span><span class="p">{</span>
   <span class="k">margin</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
   <span class="k">padding</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
   <span class="k">border</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ccc</span><span class="p">;</span>
@@ -5047,12 +5071,16 @@ StyleSheetの使い回しができません。</p>
   <span class="k">padding</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
   <span class="k">border</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">green</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このような style.css ファイルを作り、<br />
-<div class="highlight"><pre><span></span><code><span class="n">win</span> <span class="o">=</span> <span class="n">toolUI</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">win</span> <span class="o">=</span> <span class="n">toolUI</span><span class="p">()</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;style.css&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">win</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()))</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このように、一番親にあたるWindowに対して open で読み込んで、<br />
 setStyleSheetでセットすればOKです。</p>
                 

@@ -4992,7 +4992,19 @@
 <p>以前自分のBlogで、MayaのWindowを重複させない方法というのを書いたのですが<br />
 これだと一部問題があるので、問題ないように修正してみました。  </p>
 <h2 id="_1">以前の方法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">testUI</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">testUI</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -5005,7 +5017,8 @@
 
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 以前の方法はこんな感じ。<br />
 なにをしているかというと、  </p>
 <ol>
@@ -5017,7 +5030,14 @@
 <p>ということをしています。  </p>
 <p>このparent()関数は、Dialogの__init__の第一引数でしている親Windowを取得<br />
 してくれる関数で、↑のサンプルでいうところの  </p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getMayaWindow</span><span class="p">():</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getMayaWindow</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the main Maya window as a QtGui.QMainWindow instance</span>
 <span class="sd">    @return: QtGui.QMainWindow instance of the top level Maya windows</span>
@@ -5025,7 +5045,8 @@
     <span class="n">ptr</span> <span class="o">=</span> <span class="n">omUI</span><span class="o">.</span><span class="n">MQtUtil</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">shiboken2</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="n">long</span><span class="p">(</span><span class="n">ptr</span><span class="p">),</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 shiboken2を使ってMayaの本体のQMainWindowで取得している<br />
 Windowを、parent()で再度取得している形になります。  </p>
 <p>一応これでも閉じるのですが、<br />
@@ -5036,7 +5057,23 @@ findChildren関数が動かないという問題がありました。<br />
 (低音さん(@rateionn) が原因を見つけてくれました、感謝)  </p>
 <h2 id="_2">改善版<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>というわけで改善版</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">testUI</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">testUI</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">testUI</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">getMayaWindow</span><span class="p">())</span>
@@ -5053,7 +5090,8 @@ findChildren関数が動かないという問題がありました。<br />
 
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 findChildrenで、指定クラスの子を探すのではなく<br />
 全ての子オブジェクトのクラス名で判定して、同じなら閉じるようにすれば<br />
 reloadしようがScriptEditorで実行しようが問題ありません。  </p>

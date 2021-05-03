@@ -5099,7 +5099,62 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
 が...Materials じゃないパネルを新規で作ってからそこにノードを追加するスクリプトだったので<br />
 そこからいらない所をけして、Materials に追加するための最小コードをつくってみました。</p>
 <h2 id="_1">スクリプト本体<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">BlenderのMaterialsノードを自作する時の最小構成</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -5156,6 +5211,7 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">register</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <p>以上。</p>
 <p>Blender の Addons スクリプトは大きく分けて 3 つのタームがあります。<br />
 1 つが、Addons 画面にある情報を登録する部分<br />
@@ -5165,7 +5221,15 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
 <p><img alt="" src="https://gyazo.com/7c316ce2b06cbb5edf6bb568343de554.png" /></p>
 <p>まず、Add-ons 画面内に表示されるプラグイン名や説明などは<br />
 .py ファイルの Globals 変数で「bl_info」を定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">bl_info</span> <span class="o">=</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">bl_info</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test_simple_Node&quot;</span><span class="p">,</span>
     <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;megumi ando&quot;</span><span class="p">,</span>
     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -5175,17 +5239,23 @@ Blender のスクリプト勉強がてら調べつつ作って見ることにし
     <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Generic&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
+</td></tr></table>
 <p>この情報はあくまで Add-ons 内に表示されるものなので、<br />
 以降のコードとは関係ない。<br />
 blender で指定するバージョンが、読み込む Blender のバージョンと同じ出ないと<br />
 エラーになるので注意。</p>
 <h2 id="_2">カスタムノードを作る<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyCustomNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyCustomNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
 
     <span class="n">bl_idname</span> <span class="o">=</span> <span class="s1">&#39;SimpleCustomNode&#39;</span>
     <span class="n">bl_label</span>  <span class="o">=</span> <span class="s2">&quot;Simple Custom Node&quot;</span>
     <span class="n">bl_icon</span>   <span class="o">=</span> <span class="s1">&#39;SOUND&#39;</span>
 </code></pre></div>
+</td></tr></table>
 <p>ノードを作りたいときは、指定のクラス（Node）を継承して<br />
 クラスを作成する。</p>
 <p>定義している変数は、<br />
@@ -5198,11 +5268,15 @@ icon は、ノード上に表示されるアイコン。</p>
 <h2 id="blender">Blender に登録する<a class="headerlink" href="#blender" title="Permanent link">¶</a></h2>
 <h3 id="_3">メニューへの登録<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>2.80 とそれ以前だと登録するタームは大きく変わっている模様。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># NodeEditorの追加メニューにノードを作成するメニューを追加する。</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># NodeEditorの追加メニューにノードを作成するメニューを追加する。</span>
 <span class="n">node_categories</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">NodeCategory</span><span class="p">(</span><span class="s1">&#39;OTHERNODES&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Nodes&#39;</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="n">NodeItem</span><span class="p">(</span><span class="s2">&quot;SimpleCustomNode&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Node A&quot;</span><span class="p">)])</span>
 <span class="p">]</span>
 </code></pre></div>
+</td></tr></table>
 <p>まず、作成したノードを Materials 内の Add メニューに追加する。<br />
 追加するための処理は、==nodeitems_utils==でいいかんじにラクに出来るようにしてくれているので<br />
 コレを使用する。</p>
@@ -5217,7 +5291,22 @@ icon は、ノード上に表示されるアイコン。</p>
 </div>
 <h3 id="_4">ロード・アンロード処理<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>最後にロード・アンロード時の処理を定義をする。</p>
-<div class="highlight"><pre><span></span><code><span class="n">classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">MyCustomNode</span><span class="p">,)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">MyCustomNode</span><span class="p">,)</span>
 
 <span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
     <span class="kn">from</span> <span class="nn">bpy.utils</span> <span class="kn">import</span> <span class="n">register_class</span>
@@ -5234,6 +5323,7 @@ icon は、ノード上に表示されるアイコン。</p>
     <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
         <span class="n">unregister_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>register_class が、作成したノード本体の登録を行う。<br />
 その後の、メニューに登録する部分が　 nodeitems_utils.register_node_categories。<br />
 unregister はその逆処理になっている。</p>

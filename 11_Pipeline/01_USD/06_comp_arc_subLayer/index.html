@@ -5050,7 +5050,30 @@ DCCツール的に言えばシーンのインポートに近い処理です。  
 <p><a href="https://1drv.ms/u/s!AlUBmJYsMwMhhNRt4KxBpMYIPL8SdQ?e=mA179E">サンプルのUSDはこちら</a></p>
 <p><img alt="" src="https://gyazo.com/910f45d935ff0960a1e072d7c67608ec.png" /></p>
 <p>まず base.usda を usdview で開いてみると緑の玉が出てきます。  </p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 def &quot;Model&quot;
 {
     def Sphere &quot;Sphere&quot;
@@ -5074,13 +5097,30 @@ def &quot;Material&quot;
         }
     }
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 usda の中身はこんな感じ。  </p>
 <p>次に add_color.usda を開いてみると</p>
 <p><img alt="" src="https://gyazo.com/463b153a50480a4f59c534e7233e3e98.png" /></p>
 <p>見た目はこのように「赤いSphere」が出ています。<br />
 usdaを開いてみると</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @base.usda@
@@ -5097,7 +5137,8 @@ over &quot;Material&quot;
         }
     }
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 こうなっています。<br />
 このフォーマットを見てみると、<br />
 上の base.usda に対して testShader にある inputs:diffuseColor = (1,0,0) だけが書かれ<br />
@@ -5118,7 +5159,19 @@ over &quot;Material&quot;
 この差分情報を評価し、最終的なステージのシーングラフを構築します。  </p>
 <p><img alt="" src="https://gyazo.com/130909b25755df7bd5a9dfd471985a83.png" /></p>
 <p>なので、最後の final.usda を開いたときにこのようなCubeが出てきますが</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @add_color.usda@
@@ -5132,6 +5185,7 @@ over &quot;Model&quot;
     }
 }
 </code></pre></div>
+</td></tr></table>
 <p>マテリアルの色情報や構造は base.usda + add_color.usda の情報が来ていますが<br />
 最後の final.usda で、形状の Sphereプリムを Cubeにオーバーライドしているので<br />
 形状がCubeに変化しつつも<br />
@@ -5140,7 +5194,17 @@ over &quot;Model&quot;
 <p>それぞれのレイヤーが差分情報を持ち、オーバーライドされていくのはわかりましたが<br />
 では、このレイヤー結合はどのような優先順位で評価されるのでしょうか。<br />
 サンプルシーンで試してみます。  </p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @subA.usda@,
@@ -5152,14 +5216,21 @@ def &quot;testPrim&quot;
 {
 }
 </code></pre></div>
+</td></tr></table>
 <p>まずこんなファイルを作り、</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;testPrim&quot;
 {
     string hoge = &quot;subA&quot;
 }
 </code></pre></div>
+</td></tr></table>
 <p>サブレイヤーで読んでいるusda中身は、こんな感じのファイル名のはいった<br />
 アトリビュートを入れておきます。  </p>
 <p><img alt="" src="https://gyazo.com/78b8685417417a112dbe35c79a5720c2.png" /></p>
@@ -5173,7 +5244,19 @@ def &quot;testPrim&quot;
 今回のように複数のレイヤーを結合していった際に使用したすべてのレイヤーをまとめた物<br />
 の事を指します。  </p>
 <p>それを踏まえてもうすこし複雑にしてみます。  </p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 (
     subLayers = [
@@ -5187,6 +5270,7 @@ def &quot;testPrim&quot;
 
 }
 </code></pre></div>
+</td></tr></table>
 <p>subA.usdaをこのように書き換えて 同じような構造のCとDを作ります。  </p>
 <p><img alt="" src="https://gyazo.com/dcaa4e96d204e633af6e02bdbc686bdc.png" /></p>
 <p>関係図を書くとこうなります。  </p>

@@ -5049,7 +5049,38 @@
 <p>まずはLineEdit。  </p>
 <p><img alt="" src="https://gyazo.com/f954cfa0ad20bf416f6a72155b58708b.png" /></p>
 <p>いわゆる1行の入力欄になります。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
@@ -5081,15 +5112,17 @@
     <span class="n">a</span> <span class="o">=</span> <span class="n">UISample</span><span class="p">()</span>
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 このコマンドを実行すると、LineEditに入力されている文字列をプリントすることができます。  </p>
 <h2 id="widget">Widgetの機能を使う方法<a class="headerlink" href="#widget" title="Permanent link">¶</a></h2>
 <h3 id="_1">取得・セット<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p>「値を取得する」だったり「セットする」だったり<br />
 追加したWidgetに対して何かしたい場合は、そのWidgetのオブジェクト（インスタンス？）<br />
 にアクセスすればOKです。  </p>
-<p><div class="highlight"><pre><span></span><code>self.lineEdit.text()
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>self.lineEdit.text()
+</code></pre></div>
+</td></tr></table><br />
 上のサンプルの場合、この部分です。<br />
 使いたいWidgetを知りたければ、とりあえず公式Helpを開きます。<br />
 <a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QLineEdit.html">https://doc.qt.io/qtforpython/PySide2/QtWidgets/QLineEdit.html</a><br />
@@ -5097,20 +5130,26 @@ LineEditのヘルプはこちら。<br />
 クラスの構造的にはQWidetを継承しているだけなので、比較的シンプルな構造です。<br />
 <strong>現在入力されているものを取得</strong> したい場合は text() を使用すればOKなのがHelpを見れば分かります。  </p>
 <p>次に、デフォルトですでに文字が入っているようにしたい場合はどうすればいいか。</p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 その場合は、setTextを使用します。  </p>
 <p><img alt="" src="https://gyazo.com/00f817aa792826f89306399f24c94fd0.png" /></p>
 <p>実行すると、こんな感じでデフォルトで文字が入った状態になります。  </p>
 <h3 id="enter">Enter押したらなにかする<a class="headerlink" href="#enter" title="Permanent link">¶</a></h3>
 <p>LineEditの場合は、Enterを押したらなにかを実行したいケースがでてきます。<br />
 その場合は</p>
-<div class="highlight"><pre><span></span><code>        <span class="c1"># __init__内に↓を記述</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="c1"># __init__内に↓を記述</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">returnPressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pressReturn</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pressReturn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p>returnPressed のシグナルを追加します。<br />
 シグナルについては <a href="../03_signal_slot_01/">Signal-Slotについて</a>を参照。<br />
 これ以外にLineEditでは textChanged等を良く使います。  </p>
@@ -5118,16 +5157,18 @@ LineEditのヘルプはこちら。<br />
 <p>ボタンを押したらなにかをする のようにWidget側をトリガーにする他に<br />
 Widget側のSlotを使用することができます</p>
 <p><img alt="" src="https://gyazo.com/eb3b6ec69fbee8ec25f8e5bb14dfd4be.gif" /></p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">selectAll</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">selectAll</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 LineEditの場合は、 setTextやcut copy paste selectAll等がSlotとして用意されています。<br />
 ので、ボタンのconnect先にLineEditのSlotを指定すれば<br />
 ボタンを押せば～～～する　のような事を行うことが出来ます。  </p>
 <h3 id="_2">何かをセットする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>widgetに対してなにかをセットする場合は、 set####という名前になっている<br />
 関数を使用します。  </p>
-<p><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setMaxLength</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">setMaxLength</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 例としてこんな感じ。  </p>
 <p><img alt="" src="https://gyazo.com/f779dd020bfae1f42cc4e1875b6dc039.png" /></p>
 <p>QtDesignerのプロパティエディタにあるWidgetの設定項目を、Python側で編集したい場合は<br />

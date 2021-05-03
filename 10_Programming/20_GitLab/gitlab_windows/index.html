@@ -4978,8 +4978,9 @@
 Maya などのような Windows で動くものの動作テストができないなどの問題があるので<br />
 Runner を「Shell」にして登録する。</p>
 <p><img alt="" src="https://gyazo.com/c702ceb943c57557787c33b9315ce8bf.png" /></p>
-<div class="highlight"><pre><span></span><code>gitlab-runner register
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gitlab-runner register
 </code></pre></div>
+</td></tr></table>
 <p>で、登録したときに<br />
 Executer を <strong>「Shell」</strong> にして登録する。</p>
 <p>次に、admins/Runner 画面で<br />
@@ -4987,7 +4988,14 @@ Executer を <strong>「Shell」</strong> にして登録する。</p>
 <h2 id="_1">実行してみる<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>準備ができたら、簡単な JOB を投げてみる。</p>
 <p>.gitlab-ci.yml の内容はこんな感じ。</p>
-<div class="highlight"><pre><span></span><code>stages:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>stages:
   - build
 
 build_job_test_win:
@@ -4996,11 +5004,14 @@ build_job_test_win:
     - cd test_repos
     - main.py
 </code></pre></div>
+</td></tr></table>
 <p><img alt="" src="https://gyazo.com/995d6b3cbc9c80af4e45f1636079a824.png" /></p>
 <p>プロジェクトの構成はこんな感じで、</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="nb">print</span> <span class="s2">&quot;Hello World&quot;</span>
 </code></pre></div>
+</td></tr></table>
 <p>main.py は、プリントするだけにする。</p>
 <p><img alt="" src="https://gyazo.com/0b5816b52594b6bb2c9d46395b58a83d.png" /></p>
 <p>GitLab に Push すると、CI が実行される。</p>

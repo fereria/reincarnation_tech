@@ -5038,7 +5038,15 @@
 指定のプリムに接続する機能のことを言います。  </p>
 <p><img alt="" src="https://gyazo.com/013f4cb003fa0e6feaa142788f5e4a3a.png" /></p>
 <p>まず、このようなusdファイルを準備します。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;RootGrp&quot;
 )
@@ -5048,10 +5056,17 @@ def &quot;RootGrp&quot;
     def Sphere &quot;Sphere&quot;{}
 }
 </code></pre></div>
+</td></tr></table>
 <p>中身はこんな感じ。<br />
 defaultPrimが指定されたSphere1つだけのファイルです。<br />
 このファイルをリファレンスで読み込んでみます。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;Grp&quot;{
     def &quot;RefA&quot; ( prepend references = @ref_data.usda@){}
@@ -5059,6 +5074,7 @@ def &quot;Grp&quot;{
     def &quot;RefC&quot; ( prepend references = @ref_data.usda@){}
 }
 </code></pre></div>
+</td></tr></table>
 <p>試しに同じファイルを複数読み込んでみます。</p>
 <p><img alt="" src="https://gyazo.com/990e77d5c23040ba88b97b64b82c7e32.png" /></p>
 <p>結果、3つSphereができあがってることが分かります。</p>
@@ -5086,7 +5102,22 @@ RootGrp以下のプリムがすべてマージされ、  </p>
 <p><img alt="" src="https://gyazo.com/dac0a1b3f1d246ef268be5cbd99359cc.png" /></p>
 <p>試しに、キッチンセットを --unloadedフラグ付きで読み込んでみると<br />
 なにも表示されません。</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Ball&quot;
     upAxis = &quot;Z&quot;
@@ -5102,7 +5133,8 @@ def Xform &quot;Ball&quot; (
 )
 {
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 何故かというと、キッチンセットのアセットの途中にかならずペイロードでのロードが<br />
 含まれているからです。  </p>
 <p>なぜこんな機能があるのかというと、<br />
@@ -5126,7 +5158,13 @@ def Xform &quot;Ball&quot; (
 <p>では、このような<br />
 1つのレイヤーにいろいろなプリムが入っていて<br />
 それらを選択して読み込みたい場合はどうすれば良いか。</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;Grp&quot;{
     def &quot;RefA&quot; ( prepend references = @ref_data.usda@&lt;/RootSphere&gt;){}
@@ -5134,9 +5172,11 @@ def &quot;Grp&quot;{
     def &quot;RefC&quot; ( prepend references = @ref_data.usda@&lt;/RootCylinder&gt;){}
 }
 </code></pre></div>
+</td></tr></table>
 <p>その場合は、このように、 <br />
-<div class="highlight"><pre><span></span><code>&lt;/PrimName&gt;
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;/PrimName&gt;
+</code></pre></div>
+</td></tr></table><br />
 読み込みたいレイヤー指定の後にSdfPathを指定することで<br />
 指定のSdfPathのプリムをリファレンスすることが出来ます。</p>
 <h2 id="_4">他のコンポジションとの組み合わせ（バリアントとの組み合わせ）<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
@@ -5144,7 +5184,29 @@ def &quot;Grp&quot;{
 Local Inherits Variants Reference の順なので<br />
 リファレンスは4番目になります。（実質一番弱い）  </p>
 <p>では、今回のリファレンスも他と組み合わせたときにどうなるかを確認してみます。  </p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;testPrim&quot; (
     variants = {
@@ -5167,7 +5229,8 @@ def &quot;testPrim&quot; (
         }
     }
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 前回のバリアントに対して、リファレンス構造をつけてみます。  </p>
 <p><img alt="" src="https://i.gyazo.com/492bd725c5d17960038fc0de13d6373a.gif" /></p>
 <p>こうすると、どのようになるかというと<br />
@@ -5181,7 +5244,16 @@ V→Rなのかなぁと<br />
 <h2 id="_5">リファレンス先のサブレイヤー<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>V→Rの順序の確認はできましたが<br />
 では、リファレンス先にコンポジションアークがあった場合はどうなるのか確認してみます。  </p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 (
     defaultPrim=&quot;SubA&quot;
@@ -5191,23 +5263,35 @@ def &quot;SubA&quot;
 {
     string name = &quot;Hoge&quot;
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 まず、こんな感じの SubA.usda を作成し</p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @subA.usda@
     ]
 )
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 サブレイヤーで合成。<br />
 このファイルを ref_SubLayer.usda とします。  </p>
-<p><div class="highlight"><pre><span></span><code>#usda 1.0
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def &quot;Grp&quot;{
     def &quot;SubLayer&quot; ( prepend references = @ref_SubLayer.usda@&lt;/SubA&gt;){}
 }
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 そのファイルをリファレンスでロードしてみると、  </p>
 <p><img alt="" src="https://gyazo.com/803949d35f17036055bf51e6c25991cc.png" /></p>
 <p>リファレンス先のサブレイヤーが合成され、その結果をリファレンスすることができました。<br />

@@ -5034,7 +5034,106 @@
 GUIをクリックしたときに実行する内容が重くて、実行するごとにGUIが止まってしまうのを<br />
 なんとかしたい場合、QThreadを使用して処理を別スレッド化してあげます。  </p>
 <h2 id="_1">サンプルコード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -5135,6 +5234,7 @@ GUIをクリックしたときに実行する内容が重くて、実行する�
     <span class="n">dlg</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <p>UIファイルは <a href="https://snippets.cacher.io/snippet/035519fdc7b704e93511">こちら</a>  </p>
 <p><img alt="" src="https://gyazo.com/0263ea3b0a4e578f51a53b74c05d6adc.png" /></p>
 <p>実行するとこんな感じになります。  </p>
@@ -5149,7 +5249,14 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
 改めて調べてみました。  </p>
 <h2 id="signal">Signalの挙動の注意点<a class="headerlink" href="#signal" title="Permanent link">¶</a></h2>
 <p>サブプロセスからSignalで数値を渡すときに、どのように値が渡されているか確認してみます。</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">countNum</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
@@ -5158,35 +5265,54 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">send</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>Threadのrunを↑のように変更し  </p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
 
         <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <p>メイン側をこうしてみます。</p>
 <p><img alt="" src="https://gyazo.com/527261b5759cd0e6f223bd612cfd2bb0.png" /></p>
 <p>実行結果がこちら。<br />
 python の id関数は、変数のメモリID(参照先)を確認することができます。<br />
 見ての通り、strの場合はSignalで渡される前と後とでは別のメモリを参照していることがわかります。  </p>
 <p>次に、試しに渡すのをstrからlistに変更してみます。<br />
-<div class="highlight"><pre><span></span><code>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-</code></pre></div><br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 まず、Signalをlistに変更し、</p>
-<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">hoge</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 runを変更します。</p>
 <p><img alt="" src="https://gyazo.com/d357ea188831a2db1e29dcf409145ae4.png" /></p>
 <p>おわかりいただけるだろうか...<br />
 strの場合は別のメモリを参照していたのが、<br />
 listの場合は同じメモリを参照しています。  </p>
 <p>これでなにが起きるかというと</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">hoge</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
@@ -5195,11 +5321,15 @@ listの場合は同じメモリを参照しています。  </p>
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>runをこうして、</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
         <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;hoge&quot;</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>printThreadをうけとるSlotをこうする。</p>
 <p><img alt="" src="https://gyazo.com/f66e5818fb32f2e3aefbcc0baa2fd75d.png" /></p>
 <p>見ての通り、おなじ場所を参照しているので、メインスレッド側で<br />
@@ -5207,16 +5337,28 @@ listの場合は同じメモリを参照しています。  </p>
 まじかよ....  </p>
 <h2 id="_2">自作クラスオブジェクトの場合<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>では、自分で作ったクラスオブジェクトをSignalで送った場合はどうなるのか。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestObj</span><span class="p">:</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TestObj</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;hoge&quot;</span>
 </code></pre></div>
+</td></tr></table>
 <p>単純なクラスを作成し、</p>
-<p><div class="highlight"><pre><span></span><code>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="n">TestObj</span><span class="p">)</span>
-</code></pre></div><br />
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="n">printThread</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="n">TestObj</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table><br />
 Signalで送れるようにして  </p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">hoge</span> <span class="o">=</span> <span class="n">TestObj</span><span class="p">()</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
@@ -5225,11 +5367,15 @@ Signalで送れるようにして  </p>
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">hoge</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>runを書き換えて  </p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">printLog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
         <span class="n">line</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="s2">&quot;hoge&quot;</span>
 </code></pre></div>
+</td></tr></table>
 <p>こうします。  </p>
 <p><img alt="" src="https://gyazo.com/0d975806e70507b363780b730577bb43.png" /></p>
 <p>結果。<br />
@@ -5246,7 +5392,14 @@ immutableなものは変更不可な型の場合はメモリは共有されま�
 <p>意図している場合はOKですが、メインとサブのスレッドで書き換えは起きてほしくない<br />
 あくまでも別物として実行したい場合は、 copyモジュールのdeepcopyを使っておくのが<br />
 今のところ安パイなきがしました。  </p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">hoge</span> <span class="o">=</span> <span class="n">TestObj</span><span class="p">()</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
@@ -5255,6 +5408,7 @@ immutableなものは変更不可な型の場合はメモリは共有されま�
             <span class="bp">self</span><span class="o">.</span><span class="n">printThread</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">hoge</span><span class="p">))</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
+</td></tr></table>
 <p>こんな感じで、別のメモリを参照するようにしてemitすれば  </p>
 <p><img alt="" src="https://gyazo.com/c9df2862746d3f926305bf52e587dbb2.png" /></p>
 <p>参照先は違うので、別の物として扱われます。  </p>

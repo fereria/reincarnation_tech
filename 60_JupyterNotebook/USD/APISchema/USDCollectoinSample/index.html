@@ -5029,7 +5029,15 @@
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/APISchema/USDCollectoinSample__USDCollectionの基本操作.ipynb">USDCollectoinSample__USDCollectionの基本操作.ipynb</a></p>
 <h4 id="45">[45]:<a class="headerlink" href="#45" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span><span class="p">,</span> <span class="n">UsdUtils</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span><span class="p">,</span> <span class="n">UsdUtils</span>
 
 <span class="n">newScn</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 
@@ -5039,23 +5047,42 @@
 <span class="n">prim</span> <span class="o">=</span> <span class="n">worldGeom</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
 <span class="n">spherePrim</span> <span class="o">=</span> <span class="n">sphereGeom</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
 </code></pre></div>
+</td></tr></table>
 <h4 id="46">[46]:<a class="headerlink" href="#46" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">api</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">ApplyCollection</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">api</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">ApplyCollection</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">IncludePath</span><span class="p">(</span><span class="n">spherePrim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>True
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="47">[47]:<a class="headerlink" href="#47" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># expansionRule は explicitOnly(指定Pathを明確に指定？)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># expansionRule は explicitOnly(指定Pathを明確に指定？)</span>
 <span class="c1"># expandPrims は rel-targets以下のすべてのPrim こっちがデフォルト</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">newScn</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>#usda 1.0
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
 
 def Xform &quot;World&quot; (
     prepend apiSchemas = [&quot;CollectionAPI:test&quot;]
@@ -5069,9 +5096,16 @@ def Xform &quot;World&quot; (
     }
 }
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="48">[48]:<a class="headerlink" href="#48" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">collection</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">collection</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">GetCollection</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
 <span class="c1"># Collection名取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
 <span class="c1"># CollectionまでのPathを取得</span>
@@ -5079,21 +5113,28 @@ def Xform &quot;World&quot; (
 <span class="c1"># CollectionはRelation構造になってるので、ソレを利用してPrimを取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">GetIncludesRel</span><span class="p">()</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">())</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>test
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>test
 /World.collection:test
 [Sdf.Path(&#39;/World/Sphere&#39;)]
 </code></pre></div>
+</td></tr></table>
 </div>
 <h4 id="49">[49]:<a class="headerlink" href="#49" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Getでも取得できるぽい</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Getでも取得できるぽい</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">CollectionAPI</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">prim</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">))</span>
 </code></pre></div>
+</td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>&lt;pxr.Usd.CollectionAPI object at 0x0000000006CD5C48&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;pxr.Usd.CollectionAPI object at 0x0000000006CD5C48&gt;
 </code></pre></div>
+</td></tr></table>
 </div>
                 
                   
@@ -5103,7 +5144,7 @@ def Xform &quot;World&quot; (
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-05-03 02:25:32
+      最終更新日: 2021-05-03 02:32:59
     
   </small>
 </div>

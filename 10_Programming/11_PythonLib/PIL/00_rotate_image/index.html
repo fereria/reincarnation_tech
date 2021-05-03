@@ -4920,7 +4920,28 @@ Exif で回転が入っている場合、おかしな感じでムービー化さ
 <p>画像の向きの Orientation は、整数の 1 ～ 8 で指定することが出来ます。<br />
 それだけだと、扱いにくいので、どのぐらい回転するか + ミラー反転するかどうか<br />
 に置き換えるような関数を作ります。</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_exif_rotation</span><span class="p">(</span><span class="n">orientation_num</span><span class="p">):</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_exif_rotation</span><span class="p">(</span><span class="n">orientation_num</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ExifのRotationの数値から、回転する数値と、ミラー反転するかどうかを取得する</span>
 <span class="sd">    return 回転度数,反転するか(0 1)</span>
@@ -4943,10 +4964,38 @@ Exif で回転が入っている場合、おかしな感じでムービー化さ
     <span class="k">if</span> <span class="n">orientation_num</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span>
 </code></pre></div>
+</td></tr></table>
 <p>一応全パターン作りましたが、Exif の設定でミラーリングとか<br />
 絶対使わない気がします。</p>
 <p>最後に、Exif 情報を取得して画像を回転をして保存します。</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rotation_exif_info</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">to_path</span><span class="p">):</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rotation_exif_info</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">to_path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    画像のexif情報を使用して、画像を回転する</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4974,7 +5023,8 @@ Exif で回転が入っている場合、おかしな感じでムービー化さ
         <span class="k">if</span> <span class="n">rotate</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">dst</span> <span class="o">=</span> <span class="n">dst</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">rotate</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">dst</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">to_save_path</span><span class="p">)</span>
-</code></pre></div><br />
+</code></pre></div>
+</td></tr></table><br />
 コードはこんな感じ。</p>
 <p>画像のミラー反転は、 PILのImageOps.mirror(obj)<br />
 回転は、imgObj.rotate(回転,expand=True)とします。<br />
