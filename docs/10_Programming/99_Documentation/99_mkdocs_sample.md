@@ -61,6 +61,8 @@ A -> E -> F -> G;
 :fa-android:
 :fa-copy:
 :fa-folder:
+:fa-angle-double-right:
+
 
 :fa-angle-right:
 
