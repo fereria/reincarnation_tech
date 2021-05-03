@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  mkdocs:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: mkdocs
+    stdin_open: true
+    volumes:
+      - ../:/work_dir
+    working_dir: /work_dir

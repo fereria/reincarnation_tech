@@ -10,8 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: docker://fereria/mkdocs:latest
-
     steps:
       - name: Send Slack Start
         env:
@@ -30,18 +28,21 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Docker Compose
+        run: docker-compose -f docker/docker-compose.yml up --build -d
+
       - name: NbConvert
-        run: python create_jupyter_markdown.py
-        
+        run: docker exec mkdocs python create_jupyter_markdown.py
+
       - name: Create TagPages
-        run: python create_tag_pages.py
+        run: docker exec mkdocs python create_tag_pages.py
 
       - name: Mkdocs
         env:
           TZ: Asia/Tokyo
         run: |
-          python create_mkdocs_pages.py
-          mkdocs gh-deploy
+          docker exec mkdocs python create_mkdocs_pages.py
+          docker exec mkdocs mkdocs gh-deploy
 
       - name: Send Slack Finish
         env:
