@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block site_meta %}
+    {{ super() }}
+    {% if page and page.meta.tags %}
+    {% for tag in page.meta.tags %}
+        <meta name="tag" content="{{ tag }}">
+    {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+    {% if page and page.meta.pagetype == 'tagpage' %}
+        {% include "tag_page.html" %}
+    {% endif %}
+    {% if 'mdoctag' in config.plugins %}
+        {% include "tag_list.html" %}
+    {% endif %}
+{% endblock %}

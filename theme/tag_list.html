@@ -1,0 +1,28 @@
+{% if page and page.meta.tags %}
+<hr/ >
+<div class="mdoctag-tags-label">Tag</div>
+<div id="mdoctag-tags-list">
+    {% for tag in page.meta.tags %}
+    <a
+        id="{{ 'mdoctag-tag-link-' + tag }}"
+        class="mdoctag-tag-link"
+        href="{{ base_url + '/' +  config.plugins['mdoctag'].config['tagpage_dir'] + '/' + tag }}">
+        {{ tag }}
+    </a>
+    {% endfor %}
+</div>
+<style>
+.mdoctag-tag-link {
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 2px;
+    margin-right: 10px;
+}
+#mdoctag-tags-list {
+    margin-bottom: 20px;
+}
+.mdoctag-tags-label {
+    margin-bottom: 6px;
+}
+</style>
+{% endif %}

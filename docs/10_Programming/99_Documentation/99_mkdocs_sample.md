@@ -1,5 +1,8 @@
 ---
 title: mkdocsでのMarkdown記載サンプル
+tags:
+    - sample
+description: this is also a sample
 ---
 
 # mkdocs での Markdown 記載サンプル

@@ -1,0 +1,28 @@
+{% if page %}
+{% set tag = page.file.name %}
+{% set data_file_url = base_url + '/' + config.plugins['mdoctag'].config['data_filename'] %}
+{% endif %}
+
+<div id="mdoctag-tag-page-list"></div>
+
+
+<script>
+    var tag = '{{ tag }}'; // not secure
+    var dataFileURL = '{{ data_file_url }}' // not secure
+    var req = new XMLHttpRequest();
+    req.open('GET', dataFileURL, false);
+    req.send(null);
+    var data = JSON.parse(req.responseText);
+    var filterd = data.filter(function(page) {
+        return page.tags.includes(tag);
+    });
+    html = '<ul>';
+    filterd.forEach(function(page) {
+        var description = page.description.length !== 0 ? page.description : '';
+        html += '<li><a href="' + page.url;
+        html += '">' + page.title;
+        html += '</a>' + ': ' + description + '</li>';
+    });
+    html += '</ul>';
+    document.getElementById('mdoctag-tag-page-list').innerHTML = html;
+</script>
