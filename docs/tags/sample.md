@@ -1,5 +1,0 @@
----
-pagetype: tagpage
----
-
-# Tag: sample

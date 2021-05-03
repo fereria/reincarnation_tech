@@ -1,5 +1,7 @@
 ---
 title: VSCodeでノートをつける
+tags:
+  - VSCode
 ---
 
 # VSCodeでノートをつける
