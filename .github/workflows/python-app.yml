@@ -29,12 +29,10 @@ jobs:
           fetch-depth: 0
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
-        working-directory: ./docker
         continue-on-error: true
 
       - name: Docker Compose
-        working-directory: ./docker
-        run: docker-compose -f docker-compose.yml up --build -d
+        run: docker-compose -f docker/docker-compose.yml up --build -d
 
       - name: NbConvert
         run: docker exec mkdocs python create_jupyter_markdown.py
