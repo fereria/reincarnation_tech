@@ -112,7 +112,7 @@ def define_env(env):
 
                 buff = ["    " + x for x in body.split("\n") if x != ""]
 
-                text = [f"!!! example \"{os.path.basename(ipynbPath)}\"",
+                text = [f"!!! example \"\"",
                         *buff,
                         f"    :fa-bookmark: [{os.path.basename(ipynbPath)}](https://github.com/fereria/reincarnation_tech/tree/master/{ipynbPath})"]
                 return "\n".join(text)

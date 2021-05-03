@@ -1,5 +1,8 @@
 ---
 title: mkdocsにJupyterNotebookの結果を表示する
+tags:
+    - mkdocs
+    - JupyterNotebook
 ---
 
 表題の通り。  

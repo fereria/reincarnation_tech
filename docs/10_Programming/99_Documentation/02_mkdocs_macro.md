@@ -1,5 +1,7 @@
 ---
 title: mkdocsのマクロプラグインを使う
+tags:
+    - mkdocs
 ---
 
 mkdocs のマクロプラグインを使用することで、Python の関数を呼び出して  

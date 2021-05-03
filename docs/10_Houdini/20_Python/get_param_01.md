@@ -1,6 +1,6 @@
-# PythonでHoudiniのパラメーターを取得・セットする
-
-<!-- SUMMARY:PythonでHoudiniのパラメーターを取得・セットする -->
+---
+title: PythonでHoudiniのパラメーターを取得・セットする
+---
 
 ![](https://gyazo.com/a8376db18ae84ff7b973731277d30dbb.png)
 

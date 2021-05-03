@@ -1,5 +1,8 @@
 ---
 title: pipenvを使用したPython開発環境の作り方
+tags:
+    - Python
+    - 環境構築
 ---
 
 ## pipenvとは？
