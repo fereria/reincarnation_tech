@@ -1,5 +1,8 @@
 ---
 title: USDPythonドキュメントの読み方
+tags:
+    - USD
+    - USDPython
 ---
 # USDPythonドキュメントの読み方
 

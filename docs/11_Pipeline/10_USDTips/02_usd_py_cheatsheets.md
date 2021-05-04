@@ -1,5 +1,8 @@
 ---
 title: UPythonUSDチートシート
+tags:
+    - USD
+    - USDPython
 ---
 # PythonUSDチートシート
 

@@ -1,5 +1,9 @@
 ---
 title: Custom AssetResolver を作ろう
+tags:
+    - USD
+    - USDPlugin
+    - C++
 ---
 
 夏休みのまとまった時間を使ってなにか新しいことでもやってみるかー　ってことで

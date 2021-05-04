@@ -1,5 +1,8 @@
 ---
 title: オリジナルの New Schema Classを作る
+tags:
+    - USD
+    - C++
 ---
 # オリジナルの New Schema Classを作る
 
