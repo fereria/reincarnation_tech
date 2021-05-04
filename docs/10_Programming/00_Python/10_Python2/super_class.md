@@ -1,5 +1,8 @@
 ---
 title: Python のクラスで多重継承した場合の**init**順序
+tags:
+    - Python基本
+    - Python
 ---
 # Python のクラスで多重継承した場合の**init**順序
 

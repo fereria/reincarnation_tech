@@ -1,5 +1,8 @@
 ---
 title: GitBook の SUMMARY ファイルを自動作成
+tags:
+    - Markdown
+    - ドキュメントビルド
 ---
 # GitBook の SUMMARY ファイルを自動作成
 
