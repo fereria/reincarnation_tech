@@ -1,5 +1,9 @@
 ---
 title: SOLARISでのLayerの扱い
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 ぼんやりとSOLARISの1ノードが1レイヤーだと思っていましたが

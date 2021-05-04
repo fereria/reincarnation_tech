@@ -1,5 +1,9 @@
 ---
 title: SOLARISでInherits(継承)/Reference(継承)を扱う
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 # SOLARIS で Inherits(継承)を扱う

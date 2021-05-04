@@ -1,5 +1,9 @@
 ---
 title: SOLARISでInstancerを使う(1) 配置編
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 SOLARISのメニューには、

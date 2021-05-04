@@ -1,5 +1,9 @@
 ---
 title: Flattenでレイヤーをコントロールしよう
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 [前回](10_edit_layer.md) のConfigureノードを利用することで、自分の意図したところで

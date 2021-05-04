@@ -1,5 +1,9 @@
 ---
 title: configureLayerを使おう
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 SOLARISでUSDの構造を作るときに、「どこをどのように分けて構築するか」

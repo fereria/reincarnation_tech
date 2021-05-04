@@ -1,5 +1,10 @@
 ---
 title: SOLARISでUSDアセットを作ろう
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
+    - HoudiniAdventCalendar
 ---
 
 [Houdini Advent Calendar 2020](https://qiita.com/advent-calendar/2020/houdini) 12日目は **SOLARISでUSDアセットを作ろう** です。

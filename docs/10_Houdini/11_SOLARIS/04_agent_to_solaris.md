@@ -1,5 +1,9 @@
 ---
 title: Houdiniの群衆をSOLARISに持って行ってみよう(1)
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 浜タコさん（@hamatako）の群衆勉強会で群衆のパイプラインワークフローを色々聞いていたら

@@ -1,5 +1,9 @@
 ---
 title: SOLARISでコンポジションアーク
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 # SOLARISでコンポジションアーク

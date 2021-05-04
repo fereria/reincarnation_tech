@@ -1,5 +1,10 @@
 ---
 title: SOLARISのVEXで遊ぼう
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
+    - HoudiniAdventCalendar
 ---
 
 [Houdini Apprentice Advent Calendar 2020](https://qiita.com/advent-calendar/2020/happrentice)

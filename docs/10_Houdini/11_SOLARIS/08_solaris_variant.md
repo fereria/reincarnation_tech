@@ -1,5 +1,9 @@
 ---
 title: SOLARIS で VariantSet
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 HoudiniSOLARIS で VariantSet を作りたい場合の方法について、

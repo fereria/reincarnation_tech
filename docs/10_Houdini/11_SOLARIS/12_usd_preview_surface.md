@@ -1,5 +1,9 @@
 ---
 title: UsdPreviewSurfaceでマテリアルを設定する
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 HoudiniでのUsdPreviewSurfaceを使用したマテリアルの指定方法について

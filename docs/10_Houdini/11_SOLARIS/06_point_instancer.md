@@ -1,5 +1,9 @@
 ---
 title: SOLARISでInstancerを使う(2) 編集編
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
 
 [前回](05_point_instancer.md)PointInstancerを使用して、オブジェクトをばらまくことはできたので  

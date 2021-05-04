@@ -1,5 +1,10 @@
 ---
 title: Houdini18で追加されたLOPノードを調べてみた
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
+    - HoudiniAdventCalendar
 ---
 
 # Houdini18 で追加された LOP ノードを調べてみた
