@@ -1,5 +1,9 @@
 ---
 title: SOLARISのサンプルhipデータ
+tags:
+    - SampleData
+    - USD
+    - SOLARIS
 ---
 
 ## USDオーサリング

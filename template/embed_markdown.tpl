@@ -5,11 +5,12 @@
 
 # Markdownはそのまま表示
 {% block markdowncell%}
+{{ super() }}
 {% endblock markdowncell%}
 
 {% block in_prompt %}
 {% if cell.execution_count %}
-:fa-angle-double-right: In [{{ cell.execution_count if cell.execution_count else ' ' }}]:
+:fa-angle-double-right: In [{{ cell.execution_count }}]:
 {% endif %}
 {% endblock in_prompt %}
 

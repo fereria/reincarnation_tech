@@ -1,5 +1,9 @@
 ---
 title: VSCode から SSH 経由で Push
+tags:
+  - Git
+  - VSCode
+  - 環境構築
 ---
 # VSCode から SSH 経由で Push
 

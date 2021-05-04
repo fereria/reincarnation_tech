@@ -1,5 +1,9 @@
 ---
 title: SOLARISでUSDファイルを開く
+tags:
+    - SOLARIS
+    - Houdini
+    - USD
 ---
 
 Houdini Apprentice Advent Calendar 11 日目は、  
