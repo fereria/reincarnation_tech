@@ -1,5 +1,10 @@
 ---
 title: DockerComposeを使ってVolumeを指定してコンテナを起動する
+tags:
+    - Docker
+    - 環境構築
+    - VSCode
+description: DockerComposeからコンテナ起動してVolume指定するあたり
 ---
 
 [Dockerimageをつくる](00_dockerfile.md)で、コンテナを作るための土台となる
