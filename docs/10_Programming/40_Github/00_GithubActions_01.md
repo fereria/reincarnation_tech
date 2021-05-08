@@ -11,19 +11,7 @@ GithubActionsでの書き方の基本的な部分のメモ。
 
 ## 必須の構造
 
-```yml
-name: ActionsTest
-
-on: push
-
-jobs:
-  jobs_1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Sample A
-        id: sample_a
-        run: echo helloworld
-```
+{{'92b388a198626ba073bdf200b06ed542'|gist}}
 
 まず、実行したい処理（＝アクション）を定義します。
 アクションは、 .github/workflows 以下に yml ファイルとして記述します。
@@ -48,23 +36,7 @@ idは、stepsを特定するための名前（変数名のようなもの）
 
 ## jobsの依存関係
 
-```yml
-jobs:
-  jobs_1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Sample A
-        id: sample_a
-        run: echo helloworld
-
-  jobs_2:
-    runs-on: ubuntu-latest
-    needs: jobs_1 # 依存関係を作る
-    steps:
-      - name: Sample B
-        id: sample_b
-        run: echo sample_B
-```
+{'f9fbac33cf9d46f0cf8965678e2bbe13'|gist}
 
 jobは依存関係を作ることができる。
 
@@ -75,39 +47,17 @@ jobは依存関係を作ることができる。
 
 ## 環境変数
 
-```yml
-jobs:
-  jobs_1:
-    runs-on: ubuntu-latest
-    env:
-      ENV_SETTINGS: env!!
-    steps:
-      - name: Sample A
-        id: sample_a
-        run: echo ${{ env.ENV_SETTINGS}}
-```
+{{'11e47b080c6686eed8e18c309fb45783'|gist}}
 
 環境変数は env: で指定できる。
 この例の場合は指定Job以下で使用できる環境変数を定義しているが、
 同様に アクション・ステップにも envは指定することができる。
 
-環境変数を使うには ${{ env.##### }} を使用する。
+環境変数を使うには $\{\{ env.##### \}\} を使用する。
 
 ## outputs
 
-```yml
-jobs:
-  jobs_1:
-    runs-on: ubuntu-latest
-    env:
-      ENV_SETTINGS: success
-    outputs:
-      test_value: ${{steps.sample_a.outputs.TEST_VALUE}}
-    steps:
-      - name: Sample A
-        id: sample_a
-        run: echo "::set-output name=TEST_VALUE::${{ env.ENV_SETTINGS }}"
-```
+{{'36083938b950ae4cb6fb08c463625a3d'|gist}}
 
 ジョブの結果の値などを、別のジョブやプロセスに渡したい場合
 outputs構文を利用する。
@@ -121,60 +71,30 @@ https://docs.github.com/ja/actions/reference/workflow-commands-for-github-action
 outputに指定する場合は、このようにする。
 こうすると、
 
-```
-${{steps.<steps_id>.outputs.key}}
-```
+{{'2181368ca77f7d858aa62f0a0a2af330'|gist}}
+
 で、指定した値を別ステップから取得できる。
 
 job間で値をやり取りしたい場合は、
 job以下の
+
 ```yml
 outputs:
   key: value
 ```
+
 で指定すると、
 
-```yml
-${{needs.<job_id>.outputs.key}}
-```
+{{'62944286e6b2f9224056dca7718cdf34'|gist}}
+
 job_id指定で値を取得できる。
 
 ## if文
 
 各ステップ・ジョブに対して、if文で実行するかを指定できる。
 
-```yml
-jobs:
-  jobs_1:
-    runs-on: ubuntu-latest
-    env:
-      ENV_SETTINGS: success
-    outputs:
-      test_value: ${{steps.sample_a.outputs.TEST_VALUE}}
-    steps:
-      - name: Sample A
-        id: sample_a
-        run: echo "::set-output name=TEST_VALUE::${{ env.ENV_SETTINGS }}"
+{{'d4f9418f1eaac928d293fcdfc129adb3'|gist}}
 
-  # 条件によって実行するかどうかを指定する
-  jobs_success:
-    runs-on: ubuntu-latest
-    needs: jobs_1 # 依存関係を作る
-    if: ${{ needs.jobs_1.outputs.test_value == 'success'}}
-    steps:
-      - name: Sample SUCCESS
-        id: sample_b
-        run: echo ${{ needs.jobs_1.outputs.test_value }} # 別のJOBの値を使用する
-
-  jobs_error:
-    runs-on: ubuntu-latest
-    needs: jobs_1 # 依存関係を作る
-    if: ${{ needs.jobs_1.outputs.test_value == 'error'}}
-    steps:
-      - name: Sample ERROR
-        id: sample_b
-        run: echo ${{ needs.jobs_1.outputs.test_value }} # 別のJOBの値を使用する
-```
 
 別のジョブの outputs次第で処理を分けるといったことができる。
 
@@ -184,20 +104,7 @@ jobs:
 
 ### Stepの結果によって処理をかえたい
 
-```yml
-jobs_steps_statuscheck:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: first Steps
-        run: exec
-      - name: error Steps
-        if: ${{ failure()}}
-        run: echo ERROR
-      - name: success Steps
-        if: ${{ success() }}
-        run: echo SUCCESS
-```
+{{'fa19b1fb80245d117076746e2716e529'|gist}}
 
 ifはステップでも使用できる。
 各ステップごとの結果によって処理を切り替えるようなこともできて
@@ -208,4 +115,4 @@ ifはステップでも使用できる。
 
 ## 参考
 
-* https://docs.github.com/ja/actions/reference/workflow-syntax-for-github-actions
+* https://docs.github.com/ja/actions/reference/
