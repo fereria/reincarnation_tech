@@ -49,8 +49,16 @@ jobs:
           TZ: Asia/Tokyo
         run: docker exec mkdocs mkdocs gh-deploy
 
-      - name: Send Slack Finish
+      - name: Send Slack Finish(Success)
+        if: ${{ success() }}
         env:
           HOOK_URL: ${{ secrets.SlackURL }}
         run: |
           curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新が完了しました！！\"}" ${HOOK_URL}
+
+      - name: Send Slack Finish(Failure)
+        if: ${{ failure() }}
+        env:
+          HOOK_URL: ${{ secrets.SlackURL }}
+        run: |
+          curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新に失敗しました...\"}" ${HOOK_URL}
