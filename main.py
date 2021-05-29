@@ -116,8 +116,9 @@ def define_env(env):
                         *buff,
                         f"    :fa-bookmark: [{os.path.basename(ipynbPath)}](https://github.com/fereria/reincarnation_tech/tree/master/{ipynbPath})"]
                 return "\n".join(text)
-            except:
-                return f"ConvertEerror!! ->{ipynbPath}"
+            except Exception as f:
+                import traceback
+                return f"ConvertEerror!! ->{ipynbPath}\n{traceback.format_exc()}"
         else:
             return f"Not Found -> {ipynbPath}"
 
