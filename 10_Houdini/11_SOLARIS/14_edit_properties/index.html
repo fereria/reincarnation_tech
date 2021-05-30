@@ -1775,6 +1775,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#prim" class="md-nav__link">
+    編集対象のPrimを変更する
+  </a>
+  
+    <nav class="md-nav" aria-label="編集対象のPrimを変更する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    指定した名前
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prim_1" class="md-nav__link">
+    指定Prim以下すべて
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collection" class="md-nav__link">
+    Collectionに含まれるノードすべて
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5412,6 +5446,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#prim" class="md-nav__link">
+    編集対象のPrimを変更する
+  </a>
+  
+    <nav class="md-nav" aria-label="編集対象のPrimを変更する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    指定した名前
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prim_1" class="md-nav__link">
+    指定Prim以下すべて
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collection" class="md-nav__link">
+    Collectionに含まれるノードすべて
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5474,6 +5542,26 @@ Scene Graph Detail から、Edit Property を選びます。</p>
 <p>Block_Prop ノード後のScehe Graph Detail を見ると、<br />
 sampleProp が None になっていることがわかります。<br />
 Blockすると、Blockされるより前（弱いレイヤー）のオピニオンはすべて無効になります。</p>
+<h2 id="prim">編集対象のPrimを変更する<a class="headerlink" href="#prim" title="Permanent link">¶</a></h2>
+<p><img alt="" src="https://gyazo.com/ac63370a95ef80c6f703a07a2b512f2b.png" /></p>
+<p>デフォルトだと、Inputで指定されたPrimが指定されています。<br />
+Primitivesを変更することで、指定したPrimを編集することができます。</p>
+<h3 id="_3">指定した名前<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p><img alt="" src="https://gyazo.com/00da0ce63fb79bedd70a6291cf0c7c65.png" /></p>
+<p>指定した名前のPrimの場合は、編集したいPrimを右クリック→ Copy Paths で、SdfPathを取得します。</p>
+<h2 id="prim_1">指定Prim以下すべて<a class="headerlink" href="#prim_1" title="Permanent link">¶</a></h2>
+<p><img alt="" src="https://gyazo.com/0b57cce4903d2e3b723498bff4f27681.png" /></p>
+<p>このような構造で、 sample_cube 以下すべてを編集したい場合</p>
+<p><img alt="" src="https://gyazo.com/229a41d0f72a29f24272f132b6cc88a3.png" /></p>
+<p>Primitivesに、 /path/* とするとそのPrim以下がすべて対象になります。</p>
+<h2 id="collection">Collectionに含まれるノードすべて<a class="headerlink" href="#collection" title="Permanent link">¶</a></h2>
+<p><img alt="" src="https://gyazo.com/ac5c40ec06c6fc29451798a2ce0fdffe.png" /></p>
+<p>事前にCollectionを作成しておいて、このCollectionに含まれるPrimをセットする場合、</p>
+<p><img alt="" src="https://gyazo.com/912b4f70dd9deb4b5d86f571acd8860d.png" /></p>
+<p>Primitivesの→の[▼]ボタンを押して、Collection Nameを指定します。</p>
+<p>このように、単純にSdfPathを指定するだけではなく<br />
+Collectionやワイルドカードなどを使用することで、まとめてアトリビュートを<br />
+編集することができます。</p>
                 
                   
                     
@@ -5482,7 +5570,7 @@ Blockすると、Blockされるより前（弱いレイヤー）のオピニオ�
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-05-30 08:55:16
+      最終更新日: 2021-05-30 09:39:07
     
   </small>
 </div>
