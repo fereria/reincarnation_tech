@@ -77,3 +77,39 @@ Block_Prop ノード後のScehe Graph Detail を見ると、
 sampleProp が None になっていることがわかります。
 Blockすると、Blockされるより前（弱いレイヤー）のオピニオンはすべて無効になります。
 
+## 編集対象のPrimを変更する
+
+![](https://gyazo.com/ac63370a95ef80c6f703a07a2b512f2b.png)
+
+デフォルトだと、Inputで指定されたPrimが指定されています。
+Primitivesを変更することで、指定したPrimを編集することができます。
+
+### 指定した名前
+
+![](https://gyazo.com/00da0ce63fb79bedd70a6291cf0c7c65.png)
+
+指定した名前のPrimの場合は、編集したいPrimを右クリック→ Copy Paths で、SdfPathを取得します。
+
+## 指定Prim以下すべて
+
+![](https://gyazo.com/0b57cce4903d2e3b723498bff4f27681.png)
+
+このような構造で、 sample_cube 以下すべてを編集したい場合
+
+![](https://gyazo.com/229a41d0f72a29f24272f132b6cc88a3.png)
+
+Primitivesに、 /path/* とするとそのPrim以下がすべて対象になります。
+
+## Collectionに含まれるノードすべて
+
+![](https://gyazo.com/ac5c40ec06c6fc29451798a2ce0fdffe.png)
+
+事前にCollectionを作成しておいて、このCollectionに含まれるPrimをセットする場合、
+
+![](https://gyazo.com/912b4f70dd9deb4b5d86f571acd8860d.png)
+
+Primitivesの→の[▼]ボタンを押して、Collection Nameを指定します。
+
+このように、単純にSdfPathを指定するだけではなく
+Collectionやワイルドカードなどを使用することで、まとめてアトリビュートを
+編集することができます。
