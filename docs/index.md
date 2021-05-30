@@ -30,3 +30,5 @@ Blender、Maya、Python 等の 3DCG 関係のテクニカル系の諸々
 | Twitter      | https://twitter.com/fereria                                                                        |
 | 日記         | https://reincarnation.fanbox.cc/                                                                   |
 | 写真         | https://500px.com/megumiando                                                                       |
+
+<a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Ffereria.github.io%2Freincarnation_tech%2Ffeed_rss_created.xml'  target='blank'><img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-rectangle-flat-big_2x.png' alt='follow us in feedly' width='131' height='56'></a>
