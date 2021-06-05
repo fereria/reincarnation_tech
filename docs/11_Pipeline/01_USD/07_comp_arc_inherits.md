@@ -1,5 +1,9 @@
 ---
 title: CompArc(2) 継承
+tags:
+    - コンポジションアーク
+    - USD
+    - USD基本
 ---
 
 # CompArc(2) 継承
