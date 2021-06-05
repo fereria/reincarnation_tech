@@ -1,5 +1,4 @@
 FROM python:3.7-slim
-USER root
 
 RUN apt-get update
 RUN apt-get -y install locales && \
@@ -16,19 +15,14 @@ RUN apt-get install -y vim less
 RUN pip install --upgrade pip
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    libx11-xcb1 libatk-bridge2.0 libgtk-3-0 libnss3 libxss1 libasound2 wget \
-    graphviz xdg-utils libappindicator3-1 libsecret-1-0\
-    build-essential \
-    gconf2 gconf-service libnotify4 libappindicator1 xvfb xauth \
-    && apt-get purge -y --auto-remove apt-transport-https \
-    && apt-get clean 
-
-RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/drawio-amd64-14.6.13.deb
-RUN dpkg --install drawio-amd64-14.6.13.deb
-RUN rm drawio-amd64-14.6.13.deb
+    && DEBIAN_FRONTEND=noninteractive
 
 ADD requirements.txt /work_dir/
 WORKDIR /work_dir
 RUN pip install -r requirements.txt
 RUN pip install git+https://github.com/srymh/MkdocsTagPlugin.git#egg=mdoctag
+
+RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0 libappindicator3-1 libsecret-1-0 libgbm-dev libasound2
+RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/drawio-amd64-14.6.13.deb
+RUN dpkg --install drawio-amd64-14.6.13.deb
+RUN rm drawio-amd64-14.6.13.deb
