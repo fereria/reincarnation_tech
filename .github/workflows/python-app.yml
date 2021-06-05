@@ -43,6 +43,9 @@ jobs:
 
       - name: Create Mkdoc .Pages
         run: docker exec mkdocs python create_mkdocs_pages.py
+        
+      - name: Set Xhost
+        run: xhost +
 
       - name: Mkdocs
         env:
