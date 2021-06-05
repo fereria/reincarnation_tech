@@ -44,11 +44,6 @@ jobs:
       - name: Create Mkdoc .Pages
         run: docker exec mkdocs python create_mkdocs_pages.py
 
-      - name: Set Xhost
-        run: |
-          export DISPLAY=localhost:0.0
-          xhost +
-
       - name: Mkdocs
         env:
           TZ: Asia/Tokyo
