@@ -107,3 +107,33 @@ A -> E -> F -> G;
 
 一部だけ埋め込みたい場合
 {{embedIpynb("notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb",[1])}}
+
+{--
+
+* test remove
+* test remove
+* test remove
+    * test remove
+* test remove
+
+--}
+
+{++
+
+* test add
+* test add
+* test add
+    * test add
+* test add
+
+++}
+
+{==some text==}
+
+```mermaid
+graph TD
+    A[Hard] -->|Text| B(Round)
+    B --> C{Decision}
+    C -->|One| D[Result 1]
+    C -->|Two| E[Result 2]
+```
