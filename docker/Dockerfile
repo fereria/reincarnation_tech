@@ -22,7 +22,7 @@ WORKDIR /work_dir
 RUN pip install -r requirements.txt
 RUN pip install git+https://github.com/srymh/MkdocsTagPlugin.git#egg=mdoctag
 
-RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0 libappindicator3-1 libsecret-1-0 libgbm-dev libasound2
+RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0 libappindicator3-1 libsecret-1-0 libgbm-dev libasound2 xvfb
 RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/drawio-amd64-14.6.13.deb
 RUN dpkg --install drawio-amd64-14.6.13.deb
 RUN rm drawio-amd64-14.6.13.deb
