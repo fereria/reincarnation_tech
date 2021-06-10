@@ -28,6 +28,9 @@ FootNote のテスト [^1]
 
 {{'icon.jpg'|img}}
 
+{{'sample.drawio.svg'|img}}
+sample
+
 マクロにした。
 
 ```python
