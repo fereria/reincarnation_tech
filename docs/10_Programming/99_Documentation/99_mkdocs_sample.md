@@ -8,30 +8,10 @@ description: this is also a sample
 # mkdocs での Markdown 記載サンプル
 
 FootNote のテスト [^1]
-
-!!! note "ほげほげ"
-    テスト
-
-!!! info
-    いんふぉ
-
-!!! tip
-    tip
-
-!!! success
-    Success
-
-!!! example
-    Example
     
 ### 画像
 
 {{'icon.jpg'|img}}
-
-{{'sample.drawio.svg'|img}}
-sample
-
-マクロにした。
 
 ```python
 from pxr import Usd, UsdGeom, Sdf, Gf, OrigSchema
@@ -45,8 +25,6 @@ blockdiag {
 A -> B -> C -> D;
 A -> E -> F -> G;
 }
-
-
 
 ++ctrl+alt+delete++
 
