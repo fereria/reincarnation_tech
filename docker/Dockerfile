@@ -27,7 +27,7 @@ RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/dra
 RUN dpkg --install drawio-amd64-14.6.13.deb
 RUN rm drawio-amd64-14.6.13.deb
 
+# https://github.com/jgraph/drawio-desktop/issues/127 これでいけた
 RUN apt-get install -y xvfb
-
 RUN echo "#!/bin/sh\nxvfb-run /usr/bin/drawio \"\${@}\"" > /usr/local/bin/drawio && \
     chmod +x /usr/local/bin/drawio
