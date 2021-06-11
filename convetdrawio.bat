@@ -1,1 +1,0 @@
-draw.io -xf svg -o docs/img/ drawio/

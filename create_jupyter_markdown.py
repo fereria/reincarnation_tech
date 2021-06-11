@@ -1,19 +1,26 @@
 #!python3.6
 # -*- coding: utf-8 -*-
+"""
+notebooks以下にあるipynbを、mdにまとめてコンバートするスクリプト
+"""
 
-import nbconvert
-import nbformat
 import codecs
 import subprocess
 
 import os
 import os.path
 import re
-import glob
 import shutil
-import sys
+import yaml
 
-GITHUB_ROOT = "https://github.com/fereria/reincarnation_tech/blob/master/"
+
+def getGithubRoot():
+
+    with open(os.getcwd() + "/mkdocs.yml", 'r') as f:
+        obj = yaml.safe_load(f)
+        if 'repo_url' in obj:
+            return obj['repo_url'] + "/blob/master/"
+    return ""
 
 
 def createNoteBookMD(ipynbFile, root, exportPath):
@@ -59,7 +66,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
     title = ['---',
              f'title: {title}',
              '---',
-             f'**ipynbFile** [{os.path.basename(ipynbFile)}]({GITHUB_ROOT}notebooks/{buff[1]})']
+             f'**ipynbFile** [{os.path.basename(ipynbFile)}]({getGithubRoot()}notebooks/{buff[1]})']
 
     with codecs.open(md, 'r', 'utf8') as f:
         lines = [x.replace("\n", "") for x in f.readlines()]
@@ -89,7 +96,6 @@ if __name__ == "__main__":
         shutil.rmtree(md_root, True)
     os.makedirs(md_root)
 
-    # ipynbFiles = glob.glob(root + "/*.ipynb")
     ipynbFiles = getIpynbFile()
 
     for ipynb in ipynbFiles:
