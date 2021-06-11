@@ -26,3 +26,8 @@ RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-u
 RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/drawio-amd64-14.6.13.deb
 RUN dpkg --install drawio-amd64-14.6.13.deb
 RUN rm drawio-amd64-14.6.13.deb
+
+RUN apt-get install -y xvfb
+
+RUN echo "#!/bin/sh\nxvfb-run /usr/bin/drawio \"\${@}\"" > /usr/local/bin/drawio && \
+    chmod +x /usr/local/bin/drawio
