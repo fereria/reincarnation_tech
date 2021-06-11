@@ -7,11 +7,30 @@ description: this is also a sample
 
 # mkdocs での Markdown 記載サンプル
 
+
+!!! note "ほげほげ"
+    テスト
+
+!!! info
+    いんふぉ
+
+!!! tip
+    tip
+
+!!! success
+    Success
+
+!!! example
+    Example
+    
+
 FootNote のテスト [^1]
     
 ### 画像
 
 {{'icon.jpg'|img}}
+
+### CodeSample
 
 ```python
 from pxr import Usd, UsdGeom, Sdf, Gf, OrigSchema
@@ -30,6 +49,9 @@ A -> E -> F -> G;
 
 :fa-external-link: [MkDocs](http://www.mkdocs.org/)
 
+
+### icon
+
 :smile:  
 :fa-coffee:
 
@@ -44,8 +66,9 @@ A -> E -> F -> G;
 :fa-folder:
 :fa-angle-double-right:
 
-
 :fa-angle-right:
+
+### fontstyle
 
 ==MARK TEST== hogehoge
 ~~sample~~
