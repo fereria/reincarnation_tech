@@ -5,11 +5,10 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    network_mode: "host"
-    environment:
-      DISPLAY: localhost:0.0
     container_name: mkdocs
     stdin_open: true
     volumes:
       - ../:/work_dir
     working_dir: /work_dir
+    ports:
+      - "8888:8888"

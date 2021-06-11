@@ -1,1 +1,1 @@
-docker exec mkdocs mkdocs serve --dirtyreload
+mkdocs serve --dirtyreload

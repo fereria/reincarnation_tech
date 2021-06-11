@@ -35,3 +35,5 @@ RUN rm drawio-amd64-${DRAWIO_VERSION}.deb
 RUN apt-get install -y xvfb
 RUN echo "#!/bin/sh\nxvfb-run /usr/bin/drawio \"\${@}\"" > /usr/local/bin/drawio && \
     chmod +x /usr/local/bin/drawio
+
+EXPOSE 8888
