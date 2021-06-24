@@ -5,7 +5,7 @@ import codecs
 
 def getGithubRoot():
 
-    with open(os.getcwd() + "/mkdocs.yml", 'r') as f:
+    with codecs.open(os.getcwd() + "/mkdocs.yml", 'r', 'utf-8') as f:
         obj = yaml.safe_load(f)
         if 'repo_url' in obj:
             return obj['repo_url']
