@@ -10,24 +10,7 @@ import re
 import codecs
 import glob
 import sys
-
-# 日本語のIndexにしたいものは、フォルダ名から↓の名前に置換する
-FOLDER_REPLACE_STRING = {
-    "basic_operation": "基本操作",
-    "data_structure": "データ構造",
-    "terms": "用語",
-    "modifier": "モディファイアの使い方",
-    "back-to-top-button": "検証・考察",
-    "study_materials": "NodeEditorマテリアル学習",
-    "study_scripts_reading": "サンプルコード読んで学習",
-    "imitate": "Houdini写経",
-    "Env_Maya": "Maya作業環境構築",
-    "PySide_Basic": "PySide_基本編",
-    "python_module": "Pythonモジュールの使い方",
-    "pipeline_study": "Pipeline/Workflow学習・考察",
-    "defaultLib": "標準ライブラリ",
-    "template_code": "コピペで使うやつ"
-}
+import utils
 
 # 無視するフォルダ
 EXCLUSION = [".git", ".vscode", ".history", "_book", "node_modules", "stylesheets", "javascripts"]
@@ -37,9 +20,11 @@ EXCLUSION = [".git", ".vscode", ".history", "_book", "node_modules", "stylesheet
 
 def replace_title_folder_name(name):
 
+    replaceString = utils.getFolderReplaceString()
+
     buff = re.sub("[0-9][0-9]_", "", name)
-    for key in FOLDER_REPLACE_STRING.keys():
-        buff = buff.replace(key, FOLDER_REPLACE_STRING[key])
+    for key in replaceString.keys():
+        buff = buff.replace(key, replaceString[key])
     return buff
 
 

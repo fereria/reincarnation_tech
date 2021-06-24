@@ -11,16 +11,7 @@ import os
 import os.path
 import re
 import shutil
-import yaml
-
-
-def getGithubRoot():
-
-    with open(os.getcwd() + "/mkdocs.yml", 'r') as f:
-        obj = yaml.safe_load(f)
-        if 'repo_url' in obj:
-            return obj['repo_url'] + "/blob/master/"
-    return ""
+import utils
 
 
 def createNoteBookMD(ipynbFile, root, exportPath):
@@ -66,7 +57,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
     title = ['---',
              f'title: {title}',
              '---',
-             f'**ipynbFile** [{os.path.basename(ipynbFile)}]({getGithubRoot()}notebooks/{buff[1]})']
+             f'**ipynbFile** [{os.path.basename(ipynbFile)}]({utils.getGithubRoot()}/blob/master/notebooks/{buff[1]})']
 
     with codecs.open(md, 'r', 'utf8') as f:
         lines = [x.replace("\n", "") for x in f.readlines()]

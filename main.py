@@ -6,6 +6,7 @@ from datetime import datetime
 from git import Repo
 from nbconvert import TemplateExporter, exporters
 import nbformat
+import utils
 
 FUKIDASHI_HTML = """<div class="balloon5">
   <div class="faceicon">
@@ -83,7 +84,7 @@ def define_env(env):
 
     @env.filter
     def img(path):
-        return f"![](https://fereria.github.io/reincarnation_tech/img/{path})"
+        return f"![]({utils.getGithubRoot()}/img/{path})"
 
     @env.macro
     def embedIpynb(ipynbPath, cells=None):
@@ -114,7 +115,7 @@ def define_env(env):
 
                 text = [f"!!! example \"\"",
                         *buff,
-                        f"    :fa-bookmark: [{os.path.basename(ipynbPath)}](https://github.com/fereria/reincarnation_tech/tree/master/{ipynbPath})"]
+                        f"    :fa-bookmark: [{os.path.basename(ipynbPath)}]({utils.getGithubRoot()}/tree/master/{ipynbPath})"]
                 return "\n".join(text)
             except Exception as f:
                 import traceback
