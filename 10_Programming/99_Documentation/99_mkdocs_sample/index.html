@@ -5515,7 +5515,7 @@
 </div>
 <p>FootNote のテスト <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
 <h3 id="_1">画像<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
-<p><img alt="" src="https://fereria.github.io/reincarnation_tech/img/icon.jpg" /></p>
+<p><img alt="" src="https://github.com/fereria/reincarnation_tech/img/icon.jpg" /></p>
 <h3 id="codesample">CodeSample<a class="headerlink" href="#codesample" title="Permanent link">¶</a></h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -5604,43 +5604,45 @@
 <p><span class="green-badge">ほげほげ</span> <span class="blue-badge">ふがふが</span></p>
 <h2 id="ipynb">ipynb<a class="headerlink" href="#ipynb" title="Permanent link">¶</a></h2>
 <p>リポジトリ以下のipynbをロードしてmarkdownとして埋め込み</p>
-<div class="admonition example">
-<p><i class="fa fa-angle-double-right"></i> In [1]:<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!!&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table></p>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Hello World!!
-</code></pre></div>
-</td></tr></table>
-</div>
-<p><i class="fa fa-angle-double-right"></i> In [3]:<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hoge Hoge&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table></p>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Hoge Hoge
-</code></pre></div>
-</td></tr></table>
-</div>
-<p><i class="fa fa-bookmark"></i> <a href="https://github.com/fereria/reincarnation_tech/tree/master/notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb">hello_world__埋め込み用サンプル.ipynb</a></p>
-</div>
-<p>一部だけ埋め込みたい場合</p>
-<div class="admonition example">
-<p><i class="fa fa-angle-double-right"></i> In [1]:<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!!&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table></p>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Hello World!!
-</code></pre></div>
-</td></tr></table>
-</div>
-<p><i class="fa fa-bookmark"></i> <a href="https://github.com/fereria/reincarnation_tech/tree/master/notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb">hello_world__埋め込み用サンプル.ipynb</a></p>
-</div>
+<p>ConvertEerror!! -&gt;notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb<br />
+Traceback (most recent call last):<br />
+  File "/work_dir/main.py", line 112, in embedIpynb<br />
+    (body, reources) = exporter.from_notebook_node(f)<br />
+  File "/usr/local/lib/python3.7/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_notebook_node<br />
+    output = self.template.render(nb=nb_copy, resources=resources)<br />
+  File "/usr/local/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render<br />
+    self.environment.handle_exception()<br />
+  File "/usr/local/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception<br />
+    reraise(*rewrite_traceback_stack(source=source))<br />
+  File "/usr/local/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise<br />
+    raise value.with_traceback(tb)<br />
+  File "/work_dir/template/embed_markdown.tpl", line 1, in top-level template code<br />
+    {% extends 'markdown.tpl'%}<br />
+  File "/work_dir/template/markdown.tpl", line 1, in top-level template code<br />
+    {% extends 'display_priority.tpl' %}<br />
+  File "/usr/local/share/jupyter/nbconvert/templates/compatibility/display_priority.tpl", line 2, in top-level template code<br />
+    {%- extends 'display_priority.j2' -%}<br />
+jinja2.exceptions.TemplateNotFound: display_priority.j2</p>
+<p>一部だけ埋め込みたい場合<br />
+ConvertEerror!! -&gt;notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb<br />
+Traceback (most recent call last):<br />
+  File "/work_dir/main.py", line 112, in embedIpynb<br />
+    (body, reources) = exporter.from_notebook_node(f)<br />
+  File "/usr/local/lib/python3.7/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_notebook_node<br />
+    output = self.template.render(nb=nb_copy, resources=resources)<br />
+  File "/usr/local/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render<br />
+    self.environment.handle_exception()<br />
+  File "/usr/local/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception<br />
+    reraise(*rewrite_traceback_stack(source=source))<br />
+  File "/usr/local/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise<br />
+    raise value.with_traceback(tb)<br />
+  File "/work_dir/template/embed_markdown.tpl", line 1, in top-level template code<br />
+    {% extends 'markdown.tpl'%}<br />
+  File "/work_dir/template/markdown.tpl", line 1, in top-level template code<br />
+    {% extends 'display_priority.tpl' %}<br />
+  File "/usr/local/share/jupyter/nbconvert/templates/compatibility/display_priority.tpl", line 2, in top-level template code<br />
+    {%- extends 'display_priority.j2' -%}<br />
+jinja2.exceptions.TemplateNotFound: display_priority.j2</p>
 <del class="critic block">
 <ul>
 <li>test remove</li>
@@ -5736,6 +5738,10 @@
           </div>
         </div>
         
+          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
       </main>
       
         
@@ -5826,7 +5832,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
