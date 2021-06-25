@@ -92,7 +92,7 @@ def define_env(env):
         path = os.getcwd() + "/" + ipynbPath  # root以下からのPathで指定
         if os.path.exists(path):
             try:
-                with open(path, 'r') as f:
+                with codecs.open(path, 'r', 'utf-8') as f:
                     lines = f.readlines()
                 f = nbformat.reads("".join(lines), as_version=4)
                 if cells:
@@ -100,11 +100,12 @@ def define_env(env):
                     showCells = cells
                 else:
                     # 指定がなければ全部表示
-                    showCells = [int(x['execution_count']) for x in f.cells]
+                    showCells = [int(x['execution_count'])
+                                 for x in f.cells if 'execution_count' in x and x['execution_count'] is not None]
 
                 buff = []
                 for i in f.cells:
-                    if i['execution_count']:
+                    if 'execution_count' in i and i['execution_count']:
                         if int(i['execution_count']) in showCells:
                             buff.append(i)
                 f.cells = buff
