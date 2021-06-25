@@ -1,4 +1,4 @@
-{%- extends 'null.tpl' -%}
+{%- extends 'base.tpl' -%}
 
 {#display data priority#}
 

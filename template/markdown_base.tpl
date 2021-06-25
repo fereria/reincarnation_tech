@@ -1,4 +1,4 @@
-{% extends 'display_priority.tpl' %}
+{% extends 'display_priority_base.tpl' %}
 
 
 {% block in_prompt %}
