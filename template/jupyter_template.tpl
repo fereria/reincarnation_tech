@@ -1,4 +1,4 @@
-{% extends 'markdown.tpl'%}
+{% extends 'markdown_base.tpl'%}
 
 {% block header %}
 {% endblock header %}
