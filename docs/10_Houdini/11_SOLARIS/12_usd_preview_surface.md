@@ -4,6 +4,7 @@ tags:
     - USD
     - SOLARIS
     - Houdini
+    - UsdPreviewSurface
 ---
 
 HoudiniでのUsdPreviewSurfaceを使用したマテリアルの指定方法について
