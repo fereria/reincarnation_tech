@@ -133,15 +133,28 @@ def define_env(env):
         }
         return FUKIDASHI_HTML.format(comment=comment, icon=path[icon])
 
+    @env.macro
+    def include(includeFilePath):
+
+        path = os.getcwd() + "/docs/" + os.path.dirname(env.variables['page'].file.src_path) + "/" + includeFilePath
+        if os.path.exists(path):
+            with codecs.open(path, 'r', 'utf-8') as f:
+                lines = f.readlines()
+                if os.path.splitext(path)[1] == ".py":
+                    lines.insert(0, "```python\n")
+                    lines.append("```")
+                return "\n".join(lines)
+        return path + " not found."
+
     env.macro('return hogehoge', 'hogevalue')
 
     @env.filter
     def green_badge(comment):
-        return f'<span class="green-badge">{comment}</span>'
+        return f'<span class="green-badge badge-all">{comment}</span>'
 
     @env.filter
     def blue_badge(comment):
-        return f'<span class="blue-badge">{comment}</span>'
+        return f'<span class="blue-badge badge-all">{comment}</span>'
 
     @env.filter
     def macroprint(value):

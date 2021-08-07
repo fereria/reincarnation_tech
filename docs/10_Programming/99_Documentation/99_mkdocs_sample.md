@@ -145,3 +145,8 @@ graph TD
 ### drawioを指定して作図結果を表示
 
 ![My alt text](sample.drawio)
+
+
+### includeマクロ
+
+{{include("samplefile.py")}}
