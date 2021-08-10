@@ -5766,16 +5766,16 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QApplication</span><span class="p">,</span>
-<span class="n">QDialog</span><span class="p">,</span>
-<span class="n">QLayout</span><span class="p">,</span>
-<span class="n">QPushButton</span><span class="p">,</span>
-<span class="n">QLayoutItem</span><span class="p">,</span>
-<span class="n">QLineEdit</span><span class="p">,</span>
-<span class="n">QLabel</span><span class="p">,</span>
-<span class="n">QVBoxLayout</span><span class="p">,</span>
-<span class="n">QHBoxLayout</span><span class="p">,</span>
-<span class="n">QWidget</span><span class="p">,</span>
-<span class="n">QFrame</span><span class="p">)</span>
+                               <span class="n">QDialog</span><span class="p">,</span>
+                               <span class="n">QLayout</span><span class="p">,</span>
+                               <span class="n">QPushButton</span><span class="p">,</span>
+                               <span class="n">QLayoutItem</span><span class="p">,</span>
+                               <span class="n">QLineEdit</span><span class="p">,</span>
+                               <span class="n">QLabel</span><span class="p">,</span>
+                               <span class="n">QVBoxLayout</span><span class="p">,</span>
+                               <span class="n">QHBoxLayout</span><span class="p">,</span>
+                               <span class="n">QWidget</span><span class="p">,</span>
+                               <span class="n">QFrame</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QSize</span><span class="p">,</span> <span class="n">QRect</span><span class="p">,</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QPoint</span><span class="p">,</span> <span class="n">Signal</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="n">QColor</span><span class="p">,</span> <span class="n">QIcon</span><span class="p">,</span> <span class="n">QPixmap</span><span class="p">,</span> <span class="n">QCursor</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtUiTools</span> <span class="kn">import</span> <span class="n">QUiLoader</span>
@@ -5784,240 +5784,240 @@
 
 
 <span class="k">class</span> <span class="nc">FlowLayout</span><span class="p">(</span><span class="n">QLayout</span><span class="p">):</span>
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hSpacing</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">vSpacing</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hSpacing</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">vSpacing</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">itemList</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span> <span class="o">=</span> <span class="n">hSpacing</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">vSpacing</span> <span class="o">=</span> <span class="n">vSpacing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span> <span class="o">=</span> <span class="n">hSpacing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vSpacing</span> <span class="o">=</span> <span class="n">vSpacing</span>
 
-<span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">itemList</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">QLayoutItem</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">QLayoutItem</span><span class="p">):</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">itemAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 
-<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
-<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-<span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">takeAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">takeAt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 
-<span class="k">if</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
-<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">hasHeightForWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="k">return</span> <span class="kc">True</span>
+    <span class="k">def</span> <span class="nf">hasHeightForWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">heightForWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="k">return</span> <span class="n">height</span>
+    <span class="k">def</span> <span class="nf">heightForWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">height</span>
 
-<span class="k">def</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumSize</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumSize</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="n">size</span> <span class="o">=</span> <span class="n">QSize</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="p">:</span>
-<span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="o">.</span><span class="n">expandedTo</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">minimumSize</span><span class="p">())</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">QSize</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="o">.</span><span class="n">expandedTo</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">minimumSize</span><span class="p">())</span>
 
-<span class="n">margins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contentsMargins</span><span class="p">()</span>
-<span class="n">size</span> <span class="o">+=</span> <span class="n">QSize</span><span class="p">(</span><span class="n">margins</span><span class="o">.</span><span class="n">left</span><span class="p">()</span> <span class="o">+</span> <span class="n">margins</span><span class="o">.</span><span class="n">right</span><span class="p">(),</span> <span class="n">margins</span><span class="o">.</span><span class="n">top</span><span class="p">()</span> <span class="o">+</span> <span class="n">margins</span><span class="o">.</span><span class="n">bottom</span><span class="p">())</span>
+        <span class="n">margins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contentsMargins</span><span class="p">()</span>
+        <span class="n">size</span> <span class="o">+=</span> <span class="n">QSize</span><span class="p">(</span><span class="n">margins</span><span class="o">.</span><span class="n">left</span><span class="p">()</span> <span class="o">+</span> <span class="n">margins</span><span class="o">.</span><span class="n">right</span><span class="p">(),</span> <span class="n">margins</span><span class="o">.</span><span class="n">top</span><span class="p">()</span> <span class="o">+</span> <span class="n">margins</span><span class="o">.</span><span class="n">bottom</span><span class="p">())</span>
 
-<span class="k">return</span> <span class="n">size</span>
+        <span class="k">return</span> <span class="n">size</span>
 
-<span class="k">def</span> <span class="nf">setGeomertry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rect</span><span class="p">):</span>
-<span class="c1"># 配置されるWidgetのジオメトリを計算するときに呼び出される</span>
-<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">setGeomertry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rect</span><span class="p">):</span>
+        <span class="c1"># 配置されるWidgetのジオメトリを計算するときに呼び出される</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">doLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
+    <span class="k">def</span> <span class="nf">doLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
 
-<span class="c1"># rect は、現在のLayoutの矩形</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
-<span class="n">lineHeight</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># rect は、現在のLayoutの矩形</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
+        <span class="n">lineHeight</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="p">:</span>
-<span class="n">wid</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span>
-<span class="c1"># 次のWidgetの配置場所</span>
-<span class="n">nextX</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span>
-<span class="k">if</span> <span class="n">nextX</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span> <span class="o">&gt;</span> <span class="n">rect</span><span class="o">.</span><span class="n">right</span><span class="p">()</span> <span class="ow">and</span> <span class="n">lineHeight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">lineHeight</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">vSpacing</span>
-<span class="n">nextX</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span>
-<span class="n">lineHeight</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="p">:</span>
+            <span class="n">wid</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span>
+            <span class="c1"># 次のWidgetの配置場所</span>
+            <span class="n">nextX</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span>
+            <span class="k">if</span> <span class="n">nextX</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span> <span class="o">&gt;</span> <span class="n">rect</span><span class="o">.</span><span class="n">right</span><span class="p">()</span> <span class="ow">and</span> <span class="n">lineHeight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">lineHeight</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">vSpacing</span>
+                <span class="n">nextX</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span>
+                <span class="n">lineHeight</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="n">item</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">nextX</span>
-<span class="n">lineHeight</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">lineHeight</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
+            <span class="n">item</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()))</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">nextX</span>
+            <span class="n">lineHeight</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">lineHeight</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
 
-<span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">lineHeight</span> <span class="o">-</span> <span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">lineHeight</span> <span class="o">-</span> <span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
 
 
 <span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">QFrame</span><span class="p">):</span>
 
-<span class="n">deleteTag</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+    <span class="n">deleteTag</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">QColor</span> <span class="o">=</span> <span class="n">QColor</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">deletable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">QColor</span> <span class="o">=</span> <span class="n">QColor</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">deletable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
-<span class="n">css</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;background-color: rgb(</span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">()</span><span class="si">}</span><span class="s2">);border-radius: 5px;&quot;</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">css</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="n">layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-<span class="n">layout</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">css</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;background-color: rgb(</span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">()</span><span class="si">}</span><span class="s2">);border-radius: 5px;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">css</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">deletable</span><span class="p">:</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">()</span>
-<span class="n">icon</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
-<span class="n">icon</span><span class="o">.</span><span class="n">addPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="p">(</span><span class="s2">&quot;D:/work/py37/PySide/icons/batu.png&quot;</span><span class="p">),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">On</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setFlat</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">deletable</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">()</span>
+            <span class="n">icon</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+            <span class="n">icon</span><span class="o">.</span><span class="n">addPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="p">(</span><span class="s2">&quot;D:/work/py37/PySide/icons/batu.png&quot;</span><span class="p">),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">On</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setFlat</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">)</span>
 
-<span class="nd">@property</span>
-<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">deleteTag</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deleteTag</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">PopupEdit</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
-<span class="n">send</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">send</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Popup</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">WA_TranslucentBackground</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Popup</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">WA_TranslucentBackground</span><span class="p">)</span>
 
-<span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">edit</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-<span class="c1"># 現在のマウス位置にGUIを出す</span>
-<span class="n">size_x</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">size_y</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="n">QCursor</span><span class="p">()</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">()</span> <span class="o">-</span> <span class="n">size_x</span><span class="p">,</span>
-<span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">()</span> <span class="o">-</span> <span class="n">size_y</span><span class="p">,</span>
-<span class="n">size_x</span><span class="p">,</span>
-<span class="n">size_y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edit</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="c1"># 現在のマウス位置にGUIを出す</span>
+        <span class="n">size_x</span> <span class="o">=</span> <span class="mi">200</span>
+        <span class="n">size_y</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">QCursor</span><span class="p">()</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">()</span> <span class="o">-</span> <span class="n">size_x</span><span class="p">,</span>
+                         <span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">()</span> <span class="o">-</span> <span class="n">size_y</span><span class="p">,</span>
+                         <span class="n">size_x</span><span class="p">,</span>
+                         <span class="n">size_y</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">returnPressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Submit</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">returnPressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Submit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">Submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="c1"># Enterしたら文字をEmitして閉じる</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">Submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Enterしたら文字をEmitして閉じる</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 
 <span class="k">class</span> <span class="nc">TagCrowd</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
 
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addNewTag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">deletetable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addNewTag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">deletetable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">FlowLayout</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">FlowLayout</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">addNewTag</span> <span class="o">=</span> <span class="n">addNewTag</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">deletable</span> <span class="o">=</span> <span class="n">deletetable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addNewTag</span> <span class="o">=</span> <span class="n">addNewTag</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deletable</span> <span class="o">=</span> <span class="n">deletetable</span>
 
-<span class="k">if</span> <span class="n">addNewTag</span><span class="p">:</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showAddEdit</span><span class="p">)</span>
-<span class="n">icon</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
-<span class="n">icon</span><span class="o">.</span><span class="n">addPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="p">(</span><span class="s2">&quot;D:/work/py37/PySide/icons/plus.png&quot;</span><span class="p">),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">On</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setFlat</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">addNewTag</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showAddEdit</span><span class="p">)</span>
+            <span class="n">icon</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">()</span>
+            <span class="n">icon</span><span class="o">.</span><span class="n">addPixmap</span><span class="p">(</span><span class="n">QPixmap</span><span class="p">(</span><span class="s2">&quot;D:/work/py37/PySide/icons/plus.png&quot;</span><span class="p">),</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">Normal</span><span class="p">,</span> <span class="n">QIcon</span><span class="o">.</span><span class="n">On</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">setFlat</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">def</span> <span class="nf">getTagNames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">getTagNames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">showAddEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">showAddEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="n">editor</span> <span class="o">=</span> <span class="n">PopupEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="n">editor</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">addTag</span><span class="p">)</span>
-<span class="n">editor</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">editor</span> <span class="o">=</span> <span class="n">PopupEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">editor</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">addTag</span><span class="p">)</span>
+        <span class="n">editor</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">deleteTag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">deleteTag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">):</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="n">widget</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
-<span class="n">widget</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="n">widget</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+        <span class="n">widget</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">addTag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">addTag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-<span class="n">currentTags</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">currentTags</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
 
-<span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">currentTags</span><span class="p">:</span>
-<span class="n">tag</span> <span class="o">=</span> <span class="n">Tag</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">deletable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">deletable</span><span class="p">)</span>
-<span class="n">tag</span><span class="o">.</span><span class="n">deleteTag</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deleteTag</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">currentTags</span><span class="p">:</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="n">Tag</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">deletable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">deletable</span><span class="p">)</span>
+            <span class="n">tag</span><span class="o">.</span><span class="n">deleteTag</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deleteTag</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">addNewTag</span><span class="p">:</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">addNewTag</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">SampleUI</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
-<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">QUiLoader</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CURRENT_PATH</span><span class="si">}</span><span class="s2">/scroll.ui&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">QUiLoader</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CURRENT_PATH</span><span class="si">}</span><span class="s2">/scroll.ui&quot;</span><span class="p">)</span>
 
-<span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">crowd</span> <span class="o">=</span> <span class="n">TagCrowd</span><span class="p">()</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">scrollArea</span><span class="o">.</span><span class="n">setWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crowd</span> <span class="o">=</span> <span class="n">TagCrowd</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">scrollArea</span><span class="o">.</span><span class="n">setWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">addTag</span><span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">addTag</span><span class="p">(</span><span class="s1">&#39;bbb&#39;</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">addTag</span><span class="p">(</span><span class="s1">&#39;ccc&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">addTag</span><span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">addTag</span><span class="p">(</span><span class="s1">&#39;bbb&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">addTag</span><span class="p">(</span><span class="s1">&#39;ccc&#39;</span><span class="p">)</span>
 
-<span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showTags</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showTags</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">showTags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">getTagNames</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">showTags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">getTagNames</span><span class="p">())</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-<span class="n">QApplication</span><span class="o">.</span><span class="n">setFallbackSessionManagementEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">SampleUI</span><span class="p">()</span>
-<span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">QApplication</span><span class="o">.</span><span class="n">setFallbackSessionManagementEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">SampleUI</span><span class="p">()</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div>
 </td></tr></table>
                 
@@ -6028,7 +6028,7 @@
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-08-10 09:32:01
+      最終更新日: 2021-08-10 09:42:22
       
     
   </small>
