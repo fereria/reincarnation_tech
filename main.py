@@ -149,12 +149,12 @@ def define_env(env):
                         skip = False
                         continue
                     if not skip:
-                        lines.append(i.strip())
+                        lines.append(i)
 
                 if os.path.splitext(path)[1] == ".py":
                     lines.insert(0, "```python\n")
-                    lines.append("```")
-                return "\n".join(lines)
+                    lines.append("```\n")
+                return "".join(lines)
         return path + " not found."
 
     env.macro('return hogehoge', 'hogevalue')
