@@ -3,6 +3,12 @@
 # https://stackoverflow.com/questions/55820951/qt-flowlayout-example-how-to-get-sizehint-to-be-called-when-layout-changes
 # https://code.qt.io/cgit/qt/qtbase.git/tree/examples/widgets/layouts/flowlayout/flowlayout.cpp?h=5.15
 
+# HEADER:START
+title = "tagClowd実装サンプル"
+tags = ['PySide']
+# HEADER:END
+
+
 import sys
 import os.path
 import os

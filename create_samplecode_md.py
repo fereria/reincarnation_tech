@@ -3,8 +3,11 @@
 SampleCode以下にある
 """
 
+import codecs
+import sys
 import os
 import os.path
+import importlib
 sampleDir = os.getcwd() + "/docs/65_SampleCode"
 
 for root, dirs, files in os.walk(sampleDir):
@@ -16,7 +19,25 @@ for root, dirs, files in os.walk(sampleDir):
         bn, ext = os.path.splitext(file)
 
         if ext == ".py":
+            sys.path.append(d)
+            mod = importlib.import_module(bn)
+
+            text = []
+
+            if hasattr(mod, 'title'):
+                text += ["---",
+                         "title: " + mod.title]
+            if hasattr(mod, 'tags'):
+                text += ['tags:']
+                for tag in mod.tags:
+                    text.append(f"  - {tag}")
+
+            if len(text) > 0:
+                text += ["---", ""]
+
             mdFile = os.path.join(d, bn) + ".md"
-            text = ['{{include("' + file + '")}}']
-            with open(mdFile, 'w') as f:
+
+            text.append('{{include("' + file + '")}}')
+
+            with codecs.open(mdFile, 'w', 'utf-8') as f:
                 f.write("\n".join(text))

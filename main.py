@@ -139,7 +139,18 @@ def define_env(env):
         path = os.getcwd() + "/docs/" + os.path.dirname(env.variables['page'].file.src_path) + "/" + includeFilePath
         if os.path.exists(path):
             with codecs.open(path, 'r', 'utf-8') as f:
-                lines = f.readlines()
+                lines = []
+                skip = False
+                for i in f.readlines():
+                    if "HEADER:START" in i:  # 指定文字列に挟まれている部分はスキップする
+                        skip = True
+                        continue
+                    if "HEADER:END" in i:
+                        skip = False
+                        continue
+                    if not skip:
+                        lines.append(i.strip())
+
                 if os.path.splitext(path)[1] == ".py":
                     lines.insert(0, "```python\n")
                     lines.append("```")
