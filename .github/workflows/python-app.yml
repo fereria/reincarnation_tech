@@ -38,6 +38,9 @@ jobs:
       - name: nbConvert
         run: docker exec mkdocs python create_jupyter_markdown.py
 
+      - name: Create SampleCode
+        run: docker exec mkdocs python create_samplecode_md.py
+
       - name: Create TagPages
         run: docker exec mkdocs python create_tag_pages.py
 
