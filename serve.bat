@@ -1,1 +1,1 @@
-mkdocs serve --dirtyreload
+mkdocs serve

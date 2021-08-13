@@ -5,6 +5,7 @@ tags:
     - UsdShade
     - UsdPreviewSurface
     - Python
+description: Pythonを使用してUsdPreviewSurfaceを構築する
 ---
 
 [SOLARISでのUsdPreviewSurface以前](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/12_usd_preview_surface/)の記事を書いたのですが
