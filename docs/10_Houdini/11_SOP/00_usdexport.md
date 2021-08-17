@@ -1,5 +1,5 @@
 ---
-title: PackPrimitiveとUSDExport
+title: PackedPrimitivesとUSDExport
 tags:
     - USD
     - SOP
@@ -8,7 +8,7 @@ description: SOPからUSDを出力する
 ---
 
 普段はLOPを使用してUSDを扱っていましたが、  
-SOPからもUSDの出力ができるというのと、HoudiniのPackPrimitiveについて教えてもらったので  
+SOPからもUSDの出力ができるというのと、HoudiniのPackedPrimitivesについて教えてもらったので  
 SOPの勉強とデータの構造を理解するのを兼ねて  
 SOPのUSDExportを試してみようと思います。
 
@@ -42,7 +42,7 @@ SOPのGeometry以下は、Mayaでいうところ１つのMeshノードのよう�
 確認のため、このようにDuplicateを使用してモデルを複製したのち、出力しても  
 1つのXform＋Meshにまとめられた形で出力されます。
 
-## PackPrimitive
+## PackedPrimitives
 
 次はPackPrimitiveがあった場合。
 https://www.sidefx.com/ja/docs/houdini/model/packed.html
