@@ -24,15 +24,14 @@ RUN pip install -r requirements.txt
 RUN pip install git+https://github.com/srymh/MkdocsTagPlugin.git#egg=mdoctag
 
 # drawioのインストール
-ENV DRAWIO_VERSION 14.6.13
+ENV DRAWIO_VERSION 14.9.6
 
-RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0 libappindicator3-1 libsecret-1-0 libgbm-dev libasound2 xvfb
+RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0  libsecret-1-0 libgbm-dev libasound2 xvfb
 RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-amd64-${DRAWIO_VERSION}.deb
 RUN dpkg --install drawio-amd64-${DRAWIO_VERSION}.deb
 RUN rm drawio-amd64-${DRAWIO_VERSION}.deb
 
 # https://github.com/jgraph/drawio-desktop/issues/127 これでいけた
-RUN apt-get install -y xvfb
 RUN echo "#!/bin/sh\nxvfb-run /usr/bin/drawio \"\${@}\"" > /usr/local/bin/drawio && \
     chmod +x /usr/local/bin/drawio
 
