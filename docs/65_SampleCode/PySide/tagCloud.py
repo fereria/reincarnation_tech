@@ -4,8 +4,8 @@
 # https://code.qt.io/cgit/qt/qtbase.git/tree/examples/widgets/layouts/flowlayout/flowlayout.cpp?h=5.15
 
 # HEADER:START
-title = "tagClowd実装サンプル"
-tags = ['PySide']
+title = "tagCloud実装サンプル"
+tags = ['PySide', "Python"]
 # HEADER:END
 
 
@@ -183,7 +183,7 @@ class PopupEdit(QDialog):
         self.close()
 
 
-class TagCrowd(QWidget):
+class TagCloud(QWidget):
 
     def __init__(self, addNewTag=True, deletetable=True, parent=None):
         super().__init__(parent)
@@ -247,7 +247,7 @@ class SampleUI(QDialog):
         self.setLayout(layout)
         layout.addWidget(self.ui)
 
-        self.crowd = TagCrowd()
+        self.crowd = TagCloud()
         self.ui.scrollArea.setWidget(self.crowd)
 
         self.crowd.addTag('aaa')
