@@ -50,6 +50,10 @@ def define_env(env):
                 msg += buff[2:]
             # 更新ページ
             files = commit.stats.files.keys()
+            count = len(files)
+            if count > 5:
+                # いっぱいあるときは省略する
+                files = files[0:5]
             for f in files:
                 ext = os.path.splitext(f)[1]
                 if ext == ".md":
@@ -64,6 +68,8 @@ def define_env(env):
                     if not title:
                         title = link
                     msg.append(f"* [{title}]({link})")
+            if count > 5:
+                msg.append("...省略")
         return "\n".join(msg)
 
     @env.macro

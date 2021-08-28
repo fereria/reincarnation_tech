@@ -1,7 +1,17 @@
 # Introduction
 
 Blender、Maya、Python 等の 3DCG 関係のテクニカル系の諸々
-本職とは無関係に、自分の興味のある内容とかをまとめています。
+本職とは無関係に、自分の興味のある内容とかをまとめています。    
+
+このサイトで公開している情報・コードに関しては
+個人・商用問わず自由に使用してOKです。
+Blogなどにコードの引用する事なども、基本OKですが、
+
+1. 全文転載
+2. 画像の無断転用
+
+は禁止です。
+また、引用する際は、URLまたはトップページのURLを記載するようよろしくお願いします。
 
 !!! info
     このページのURL・階層は定期的に変わりますので
@@ -12,10 +22,6 @@ Blender、Maya、Python 等の 3DCG 関係のテクニカル系の諸々
     https://zenn.dev/remiria
     こちらにまとめます。
     mkdocsは、調べた内容を自分のノート代わりに公開します。
-
-## 最近の更新
-
-{{update_info(5,'###')}}
 
 ## 中の人
 
@@ -30,3 +36,7 @@ Blender、Maya、Python 等の 3DCG 関係のテクニカル系の諸々
 | Twitter      | https://twitter.com/fereria                                                                        |
 | 日記         | https://reincarnation.fanbox.cc/                                                                   |
 | 写真         | https://500px.com/megumiando                                                                       |
+
+## 最近の更新
+
+{{update_info(5,'###')}}
