@@ -50,7 +50,7 @@ jobs:
       - name: Mkdocs
         env:
           TZ: Asia/Tokyo
-        run: docker exec mkdocs xvfb-run -a  mkdocs gh-deploy
+        run: docker exec mkdocs mkdocs gh-deploy
 
       - name: Send Slack Finish(Success)
         if: ${{ success() }}
