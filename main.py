@@ -49,7 +49,7 @@ def define_env(env):
                 # 更新コメントがちゃんと書いてあったら詳細を書く
                 msg += buff[2:]
             # 更新ページ
-            files = commit.stats.files.keys()
+            files = list(commit.stats.files.keys())
             count = len(files)
             if count > 5:
                 # いっぱいあるときは省略する
