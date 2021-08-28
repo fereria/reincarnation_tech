@@ -106,7 +106,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-rendering-error" class="md-skip">
+        <a href="#introduction" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -499,9 +499,87 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         Introduction
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    中の人
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最近の更新
+  </a>
+  
+    <nav class="md-nav" aria-label="最近の更新">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-165006-list" class="md-nav__link">
+    2021-08-28 16:50:06 listにする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-164615" class="md-nav__link">
+    2021-08-28 16:46:15 一部整理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-145015" class="md-nav__link">
+    2021-08-28 14:50:15 エラーになっている
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-144536" class="md-nav__link">
+    2021-08-28 14:45:36 エラーになっていたのを修正
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-143112-blender" class="md-nav__link">
+    2021-08-28 14:31:12 Blender関係のフォルダをいったん掃除
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4843,6 +4921,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    中の人
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最近の更新
+  </a>
+  
+    <nav class="md-nav" aria-label="最近の更新">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-165006-list" class="md-nav__link">
+    2021-08-28 16:50:06 listにする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-164615" class="md-nav__link">
+    2021-08-28 16:46:15 一部整理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-145015" class="md-nav__link">
+    2021-08-28 14:50:15 エラーになっている
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-144536" class="md-nav__link">
+    2021-08-28 14:45:36 エラーになっていたのを修正
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-08-28-143112-blender" class="md-nav__link">
+    2021-08-28 14:31:12 Blender関係のフォルダをいったん掃除
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4859,35 +5000,107 @@
                   </a>
                 
                 
-                <h1 id="macro-rendering-error"><em>Macro Rendering Error</em><a class="headerlink" href="#macro-rendering-error" title="Permanent link">¶</a></h1>
-<p><strong>TypeError</strong>: 'dict_keys' object is not subscriptable</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.7/site-packages/macros/plugin.py&quot;, line 263, in render
-    return md_template.render(**self.variables)
-  File &quot;/usr/local/lib/python3.7/site-packages/jinja2/environment.py&quot;, line 1090, in render
-    self.environment.handle_exception()
-  File &quot;/usr/local/lib/python3.7/site-packages/jinja2/environment.py&quot;, line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File &quot;/usr/local/lib/python3.7/site-packages/jinja2/_compat.py&quot;, line 28, in reraise
-    raise value.with_traceback(tb)
-  File &quot;&lt;template&gt;&quot;, line 42, in top-level template code
-  File &quot;/work_dir/main.py&quot;, line 56, in update_info
-    files = files[0:5]
-TypeError: &#39;dict_keys&#39; object is not subscriptable
-</code></pre></div>
-</td></tr></table>
+                <h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h1>
+<p>Blender、Maya、Python 等の 3DCG 関係のテクニカル系の諸々<br />
+本職とは無関係に、自分の興味のある内容とかをまとめています。    </p>
+<p>このサイトで公開している情報・コードに関しては<br />
+個人・商用問わず自由に使用してOKです。<br />
+Blogなどにコードの引用する事なども、基本OKですが、</p>
+<ol>
+<li>全文転載</li>
+<li>画像の無断転用</li>
+</ol>
+<p>は禁止です。<br />
+また、引用する際は、URLまたはトップページのURLを記載するようよろしくお願いします。</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>このページのURL・階層は定期的に変わりますので<br />
+リンクを保存する際はご注意ください。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>色んな要素（ツール・サービス）を使った検証記事は<br />
+<a href="https://zenn.dev/remiria">https://zenn.dev/remiria</a><br />
+こちらにまとめます。<br />
+mkdocsは、調べた内容を自分のノート代わりに公開します。</p>
+</div>
+<h2 id="_1">中の人<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>なまえ＠HN</td>
+<td>あんどうめぐみ＠れみりあ</td>
+</tr>
+<tr>
+<td>職業</td>
+<td>元 TA、現在ゲーム会社のツールパイプラインエンジニア</td>
+</tr>
+<tr>
+<td>得意</td>
+<td>DCC ツールのテクニカルサポート<br>パイプライン構築<br>セットアップ<br>その他色々なんでも屋</td>
+</tr>
+<tr>
+<td>よく使うもの</td>
+<td>Maya(maya.cmds pymel openmaya)<br>Houdini(SOLARIS)<br>AfterEffects<br>Shotgun<br>PySide,USD ななど</td>
+</tr>
+<tr>
+<td>言語</td>
+<td>Python(メイン) C#(Excel Unity) JavaScript(AE)</td>
+</tr>
+<tr>
+<td>趣味とか</td>
+<td>旅行、カメラ</td>
+</tr>
+<tr>
+<td>Twitter</td>
+<td><a href="https://twitter.com/fereria">https://twitter.com/fereria</a></td>
+</tr>
+<tr>
+<td>日記</td>
+<td><a href="https://reincarnation.fanbox.cc/">https://reincarnation.fanbox.cc/</a></td>
+</tr>
+<tr>
+<td>写真</td>
+<td><a href="https://500px.com/megumiando">https://500px.com/megumiando</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">最近の更新<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="2021-08-28-165006-list">2021-08-28 16:50:06 listにする<a class="headerlink" href="#2021-08-28-165006-list" title="Permanent link">¶</a></h3>
+<h3 id="2021-08-28-164615">2021-08-28 16:46:15 一部整理<a class="headerlink" href="#2021-08-28-164615" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="10_Blender/">10_Blender/index.md</a></li>
+<li><a href=".">index.md</a></li>
+</ul>
+<h3 id="2021-08-28-145015">2021-08-28 14:50:15 エラーになっている<a class="headerlink" href="#2021-08-28-145015" title="Permanent link">¶</a></h3>
+<h3 id="2021-08-28-144536">2021-08-28 14:45:36 エラーになっていたのを修正<a class="headerlink" href="#2021-08-28-144536" title="Permanent link">¶</a></h3>
+<h3 id="2021-08-28-143112-blender">2021-08-28 14:31:12 Blender関係のフォルダをいったん掃除<a class="headerlink" href="#2021-08-28-143112-blender" title="Permanent link">¶</a></h3>
+<p>/vertexColor.md を docs/10_Blender/Modelingから00_basic_operation/10_Materials に移動</p>
+<ul>
+<li>
+<p><a href="00_basic_operation/10_Materials/vertexColor.md">00_basic_operation/10_Materials/vertexColor.md</a><br />
+/collection_object.md を docs/10_Blender/data_structureから01_data_structure に移動</p>
+</li>
+<li>
+<p><a href="01_data_structure/collection_object.md">01_data_structure/collection_object.md</a><br />
+/data_block.md を docs/10_Blender/data_structureから01_data_structure に移動</p>
+</li>
+<li>
+<p><a href="01_data_structure/data_block.md">01_data_structure/data_block.md</a><br />
+/user_link_proxy.md を docs/10_Blender/data_structureから01_data_structure に移動</p>
+</li>
+<li>
+<p><a href="01_data_structure/user_link_proxy.md">01_data_structure/user_link_proxy.md</a></p>
+</li>
+<li><a href="10_Blender/Compositing/00_start_comp.md">10_Blender/Compositing/00_start_comp.md</a><br />
+...省略</li>
+</ul>
                 
                   
                     
