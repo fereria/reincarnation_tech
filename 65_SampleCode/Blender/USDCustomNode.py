@@ -1,6 +1,3 @@
-title = "USD HydraAddonのUSDNodeEditorに自作ノードを足す"
-tags = ['Blender', "Python"]
-
 import bpy
 
 from pxr import Usd, UsdGeom

@@ -4894,17 +4894,7 @@
                 
                   <h1>USDCustomNode</h1>
                 
-                <p>```python<br />
-title = "USD HydraAddonのUSDNodeEditorに自作ノードを足す"<br />
-tags = ['Blender', "Python"]</p>
-<p>import bpy</p>
-<p>from pxr import Usd, UsdGeom</p>
-<p>from .base_node import USDNode</p>
-<p>class CubeNode(USDNode):<br />
-    """Merges two USD streams"""<br />
-    bl_idname = 'usd.CubeNode'<br />
-    bl_label = "Cube"</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+                <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -4931,34 +4921,58 @@ tags = ['Blender', "Python"]</p>
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def update_data(self, context):
-    self.reset()
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">bpy</span>
 
-sdf_path: bpy.props.StringProperty(
-    name=&quot;SdfPath&quot;,
-    default=&quot;&quot;,
-    update=update_data
-)
+<span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span>
 
-def draw_buttons(self, context, layout):
-    layout.prop(self, &#39;sdf_path&#39;)
+<span class="kn">from</span> <span class="nn">.base_node</span> <span class="kn">import</span> <span class="n">USDNode</span>
 
-def compute(self, **kwargs):
 
-    input_stage = self.get_input_link(&#39;Input&#39;, **kwargs)
+<span class="k">class</span> <span class="nc">CubeNode</span><span class="p">(</span><span class="n">USDNode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Merges two USD streams&quot;&quot;&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s1">&#39;usd.CubeNode&#39;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Cube&quot;</span>
 
-    if not self.sdf_path:
-        return None
+    <span class="k">def</span> <span class="nf">update_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
-    stage = self.cached_stage.create()
+    <span class="n">sdf_path</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SdfPath&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">update</span><span class="o">=</span><span class="n">update_data</span>
+    <span class="p">)</span>
 
-    if input_stage:
-        layer = input_stage.GetRootLayer()
-        stage.GetRootLayer().subLayerPaths = [layer.realPath]
+    <span class="k">def</span> <span class="nf">draw_buttons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">prop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;sdf_path&#39;</span><span class="p">)</span>
 
-    UsdGeom.Cube.Define(stage, self.sdf_path)
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-    return stage```
+        <span class="n">input_stage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_input_link</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sdf_path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">stage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cached_stage</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">input_stage</span><span class="p">:</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="n">input_stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
+            <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">subLayerPaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="o">.</span><span class="n">realPath</span><span class="p">]</span>
+
+        <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sdf_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">stage</span>
 </code></pre></div>
 </td></tr></table>
                 
@@ -4969,7 +4983,7 @@ def compute(self, **kwargs):
 <div class="md-source-date">
   <small>
     
-      最終更新日: 2021-09-04 07:11:33
+      最終更新日: 2021-09-04 07:16:16
       
     
   </small>
