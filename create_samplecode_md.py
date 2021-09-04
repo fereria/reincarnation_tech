@@ -20,17 +20,18 @@ for root, dirs, files in os.walk(sampleDir):
 
         if ext == ".py":
             sys.path.append(d)
-            mod = importlib.import_module(bn)
-
             text = []
-
-            if hasattr(mod, 'title'):
-                text += ["---",
-                         "title: " + mod.title]
-            if hasattr(mod, 'tags'):
-                text += ['tags:']
-                for tag in mod.tags:
-                    text.append(f"  - {tag}")
+            try:
+                mod = importlib.import_module(bn)
+                if hasattr(mod, 'title'):
+                    text += ["---",
+                             "title: " + mod.title]
+                if hasattr(mod, 'tags'):
+                    text += ['tags:']
+                    for tag in mod.tags:
+                        text.append(f"  - {tag}")
+            except:
+                pass
 
             if len(text) > 0:
                 text += ["---", ""]
