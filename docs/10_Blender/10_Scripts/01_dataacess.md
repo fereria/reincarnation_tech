@@ -10,7 +10,7 @@ print(bpy.data) # BlendData
 
 ## BlenderPythonの全体図
 
-![](blenddata.drawio#0)
+![](https://gyazo.com/bd3479e79b9fda475ba0668dc86c3a85.png)
 
 BlenderのAPIは、ざっくりと書き出すとこのようになっています。
 まず、すべての親クラスとして bpy_struct があります。
