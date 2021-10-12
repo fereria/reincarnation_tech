@@ -47,9 +47,6 @@ jobs:
       - name: Create Mkdoc .Pages
         run: docker exec mkdocs python create_mkdocs_pages.py
 
-      - name: xvfbFix
-        run: bash -c "rm /tmp/.X99-lock || echo 'Lock not found, continuing normal setup' && xvfb-run bundle exec rake resque:work"
-
       - name: Mkdocs
         env:
           TZ: Asia/Tokyo
