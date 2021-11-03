@@ -6,7 +6,18 @@ from datetime import datetime
 from git import Repo
 from nbconvert import TemplateExporter, exporters
 import nbformat
-import utils
+
+import codecs
+
+
+def getGithubRoot():
+
+    with codecs.open(os.getcwd() + "/mkdocs.yml", 'r', 'utf-8') as f:
+        obj = yaml.safe_load(f)
+        if 'repo_url' in obj:
+            return obj['repo_url']
+    return ""
+
 
 FUKIDASHI_HTML = """<div class="balloon5">
   <div class="faceicon">
@@ -90,7 +101,7 @@ def define_env(env):
 
     @env.filter
     def img(path):
-        return f"![]({utils.getGithubRoot()}/img/{path})"
+        return f"![]({getGithubRoot()}/img/{path})"
 
     @env.macro
     def embedIpynb(ipynbPath, cells=None):
@@ -122,7 +133,7 @@ def define_env(env):
 
                 text = [f"!!! example \"\"",
                         *buff,
-                        f"    :fa-bookmark: [{os.path.basename(ipynbPath)}]({utils.getGithubRoot()}/tree/master/{ipynbPath})"]
+                        f"    :fa-bookmark: [{os.path.basename(ipynbPath)}]({getGithubRoot()}/tree/master/{ipynbPath})"]
                 return "\n".join(text)
             except Exception as f:
                 import traceback
