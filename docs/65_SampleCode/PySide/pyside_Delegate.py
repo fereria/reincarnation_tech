@@ -35,6 +35,7 @@ class DataItem(object):
 
         self.name = value
 
+    @classmethod
     def sizeHint(self):
 
         return QtCore.QSize(250, 200)
@@ -127,6 +128,11 @@ class TableModel(QtCore.QAbstractTableModel):
             self.maxRowCount += num
             self.layoutChanged.emit()
 
+    def changeColumnNum(self, num):
+
+        self.columnNum = num
+        self.layoutChanged.emit()
+
     def headerData(self, col, orientation, role):
         return ""
 
@@ -173,12 +179,41 @@ class TableModel(QtCore.QAbstractTableModel):
         return QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsUserCheckable
 
 
+class CustomTable(QtWidgets.QTableView):
+
+    columnCountChanged = QtCore.Signal(int)
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+        self.columnCount = 5
+
+        self.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
+        self.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
+        self.verticalScrollBar().valueChanged.connect(self.moveSlider)
+
+    def resizeEvent(self, event):
+
+        count = int(event.size().width() / DataItem.sizeHint().width())
+        if self.columnCount != count:
+            self.columnCount = count
+            self.columnCountChange(count)
+
+    def moveSlider(self, value):
+        if value == self.verticalScrollBar().maximum():
+            self.model().addMaxRow()
+
+    def columnCountChange(self, num):
+        self.model().changeColumnNum(num)
+
+
 class UISample(QtWidgets.QMainWindow):
 
     def __init__(self, parent=None):
         super(UISample, self).__init__(parent)
 
-        self.ui = QUiLoader().load(os.path.join(CURRENT_PATH, 'tableView.ui'))
+        self.view = CustomTable()
+        self.setCentralWidget(self.view)
 
         self.resize(600, 400)
 
@@ -188,27 +223,14 @@ class UISample(QtWidgets.QMainWindow):
             data = DataItem(str(i).zfill(3), f"これは{str(i).zfill(3)}です。")
             self.model.addItem(data)
 
-        self.ui.tableView.setModel(self.model)
-        self.ui.tableView.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
-        self.ui.tableView.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
-
+        self.view.setModel(self.model)
         self.delegate = TableDelegate()
-        self.ui.tableView.setItemDelegate(self.delegate)
-        self.ui.tableView.clicked.connect(self.clicked)
-
-        self.setCentralWidget(self.ui)
-
-        self.scroll = self.ui.tableView.verticalScrollBar()
-        self.scroll.valueChanged.connect(self.moveSlider)
+        self.view.setItemDelegate(self.delegate)
+        self.view.clicked.connect(self.clicked)
 
     def clicked(self, index):
 
         print(index.data(QtCore.Qt.UserRole))
-
-    def moveSlider(self, value):
-
-        if value == self.scroll.maximum():
-            self.model.addMaxRow()
 
 
 if __name__ == '__main__':
