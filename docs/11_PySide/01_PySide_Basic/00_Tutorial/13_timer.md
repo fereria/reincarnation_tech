@@ -1,0 +1,90 @@
+---
+title: シンプルなタイマーを作ろう
+---
+
+PySideのGUIを、定期的にアップデートしたいような事はよくあります。
+そういったときにQThreadをつかって更新をスレッドにする手もありますが、簡単なものなら
+QTimerを使用することで、手軽に作成できるので使い方を説明します。
+
+```python
+# -*- coding: utf-8 -*-
+import sys
+from PySide2.QtCore import (QTimer, QObject)
+from PySide2.QtWidgets import (QApplication, QDialog, QLineEdit, QVBoxLayout)
+
+FORMAT = "今のカウントは {count} です。"
+
+
+class TimerSample(QDialog):
+
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
+
+        self.count = 0
+
+        self.line = QLineEdit(self)
+        self.line.setText(FORMAT.format(count=str(self.count)))
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.line)
+        self.setLayout(layout)
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.timeout)
+        self.timer.setInterval(1000)
+        self.timer.start()
+        self.timer.singleShot(10000, self.singleShotA)
+        self.timer.singleShot(15000, self.singleShotB)
+        
+
+    def timeout(self):
+
+        self.count += 1
+        self.line.setText(FORMAT.format(count=str(self.count)))
+
+    def singleShotA(self):
+
+        self.timer.stop()
+        self.line.setText("カウント終了！")
+        
+    def singleShotB(self):
+        
+        self.timer.start()
+
+
+if __name__ == "__main__":
+    app = QApplication()
+    a = TimerSample()
+    a.show()
+    app.exec_()
+```
+
+サンプルコードは以上です。
+
+## 基本的な使い方
+
+![](https://gyazo.com/adcba2b323f589b2a53e8b34a5a290fe.png)
+
+QTimerは、その名の通り一定間隔でシグナルを発する機能を持ちます。
+間隔は setInterval(ミリ秒) または、 start() の引数で間隔を指定します。
+上の例ならば、１秒おきにシグナルが発行されて、 timeout シグナルに接続された
+timeout関数が呼ばれます。
+
+## SingleShot
+
+start を使用することで、定期的にシグナルを発行できましたが
+それとは別に singleShot と呼ばれる機能もあります。
+これは、定期実行ではなく、指定の秒数（ミリ秒）後にその名の通り１度だけ
+実行する関数を指定できます。
+
+サンプルコードの場合、
+
+```python
+        self.timer.singleShot(10000, self.singleShotA)
+        self.timer.singleShot(15000, self.singleShotB)
+```
+10秒後にsingleShotA関数を実行し、タイマーを停止したあと、
+15秒後に再開する関数を呼び出します。
+
+singleShotはこのように複数指定ができます。
+
