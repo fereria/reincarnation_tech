@@ -8,6 +8,7 @@ from nbconvert import TemplateExporter, exporters
 import nbformat
 
 import codecs
+import yaml
 
 
 def getGithubRoot():
