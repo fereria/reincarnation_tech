@@ -6082,33 +6082,123 @@
 pluginDirName/resources/plugInfo.json<br />
 に保存します。</p>
 <h3 id="metadata">Metadataを使用する<a class="headerlink" href="#metadata" title="Permanent link">¶</a></h3>
-<p>ConvertEerror!! -&gt;docs/11_Pipeline/01_USD/ipynb/custom_metadata.ipynb<br />
-Traceback (most recent call last):<br />
-  File "/work_dir/main.py", line 136, in embedIpynb<br />
-    f"    <i class="fa fa-bookmark"></i> <a href="{getGithubRoot()}/tree/master/{ipynbPath}">{os.path.basename(ipynbPath)}</a>"]<br />
-  File "/work_dir/main.py", line 16, in getGithubRoot<br />
-    obj = yaml.safe_load(f)<br />
-NameError: name 'yaml' is not defined</p>
+<div class="admonition example">
+<p><i class="fa fa-angle-double-right"></i> In [2]:<br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
+<span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/samplePrim&#39;</span><span class="p">)</span>
+<span class="c1"># Metadataを指定する</span>
+<span class="n">prim</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="s1">&#39;sample_metadata&#39;</span><span class="p">,</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+
+def &quot;samplePrim&quot; (
+    sample_metadata = &quot;hogehoge&quot;
+)
+{
+}
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><i class="fa fa-bookmark"></i> <a href="https://github.com/fereria/reincarnation_tech/tree/master/docs/11_Pipeline/01_USD/ipynb/custom_metadata.ipynb">custom_metadata.ipynb</a></p>
+</div>
 <p>まずはPrimを指定する場合。<br />
 appliesTo で、 prims を指定することでPrimにMetadataを追加できます。</p>
-<p>ConvertEerror!! -&gt;docs/11_Pipeline/01_USD/ipynb/custom_metadata.ipynb<br />
-Traceback (most recent call last):<br />
-  File "/work_dir/main.py", line 136, in embedIpynb<br />
-    f"    <i class="fa fa-bookmark"></i> <a href="{getGithubRoot()}/tree/master/{ipynbPath}">{os.path.basename(ipynbPath)}</a>"]<br />
-  File "/work_dir/main.py", line 16, in getGithubRoot<br />
-    obj = yaml.safe_load(f)<br />
-NameError: name 'yaml' is not defined</p>
+<div class="admonition example">
+<p><i class="fa fa-angle-double-right"></i> In [3]:<br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
+<span class="c1"># Layerに対してMetadataを追加する</span>
+<span class="n">pseudoRoot</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPseudoRoot</span><span class="p">()</span>
+<span class="n">pseudoRoot</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="s1">&#39;layer_metadata&#39;</span><span class="p">,</span><span class="s1">&#39;hoge&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+(
+    layer_metadata = &quot;hoge&quot;
+)
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><i class="fa fa-bookmark"></i> <a href="https://github.com/fereria/reincarnation_tech/tree/master/docs/11_Pipeline/01_USD/ipynb/custom_metadata.ipynb">custom_metadata.ipynb</a></p>
+</div>
 <p>次にLayerの場合。<br />
 SdfLayerには SetMetadataはありません。<br />
 Layerに対してLayerを指定したい場合は、GetPseudoRoot で RootPrimを取得して<br />
 そのPrimに対してMetadataを指定すると、Layerに対してMetadataを指定できます。</p>
-<p>ConvertEerror!! -&gt;docs/11_Pipeline/01_USD/ipynb/custom_metadata.ipynb<br />
-Traceback (most recent call last):<br />
-  File "/work_dir/main.py", line 136, in embedIpynb<br />
-    f"    <i class="fa fa-bookmark"></i> <a href="{getGithubRoot()}/tree/master/{ipynbPath}">{os.path.basename(ipynbPath)}</a>"]<br />
-  File "/work_dir/main.py", line 16, in getGithubRoot<br />
-    obj = yaml.safe_load(f)<br />
-NameError: name 'yaml' is not defined</p>
+<div class="admonition example">
+<p><i class="fa fa-angle-double-right"></i> In [1]:<br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
+<span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/samplePrim&#39;</span><span class="p">)</span>
+<span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;sampleAttr&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Int</span><span class="p">)</span>
+<span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">attr</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="s1">&#39;attr_metadata&#39;</span><span class="p">,</span><span class="mi">123</span><span class="p">)</span>
+<span class="c1"># Metadataを指定する</span>
+<span class="n">prim</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="s1">&#39;sample_metadata&#39;</span><span class="p">,</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+
+def &quot;samplePrim&quot; (
+    sample_metadata = &quot;hogehoge&quot;
+)
+{
+    custom int sampleAttr = 100 (
+        attr_metadata = 123
+    )
+}
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><i class="fa fa-bookmark"></i> <a href="https://github.com/fereria/reincarnation_tech/tree/master/docs/11_Pipeline/01_USD/ipynb/custom_metadata.ipynb">custom_metadata.ipynb</a></p>
+</div>
 <p>Attribute/Propertisに対しての場合。<br />
 appliesToは複数指定することができて、複数の場合は配列で渡せばOKです。</p>
                 

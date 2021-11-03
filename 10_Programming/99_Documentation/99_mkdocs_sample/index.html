@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-rendering-error" class="md-skip">
+        <a href="#mkdocs-markdown" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -2705,9 +2705,103 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          mkdocsでのMarkdown記載サンプル
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         mkdocsでのMarkdown記載サンプル
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    画像
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codesample" class="md-nav__link">
+    CodeSample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#icon" class="md-nav__link">
+    icon
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontawesome" class="md-nav__link">
+    fontawesome
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontstyle" class="md-nav__link">
+    fontstyle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    マクロを作る
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipynb" class="md-nav__link">
+    ipynb
+  </a>
+  
+    <nav class="md-nav" aria-label="ipynb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drawio" class="md-nav__link">
+    drawioを指定して作図結果を表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    includeマクロ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5912,6 +6006,83 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    画像
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codesample" class="md-nav__link">
+    CodeSample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#icon" class="md-nav__link">
+    icon
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontawesome" class="md-nav__link">
+    fontawesome
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontstyle" class="md-nav__link">
+    fontstyle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    マクロを作る
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipynb" class="md-nav__link">
+    ipynb
+  </a>
+  
+    <nav class="md-nav" aria-label="ipynb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drawio" class="md-nav__link">
+    drawioを指定して作図結果を表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    includeマクロ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5928,35 +6099,203 @@
                   </a>
                 
                 
-                <h1 id="macro-rendering-error"><em>Macro Rendering Error</em><a class="headerlink" href="#macro-rendering-error" title="Permanent link">¶</a></h1>
-<p><strong>NameError</strong>: name 'yaml' is not defined</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.7/site-packages/mkdocs_macros/plugin.py&quot;, line 434, in render
-    return md_template.render(**page_variables)
-  File &quot;/usr/local/lib/python3.7/site-packages/jinja2/environment.py&quot;, line 1304, in render
-    self.environment.handle_exception()
-  File &quot;/usr/local/lib/python3.7/site-packages/jinja2/environment.py&quot;, line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File &quot;&lt;template&gt;&quot;, line 24, in top-level template code
-  File &quot;/work_dir/main.py&quot;, line 104, in img
-    return f&quot;![]({getGithubRoot()}/img/{path})&quot;
-  File &quot;/work_dir/main.py&quot;, line 16, in getGithubRoot
-    obj = yaml.safe_load(f)
-NameError: name &#39;yaml&#39; is not defined
+                <h1 id="mkdocs-markdown">mkdocs での Markdown 記載サンプル<a class="headerlink" href="#mkdocs-markdown" title="Permanent link">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">ほげほげ</p>
+<p>テスト</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>いんふぉ</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>tip</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>Success</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Example</p>
+</div>
+<p>FootNote のテスト <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<h3 id="_1">画像<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
+<p><img alt="" src="https://github.com/fereria/reincarnation_tech/img/icon.jpg" /></p>
+<h3 id="codesample">CodeSample<a class="headerlink" href="#codesample" title="Permanent link">¶</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span><span class="p">,</span> <span class="n">Gf</span><span class="p">,</span> <span class="n">OrigSchema</span>
+
+<span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="n">hogePrim</span> <span class="o">=</span> <span class="n">OrigSchema</span><span class="o">.</span><span class="n">ConcreteBasePrim</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="s1">&#39;/hoge&#39;</span><span class="p">)</span>
+<span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;I:/test.usda&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+<p><img src="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27UTF-8%27%3F%3E%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.0//EN%22%20%22http%3A//www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd%22%3E%0A%3Csvg%20viewBox%3D%220%200%20832%20200%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Ainkspace%3D%22http%3A//www.inkscape.org/namespaces/inkscape%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%3Cdefs%20id%3D%22defs_block%22%3E%0A%20%20%20%20%3Cfilter%20height%3D%221.504%22%20id%3D%22filter_blur%22%20inkspace%3Acollect%3D%22always%22%20width%3D%221.1575%22%20x%3D%22-0.07875%22%20y%3D%22-0.252%22%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20id%3D%22feGaussianBlur3780%22%20inkspace%3Acollect%3D%22always%22%20stdDeviation%3D%224.2%22%20/%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%20%20%3Ctitle%3Eblockdiag%3C/title%3E%0A%20%20%3Cdesc%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%2267%22%20y%3D%2246%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22259%22%20y%3D%2246%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22259%22%20y%3D%22126%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22451%22%20y%3D%2246%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22643%22%20y%3D%2246%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22451%22%20y%3D%22126%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%280%2C0%2C0%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20style%3D%22filter%3Aurl%28%23filter_blur%29%3Bopacity%3A0.7%3Bfill-opacity%3A1%22%20width%3D%22128%22%20x%3D%22643%22%20y%3D%22126%22%20/%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%2264%22%20y%3D%2240%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%226%22%20x%3D%22128.0%22%20y%3D%2266%22%3EA%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22256%22%20y%3D%2240%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%226%22%20x%3D%22320.0%22%20y%3D%2266%22%3EB%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22256%22%20y%3D%22120%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%226%22%20x%3D%22320.0%22%20y%3D%22146%22%3EE%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22448%22%20y%3D%2240%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%226%22%20x%3D%22512.0%22%20y%3D%2266%22%3EC%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22640%22%20y%3D%2240%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%226%22%20x%3D%22704.0%22%20y%3D%2266%22%3ED%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22448%22%20y%3D%22120%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%226%22%20x%3D%22512.0%22%20y%3D%22146%22%3EF%3C/text%3E%0A%20%20%3Crect%20fill%3D%22rgb%28255%2C255%2C255%29%22%20height%3D%2240%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20width%3D%22128%22%20x%3D%22640%22%20y%3D%22120%22%20/%3E%0A%20%20%3Ctext%20fill%3D%22rgb%280%2C0%2C0%29%22%20font-family%3D%22sans-serif%22%20font-size%3D%2211%22%20font-style%3D%22normal%22%20font-weight%3D%22normal%22%20text-anchor%3D%22middle%22%20textLength%3D%226%22%20x%3D%22704.0%22%20y%3D%22146%22%3EG%3C/text%3E%0A%20%20%3Cpath%20d%3D%22M%20192%2060%20L%20248%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22255%2C60%20248%2C56%20248%2C64%20255%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20192%2060%20L%20224%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20224%2060%20L%20224%20140%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20224%20140%20L%20248%20140%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22255%2C140%20248%2C136%20248%2C144%20255%2C140%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20384%2060%20L%20440%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22447%2C60%20440%2C56%20440%2C64%20447%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20576%2060%20L%20632%2060%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22639%2C60%20632%2C56%20632%2C64%20639%2C60%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20384%20140%20L%20440%20140%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22447%2C140%20440%2C136%20440%2C144%20447%2C140%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpath%20d%3D%22M%20576%20140%20L%20632%20140%22%20fill%3D%22none%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%20%20%3Cpolygon%20fill%3D%22rgb%280%2C0%2C0%29%22%20points%3D%22639%2C140%20632%2C136%20632%2C144%20639%2C140%22%20stroke%3D%22rgb%280%2C0%2C0%29%22%20/%3E%0A%3C/svg%3E%0A" /></p>
+<p><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-delete">Del</kbd></span></p>
+<p><i class="fa fa-external-link"></i> <a href="http://www.mkdocs.org/">MkDocs</a></p>
+<h3 id="icon">icon<a class="headerlink" href="#icon" title="Permanent link">¶</a></h3>
+<p><img alt="😄" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f604.png" title=":smile:" /><br />
+<i class="fa fa-coffee"></i></p>
+<p><img alt="🐟" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f41f.png" title=":fish:" /><br />
+<img alt="🐸" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f438.png" title=":frog:" /></p>
+<h3 id="fontawesome">fontawesome<a class="headerlink" href="#fontawesome" title="Permanent link">¶</a></h3>
+<p><i class="fa fa-building"></i><br />
+<i class="fa fa-android"></i><br />
+<i class="fa fa-copy"></i><br />
+<i class="fa fa-folder"></i><br />
+<i class="fa fa-angle-double-right"></i></p>
+<p><i class="fa fa-angle-right"></i></p>
+<h3 id="fontstyle">fontstyle<a class="headerlink" href="#fontstyle" title="Permanent link">¶</a></h3>
+<p><mark>MARK TEST</mark> hogehoge<br />
+<del>sample</del></p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox"/> test</li>
+<li class="task-list-item"><input type="checkbox"/> check2</li>
+<li class="task-list-item">
+<p><input type="checkbox"/> check3</p>
+</li>
+<li>
+<p>A</p>
+</li>
+<li>B</li>
+<li>C</li>
+<li>D</li>
+<li>E<ol>
+<li>F</li>
+<li>G</li>
+</ol>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>table</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>あ</td>
+<td>い</td>
+<td>う</td>
+<td>え</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">マクロを作る<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<blockquote class="twitter-tweet"><a href="https://twitter.com/fereria/status/1164544426967875584"></a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div style="font-size:150.0%;color:#00ff00">hoge</div>
+
+<script src="https://gist.github.com/fereria/1484e59d53c93f7264a757961c9fa738.js"></script>
+
+<div class="balloon5">
+  <div class="faceicon">
+    <img src="https://gyazo.com/3df214f13e2b6b8a4e903a0f9a3a35c0.png">
+  </div>
+  <div class="chatting">
+    <div class="says">
+      <p>ここに吹き出しの中の文字を入れると
+表示できる。</p>
+    </div>
+  </div>
+</div>
+
+<p><span class="green-badge badge-all">ほげほげ</span> <span class="blue-badge badge-all">ふがふが</span></p>
+<h2 id="ipynb">ipynb<a class="headerlink" href="#ipynb" title="Permanent link">¶</a></h2>
+<p>リポジトリ以下のipynbをロードしてmarkdownとして埋め込み</p>
+<div class="admonition example">
+<p><i class="fa fa-angle-double-right"></i> In [1]:<br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!!&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Hello World!!
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><i class="fa fa-angle-double-right"></i> In [3]:<br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hoge Hoge&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Hoge Hoge
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><i class="fa fa-bookmark"></i> <a href="https://github.com/fereria/reincarnation_tech/tree/master/notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb">hello_world__埋め込み用サンプル.ipynb</a></p>
+</div>
+<p>一部だけ埋め込みたい場合</p>
+<div class="admonition example">
+<p><i class="fa fa-angle-double-right"></i> In [1]:<br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!!&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Hello World!!
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><i class="fa fa-bookmark"></i> <a href="https://github.com/fereria/reincarnation_tech/tree/master/notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb">hello_world__埋め込み用サンプル.ipynb</a></p>
+</div>
+<del class="critic block">
+<ul>
+<li>test remove</li>
+<li>test remove</li>
+<li>test remove<ul>
+<li>test remove</li>
+</ul>
+</li>
+<li>test remove</li>
+</ul>
+</del>
+<ins class="critic block">
+<ul>
+<li>test add</li>
+<li>test add</li>
+<li>test add<ul>
+<li>test add</li>
+</ul>
+</li>
+<li>test add</li>
+</ul>
+</ins>
+<p><mark class="critic">some text</mark></p>
+<pre class="mermaid"><code>graph TD
+    A[Hard] --&gt;|Text| B(Round)
+    B --&gt; C{Decision}
+    C --&gt;|One| D[Result 1]
+    C --&gt;|Two| E[Result 2]</code></pre>
+<h3 id="drawio">drawioを指定して作図結果を表示<a class="headerlink" href="#drawio" title="Permanent link">¶</a></h3>
+<p><img alt="My alt text" src="../sample.drawio-0.svg" /></p>
+<h3 id="include">includeマクロ<a class="headerlink" href="#include" title="Permanent link">¶</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello World!!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HOGEHOGE&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>一番下に解説が追加される&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                     
