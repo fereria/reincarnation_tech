@@ -34,7 +34,7 @@ Blogなどにコードの引用する事なども、基本OKですが、
 | 言語         | Python(メイン) C#(Excel Unity) JavaScript(AE)                                                      |
 | 趣味とか     | 旅行、カメラ                                                                                       |
 | Twitter      | https://twitter.com/fereria                                                                        |
-| 日記         | https://reincarnation.fanbox.cc/                                                                   |
+| 日記         | https://fereria.github.io/blog/                                                                    |
 | 写真         | https://500px.com/megumiando                                                                       |
 
 ## 最近の更新
