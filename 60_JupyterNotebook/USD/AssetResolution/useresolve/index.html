@@ -4580,8 +4580,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#in-21" class="md-nav__link">
-    In [21]:
+  <a href="#in-25" class="md-nav__link">
+    In [25]:
   </a>
   
 </li>
@@ -6086,8 +6086,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#in-21" class="md-nav__link">
-    In [21]:
+  <a href="#in-25" class="md-nav__link">
+    In [25]:
   </a>
   
 </li>
@@ -6145,21 +6145,23 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<h4 id="in-21">In [21]:<a class="headerlink" href="#in-21" title="Permanent link">¶</a></h4>
+<h4 id="in-25">In [25]:<a class="headerlink" href="#in-25" title="Permanent link">¶</a></h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># ResolvedPathが、すでに解決済のPath</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># ResolvedPathが、すでに解決済のPath</span>
 <span class="c1"># このPathから、新しいAssetPathを作成するのが CreateIdentifierForNewAsset</span>
 <span class="n">resolved</span> <span class="o">=</span> <span class="n">Ar</span><span class="o">.</span><span class="n">ResolvedPath</span><span class="p">(</span><span class="s2">&quot;D:/usdsample/hoge.usda&quot;</span><span class="p">)</span>
 <span class="n">assetPath</span> <span class="o">=</span> <span class="s2">&quot;./change.usda&quot;</span>
-<span class="n">resolver</span><span class="o">.</span><span class="n">CreateIdentifierForNewAsset</span><span class="p">(</span><span class="n">assetPath</span><span class="p">,</span><span class="n">resolved</span><span class="p">)</span>
+<span class="n">inputPath</span> <span class="o">=</span> <span class="n">resolver</span><span class="o">.</span><span class="n">CreateIdentifierForNewAsset</span><span class="p">(</span><span class="n">assetPath</span><span class="p">,</span><span class="n">resolved</span><span class="p">)</span>
+<span class="n">resolver</span><span class="o">.</span><span class="n">Resolve</span><span class="p">(</span><span class="n">inputPath</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&#39;d:/usdsample/change.usda&#39;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Ar.ResolvedPath(&#39;d:\usdsample\change.usda&#39;)
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -6203,7 +6205,7 @@
 <div class="md-source-date">
   <small>
     
-      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-11-20 19:21:59</span>
+      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-11-20 19:48:01</span>
       
     
   </small>
