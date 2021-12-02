@@ -4,7 +4,7 @@ tags:
     - USD
 ---
 
-[Universal Scene Description](https://qiita.com/advent-calendar/2021/usd) 2日目。
+[Universal Scene Description](https://qiita.com/advent-calendar/2021/usd) 3日目。
 今回は、今までしっかり説明指定していなかった、USDの「Propertyの基本」について説明していこうと思います。
 
 ## Propertyとは
