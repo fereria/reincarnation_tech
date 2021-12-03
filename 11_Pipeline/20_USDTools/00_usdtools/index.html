@@ -3271,29 +3271,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usda-10" class="md-nav__link">
-    usda 1.0
+  <a href="#usdchecker_1" class="md-nav__link">
+    usdcheckerの引数
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#usda-10_1" class="md-nav__link">
-    usda 1.0
-  </a>
-  
-    <nav class="md-nav" aria-label="usda 1.0">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    まとめ
+    実装をみる
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    まとめ
+  </a>
   
 </li>
       
@@ -6199,29 +6193,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usda-10" class="md-nav__link">
-    usda 1.0
+  <a href="#usdchecker_1" class="md-nav__link">
+    usdcheckerの引数
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#usda-10_1" class="md-nav__link">
-    usda 1.0
-  </a>
-  
-    <nav class="md-nav" aria-label="usda 1.0">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    まとめ
+    実装をみる
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    まとめ
+  </a>
   
 </li>
       
@@ -6243,6 +6231,8 @@
                   </a>
                 
                 
+                  <h1>USDの便利なツールたち (1) checker</h1>
+                
                 <p><a href="https://qiita.com/advent-calendar/2021/usd">USD AdventCalendar2021</a> 4日目は USDに付属する便利ツール usdcheckerについて<br />
 紹介したいとおもいます。</p>
 <p>USDには、シーングラフを扱うライブラリ以外にも、<a href="https://graphics.pixar.com/usd/release/toolset.html">様々なコマンドライン・GUIツールセット</a>が多数用意されています。<br />
@@ -6261,17 +6251,8 @@ usdviewは、様々な場所で紹介されているので知っている人も�
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdchecker D:/sample.usda
 </code></pre></div>
 </td></tr></table>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">sample.usda</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<script src="https://gist.github.com/fereria/c9b5d59bd398f9a87fdc2dd6a1d453b8.js"></script>
 
-<span class="k k-Tokens">def</span><span class="w"> </span>Mesh<span class="w"> </span><span class="s">&quot;😄&quot;</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
 <p>たとえばこんな感じの usda を書いたとしましょう。<br />
 こんなPrim定義して大丈夫なのかよ...と思うかと思いますが、</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6294,74 +6275,82 @@ pxr.Tf.ErrorException:
 </code></pre></div>
 </td></tr></table>
 <p>こんな不届きなusdaは絶対に、絶対に許さない と、usdcheckerに怒られます。</p>
-<p>```usda title="sample.usda</p>
-<h1 id="usda-10">usda 1.0<a class="headerlink" href="#usda-10" title="Permanent link">¶</a></h1>
-<p>def Mesh "sampleMesh"<br />
-{<br />
-}<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>２バイト文字など許されるわけではない、ということで名前を変えてもう一度確認してみます。
-</code></pre></div>
-</td></tr></table><br />
-[91mStage does not specify an upAxis. (fails 'StageMetadataChecker')[0m<br />
-[91mStage does not specify its linear scale in metersPerUnit. (fails 'StageMetadataChecker')[0m<br />
-[91mStage has missing or invalid defaultPrim. (fails 'StageMetadataChecker')[0m<br />
-Failed!<br />
+<script src="https://gist.github.com/fereria/721b03ee90083c0373ebf27020fe6eb6.js"></script>
+
+<p>２バイト文字など許されるわけではない、ということで名前を変えてもう一度確認してみます。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>まだ許されませんでした。
-ログをみると、**upAxisを指定しろ、metersPerUnitを指定しろ、defaultPrimがない**と怒られているのがわかります。
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[91mStage does not specify an upAxis. (fails &#39;StageMetadataChecker&#39;)[0m
+[91mStage does not specify its linear scale in metersPerUnit. (fails &#39;StageMetadataChecker&#39;)[0m
+[91mStage has missing or invalid defaultPrim. (fails &#39;StageMetadataChecker&#39;)[0m
+Failed!
 </code></pre></div>
-</td></tr></table></p>
-<h1 id="usda-10_1">usda 1.0<a class="headerlink" href="#usda-10_1" title="Permanent link">¶</a></h1>
-<p>(<br />
-    defaultPrim="sampleMesh"<br />
-    upAxis = "Z"<br />
-    metersPerUnit=1</p>
-<p>)</p>
-<p>def Mesh "sampleMesh"<br />
-{<br />
-}<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>いわれたとおりに修正して、もう一度実行してみます。
+</td></tr></table>
+<p>まだ許されませんでした。<br />
+ログをみると、<strong>upAxisを指定しろ、metersPerUnitを指定しろ、defaultPrimがない</strong>と怒られているのがわかります。</p>
+<script src="https://gist.github.com/fereria/e429922483916c6da418182495819a50.js"></script>
+
+<p>いわれたとおりに修正して、もう一度実行してみます。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Success!
 </code></pre></div>
-</td></tr></table><br />
-Success!<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ようやく許してもらうことができました。
-ありがとうusdchecker。
-
-## usdcheckerの引数
-
-チェックしたいファイル以外にも引数を指定することができます。
-
-| 引数                    | 効果                                                                                                                                                |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| --dumpRules             | 引数を追加すると、チェック項目の詳細をDumpしてくれます。                                                                                            |
-| --out -o \&lt;outputPath\&gt; | 指定のoutputPathに、チェック結果を保存てくれます                                                                                                    |
-| --skiVariants           | 現在の選択されているバリアントのみチェックします                                                                                                    |
-| --rooPackageOnly        | 指定のパッケージ以下にネストされているデータはスキップします                                                                                        |
-| --arkit                 | arkit用のより厳しいチェック（ARKitRootLayerChecker）をします。&lt;br&gt;例として、upAxisがYか、usdcかどうか、等。                                         |
-| --noAssetChecks         | Asset用のチェック（DefaultPrimが指定されているかなど）のような&lt;br&gt;後述のチェックルールのうち、AssetLevelCheck向こうのチェックルールはスキップします |
-
-たとえば、アセットではなくレンダリング用アセットを配置したUSDファイルをチェックして、その結果を
-指定ファイルに保存したい場合。
+</td></tr></table>
+<p>ようやく許してもらうことができました。<br />
+ありがとうusdchecker。</p>
+<h2 id="usdchecker_1">usdcheckerの引数<a class="headerlink" href="#usdchecker_1" title="Permanent link">¶</a></h2>
+<p>チェックしたいファイル以外にも引数を指定することができます。</p>
+<table>
+<thead>
+<tr>
+<th>引数</th>
+<th>効果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--dumpRules</td>
+<td>引数を追加すると、チェック項目の詳細をDumpしてくれます。</td>
+</tr>
+<tr>
+<td>--out -o \&lt;outputPath></td>
+<td>指定のoutputPathに、チェック結果を保存てくれます</td>
+</tr>
+<tr>
+<td>--skiVariants</td>
+<td>現在の選択されているバリアントのみチェックします</td>
+</tr>
+<tr>
+<td>--rooPackageOnly</td>
+<td>指定のパッケージ以下にネストされているデータはスキップします</td>
+</tr>
+<tr>
+<td>--arkit</td>
+<td>arkit用のより厳しいチェック（ARKitRootLayerChecker）をします。<br>例として、upAxisがYか、usdcかどうか、等。</td>
+</tr>
+<tr>
+<td>--noAssetChecks</td>
+<td>Asset用のチェック（DefaultPrimが指定されているかなど）のような<br>後述のチェックルールのうち、AssetLevelCheck向こうのチェックルールはスキップします</td>
+</tr>
+</tbody>
+</table>
+<p>たとえば、アセットではなくレンダリング用アセットを配置したUSDファイルをチェックして、その結果を<br />
+指定ファイルに保存したい場合。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdchecker --noAssetChecks --o c001_results.txt c001_render.usda
 </code></pre></div>
-</td></tr></table><br />
-usdchecker --noAssetChecks --o c001_results.txt c001_render.usda<br />
+</td></tr></table>
+<p>このようになります。<br />
+レンダリングする前など、アセットをパブリッシュする前などに この usdcheckerを挟むことで<br />
+ミスを防ぐことができるかと思います。</p>
+<h2 id="_2">実装をみる<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>最後に、サクッと実装をみてみます。<br />
+USDツールのソースコードは、</p>
+<blockquote>
+<p>USD/pxr/usd/bin</p>
+</blockquote>
+<p>以下にあります。<br />
+usdcheckerであれば bin 以下のusdchecker/usdchecker.py<br />
+が、元になります。</p>
+<p>チェック本体は、UsdUtilsモジュールから実行することができます。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6382,65 +6371,29 @@ usdchecker --noAssetChecks --o c001_results.txt c001_render.usda<br />
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>このようになります。
-レンダリングする前など、アセットをパブリッシュする前などに この usdcheckerを挟むことで
-ミスを防ぐことができるかと思います。
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdUtils</span>
 
-## 実装をみる
-
-最後に、サクッと実装をみてみます。
-USDツールのソースコードは、
-
-&gt; USD/pxr/usd/bin
-
-以下にあります。
-usdcheckerであれば bin 以下のusdchecker/usdchecker.py
-が、元になります。
-
-チェック本体は、UsdUtilsモジュールから実行することができます。
-
-```python
-from pxr import UsdUtils
-
-arKit = False
-rootPackageOnly = False
-skipVariants = False
-verbose = False
-noAssetCheck = False
+<span class="n">arKit</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">rootPackageOnly</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">skipVariants</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">noAssetCheck</span> <span class="o">=</span> <span class="kc">False</span>
 
 
-checker = UsdUtils.ComplianceChecker(arkit=arKit, 
-                                         skipARKitRootLayerCheck=False, 
-                                         rootPackageOnly=rootPackageOnly, 
-                                         skipVariants=skipVariants, 
-                                         verbose=verbose,
-                                         assetLevelChecks=noAssetCheck)
+<span class="n">checker</span> <span class="o">=</span> <span class="n">UsdUtils</span><span class="o">.</span><span class="n">ComplianceChecker</span><span class="p">(</span><span class="n">arkit</span><span class="o">=</span><span class="n">arKit</span><span class="p">,</span> 
+                                         <span class="n">skipARKitRootLayerCheck</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                                         <span class="n">rootPackageOnly</span><span class="o">=</span><span class="n">rootPackageOnly</span><span class="p">,</span> 
+                                         <span class="n">skipVariants</span><span class="o">=</span><span class="n">skipVariants</span><span class="p">,</span> 
+                                         <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+                                         <span class="n">assetLevelChecks</span><span class="o">=</span><span class="n">noAssetCheck</span><span class="p">)</span>
 
-# 指定ファイルをチェック
-checker.CheckCompliance(&quot;D:/sample.usda&quot;)
-# 結果を取得 問題なければ空のリストが帰ってくる
-print(checker.GetWarnings())
-print(checker.GetErrors())
+<span class="c1"># 指定ファイルをチェック</span>
+<span class="n">checker</span><span class="o">.</span><span class="n">CheckCompliance</span><span class="p">(</span><span class="s2">&quot;D:/sample.usda&quot;</span><span class="p">)</span>
+<span class="c1"># 結果を取得 問題なければ空のリストが帰ってくる</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">checker</span><span class="o">.</span><span class="n">GetWarnings</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">checker</span><span class="o">.</span><span class="n">GetErrors</span><span class="p">())</span>
 </code></pre></div>
-</td></tr></table></p>
+</td></tr></table>
 <blockquote>
 <p>USD/pxr/usd/usdUtils/complianceChecker.py</p>
 </blockquote>
@@ -6452,7 +6405,7 @@ print(checker.GetErrors())
 <p>usdcheckerに限らずですが、USDのツールセットはすべてUSDリポジトリ以下にソースコードがあります。<br />
 このコード類は、USDを使わなかった場合でも自社ツールを開発するうえでも非常に参考になるサンプルなので<br />
 興味がある人はツールを使うだけではなくソースコードも覗いてみるのをお勧めします。</p>
-<h2 id="_2">まとめ<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>以上、USDツール紹介第一弾 usdcheckerでした。<br />
 レンダリングした後にデータのミスが見つかり、もう一度レンダリングをし直す...というのは<br />
 CG屋あるあるだと思います。<br />
@@ -6466,7 +6419,7 @@ USDを使用したパイプラインを構築する場合は、ぜひとも導�
 <div class="md-source-date">
   <small>
     
-      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-04 00:07:38</span>
+      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-04 00:14:30</span>
       
     
   </small>
