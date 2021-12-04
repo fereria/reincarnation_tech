@@ -2,6 +2,7 @@
 title: Property/Attribute/Relationship
 tags:
     - USD
+    - AdventCalendar2021
 ---
 
 [Universal Scene Description](https://qiita.com/advent-calendar/2021/usd) 3日目。
