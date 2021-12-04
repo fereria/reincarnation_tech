@@ -1,5 +1,5 @@
 ---
-title: OpenMasked（PopulationMask）について
+title: PopulationMask(OpenMasked)について
 tags:
     - USD
     - AdventCalendar2021
