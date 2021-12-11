@@ -1,5 +1,9 @@
 ---
 title: InlineUSDを使おう
+tags:
+    - USD
+    - SOLARIS
+    - AdventCalendar2021
 ---
 
 [Advent Calendar 2021 Houdini Apprentice](https://qiita.com/advent-calendar/2021/happrentice) ２日目は、InlineUSDを使おうです。
