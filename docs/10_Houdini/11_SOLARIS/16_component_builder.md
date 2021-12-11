@@ -13,7 +13,7 @@ tags:
 ComponentBuilderとはなにかというと、
 [去年のHoudiniアドカレで書いたUSDアセットを作ろう](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/)の内容を
 もっと簡単にできるようにしたノードです。
-つまりは、去年の記事のような複雑なノードを作らないでも、
+つまりは、去年の記事のような複雑なネットワークを作らないでも、
 このComponentBuilderを使用すれば汎用アセットをセットアップできるようになります。
 
 まさかの翌年で前年に書いた内容が公式のノードとして用意してるとはHoudini恐ろしい子...
