@@ -2,7 +2,7 @@
 title: USDとは
 tags:
     - USD
-    - USDの基本
+    - USD基本
 ---
 
 # USD とは
