@@ -38,7 +38,7 @@ WindowsのPATHと同じように、DEFAULT_SEARCH_PATHで指定されたパス�
 これによって、相対パスで記述されていてもフルパスで表示ができるようになっています。
 
 このように、ある入力のパス（相対パス）からリソースまでのフルパスを検索して
-その結果を返す機構のことを「Asset Resolution」と呼びお、
+その結果を返す機構のことを「Asset Resolution」と呼び、
 そのためのインターフェースを AssetResolver と呼びます。
 デフォルトの ArDefaultResolverも ArAssetResolverから継承され
 実装されたプラグインです。
