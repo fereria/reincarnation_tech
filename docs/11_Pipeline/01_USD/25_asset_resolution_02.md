@@ -1,5 +1,5 @@
 ---
-title: AssetResolution(2) ResolveとContextBinder
+title: AssetResolution(2) ResolveとContext
 tags:
     - USD
     - AdventCalendar2021
@@ -46,6 +46,10 @@ usdresolve asset:/Buzz/{$VERSION}/Buzz.usd --createContextFromString D:\testUsdR
 
 カスタムのResolverの場合、解決用のContextは都度変わりますが usdREsolverExampleの場合、 version.json を
 createContextFromStringに渡すことで、パスの解決をすることができます。
+
+
+このように、usdresolve ツールは、引数に 未解決のAssetPathと
+解決に必要な情報 (anchorPathであったりcontextであったり)を与えることで、解決済のAssetPathをプリントしてくれます。
 
 ### DEBUGメッセージをみてみる
 
