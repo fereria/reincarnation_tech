@@ -3387,6 +3387,19 @@
     usdzipについて
   </a>
   
+    <nav class="md-nav" aria-label="usdzipについて">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usdz" class="md-nav__link">
+    usdz
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3405,7 +3418,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#usdz" class="md-nav__link">
+  <a href="#usdz_1" class="md-nav__link">
     usdzのデータに含まれるファイルを確認する
   </a>
   
@@ -6376,6 +6389,19 @@
     usdzipについて
   </a>
   
+    <nav class="md-nav" aria-label="usdzipについて">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usdz" class="md-nav__link">
+    usdz
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -6394,7 +6420,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#usdz" class="md-nav__link">
+  <a href="#usdz_1" class="md-nav__link">
     usdzのデータに含まれるファイルを確認する
   </a>
   
@@ -6450,12 +6476,21 @@
 紹介したいとおもいます。</p>
 <h2 id="usdzip">usdzipについて<a class="headerlink" href="#usdzip" title="Permanent link">¶</a></h2>
 <p>usdzipとは、usdファイルからusdzパッケージを作成することができるコマンドラインツールです。</p>
-<p>usdzは、</p>
+<h3 id="usdz">usdz<a class="headerlink" href="#usdz" title="Permanent link">¶</a></h3>
 <p><a href="https://graphics.pixar.com/usd/release/wp_usdz.html">https://graphics.pixar.com/usd/release/wp_usdz.html</a></p>
 <p>USDのアセット（usdファイル、テクスチャなどを含む）をzipで１つのファイルにアーカイブしたものです。<br />
 AppleのArKitで使用されていたり、iPhoneの 3d Scanner App などからはテクスチャとスキャンしたモデルを<br />
 出力するためなどに使用されています。</p>
+<blockquote class="twitter-tweet"><a href="https://twitter.com/fereria/status/1350777261335564288"></a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>以前 3d Scanner Appを使用してモデルをスキャン＆PCにもってきて usdview で眺めてみた例。<br />
+この例だと、 usdz にはスキャンしたときのテクスチャも含まれていて<br />
+usdviewでみると、テクスチャも表示された状態になります。</p>
+<p>こんなかんじで、 usdz はテクスチャ等も含んだアセットのパッケージとして<br />
+使用することができて、この usdz を作成することができるツールが usdzip です。</p>
 <h2 id="_1">つかってみる<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>実際に使ってみます。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdzip D:\usdzSample\sample.usdz D:\usdzSample\sample.usd
 </code></pre></div>
 </td></tr></table>
@@ -6476,7 +6511,7 @@ usdzip ＜usdzの出力先＞ ＜USDファイルパス＞<br />
 <p><img alt="" src="https://gyazo.com/ae7995b486322659107a11f80d1152fb.png" /></p>
 <p>usdzは、最初に説明した通りzipファイルなので<br />
 zipにリネームすると中身を除くことができます。</p>
-<h3 id="usdz">usdzのデータに含まれるファイルを確認する<a class="headerlink" href="#usdz" title="Permanent link">¶</a></h3>
+<h3 id="usdz_1">usdzのデータに含まれるファイルを確認する<a class="headerlink" href="#usdz_1" title="Permanent link">¶</a></h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdzip -l D:\kitchen_set.usdz
 </code></pre></div>
 </td></tr></table>
@@ -6550,7 +6585,7 @@ AssetResolverと組み合わせて usdzip 化すると、データを配布し�
 <div class="md-source-date">
   <small>
     
-      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-17 23:43:53</span>
+      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-18 00:01:35</span>
       
     
   </small>
