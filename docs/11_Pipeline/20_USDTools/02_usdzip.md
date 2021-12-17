@@ -12,7 +12,7 @@ tags:
 
 usdzipとは、usdファイルからusdzパッケージを作成することができるコマンドラインツールです。
 
-usdzは、
+### usdz
 
 https://graphics.pixar.com/usd/release/wp_usdz.html
 
@@ -20,7 +20,18 @@ USDのアセット（usdファイル、テクスチャなどを含む）をzip�
 AppleのArKitで使用されていたり、iPhoneの 3d Scanner App などからはテクスチャとスキャンしたモデルを
 出力するためなどに使用されています。
 
+{{'https://twitter.com/fereria/status/1350777261335564288'|twitter}}
+
+以前 3d Scanner Appを使用してモデルをスキャン＆PCにもってきて usdview で眺めてみた例。
+この例だと、 usdz にはスキャンしたときのテクスチャも含まれていて
+usdviewでみると、テクスチャも表示された状態になります。
+
+こんなかんじで、 usdz はテクスチャ等も含んだアセットのパッケージとして
+使用することができて、この usdz を作成することができるツールが usdzip です。
+
 ## つかってみる
+
+実際に使ってみます。
 
 ```
 usdzip D:\usdzSample\sample.usdz D:\usdzSample\sample.usd
