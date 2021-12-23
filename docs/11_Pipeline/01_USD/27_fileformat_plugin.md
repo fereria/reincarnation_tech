@@ -144,8 +144,6 @@ pluginfo.json で追加した Metadata (PluginでCustomMetaDataを追加する�
 最後に軽く実装について触れておきます。
 FileFormatPlugin も DynamicFileFormatPlugin も、 SdfFileFormatクラスを継承することで実装します。
 
-そして、Read関数の layer に対してC++Plugin上でファイルをTraverseし、シーングラフを構築したLayerを渡します。
-
 !!! info 
 
     > USD/extras/usd/examples/usdObj/fileFormat.cpp
@@ -157,21 +155,22 @@ FileFormatPlugin も DynamicFileFormatPlugin も、 SdfFileFormatクラスを継
 
 DynamicFileFormatも、SdfFileFormatクラスを継承して実装するのは共通ですが、
 
-[DynamicFileFormat](https://graphics.pixar.com/usd/release/api/_usd__page__dynamic_file_format.html)
+[DynamicFileFormat](https://graphics.pixar.com/usd/release/api/_usd__page__dynamic_file_format.html)は、ReadでStageを作りLayerを返すようにするか、あるいは
+完全プロシージャルに生成するのであれば（DancingCubeExampleのように）
+SdfAbstractDataクラスを使用することでプロシージャルに生成することが可能です。
 
-ReadでStageを作りLayerを返すようにするか、あるいは
-完全プロシージャルに生成するのであれば（DancingCubeExampleのように）SdfAbstractDataクラスを使用することで
-プロシージャルに生成することが可能です。
 [SdfAbstractData](https://graphics.pixar.com/usd/release/api/class_sdf_abstract_data.html)は、シーンディスクリプションを格納するためのインターフェースで
 あるSdfPath,Field をキーにしてある値のペアを持ちます。
 
 ![](https://gyazo.com/d51122769d32ae951f7a15ee53a5d28b.png)
 
-たとえば、 SdfPath /Root/prim_0/prim_0/prim_0 の Field が TypeName ならば、 Cubeを返すし、
-SdfPath /Root の PrimChildren なら Rootの子Primを返すし、
-SdfPath / (RootPath) で、 Field が DefaultPrim ならば、DefaultPrim を返します。
+たとえば、上記のようなシーングラフの場合(DancingCubeExampleの生成例)
 
-このように、SdfAbstractDataは ある問い合わせに対しての結果を 返すことで
+SdfPath /Root/prim_0/prim_0/prim_0 の Field が TypeName なら Cubeを返すし
+SdfPath /Root の PrimChildren なら Rootの子Primを返すし、
+SdfPath / (RootPath) で、 Field が DefaultPrim なら DefaultPrim を返します。
+
+このように、SdfAbstractDataは ある問い合わせ(key)に対しての結果を 返すことで
 動的にシーングラフを構築しています。
 
 !!! info
@@ -184,10 +183,12 @@ SdfPath / (RootPath) で、 Field が DefaultPrim ならば、DefaultPrim を返
 
 ### PcpDynamicFileFormatInterface 
 
-また、DynamicFileFormatPluginの場合、MetaDataから動的精製用のパラメータ（Usd_DCE_Params）を受け取るために
+また、DynamicFileFormatPluginの場合
+MetaDataから動的精製用のパラメータ（Usd_DCE_Params）を受け取るために
 SdfFileFormat とともに、 PcpDynamicFileFormatInterface を実装します。
 PcpDynamicFileFormatInterface を実装すると、アセットへのPayloadがある場合
-ComposeFieldsForFileFormatArguments を呼び出して、FileFormatPluginへの引数を生成します。
+ComposeFieldsForFileFormatArguments を呼び出して、
+FileFormatPluginへの引数を生成します。
 
 !!! info
 
@@ -197,6 +198,9 @@ ComposeFieldsForFileFormatArguments を呼び出して、FileFormatPluginへの�
     
     上記ファイルで ComposeFieldsForFileFormatArguments が実装されています。
     この中で、MetaDataの辞書型から FileFormatArguments を生成して、 FileFormatPlugin の引数にしています。
+    
+このあたりの実装は、私自身もまだ勉強中ではあるので
+別途カスタムなFormatPlugin実装の記事を書こうと思います。
     
 ## まとめ
 
