@@ -6630,7 +6630,6 @@ pluginfo.json で追加した Metadata (PluginでCustomMetaDataを追加する�
 <h2 id="sdffileformat">SdfFileFormat<a class="headerlink" href="#sdffileformat" title="Permanent link">¶</a></h2>
 <p>最後に軽く実装について触れておきます。<br />
 FileFormatPlugin も DynamicFileFormatPlugin も、 SdfFileFormatクラスを継承することで実装します。</p>
-<p>そして、Read関数の layer に対してC++Plugin上でファイルをTraverseし、シーングラフを構築したLayerを渡します。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <blockquote>
@@ -6641,17 +6640,17 @@ UsdObjTranslateObjToUsd クラスで obj ファイル→USDのシーングラフ
 その結果を layer-&gt;TransforContenxt(objAsUsd); で渡しています。</p>
 </div>
 <p>DynamicFileFormatも、SdfFileFormatクラスを継承して実装するのは共通ですが、</p>
-<p><a href="https://graphics.pixar.com/usd/release/api/_usd__page__dynamic_file_format.html">DynamicFileFormat</a></p>
-<p>ReadでStageを作りLayerを返すようにするか、あるいは<br />
-完全プロシージャルに生成するのであれば（DancingCubeExampleのように）SdfAbstractDataクラスを使用することで<br />
-プロシージャルに生成することが可能です。<br />
-<a href="https://graphics.pixar.com/usd/release/api/class_sdf_abstract_data.html">SdfAbstractData</a>は、シーンディスクリプションを格納するためのインターフェースで<br />
+<p><a href="https://graphics.pixar.com/usd/release/api/_usd__page__dynamic_file_format.html">DynamicFileFormat</a>は、ReadでStageを作りLayerを返すようにするか、あるいは<br />
+完全プロシージャルに生成するのであれば（DancingCubeExampleのように）<br />
+SdfAbstractDataクラスを使用することでプロシージャルに生成することが可能です。</p>
+<p><a href="https://graphics.pixar.com/usd/release/api/class_sdf_abstract_data.html">SdfAbstractData</a>は、シーンディスクリプションを格納するためのインターフェースで<br />
 あるSdfPath,Field をキーにしてある値のペアを持ちます。</p>
 <p><img alt="" src="https://gyazo.com/d51122769d32ae951f7a15ee53a5d28b.png" /></p>
-<p>たとえば、 SdfPath /Root/prim_0/prim_0/prim_0 の Field が TypeName ならば、 Cubeを返すし、<br />
+<p>たとえば、上記のようなシーングラフの場合(DancingCubeExampleの生成例)</p>
+<p>SdfPath /Root/prim_0/prim_0/prim_0 の Field が TypeName なら Cubeを返すし<br />
 SdfPath /Root の PrimChildren なら Rootの子Primを返すし、<br />
-SdfPath / (RootPath) で、 Field が DefaultPrim ならば、DefaultPrim を返します。</p>
-<p>このように、SdfAbstractDataは ある問い合わせに対しての結果を 返すことで<br />
+SdfPath / (RootPath) で、 Field が DefaultPrim なら DefaultPrim を返します。</p>
+<p>このように、SdfAbstractDataは ある問い合わせ(key)に対しての結果を 返すことで<br />
 動的にシーングラフを構築しています。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -6662,10 +6661,12 @@ SdfPath / (RootPath) で、 Field が DefaultPrim ならば、DefaultPrim を返
 <p>にて、SdfAbstractData クラスが実装されています。</p>
 </div>
 <h3 id="pcpdynamicfileformatinterface">PcpDynamicFileFormatInterface<a class="headerlink" href="#pcpdynamicfileformatinterface" title="Permanent link">¶</a></h3>
-<p>また、DynamicFileFormatPluginの場合、MetaDataから動的精製用のパラメータ（Usd_DCE_Params）を受け取るために<br />
+<p>また、DynamicFileFormatPluginの場合<br />
+MetaDataから動的精製用のパラメータ（Usd_DCE_Params）を受け取るために<br />
 SdfFileFormat とともに、 PcpDynamicFileFormatInterface を実装します。<br />
 PcpDynamicFileFormatInterface を実装すると、アセットへのPayloadがある場合<br />
-ComposeFieldsForFileFormatArguments を呼び出して、FileFormatPluginへの引数を生成します。</p>
+ComposeFieldsForFileFormatArguments を呼び出して、<br />
+FileFormatPluginへの引数を生成します。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>DancingCubeExample の場合、 </p>
@@ -6675,6 +6676,8 @@ ComposeFieldsForFileFormatArguments を呼び出して、FileFormatPluginへの�
 <p>上記ファイルで ComposeFieldsForFileFormatArguments が実装されています。<br />
 この中で、MetaDataの辞書型から FileFormatArguments を生成して、 FileFormatPlugin の引数にしています。</p>
 </div>
+<p>このあたりの実装は、私自身もまだ勉強中ではあるので<br />
+別途カスタムなFormatPlugin実装の記事を書こうと思います。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>以上がFileFormatPluginでした。<br />
 実装についてはかなり端折りましたが、FileFormatPluginがどんなものかわかったでしょうか。</p>
@@ -6694,7 +6697,7 @@ USDのパイプラインを構築する上で強力な武器になりますの�
 <div class="md-source-date">
   <small>
     
-      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-23 23:51:12</span>
+      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-24 00:03:55</span>
       
     
   </small>
