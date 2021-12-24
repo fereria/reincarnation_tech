@@ -1,0 +1,222 @@
+---
+title: USDの機能の多くはKitchen_setが教えてくれる
+tags:
+  - USD
+  - AdventCalendar2021
+---
+
+[Universal Scene Description AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 25 日目(最終日)は、
+これまで多くの記事で紹介してきた USD の機能を Kitchen_set を使って改めて紹介していこうと思います。
+
+## Kitchen_set とは
+
+Kitchen_set とは、[USD の公式ドキュメントの Downloads and Videos](https://graphics.pixar.com/usd/release/dl_downloads.html) からダウンロードできるサンプルアセットでです。
+非常にシンプルなデータですが、このサンプルには
+USD を使用するうえでは非常に有用で、参考になる要素が多く含まれています。
+
+USD アドカレ最終回の今回は、この Kitchen_set に含まれる各要素を１つづ解説することで
+USD をどのように構築していけばいいのか、どのように考えてレイヤーや Prim の階層を構築すればよいのかを
+解説していきたいと思います。
+
+### 全体のフォルダ構成
+
+Kitchen_set は、「複数のファイルによって１つの Stage 構成される」という USD の特徴を表したサンプルです。
+そのため、「Kitchen_set」という１つのシーンですが
+多数の USD によって構成されています。
+
+![](https://gyazo.com/1657f3b3d13923c9800246de49e3dfb7.png)
+
+その構造はざっくり分けると２つで構成されています。
+
+assets 以下には AssetName のサブフォルダがあり、
+その下には各個別のレイアウトするためのアセットデータが置かれています。
+このどちらも統一されたルールの上で構成されていて、実際に運用する上での良い参考になります。
+
+### assets
+
+assets は、 [ComponentBuilder で遊ぼう](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/16_component_builder/) や [Python で作る USD アセット](https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/01_Python/07_create_usd_assets/) の回で紹介したような
+指定のコンポジションやレイヤーでセットアップされた USD のアセットです。
+
+Kitchen_set で配置しているアセットは、すべて決められた構造でセットアップされています。
+
+#### レイヤーと役割分担
+
+![](https://gyazo.com/25c4a2f97551b079b7f5611ab2ac3ed0.png)
+
+「Payload の仕組みを追加する」のように、USD では役割に応じてレイヤーを分けることができます。
+assets の各レイヤーと、そのレイヤー内の Prim を図に表すとこのようになります。
+どのようにレイヤーを分けるかは難しい問題ですが、
+まずは Kitchen_set を参考に、役割によって分割したり、更新する人や役割によって分割にすると
+良いと思います。
+
+#### AssetPath
+
+Kitchen_set のアセットは、すべて Kitchen_set.usd からの相対パスで記述されています。
+ためしに、 [usdcat](https://fereria.github.io/reincarnation_tech/11_Pipeline/20_USDTools/01_usdtools_usdcat/) で確認すると
+
+![](https://gyazo.com/adc274495504010c793b68eea80f263a.png)
+
+このように、現在のファイルパスからのパス(AnchorPath) で指定されています。
+このアセットまでのパスは、 AssetResolution という機能を使用して、
+実際のリソースまでの解決を行います。
+
+詳細は、以下のアドカレの記事にて紹介していますが、
+assets をどこに配置してどのようにパスを解決するかはとても重要です。
+
+https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/24_asset_resolution/
+https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/25_asset_resolution_02/
+
+### コンポジションアーク(Payload と Unlaod)
+
+アセットは１つのレイヤーで構成されているわけではなく、複数レイヤーによって作成されています。
+
+![](https://gyazo.com/bffe46076eb0dc6b7abc0394589c7bf5.png)
+
+例えば Ball アセット(assets/Ball/Ball.usd) を開いて確認してみると、このように Payload と Reference が含まれています。
+Geom や Material などをどのように分けるかは構成次第ですが
+最終的に「Payload」をコンポジションに挟むことには大きな意味があります。
+
+これは、アセットをレイアウトしたときにどのような方式でコンポジションしたとしても すべてのアセットはアンロードする
+といったことが可能になるからです。
+
+USD でレイアウトをした場合、１つのシーンに対して数千どころか万単位のレイヤーをコンポジションで合成することになります。
+そうすると、１つのシーンのうちごく一部を修正したい場合であってもすべてを開かなければいけないのは非効率です。
+ペイロードがアセット側に含まれていれば「アンロードする」というのが必ず可能になり
+部分的なロードが用意になります。
+
+```
+usdview D:\Kitchen_set\Kitchen_set.usd --unload
+```
+
+試しに、 usdview で Kitchen_set を開くときに --unload を入れてみます。
+入れるとすべてのアセットがアンロードされるのがわかります。
+
+### DefaultPrim と シーングラフの基本構成
+
+各アセットのシーングラフは、リファレンス、あるいはペイロードを前提とした構造になっています。
+
+リファレンスは、ある Prim に対して（Namespace に対して）べつのシーングラフを「接ぎ木」することです。
+そのため、リファレンスでは @./assets/Ball/Ball.usd@ のようにファイルパスで指定はしていますが
+実際には、その指定したレイヤー内にある Prim 以下を接ぎ木します。
+この時に「どの Prim 以下を接ぎ木したいか」を、レイヤー側に指定していないと
+どの Prim を使用していいのかわからないのでリファレンスができません。
+
+![](https://gyazo.com/0e8c9badfdf5c24e83171bdb9b01764b.png)
+
+USD のアセットを見ると、すべて「DefaultPrim」が /AssetName の Prim に対して指定されています。
+また、アセットのデータは**class** のように継承するための Prim を除き
+こｎ DefaultPrim 以下に配置するようになっています。
+
+![](https://gyazo.com/11d2e16024fec4212df582c6c99cc554.png)
+
+図に表すとこのようになります。
+AssetName 以下には Geom Looks(material) Render といった大分類の Prim があります。
+それ以下に関しては、Reference することでかならずユニークになるので
+いわゆるカプセル化された、この Asset 内で完結したデータになります。
+
+> 参考: https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/09_comp_arc_reference/
+
+### VariantSet
+
+![](https://gyazo.com/9cc32a861669ddb1d4dae8000fdc7ff0.png)
+
+Kitchen_set でレイアウトされているモデルには、VariantSet が含まれているものがあります。
+例えばスクリーンショットの Cube は、同じ Cup.usd をリファレンスしていますが
+ShadingVariant と modelingVariant という２つの VariantSet によって
+同じアセットでもヴァリエーションができるようになっています。
+
+このように、VariantSet を使用することで、配置したあとにマテリアルやモデルを調整するといったことが可能になります。
+
+> 参考: https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/08_comp_arc_Variant/
+
+### AssetInfo
+
+![](https://gyazo.com/96c38d0a20208dda36fb9cb3371627ed.png)
+
+AssetInfo とは、USD で作成されたアセットを管理・識別するために、
+Prim や Property に対して指定することができる辞書型のメタデータ です。
+
+詳細は、[AssetInfo とは](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/23_assetInfo/) こちらのアドカレにて解説していますが
+Kitchen_set のアセットにも、この AssetInfo が含まれていて
+アンロードしている状態であっても、どのファイルが依存しているのかを確認できるようになっています。
+
+### Kind
+
+Kind とは、Prim 単位で指定することができるメタデータの一種で
+「[ModelHierarchy](https://graphics.pixar.com/usd/release/glossary.html#usdglossary-modelhierarchy)」と呼ばれる、USD でアセットをレイアウトするときに
+どのようなルールで階層構造を作り、どのようにリファレンスをするかの指針で
+使用される情報です。
+
+Kind や ModelHierarchy だ一体どういうものかというのは[過去に記事を書いている](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/11_kind_modelhierarchy/)ので
+そちらを参考にしてもらえればですが、
+Kitchen_set はこの ModelHierarchy のルールにのっとって
+作成されています。
+
+![](https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png)
+
+Kind は、ルートの DefaultPrim を assembly それ以下の Asset をグループ化する Prim は group そして
+リファレンスをしている Prim（リファレンスしたモデルの Transform の値を持つ Prim）には component とつけます。
+この component は「leaf model」と呼ばれていて、ModelHierarchy の概念では末端の構成要素になります。
+そのため、Component 以下には Component は作ってはいけないことになっています。
+
+!!! info
+    これは可能ではあるものの、USD のコンポジションやレイヤーの構成上
+    シンプルな状態を保つ（いくらでも複雑化できるけど、適切に扱える範囲に整理する）ための
+    ルールです。
+    もちろん、このルールに沿わなくてもシーンの構築は可能ですが、
+    あまり推奨されません。
+
+Kitchen_set のアセットは、
+
+![](https://gyazo.com/a6867a41b587b2c7b0f7c65929d790a8.png)
+
+各アセットの RootPrim に対して、component が指定されています。
+つまり、アセットを配置すれば、そのアセットは Model として扱われ
+PickMode でリファレンスした Prim を掴むようになるわけです。
+
+### Kind 指定によるモデルのピックアップ
+
+![](https://gyazo.com/11ad36f99609e442f12011717654cf62.gif)
+
+上記に書いた通り、各アセットに対して適切に Component を指定している場合
+
+![](https://gyazo.com/f9176be3880a7ea53c446cff341b3b31.png)
+
+レイアウトする場合は、TreeView などではなくビューポート上で選択して移動したいということは
+よくあると思いますが、
+usdview の Pick mode を Models にすることで、
+ビューポートでピックする場合、MeshPrim ではなく Component の Prim（Model の Prim）を選択できるようになります。
+
+### Instance
+
+サンプルの Kitchen_set.usd とはべつに、もう１つインスタンスで配置した Kitchen_set_instanced.usd があります。
+USD の Instance は、「同じ」オブジェクトのインスタンスが、UsdStage 上で同じ Prim を共有する機能ですが
+
+> 参考: https://graphics.pixar.com/usd/release/glossary.html#usdglossary-instancing
+
+![](https://gyazo.com/60254c6894422d5ffc123ad3f07d01cf.png)
+
+instanced.usd の場合は、各アセットが Payload で呼ばれているのは共通ですが
+それに加えて「instanceable」が True に指定されています。
+instanceableとは
+
+> Instanceable is a metadatum that declares whether a given prim should be considered as a candidate for instancing
+> 引用元: https://graphics.pixar.com/usd/release/glossary.html#instanceable
+
+とあるとおり、インスタンス化の候補とみなすかどうかの宣言です。
+このあたりはまた別の記事に使用と思います。
+
+## まとめ
+
+以上、Kitchen_set の紹介でした。
+
+個人的に、私はおそらく日本で一番この Kitchen_set を見ているんじゃないかというぐらい
+日ごろからあらゆるツールで開いたり、Python を使って Traverse したり観察していますが
+USD の学習を進めるたびに、個のサンプルデータを見ることで新たな発見をする事が良くあります。
+
+今回の USD アドカレ、あるいはそれ以前から書いてきた USD の記事を通じて
+USD の解説をしてきましたが、
+その多くが、この Kitchen_set を見ることで理解できます。
+ぜひともこれを機会に、記事を見ながら Kitchen_set を
+usdview SOLARIS python omniverse Blender Maya 等々 USD に対応した様々な環境で観察してみると
+USD を導入する上で、あるいは勉強する上で、大きな助けになるのではないかと思います。
