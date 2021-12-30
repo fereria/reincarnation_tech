@@ -16,3 +16,9 @@ https://github.com/fereria/USDSample
 ## 各主要ページとか
 
 * [USDについて](01_USD/02_whats_USD.md)
+
+## アドカレ2021完走しました
+
+https://qiita.com/advent-calendar/2021/usd
+
+USDアドカレ2021完走しました！
