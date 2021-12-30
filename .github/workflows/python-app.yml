@@ -48,7 +48,7 @@ jobs:
               run: docker exec mkdocs python create_mkdocs_pages.py
 
             - name: Delete lock File
-              run: docker exec -it mkdocs rm /tmp/.X99-lock && docker restart mkdocs
+              run: docker exec mkdocs rm /tmp/.X99-lock && docker restart mkdocs
 
             - name: Mkdocs
               env:
