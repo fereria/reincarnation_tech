@@ -50,7 +50,7 @@ jobs:
             - name: Mkdocs
               env:
                   TZ: Asia/Tokyo
-              run: docker exec mkdocs xvfb-run -e /dev/stdout mkdocs gh-deploy
+              run: docker exec mkdocs bash -c "rm /tmp/.X99-lock || echo 'Lock not found, continuing normal setup' && xvfb-run -e /dev/stdout mkdocs gh-deploy
 
             - name: Send Slack Finish(Success)
               if: ${{ success() }}
