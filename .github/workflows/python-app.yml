@@ -4,64 +4,64 @@
 name: Python application
 
 on:
-  push:
-    branches:
-      - master
+    push:
+        branches:
+            - master
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Slack Start
-        env:
-          HOOK_URL: ${{ secrets.SlackURL }}
-        run: |
-          curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesのビルドを開始しました...\"}" ${HOOK_URL}
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Send Slack Start
+              env:
+                  HOOK_URL: ${{ secrets.SlackURL }}
+              run: |
+                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesのビルドを開始しました...\"}" ${HOOK_URL}
 
-      - name: Git config
-        run: |
-          git config --global core.symlinks true
-          git config --global user.name "Megumi Ando"
-          git config --global user.email "remiria@flame-daybreak.net"
+            - name: Git config
+              run: |
+                  git config --global core.symlinks true
+                  git config --global user.name "Megumi Ando"
+                  git config --global user.email "remiria@flame-daybreak.net"
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
 
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
+            - uses: satackey/action-docker-layer-caching@v0.0.11
+              continue-on-error: true
 
-      - name: Docker Compose
-        run: docker-compose -f docker/docker-compose.yml up --build -d
+            - name: Docker Compose
+              run: docker-compose -f docker/docker-compose.yml up --build -d
 
-      - name: nbConvert
-        run: docker exec mkdocs python create_jupyter_markdown.py
+            - name: nbConvert
+              run: docker exec mkdocs python create_jupyter_markdown.py
 
-      - name: Create SampleCode
-        run: docker exec mkdocs python create_samplecode_md.py
+            - name: Create SampleCode
+              run: docker exec mkdocs python create_samplecode_md.py
 
-      - name: Create TagPages
-        run: docker exec mkdocs python create_tag_pages.py
+            - name: Create TagPages
+              run: docker exec mkdocs python create_tag_pages.py
 
-      - name: Create Mkdoc .Pages
-        run: docker exec mkdocs python create_mkdocs_pages.py
+            - name: Create Mkdoc .Pages
+              run: docker exec mkdocs python create_mkdocs_pages.py
 
-      - name: Mkdocs
-        env:
-          TZ: Asia/Tokyo
-        run: docker exec mkdocs xvfb-run --auto-servernum --server-num=1 mkdocs gh-deploy
+            - name: Mkdocs
+              env:
+                  TZ: Asia/Tokyo
+              run: docker exec mkdocs xvfb-run -e /dev/stdout mkdocs gh-deploy
 
-      - name: Send Slack Finish(Success)
-        if: ${{ success() }}
-        env:
-          HOOK_URL: ${{ secrets.SlackURL }}
-        run: |
-          curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新が完了しました！！\"}" ${HOOK_URL}
+            - name: Send Slack Finish(Success)
+              if: ${{ success() }}
+              env:
+                  HOOK_URL: ${{ secrets.SlackURL }}
+              run: |
+                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新が完了しました！！\"}" ${HOOK_URL}
 
-      - name: Send Slack Finish(Failure)
-        if: ${{ failure() }}
-        env:
-          HOOK_URL: ${{ secrets.SlackURL }}
-        run: |
-          curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新に失敗しました...\"}" ${HOOK_URL}
+            - name: Send Slack Finish(Failure)
+              if: ${{ failure() }}
+              env:
+                  HOOK_URL: ${{ secrets.SlackURL }}
+              run: |
+                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新に失敗しました...\"}" ${HOOK_URL}
