@@ -26,7 +26,7 @@ RUN pip install git+https://github.com/srymh/MkdocsTagPlugin.git#egg=mdoctag
 # drawioのインストール
 ENV DRAWIO_VERSION 16.0.2
 
-RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0  libsecret-1-0 libgbm-dev libasound2 xvfb
+RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0  libsecret-1-0 libgbm-dev libasound2 xvfb sudo
 RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-amd64-${DRAWIO_VERSION}.deb
 RUN dpkg --install drawio-amd64-${DRAWIO_VERSION}.deb
 RUN rm drawio-amd64-${DRAWIO_VERSION}.deb
