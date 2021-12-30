@@ -7,25 +7,28 @@ description: this is also a sample
 
 # mkdocs での Markdown 記載サンプル
 
-
 !!! note "ほげほげ"
+
     テスト
 
 !!! info
+
     いんふぉ
 
 !!! tip
+
     tip
 
 !!! success
+
     Success
 
 !!! example
+
     Example
-    
 
 FootNote のテスト [^1]
-    
+
 ### 画像
 
 {{'icon.jpg'|img}}
@@ -48,7 +51,6 @@ A -> E -> F -> G;
 ++ctrl+alt+delete++
 
 :fa-external-link: [MkDocs](http://www.mkdocs.org/)
-
 
 ### icon
 
@@ -73,17 +75,17 @@ A -> E -> F -> G;
 ==MARK TEST== hogehoge
 ~~sample~~
 
-- [ ] test
-- [ ] check2
-- [ ] check3
+-   [ ] test
+-   [ ] check2
+-   [ ] check3
 
 1. A
 2. B
 3. C
-   1. D
-   2. E
-      1. F
-      2. G
+    1. D
+    2. E
+        1. F
+        2. G
 
 | table | A   | B   | C   |
 | ----- | --- | --- | --- |
@@ -100,12 +102,11 @@ A -> E -> F -> G;
 
 {{fukidashi("ここに吹き出しの中の文字を入れると\n表示できる。")}}
 
-
 {{'ほげほげ'|green_badge}} {{'ふがふが'|blue_badge}}
 
 ## ipynb
 
-リポジトリ以下のipynbをロードしてmarkdownとして埋め込み
+リポジトリ以下の ipynb をロードして markdown として埋め込み
 
 {{embedIpynb("notebooks/pythonBasic/hello_world__埋め込み用サンプル.ipynb")}}
 
@@ -114,21 +115,21 @@ A -> E -> F -> G;
 
 {--
 
-* test remove
-* test remove
-* test remove
-    * test remove
-* test remove
+-   test remove
+-   test remove
+-   test remove
+    -   test remove
+-   test remove
 
 --}
 
 {++
 
-* test add
-* test add
-* test add
-    * test add
-* test add
+-   test add
+-   test add
+-   test add
+    -   test add
+-   test add
 
 ++}
 
@@ -142,11 +143,10 @@ graph TD
     C -->|Two| E[Result 2]
 ```
 
-### drawioを指定して作図結果を表示
+### drawio を指定して作図結果を表示
 
 ![My alt text](sample.drawio)
 
-
-### includeマクロ
+### include マクロ
 
 {{include("samplefile.py")}}
