@@ -108,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#in-45" class="md-skip">
+        <a href="#in-1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -3228,6 +3228,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../11_Pipeline/01_USD/29_instance/" class="md-nav__link">
+        USDのInstanceについて
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -5104,8 +5118,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#in-45" class="md-nav__link">
-    In [45]:
+  <a href="#in-1" class="md-nav__link">
+    In [1]:
   </a>
   
 </li>
@@ -5139,8 +5153,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#in-46" class="md-nav__link">
-    In [46]:
+  <a href="#in-2_1" class="md-nav__link">
+    In [2]:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-6" class="md-nav__link">
+    In [6]:
   </a>
   
 </li>
@@ -6514,8 +6535,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#in-45" class="md-nav__link">
-    In [45]:
+  <a href="#in-1" class="md-nav__link">
+    In [1]:
   </a>
   
 </li>
@@ -6549,8 +6570,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#in-46" class="md-nav__link">
-    In [46]:
+  <a href="#in-2_1" class="md-nav__link">
+    In [2]:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-6" class="md-nav__link">
+    In [6]:
   </a>
   
 </li>
@@ -6618,7 +6646,7 @@
                   <h1>USDのインスタンス</h1>
                 
                 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Instance/usd_instance__USDのインスタンス.ipynb">usd_instance__USDのインスタンス.ipynb</a></p>
-<h4 id="in-45">In [45]:<a class="headerlink" href="#in-45" title="Permanent link">¶</a></h4>
+<h4 id="in-1">In [1]:<a class="headerlink" href="#in-1" title="Permanent link">¶</a></h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">UsdGeom</span><span class="p">,</span><span class="n">Sdf</span>
 </code></pre></div>
 </td></tr></table>
@@ -6674,7 +6702,7 @@ Usd.Prim(&lt;/__Prototype_2&gt;)
 </code></pre></div>
 </td></tr></table>
 </div>
-<h4 id="in-46">In [46]:<a class="headerlink" href="#in-46" title="Permanent link">¶</a></h4>
+<h4 id="in-2_1">In [2]:<a class="headerlink" href="#in-2_1" title="Permanent link">¶</a></h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6713,6 +6741,24 @@ Usd.Prim(&lt;/__Prototype_2&gt;)
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[]
 [Usd.Prim(&lt;/sampleC/cube&gt;)]
+</code></pre></div>
+</td></tr></table>
+</div>
+<h4 id="in-6">In [6]:<a class="headerlink" href="#in-6" title="Permanent link">¶</a></h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prototype</span> <span class="o">=</span> <span class="n">primA</span><span class="o">.</span><span class="n">GetPrototype</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">prototype</span><span class="o">.</span><span class="n">GetInstances</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/sampleA&gt;)
+Usd.Prim(&lt;/sampleB&gt;)
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -6802,7 +6848,7 @@ Usd.Prim(&lt;/__Prototype_2&gt;)
 <div class="md-source-date">
   <small>
     
-      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-31 15:06:16</span>
+      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-31 15:43:42</span>
       
     
   </small>

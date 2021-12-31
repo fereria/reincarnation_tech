@@ -12,7 +12,7 @@
         <meta name="author" content="Megumi Ando@Remiria">
       
       
-        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/07_layer/">
+        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/29_instance/">
       
       <link rel="icon" href="../../../favicon.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
@@ -21,15 +21,11 @@
     
         <meta name="tag" content="USD">
     
-        <meta name="tag" content="SOLARIS">
-    
-        <meta name="tag" content="Houdini">
-    
     
 
     
       
-        <title>SOLARISでのLayerの扱い - Reincarnation+#Tech</title>
+        <title>USDのInstanceについて - Reincarnation+#Tech</title>
       
     
     
@@ -83,9 +79,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Reincarnation+#Tech - SOLARISでのLayerの扱い" />
+  <meta property="og:title" content="Reincarnation+#Tech - USDのInstanceについて" />
   <meta property="og:description" content="None" />
-  <meta property="og:url" content="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/07_layer/" />
+  <meta property="og:url" content="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/29_instance/" />
   <meta property="og:image" content="img/icon.jpg" />
   <meta property="og:image:type" content="image/jpg" />
   <!-- <meta property="og:image:width" content="1200" />
@@ -93,7 +89,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@fereria" />
   <meta name="twitter:creator" content="Megumi Ando@fereria" />
-  <meta name="twitter:title" content="Reincarnation+#Tech - SOLARISでのLayerの扱い" />
+  <meta name="twitter:title" content="Reincarnation+#Tech - USDのInstanceについて" />
   <meta name="twitter:description" content="None" />
   <meta name="twitter:image" content="img/icon.jpg" />  
 
@@ -116,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#layer" class="md-skip">
+        <a href="#instance" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -148,7 +144,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SOLARISでのLayerの扱い
+              USDのInstanceについて
             
           </span>
         </div>
@@ -262,15 +258,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../10_Houdini/" class="md-tabs__link">
         Houdini
       </a>
     </li>
@@ -326,13 +320,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../../11_Pipeline/" class="md-tabs__link">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
         Pipeline
       </a>
     </li>
@@ -843,14 +839,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -873,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../../10_Houdini/" class="md-nav__link">
         Houdini
       </a>
     </li>
@@ -913,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00_Basic/00_start_houdini/" class="md-nav__link">
+      <a href="../../../10_Houdini/00_Basic/00_start_houdini/" class="md-nav__link">
         初めての Houdini 基本用語と構造
       </a>
     </li>
@@ -927,7 +921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00_Basic/02_mesh_polygon/" class="md-nav__link">
+      <a href="../../../10_Houdini/00_Basic/02_mesh_polygon/" class="md-nav__link">
         Vtx Point Primitive Mesh Polygon について
       </a>
     </li>
@@ -941,7 +935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00_Basic/03_group/" class="md-nav__link">
+      <a href="../../../10_Houdini/00_Basic/03_group/" class="md-nav__link">
         Houdini の Group
       </a>
     </li>
@@ -955,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00_Basic/04_HDA/" class="md-nav__link">
+      <a href="../../../10_Houdini/00_Basic/04_HDA/" class="md-nav__link">
         HDA の作り方
       </a>
     </li>
@@ -969,7 +963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00_Basic/99_shortcut/" class="md-nav__link">
+      <a href="../../../10_Houdini/00_Basic/99_shortcut/" class="md-nav__link">
         Houdini のショートカット
       </a>
     </li>
@@ -1016,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10_VOP/01_vex_to_vop_noise/" class="md-nav__link">
+      <a href="../../../10_Houdini/10_VOP/01_vex_to_vop_noise/" class="md-nav__link">
         VEX を VOP に置き換える 01 ノイズ
       </a>
     </li>
@@ -1030,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10_VOP/02_add_attribute/" class="md-nav__link">
+      <a href="../../../10_Houdini/10_VOP/02_add_attribute/" class="md-nav__link">
         Attribute を追加して VOP で使用する
       </a>
     </li>
@@ -1044,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10_VOP/03_add_param/" class="md-nav__link">
+      <a href="../../../10_Houdini/10_VOP/03_add_param/" class="md-nav__link">
         パラメーターを追加する
       </a>
     </li>
@@ -1063,14 +1057,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" data-md-state="indeterminate" type="checkbox" id="__nav_4_4" checked>
       
       
       
@@ -1093,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01_solaris_open_usd/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/01_solaris_open_usd/" class="md-nav__link">
         SOLARISでUSDファイルを開く
       </a>
     </li>
@@ -1107,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_comp_arc/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/02_comp_arc/" class="md-nav__link">
         SOLARISでコンポジションアーク
       </a>
     </li>
@@ -1121,7 +1113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03_comp_arc_inherits/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/03_comp_arc_inherits/" class="md-nav__link">
         SOLARISでInherits(継承)/Reference(継承)を扱う
       </a>
     </li>
@@ -1135,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04_agent_to_solaris/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/04_agent_to_solaris/" class="md-nav__link">
         Houdiniの群衆をSOLARISに持って行ってみよう(1)
       </a>
     </li>
@@ -1149,7 +1141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05_point_instancer/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/05_point_instancer/" class="md-nav__link">
         SOLARISでInstancerを使う(1) 配置編
       </a>
     </li>
@@ -1163,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06_point_instancer/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/06_point_instancer/" class="md-nav__link">
         SOLARISでInstancerを使う(2) 編集編
       </a>
     </li>
@@ -1175,97 +1167,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          SOLARISでのLayerの扱い
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../10_Houdini/11_SOLARIS/07_layer/" class="md-nav__link">
         SOLARISでのLayerの扱い
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#layer" class="md-nav__link">
-    Layerとは
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#layerstack" class="md-nav__link">
-    LayerStackを調べる
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    複数レイヤーの場合
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    どういうときにレイヤーが分かれるのか
-  </a>
-  
-    <nav class="md-nav" aria-label="どういうときにレイヤーが分かれるのか">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#merge" class="md-nav__link">
-    Merge
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#graft" class="md-nav__link">
-    Graft
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    まとめ
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1277,7 +1183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08_solaris_variant/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/08_solaris_variant/" class="md-nav__link">
         SOLARIS で VariantSet
       </a>
     </li>
@@ -1291,7 +1197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09_solaris_vex/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/09_solaris_vex/" class="md-nav__link">
         SOLARISのVEXで遊ぼう
       </a>
     </li>
@@ -1305,7 +1211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10_edit_layer/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/10_edit_layer/" class="md-nav__link">
         configureLayerを使おう
       </a>
     </li>
@@ -1319,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../11_edit_layer_flatten/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/11_edit_layer_flatten/" class="md-nav__link">
         Flattenでレイヤーをコントロールしよう
       </a>
     </li>
@@ -1333,7 +1239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../12_usd_preview_surface/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/12_usd_preview_surface/" class="md-nav__link">
         UsdPreviewSurfaceでマテリアルを設定する
       </a>
     </li>
@@ -1347,7 +1253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../13_create_usdAssets_01/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/13_create_usdAssets_01/" class="md-nav__link">
         SOLARISでUSDアセットを作ろう
       </a>
     </li>
@@ -1361,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../14_edit_properties/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/14_edit_properties/" class="md-nav__link">
         SOLARISでAttributeを編集する
       </a>
     </li>
@@ -1375,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../15_inline_usd/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/15_inline_usd/" class="md-nav__link">
         InlineUSDを使おう
       </a>
     </li>
@@ -1389,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../16_component_builder/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/16_component_builder/" class="md-nav__link">
         ComponentBuilderで遊ぼう
       </a>
     </li>
@@ -1403,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../17_layout_asset_gallery/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/17_layout_asset_gallery/" class="md-nav__link">
         LayoutAssetGalleryとLayout
       </a>
     </li>
@@ -1417,7 +1323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../90_solaris_lop_node/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/90_solaris_lop_node/" class="md-nav__link">
         Houdini18で追加されたLOPノードを調べてみた
       </a>
     </li>
@@ -1431,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../99_solaris_usd_sampledata/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOLARIS/99_solaris_usd_sampledata/" class="md-nav__link">
         SOLARISのサンプルhipデータ
       </a>
     </li>
@@ -1478,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../11_SOP/00_usdexport/" class="md-nav__link">
+      <a href="../../../10_Houdini/11_SOP/00_usdexport/" class="md-nav__link">
         PackedPrimitivesとUSDExport
       </a>
     </li>
@@ -1525,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../20_Python/get_param_01/" class="md-nav__link">
+      <a href="../../../10_Houdini/20_Python/get_param_01/" class="md-nav__link">
         PythonでHoudiniのパラメーターを取得・セットする
       </a>
     </li>
@@ -1572,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../50_imitate/00_glue_constraint_rbd/" class="md-nav__link">
+      <a href="../../../10_Houdini/50_imitate/00_glue_constraint_rbd/" class="md-nav__link">
         Houdini 写経 01 RBD_ClueConstraint
       </a>
     </li>
@@ -1586,7 +1492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../50_imitate/01_ifend/" class="md-nav__link">
+      <a href="../../../10_Houdini/50_imitate/01_ifend/" class="md-nav__link">
         Houdini 写経 02
       </a>
     </li>
@@ -2900,12 +2806,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -2928,7 +2836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         Pipeline
       </a>
     </li>
@@ -2940,12 +2848,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" data-md-state="indeterminate" type="checkbox" id="__nav_7_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" checked>
       
       
       
@@ -2968,7 +2878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/00_install_USD/" class="md-nav__link">
+      <a href="../00_install_USD/" class="md-nav__link">
         USDを使ってみる
       </a>
     </li>
@@ -2982,7 +2892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/01_start_USD/" class="md-nav__link">
+      <a href="../01_start_USD/" class="md-nav__link">
         USDをPythonから色々操作するための環境を作る
       </a>
     </li>
@@ -2996,7 +2906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/02_whats_USD/" class="md-nav__link">
+      <a href="../02_whats_USD/" class="md-nav__link">
         USDとは
       </a>
     </li>
@@ -3010,7 +2920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/05_comp_arc/" class="md-nav__link">
+      <a href="../05_comp_arc/" class="md-nav__link">
         コンポジションアークとは
       </a>
     </li>
@@ -3024,7 +2934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/06_comp_arc_subLayer/" class="md-nav__link">
+      <a href="../06_comp_arc_subLayer/" class="md-nav__link">
         CompArc(1) サブレイヤー
       </a>
     </li>
@@ -3038,7 +2948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/07_comp_arc_inherits/" class="md-nav__link">
+      <a href="../07_comp_arc_inherits/" class="md-nav__link">
         CompArc(2) 継承
       </a>
     </li>
@@ -3052,7 +2962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/08_comp_arc_Variant/" class="md-nav__link">
+      <a href="../08_comp_arc_Variant/" class="md-nav__link">
         CompArc(3) バリアントセット
       </a>
     </li>
@@ -3066,7 +2976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/09_comp_arc_reference/" class="md-nav__link">
+      <a href="../09_comp_arc_reference/" class="md-nav__link">
         CompArc(4) リファレンス・ペイロード
       </a>
     </li>
@@ -3080,7 +2990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/09_comp_arc_specialize/" class="md-nav__link">
+      <a href="../09_comp_arc_specialize/" class="md-nav__link">
         CompArc(5) 特殊化（Specialize）
       </a>
     </li>
@@ -3094,7 +3004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/10_ListEditing/" class="md-nav__link">
+      <a href="../10_ListEditing/" class="md-nav__link">
         List Editingについて
       </a>
     </li>
@@ -3108,7 +3018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/11_kind_modelhierarchy/" class="md-nav__link">
+      <a href="../11_kind_modelhierarchy/" class="md-nav__link">
         Kind と Model と ModelHierarchy
       </a>
     </li>
@@ -3122,7 +3032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/12_ValueClip_01/" class="md-nav__link">
+      <a href="../12_ValueClip_01/" class="md-nav__link">
         Value Clips を使おう(基本構造編)
       </a>
     </li>
@@ -3136,7 +3046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/13_ValueClip_02/" class="md-nav__link">
+      <a href="../13_ValueClip_02/" class="md-nav__link">
         Value Clips を使おう(レイヤー合成編)
       </a>
     </li>
@@ -3150,7 +3060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/14_usdCollection/" class="md-nav__link">
+      <a href="../14_usdCollection/" class="md-nav__link">
         UsdCollectionを使おう
       </a>
     </li>
@@ -3164,7 +3074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/15_CustomMetadata/" class="md-nav__link">
+      <a href="../15_CustomMetadata/" class="md-nav__link">
         Plugin Metadataを使おう
       </a>
     </li>
@@ -3178,7 +3088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/16_UsdStageLoadRules/" class="md-nav__link">
+      <a href="../16_UsdStageLoadRules/" class="md-nav__link">
         UsdStageLoadRulesを使用してペイロードをロード/アンロード
       </a>
     </li>
@@ -3192,7 +3102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/17_property_attribute_relation/" class="md-nav__link">
+      <a href="../17_property_attribute_relation/" class="md-nav__link">
         Property/Attribute/Relationship
       </a>
     </li>
@@ -3206,7 +3116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/18_schema/" class="md-nav__link">
+      <a href="../18_schema/" class="md-nav__link">
         Schemaについて
       </a>
     </li>
@@ -3220,7 +3130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/19_population_mask/" class="md-nav__link">
+      <a href="../19_population_mask/" class="md-nav__link">
         PopulationMask(OpenMasked)について
       </a>
     </li>
@@ -3234,7 +3144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/21_stage_layer_spec/" class="md-nav__link">
+      <a href="../21_stage_layer_spec/" class="md-nav__link">
         Stage/Layer/Spec
       </a>
     </li>
@@ -3248,7 +3158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/23_assetInfo/" class="md-nav__link">
+      <a href="../23_assetInfo/" class="md-nav__link">
         AssetInfoについて
       </a>
     </li>
@@ -3262,7 +3172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/24_asset_resolution/" class="md-nav__link">
+      <a href="../24_asset_resolution/" class="md-nav__link">
         AssetResolution(1) - usdResolverExample
       </a>
     </li>
@@ -3276,7 +3186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/25_asset_resolution_02/" class="md-nav__link">
+      <a href="../25_asset_resolution_02/" class="md-nav__link">
         AssetResolution(2) ResolveとContext
       </a>
     </li>
@@ -3290,7 +3200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/26_specifier/" class="md-nav__link">
+      <a href="../26_specifier/" class="md-nav__link">
         Specifier
       </a>
     </li>
@@ -3304,7 +3214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/27_fileformat_plugin/" class="md-nav__link">
+      <a href="../27_fileformat_plugin/" class="md-nav__link">
         FileFormatPluginについて
       </a>
     </li>
@@ -3318,7 +3228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/28_kitchen_set/" class="md-nav__link">
+      <a href="../28_kitchen_set/" class="md-nav__link">
         USDの機能の多くはKitchen_setが教えてくれる
       </a>
     </li>
@@ -3330,11 +3240,89 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../11_Pipeline/01_USD/29_instance/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          USDのInstanceについて
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         USDのInstanceについて
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    Instance を作る
+  </a>
+  
+    <nav class="md-nav" aria-label="Instance を作る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prototype" class="md-nav__link">
+    Prototype からインスタンスを取得する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instance-proxy" class="md-nav__link">
+    Instance と コンポジション と Proxy
+  </a>
+  
+    <nav class="md-nav" aria-label="Instance と コンポジション と Proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    Proxy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    まとめ
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3379,7 +3367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/10_USDTips/00_create_custom_schema/" class="md-nav__link">
+      <a href="../../10_USDTips/00_create_custom_schema/" class="md-nav__link">
         オリジナルの New Schema Classを作る
       </a>
     </li>
@@ -3393,7 +3381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/10_USDTips/01_usd_py_docs/" class="md-nav__link">
+      <a href="../../10_USDTips/01_usd_py_docs/" class="md-nav__link">
         USDPythonドキュメントの読み方
       </a>
     </li>
@@ -3407,7 +3395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/10_USDTips/02_usd_py_cheatsheets/" class="md-nav__link">
+      <a href="../../10_USDTips/02_usd_py_cheatsheets/" class="md-nav__link">
         UPythonUSDチートシート
       </a>
     </li>
@@ -3421,7 +3409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/10_USDTips/03_usd_format_cheatsheets/" class="md-nav__link">
+      <a href="../../10_USDTips/03_usd_format_cheatsheets/" class="md-nav__link">
         USDフォーマットチートシート
       </a>
     </li>
@@ -3468,7 +3456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/20_USDTools/00_usdtools/" class="md-nav__link">
+      <a href="../../20_USDTools/00_usdtools/" class="md-nav__link">
         USDの便利なツールたち (1) checker
       </a>
     </li>
@@ -3482,7 +3470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/20_USDTools/01_usdtools_usdcat/" class="md-nav__link">
+      <a href="../../20_USDTools/01_usdtools_usdcat/" class="md-nav__link">
         USDの便利なツールたち (2) usdcat
       </a>
     </li>
@@ -3496,7 +3484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/20_USDTools/02_usdzip/" class="md-nav__link">
+      <a href="../../20_USDTools/02_usdzip/" class="md-nav__link">
         USDの便利なツールたち (3) usdzip
       </a>
     </li>
@@ -3569,7 +3557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/00_CPP/00_start_cpp/" class="md-nav__link">
+      <a href="../../30_USD_Programming/00_CPP/00_start_cpp/" class="md-nav__link">
         C++でUSDのコードを書こう(準備編)
       </a>
     </li>
@@ -3583,7 +3571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/00_CPP/01_asset_resolver_01/" class="md-nav__link">
+      <a href="../../30_USD_Programming/00_CPP/01_asset_resolver_01/" class="md-nav__link">
         Custom AssetResolver を作ろう
       </a>
     </li>
@@ -3630,7 +3618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/01_Python/01_editTarget/" class="md-nav__link">
+      <a href="../../30_USD_Programming/01_Python/01_editTarget/" class="md-nav__link">
         EditTargetでLayerを操作する
       </a>
     </li>
@@ -3644,7 +3632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/01_Python/02_reparentPrim/" class="md-nav__link">
+      <a href="../../30_USD_Programming/01_Python/02_reparentPrim/" class="md-nav__link">
         PrimをReparentする
       </a>
     </li>
@@ -3658,7 +3646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/01_Python/04_pcp_compositionArc/" class="md-nav__link">
+      <a href="../../30_USD_Programming/01_Python/04_pcp_compositionArc/" class="md-nav__link">
         PCPでコンポジションアークの構造を解析・編集対象を取得する
       </a>
     </li>
@@ -3672,7 +3660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/01_Python/05_usdSkel/" class="md-nav__link">
+      <a href="../../30_USD_Programming/01_Python/05_usdSkel/" class="md-nav__link">
         UsdSkelについて
       </a>
     </li>
@@ -3686,7 +3674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/01_Python/06_shader/" class="md-nav__link">
+      <a href="../../30_USD_Programming/01_Python/06_shader/" class="md-nav__link">
         UsdPreviewSurfaceを使う
       </a>
     </li>
@@ -3700,7 +3688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/01_Python/07_create_usd_assets/" class="md-nav__link">
+      <a href="../../30_USD_Programming/01_Python/07_create_usd_assets/" class="md-nav__link">
         Pythonで作るUSDアセット
       </a>
     </li>
@@ -3747,7 +3735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/10_USDPlugin/00_usdVIew_tutorial/" class="md-nav__link">
+      <a href="../../30_USD_Programming/10_USDPlugin/00_usdVIew_tutorial/" class="md-nav__link">
         USDViewのプラグイン作成チュートリアルをやろう
       </a>
     </li>
@@ -3761,7 +3749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11_Pipeline/30_USD_Programming/10_USDPlugin/01_usdview_editstage/" class="md-nav__link">
+      <a href="../../30_USD_Programming/10_USDPlugin/01_usdview_editstage/" class="md-nav__link">
         USDViewPluginで自作GUIを追加しよう
       </a>
     </li>
@@ -6505,44 +6493,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#layer" class="md-nav__link">
-    Layerとは
+  <a href="#instance" class="md-nav__link">
+    Instance を作る
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#layerstack" class="md-nav__link">
-    LayerStackを調べる
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    複数レイヤーの場合
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    どういうときにレイヤーが分かれるのか
-  </a>
-  
-    <nav class="md-nav" aria-label="どういうときにレイヤーが分かれるのか">
+    <nav class="md-nav" aria-label="Instance を作る">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#merge" class="md-nav__link">
-    Merge
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#graft" class="md-nav__link">
-    Graft
+  <a href="#prototype" class="md-nav__link">
+    Prototype からインスタンスを取得する
   </a>
   
 </li>
@@ -6553,7 +6513,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#instance-proxy" class="md-nav__link">
+    Instance と コンポジション と Proxy
+  </a>
+  
+    <nav class="md-nav" aria-label="Instance と コンポジション と Proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    Proxy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
     まとめ
   </a>
   
@@ -6572,29 +6552,115 @@
               
     
                 
-                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Houdini/11_SOLARIS/07_layer.md" title="編集" class="md-content__button md-icon">
+                  <a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_Pipeline/01_USD/29_instance.md" title="編集" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>SOLARISでのLayerの扱い</h1>
+                  <h1>USDのInstanceについて</h1>
                 
-                <p>ぼんやりとSOLARISの1ノードが1レイヤーだと思っていましたが<br />
-詳しく調べていくと色々新しいことがわかってきたのでメモをば。</p>
-<h2 id="layer">Layerとは<a class="headerlink" href="#layer" title="Permanent link">¶</a></h2>
-<p>まず、Layerとはなにか。<br />
-詳しくは <a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/04_layer_stage/">USDの基本構造</a>にまとめてありますが、<br />
-ざっくりいうと 1つのusdファイルのことをLayerと呼びます。</p>
-<p>そして、このLayerをコンポジションアークと呼ばれる合成ルールにそって<br />
-複数のLayerを合成して、1つのステージを構築する...というのが、USDの基本になります。</p>
-<p>では、SOLARISではこのLayer構造がどのように作られているのか<br />
-少し詳しく調べてみます。</p>
-<h2 id="layerstack">LayerStackを調べる<a class="headerlink" href="#layerstack" title="Permanent link">¶</a></h2>
-<p>まずは、SOLARISでのコンポジションのLayerStackを見てみます。<br />
-LayerStackとは、複数のLayerをサブレイヤーで合成するときのLayerを束ねたものです。<br />
-1Layerにはそれぞれいろんな定義（主張）が書かれていているわけですが<br />
-それがどういうふうな関係になっているのかを確認することができます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+                <p>USD のインスタンス化は、<br />
+「同じ」オブジェクトの多数のインスタンスが UsdStage 上で同じ Prim を共有することができる機能です。</p>
+<blockquote>
+<p>Instancing in USD is a feature that allows many instances of “the same” object to share the same representation (composed prims) on a UsdStage.<br />
+参考: <a href="https://graphics.pixar.com/usd/release/glossary.html#usdglossary-instancing">https://graphics.pixar.com/usd/release/glossary.html#usdglossary-instancing</a></p>
+</blockquote>
+<p>インスタンスを使用すると、インスタンス以下の Prim をオーバーライドすることができなくなる代わりに<br />
+UsdStage を処理する時に、（同じモデルを参照することで）ロードの高速化やメモリの省略を<br />
+することができます。</p>
+<h2 id="instance">Instance を作る<a class="headerlink" href="#instance" title="Permanent link">¶</a></h2>
+<script src="https://gist.github.com/fereria/f0931d882224d41b4a2f9eaf17ae04a2.js"></script>
+
+<p>このような Cube.usd を用意します。<br />
+インスタンス用のアセットは、Root に XformPrim を作成し、<br />
+その子に Mesh を置きます。<br />
+（RootPrim が Mesh ではいけない）</p>
+<p>今回は、DefaultPrim の子供にシンプルな Cube １つを置いた構造になっています。</p>
+<script src="https://gist.github.com/fereria/a6aba6c19e9d9f044a127a33aa0c52ed.js"></script>
+
+<p>このようにリファレンスで読み込みます。<br />
+そして sampleA sampleB には instanceable を入れて、sampleC には instancealbe を入れません。</p>
+<p><img alt="" src="https://gyazo.com/debd2ec17a78eada6d2cfef4af0ce4b8.png" /></p>
+<p>usdview で表示すると、このようになります。</p>
+<p><img alt="" src="https://gyazo.com/c836078377da7d0f0a002fdea421ffef.png" /></p>
+<p>図に表すとこのようになります。</p>
+<p>Prim に対して instanceable を入れると、同じインスタンスオブジェクトごとに「Prototype」と呼ばれるインスタンスの<br />
+ベースになる Prim を１つだけ生成し、インスタンスする Prim との関係性を記録します。<br />
+usdview では Prototype は表示されていませんが、</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">GetPrototypes</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<blockquote>
+<p>[Usd.Prim(<!--__Prototype_1-->)]</p>
+</blockquote>
+<p>このように、Stage の GetPrototypes 関数を使用すると<br />
+instanceable の Prim の PrototypePrim を確認することができます。</p>
+<p><img alt="" src="https://gyazo.com/8bba1f6699966311aaad08bd4b8ee7f7.png" /></p>
+<p>prototypePrim はこのようになります。<br />
+インスタンスを使用しない場合、リファレンス先の Prim はリファレンスしている Prim 以下に展開されますが<br />
+インスタンスの場合は、このようにルート以下に見えない Prim として展開されます。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Instanceの場合はChildはみつからない</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primB</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">())</span>
+<span class="c1"># &gt; []</span>
+<span class="c1"># 普通なら見つかる</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primC</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">())</span>
+<span class="c1"># &gt; [Usd.Prim(&lt;/sampleC/cube&gt;)]</span>
+</code></pre></div>
+</td></tr></table>
+<p>そのため、 instanbeable な Prim に GetChildren() してみると<br />
+Instance の時は個 Prim が見つからず（本体は Prototype 以下なので）<br />
+通常の場合は GetChildren で個 Prim を取得できるようになります。</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>__Prototype_## の数字は固定ではなく動的に決まります。<br />
+なので、この数字を当てにして処理を書くことはできません。</p>
+</div>
+<h3 id="prototype">Prototype からインスタンスを取得する<a class="headerlink" href="#prototype" title="Permanent link">¶</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prototype</span> <span class="o">=</span> <span class="n">primA</span><span class="o">.</span><span class="n">GetPrototype</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">prototype</span><span class="o">.</span><span class="n">GetInstances</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>instanceable なオブジェクトを Prototype として展開すると<br />
+配置されたオブジェクトは１つの Prototype を共有します。<br />
+_<em>Prototype</em>## の Prim 名は毎回変わりますが、この Prototype がどの Instance のオブジェクトなのかは<br />
+Prim から GetInstances で取得することができます。</p>
+<p>これを利用すれば、実際にどのオブジェクトとして配置したのかを把握することができます。</p>
+<h2 id="instance-proxy">Instance と コンポジション と Proxy<a class="headerlink" href="#instance-proxy" title="Permanent link">¶</a></h2>
+<p>Instance したモデルのルート以下は、コンポジション等によって値を編集することができません。<br />
+たとえば、インスタンスで配置しているオブジェクトのうち<br />
+どれか１つの色を変えたいといったことはできません。<br />
+ですが、instanceable のメタデータをコンポジションによって False にして<br />
+通常の配置に変更すること(Instance を壊す）ことは可能です。</p>
+<h3 id="proxy">Proxy<a class="headerlink" href="#proxy" title="Permanent link">¶</a></h3>
+<p><img alt="" src="https://gyazo.com/58c9335d44fa20aa7fc76eaab6ef7266.png" /></p>
+<p>Instance の場合、通常とは違いリファレンス Prim 以下には展開されないと書きましたが<br />
+GetPrimAtPath 等で Prim を取得した場合「InstanceProxy」と呼ばれる Prim によって<br />
+実体と同じようにアクセスすることができます。<br />
+しかし、この場合は編集することができません。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># InstanceのPrimも GetPrimAtPathで取得が可能</span>
+<span class="n">proxy</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/sampleA/cube&quot;</span><span class="p">)</span>
+<span class="c1"># InstanceProxyかどうかを確認できる</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proxy</span><span class="o">.</span><span class="n">IsInstanceProxy</span><span class="p">())</span>
+<span class="c1"># Proxyの場合、値の追加や変更を使用するとエラーになる</span>
+<span class="n">proxy</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -6602,482 +6668,28 @@ LayerStackとは、複数のLayerをサブレイヤーで合成するときのLa
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
-<span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>---------------------------------------------------------------------------
+ErrorException                            Traceback (most recent call last)
+&lt;ipython-input-61-5acb423d72e7&gt; in &lt;module&gt;
+      2 proxy = stage.GetPrimAtPath(&quot;/sampleA/cube&quot;)
+      3 # Proxyの場合、値の追加や変更を使用するとエラーになる
+----&gt; 4 proxy.CreateAttribute(&#39;sample&#39;,Sdf.ValueTypeNames.String).Set(&#39;hoge&#39;)
 
-<span class="c1"># Add code to modify the stage.</span>
-<span class="c1"># Use drop down menu to select examples.</span>
-
-<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
-確認用のコードはこちら。</p>
-<p><img alt="" src="https://gyazo.com/7928a27a9ce948c490ae450206d0c522.png" /></p>
-<p>これを、まずはこんな感じでPythonノードに入れて、結果をみていきます。</p>
-<p>全部は長いので<br />
-<a href="https://snippets.cacher.io/snippet/b7130348f4ac41539759?t=U1ojSBLJ66yL6IovpVdLdABDfCtdx3">https://snippets.cacher.io/snippet/b7130348f4ac41539759?t=U1ojSBLJ66yL6IovpVdLdABDfCtdx3</a><br />
-こちらに結果は貼っておきましたが、一部抜粋で重要なところをみていきます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007B132340&#39;)
-#sdf 1.4.32
-
-def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
-    customData = {
-        string HoudiniCreatorNode = &quot;/stage/sphere1&quot;
-        string[] HoudiniEditorNodes = [&quot;/stage/sphere1&quot;]
-    }
-)
-{
-}
-
-def Sphere &quot;sphere1&quot; (
-    customData = {
-        int HoudiniPrimEditorNodeId = 13
-    }
-)
-{
-    double radius = 1
-    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-    uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
-}
-</code></pre></div>
-</td></tr></table><br />
-LayerStackを取得すると Sdf.Find という形でLayerオブジェクトを取得できます。<br />
-このLayerが、上のようなusdaの定義が記述されています。</p>
-<p>で、上のコードをよく見ると HoudiniEditorNodes というアトリビュートがあるのがわかりますが<br />
-このLayerを作るのに使われているノードがここに書かれています。</p>
-<h2 id="_1">複数レイヤーの場合<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><img alt="" src="https://gyazo.com/be037461737f283efeff13a80b53711b.png" /></p>
-<p>1ノードのみだと、定義があるLayerは１つのみだったですが<br />
-こんな感じでMergeを使って複数のPrimを組み合わせた場合はどうなるかみてみます。<br />
-この場合、ノードの右下に「2Layers」というのがでているのがわかるかと思いますが、これが意味<br />
-するところは</p>
-<p>結果はこうなって<br />
-<a href="https://snippets.cacher.io/snippet/6141d563cd41b4502d3f">https://snippets.cacher.io/snippet/6141d563cd41b4502d3f</a><br />
-重要な部分だけ書き出すと</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2FC0&#39;)
-#sdf 1.4.32
-
-def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
-    customData = {
-        string HoudiniCreatorNode = &quot;/stage/sphere1&quot;
-        string[] HoudiniEditorNodes = [&quot;/stage/sphere1&quot;]
-    }
-)
-{
-}
-
-def Sphere &quot;sphere1&quot; (
-    customData = {
-        int HoudiniPrimEditorNodeId = 13
-    }
-)
-{
-    double radius = 1
-    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-    uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
-}
-</code></pre></div>
-</td></tr></table><br />
-これと<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2E80&#39;)
-#sdf 1.4.32
-
-def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
-    customData = {
-        string HoudiniCreatorNode = &quot;/stage/cube1&quot;
-        string[] HoudiniEditorNodes = [&quot;/stage/cube1&quot;]
-    }
-)
-{
-}
-
-def Cube &quot;cube1&quot; (
-    customData = {
-        int HoudiniPrimEditorNodeId = 14
-    }
-)
-{
-    double size = 2
-    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-    uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
-}
-</code></pre></div>
-</td></tr></table><br />
-これのように、1Layerごとに1つのノード、そしてそれぞれが</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E159800:root.usd&#39;)
-#usda 1.0
-(
-    subLayers = [
-        @anon:000000007E0D3B00@,
-        @anon:000000007E0D2D40@,
-        @anon:000000007E0D2FC0@,
-        @anon:000000007E0D2E80@
-    ]
-)
+ErrorException:
+    Error in &#39;pxrInternal_v0_21__pxrReserved__::UsdStage::_ValidateEditPrim&#39; at line 1297 in file D:\work\GithubRepo\USD\pxr\usd\usd\stage.cpp : &#39;Cannot create property spec at path &lt;/sampleA/cube&gt;; authoring to an instance proxy is not allowed.&#39;
 </code></pre></div>
 </td></tr></table>
-<p>こんな感じでサブレイヤーで合成されているのがわかります。<br />
-つまりは、Houdiniのノードの右下に ～Layersが出ている場合、</p>
-<p><img alt="" src="https://gyazo.com/427a9abebd979a6def3c83e5a45f4561.png" /></p>
-<p>ノードの縁の色ごとに、1つのLayerとしてメモリー内でLayerが構築されている...ということになります。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
-<span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
-
-<span class="c1"># Add code to modify the stage.</span>
-<span class="c1"># Use drop down menu to select examples.</span>
-
-<span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/hoge&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+<p>このようにやろうとしてもエラーになります。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># ProxyからPrototype側でのPathを取得</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proxy</span><span class="o">.</span><span class="n">GetPrimInPrototype</span><span class="p">())</span>
 </code></pre></div>
-</td></tr></table><br />
-試しに、Pythonノードのコマンドをこんなふうにして<br />
-PythonノードでもPrimを定義してみると</p>
-<p><img alt="" src="https://gyazo.com/fdc10a6c4bd2172e7c706803b5e5ff95.png" /></p>
-<p>Pythonノード部分が 3Layers目になり</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2D40&#39;)
-#sdf 1.4.32
-
-def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
-    customData = {
-        string HoudiniCreatorNode = &quot;/stage/pythonscript1&quot;
-    }
-)
-{
-}
-
-def &quot;hoge&quot;
-{
-}
-</code></pre></div>
-</td></tr></table><br />
-LayerStackには、PythonscriptのHoudiniCreatorNode が追加され、<br />
-そこに PythonScriptで定義をしたPrimが追加されていることがわかります。</p>
-<h2 id="_2">どういうときにレイヤーが分かれるのか<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>ほぼ自分の興味というか疑問だったのが、このLayersがどういうタイミングでまとめられたり<br />
-分けられたりするのか　ということと、SOLARISのノードを接続することが<br />
-実際のところなにをしているのか非常に曖昧で構造を理解できていませんでした。<br />
-ですが、詳しく調べるとどういう処理なのかが見えてきます。</p>
-<h3 id="merge">Merge<a class="headerlink" href="#merge" title="Permanent link">¶</a></h3>
-<p>まず、Merge。<br />
-<img alt="" src="https://gyazo.com/19abb3222d90fdb3752b8914feafbb0b.png" /></p>
-<p>Mergeには、MergeStyleというものがあり<br />
-デフォルトだと Separate Layers 、上の出力結果の通り<br />
-それぞれを個別のLayerとして扱ってサブレイヤーで合成する設定になっています。</p>
-<p><img alt="" src="https://gyazo.com/df7531ccc140ed5f5cc1bad410b99134.png" /></p>
-<p>それをFlatten Layersに変更すると、</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:00000000BD376D40&#39;)
-#sdf 1.4.32
-
-def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
-    customData = {
-        string HoudiniCreatorNode = &quot;/stage/sphere1&quot;
-        string[] HoudiniEditorNodes = [&quot;/stage/sphere1&quot;, &quot;/stage/merge1&quot;]
-    }
-)
-{
-}
-
-def Cube &quot;cube1&quot; (
-    customData = {
-        int HoudiniPrimEditorNodeId = 14
-    }
-)
-{
-    double size = 2
-    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-    uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
-}
-
-def Sphere &quot;sphere1&quot; (
-    customData = {
-        int HoudiniPrimEditorNodeId = 13
-    }
-)
-{
-    double radius = 1
-    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-    uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
-}
-</code></pre></div>
-</td></tr></table><br />
-入力のLayer２つが1つのLayerにまとまった状態になります。</p>
-<p><img alt="" src="https://gyazo.com/8ab27ef99d1fa46c6e6fc4b2e794c92e.png" /></p>
-<p>この差がどういうところに影響するかというと、<br />
-LOP Actionsの Inspect ActiveLayer (現在の編集ターゲットになっているLayerの中身を確認する)<br />
-が、Flattenした方で確認できるようになります。（Flattenしていない方は見れない）<br />
-これは、Flattenしていない場合は、選択しているノード段階では2つ含まれているから<br />
-ターゲットになるLayerが選択されていないからかと思われます。</p>
-<h3 id="graft">Graft<a class="headerlink" href="#graft" title="Permanent link">¶</a></h3>
-<p>もう一つ、レイヤーが統合されるケースが　Prim階層が編集されている場合です。</p>
-<p><img alt="" src="https://gyazo.com/3b3716e91cfd791b5c5e9ac569dada5f.png" /></p>
-<p>Graftノードを使用すると、Input1のStageに対して指定の構造で「接ぎ木」するように<br />
-結合してくれます。</p>
-<p><img alt="" src="https://gyazo.com/708c2eac7dd10e90e8f7535d4882848f.png" /></p>
-<p>結果。<br />
-Mergeとは違い、Graftした場合は　Layersという記述が増えず</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:00000000701C5440&#39;)
-#sdf 1.4.32
-
-def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
-    customData = {
-        string HoudiniCreatorNode = &quot;/stage/root&quot;
-        string[] HoudiniEditorNodes = [&quot;/stage/root&quot;, &quot;/stage/graft1&quot;]
-    }
-)
-{
-}
-
-def Xform &quot;root&quot; (
-    customData = {
-        int HoudiniPrimEditorNodeId = 25
-    }
-)
-{
-    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-    uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
-
-    def Xform &quot;hoge&quot; (
-        customData = {
-            token HoudiniSourceNode = &quot;/stage/cube1&quot;
-        }
-    )
-    {
-        def Sphere &quot;sphere1&quot; (
-            customData = {
-                int HoudiniPrimEditorNodeId = 13
-            }
-        )
-        {
-            double radius = 1
-            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-            uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
-        }
-
-        def Cube &quot;cube1&quot; (
-            customData = {
-                int HoudiniPrimEditorNodeId = 14
-            }
-        )
-        {
-            double size = 2
-            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-            uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
-        }
-    }
-}
-</code></pre></div>
-</td></tr></table><br />
-1つのLayerに、 Input1のノードもInput2のノードもまとまった状態になります。<br />
-これは <a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/Python/02_reparentPrim/">PrimのReparent</a>のときにわかったことですが<br />
-Reparentの処理はUSDのコンポジションには存在しない（Referenceであるノードに対して構造を追加することはある）わけで、<br />
-Graftのような入力ノードの階層を変更するようなノードの場合、<br />
-サブレイヤーでの構築はできず、１Layerにまとめた上でBatchNamespaceEditしているから<br />
-Layerは１つにまとまっているのかなと思います。</p>
-<p>という感じで、SOLARISではレイヤーが暗黙的に構築されてサブレイヤーされて出力されていました。</p>
-<p>多くの場合はあんまりここまでLayerの構築単位を考える必要はないと思うのですが<br />
-これが影響するケースが１つあって</p>
-<p><img alt="" src="https://gyazo.com/0c366c7465cbf386aace7e741f52d1aa.png" /></p>
-<p>USD ROPでUSDをExportするときに、 SaveStyle を Separate Layers にした場合<br />
-出力されるusdの単位が変わります。</p>
-<p>このオプションはその名の通り、出力されるUSDファイルを<br />
-どういう単位で出力するか..というものになります。</p>
-<p>Separate Layers では、SOLARISの ～Layers（↑のLayerStackで確認した単位）で<br />
-ファイルが小分けされます。<br />
-（作成ファイルは、SdfPathのサブフォルダ下にExportされる？）</p>
-<p>もしかしたら他にもこのLayer単位が影響するところがあるかもしれないですが</p>
-<ul>
-<li>SOLARISのノードはサブレイヤー合成</li>
-<li>特定条件下だとFlatten（１つのLayerに統合）されたりする</li>
-</ul>
-<p>というのを理解するだけで、ノードの構築がどのように行われて<br />
-結果どういうシーングラフが出てくるのか、理解できるのかなと思います。<br />
-（Flattenしてないとうまく行かなかった何かがあった気がしたけど思い出せない...）</p>
-<h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>こんな感じで、SOLARISでのノード操作のふわっとした理解をしていたところが<br />
-だいぶ整理できたおかげで、各種ノードの違いとか意図がつかめるようになってきました。</p>
-<p>これをベースに、色々とシーンの構築やらUSD的なオーサリング方法を<br />
-色々ねっていきたいです。</p>
+</td></tr></table>
+<h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>以上がインスタンスの基本でした。<br />
+これに＋して Instance がネストされていた時や、ValueClip・LoadRules・PopulationMask 等と<br />
+組み合わさった場合等いろいろありますが<br />
+今回はまずはここまで。</p>
                 
                   
                     
@@ -7086,7 +6698,7 @@ Layerは１つにまとまっているのかなと思います。</p>
 <div class="md-source-date">
   <small>
     
-      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-08-14 03:09:04</span>
+      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-31 15:39:51</span>
       
     
   </small>
@@ -7106,20 +6718,6 @@ Layerは１つにまとまっているのかなと思います。</p>
         class="mdoctag-tag-link"
         href="../../../tags/USD">
         USD
-    </a>
-    
-    <a
-        id="mdoctag-tag-link-SOLARIS"
-        class="mdoctag-tag-link"
-        href="../../../tags/SOLARIS">
-        SOLARIS
-    </a>
-    
-    <a
-        id="mdoctag-tag-link-Houdini"
-        class="mdoctag-tag-link"
-        href="../../../tags/Houdini">
-        Houdini
     </a>
     
 </div>
@@ -7162,7 +6760,7 @@ Layerは１つにまとまっているのかなと思います。</p>
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../06_point_instancer/" class="md-footer__link md-footer__link--prev" aria-label="前: SOLARISでInstancerを使う(2) 編集編" rel="prev">
+        <a href="../28_kitchen_set/" class="md-footer__link md-footer__link--prev" aria-label="前: USDの機能の多くはKitchen_setが教えてくれる" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -7171,20 +6769,20 @@ Layerは１つにまとまっているのかなと思います。</p>
               <span class="md-footer__direction">
                 前
               </span>
-              SOLARISでInstancerを使う(2) 編集編
+              USDの機能の多くはKitchen_setが教えてくれる
             </div>
           </div>
         </a>
       
       
         
-        <a href="../08_solaris_variant/" class="md-footer__link md-footer__link--next" aria-label="次: SOLARIS で VariantSet" rel="next">
+        <a href="../../10_USDTips/00_create_custom_schema/" class="md-footer__link md-footer__link--next" aria-label="次: オリジナルの New Schema Classを作る" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              SOLARIS で VariantSet
+              オリジナルの New Schema Classを作る
             </div>
           </div>
           <div class="md-footer__button md-icon">
