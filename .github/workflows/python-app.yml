@@ -34,7 +34,10 @@ jobs:
                   submodules: true
                   token: ${{ secrets.PERSONAL_TOKEN }}
 
-            - name: Update Submodule
+            - name: Update Submodule notebooks
+              run: cd notebooks && git fetch && git reset --hard origin/master && cd ..
+
+            - name: Update Submodule samplecode
               run: cd docs/65_SampleCode/blender_samplecode && git fetch && git reset --hard origin/master
 
             - uses: satackey/action-docker-layer-caching@v0.0.11
