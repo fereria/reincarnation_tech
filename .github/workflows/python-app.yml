@@ -35,10 +35,10 @@ jobs:
                   token: ${{ secrets.PERSONAL_TOKEN }}
 
             - name: Update Submodule notebooks
-              run: cd /work_dir/notebooks && git fetch && git reset --hard origin/master
+              run: cd notebooks && git fetch && git reset --hard origin/master
 
             - name: Update Submodule samplecode
-              run: cd /work_dir/docs/65_SampleCode/blender_samplecode && git fetch && git reset --hard origin/master
+              run: cd docs/65_SampleCode/blender_samplecode && git fetch && git reset --hard origin/master
 
             - uses: satackey/action-docker-layer-caching@v0.0.11
               continue-on-error: true
