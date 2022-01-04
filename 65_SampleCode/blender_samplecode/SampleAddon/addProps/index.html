@@ -858,6 +858,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../10_Blender/10_Scripts/05_add_props/" class="md-nav__link">
+        Propertyを追加する
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -6610,10 +6624,12 @@
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">bpy</span>
 
 
-<span class="k">class</span> <span class="nc">PropGroup</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">PropertyGroup</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">SAMPLE_PT_PropGroup</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">PropertyGroup</span><span class="p">):</span>
     <span class="c1"># PropetyGroupを追加</span>
     <span class="n">my_int</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">IntProperty</span><span class="p">()</span>
     <span class="n">my_float</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">()</span>
@@ -6622,12 +6638,14 @@
 
 <span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
     <span class="c1"># Materialに対して登録</span>
-    <span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">my_settings</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">PointerProperty</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">PropGroup</span><span class="p">)</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">my_settings</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">PointerProperty</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">SAMPLE_PT_PropGroup</span><span class="p">)</span>
     <span class="c1"># 登録したら</span>
     <span class="c1">#  bpy.data.materials[1].my_settings.my_int = 10</span>
     <span class="c1"># こんな感じで、各MaterialにPropertyを追加することができる。</span>
     <span class="c1"># Groupではなく、直接Propertyも追加できる。</span>
     <span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">hoge</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">IntProperty</span><span class="p">()</span>
+    <span class="c1"># 別のDataへのリンクを定義するときも PointerProperty</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Object</span><span class="o">.</span><span class="n">sample</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">PointerProperty</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Material</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
                 
@@ -6638,7 +6656,7 @@
 <div class="md-source-date">
   <small>
     
-      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-04 23:22:51</span>
+      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-05 00:21:35</span>
       
     
   </small>
