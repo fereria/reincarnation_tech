@@ -6029,6 +6029,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../createGUI/" class="md-nav__link">
+        createGUI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../simpleOp_HelloWorld/" class="md-nav__link">
         simpleOp HelloWorld
       </a>
@@ -6626,11 +6640,43 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">bpy</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">BlenderのPropertyを追加するAddon</span>
+
+<span class="sd">Groupを定義する場合は、 bpy.types.PropertyGroup に対して</span>
+<span class="sd">追加するPropertyを指定する。</span>
+
+<span class="sd">name : 追加する型</span>
+<span class="sd">必用に応じて関数の引数でPropertyを定義する。</span>
+
+<span class="sd">autoload を使用している場合、クラスを登録する部分以外は</span>
+<span class="sd">register関数に定義する。</span>
+
+<span class="sd">クラスを定義しただけではPropertyは使用できない。</span>
+<span class="sd">使うには、 bpy.types の指定Type に properyName = Props のように代入する必要がある。</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 
 <span class="k">class</span> <span class="nc">SAMPLE_PT_PropGroup</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">PropertyGroup</span><span class="p">):</span>
-    <span class="c1"># PropetyGroupを追加</span>
+    <span class="c1"># PropertyGroupを追加</span>
     <span class="n">my_int</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">IntProperty</span><span class="p">()</span>
     <span class="n">my_float</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">()</span>
     <span class="n">my_string</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">()</span>
@@ -6656,7 +6702,7 @@
 <div class="md-source-date">
   <small>
     
-      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-05 00:21:35</span>
+      最終更新日: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-09 23:18:33</span>
       
     
   </small>
