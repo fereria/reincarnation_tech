@@ -11,16 +11,20 @@
         <meta name="author" content="Megumi Ando@Remiria">
       
       
-        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/CompArc/UsdReference1/">
+        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_PySide/01_PySide_Basic/00_Tutorial/14_thread_pool/">
       
       <link rel="icon" href="../../../../favicon.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
     
     
+    
+        <meta name="tag" content="PySide">
+    
+    
 
     
       
-        <title>ReferenceをしているPrimからUsdのFilePathを取得 - Reincarnation+#Tech</title>
+        <title>ThreadPool でスレッド作成 - Reincarnation+#Tech</title>
       
     
     
@@ -62,9 +66,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Reincarnation+#Tech - ReferenceをしているPrimからUsdのFilePathを取得" />
+  <meta property="og:title" content="Reincarnation+#Tech - ThreadPool でスレッド作成" />
   <meta property="og:description" content="None" />
-  <meta property="og:url" content="https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/CompArc/UsdReference1/" />
+  <meta property="og:url" content="https://fereria.github.io/reincarnation_tech/11_PySide/01_PySide_Basic/00_Tutorial/14_thread_pool/" />
   <meta property="og:image" content="img/icon.jpg" />
   <meta property="og:image:type" content="image/jpg" />
   <!-- <meta property="og:image:width" content="1200" />
@@ -72,7 +76,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@fereria" />
   <meta name="twitter:creator" content="Megumi Ando@fereria" />
-  <meta name="twitter:title" content="Reincarnation+#Tech - ReferenceをしているPrimからUsdのFilePathを取得" />
+  <meta name="twitter:title" content="Reincarnation+#Tech - ThreadPool でスレッド作成" />
   <meta name="twitter:description" content="None" />
   <meta name="twitter:image" content="img/icon.jpg" />  
 
@@ -94,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#in-18" class="md-skip">
+        <a href="#thread" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -127,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ReferenceをしているPrimからUsdのFilePathを取得
+              ThreadPool でスレッド作成
             
           </span>
         </div>
@@ -317,13 +321,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../../../11_PySide/" class="md-tabs__link">
+      <a href="../../../" class="md-tabs__link md-tabs__link--active">
         PySide
       </a>
     </li>
@@ -349,8 +355,6 @@
         
   
   
-    
-  
 
 
   
@@ -362,7 +366,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../NotionAPI/notionapi_01/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../../60_JupyterNotebook/NotionAPI/notionapi_01/" class="md-tabs__link">
         JupyterNotebook
       </a>
     </li>
@@ -3782,12 +3786,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" data-md-state="indeterminate" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       
       
@@ -3810,7 +3816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/" class="md-nav__link">
+      <a href="../../../" class="md-nav__link">
         Index
       </a>
     </li>
@@ -3822,12 +3828,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" data-md-state="indeterminate" type="checkbox" id="__nav_8_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" checked>
       
       
       
@@ -3848,12 +3856,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2_1" data-md-state="indeterminate" type="checkbox" id="__nav_8_2_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2_1" type="checkbox" id="__nav_8_2_1" checked>
       
       
       
@@ -3876,7 +3886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/01_start/" class="md-nav__link">
+      <a href="../01_start/" class="md-nav__link">
         PySideで単独アプリケーションを作る
       </a>
     </li>
@@ -3890,7 +3900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/02_create_designer/" class="md-nav__link">
+      <a href="../02_create_designer/" class="md-nav__link">
         QtDesignerでUIを作る
       </a>
     </li>
@@ -3904,7 +3914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/03_signal_slot_01/" class="md-nav__link">
+      <a href="../03_signal_slot_01/" class="md-nav__link">
         SignalとSlotについて(1)
       </a>
     </li>
@@ -3918,7 +3928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/04_widgets/" class="md-nav__link">
+      <a href="../04_widgets/" class="md-nav__link">
         Widgetとカスタムウィジェットを作成する
       </a>
     </li>
@@ -3932,7 +3942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/05_widget_sample_01/" class="md-nav__link">
+      <a href="../05_widget_sample_01/" class="md-nav__link">
         基本Widgetを使ってみる(1):LineEdit
       </a>
     </li>
@@ -3946,7 +3956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/06_widget_sample_02/" class="md-nav__link">
+      <a href="../06_widget_sample_02/" class="md-nav__link">
         基本Widgetを使ってみる(2):RadioButton
       </a>
     </li>
@@ -3960,7 +3970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/07_widget_sample_03/" class="md-nav__link">
+      <a href="../07_widget_sample_03/" class="md-nav__link">
         基本Widgetを使ってみる(3):ComboBox_基本編
       </a>
     </li>
@@ -3974,7 +3984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/08_widget_sample_04/" class="md-nav__link">
+      <a href="../08_widget_sample_04/" class="md-nav__link">
         基本Widgetを使ってみる(4):ListView
       </a>
     </li>
@@ -3988,7 +3998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/09_qsettings/" class="md-nav__link">
+      <a href="../09_qsettings/" class="md-nav__link">
         QSettingsを使用してUIの情報を保存する
       </a>
     </li>
@@ -4002,7 +4012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/10_context_menu/" class="md-nav__link">
+      <a href="../10_context_menu/" class="md-nav__link">
         コンテキストメニューを作る
       </a>
     </li>
@@ -4016,7 +4026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/11_status_bar/" class="md-nav__link">
+      <a href="../11_status_bar/" class="md-nav__link">
         QMainwindowのStatusBarを使う
       </a>
     </li>
@@ -4030,7 +4040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/12_layout/" class="md-nav__link">
+      <a href="../12_layout/" class="md-nav__link">
         基本的なレイアウトを使おう
       </a>
     </li>
@@ -4044,7 +4054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/13_timer/" class="md-nav__link">
+      <a href="../13_timer/" class="md-nav__link">
         シンプルなタイマーを作ろう
       </a>
     </li>
@@ -4056,11 +4066,69 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/14_thread_pool/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ThreadPool でスレッド作成
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         ThreadPool でスレッド作成
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#thread" class="md-nav__link">
+    Thread とは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    サンプル
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    Close 時の処理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    まとめ
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4112,7 +4180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/01_child_dup_window/" class="md-nav__link">
+      <a href="../../../02_Tips/01_child_dup_window/" class="md-nav__link">
         MayaPySideで重複Windowを出さない方法（改
       </a>
     </li>
@@ -4126,7 +4194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/02_completer/" class="md-nav__link">
+      <a href="../../../02_Tips/02_completer/" class="md-nav__link">
         QCompleterでLineEditに予測変換を入れる
       </a>
     </li>
@@ -4140,7 +4208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/03_custom_tooltip/" class="md-nav__link">
+      <a href="../../../02_Tips/03_custom_tooltip/" class="md-nav__link">
         PySideのTooltipを自作する
       </a>
     </li>
@@ -4154,7 +4222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/04_screen_shot/" class="md-nav__link">
+      <a href="../../../02_Tips/04_screen_shot/" class="md-nav__link">
         PySideで範囲スクリーンショットを作る
       </a>
     </li>
@@ -4168,7 +4236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/05_gradation_picker/" class="md-nav__link">
+      <a href="../../../02_Tips/05_gradation_picker/" class="md-nav__link">
         グラデーションピッカーを作る
       </a>
     </li>
@@ -4182,7 +4250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/06_qthread_01/" class="md-nav__link">
+      <a href="../../../02_Tips/06_qthread_01/" class="md-nav__link">
         QThreadでマルチスレッドを使う(Signalの注意点)
       </a>
     </li>
@@ -4196,7 +4264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/07_validator/" class="md-nav__link">
+      <a href="../../../02_Tips/07_validator/" class="md-nav__link">
         LineEditに入力チェック・修正機能を入れる
       </a>
     </li>
@@ -4210,7 +4278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/08_custom_Model/" class="md-nav__link">
+      <a href="../../../02_Tips/08_custom_Model/" class="md-nav__link">
         QAbstractItemModelのdataの使い方
       </a>
     </li>
@@ -4224,7 +4292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/09_rubber_band/" class="md-nav__link">
+      <a href="../../../02_Tips/09_rubber_band/" class="md-nav__link">
         RubberBandを表示する
       </a>
     </li>
@@ -4238,7 +4306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/10_custom_mdoel_sort/" class="md-nav__link">
+      <a href="../../../02_Tips/10_custom_mdoel_sort/" class="md-nav__link">
         QAbstractItemModelでSort
       </a>
     </li>
@@ -4252,7 +4320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/11_custom_layout/" class="md-nav__link">
+      <a href="../../../02_Tips/11_custom_layout/" class="md-nav__link">
         CustomLayoutを作ろう
       </a>
     </li>
@@ -4266,7 +4334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/12_tagcrowd/" class="md-nav__link">
+      <a href="../../../02_Tips/12_tagcrowd/" class="md-nav__link">
         PySideでタグクラウドっぽいWidgetを作る
       </a>
     </li>
@@ -4306,7 +4374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/GraphicsView/graphicsView_01/" class="md-nav__link">
+      <a href="../../../02_Tips/GraphicsView/graphicsView_01/" class="md-nav__link">
         GraphicsViewの基本(Sceneをスケールする)
       </a>
     </li>
@@ -4320,7 +4388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/GraphicsView/graphics_view_color_anim/" class="md-nav__link">
+      <a href="../../../02_Tips/GraphicsView/graphics_view_color_anim/" class="md-nav__link">
         GraphicsViewでQColorをアニメーションさせる
       </a>
     </li>
@@ -4334,7 +4402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/GraphicsView/pyside_graphicsview_child_item/" class="md-nav__link">
+      <a href="../../../02_Tips/GraphicsView/pyside_graphicsview_child_item/" class="md-nav__link">
         PySide の GraphicsView で Item を親子化したときの問題
       </a>
     </li>
@@ -4381,7 +4449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/StyleSheet/01_stylesheet_basic/" class="md-nav__link">
+      <a href="../../../02_Tips/StyleSheet/01_stylesheet_basic/" class="md-nav__link">
         PySideでStyleSheetを使って編集する(1)
       </a>
     </li>
@@ -4428,7 +4496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/column_view/" class="md-nav__link">
+      <a href="../../../02_Tips/ViewModelDelegate/column_view/" class="md-nav__link">
         ColumnViewを使おう
       </a>
     </li>
@@ -4442,7 +4510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/custom_model/" class="md-nav__link">
+      <a href="../../../02_Tips/ViewModelDelegate/custom_model/" class="md-nav__link">
         QtCore.QAbstractItemModelを使用したカスタムモデルの作成
       </a>
     </li>
@@ -4456,7 +4524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/custom_model_2/" class="md-nav__link">
+      <a href="../../../02_Tips/ViewModelDelegate/custom_model_2/" class="md-nav__link">
         AbstractItemModelでItemを追加・削除
       </a>
     </li>
@@ -4470,7 +4538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/tree_view_proxy/" class="md-nav__link">
+      <a href="../../../02_Tips/ViewModelDelegate/tree_view_proxy/" class="md-nav__link">
         TreeViewの中身を正規表現で検索する
       </a>
     </li>
@@ -4484,7 +4552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_01/" class="md-nav__link">
+      <a href="../../../02_Tips/ViewModelDelegate/view_model_delegate_01/" class="md-nav__link">
         PySideのTableViewでDelegateを使う(1)
       </a>
     </li>
@@ -4498,7 +4566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_02/" class="md-nav__link">
+      <a href="../../../02_Tips/ViewModelDelegate/view_model_delegate_02/" class="md-nav__link">
         PySideのTableViewでDelegateを使う(2) paintする
       </a>
     </li>
@@ -4512,7 +4580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_03/" class="md-nav__link">
+      <a href="../../../02_Tips/ViewModelDelegate/view_model_delegate_03/" class="md-nav__link">
         TableViewの編集画面でDialogを使用する
       </a>
     </li>
@@ -4526,7 +4594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_04/" class="md-nav__link">
+      <a href="../../../02_Tips/ViewModelDelegate/view_model_delegate_04/" class="md-nav__link">
         PySideのTableViewでDelegateを使う(3) もっとpaintする
       </a>
     </li>
@@ -4580,7 +4648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/03_PySide_USD/01_create_treeview_01/" class="md-nav__link">
+      <a href="../../../03_PySide_USD/01_create_treeview_01/" class="md-nav__link">
         PySideでUSD関係のGUIを作ろう - SceneGraph(1)
       </a>
     </li>
@@ -4594,7 +4662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../11_PySide/03_PySide_USD/01_create_treeview_02/" class="md-nav__link">
+      <a href="../../../03_PySide_USD/01_create_treeview_02/" class="md-nav__link">
         PySideでUSD関係のGUIを作ろう - SceneGraph(2)
       </a>
     </li>
@@ -4697,14 +4765,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" data-md-state="indeterminate" type="checkbox" id="__nav_10" checked>
       
       
       
@@ -4753,7 +4819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../NotionAPI/notionapi_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/NotionAPI/notionapi_01/" class="md-nav__link">
         取得して更新
       </a>
     </li>
@@ -4772,14 +4838,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2" type="checkbox" id="__nav_10_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2" data-md-state="indeterminate" type="checkbox" id="__nav_10_2" checked>
       
       
       
@@ -4828,7 +4892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../APISchema/USDCollectoinSample/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/APISchema/USDCollectoinSample/" class="md-nav__link">
         USDCollectionの基本操作
       </a>
     </li>
@@ -4842,7 +4906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../APISchema/USDCollectoinSample2/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/APISchema/USDCollectoinSample2/" class="md-nav__link">
         USDCollection応用編
       </a>
     </li>
@@ -4856,7 +4920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../APISchema/modelAPI/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/APISchema/modelAPI/" class="md-nav__link">
         modelAPIとKind
       </a>
     </li>
@@ -4903,7 +4967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Animation/animation/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Animation/animation/" class="md-nav__link">
         USDでアニメーション
       </a>
     </li>
@@ -4950,7 +5014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../AssetResolution/useresolve/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/AssetResolution/useresolve/" class="md-nav__link">
         useresolveの中の実装を調べる
       </a>
     </li>
@@ -4997,7 +5061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Attribute/USDAttribute_connections/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Attribute/USDAttribute_connections/" class="md-nav__link">
         USDAttribute_connections
       </a>
     </li>
@@ -5011,7 +5075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Attribute/USDMetadata/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Attribute/USDMetadata/" class="md-nav__link">
         Metadataを仕込む
       </a>
     </li>
@@ -5025,7 +5089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Attribute/USDPrimvar/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Attribute/USDPrimvar/" class="md-nav__link">
         AttributeにPrimvarを指定する
       </a>
     </li>
@@ -5044,14 +5108,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_5" type="checkbox" id="__nav_10_2_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_5" data-md-state="indeterminate" type="checkbox" id="__nav_10_2_5" checked>
       
       
       
@@ -5074,7 +5136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CompArc_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/CompArc_01/" class="md-nav__link">
         複数のComp組み合わせ
       </a>
     </li>
@@ -5088,7 +5150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../USDPCP_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/USDPCP_01/" class="md-nav__link">
         PcpAPIでコンポジションアークを調べる
       </a>
     </li>
@@ -5100,55 +5162,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ReferenceをしているPrimからUsdのFilePathを取得
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/UsdReference1/" class="md-nav__link">
         ReferenceをしているPrimからUsdのFilePathを取得
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#in-18" class="md-nav__link">
-    In [18]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#in-19" class="md-nav__link">
-    In [19]:
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5160,7 +5178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../UsdReference2/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/UsdReference2/" class="md-nav__link">
         Referenceをつくる
       </a>
     </li>
@@ -5174,7 +5192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compQuery/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/compQuery/" class="md-nav__link">
         UsdPrimCompositionQueryを使ってみる
       </a>
     </li>
@@ -5188,7 +5206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../makefileVariant/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/makefileVariant/" class="md-nav__link">
         USDAssetsの作り方、基本構造メモ
       </a>
     </li>
@@ -5202,7 +5220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../usd-comp-arc/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/usd-comp-arc/" class="md-nav__link">
         Pythonでアセットのセットアップ
       </a>
     </li>
@@ -5216,7 +5234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../variantset01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/variantset01/" class="md-nav__link">
         Variantの挙動を調べる_1
       </a>
     </li>
@@ -5230,7 +5248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../variantset02/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/CompArc/variantset02/" class="md-nav__link">
         Variantの挙動を調べる_2
       </a>
     </li>
@@ -5277,7 +5295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Instance/usd_instance/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Instance/usd_instance/" class="md-nav__link">
         USDのインスタンス
       </a>
     </li>
@@ -5324,7 +5342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../LayerEdit/FindOrOpen/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/LayerEdit/FindOrOpen/" class="md-nav__link">
         CreateNewとFindOrOpenの違い
       </a>
     </li>
@@ -5338,7 +5356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../LayerEdit/USDEditTarget/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/LayerEdit/USDEditTarget/" class="md-nav__link">
         EditTargetで指定レイヤーを操作
       </a>
     </li>
@@ -5385,7 +5403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Material/USDMaterial_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Material/USDMaterial_01/" class="md-nav__link">
         USDでMaterial_ShadingNetwork
       </a>
     </li>
@@ -5399,7 +5417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Material/USDMaterial_02/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Material/USDMaterial_02/" class="md-nav__link">
         InputOutputを確認する
       </a>
     </li>
@@ -5413,7 +5431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Material/USDTextureAssign/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Material/USDTextureAssign/" class="md-nav__link">
         USDでTextureAssign
       </a>
     </li>
@@ -5427,7 +5445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Material/geomsubset_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Material/geomsubset_01/" class="md-nav__link">
         Face単位でシェーダーをアサイン
       </a>
     </li>
@@ -5474,7 +5492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Mesh/USDMeshTest/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Mesh/USDMeshTest/" class="md-nav__link">
         USDのMeshをPythonで作る
       </a>
     </li>
@@ -5488,7 +5506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Mesh/gltf2UsdMesh/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Mesh/gltf2UsdMesh/" class="md-nav__link">
         gltfからUsdMeshを作る
       </a>
     </li>
@@ -5535,7 +5553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Stage/SdfLayer_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Stage/SdfLayer_01/" class="md-nav__link">
         SdfLayer_UsdStage
       </a>
     </li>
@@ -5549,7 +5567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Stage/Traverse_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Stage/Traverse_01/" class="md-nav__link">
         Stage以下をTraverseする
       </a>
     </li>
@@ -5563,7 +5581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Stage/UsdStageCache/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Stage/UsdStageCache/" class="md-nav__link">
         usdCacheを使う_Stageをリロードする
       </a>
     </li>
@@ -5577,7 +5595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Stage/UsdStage_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Stage/UsdStage_01/" class="md-nav__link">
         UsdStageでできること
       </a>
     </li>
@@ -5591,7 +5609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Stage/UsdStage_02/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/Stage/UsdStage_02/" class="md-nav__link">
         OpenMaskedで一部だけロード
       </a>
     </li>
@@ -5638,7 +5656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../TimeSample/UsdClipsAPI_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/TimeSample/UsdClipsAPI_01/" class="md-nav__link">
         ClipsAPIの基本構造をつくる
       </a>
     </li>
@@ -5652,7 +5670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../TimeSample/UsdClipsAPI_02/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/TimeSample/UsdClipsAPI_02/" class="md-nav__link">
         TemplateAssetPathを使う
       </a>
     </li>
@@ -5699,7 +5717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UsdSkel/usdskel_01/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/UsdSkel/usdskel_01/" class="md-nav__link">
         SOLARISでXformからUsdSkeletonを作る
       </a>
     </li>
@@ -5713,7 +5731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UsdSkel/usdskel_02/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/UsdSkel/usdskel_02/" class="md-nav__link">
         UsdSkelの構造を理解する
       </a>
     </li>
@@ -5760,7 +5778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UsdUtils/usdutils/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/USD/UsdUtils/usdutils/" class="md-nav__link">
         usdzip
       </a>
     </li>
@@ -5814,7 +5832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pythonBasic/contextlib/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/pythonBasic/contextlib/" class="md-nav__link">
         contextlibの使い方
       </a>
     </li>
@@ -5828,7 +5846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pythonBasic/functoolTest/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/pythonBasic/functoolTest/" class="md-nav__link">
         functoolsの使い方
       </a>
     </li>
@@ -5842,7 +5860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pythonBasic/hello_world/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/pythonBasic/hello_world/" class="md-nav__link">
         埋め込み用サンプル
       </a>
     </li>
@@ -5856,7 +5874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pythonBasic/samplecode/" class="md-nav__link">
+      <a href="../../../../60_JupyterNotebook/pythonBasic/samplecode/" class="md-nav__link">
         helloworld
       </a>
     </li>
@@ -6780,15 +6798,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#in-18" class="md-nav__link">
-    In [18]:
+  <a href="#thread" class="md-nav__link">
+    Thread とは
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#in-19" class="md-nav__link">
-    In [19]:
+  <a href="#_1" class="md-nav__link">
+    サンプル
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    Close 時の処理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    まとめ
   </a>
   
 </li>
@@ -6806,27 +6838,35 @@
               
     
                 
-<a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/60_JupyterNotebook/USD/CompArc/UsdReference1.md" title="編集" class="md-content__button md-icon">
+<a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_PySide/01_PySide_Basic/00_Tutorial/14_thread_pool.md" title="編集" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>ReferenceをしているPrimからUsdのFilePathを取得</h1>
+  <h1>ThreadPool でスレッド作成</h1>
 
-<p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/CompArc/UsdReference1__ReferenceをしているPrimからUsdのFilePathを取得.ipynb">UsdReference1__ReferenceをしているPrimからUsdのFilePathを取得.ipynb</a></p>
-<h4 id="in-18">In [18]:<a class="headerlink" href="#in-18" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="p">,</span> <span class="n">Sdf</span>
-
-<span class="n">sample_usd</span> <span class="o">=</span> <span class="s2">&quot;D:/work/usd_py36/usd/ref.usda&quot;</span>
-
-<span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">sample_usd</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-<h4 id="in-19">In [19]:<a class="headerlink" href="#in-19" title="Permanent link">¶</a></h4>
+<p>以前 <i class="fa fa-external-link"></i> <a href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/06_qthread_01/">QThread で増地スレッドを使う</a>という記事で、 QThread を継承して Thread を使用するサンプルを紹介しましたが、<br />
+これとは別にもう１つ「QThreadPool」を使用してスレッドを作成する処理のやり方があるので<br />
+紹介します。</p>
+<h2 id="thread">Thread とは<a class="headerlink" href="#thread" title="Permanent link">¶</a></h2>
+<p>PySide で GUI を作るときに、重い処理（ファイルのコピー等）を実行すると<br />
+実行中は GUI が操作できなくなり、プログレスバーなども進行を正しく表示できないなどの<br />
+問題が発生します。</p>
+<p>そういった場合は、GUI とは別に処理を Thread 化して GUI を止めないようにします。<br />
+そのようなコードを書くときには QThread を継承したクラスを用意して、その run に<br />
+スレッド化したい処理を書く...といった事が可能ですが、<br />
+もっと細かいタスクを、大量に実行したいような場合には、 <i class="fa fa-external-link"></i> <a href="https://doc.qt.io/qtforpython/PySide6/QtCore/QThreadPool.html#qthreadpool">ThreadPool</a> というクラスを使用した<br />
+スレッドの書き方をするのが有効です。</p>
+<h2 id="_1">サンプル<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>全コードは<br />
+<a href="https://fereria.github.io/reincarnation_tech/65_SampleCode/PySide/thredPool_02/">https://fereria.github.io/reincarnation_tech/65_SampleCode/PySide/thredPool_02/</a><br />
+こちらから。</p>
+<p><img alt="" src="https://gyazo.com/f966a2327ffb974f871f13e244fd2994.png" /></p>
+<p>処理は非常にシンプルで、Start ボタンを押すと、ランダムな秒数だけプリント分を実行し<br />
+終わったら finish task とプリントするスレッドを１０個追加し、<br />
+スレッドは最大５個同時に処理する...といったサンプルコードになります。</p>
+<p>ThreadPool をつかった場合の特徴は、Thread を管理するための QThreadPool クラスと、<br />
+実際のプロセスを実装するための QRunnable クラスで構成されています。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6838,50 +6878,160 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/ref&quot;</span><span class="p">)</span>
-<span class="c1"># PrimがReferencによって定義されてるか</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">HasAuthoredReferences</span><span class="p">())</span>
-<span class="c1"># Primを構成するLayerを取得</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetPrimStack</span><span class="p">())</span>
-<span class="k">for</span> <span class="n">findLayer</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimStack</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">findLayer</span><span class="p">)</span>
-    <span class="c1"># SdfPathを取得</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">findLayer</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
-    <span class="c1"># AssetPathを取得</span>
-    <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">findLayer</span><span class="o">.</span><span class="n">referenceList</span><span class="o">.</span><span class="n">prependedItems</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">ref</span><span class="o">.</span><span class="n">assetPath</span><span class="p">)</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">WorkerSignal</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QObject</span><span class="p">):</span>
+
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+    <span class="n">sendLog</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QRunnable</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threadId</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">threadId</span> <span class="o">=</span> <span class="n">threadId</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signals</span> <span class="o">=</span> <span class="n">WorkerSignal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">stopThread</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">sendLog</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">threadId</span><span class="si">}</span><span class="s2"> -&gt; 残り</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
+<p>QRunnable は、QThread と基本共通で、<br />
+run 関数をオーバーライドすることで、Thread 化する処理を実装します。</p>
+<p>QRunnable は、QObject の子クラスではないため、Signal は使用できません。<br />
+ので、Thread 内で Signal を使うために Signal 用のクラスを作成していますが<br />
+それ以外は非常にシンプルな構成になっています。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SampleDialog</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="c1"># 略</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QThreadPool</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">setMaxThreadCount</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workers</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div>
+</td></tr></table>
+<p>この QRunnable を使用するには、QThreadPool を作成し、pool.start(worker) で<br />
+実行する Runnable オブジェクトを渡します。<br />
+こうすると、指定の上限（setMaxThreadCount）だけ、別スレッドで処理が実行されます。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+
+            <span class="n">threadID</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S_</span><span class="si">%f</span><span class="s1">_&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 今の日付をKeyにする</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="p">[</span><span class="n">threadID</span><span class="p">]</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">(</span><span class="n">threadID</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="p">[</span><span class="n">threadID</span><span class="p">]</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">finishTask</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="p">[</span><span class="n">threadID</span><span class="p">]</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">sendLog</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showMessage</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="p">[</span><span class="n">threadID</span><span class="p">]</span><span class="o">.</span><span class="n">setAutoDelete</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="p">[</span><span class="n">threadID</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">updateThreadCountUI</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>実行例。<br />
+終了時やコメントの Signal を Runnable 側に作成してあるので<br />
+このように Signal-Slot を接続し、スレッドから Signal を受け取れるようにします。<br />
+この辺りは普通の PySide と同じです。</p>
+<h2 id="close">Close 時の処理<a class="headerlink" href="#close" title="Permanent link">¶</a></h2>
+<p>これでも一応動くのですが、このままだとツールを終了したときに<br />
+Thread が残ってしまうので、終了時にはのこりの Thread を終了するようにしておきます。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-[Sdf.Find(&#39;d:/work/usd_py36/usd/ref.usda&#39;, &#39;/ref&#39;), Sdf.Find(&#39;d:/work/usd_py36/usd/testDD.usda&#39;, &#39;/hogehoge&#39;)]
-Sdf.Find(&#39;d:/work/usd_py36/usd/ref.usda&#39;, &#39;/ref&#39;)
-/ref
-D:/work/usd_py36/usd/testDD.usda
-Sdf.Find(&#39;d:/work/usd_py36/usd/testDD.usda&#39;, &#39;/hogehoge&#39;)
-/hogehoge
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">stopThread</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">waitForDone</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-<p>GetPrimStackで得られる Sdf.Find は、Primを構成するPrimSpec？と<br />
-その元になるAssetPathを取得できる。<br />
-リファレンスで読み込んでいるPrimの場合、<br />
-このFindで取得できるSdfPathは、Referenceの場合はReferenceで読み込んでるファイル内の<br />
-SdfPath。  </p>
+<p>ThreadPool の場合どうするのが良いか迷いましたが、<br />
+QRunnable に終了する関数を追加しておき、Pool で実行中のスレッドがすべて終了するのを<br />
+待つようにします。<br />
+こうすることで、CloseEvent 時に実行中の Thread も待機中の Thread も<br />
+すべて終了してからツールが閉じるようになります。</p>
+<h2 id="_2">まとめ<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>１つのスレッドのみで裏で実行するとかであれば、QThread を継承するのでもよいですが<br />
+ファイルコピーだったりといった処理は<br />
+この ThreadPool を使用するほうが、綺麗に書けることがあります。</p>
+<p>また、定期的に実行するようなものも、Thread で実行する内容が複雑ならば、<br />
+細かく QRunnable に分けて実装し、<br />
+QTimer と組み合わせて ThreadPool に Runnable な Worker を投げる等する<br />
+といった使い方も便利だと思います。</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-05-02 15:25:09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-25 23:38:49</span>
       
     
   </small>
@@ -6891,6 +7041,33 @@ SdfPath。  </p>
     
     
         
+<hr/ >
+<div class="mdoctag-tags-label">Tag</div>
+<div id="mdoctag-tags-list">
+    
+    <a
+        id="mdoctag-tag-link-PySide"
+        class="mdoctag-tag-link"
+        href="../../../../tags/PySide">
+        PySide
+    </a>
+    
+</div>
+<style>
+.mdoctag-tag-link {
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 2px;
+    margin-right: 10px;
+}
+#mdoctag-tags-list {
+    margin-bottom: 20px;
+}
+.mdoctag-tags-label {
+    margin-bottom: 6px;
+}
+</style>
+
     
 
             </article>
@@ -6909,7 +7086,7 @@ SdfPath。  </p>
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../USDPCP_01/" class="md-footer__link md-footer__link--prev" aria-label="前: PcpAPIでコンポジションアークを調べる" rel="prev">
+        <a href="../13_timer/" class="md-footer__link md-footer__link--prev" aria-label="前: シンプルなタイマーを作ろう" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -6918,20 +7095,20 @@ SdfPath。  </p>
               <span class="md-footer__direction">
                 前
               </span>
-              PcpAPIでコンポジションアークを調べる
+              シンプルなタイマーを作ろう
             </div>
           </div>
         </a>
       
       
         
-        <a href="../UsdReference2/" class="md-footer__link md-footer__link--next" aria-label="次: Referenceをつくる" rel="next">
+        <a href="../../../02_Tips/01_child_dup_window/" class="md-footer__link md-footer__link--next" aria-label="次: MayaPySideで重複Windowを出さない方法（改" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              Referenceをつくる
+              MayaPySideで重複Windowを出さない方法（改
             </div>
           </div>
           <div class="md-footer__button md-icon">
