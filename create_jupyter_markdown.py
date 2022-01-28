@@ -81,7 +81,7 @@ def getIpynbFile():
 if __name__ == "__main__":
 
     root = f"{os.getcwd()}/notebooks"
-    md_root = f"{os.getcwd()}/docs/60_JupyterNotebook"
+    md_root = f"{os.getcwd()}/docs/65_SampleCode/Notebook"
 
     if os.path.exists(md_root):
         shutil.rmtree(md_root, True)
