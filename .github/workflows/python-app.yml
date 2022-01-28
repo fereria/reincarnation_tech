@@ -40,6 +40,9 @@ jobs:
             - name: Update Submodule samplecode
               run: cd docs/65_SampleCode/blender_samplecode && git fetch && git reset --hard origin/master
 
+            - name: Update Submodule PySide
+              run: cd docs/65_SampleCode/pyside_samplecode && git fetch && git reset --hard origin/master
+
             - uses: satackey/action-docker-layer-caching@v0.0.11
               continue-on-error: true
 
