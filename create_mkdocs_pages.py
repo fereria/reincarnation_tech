@@ -23,6 +23,7 @@ def replace_title_folder_name(name):
     replaceString = utils.getFolderReplaceString()
 
     buff = re.sub("[0-9][0-9]_", "", name)
+    buff = re.sub("_", " ", buff)
     for key in replaceString.keys():
         buff = buff.replace(key, replaceString[key])
     return buff
