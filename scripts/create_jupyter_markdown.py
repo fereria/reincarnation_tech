@@ -11,7 +11,7 @@ import os
 import os.path
 import re
 import shutil
-import utils
+import scripts.utils as utils
 
 
 def createNoteBookMD(ipynbFile, root, exportPath):

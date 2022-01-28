@@ -50,16 +50,16 @@ jobs:
               run: docker-compose -f docker/docker-compose.yml up --build -d
 
             - name: nbConvert
-              run: docker exec mkdocs python create_jupyter_markdown.py
+              run: docker exec mkdocs python scripts/create_jupyter_markdown.py
 
             - name: Create SampleCode
-              run: docker exec mkdocs python create_samplecode_md.py
+              run: docker exec mkdocs python scripts/create_samplecode_md.py
 
             - name: Create TagPages
-              run: docker exec mkdocs python create_tag_pages.py
+              run: docker exec mkdocs python scripts/create_tag_pages.py
 
             - name: Create Mkdoc .Pages
-              run: docker exec mkdocs python create_mkdocs_pages.py
+              run: docker exec mkdocs python scripts/create_mkdocs_pages.py
 
             - name: Mkdocs
               env:
