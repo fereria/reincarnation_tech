@@ -14,8 +14,7 @@ RUN apt-get update && apt-get install -y git
 RUN apt-get install -y vim less
 RUN pip install --upgrade pip
 
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive
 
 # mkdocsのインストール
 ADD requirements.txt /work_dir/
@@ -24,17 +23,17 @@ RUN pip install -r requirements.txt
 RUN pip install git+https://github.com/srymh/MkdocsTagPlugin.git#egg=mdoctag
 
 # drawioのインストール
-ENV DRAWIO_VERSION 16.0.2
+ENV DRAWIO_VERSION 16.5.1
 
 RUN apt-get install -y wget libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils libatspi2.0-0  libsecret-1-0 libgbm-dev libasound2 xvfb sudo
 RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-amd64-${DRAWIO_VERSION}.deb
 RUN dpkg --install drawio-amd64-${DRAWIO_VERSION}.deb
 RUN rm drawio-amd64-${DRAWIO_VERSION}.deb
 
-# https://github.com/jgraph/drawio-desktop/issues/127 これでいけた
-RUN echo "#!/bin/sh\nxvfb-run /usr/bin/drawio \"\${@}\"" > /usr/local/bin/drawio && \
-    chmod +x /usr/local/bin/drawio
+RUN sudo /etc/init.d/dbus start
 
-RUN /etc/init.d/dbus start
+# https://github.com/jgraph/drawio-desktop/issues/127 これでいけた
+RUN echo "#!/bin/sh\nxvfb-run /usr/bin/drawio \"\${@}\"" > /usr/local/bin/drawio && chmod +x /usr/local/bin/drawio
+
 
 EXPOSE 8888
