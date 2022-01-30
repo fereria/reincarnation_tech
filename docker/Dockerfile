@@ -1,4 +1,4 @@
-FROM python:3.7-slim
+FROM python:3.9-buster
 
 RUN apt-get update
 RUN apt-get -y install locales && \
@@ -9,12 +9,11 @@ ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 ENV TERM xterm
 
-RUN apt-get install -y curl
-RUN apt-get update && apt-get install -y git
-RUN apt-get install -y vim less
+RUN apt-get install -y curl git vim less
+
 RUN pip install --upgrade pip
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive
+RUN DEBIAN_FRONTEND=noninteractive
 
 # mkdocsのインストール
 ADD requirements.txt /work_dir/

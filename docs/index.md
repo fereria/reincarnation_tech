@@ -25,6 +25,22 @@ Blog などにコードの引用する事なども、基本 OK ですが、
     こちらにまとめます。
     mkdocsは、調べた内容を自分のノート代わりに公開します。
 
+## サンプルコード
+
+このページで使用しているサンプルコードは、以下の GitHub のリポジトリにまとめてあります。
+
+### Jupyter Notebook を使用して検証したもの
+
+https://github.com/fereria/notebooks
+
+### PySide のサンプルコード
+
+https://github.com/fereria/pyside_samplecode
+
+### Blender のサンプルコード
+
+https://github.com/fereria/blender_samplecode
+
 ## 中の人
 
 |              |                                                                                                    |
