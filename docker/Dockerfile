@@ -31,6 +31,8 @@ RUN rm drawio-amd64-${DRAWIO_VERSION}.deb
 
 RUN sudo /etc/init.d/dbus start
 
+RUN pip install xvfbwrapper
+
 # https://github.com/jgraph/drawio-desktop/issues/127 これでいけた
 RUN echo "#!/bin/sh\nxvfb-run /usr/bin/drawio \"\${@}\"" > /usr/local/bin/drawio && chmod +x /usr/local/bin/drawio
 
