@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#in-3" class="md-skip">
+        <a href="#in-1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -4771,22 +4771,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#in-1" class="md-nav__link">
+    In [1]:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-2" class="md-nav__link">
+    In [2]:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#in-3" class="md-nav__link">
     In [3]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#in-5" class="md-nav__link">
-    In [5]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#in-64" class="md-nav__link">
-    In [64]:
   </a>
   
 </li>
@@ -4805,10 +4805,31 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#in-5" class="md-nav__link">
+    In [5]:
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notionapi_02/" class="md-nav__link">
+        ページを作る
+      </a>
     </li>
   
 
@@ -5861,6 +5882,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../pythonBasic/json_dump/" class="md-nav__link">
+        ClassをJsonにDump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../pythonBasic/samplecode/" class="md-nav__link">
         helloworld
       </a>
@@ -6805,22 +6840,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#in-1" class="md-nav__link">
+    In [1]:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-2" class="md-nav__link">
+    In [2]:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#in-3" class="md-nav__link">
     In [3]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#in-5" class="md-nav__link">
-    In [5]:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#in-64" class="md-nav__link">
-    In [64]:
   </a>
   
 </li>
@@ -6835,6 +6870,13 @@
         <li class="md-nav__item">
   <a href="#in-39" class="md-nav__link">
     In [39]:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-5" class="md-nav__link">
+    In [5]:
   </a>
   
 </li>
@@ -6860,25 +6902,23 @@
   <h1>取得して更新</h1>
 
 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/NotionAPI/notionapi_01__取得して更新.ipynb">notionapi_01__取得して更新.ipynb</a></p>
-<h4 id="in-3">In [3]:<a class="headerlink" href="#in-3" title="Permanent link">¶</a></h4>
+<h4 id="in-1">In [1]:<a class="headerlink" href="#in-1" title="Permanent link">¶</a></h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">notion_client</span> <span class="kn">import</span> <span class="n">Client</span>
 </code></pre></div>
 </td></tr></table>
-<h4 id="in-5">In [5]:<a class="headerlink" href="#in-5" title="Permanent link">¶</a></h4>
+<h4 id="in-2">In [2]:<a class="headerlink" href="#in-2" title="Permanent link">¶</a></h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Clientを作る TOKENは事前にページで作成しておく</span>
-<span class="c1"># (Textにしているのは内容を見せないようにするため)</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Clientを作る TOKENは事前にページで作成しておく</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./token.txt&quot;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">TOKEN</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 
 <span class="n">notion</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">TOKEN</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<h4 id="in-64">In [64]:<a class="headerlink" href="#in-64" title="Permanent link">¶</a></h4>
+<h4 id="in-3">In [3]:<a class="headerlink" href="#in-3" title="Permanent link">¶</a></h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -7022,13 +7062,101 @@
 </code></pre></div>
 </td></tr></table>
 </div>
+<h4 id="in-5">In [5]:<a class="headerlink" href="#in-5" title="Permanent link">¶</a></h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">notion</span><span class="o">.</span><span class="n">pages</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="p">{</span>
+    <span class="s1">&#39;page_id&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;WorkTime&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;date&#39;</span><span class="p">:{</span>
+                        <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="s1">&#39;2021-11-13T00:00:00.000+09:00&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{&#39;object&#39;: &#39;page&#39;,
+ &#39;id&#39;: &#39;375eed25-949b-40a3-8927-8de84caee787&#39;,
+ &#39;created_time&#39;: &#39;2021-11-05T15:41:00.000Z&#39;,
+ &#39;last_edited_time&#39;: &#39;2022-01-11T16:36:00.000Z&#39;,
+ &#39;cover&#39;: None,
+ &#39;icon&#39;: None,
+ &#39;parent&#39;: {&#39;type&#39;: &#39;database_id&#39;,
+  &#39;database_id&#39;: &#39;d6f7115a-fc45-49a0-92de-de3a56a24f90&#39;},
+ &#39;archived&#39;: False,
+ &#39;properties&#39;: {&#39;WorkTime&#39;: {&#39;id&#39;: &#39;CBL%3B&#39;,
+   &#39;type&#39;: &#39;date&#39;,
+   &#39;date&#39;: {&#39;start&#39;: &#39;2021-11-13T00:00:00.000+09:00&#39;,
+    &#39;end&#39;: None,
+    &#39;time_zone&#39;: None}},
+  &#39;Date&#39;: {&#39;id&#39;: &#39;pWX%7C&#39;,
+   &#39;type&#39;: &#39;date&#39;,
+   &#39;date&#39;: {&#39;start&#39;: &#39;2022-01-12&#39;, &#39;end&#39;: None, &#39;time_zone&#39;: None}},
+  &#39;Name&#39;: {&#39;id&#39;: &#39;title&#39;,
+   &#39;type&#39;: &#39;title&#39;,
+   &#39;title&#39;: [{&#39;type&#39;: &#39;text&#39;,
+     &#39;text&#39;: {&#39;content&#39;: &#39;hoge&#39;, &#39;link&#39;: None},
+     &#39;annotations&#39;: {&#39;bold&#39;: False,
+      &#39;italic&#39;: False,
+      &#39;strikethrough&#39;: False,
+      &#39;underline&#39;: False,
+      &#39;code&#39;: False,
+      &#39;color&#39;: &#39;default&#39;},
+     &#39;plain_text&#39;: &#39;hoge&#39;,
+     &#39;href&#39;: None}]}},
+ &#39;url&#39;: &#39;https://www.notion.so/hoge-375eed25949b40a389278de84caee787&#39;}
+</code></pre></div>
+</td></tr></table>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-02-12 15:19:21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-02-12 17:20:22</span>
       
     
   </small>
@@ -7072,13 +7200,13 @@
       
       
         
-        <a href="../../USD/APISchema/USDCollectoinSample/" class="md-footer__link md-footer__link--next" aria-label="次: USDCollectionの基本操作" rel="next">
+        <a href="../notionapi_02/" class="md-footer__link md-footer__link--next" aria-label="次: ページを作る" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              USDCollectionの基本操作
+              ページを作る
             </div>
           </div>
           <div class="md-footer__button md-icon">
