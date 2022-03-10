@@ -1,6 +1,6 @@
-# オブジェクトの共有・構造・ユーザーについて
-
-<!-- SUMMARY:オブジェクトの共有・構造・ユーザーについて -->
+---
+title: オブジェクトの共有・構造・ユーザーについて
+---
 
 ![](https://gyazo.com/5f6b635f9deee57bd91f9c72667c825b.png)
 
@@ -97,4 +97,4 @@ Blender の Data-Block と User、Collection などの関係性は
 
 ## 参考
 
-- http://imoue.hatenablog.com/entry/2016/07/08/222400
+-   http://imoue.hatenablog.com/entry/2016/07/08/222400
