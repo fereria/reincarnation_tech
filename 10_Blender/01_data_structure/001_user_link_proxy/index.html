@@ -11,20 +11,20 @@
         <meta name="author" content="Megumi Ando@Remiria">
       
       
-        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Blender/01_data_structure/data_block/">
+        <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Blender/01_data_structure/001_user_link_proxy/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.1">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
 
     
       
-        <title>Data-Block について - Reincarnation+#Tech</title>
+        <title>Data-Block の User,Link,Proxy - Reincarnation+#Tech</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.e8d9bf0c.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2d9f7617.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -39,8 +39,9 @@
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -62,9 +63,9 @@
     
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Reincarnation+#Tech - Data-Block について" />
+  <meta property="og:title" content="Reincarnation+#Tech - Data-Block の User,Link,Proxy" />
   <meta property="og:description" content="None" />
-  <meta property="og:url" content="https://fereria.github.io/reincarnation_tech/10_Blender/01_data_structure/data_block/" />
+  <meta property="og:url" content="https://fereria.github.io/reincarnation_tech/10_Blender/01_data_structure/001_user_link_proxy/" />
   <meta property="og:image" content="img/icon.jpg" />
   <meta property="og:image:type" content="image/jpg" />
   <!-- <meta property="og:image:width" content="1200" />
@@ -72,7 +73,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@fereria" />
   <meta name="twitter:creator" content="Megumi Ando@fereria" />
-  <meta name="twitter:title" content="Reincarnation+#Tech - Data-Block について" />
+  <meta name="twitter:title" content="Reincarnation+#Tech - Data-Block の User,Link,Proxy" />
   <meta name="twitter:description" content="None" />
   <meta name="twitter:image" content="img/icon.jpg" />  
 
@@ -94,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-block" class="md-skip">
+        <a href="#user" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -127,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data-Block について
+              Data-Block の User,Link,Proxy
             
           </span>
         </div>
@@ -696,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../collection_object/" class="md-nav__link">
+      <a href="../000_collection_object/" class="md-nav__link">
         オブジェクトの共有・構造・ユーザーについて
       </a>
     </li>
@@ -716,16 +717,14 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Data-Block について
+          Data-Block の User,Link,Proxy
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Data-Block について
+        Data-Block の User,Link,Proxy
       </a>
       
         
@@ -733,8 +732,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="目次">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -744,8 +741,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-block_1" class="md-nav__link">
-    Data-Block を確認する
+  <a href="#user" class="md-nav__link">
+    User について
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    Link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    一部リンクを残し Append
   </a>
   
 </li>
@@ -765,8 +776,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../user_link_proxy/" class="md-nav__link">
-        Data-Block の User,Link,Proxy
+      <a href="../002_link_32_01/" class="md-nav__link">
+        Blender3.2でのLinkを使用したキャラクターの読み込み方
       </a>
     </li>
   
@@ -6813,8 +6824,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -6823,8 +6832,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-block_1" class="md-nav__link">
-    Data-Block を確認する
+  <a href="#user" class="md-nav__link">
+    User について
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    Link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    一部リンクを残し Append
   </a>
   
 </li>
@@ -6842,30 +6865,87 @@
               
     
                 
-<a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Blender/01_data_structure/data_block.md" title="編集" class="md-content__button md-icon">
+<a href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Blender/01_data_structure/001_user_link_proxy.md" title="編集" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 
-<h1 id="data-block">Data-Block について<a class="headerlink" href="#data-block" title="Permanent link">¶</a></h1>
-<!-- SUMMARY:Data-Blockについて -->
+  <h1>Data-Block の User,Link,Proxy</h1>
 
-<h2 id="data-block_1">Data-Block を確認する<a class="headerlink" href="#data-block_1" title="Permanent link">¶</a></h2>
-<p>Data_Block とは、Blender の基本的なデータ構造の 1 単位。<br />
-Mesh、Material、Texture、Scene 等が Data-Block。</p>
-<p><img alt="" src="https://gyazo.com/8c2980fdb10d59799ed6cc70a8d23964.png" /></p>
-<p>DataBlock を確認するときは、アウトライナーのアイコンを選択し、 <strong>Blender File</strong> を選択する。</p>
-<p><img alt="" src="https://gyazo.com/ed8929b8274400ac354a47634963e326.png" /></p>
-<p>Blender ファイルを選択すると、開いている Blend ファイル内の Data-Block が表示される。</p>
-<p>Blender は、この Data-Block がそれぞれ「リンク」することで構成されている。</p>
+<p>Data-Block とは、Blender の基本となるデータ単位で、<br />
+<strong>mesh,object,material,texture,node-tree,scenes,text,brush,evenscreen</strong><br />
+が Data-Block の扱いになる。<br />
+Bone や Vertex は Data-Block ではなく、Scene や Mesh に内包される扱いになっている。<br />
+Blender は、この Data-Block を 1 つの blend シーン内で Link<br />
+あるいは他の blend シーンから Link する形で構成されている。</p>
+<blockquote>
+<p>Maya 的に言うノードがこの Data-Block？</p>
+</blockquote>
+<h2 id="user">User について<a class="headerlink" href="#user" title="Permanent link">¶</a></h2>
+<p><img alt="" src="https://gyazo.com/03241d2d576056a3064a74eef957ec0c.png" /></p>
+<p>Blender における「ユーザー」とは、Blender をさわっている作業者のことではなく、<br />
+<strong>Data-Block を使用している Data-Block のこと</strong> を指している。<br />
+上のスクショの例だと、Material の User は Cube(Mesh)だし、<br />
+Cube(Mesh)の User は Cube(Object)になる。</p>
+<p>User のないデータブロックは、<br />
+いわゆる「未使用ノード」扱いになるため保存されなかったり、<br />
+あやまって削除されてしまうことになる。<br />
+ので、間違って削除されないように<br />
+<strong>「使用してないけど消されない」ようにするため「FakeUser」</strong> を指定する。</p>
+<h2 id="link">Link<a class="headerlink" href="#link" title="Permanent link">¶</a></h2>
+<p>Data-Block は、他の blend ファイルからも Link を作る事が出来る。<br />
+この Link というのが、Maya でいうところのリファレンスに近い機能。</p>
+<p><img alt="" src="https://gyazo.com/81b50b5e608f319f0ea96b3994249601.png" /></p>
+<p>リファレンスとは違い、シーンをリファレンスするわけではなく、blend 内に含まれる<br />
+Data-Block をそのまま Link することができる。</p>
+<p><img alt="" src="https://gyazo.com/c8c8af5878ccb5679725c31e0d3b6c96.png" /></p>
+<p>オブジェクト単位、マテリアル単位でも Link を作成できるが<br />
+個別に Link を作るのが面倒な場合は、Collection を作成してから<br />
+その Collection を Link してあげれば、複数のオブジェクトをまとめて Link することができる。</p>
+<p>Link で読み込んだデータは、鎖のようなマークが付く。</p>
+<p><img alt="" src="https://gyazo.com/6e43ec327032c4d11f04e52d9e6cb087.png" /></p>
+<p>この状態だと、シーン内では一切編集することが出来ない（移動なども）<br />
+背景などのようなデータを読み込む場合は問題ないが、<br />
+モデルデータを Link して共有したい場合はこのままだと NG なので「プロクシ」を作成する。</p>
+<p><img alt="" src="https://gyazo.com/e964afed551483ae871cfe36acb8655a.png" /></p>
+<p>編集したいオブジェクトを選択して、Object&gt;Relations ＞ Make Proxy... をクリック。</p>
+<p><img alt="" src="https://gyazo.com/f9325efd760df47d1c4302f4747b938a.png" /></p>
+<p>クリックすると、↑ のようにプロクシを作成する前のオブジェクトは残したまま<br />
+_proxy と言う名前のオブジェクトが追加される。</p>
+<p><img alt="" src="https://gyazo.com/9b88c293b900f43bf20dad7a30191404.png" /></p>
+<p>Link しただけの場合は、<br />
+移動やスケールなどの変更、モディファイアの使用もできないが<br />
+プロクシを作成した後ならば移動もできるし、<br />
+モディファイアも使用できる。</p>
+<p><img alt="" src="https://gyazo.com/5680bf692511567067cbb2bdf1e95e53.png" /></p>
+<p>試しに Link 元を編集してから、再度シーンを開き直すと</p>
+<p><img alt="" src="https://gyazo.com/aab4a9b0f7db06fe89a5ebdedacbc19a.png" /></p>
+<p>Link 元の編集を適応した状態で、プロクシで変更した情報が適応される。</p>
+<blockquote>
+<p>このプロクシは、オブジェクト単位で作成する必要がある。<br />
+1 つのモデルが複数のオブジェクトで作成されている場合は<br />
+編集したい数分プロクシを作成する必要がある？<br />
+（Collection を選んで Proxy を作成した場合、<br />
+押したあとに Collection 内のオブジェクトを選択するウィンドウが表示される)</p>
+</blockquote>
+<h2 id="append">一部リンクを残し Append<a class="headerlink" href="#append" title="Permanent link">¶</a></h2>
+<p>Proxy 作成以外で Link したオブジェクトを編集したい場合は、「MakeLocal」をする。</p>
+<p><img alt="" src="https://gyazo.com/8623cdf89e7d408931b569f31a20a205.png" /></p>
+<p>この MakeLocal を押すと、選択したオブジェクトのみ読み込むことが出来る。<br />
+例えば Object を選択し MakeLocal すると、Object は Link からはずれるが<br />
+Material や Mesh の Link は残ったままになる。</p>
+<blockquote>
+<p>共通モデルを使用してアニメーション、モデルはあとで差し替え...のようなフローを作りたい場合は、<br />
+プロクシ使って編集するようなフローが一般的なのか...？</p>
+</blockquote>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-08-28 05:31:12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-03-10 14:10:45</span>
       
     
   </small>
@@ -6893,7 +6973,7 @@ Mesh、Material、Texture、Scene 等が Data-Block。</p>
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../collection_object/" class="md-footer__link md-footer__link--prev" aria-label="前: オブジェクトの共有・構造・ユーザーについて" rel="prev">
+        <a href="../000_collection_object/" class="md-footer__link md-footer__link--prev" aria-label="前: オブジェクトの共有・構造・ユーザーについて" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -6909,13 +6989,13 @@ Mesh、Material、Texture、Scene 等が Data-Block。</p>
       
       
         
-        <a href="../user_link_proxy/" class="md-footer__link md-footer__link--next" aria-label="次: Data-Block の User,Link,Proxy" rel="next">
+        <a href="../002_link_32_01/" class="md-footer__link md-footer__link--next" aria-label="次: Blender3.2でのLinkを使用したキャラクターの読み込み方" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              Data-Block の User,Link,Proxy
+              Blender3.2でのLinkを使用したキャラクターの読み込み方
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -6979,7 +7059,7 @@ Mesh、Material、Texture、Scene 等が Data-Block。</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.8aa65030.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.467223ff.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       
