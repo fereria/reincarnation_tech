@@ -67,7 +67,7 @@ jobs:
             - name: Mkdocs
               env:
                   TZ: Asia/Tokyo
-              run: docker exec mkdocs sudo xvfb-run --auto-servernum --server-num=1 -a mkdocs gh-deploy
+              run: docker exec mkdocs sudo xvfb-run --server-args="-screen 0, 640x480x24" --auto-servernum --server-num=1  -a mkdocs gh-deploy
 
             - name: Send Slack Finish(Success)
               if: ${{ success() }}
