@@ -1,6 +1,8 @@
 ---
 title: VSCodeでPyTest
 tags:
+    - VSCode
+    - Python
 description: VSCodeのテスト機能で pytestする方法
 ---
 
