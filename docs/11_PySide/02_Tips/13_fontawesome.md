@@ -83,3 +83,7 @@ icon = qta.icon('ei.github')
 
 これを活用すれば、PySide の GUI をお手軽に飾ることができるので
 おすすめです。
+
+## 参考
+
+-   https://github.com/spyder-ide/qtawesome
