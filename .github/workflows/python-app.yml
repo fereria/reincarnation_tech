@@ -61,6 +61,9 @@ jobs:
             - name: Create TagPages
               run: docker exec mkdocs python scripts/create_tag_pages.py
 
+            - name: Create IndexMd
+              run: docker exec mkdocs python scripts/create_tab_toppage.py
+
             - name: Create Mkdoc .Pages
               run: docker exec mkdocs python scripts/create_mkdocs_pages.py
 
