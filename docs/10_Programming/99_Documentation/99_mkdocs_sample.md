@@ -145,8 +145,8 @@ graph TD
 
 ### drawio を指定して作図結果を表示
 
-![My alt text](sample.drawio#0)
-![My alt text](sample.drawio#1)
+![My alt text](sample.drawio)
+![My alt text](sample_2.drawio)
 
 ### include マクロ
 
