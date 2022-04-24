@@ -25,6 +25,9 @@ def createIndexMd(rootDir):
     writeLines = []
 
     for root, dirs, files in os.walk(rootDir):
+
+        files.sort()
+
         if root != rootDir:
             root = root.replace("\\", "/")
             dirName = root.replace(rootDir + "/", "")
