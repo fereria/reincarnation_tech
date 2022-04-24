@@ -7,8 +7,10 @@ import os
 import os.path
 import re
 import codecs
+import glob
 
-EXCLUSION = [".git", ".github", ".vscode", ".history", "_book", "node_modules", "stylesheets", "javascripts"]
+EXCLUSION = [".git", ".github", ".vscode", ".history", "_book",
+             "node_modules", "stylesheets", "javascripts", 'pycache', 'workflows', 'ipynb']
 
 
 def getTitle(path):
