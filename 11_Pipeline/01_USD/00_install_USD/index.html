@@ -3021,28 +3021,48 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    ビルド済みデータをダウンロードする
+    ビルドする
   </a>
+  
+    <nav class="md-nav" aria-label="ビルドする">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    必用なものをインストールする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    リポジトリをクローンする
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#path" class="md-nav__link">
-    Pathを通す
+    Path を通す
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     サンプルデータを開いてみる
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pythonusd" class="md-nav__link">
-    pythonからusdファイルを作ってみる
+  <a href="#python-usd" class="md-nav__link">
+    python から usd ファイルを作ってみる
   </a>
   
 </li>
@@ -7101,28 +7121,48 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    ビルド済みデータをダウンロードする
+    ビルドする
   </a>
+  
+    <nav class="md-nav" aria-label="ビルドする">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    必用なものをインストールする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    リポジトリをクローンする
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#path" class="md-nav__link">
-    Pathを通す
+    Path を通す
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     サンプルデータを開いてみる
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pythonusd" class="md-nav__link">
-    pythonからusdファイルを作ってみる
+  <a href="#python-usd" class="md-nav__link">
+    python から usd ファイルを作ってみる
   </a>
   
 </li>
@@ -7146,24 +7186,45 @@
 
 
 
-<h1 id="usd">USDを使ってみる<a class="headerlink" href="#usd" title="Permanent link">¶</a></h1>
-<p>SIGGRAPH2019でUSDまわりが大変熱いことがわかったので<br />
-色々検証しつつ、まとめた記事をアップしていこうと思います。  </p>
-<p>まずは、USDをダウンロードしてセットアップするあたりをやっていきます。  </p>
-<h2 id="_1">ビルド済みデータをダウンロードする<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>USDはビルドするのがめんどくさいというので有名ですが<br />
-nVidiaがビルド済みのデータをアップしているので<br />
-今回はそれを使用します。  </p>
-<p><a href="https://developer.nvidia.com/usd">https://developer.nvidia.com/usd</a>  </p>
-<p>ダウンロードはこちら。  </p>
-<p>Pythonのバージョンが2と3がありますが、3のほうにはUSDViewが含まれていない<br />
-（後で説明）ので、今回は2のほうを使用します。  </p>
-<p><img alt="" src="https://gyazo.com/e8b0f432726a6d442d45c38bcae9a2a1.png" /></p>
-<p>ダウンロードしたzipを解凍して、解凍したフォルダをリネームして<br />
-お好みの場所にコピーします。  </p>
-<h2 id="path">Pathを通す<a class="headerlink" href="#path" title="Permanent link">¶</a></h2>
-<p>ダウンロードが終わったら、必要なPATHを通します。<br />
-必要なのは2つ</p>
+<h1 id="usd">USD を使ってみる<a class="headerlink" href="#usd" title="Permanent link">¶</a></h1>
+<p>SIGGRAPH2019 で USD まわりが大変熱いことがわかったので<br />
+色々検証しつつ、まとめた記事をアップしていこうと思います。</p>
+<p>まずは、USD をダウンロードしてセットアップするあたりをやっていきます。</p>
+<h2 id="_1">ビルドする<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>まずは USD をビルドします。<br />
+以前は USD をビルドして使用をするには非常に手間がありましたが、現在はビルドスクリプトも<br />
+用意されていて、比較的簡単にビルドをすることができます。</p>
+<h3 id="_2">必用なものをインストールする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://git-scm.com/">https://git-scm.com/</a></li>
+<li><a href="https://visualstudio.microsoft.com/ja/downloads/">https://visualstudio.microsoft.com/ja/downloads/</a></li>
+<li><a href="https://www.python.org/downloads/release/python-3712/">https://www.python.org/downloads/release/python-3712/</a></li>
+</ul>
+<p>まず、ビルドに必要な VisualStudio とソースコードを取得するための Git、Python をダウンロードしてインストールします。</p>
+<p>Python は、インストールしたら<br />
+<img alt="" src="https://gyazo.com/b9e01b33a2198d006d082dbe6c43320e.png" /></p>
+<p>Python37 直下と Scripts を環境変数の PATH に追加します。<br />
+さらに USDView を使用する場合必要になる　 PySide2 と PyOpenGL をインストールしておきます。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install PyOpenGL PyOpenGL_accelerate PySide2
+</code></pre></div>
+</td></tr></table>
+<p>下準備はこれで完了です。</p>
+<h3 id="_3">リポジトリをクローンする<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>インストールが終わったら、USD の Github からリポジトリをクローンします。</p>
+<p>コマンドプロンプトで、ダウンロード先のディレクトリに移動し</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone https://github.com/PixarAnimationStudios/USD.git
+</code></pre></div>
+</td></tr></table>
+<p>クローンします。</p>
+<p>クローンしたら、VisualStudio の Developer Command Prompt を開きます。</p>
+<p><img alt="" src="https://gyazo.com/ecddefa1fda425ead85330b083d05044.png" /></p>
+<p>開いたら、リポジトリをクローンしたフォルダに移動して、ビルドを実行します。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py &lt;ビルド成果物の出力先&gt;
+</code></pre></div>
+</td></tr></table>
+<h2 id="path">Path を通す<a class="headerlink" href="#path" title="Permanent link">¶</a></h2>
+<p>ダウンロードが終わったら、必要な PATH を通します。<br />
+必要なのは 2 つ</p>
 <table>
 <thead>
 <tr>
@@ -7174,37 +7235,37 @@ nVidiaがビルド済みのデータをアップしているので<br />
 <tbody>
 <tr>
 <td>PYTHONPATH</td>
-<td><downloadしたフォルダルート>/lib/python</td>
+<td><download したフォルダルート>/lib/python</td>
 </tr>
 <tr>
 <td>PATH</td>
-<td><downloadしたフォルダルート>/bin <br> <downloadしたフォルダルート>/lib</td>
+<td><download したフォルダルート>/bin <br> <download したフォルダルート>/lib</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>lib下にPATHが通っていない場合は、<br />
-pydファイルをインポート使用とするときにErrorになるので注意。</p>
+<p>lib 下に PATH が通っていない場合は、<br />
+pyd ファイルをインポート使用とするときに Error になるので注意。</p>
 </div>
-<p>この2つを通したら準備は完了です</p>
-<h2 id="_2">サンプルデータを開いてみる<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>準備ができたら、サンプルUSDをダウンロードして、ビューワで開いてみます。  </p>
-<p><a href="http://graphics.pixar.com/usd/downloads.html">http://graphics.pixar.com/usd/downloads.html</a>  </p>
-<p>サンプルデータはPIXARの公式サイトにあるので、そのKitchenSetをダウンロードします。  </p>
-<p>ダウンロードしたら、解凍したあとコマンドプロンプトを開き<br />
+<p>この 2 つを通したら準備は完了です</p>
+<h2 id="_4">サンプルデータを開いてみる<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<p>準備ができたら、サンプル USD をダウンロードして、ビューワで開いてみます。</p>
+<p><a href="http://graphics.pixar.com/usd/downloads.html">http://graphics.pixar.com/usd/downloads.html</a></p>
+<p>サンプルデータは PIXAR の公式サイトにあるので、その KitchenSet をダウンロードします。</p>
+<p>ダウンロードしたら、解凍したあとコマンドプロンプトを開き</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdview Kitchen_set.usd
 </code></pre></div>
-</td></tr></table><br />
-usdviewでKitchen_set.usdをひらいてみます。  </p>
+</td></tr></table>
+<p>usdview で Kitchen_set.usd をひらいてみます。</p>
 <p><img alt="" src="https://gyazo.com/85f886a67bcafe10082f3e1e178848eb.png" /></p>
-<p>USDViewを使用すると、usdファイルのシーングラフやLayer、プロパティなどを確認<br />
+<p>USDView を使用すると、usd ファイルのシーングラフや Layer、プロパティなどを確認<br />
 することができます。<br />
-また、Pythonコンソールも付属しているので<br />
-色々テストするにはこのusdviewを使用するのがわかりやすい（らしい）です。  </p>
-<h2 id="pythonusd">pythonからusdファイルを作ってみる<a class="headerlink" href="#pythonusd" title="Permanent link">¶</a></h2>
+また、Python コンソールも付属しているので<br />
+色々テストするにはこの usdview を使用するのがわかりやすい（らしい）です。</p>
+<h2 id="python-usd">python から usd ファイルを作ってみる<a class="headerlink" href="#python-usd" title="Permanent link">¶</a></h2>
 <p>準備ができたら、公式のチュートリアルを実行してみます。<br />
-<a href="https://graphics.pixar.com/usd/docs/Hello-World---Creating-Your-First-USD-Stage.html">https://graphics.pixar.com/usd/docs/Hello-World---Creating-Your-First-USD-Stage.html</a>  </p>
+<a href="https://graphics.pixar.com/usd/docs/Hello-World---Creating-Your-First-USD-Stage.html">https://graphics.pixar.com/usd/docs/Hello-World---Creating-Your-First-USD-Stage.html</a></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -7217,7 +7278,7 @@ usdviewでKitchen_set.usdをひらいてみます。  </p>
 </code></pre></div>
 </td></tr></table>
 <p>実行すると、指定のフォルダに HelloWorld.usda ファイルが出力されます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7233,16 +7294,16 @@ usdviewでKitchen_set.usdをひらいてみます。  </p>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table><br />
-中身はシンプルな（空の）USDファイル。  </p>
+</td></tr></table>
+<p>中身はシンプルな（空の）USD ファイル。</p>
 <p><img alt="" src="https://gyazo.com/56dcb8770dbbd7053dd164a261f19fbe.png" /></p>
-<p>usdeviewで開くと、シンプルなSphereが表示されました。  </p>
-<p>とりあえずこれでUSDを触れる環境ができました。<br />
-プチはまりポイントとしては、libフォルダにPATHを入れていなかったせいで<br />
-DLL見つからないエラーがでたのと<br />
-SynologyのNAS上のフォルダを保存先に指定するとパーミッションエラーで<br />
-書き込めなかった所。  </p>
-<p>準備は出来たので、USDの基本的な構造を調べながら<br />
+<p>usdeview で開くと、シンプルな Sphere が表示されました。</p>
+<p>とりあえずこれで USD を触れる環境ができました。<br />
+プチはまりポイントとしては、lib フォルダに PATH を入れていなかったせいで<br />
+DLL 見つからないエラーがでたのと<br />
+Synology の NAS 上のフォルダを保存先に指定するとパーミッションエラーで<br />
+書き込めなかった所。</p>
+<p>準備は出来たので、USD の基本的な構造を調べながら<br />
 使い方をまとめていこうと思います。</p>
 
   <hr>
@@ -7250,7 +7311,7 @@ SynologyのNAS上のフォルダを保存先に指定するとパーミッショ
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-05-03 16:15:02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-04-29 05:51:50</span>
       
     
   </small>
