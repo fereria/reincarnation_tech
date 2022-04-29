@@ -8,7 +8,7 @@ tags:
 
 ## 設定
 
-まずは、VSCodeのアドオンをインストールします。
+まずは、VSCode のアドオンをインストールします。
 
 ![](https://gyazo.com/fc18c1c6c8756c0f91c517d747806c59.png)
 
@@ -24,7 +24,7 @@ tags:
   ]
 ```
 
-インストールしたら、settings.json にBlenderのexeのパス指定を追加します。
+インストールしたら、settings.json に Blender の exe のパス指定を追加します。
 複数のバージョンを使い分けたい場合は、 executables の中に
 複数の設定を追加することができます。
 
@@ -32,18 +32,18 @@ tags:
 
 ![](https://gyazo.com/06c66f823ce7d571464ea82a028b0f47.png)
 
-次にAutoCompleteをできるようにします。
-BlenderのPythonと同じバージョンをインストールして、
+次に AutoComplete をできるようにします。
+Blender の Python と同じバージョンをインストールして、
 
 ```bat
 pip install fake-bpy-module-2.93
 ```
 
-使用するBlenderのバージョンの fake-moduleをpipを使用してインストールします。
+使用する Blender のバージョンの fake-module を pip を使用してインストールします。
 
 ![](https://gyazo.com/51d8c14566223cad172c78e5ce5c1cfb.png)
 
-これでBlenderPtyhonのAutoCompleteができるようになります。
+これで BlenderPtyhon の AutoComplete ができるようになります。
 
 ## 実行する
 
@@ -53,15 +53,21 @@ pip install fake-bpy-module-2.93
 
 ![](https://gyazo.com/2a231244e6524113edd4edee4259031c.png)
 
-実行するBlenderを選択します。
+実行する Blender を選択します。
 
 ![](https://gyazo.com/d8d71c30d3d4ea709bf0350948f8420b.png)
 
-すると、Blenderが起動して、
-実行結果はVSCode側のコンソールに表示されるようになります。
+すると、Blender が起動して、
+実行結果は VSCode 側のコンソールに表示されるようになります。
 
 ![](https://gyazo.com/aaf5551fa13a9c238169ac3de3b5698b.png)
 
 以降は、Run Script を実行することで
-VSCode側でBlenderPtyhonのコードを実行できるようになります。
+VSCode 側で BlenderPtyhon のコードを実行できるようになります。
 
+## 追記
+
+{{'https://twitter.com/takowasabi/status/1517444149993422848'|twitter}}
+
+ということなので、
+起動時に怒られた場合は管理者として実行すると上手くいくかもしれません。
