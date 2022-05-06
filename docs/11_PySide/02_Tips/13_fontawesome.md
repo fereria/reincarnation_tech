@@ -1,6 +1,8 @@
 ---
 title: PySideでFontAwesomeを使う
 tags:
+    - PySide
+    - Python
 description:
 ---
 

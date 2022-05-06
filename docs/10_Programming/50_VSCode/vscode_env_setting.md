@@ -1,6 +1,7 @@
 ---
 title: VSCodeのターミナルを設定する
 tags:
+	- VSCode
 description:
 ---
 
@@ -28,7 +29,7 @@ Ctrl+Shift+`
 ![](https://gyazo.com/0a1930b8fc124d82e7db9d72aa20746b.png)
 
 さらに、広い画面で実行したければエディタ領域にも移動できるので、
-これを利用することで、VSCode内で完結してターミナルの作業が可能になります。
+これを利用することで、VSCode 内で完結してターミナルの作業が可能になります。
 
 ## プロファイルの作成
 
@@ -72,7 +73,6 @@ settings.json にこのように追加します。
 
 Python のコマンドラインを簡単に起動できます。
 
-
 ## 参考
 
-* https://code.visualstudio.com/docs/editor/integrated-terminal
+-   https://code.visualstudio.com/docs/editor/integrated-terminal
