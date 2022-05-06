@@ -1,6 +1,6 @@
-# Houdini 写経 01 RBD_ClueConstraint
-
-<!-- SUMMARY: Houdini写経01_RBD_ClueConstraint-->
+---
+title: Houdini 写経 01 RBD_ClueConstraint
+---
 
 [Houdini ビジュアルエフェクトの教科書](https://www.amazon.co.jp/dp/4844367609/ref=cm_sw_r_tw_dp_U_x_Dt3KCbRA0MCTX)の内容を写経しながら Houdini のノードの挙動などを調べていきます。  
 基本的な手順は本に書いてあるので省いてます。  
@@ -142,7 +142,7 @@ Houdini のネットワークは、子に行くにつれて徐々にノードの
 
 ## 参考
 
-- http://houdini.indyzone.jp/blog/dop%E5%9F%BA%E7%A4%8E-1/
-- http://houdini.indyzone.jp/blog/assemble-sop/
-- http://naniwa-cg83.blog.jp/archives/295498.html
-- http://houdini.indyzone.jp/blog/solver%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9/
+-   http://houdini.indyzone.jp/blog/dop%E5%9F%BA%E7%A4%8E-1/
+-   http://houdini.indyzone.jp/blog/assemble-sop/
+-   http://naniwa-cg83.blog.jp/archives/295498.html
+-   http://houdini.indyzone.jp/blog/solver%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9/

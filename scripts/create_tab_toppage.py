@@ -8,18 +8,33 @@ import os.path
 import re
 import codecs
 import glob
+import yaml
 
 EXCLUSION = [".git", ".github", ".vscode", ".history", "_book",
              "node_modules", "stylesheets", "javascripts", 'pycache', 'workflows', 'ipynb']
 
 
-def getTitle(path):
+def getHeader(path):
+
+    yamlValue = []
+
+    st = False
 
     with codecs.open(path, 'r', 'utf-8') as f:
-        for l in f.readlines():
-            if re.search("^title:.*", l):
-                return l.strip("title:").strip()
-    return None
+        for i in f.readlines():
+            if '---' in i:
+                if st:
+                    break
+                else:
+                    st = True
+            elif i == "":
+                continue
+            else:
+                yamlValue.append(i.strip())
+    if st:
+        return yaml.load("\n".join(yamlValue))
+    else:
+        return {'title': ""}
 
 
 def createIndexMd(rootDir):
@@ -44,10 +59,13 @@ def createIndexMd(rootDir):
         for f in files:
             path = os.path.join(root, f).replace("\\", "/")
             if os.path.splitext(path)[1] == ".md":
-                title = getTitle(path)
+                header = getHeader(path)
                 mdPath = path.replace(f"{rootDir}/", "")
                 indent = len(mdPath.split("/")) - 1
-                writeLines.append(f"{indent * '    '}- [{title}]({mdPath})")
+                line = f"{indent * '    '}- [{header['title']}]({mdPath})"
+                if 'description' in header:
+                    line += f": {header['description']}"
+                writeLines.append(line)
 
     with codecs.open(f"{rootDir}/index.md", 'w', 'utf-8') as f:
         f.write("\n".join(writeLines))

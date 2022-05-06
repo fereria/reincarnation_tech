@@ -1,4 +1,6 @@
-# Houdini 写経 02
+---
+title: Houdini 写経 02
+---
 
 https://www.youtube.com/watch?time_continue=441&v=1ytZJy_a_H8
 
@@ -67,4 +69,4 @@ AttribWrangle で、zscale を指定しているので
 
 ## 参考
 
-- http://nomoreretake.net/2018/06/06/houdini_omoshirokatayo_thistutorial/
+-   http://nomoreretake.net/2018/06/06/houdini_omoshirokatayo_thistutorial/
