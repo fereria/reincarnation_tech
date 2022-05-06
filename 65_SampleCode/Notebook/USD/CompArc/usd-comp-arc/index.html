@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/65_SampleCode/Notebook/USD/CompArc/usd-comp-arc/">
       
       <link rel="icon" href="../../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7381,58 +7381,53 @@
 
 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/CompArc/usd-comp-arc__Pythonでアセットのセットアップ.ipynb">usd-comp-arc__Pythonでアセットのセットアップ.ipynb</a></p>
 <h4 id="in-1">In [1]:<a class="headerlink" href="#in-1" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span><span class="p">,</span><span class="n">Ar</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span><span class="p">,</span><span class="n">Ar</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">os</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Asset</p>
 <h4 id="in-2">In [2]:<a class="headerlink" href="#in-2" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Assetの置き場所</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Assetの置き場所</span>
 <span class="n">ASSETS_DIR</span> <span class="o">=</span> <span class="s2">&quot;D:/sample/assets&quot;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-3">In [3]:<a class="headerlink" href="#in-3" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">assetName</span> <span class="o">=</span> <span class="s2">&quot;sampleAssets&quot;</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">assetName</span> <span class="o">=</span> <span class="s2">&quot;sampleAssets&quot;</span>
 <span class="n">version</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="c1"># AssetNameのGeomのVariantにするusda置き場を指定する</span>
 <span class="n">geomVariantDir</span> <span class="o">=</span> <span class="s2">&quot;D:/sample/variant&quot;</span>
 <span class="n">assetDir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ASSETS_DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">&quot;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-12">In [12]:<a class="headerlink" href="#in-12" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">payloadLayer</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">FindOrOpen</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.payload.usd&quot;</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">payloadLayer</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">FindOrOpen</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.payload.usd&quot;</span><span class="p">)</span>
 <span class="n">pyaloadStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">payloadLayer</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-4">In [4]:<a class="headerlink" href="#in-4" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 実際に読み込むための AssetName.usd を作る</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 実際に読み込むための AssetName.usd を作る</span>
 <span class="c1"># AssetNameのPrimを作り、それをDefaultPrimに指定する</span>
 <span class="n">payloadStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">payloadsLayer</span> <span class="o">=</span> <span class="n">payloadStage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">payloadStage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">payloadStage</span><span class="o">.</span><span class="n">SetDefaultPrim</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 <span class="n">rootPath</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-6">In [6]:<a class="headerlink" href="#in-6" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7454,7 +7449,7 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Variantを指定する</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Variantを指定する</span>
 <span class="n">vset</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetVariantSets</span><span class="p">()</span><span class="o">.</span><span class="n">AddVariantSet</span><span class="p">(</span><span class="s1">&#39;assets&#39;</span><span class="p">)</span>
 <span class="n">geomPath</span> <span class="o">=</span> <span class="n">rootPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="s1">&#39;Geom&#39;</span><span class="p">)</span>
 <span class="n">geomPrim</span> <span class="o">=</span> <span class="n">payloadStage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="n">geomPath</span><span class="p">)</span>
@@ -7477,34 +7472,30 @@
         <span class="n">geomPrim</span><span class="o">.</span><span class="n">GetReferences</span><span class="p">()</span><span class="o">.</span><span class="n">AddReference</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./variant/</span><span class="si">{</span><span class="n">basename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">payloadsLayer</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.payload.usd&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-7">In [7]:<a class="headerlink" href="#in-7" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Inheritsを作る</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Inheritsを作る</span>
 <span class="n">inheritsStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">inheritsLayer</span> <span class="o">=</span> <span class="n">inheritsStage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
 <span class="n">inheritsStage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s2">&quot;/__class__&quot;</span><span class="p">)</span>
 <span class="n">inheritsLayer</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.class.usd&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-9">In [9]:<a class="headerlink" href="#in-9" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7526,7 +7517,7 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Assetsのレイヤーをつくる</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Assetsのレイヤーをつくる</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
 <span class="c1"># そして、AssetsのRoodPrimを作成する</span>
@@ -7549,25 +7540,21 @@
 <span class="c1"># Inheritsの構造を仕込む</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">subLayerPaths</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s1">.class.usd&#39;</span><span class="p">]</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">GetInherits</span><span class="p">()</span><span class="o">.</span><span class="n">AddInherit</span><span class="p">(</span><span class="s1">&#39;/__class__&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-11">In [11]:<a class="headerlink" href="#in-11" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># AssetのExport</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># AssetのExport</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.usd&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 
   <hr>
@@ -7575,7 +7562,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 11:03:46</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 12:00:10</span>
       
     
   </small>
@@ -7689,7 +7676,7 @@
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../../javascripts/extra.js"></script>
       

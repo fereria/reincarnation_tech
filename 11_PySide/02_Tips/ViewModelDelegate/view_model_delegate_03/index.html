@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_03/">
       
       <link rel="icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7351,7 +7351,7 @@ Widgetsが作成作成されます。<br />
 <p>全コードはながいので↑にアップしました。  </p>
 <h2 id="_1">解説<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <h3 id="dialog">Dialogを作る<a class="headerlink" href="#dialog" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7370,7 +7370,7 @@ Widgetsが作成作成されます。<br />
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TextEditDialog</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TextEditDialog</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uiPos</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TextEditDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -7390,8 +7390,7 @@ Widgetsが作成作成されます。<br />
     <span class="k">def</span> <span class="nf">showEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uiPos</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">uiPos</span><span class="o">.</span><span class="n">y</span><span class="p">(),</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TextEditDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">showEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まず、クリックしたときに表示されるDialogを作成します。<br />
 基本は、QDialogに対してTextEditを配置しているだけですが２つポイントがあります。  </p>
 <p>1つ目が、 setWindowFlags を使用して　Popup　扱いのWindowにしています。<br />
@@ -7404,7 +7403,7 @@ __init__の中に setGeometryを入れてもうまく動きませんでした。
 <p>かわりに、showEventをオーバーライドして、 setGeometryで配置したい位置を<br />
 セットするようにしています。</p>
 <h3 id="ui">UIを呼び出す<a class="headerlink" href="#ui" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7423,7 +7422,7 @@ __init__の中に setGeometryを入れてもうまく動きませんでした。
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TableDelegate</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QItemDelegate</span><span class="p">):</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TableDelegate</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QItemDelegate</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TableDelegate</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -7443,8 +7442,7 @@ __init__の中に setGeometryを入れてもうまく動きませんでした。
         <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="n">edit</span> <span class="o">=</span> <span class="n">TextEditDialog</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">mapToGlobal</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">rect</span><span class="o">.</span><span class="n">topLeft</span><span class="p">()),</span> <span class="n">parent</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">edit</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>作成したUIを呼び出すには、 createEditorでUIオブジェクトを作成し<br />
 returnで返すようにします。  </p>
 <p><img alt="" src="https://gyazo.com/b08c701eaa74b6eb5afac34545c90d4a.png" /></p>
@@ -7456,20 +7454,19 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
 グローバル座標の数値を取得し、Dialogに対して表示位置のQPointをセットするようにしています。  </p>
 <h3 id="_2">値をセットする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>Model内の関数として、↓を作成</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">EditRole</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">setData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">EditRole</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">EditRole</span><span class="p">:</span>
             <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span><span class="p">)</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">headerDataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">Vertical</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span> <span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7486,7 +7483,7 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">setModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        編集した値を、Modelを経由して実体のオブジェクトに対してセットする</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -7504,12 +7501,11 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
 
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Dialogを閉じると、setModelData関数が呼ばれます。<br />
 ので、あとはほかのWidgetと同じくeditor(これはWidgetのオブジェクト)を<br />
 使用して、値を取得し、モデルに対してセットします。  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7520,7 +7516,7 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSize</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
@@ -7532,8 +7528,7 @@ option.rect.topLeft() を使用して座標を取得しています。  </p>
             <span class="n">document</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QTextDocument</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
             <span class="n">document</span><span class="o">.</span><span class="n">setDefaultFont</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">font</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSize</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">idealWidth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">15</span> <span class="o">*</span> <span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">lineCount</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 sizeHintで指定をしておけば、入力した行に応じてセルのサイズを変更できるようになります。<br />
 このあたりの説明は <a href="../view_model_delegate_02/">前回の説明</a> に説明がありますので<br />
 そちらを参照してください。  </p>
@@ -7665,7 +7660,7 @@ TableViewの各セルをがっつり編集するDialogを作ることなんか�
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

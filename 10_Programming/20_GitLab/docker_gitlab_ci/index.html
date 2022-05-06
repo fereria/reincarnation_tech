@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/20_GitLab/docker_gitlab_ci/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7303,16 +7303,14 @@
 <p>次に、GitLab-Runner をインストールする。</p>
 <p><a href="https://docs.gitlab.com/runner/install/windows.html">https://docs.gitlab.com/runner/install/windows.html</a></p>
 <p>手順は公式参考にして、 gitlab-runner の 64bit 用 exe をダウンロードして、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>C:\GitLab-Runner
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>C:\GitLab-Runner
+</code></pre></div></td></tr></table></div>
 <p>このフォルダにコピーする。<br />
 次に、管理者モードのコマンドプロンプトを開き、上のフォルダに移動後</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gitlab-runner install
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>gitlab-runner install
 gitlab-runner start
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p><img alt="" src="https://gyazo.com/2b77af47149d63c1960cabdafc68445c.png" /></p>
 <p>GitLabRunner をサービスに登録する。<br />
 サービス登録が終わったら、GitLab への登録をする。</p>
@@ -7320,9 +7318,8 @@ gitlab-runner start
 <p><img alt="" src="https://gyazo.com/67e413b0a1f7938d1100515561c46a83.png" /></p>
 <p>Setup a specific Runner manually ないにある URL と Token を確認しつつ、<br />
 コマンドプロンプトに、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gitlab-runner register
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>gitlab-runner register
+</code></pre></div></td></tr></table></div>
 <p><img alt="" src="https://gyazo.com/bc932ba1d7252a7df04fb08d63cced8d.png" /></p>
 <p>と入力し、GitLab の URL→Token→ 登録名 →Tag 　を入力する。<br />
 入力すると、どのモードで実行するかを聞かれるので「docker」を選択する。</p>
@@ -7336,7 +7333,7 @@ SharedRunner に登録すると、複数プロジェクトでの共通になる�
 <p>準備ができたら、CI を走らせるための設定ファイルを作成する。<br />
 Git のプロジェクトルートに、 <strong>.gitlab-ci.yml</strong> ファイルを作成して<br />
 とりあえずコミットしてみる。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7348,7 +7345,7 @@ Git のプロジェクトルートに、 <strong>.gitlab-ci.yml</strong> ファ�
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>image: python:2.7
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>image: python:2.7
 
 stages:
   - build
@@ -7361,32 +7358,29 @@ build_job1:
   script:
     - pip install sphinx
     - ls
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>中身はとりあえずシンプルにこんな感じにする。<br />
 基本は</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;name&gt;:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;name&gt;:
  - コマンドプロンプトで実行するコマンド
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>のような構造になっている。<br />
 その中で、いくつか特殊ないみを持つものがある。</p>
 <p>image 　が、Docker のコンテナ名で<br />
 こんかいは Python2.7 でテストするのでその名前にしている。</p>
 <p>before_script が、メインの処理が始まる前に実行する内容。</p>
 <p>stages は、実際に実行する処理内容。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;name&gt;:
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;name&gt;:
   stage:&lt;stage_name&gt;
   script:
     - command1
     - command2
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>メインの処理内容は、こんな形が基本になっていて<br />
 ここの stage で書いた内容を stage:に記載する。</p>
 <p>.gitlab-ci.yml を、Git にコミットするとジョブが実行される。</p>
@@ -7539,7 +7533,7 @@ Maya 等を自動で動かしたい場合は、Docker ではなく Shell にす�
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

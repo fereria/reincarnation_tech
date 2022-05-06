@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/65_SampleCode/Notebook/USD/Stage/UsdStage_01/">
       
       <link rel="icon" href="../../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7466,28 +7466,26 @@
 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Stage/UsdStage_01__UsdStageでできること.ipynb">UsdStage_01__UsdStageでできること.ipynb</a><br />
 Stageの使い方いろいろテスト</p>
 <h4 id="in-1">In [1]:<a class="headerlink" href="#in-1" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-37">In [37]:<a class="headerlink" href="#in-37" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 既存のUSDファイルをロードする</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 既存のUSDファイルをロードする</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;usd/sample.usda&quot;</span><span class="p">)</span>
 <span class="c1"># 一度ロードしたものをそのあと編集すると、編集した内容がキャッシュされているので</span>
 <span class="c1"># クリアしたい場合はReloadする</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Reload</span><span class="p">()</span>
 <span class="c1"># RootLayerをPrintできる</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7496,7 +7494,7 @@ Stageの使い方いろいろテスト</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Sample&quot;
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer c:\\reincarnation_tech\\notebooks\\USD\\Stage\\usd\\sample.usda
@@ -7506,40 +7504,36 @@ Stageの使い方いろいろテスト</p>
 def &quot;Sample&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-38">In [38]:<a class="headerlink" href="#in-38" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># DefaultPrimを取得して、Attributeを追加する</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># DefaultPrimを取得して、Attributeを追加する</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">HasDefaultPrim</span><span class="p">())</span> <span class="c1"># DefaultPrimを持っているか</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetDefaultPrim</span><span class="p">()</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;hoge&quot;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Fuga&quot;</span><span class="p">)</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-39">In [39]:<a class="headerlink" href="#in-39" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># TimeCode指定</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># TimeCode指定</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetStartTimeCode</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetEndTimeCode</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7551,7 +7545,7 @@ def &quot;Sample&quot;
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Sample&quot;
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer c:\\reincarnation_tech\\notebooks\\USD\\Stage\\usd\\sample.usda
@@ -7564,70 +7558,63 @@ def &quot;Sample&quot;
 {
     custom string hoge = &quot;Fuga&quot;
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-40">In [40]:<a class="headerlink" href="#in-40" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># セッションレイヤーを取得して、EditTargetにする</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># セッションレイヤーを取得して、EditTargetにする</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetSessionLayer</span><span class="p">()</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">EditTarget</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetEditTarget</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 <span class="n">session</span><span class="o">.</span><span class="n">subLayerPaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="o">.</span><span class="n">identifier</span><span class="p">]</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-41">In [41]:<a class="headerlink" href="#in-41" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Targetは、ステージのEdit対象レイヤーのこと。</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Targetは、ステージのEdit対象レイヤーのこと。</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">GetLayer</span><span class="p">()</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
 <span class="c1"># どこのSdfPathにMapされるか</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">GetMapFunction</span><span class="p">())</span>
 <span class="c1"># TargetのレイヤーからPrimSpecを取得する</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">GetPrimSpecForScenePath</span><span class="p">(</span><span class="s2">&quot;/Sample&quot;</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>anon:000001B2F688ADF0:sample-session.usda
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>anon:000001B2F688ADF0:sample-session.usda
 / -&gt; /
 None
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-42">In [42]:<a class="headerlink" href="#in-42" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Prim定義</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Prim定義</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/SampleB&quot;</span><span class="p">)</span>
 <span class="c1"># Overを定義</span>
 <span class="n">over</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">OverridePrim</span><span class="p">(</span><span class="s2">&quot;/Sample&quot;</span><span class="p">)</span>
 <span class="n">over</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;fuga&quot;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;hoge&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-43">In [43]:<a class="headerlink" href="#in-43" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7641,7 +7628,7 @@ None
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @usd/sample.usda@
@@ -7656,16 +7643,14 @@ over &quot;Sample&quot;
 {
     custom string fuga = &quot;hoge&quot;
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-44">In [44]:<a class="headerlink" href="#in-44" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7675,7 +7660,7 @@ over &quot;Sample&quot;
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Sample&quot;
     endTimeCode = 30
@@ -7686,16 +7671,14 @@ def &quot;Sample&quot;
 {
     custom string hoge = &quot;Fuga&quot;
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-45">In [45]:<a class="headerlink" href="#in-45" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7712,7 +7695,7 @@ def &quot;Sample&quot;
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Sample&quot;
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer c:\\reincarnation_tech\\notebooks\\USD\\Stage\\usd\\sample.usda
@@ -7730,20 +7713,18 @@ def &quot;Sample&quot;
 def &quot;SampleB&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-46">In [46]:<a class="headerlink" href="#in-46" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># SessionLayerをミュートする</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># SessionLayerをミュートする</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">MuteLayer</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7755,7 +7736,7 @@ def &quot;SampleB&quot;
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Sample&quot;
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer c:\\reincarnation_tech\\notebooks\\USD\\Stage\\usd\\sample.usda
@@ -7768,78 +7749,69 @@ def &quot;Sample&quot;
 {
     custom string hoge = &quot;Fuga&quot;
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-47">In [47]:<a class="headerlink" href="#in-47" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># UnmuteしてTraverse</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># UnmuteしてTraverse</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">UnmuteLayer</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">identifier</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">prim</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Usd.Prim(&lt;/Sample&gt;)
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Usd.Prim(&lt;/Sample&gt;)
 Usd.Prim(&lt;/SampleB&gt;)
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-48">In [48]:<a class="headerlink" href="#in-48" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Memory上にレイヤーを作成する</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Memory上にレイヤーを作成する</span>
 <span class="n">memStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">memStage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer 
 &quot;&quot;&quot;
 )
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-49">In [49]:<a class="headerlink" href="#in-49" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># レイヤースタックを取得</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># レイヤースタックを取得</span>
 <span class="k">for</span> <span class="n">stack</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000001B2F688ADF0:sample-session.usda&#39;)
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Sdf.Find(&#39;anon:000001B2F688ADF0:sample-session.usda&#39;)
 Sdf.Find(&#39;usd/sample.usda&#39;)
 Sdf.Find(&#39;usd/sample.usda&#39;)
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-36">In [36]:<a class="headerlink" href="#in-36" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># レイヤーを取得</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># レイヤーを取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetUsedLayers</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[Sdf.Find(&#39;anon:000001B2F688D8F0:sample-session.usda&#39;), Sdf.Find(&#39;usd/sample.usda&#39;)]
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>[Sdf.Find(&#39;anon:000001B2F688D8F0:sample-session.usda&#39;), Sdf.Find(&#39;usd/sample.usda&#39;)]
+</code></pre></div></td></tr></table></div>
 </div>
 
   <hr>
@@ -7847,7 +7819,7 @@ Sdf.Find(&#39;usd/sample.usda&#39;)
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 11:03:47</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 12:00:11</span>
       
     
   </small>
@@ -7961,7 +7933,7 @@ Sdf.Find(&#39;usd/sample.usda&#39;)
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../../javascripts/extra.js"></script>
       

@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/03_comp_arc_inherits/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7373,30 +7373,28 @@ Reference は完全なカプセル化された別のレイヤーを、指定の 
 「カプセル化」がなにかというと、</p>
 <p><img alt="" src="https://gyazo.com/abe1f03c14eb9860d18acba61564c6a2.png" /></p>
 <p>まず、こんなサンプルを用意します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Obj&quot;
 )
 class Cube &quot;ObjBase&quot;{}
 
 def &quot;Obj&quot;(references=&lt;/ObjBase&gt;){}
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Reference ノードでは、↑ のようなファイルをロードしておきます。<br />
 そして、片側の inlineusd で</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class Sphere &quot;ObjBase&quot;
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>class Sphere &quot;ObjBase&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こうします。<br />
 この 2 つをサブレイヤーで合成してみます。<br />
 「Reference」の場合、<br />
@@ -7409,21 +7407,20 @@ def &quot;Obj&quot;(references=&lt;/ObjBase&gt;){}
 <img alt="" src="https://gyazo.com/b149ebd89d2c87713455b6c313035363.png" /><br />
 合成はされるものの、リファレンス内の構造には影響を与えません。</p>
 <p>これを</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;Obj&quot;
 )
 class Cube &quot;ObjBase&quot;{}
 
 def &quot;Obj&quot;(inherits=&lt;/ObjBase&gt;){}
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>このように「継承」にしてみます。</p>
 <p><img alt="" src="https://gyazo.com/ddffc80dc903d4d7bbd76db180e3fb28.png" /></p>
 <p>すると、サブレイヤーの結果は Sphere に変わりました。<br />
@@ -7448,7 +7445,7 @@ Reference ノードを使用して読み込んだレイヤー内の class を上
 Primitive を指定する必要があります。</p>
 <p>で。</p>
 <p>Inherits で継承した結果</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7456,7 +7453,7 @@ Primitive を指定する必要があります。</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class Cube &quot;TestClassA&quot;
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>class Cube &quot;TestClassA&quot;
 {
 }
 
@@ -7465,8 +7462,7 @@ def &quot;Inherits&quot; (
 )
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こんな感じの usda が作成されます。</p>
 <p><img alt="" src="https://gyazo.com/950e06b355b39a04cc3f51ad37023b0e.png" /></p>
 <p>結果のシーングラフ。<br />
@@ -7478,13 +7474,12 @@ Inherits という名前の Cube が作成されました。</p>
 このようにClass定義はなくなり、ファイル内の指定のPrimitive（通常はDefaultPrim）のみが<br />
 表示されます。<br />
 しかし、表示はされていないものの、継承元の TestClassA クラスはオーバーライド可能で<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class Sphere &quot;TestClassA&quot;
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>class Sphere &quot;TestClassA&quot;
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 このようなファイルをサブレイヤー合成すると、</p>
 <p><img alt="" src="https://gyazo.com/40d836b0c63eb4969d1639f136f694ee.png" /></p>
 <p>こんな感じで合成され</p>
@@ -7513,13 +7508,12 @@ LoadLayerでReferenceノードにつなぐと<br />
 あくまでも、同じレイヤー内にあるPrimitiveをリファレンスでロードした状態と同じになり<br />
 レイヤー内の隠蔽はされず<br />
 この場合は、</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class Sphere &quot;ObjBase&quot;
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>class Sphere &quot;ObjBase&quot;
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 こんな感じのレイヤーをサブレイヤー合成すると<br />
 合成されてオブジェクトがCubeからSphereになります。</p>
 <p>LoadLayerで読み込んでReferenceノードでリファレンス化（複製）しても<br />
@@ -7691,7 +7685,7 @@ Referenceノードを使用してロードするのが正解でした。<br />
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

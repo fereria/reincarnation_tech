@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/00_Python/11_PythonLib/pyinstaller_01/">
       
       <link rel="icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7313,21 +7313,18 @@
 Python をインストールしなくても単独のツールとして利用できるようになります。</p>
 <h2 id="_1">基本的な使い方<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、使うときには pip で pyinstaller をインストールします。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install pyinstaller
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install pyinstaller
+</code></pre></div></td></tr></table></div>
 <p>インストールしたら、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pyinstaller &lt;exeにしたいpythonPath.py&gt; --name &lt;toolName&gt;
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pyinstaller &lt;exeにしたいpythonPath.py&gt; --name &lt;toolName&gt;
+</code></pre></div></td></tr></table></div>
 <p>このように実行すると、</p>
 <p><img alt="" src="https://gyazo.com/f2ec06b080287cd660ae504132e091f1.png" /></p>
 <p>コマンドプロンプトのカレントディレクトリ以下に、 \&lt;toolName>.spec ファイル、 build dist フォルダが作成され</p>
 <p><img alt="" src="https://gyazo.com/b087ce5d0a62f7e57545aab9f606465b.png" /></p>
 <p>dist フォルダ以下に、exe が作成されます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pyinstaller &lt;exeにしたいpythonPath.py&gt; --name &lt;toolName&gt; --onefile
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pyinstaller &lt;exeにしたいpythonPath.py&gt; --name &lt;toolName&gt; --onefile
+</code></pre></div></td></tr></table></div>
 <p>デフォルトだと toolName.exe 以外にも各種 dll などが同じフォルダに作成されますが<br />
 --onefile を追加することで</p>
 <p><img alt="" src="https://gyazo.com/c74ad46e25b97b6ad16f58a4009d59f6.png" /></p>
@@ -7337,16 +7334,14 @@ Python をインストールしなくても単独のツールとして利用で�
 例えば python ファイル以外に、追加でファイルが必用な場合（画像、ui ファイル等）は<br />
 別途 exe と同じフォルダにファイルをコピーしないといけないので<br />
 そのような場合は spec ファイルを編集します。</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">sample.txt</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>hogehoge
-</code></pre></div>
-</td></tr></table>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">samplecode.py</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">resource_path</span><span class="p">(</span><span class="s1">&#39;sample.txt&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">sample.txt</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>hogehoge
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">samplecode.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">resource_path</span><span class="p">(</span><span class="s1">&#39;sample.txt&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>例えば、同じフォルダ以下にある sample.txt をプリントするようなコードを exe にする場合</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7360,7 +7355,7 @@ Python をインストールしなくても単独のツールとして利用で�
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Analysis</span><span class="p">(</span>
     <span class="p">[</span><span class="s1">&#39;samplecode.py&#39;</span><span class="p">],</span>
     <span class="n">pathex</span><span class="o">=</span><span class="p">[],</span>
     <span class="n">binaries</span><span class="o">=</span><span class="p">[],</span>
@@ -7375,8 +7370,7 @@ Python をインストールしなくても単独のツールとして利用で�
     <span class="n">cipher</span><span class="o">=</span><span class="n">block_cipher</span><span class="p">,</span>
     <span class="n">noarchive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>追加するのは、 datas の配列で<br />
 この配列に (ファイル名,コピー先) のタプルを入れることで、ファイルをコピーすることができます。</p>
 <h3 id="onefile">onefile の場合<a class="headerlink" href="#onefile" title="Permanent link">¶</a></h3>
@@ -7533,7 +7527,7 @@ pyinstallerで固められている場合は、MEIPASSを指定するように�
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

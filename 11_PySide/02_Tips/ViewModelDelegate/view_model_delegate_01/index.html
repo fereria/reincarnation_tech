@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_01/">
       
       <link rel="icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7515,7 +7515,7 @@
 <p>Modelについては、 <a href="../custom_model/">QtCore.QAbstractItemModelを使用したカスタムモデルの作成</a> に書いてますが、<br />
 今回はその内容に＋してTableModel用に拡張した内容の補足。  </p>
 <h3 id="header">Header<a class="headerlink" href="#header" title="Permanent link">¶</a></h3>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7523,7 +7523,7 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">headerData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">headerData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
 
         <span class="n">HEADER</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;名前&#39;</span><span class="p">,</span> <span class="s1">&#39;チェック&#39;</span><span class="p">,</span> <span class="s1">&#39;進行状況&#39;</span><span class="p">]</span>
 
@@ -7532,23 +7532,21 @@
 
         <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">Vertical</span> <span class="ow">and</span> <span class="n">role</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 TableViewの場合は、列・行それぞれにHeaderが表示できます。<br />
 ので、Headerに何を表示するかは orientation を使用することで指定することができます。  </p>
 <h3 id="flags">flags<a class="headerlink" href="#flags" title="Permanent link">¶</a></h3>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">flags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">flags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsEditable</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsSelectable</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsEnabled</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 flagsでは、そのセルごとの編集フラグを指定できます。<br />
 今回はセルごとに編集できるようにしたいので Editable,Selectable,Enabled を指定しておきます。<br />
 ここを指定しなければ、編集不可状態になってしまいます。  </p>
 <h3 id="_1">セルの順番を変える<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7566,7 +7564,7 @@ flagsでは、そのセルごとの編集フラグを指定できます。<br />
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">upData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">upData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        引数のIndexを1つ上に移動する</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -7585,8 +7583,7 @@ flagsでは、そのセルごとの編集フラグを指定できます。<br />
             <span class="n">buff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">buff</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>今回はボタンで行を入れ替えられるようにしたかったので、関数を２つ追加。<br />
 Modelの行はListで持っているので<br />
 配列を入れ替えれば、並び順を入れ替えられるようになります。  </p>
@@ -7605,7 +7602,7 @@ Modelの行はListで持っているので<br />
 <p><img alt="" src="https://gyazo.com/4a4f6aa7b788989bf7ebaca790d84261.png" /></p>
 <p>Delegateがない場合は、Model内の data でDisplayRoleでreturn した値が描画されるだけでした。<br />
 しかし、Delegateを使用した場合はセルごとにQPainterを使用してよりカスタムした表示をおこなうことができます。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7636,7 +7633,7 @@ Modelの行はListで持っているので<br />
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">paint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">painter</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">paint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">painter</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Cellの中の描画を行う</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -7668,19 +7665,16 @@ Modelの行はListで持っているので<br />
             <span class="n">bar</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span>
             <span class="n">bar</span><span class="o">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span>
             <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="o">.</span><span class="n">style</span><span class="p">()</span><span class="o">.</span><span class="n">drawControl</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QStyle</span><span class="o">.</span><span class="n">CE_ProgressBar</span><span class="p">,</span> <span class="n">bar</span><span class="p">,</span> <span class="n">painter</span><span class="p">)</span>            
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>描画部分は paint関数をオーバーライドすることで作成します。<br />
 TableViewの場合は、列ごとに何を表示するかを変える必要があります。  </p>
 <p>各セルに「表示したい」データというのは、Modelクラスのdata(QtCore.Qt.DataRole) で指定した方法で受け取ります。<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div><br />
 この場合 QtCore.Qt.DisplayRole で指定した値になります。<br />
 値を取得できたら、実際の描画をします。<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">rect</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">TextWordWrap</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">rect</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignCenter</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">TextWordWrap</span><span class="p">,</span> <span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div><br />
 その値を文字列として表示したい場合はQPainterのdrawText()で描画すればOKです。  </p>
 <h3 id="widgets">セルに対してWidgetsを配置したい<a class="headerlink" href="#widgets" title="Permanent link">¶</a></h3>
 <p>drawRectなどを使用して描画することもできますが、よくあるWidgetsはデフォルトで用意されていて<br />
@@ -7698,7 +7692,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
 <p>まずは、クリックしたときになにかする場合。<br />
 例えばセルに対してチェックボックスを表示させて、そのチェックをクリックしたら<br />
 中の値を変えるなど。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7710,7 +7704,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">editorEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">editorEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        TableのCellに対してなにかしらのイベント（クリックした等）が発生したときに呼ばれる。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -7723,8 +7717,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
                     <span class="n">model</span><span class="o">.</span><span class="n">layoutChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
                     <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まず、処理は列ごとに処理を分けたいので index.column() ごとに判定を行います。<br />
 まず、チェックボックのセルの列だった場合、かつ指定の範囲内だった場合は<br />
 指定の「書き換え処理」を行えるようにします。<br />
@@ -7746,7 +7739,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
 </ul>
 <p>この３つの関数を使用します。  </p>
 <h4 id="createeditor">createEditor<a class="headerlink" href="#createeditor" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7757,7 +7750,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">createEditor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">createEditor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        編集したいCellに対して、編集用のWidgetsを作成する</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -7769,13 +7762,12 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
             <span class="n">spin</span><span class="o">.</span><span class="n">setMinimum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="n">spin</span><span class="o">.</span><span class="n">setMaximum</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">spin</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まず、ダブルクリックしたときに表示するWidgetsを、createEditorで返すようにします。<br />
 配置するWidgetsは「parent」を指定することでそのセル位置にWidgetsを配置できます。<br />
 (入れないとセル位置ではなくView全体に配置されます)  </p>
 <h4 id="seteditor">setEditor<a class="headerlink" href="#seteditor" title="Permanent link">¶</a></h4>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7789,7 +7781,7 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setEditorData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">setEditorData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        createEditorで作成したWidgetsを受け取って、</span>
 <span class="sd">        Editorにデフォルト値を設定する。</span>
@@ -7804,12 +7796,11 @@ Delegateは、そのあたりを細かくカスタマイズすることができ
         <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">model</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">)</span>
             <span class="n">editor</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 createEditorで作成したWidgetsに対して、「現在の値」をセットするのが setEditorData。<br />
 いわゆるここが「編集する一歩手前」状態になります。  </p>
 <h4 id="setmodeldata">setModelData<a class="headerlink" href="#setmodeldata" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7823,7 +7814,7 @@ createEditorで作成したWidgetsに対して、「現在の値」をセット�
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">setModelData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">editor</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        編集した値を、Modelを経由して実体のオブジェクトに対してセットする</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -7838,8 +7829,7 @@ createEditorで作成したWidgetsに対して、「現在の値」をセット�
 
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">model</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()]</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>最後にWidgetsへの編集状態が解除されたタイミングで、Widgetsの値を受け取り、<br />
 Modelに値をセットします。<br />
 このsetModelDataの editor は、createEditorで作成したWidgetsのオブジェクトになります。  </p>
@@ -7970,7 +7960,7 @@ ViewとModelとDelegateを合わせてつかうことで<br />
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

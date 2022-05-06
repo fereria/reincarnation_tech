@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/65_SampleCode/Notebook/USD/Stage/UsdStage_02/">
       
       <link rel="icon" href="../../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7442,56 +7442,49 @@ Stage.OpenMaskedは、その名の通り PopulationMaskで指定したSdfPathに
 すべてをロードするのではなく、Maskを使用して部分的にロードすることで<br />
 より効率的に作業することができる。</p>
 <h4 id="in-7">In [7]:<a class="headerlink" href="#in-7" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;usd&#39;</span><span class="p">)</span>
 <span class="n">ROOT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;/usd&quot;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-4">In [4]:<a class="headerlink" href="#in-4" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-9">In [9]:<a class="headerlink" href="#in-9" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/a&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/b&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/c&quot;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ROOT_DIR</span><span class="si">}</span><span class="s2">/loadLayer.usd&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-18">In [18]:<a class="headerlink" href="#in-18" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># SdfPathで指定した部分だけロードするのがOpenMasked</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># SdfPathで指定した部分だけロードするのがOpenMasked</span>
 <span class="c1"># SdfPathのリストを作るのがStagePopulationMask</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">StagePopulationMask</span><span class="p">()</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s1">&#39;/a&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-15">In [15]:<a class="headerlink" href="#in-15" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stageB</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">OpenMasked</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ROOT_DIR</span><span class="si">}</span><span class="s2">/loadLayer.usd&quot;</span><span class="p">,</span><span class="n">mask</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stageB</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">OpenMasked</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ROOT_DIR</span><span class="si">}</span><span class="s2">/loadLayer.usd&quot;</span><span class="p">,</span><span class="n">mask</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-17">In [17]:<a class="headerlink" href="#in-17" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># /a のみロードするようにMaskした例。</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># /a のみロードするようにMaskした例。</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stageB</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7499,7 +7492,7 @@ Stage.OpenMaskedは、その名の通り PopulationMaskで指定したSdfPathに
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer /work_dir/usd/loadLayer.usd
 &quot;&quot;&quot;
@@ -7508,54 +7501,48 @@ Stage.OpenMaskedは、その名の通り PopulationMaskで指定したSdfPathに
 def &quot;a&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-20">In [20]:<a class="headerlink" href="#in-20" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># ２つのPopulationMaskを結合</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># ２つのPopulationMaskを結合</span>
 <span class="n">maskB</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">StagePopulationMask</span><span class="p">()</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s1">&#39;/b&#39;</span><span class="p">)</span>
 <span class="n">union</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">StagePopulationMask</span><span class="p">()</span><span class="o">.</span><span class="n">Union</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="n">maskB</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">union</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>UsdStagePopulationMask([ /a /b ])
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>UsdStagePopulationMask([ /a /b ])
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-32">In [32]:<a class="headerlink" href="#in-32" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># ２つのPopulationMaskの重複部分を取得する場合</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># ２つのPopulationMaskの重複部分を取得する場合</span>
 <span class="n">intersection</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">StagePopulationMask</span><span class="p">()</span><span class="o">.</span><span class="n">Intersection</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="n">maskB</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">intersection</span><span class="p">)</span>
 <span class="c1"># PopulationMaskにPathが含まれてるか？</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">intersection</span><span class="o">.</span><span class="n">IsEmpty</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>UsdStagePopulationMask([ ])
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>UsdStagePopulationMask([ ])
 True
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-25">In [25]:<a class="headerlink" href="#in-25" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stageC</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">OpenMasked</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ROOT_DIR</span><span class="si">}</span><span class="s2">/loadLayer.usd&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">GetUnion</span><span class="p">(</span><span class="n">maskB</span><span class="p">))</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stageC</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">OpenMasked</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ROOT_DIR</span><span class="si">}</span><span class="s2">/loadLayer.usd&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">GetUnion</span><span class="p">(</span><span class="n">maskB</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stageC</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7567,7 +7554,7 @@ True
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer /work_dir/usd/loadLayer.usd
 &quot;&quot;&quot;
@@ -7580,46 +7567,38 @@ def &quot;a&quot;
 def &quot;b&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-26">In [26]:<a class="headerlink" href="#in-26" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">mask</span><span class="o">.</span><span class="n">Includes</span><span class="p">(</span><span class="n">maskB</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">mask</span><span class="o">.</span><span class="n">Includes</span><span class="p">(</span><span class="n">maskB</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>False
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>False
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-29">In [29]:<a class="headerlink" href="#in-29" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">maskC</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">StagePopulationMask</span><span class="p">()</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s1">&#39;/a&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">maskC</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">StagePopulationMask</span><span class="p">()</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s1">&#39;/a&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-31">In [31]:<a class="headerlink" href="#in-31" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># maskに maskC の要素が含まれるかどうか</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># maskに maskC の要素が含まれるかどうか</span>
 <span class="n">mask</span><span class="o">.</span><span class="n">Includes</span><span class="p">(</span><span class="n">maskC</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-33">In [33]:<a class="headerlink" href="#in-33" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Get～だと、今のMaskと引数のMaskの結果を取得できる</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Get～だと、今のMaskと引数のMaskの結果を取得できる</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">GetUnion</span><span class="p">(</span><span class="n">maskB</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>UsdStagePopulationMask([ /a /b ])
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>UsdStagePopulationMask([ /a /b ])
+</code></pre></div></td></tr></table></div>
 </div>
 
   <hr>
@@ -7627,7 +7606,7 @@ def &quot;b&quot;
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 11:03:47</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 12:00:11</span>
       
     
   </small>
@@ -7741,7 +7720,7 @@ def &quot;b&quot;
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../../javascripts/extra.js"></script>
       

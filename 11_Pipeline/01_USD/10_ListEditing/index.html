@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/10_ListEditing/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7318,21 +7318,20 @@
   <h1>List Editingについて</h1>
 
 <p>USDのリファレンスを扱っていると、</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;sphereA&quot; (
     prepend references = @sphere.usda@
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 こんなかんじで、 「prepend」という記述があることがあります。<br />
 prependとは「付加する」という意味で、文字通りPrimに対して「Referenceを付加」<br />
 するという記述になります。<br />
@@ -7351,14 +7350,14 @@ prependとは「付加する」という意味で、文字通りPrimに対して
 <p>とあるとおり、コンポジションアークによって複数のレイヤー（usdファイル）を合成したときに<br />
 配列タイプのアトリビュートなどを非破壊に編集するための機能を指します。</p>
 <p>たとえばUSDのリレーションの場合。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 {
     rel aaa = [&lt;RelA&gt;,&lt;RelB&gt;]
 
@@ -7366,8 +7365,7 @@ prependとは「付加する」という意味で、文字通りPrimに対して
     def &quot;RelB&quot;{}
 
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 まずは、ベースでこんな感じの構造があったとします。<br />
 <img alt="" src="https://gyazo.com/5a27d415242ced5e193337774ff709c7.png" /><br />
 HoudiniのSOLARIS上で要素を覗いてみると、<br />
@@ -7377,17 +7375,16 @@ aaのValueには、 test/RelA と test/RelB という２つの要素があるの
 サブレイヤーで合成するシーン側で「 aaa に加える」という処理を<br />
 編集できてほしいわけです。<br />
 そういう場合、</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 {
     prepend rel aaa = [&lt;RelC&gt;]
     def &quot;RelC&quot;{}
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 このように prepend とつけることで</p>
 <p><img alt="" src="https://gyazo.com/ebeacff897375086b571d05fa1d9755d.png" /></p>
 <p>サブレイヤーで合成した結果をみると、<br />
@@ -7396,48 +7393,45 @@ prepend で追加した要素が、 aaa の先頭に追加されているのが�
 この List Editing とよばれる「prepend add delete」の効果になります。</p>
 <h3 id="prepend-append-delete">prepend append deleteの違い<a class="headerlink" href="#prepend-append-delete" title="Permanent link">¶</a></h3>
 <p>このListEditingの３つと、それがない場合どういう違いがおきるかというと、</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 {
     rel aaa = [&lt;RelC&gt;]
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 まず、何もつかない場合。</p>
 <p><img alt="" src="https://gyazo.com/4f5bfb215111dfebfa4eda0357221152.png" /><br />
 この場合、配列のアトリビュートをそのままあった要素を無視して「上書き」します。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 {
     append rel aaa = [&lt;RelC&gt;]
 
     def &quot;RelC&quot;{}
 
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 次に、append<br />
 この場合は、<br />
 <img alt="" src="https://gyazo.com/ac007e9309dd31d86353a1e49c73163e.png" /></p>
 <p>配列の最後に要素が追加されます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 {
     delete rel aaa = [&lt;RelB&gt;]
 
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 最後にdelete<br />
 <img alt="" src="https://gyazo.com/c68c399e804f723450f8a1dc45da2b3a.png" /><br />
 deleteの場合は、要素が配列から削除されます。</p>
@@ -7446,7 +7440,7 @@ deleteの場合は、要素が配列から削除されます。</p>
 <h2 id="listediting">コンポジションアークでの ListEditing の影響<a class="headerlink" href="#listediting" title="Permanent link">¶</a></h2>
 <p>リレーションの場合は、並び順に影響しましたが<br />
 では、コンポジションアークの場合はどうなるでしょうか。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7461,7 +7455,7 @@ deleteの場合は、要素が配列から削除されます。</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 (
     prepend references = &lt;/RefA&gt;
 )
@@ -7477,57 +7471,53 @@ def &quot;RefB&quot;
 {
     string name = &quot;RefB&quot;
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 まずはこんなusdaを用意してみます。<br />
 <img alt="" src="https://gyazo.com/505e6f8111835ce8a45afb1dc7a6df38.png" /><br />
 この結果は、 RefAをリファレンスしているので「name」は「RefA」になります。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 (
     prepend references = &lt;/RefB&gt;
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 このレイヤーに対して、 prepend で RefBを追加するレイヤーを作ってみます。</p>
 <p><img alt="" src="https://gyazo.com/60cfb84d259a216a712b61da54d1340a.png" /></p>
 <p>結果、リファレンスの評価の先頭に RefBがきたので、 nameは「RefB」になりました。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 (
     append references = &lt;/RefB&gt;
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 対して append した場合。<br />
 この場合は、リファレンスの評価順序の末端に RefBが追加されているので</p>
 <p><img alt="" src="https://gyazo.com/054f6a0e4981e9c87543ec30057d747b.png" /></p>
 <p>結果は RefA になります。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;test&quot;
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;test&quot;
 (
     delete references = &lt;/RefA&gt;
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 最後に、 deleteの場合。<br />
 この場合は当然のように RefAのリファレンスが消えるので</p>
 <p><img alt="" src="https://gyazo.com/18c6758e2eae0e77da7bd4f11642c310.png" /></p>
@@ -7664,7 +7654,7 @@ deleteを使えばリファレンスは消えるし<br />
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

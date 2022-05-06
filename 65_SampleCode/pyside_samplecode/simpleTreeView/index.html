@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/65_SampleCode/pyside_samplecode/simpleTreeView/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7230,7 +7230,7 @@ import sys</p>
 from PySide2.QtWidgets import QApplication, QDialog, QTreeView, QVBoxLayout, QMenu</p>
 <p>class BaseItem(object):<br />
     def <strong>init</strong>(self, data=None, parent=None):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7267,7 +7267,7 @@ from PySide2.QtWidgets import QApplication, QDialog, QTreeView, QVBoxLayout, QMe
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    self.parentItem = parent
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code>    self.parentItem = parent
     self.itemData = data
     self.childItems = []
 
@@ -7305,18 +7305,16 @@ def row(self):
 
 def clear(self):
     self.childItems = []
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>class TreeItem(BaseItem):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def __init__(self, data, parent=None):
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>def __init__(self, data, parent=None):
     super(TreeItem, self).__init__(data=data, parent=parent)
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>class TreeModel(QAbstractItemModel):<br />
     def <strong>init</strong>(self, items=[], parent=None):<br />
         super(TreeModel, self).<strong>init</strong>(parent)</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
 <span class="normal">  4</span>
@@ -7418,7 +7416,7 @@ def clear(self):
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
-<span class="normal">103</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    self.__items = items
+<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code>    self.__items = items
     self.rootItem = BaseItem()
     # 現在のページ
     self.setItems(items)
@@ -7521,10 +7519,9 @@ def setupModelData(self):
         treeItem = TreeItem(item, p)
         p.appendChild(treeItem)
     self.endResetModel()
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>class UISample(QDialog):</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7564,7 +7561,7 @@ def setupModelData(self):
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def __init__(self, parent=None):
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code>def __init__(self, parent=None):
     super(UISample, self).__init__(parent)
 
     layout = QVBoxLayout()
@@ -7605,8 +7602,7 @@ def removeItem(self):
 
     index = self.view.currentIndex()
     self.model.removeItem(index)
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>if <strong>name</strong> == '<strong>main</strong>':<br />
     app = QApplication(sys.argv)<br />
     a = UISample()<br />
@@ -7618,7 +7614,7 @@ def removeItem(self):
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 11:03:48</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 12:00:12</span>
       
     
   </small>
@@ -7732,7 +7728,7 @@ def removeItem(self):
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

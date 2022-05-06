@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_Python/06_shader/">
       
       <link rel="icon" href="../../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -36,10 +36,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7405,7 +7405,7 @@
 <p>が、比較的スタンダードな構造かとおもうので今回はこれで説明します。</p>
 <p><img alt="" src="../shader.drawio-1.svg" /></p>
 <p>Mesh、Material、Shaderの関係性はこのようになります。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7419,7 +7419,7 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">UsdShade</span><span class="p">,</span><span class="n">Sdf</span><span class="p">,</span><span class="n">UsdGeom</span><span class="p">,</span><span class="n">Gf</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">UsdShade</span><span class="p">,</span><span class="n">Sdf</span><span class="p">,</span><span class="n">UsdGeom</span><span class="p">,</span><span class="n">Gf</span>
 
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">rootLayer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
@@ -7434,8 +7434,7 @@
 <span class="n">shader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">&#39;diffuseColor&#39;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Color3f</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">Gf</span><span class="o">.</span><span class="n">Vec3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">mat</span><span class="o">.</span><span class="n">CreateSurfaceOutput</span><span class="p">()</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">shader</span><span class="o">.</span><span class="n">ConnectableAPI</span><span class="p">(),</span> <span class="s2">&quot;surface&quot;</span><span class="p">)</span>
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>それを、Pythonで書くとこのようになります。</p>
 <p><img alt="" src="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png" /></p>
 <p>結果できあがったusdaをusdviewでひらくと、このように赤いSphereができあがります。</p>
@@ -7446,9 +7445,8 @@
 <p><img alt="" src="https://gyazo.com/0140601734293f7728cdd922a04198d5.png" /></p>
 <p>MaterialとMeshとはリレーションで接続されています。</p>
 <p>Meshに対してMaterialをBindするには、UsdShadeMaterialBindingAPIを使用します。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div><br />
 BindingAPIがアサインするMesh、そしてBind(materialPrim)でアサインすることができます。</p>
 <h2 id="usdshadeshader">UsdShadeShader<a class="headerlink" href="#usdshadeshader" title="Permanent link">¶</a></h2>
 <p>次にシェーダー。</p>
@@ -7461,15 +7459,14 @@ Mayaでいうところのマテリアルであったり、ファイルノード�
 そして、それらには Inputs/Outputs のアトリビュートがあり、<br />
 ShaderPrim同士を接続することができます。</p>
 <h3 id="usdpreviewsurface">UsdPreviewSurface<a class="headerlink" href="#usdpreviewsurface" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">shader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">matPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="s1">&#39;SampleShader&#39;</span><span class="p">))</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">shader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">matPath</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="s1">&#39;SampleShader&#39;</span><span class="p">))</span>
 <span class="n">shader</span><span class="o">.</span><span class="n">CreateIdAttr</span><span class="p">(</span><span class="s1">&#39;UsdPreviewSurface&#39;</span><span class="p">)</span>
 <span class="n">shader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">&#39;diffuseColor&#39;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Color3f</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">Gf</span><span class="o">.</span><span class="n">Vec3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">mat</span><span class="o">.</span><span class="n">CreateSurfaceOutput</span><span class="p">()</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">shader</span><span class="o">.</span><span class="n">ConnectableAPI</span><span class="p">(),</span> <span class="s2">&quot;surface&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まずは、シンプルなシェーダーを作成します。<br />
 CreateIdAttr というのが、このShaderがどう振る舞うものかを指定するものになります。<br />
 「UsdPreviewSurface」が、いわゆるPixarがデフォルトで用意しているPBRシェーダーです。</p>
@@ -7502,7 +7499,7 @@ Input/Outputの接続処理全般を扱うのであれば、UsdShadeConnectableA
 <p>UsdPreviewSurfaceを使用する場合は、UsdShadeShaderPrimに対して UsdPreviewSurfaceをIDに指定しましたが<br />
 テクスチャを使用する場合は、UsdShadeShaderPrimに対して別のIDを使用することで<br />
 構築することができます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7515,7 +7512,7 @@ Input/Outputの接続処理全般を扱うのであれば、UsdShadeConnectableA
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">UsdGeom</span><span class="o">.</span><span class="n">SetStageUpAxis</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 
 <span class="n">modelRoot</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s2">&quot;/TexModel&quot;</span><span class="p">)</span>
@@ -7529,8 +7526,7 @@ Input/Outputの接続処理全般を扱うのであれば、UsdShadeConnectableA
                                     <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TexCoord2fArray</span><span class="p">,</span> 
                                     <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">varying</span><span class="p">)</span>
 <span class="n">texCoords</span><span class="o">.</span><span class="n">Set</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まず、アサインするメッシュを用意します。</p>
 <p>テクスチャを使用するには、 UsdUVTextureを使用するのですが<br />
 テクスチャを貼るには、Mayaで言うところのPlace2DTextureのように<br />
@@ -7554,7 +7550,7 @@ st PrimvarはいわゆるあるVertexに対応するUV座標を保持してい�
 <p>で。<br />
 このUVを使用してテクスチャをマテリアルにアサインしたいので<br />
 そういう場合に使用するのが「UsdPrimvarReader」になります。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7562,7 +7558,7 @@ st PrimvarはいわゆるあるVertexに対応するUV座標を保持してい�
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">material</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/TexModel/boardMat&#39;</span><span class="p">)</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">material</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/TexModel/boardMat&#39;</span><span class="p">)</span>
 <span class="n">pbrShader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/TexModel/boardMat/PBRShader&#39;</span><span class="p">)</span>
 <span class="n">pbrShader</span><span class="o">.</span><span class="n">CreateIdAttr</span><span class="p">(</span><span class="s2">&quot;UsdPreviewSurface&quot;</span><span class="p">)</span>
 <span class="n">pbrShader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s2">&quot;roughness&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
@@ -7571,11 +7567,10 @@ st PrimvarはいわゆるあるVertexに対応するUV座標を保持してい�
 <span class="n">material</span><span class="o">.</span><span class="n">CreateSurfaceOutput</span><span class="p">()</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">pbrShader</span><span class="o">.</span><span class="n">ConnectableAPI</span><span class="p">(),</span> <span class="s2">&quot;surface&quot;</span><span class="p">)</span>
 
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">billboard</span><span class="p">)</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まず、MaterialとShaderを作成します。<br />
 ここまではテクスチャなしのときと同じです。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7588,7 +7583,7 @@ st PrimvarはいわゆるあるVertexに対応するUV座標を保持してい�
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stReader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/TexModel/boardMat/PBRShader/stReader&#39;</span><span class="p">)</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stReader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/TexModel/boardMat/PBRShader/stReader&#39;</span><span class="p">)</span>
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateIdAttr</span><span class="p">(</span><span class="s1">&#39;UsdPrimvarReader_float2&#39;</span><span class="p">)</span>
 
 <span class="n">diffuseTextureSampler</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="s1">&#39;/TexModel/boardMat/PBRShader/diffuseTexture&#39;</span><span class="p">)</span>
@@ -7602,8 +7597,7 @@ st PrimvarはいわゆるあるVertexに対応するUV座標を保持してい�
 <span class="n">stInput</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">)</span>
 
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">&#39;varname&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Token</span><span class="p">)</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">stInput</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p><img alt="" src="../shader.drawio-6.svg" /></p>
 <p>この構造を図に表すとこのようになります。<br />
  まず、テクスチャを指定するには UsdUVTexture を使用します。<br />
@@ -7614,37 +7608,35 @@ st PrimvarはいわゆるあるVertexに対応するUV座標を保持してい�
  UVの場合は float2 なので、IDは UsdPrimvarReader_float2 を指定します。</p>
 <p>Inputsの「st」は、Materialにある stPrimvarName で指定した名前です。<br />
 この名前は、いわゆるUVSetの名前です。<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">texCoords</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">CreatePrimvar</span><span class="p">(</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> 
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">texCoords</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">CreatePrimvar</span><span class="p">(</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> 
                                     <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TexCoord2fArray</span><span class="p">,</span> 
                                     <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">varying</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 MeshにPrimvarを指定したときの名前がUVSetNameで<br />
 任意の名前を指定できます。（複数のUVを作ることができる）<br />
 その、複数あるUVのうち<br />
 どのUVを使用するのか指定するのが、この PrimvarReader の varname アトリビュートです。</p>
 <p>サンプルでは、Materialにアトリビュートを作成して<br />
 その値をコネクションすることで値を設定していますが</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># これを</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># これを</span>
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">&#39;varname&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Token</span><span class="p">)</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">stInput</span><span class="p">)</span>
 <span class="c1"># こうする</span>
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">&#39;varname&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Token</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 これでも同じです。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stReader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/TexModel/boardMat/PBRShader/Opacity&#39;</span><span class="p">)</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stReader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/TexModel/boardMat/PBRShader/Opacity&#39;</span><span class="p">)</span>
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateIdAttr</span><span class="p">(</span><span class="s1">&#39;UsdUVTexture&#39;</span><span class="p">)</span>
 
 <span class="n">diffuseTextureSampler</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Asset</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;D:/sample_opacity.png&quot;</span><span class="p">)</span>
@@ -7652,8 +7644,7 @@ MeshにPrimvarを指定したときの名前がUVSetNameで<br />
 <span class="c1"># Outputは１チャンネルあれば良いので、FloatのOutputを作る</span>
 <span class="n">diffuseTextureSampler</span><span class="o">.</span><span class="n">CreateOutput</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span>
 <span class="n">pbrShader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s2">&quot;opacity&quot;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">diffuseTextureSampler</span><span class="o">.</span><span class="n">ConnectableAPI</span><span class="p">(),</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>また、diffuseColor以外のアトリビュートに別のテクスチャを指したい場合も基本と同じで<br />
 CreateOutputであるチャンネルのみを取得して、<br />
 指定のアトリビュートに対してConnectToSourceで接続すればOKです。</p>
@@ -7666,7 +7657,7 @@ Transform2dを使用すると、テクスチャ座標系でイメージを移動
 <p>Primを指定すると、１Meshに対して１Materialをアサインします。<br />
 そうではなく、Face単位でアサインしたい場合はどのようにするかというと<br />
 Subsetを使用してBindします。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7683,7 +7674,7 @@ Subsetを使用してBindします。</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;plane.usd&quot;</span><span class="p">)</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;plane.usd&quot;</span><span class="p">)</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/Geometry/mesh_0&#39;</span><span class="p">)</span>
 <span class="n">path</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
 <span class="c1"># PrimからGeomMeshを取得</span>
@@ -7701,8 +7692,7 @@ Subsetを使用してBindします。</p>
 <span class="n">subset</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span><span class="o">.</span><span class="n">CreateMaterialBindSubset</span><span class="p">(</span><span class="s2">&quot;SubsetName&quot;</span><span class="p">,[</span><span class="mi">0</span><span class="p">],</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">face</span><span class="p">)</span>
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">&quot;subset.usd&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p><img alt="" src="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png" /></p>
 <p>実行すると、Meshの子PrimとしてUsdGeomSubsetPrimが作成されます。<br />
 UsdGeomSubsetは、その名の通りUsdGeomのサブセットで<br />
@@ -7713,9 +7703,8 @@ UsdGeomSubsetは、その名の通りUsdGeomのサブセットで<br />
 <p><img alt="" src="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png" /></p>
 <p>GeomSubsetのアトリビュートをみると、インデックスと アサインされているマテリアルがmaterial:binding のリレーション<br />
 が含まれていることがわかります。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">subset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span><span class="o">.</span><span class="n">GetRelationship</span><span class="p">(</span><span class="s2">&quot;material:binding&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">subset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span><span class="o">.</span><span class="n">GetRelationship</span><span class="p">(</span><span class="s2">&quot;material:binding&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 <p>Pythonでマテリアルを取得する場合は、<br />
 subsetからPrimを取得して、そのPrimのリレーションからターゲットを取得できます。</p>
 <h2 id="_2">まとめ<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -7892,7 +7881,7 @@ PrimvarReaderや、Fileノードなどの構造はUSDの構造をベースにし
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../../javascripts/extra.js"></script>
       

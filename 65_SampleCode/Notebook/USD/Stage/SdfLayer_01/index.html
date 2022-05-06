@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/65_SampleCode/Notebook/USD/Stage/SdfLayer_01/">
       
       <link rel="icon" href="../../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7451,59 +7451,51 @@
 
 <p><strong>ipynbFile</strong> <a href="https://github.com/fereria/reincarnation_tech/blob/master/notebooks/USD/Stage/SdfLayer_01__SdfLayer_UsdStage.ipynb">SdfLayer_01__SdfLayer_UsdStage.ipynb</a></p>
 <h4 id="in-52">In [52]:<a class="headerlink" href="#in-52" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Sdf</span>
 <span class="kn">import</span> <span class="nn">os</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-53">In [53]:<a class="headerlink" href="#in-53" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">CreateAnonymous</span><span class="p">()</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">CreateAnonymous</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">Reload</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>False
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>False
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-54">In [54]:<a class="headerlink" href="#in-54" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">spec</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">CreatePrimInLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span><span class="s1">&#39;/sample&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">spec</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">CreatePrimInLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span><span class="s1">&#39;/sample&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-55">In [55]:<a class="headerlink" href="#in-55" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#sdf 1.4.32
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>#sdf 1.4.32
 
 over &quot;sample&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-56">In [56]:<a class="headerlink" href="#in-56" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># MetaDataの一覧を表示</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># MetaDataの一覧を表示</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">GetMetaDataInfoKeys</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[&#39;apiSchemas&#39;, &#39;suffixSubstitutions&#39;, &#39;active&#39;, &#39;symmetryArguments&#39;, &#39;assetInfo&#39;, &#39;instanceable&#39;, &#39;customData&#39;, &#39;displayGroupOrder&#39;, &#39;documentation&#39;, &#39;hidden&#39;, &#39;kind&#39;, &#39;payload&#39;, &#39;permission&#39;, &#39;clips&#39;, &#39;prefix&#39;, &#39;prefixSubstitutions&#39;, &#39;suffix&#39;, &#39;symmetricPeer&#39;, &#39;symmetryFunction&#39;, &#39;typeName&#39;, &#39;sample_metadata&#39;, &#39;payloadAssetDependencies&#39;, &#39;inactiveIds&#39;, &#39;clipSets&#39;, &#39;sdrMetadata&#39;]
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>[&#39;apiSchemas&#39;, &#39;suffixSubstitutions&#39;, &#39;active&#39;, &#39;symmetryArguments&#39;, &#39;assetInfo&#39;, &#39;instanceable&#39;, &#39;customData&#39;, &#39;displayGroupOrder&#39;, &#39;documentation&#39;, &#39;hidden&#39;, &#39;kind&#39;, &#39;payload&#39;, &#39;permission&#39;, &#39;clips&#39;, &#39;prefix&#39;, &#39;prefixSubstitutions&#39;, &#39;suffix&#39;, &#39;symmetricPeer&#39;, &#39;symmetryFunction&#39;, &#39;typeName&#39;, &#39;sample_metadata&#39;, &#39;payloadAssetDependencies&#39;, &#39;inactiveIds&#39;, &#39;clipSets&#39;, &#39;sdrMetadata&#39;]
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-57">In [57]:<a class="headerlink" href="#in-57" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7515,7 +7507,7 @@ over &quot;sample&quot;
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># PrimSpec</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># PrimSpec</span>
 <span class="n">spec</span><span class="o">.</span><span class="n">GetObjectAtPath</span><span class="p">(</span><span class="s1">&#39;/sample&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">attributes</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">properties</span><span class="p">)</span>
@@ -7528,59 +7520,53 @@ over &quot;sample&quot;
 <span class="nb">print</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">kind</span><span class="p">)</span>
 <span class="c1"># overではなく defにする</span>
 <span class="n">spec</span><span class="o">.</span><span class="n">specifier</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">SpecifierDef</span> <span class="c1"># Defaultは Sdf.SpecifierOver</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{}
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>{}
 {}
 Sdf.Find(&#39;anon:0000020E4E1F5600&#39;, &#39;/&#39;)
 { &#39;added&#39;: []&#39;prepended&#39;: []&#39;appended&#39;: [], &#39;deleted&#39;: [], &#39;ordered&#39;: [] }
 { &#39;added&#39;: []&#39;prepended&#39;: []&#39;appended&#39;: [], &#39;deleted&#39;: [], &#39;ordered&#39;: [] }
 {}
 Sdf.SpecifierOver
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-59">In [59]:<a class="headerlink" href="#in-59" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#sdf 1.4.32
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>#sdf 1.4.32
 
 def &quot;sample&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-60">In [60]:<a class="headerlink" href="#in-60" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Stageを使用してLayerを操作</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Stageを使用してLayerを操作</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/sampleB&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-61">In [61]:<a class="headerlink" href="#in-61" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7588,7 +7574,7 @@ def &quot;sample&quot;
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#sdf 1.4.32
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>#sdf 1.4.32
 
 def &quot;sample&quot;
 {
@@ -7597,34 +7583,30 @@ def &quot;sample&quot;
 def &quot;sampleB&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-73">In [73]:<a class="headerlink" href="#in-73" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Referenceを指定</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Referenceを指定</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">GetReferences</span><span class="p">()</span><span class="o">.</span><span class="n">AddReference</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s1">/usd/sample.usda&#39;</span><span class="p">)</span>
 <span class="c1"># Attribute追加</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s2">&quot;fugafuga&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>True
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>True
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-63">In [63]:<a class="headerlink" href="#in-63" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7634,7 +7616,7 @@ def &quot;sampleB&quot;
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#sdf 1.4.32
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>#sdf 1.4.32
 
 def &quot;sample&quot;
 {
@@ -7645,46 +7627,40 @@ def &quot;sampleB&quot; (
 )
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-68">In [68]:<a class="headerlink" href="#in-68" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># LayerからPrimSpecを取得して、referenceを取得する</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># LayerからPrimSpecを取得して、referenceを取得する</span>
 <span class="n">specB</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/sampleB&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">specB</span><span class="o">.</span><span class="n">referenceList</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{ &#39;added&#39;: []&#39;prepended&#39;: [SdfReference(c:\reincarnation_tech\notebooks\USD\Stage/usd/sample.usda, , SdfLayerOffset(0, 1), {})]&#39;appended&#39;: [], &#39;deleted&#39;: [], &#39;ordered&#39;: [] }
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>{ &#39;added&#39;: []&#39;prepended&#39;: [SdfReference(c:\reincarnation_tech\notebooks\USD\Stage/usd/sample.usda, , SdfLayerOffset(0, 1), {})]&#39;appended&#39;: [], &#39;deleted&#39;: [], &#39;ordered&#39;: [] }
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-90">In [90]:<a class="headerlink" href="#in-90" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># SpecからAttribute取得</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># SpecからAttribute取得</span>
 <span class="n">attrSpec</span> <span class="o">=</span> <span class="n">specB</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;hoge&#39;</span><span class="p">]</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-91">In [91]:<a class="headerlink" href="#in-91" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># AttributeNameを取得</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># AttributeNameを取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">attrSpec</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="c1"># Specから値を取得</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">attrSpec</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>hoge
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>hoge
 fugafuga
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 
   <hr>
@@ -7692,7 +7668,7 @@ fugafuga
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 11:03:46</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 12:00:11</span>
       
     
   </small>
@@ -7806,7 +7782,7 @@ fugafuga
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../../javascripts/extra.js"></script>
       

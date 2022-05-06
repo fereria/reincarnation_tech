@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/25_asset_resolution_02/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7418,9 +7418,8 @@ USDの Asset Resolution (アセットパスの解決) 第二回目。</p>
 このコマンドラインを使用すると、AssetResolverで行っているAssetResolutionを実行して<br />
 USDのAssetPathから最終的なリソースへのパスを得ることができます。</p>
 <p>まず、DefaultResolverを使用して、相対パスを絶対パスに変換したい場合。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdresolve ./assets/CeilingLight/CeilingLight.usd --anchorPath D:\Kitchen_set\Kitchen_set.usd
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdresolve ./assets/CeilingLight/CeilingLight.usd --anchorPath D:\Kitchen_set\Kitchen_set.usd
+</code></pre></div></td></tr></table></div>
 <blockquote>
 <p>D:/Kitchen_set/assets/CeilingLight/CeilingLight.usd</p>
 </blockquote>
@@ -7428,9 +7427,8 @@ USDのAssetPathから最終的なリソースへのパスを得ることがで�
 解決対象のPathの基準になる（ロードしている）USDのAssetPathを指定します。<br />
 指定すると、指定のパス（ ./assets/CeilingLight/CeilingLight.usd ) のanchorPath基準の絶対パスにして取得することができます。</p>
 <p>次に、前回作成したようなカスタムのAssetResolverを使用する場合。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdresolve asset:/Buzz/{$VERSION}/Buzz.usd --createContextFromString D:\testUsdResolverExample\shots\shot_1\versions.json
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdresolve asset:/Buzz/{$VERSION}/Buzz.usd --createContextFromString D:\testUsdResolverExample\shots\shot_1\versions.json
+</code></pre></div></td></tr></table></div>
 <blockquote>
 <p>asset:/Buzz/latest/Buzz.usd</p>
 </blockquote>
@@ -7439,9 +7437,8 @@ createContextFromStringに渡すことで、パスの解決をすることがで
 <p>このように、usdresolve ツールは、引数に 未解決のAssetPathと<br />
 解決に必要な情報 (anchorPathであったりcontextであったり)を与えることで、解決済のAssetPathをプリントしてくれます。</p>
 <h3 id="debug">DEBUGメッセージをみてみる<a class="headerlink" href="#debug" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>set TF_DEBUG=USD_RESOLVER_EXAMPLE
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>set TF_DEBUG=USD_RESOLVER_EXAMPLE
+</code></pre></div></td></tr></table></div>
 <p>実際のところ、どうAssetResolutionが行われていて<br />
 結果どのようなパスになっているのかがわかりにくいので Debugメッセージをいれてみます。</p>
 <p><img alt="" src="https://gyazo.com/8b4bc57da574b657738e834f8561f79d.png" /></p>
@@ -7453,17 +7450,16 @@ Contextが見つからないため、DefaultResolverが呼ばれていること�
 <p>コマンドラインを使用するのなら以上で終了なのですが、<br />
 今回はPythonから使用したい場合も併せて試してみます。</p>
 <h3 id="anchorpath">anchorPathの場合<a class="headerlink" href="#anchorpath" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">resolver</span> <span class="o">=</span> <span class="n">Ar</span><span class="o">.</span><span class="n">GetResolver</span><span class="p">()</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">resolver</span> <span class="o">=</span> <span class="n">Ar</span><span class="o">.</span><span class="n">GetResolver</span><span class="p">()</span>
 
 <span class="n">anchorPath</span> <span class="o">=</span> <span class="n">Ar</span><span class="o">.</span><span class="n">ResolvedPath</span><span class="p">(</span><span class="s2">&quot;D:/Kitchen_set/Kitchen_set.usd&quot;</span><span class="p">)</span>
 <span class="n">assetPath</span> <span class="o">=</span> <span class="s2">&quot;./assets/Ball/Ball.usd&quot;</span>
 <span class="n">fullPath</span> <span class="o">=</span> <span class="n">resolver</span><span class="o">.</span><span class="n">CreateIdentifier</span><span class="p">(</span><span class="n">assetPath</span><span class="p">,</span><span class="n">anchorPath</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>anchorPathの場合は、ある解決済のPathをもとに、assetPathを解決することができる CreateIdentifierForNewAsset 関数を使用します。<br />
 ArResolvedPathは、その名の通り解決済のAssetPathです。<br />
 CreateIdentifierは、この解決済のArResolvedPathからのパスを取得することができます。</p>
@@ -7486,21 +7482,20 @@ usdResolverExample本体側で、このContextからjsonを受け取り、AssetR
 <p>まずは、DefaultResolverを使用した場合。<br />
 DefaultResolverは、PXR_DEFAULT_SEARCH_PATHを、; で分割した文字列を、ArResolverで順番に検索し<br />
 見つかったPathをResolvedPathとして返します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Ar</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Ar</span>
 
 <span class="n">resolver</span> <span class="o">=</span> <span class="n">Ar</span><span class="o">.</span><span class="n">GetResolver</span><span class="p">()</span>
 
 <span class="n">context</span> <span class="o">=</span> <span class="n">resolver</span><span class="o">.</span><span class="n">CreateContextFromString</span><span class="p">(</span><span class="s2">&quot;D:/sample;D:/Kitchen_set&quot;</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">Ar</span><span class="o">.</span><span class="n">ResolverContextBinder</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">resolver</span><span class="o">.</span><span class="n">Resolve</span><span class="p">(</span><span class="s2">&quot;assets/Ball/Ball.usd&quot;</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>GetResolverで ArResolver オブジェクトを取得します。</p>
 <p>Pythonで実行した場合、<br />
 ContextBinderに対して Contextを指定するのですが、その有効範囲は with で指定します。<br />
@@ -7509,7 +7504,7 @@ with 内では、 Binderで指定したContextを使用してResolutionが行わ
 検索対象のPath（サンプルの場合 D:/sample D:/Kitchen_set ) を順番に検索し見つかったパスを返します。</p>
 <h4 id="uri">URIを使用した場合<a class="headerlink" href="#uri" title="Permanent link">¶</a></h4>
 <p>次はカスタムしたResolverを使用した場合。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7517,7 +7512,7 @@ with 内では、 Binderで指定したContextを使用してResolutionが行わ
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">resolver</span> <span class="o">=</span> <span class="n">Ar</span><span class="o">.</span><span class="n">GetResolver</span><span class="p">()</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">resolver</span> <span class="o">=</span> <span class="n">Ar</span><span class="o">.</span><span class="n">GetResolver</span><span class="p">()</span>
 
 <span class="n">ASSETS_DIR</span> <span class="o">=</span> <span class="s2">&quot;D:/testUsdResolverExample/assets/&quot;</span>
 
@@ -7526,8 +7521,7 @@ with 内では、 Binderで指定したContextを使用してResolutionが行わ
 <span class="k">with</span> <span class="n">Ar</span><span class="o">.</span><span class="n">ResolverContextBinder</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
     <span class="n">resolved</span> <span class="o">=</span> <span class="n">resolver</span><span class="o">.</span><span class="n">Resolve</span><span class="p">(</span><span class="s2">&quot;asset:Buzz/{$VERSION}/Buzz.usd&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">resolved</span><span class="o">.</span><span class="n">GetPathString</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;asset:&quot;</span><span class="p">,</span><span class="n">ASSETS_DIR</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>URIを使用している場合は、指定のContextを CreateContextFromString にURIを指定することで取得します。<br />
 あるいは、Pythonのモジュールを作成している場合はそれ経由でカスタムのContextを取得します。</p>
 <p>ContextはResolverで使用する追加情報を指定します。<br />
@@ -7720,7 +7714,7 @@ C++の実装と合わせてテストコードをみると、より分かりや�
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

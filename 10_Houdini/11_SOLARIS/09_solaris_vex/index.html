@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/09_solaris_vex/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -34,10 +34,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7570,9 +7570,8 @@ HoudiniのVEXは全く書けないため、その書き方の基本的な部分�
 <p>まず、SOLARISでVEXで色々処理するために attribwrangle ノードを作り<br />
 こんな感じのノードを作ります。</p>
 <p>attribwrangleノードのVExpression に、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usd_addprim(0,&quot;/hoge&quot;,&quot;Cube&quot;);
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usd_addprim(0,&quot;/hoge&quot;,&quot;Cube&quot;);
+</code></pre></div></td></tr></table></div>
 <p>と入力してみます。</p>
 <p><img alt="" src="https://gyazo.com/292972c9472ef8224aa92f1455ae3672.png" /></p>
 <p><img alt="" src="https://gyazo.com/2e62d880c94ce99ca07b60c5e3853e0a.png" /></p>
@@ -7581,9 +7580,8 @@ HoudiniのVEXは全く書けないため、その書き方の基本的な部分�
 これを利用してUSDのシーングラフを操作をすることができます。</p>
 <h2 id="_3">処理の対象について<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>VEXで処理をする対象は Primitives で指定した入力Primが対象です。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>`lopinputprims(&#39;.&#39;, 0)`
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>`lopinputprims(&#39;.&#39;, 0)`
+</code></pre></div></td></tr></table></div><br />
 デフォルトがこちら。<br />
 Input 0 に入力されているPrimのうち<br />
 最後に編集されたPrimの数だけVEXの処理が実行されます。</p>
@@ -7603,14 +7601,14 @@ InputのPrimを受け取るための変数（？）です。</p>
 Forを使用して何かしらの処理をまとめて実行することができます。</p>
 <p>たとえば、入力のPrimに対してAttributeを追加したい場合。<br />
 Pythonの場合は</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdGeom</span><span class="p">,</span><span class="n">Sdf</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdGeom</span><span class="p">,</span><span class="n">Sdf</span>
 
 <span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
@@ -7618,15 +7616,13 @@ Pythonの場合は</p>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">inputPrims</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;hoge&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こうなります。<br />
 では、同様の処理をVEXで書いてみるとどうなるかというと</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>int handle = usd_addattrib(0,@primpath,&quot;hoge&quot;,&quot;bool&quot;);
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>int handle = usd_addattrib(0,@primpath,&quot;hoge&quot;,&quot;bool&quot;);
 usd_setattrib(handle,@primpath,&quot;hoge&quot;,true);
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こうなります。</p>
 <p>Build-in variables の @primpath は、入力のPrimitiveのPathに置換されます。</p>
 <p>入力が多数ある場合、このVEXpressionに書かれた記述が<br />
@@ -7645,40 +7641,37 @@ Xformにだけ移動値を入れたい、Cubeのときだけ動かしたいな�
 <h2 id="_4">制御構文<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <h3 id="if">if<a class="headerlink" href="#if" title="Permanent link">¶</a></h3>
 <p>まずは if 文。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>if(usd_istype(0,@primpath,&quot;Cube&quot;))
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>if(usd_istype(0,@primpath,&quot;Cube&quot;))
 {
     usd_setmetadata(0, @primpath,&quot;documentation&quot;, &quot;Cube!!&quot;);
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>指定のPrimTypeのときのみなにか処理を実行。<br />
 usd_is###系の関数を使えば、色々判定ができるので<br />
 その判定を利用して if 文で処理をわけたりできます。</p>
 <h3 id="for">for<a class="headerlink" href="#for" title="Permanent link">¶</a></h3>
 <p>次に、 for で複数のPrimを作ってみます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>for(int i = 0;i &lt; 10;i++)
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>for(int i = 0;i &lt; 10;i++)
 {
     usd_addprim(0,@primpath + &quot;/test_&quot; + itoa(i),&quot;Cube&quot;);
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 Inputのノード以下に複数のPrimを作ります。<br />
 for文などは他の言語とほぼ同じ感じで使用できました。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>for(int i = 0;i &lt; `chs(&quot;./duplicateNum&quot;)`;i++)
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>for(int i = 0;i &lt; `chs(&quot;./duplicateNum&quot;)`;i++)
 {
     usd_addprim(0,@primpath + &quot;/test_&quot; + itoa(i),&quot;Cube&quot;);
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 <img alt="" src="https://gyazo.com/da3ed8d36da457ae09c2857e256cd45e.png" /></p>
 <p>固定の数値というのもあれなので、Houdiniのアトリビュートを追加してみた例。<br />
 今までの関数も使用できます。</p>
@@ -7689,21 +7682,19 @@ for文などは他の言語とほぼ同じ感じで使用できました。</p>
 ぱっと見た感じ、USDの操作は一通りのことができそうです。<br />
 使いそうなものからいくつかピックアップして試してみます。</p>
 <h3 id="prim">Prim名を取得<a class="headerlink" href="#prim" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>printf(&quot;%s&quot;,usd_name(0,@primpath));
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>printf(&quot;%s&quot;,usd_name(0,@primpath));
+</code></pre></div></td></tr></table></div>
 <p>現在処理をしているPrim名を取得します。<br />
 関数を使う場合の１つ目の引数はStageの読み先となる入力番号を指定します。</p>
 <p>なので、Wrangleノードの１つ目の入力にノードが接続されている場合は 0 になります。<br />
 usd_nameの場合 primPathを指定するとPrim名が帰ってくるので<br />
 現在処理中の PrimPathに置換される @primpath を指定すればよさそうです。</p>
 <h3 id="_5">移動<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usd_addtranslate(0,@primpath,&quot;test_move&quot;,{0,5,0});
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usd_addtranslate(0,@primpath,&quot;test_move&quot;,{0,5,0});
+</code></pre></div></td></tr></table></div><br />
 移動などの処理はすべて関数が用意されていて、このようにすると<br />
 指定のPrimを移動することができます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7719,7 +7710,7 @@ usd_nameの場合 primPathを指定するとPrim名が帰ってくるので<br /
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def Xform &quot;sphere&quot;
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>def Xform &quot;sphere&quot;
 {
     double3 xformOp:translate:test_move = (0, 5, 0)
     uniform token[] xformOpOrder = [&quot;xformOp:translate:test_move&quot;]
@@ -7736,8 +7727,7 @@ usd_nameの場合 primPathを指定するとPrim名が帰ってくるので<br /
         uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 その場合は、移動情報を追加することができます。</p>
 <p>ただ、この場合は移動するPrimがXformである必要があるようで<br />
 （UsdGeom.XformCommonAPIを使用するときも同様なので、このCommonAPIの仕様っぽい）<br />
@@ -7746,24 +7736,21 @@ usd_nameの場合 primPathを指定するとPrim名が帰ってくるので<br /
 <p>transform以外にも rotate scaleなどの関数があるので<br />
 Wrangleで移動などの操作がしたい場合は同じ方法でできます。</p>
 <h3 id="_6">メタデータの編集<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usd_setmetadata(0, @primpath, &quot;documentation&quot;, &quot;docs!!&quot;);
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>usd_setmetadata(0, @primpath, &quot;documentation&quot;, &quot;docs!!&quot;);
 usd_setmetadata(0, @primpath, &quot;customData:strVal&quot;, &quot;testText&quot;);
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 USDはレイヤー、Prim、アトリビュートそれぞれに対してメタデータを仕込むことができます。<br />
 スキーマで指定されたメタデータであれば documentation のように指定できるし<br />
 それ以外の任意の情報であれば、 customData:～～の形式でセットできます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usd_metadata(0,@primpath,&quot;customData:strVal&quot;);
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usd_metadata(0,@primpath,&quot;customData:strVal&quot;);
+</code></pre></div></td></tr></table></div><br />
 メタデータの取得もできるので、<br />
 USD側になにか情報を入れておいて処理したい場合などは<br />
 この方法で対応できます。</p>
 <h3 id="prim_1">Primを作成<a class="headerlink" href="#prim_1" title="Permanent link">¶</a></h3>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usd_addprim(0,@primpath + &quot;/test&quot;,&quot;Cube&quot;);
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usd_addprim(0,@primpath + &quot;/test&quot;,&quot;Cube&quot;);
+</code></pre></div></td></tr></table></div><br />
 指定のPathに対してPrimを生成します。<br />
 ３つ目の引数がPrimのタイプで、この場合はステージに１つのCubeを作ります。</p>
 <h3 id="_7">まとめ<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
@@ -7781,9 +7768,8 @@ VEX的な書き方でもっと簡略化ができるようです。</p>
 <p>SOPでは、GeometrySpreadSheetなどで</p>
 <p><img alt="" src="https://gyazo.com/19678d56f14ae349eeb6897ee8a1961d.png" /></p>
 <p>各オブジェクトの頂点だったりフェースだったりノーマルに対して</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>@P = ～～～
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>@P = ～～～
+</code></pre></div></td></tr></table></div><br />
 このようにジオメトリのアトリビュートや情報にアクセスしていました。</p>
 <p>SOPでは、まさにジオメトリごとのアトリビュート操作がキモになっていて<br />
 このアトリビュートに対して色々セットしたり取得したりして<br />
@@ -7796,9 +7782,8 @@ VEX的な書き方でもっと簡略化ができるようです。</p>
 <p>こんなかんじでSphere１を作り、attribwrangleノードにつなげます。</p>
 <p><img alt="" src="https://gyazo.com/cadb08a65f9aea0d25bda269b9be0225.png" /></p>
 <p>そしてアトリビュートを追加して、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>f@radius =`chs(&quot;/stage/attribwrangle1/sphereSize&quot;)`;
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>f@radius =`chs(&quot;/stage/attribwrangle1/sphereSize&quot;)`;
+</code></pre></div></td></tr></table></div>
 <p>VEXにこう書きます。</p>
 <p><img alt="" src="https://gyazo.com/89df4236993d4d48da446975e1506987.gif" /></p>
 <p>結果。</p>
@@ -7813,11 +7798,10 @@ VEXでこのアトリビュートの値をセットする ... のようにすれ
 編集できるようになりそうです。</p>
 <h3 id="_10">アトリビュートを作成する<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
 <p>これはすでに定義済のものでしたが、</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>s@fuga=&quot;FUGA!!&quot;;
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>s@fuga=&quot;FUGA!!&quot;;
+</code></pre></div></td></tr></table></div><br />
 例えばこうすると、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7828,7 +7812,7 @@ VEXでこのアトリビュートの値をセットする ... のようにすれ
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def Sphere &quot;sphere1&quot; (
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>def Sphere &quot;sphere1&quot; (
     customData = {
         int HoudiniPrimEditorNodeId = 19
     }
@@ -7840,8 +7824,7 @@ VEXでこのアトリビュートの値をセットする ... のようにすれ
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>customのアトリビュートが追加されます。<br />
 つまりは、USDに対して自分の好きな値を埋め込むことができるわけです。</p>
 <p>SOLARIS上でUSDのアトリビュートを操作する方法は、私が調べた限りだと<br />
@@ -7851,13 +7834,12 @@ Pythonから操作するよりも遥かに簡単に　かつHoudini的にアク�
 こちらを使うのが正解のようです。</p>
 <h3 id="xformop">xformOp<a class="headerlink" href="#xformop" title="Permanent link">¶</a></h3>
 <p>上のような単純なアトリビュート以外にも、移動などのパラメーターも設定できます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>v@xformOp:translate = {0,3,0};
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>v@xformOp:translate = {0,3,0};
 s[]@xformOpOrder = {&quot;xformOp:translate&quot;};
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>VEXでPrimを移動する例。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7868,7 +7850,7 @@ s[]@xformOpOrder = {&quot;xformOp:translate&quot;};
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def Sphere &quot;sphere1&quot; (
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>def Sphere &quot;sphere1&quot; (
     customData = {
         int HoudiniPrimEditorNodeId = 19
     }
@@ -7880,18 +7862,17 @@ s[]@xformOpOrder = {&quot;xformOp:translate&quot;};
     custom double3 xformOp:translate = (0, 3, 0)
     uniform token[] xformOpOrder = [&quot;xformOp:translate&quot;]
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 実行すると、指定のPrimに対して translate のアトリビュートが追加されました。<br />
 このxform:### というのは、USDの XformPrimなどでの移動値などを保持するアトリビュートです。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdGeom</span><span class="p">,</span><span class="n">Sdf</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdGeom</span><span class="p">,</span><span class="n">Sdf</span>
 
 <span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
@@ -7899,8 +7880,7 @@ s[]@xformOpOrder = {&quot;xformOp:translate&quot;};
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">inputPrims</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">UsdGeom</span><span class="o">.</span><span class="n">XformCommonAPI</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetParent</span><span class="p">())</span><span class="o">.</span><span class="n">SetTranslate</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 Pythonの場合は、こんな感じで、指定のXformPrimに対して SetTranslateすると<br />
 xformOp:translate と xformOpOrder に対してVEXで書いた内容を追記します。</p>
 <p>VEXだけだとものすごいわかりにくいですが、<br />
@@ -7909,13 +7889,12 @@ USDの記述を手書きで書いているのと同じように、移動など�
 <p>このxformOpOrderというのは、アトリビュートとしてセットされた<br />
 <strong>xformOp:#### の操作順をどの順で実行するか</strong> という意味になります。</p>
 <p>Translate１つならば問題ありませんが</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>v@xformOp:translate = {0,3,0};
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>v@xformOp:translate = {0,3,0};
 v@xformOp:rotateXYZ = {30,0,0};
 s[]@xformOpOrder = {&quot;xformOp:rotateXYZ&quot;,&quot;xformOp:translate&quot;};
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 例えば 移動して回転する例の場合、<br />
 X方向に回転してから移動するのと、移動してから回転するのでは結果がかわります。<br />
 その操作順を指定するのがこの xformOpOrder で、<br />
@@ -7936,24 +7915,23 @@ VEXでなにかする場合はUSDのAPIやスキーマの把握が必須にな�
 確認してみます。</p>
 <p>とりあえずCube１００個を作ってみます。</p>
 <p>VEXの場合<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>for(int i = 0 ; i &lt; 100;i++)
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>for(int i = 0 ; i &lt; 100;i++)
 {
     usd_addprim(0,@primpath + &#39;/cube_&#39; + itoa(i),&quot;Cube&quot;);
 }
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <p>Pythonの場合<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdGeom</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdGeom</span>
 
 <span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
@@ -7961,8 +7939,7 @@ VEXでなにかする場合はUSDのAPIやスキーマの把握が必須にな�
 <span class="n">path</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">inputPrims</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="n">path</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cube_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <p>まずはVex<br />
 <img alt="" src="https://gyazo.com/2a4795d362c95236f4d6fbd4fa93bd4c.png" /></p>
 <p>続いてPython<br />
@@ -8164,7 +8141,7 @@ USDのワークフローが作れるようにしていくのが今後の課題�
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

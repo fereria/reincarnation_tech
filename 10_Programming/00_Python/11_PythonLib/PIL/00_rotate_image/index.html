@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/00_Python/11_PythonLib/PIL/00_rotate_image/">
       
       <link rel="icon" href="../../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7233,7 +7233,7 @@ Exif で回転が入っている場合、おかしな感じでムービー化さ
 <p>画像の向きの Orientation は、整数の 1 ～ 8 で指定することが出来ます。<br />
 それだけだと、扱いにくいので、どのぐらい回転するか + ミラー反転するかどうか<br />
 に置き換えるような関数を作ります。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7254,7 +7254,7 @@ Exif で回転が入っている場合、おかしな感じでムービー化さ
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_exif_rotation</span><span class="p">(</span><span class="n">orientation_num</span><span class="p">):</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_exif_rotation</span><span class="p">(</span><span class="n">orientation_num</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ExifのRotationの数値から、回転する数値と、ミラー反転するかどうかを取得する</span>
 <span class="sd">    return 回転度数,反転するか(0 1)</span>
@@ -7276,12 +7276,11 @@ Exif で回転が入っている場合、おかしな感じでムービー化さ
         <span class="k">return</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">orientation_num</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>一応全パターン作りましたが、Exif の設定でミラーリングとか<br />
 絶対使わない気がします。</p>
 <p>最後に、Exif 情報を取得して画像を回転をして保存します。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7308,7 +7307,7 @@ Exif で回転が入っている場合、おかしな感じでムービー化さ
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rotation_exif_info</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">to_path</span><span class="p">):</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rotation_exif_info</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">to_path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    画像のexif情報を使用して、画像を回転する</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -7336,8 +7335,7 @@ Exif で回転が入っている場合、おかしな感じでムービー化さ
         <span class="k">if</span> <span class="n">rotate</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">dst</span> <span class="o">=</span> <span class="n">dst</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">rotate</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">dst</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">to_save_path</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 コードはこんな感じ。</p>
 <p>画像のミラー反転は、 PILのImageOps.mirror(obj)<br />
 回転は、imgObj.rotate(回転,expand=True)とします。<br />
@@ -7471,7 +7469,7 @@ Falseの場合、画像サイズは同じになるので、90度回転とかす�
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../../javascripts/extra.js"></script>
       

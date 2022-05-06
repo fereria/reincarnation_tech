@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/40_Github/git_command/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7494,37 +7494,32 @@ GitLabは、自分で作ったリポジトリを自分でフォークするこ�
 <p>以降は、まずフォークしたリポジトリに対してデータをアップしていきます。  </p>
 <h2 id="_2">基本的な操作<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <h3 id="_3">現在のブランチを確認する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git branch
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git branch
+</code></pre></div></td></tr></table></div>
 <p><img alt="" src="https://gyazo.com/1f6cb3de65eb4542ccf75a68280943c1.png" /></p>
 <h3 id="_4">ブランチを作る<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git checkout -b hogehoge
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git checkout -b hogehoge
+</code></pre></div></td></tr></table></div>
 <h3 id="_5">ブランチを切り替える<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git checkout hogehoge
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git checkout hogehoge
+</code></pre></div></td></tr></table></div>
 <p>checkout ##### で、指定した名前のブランチに切り替わる。<br />
 切り替えるときに、現在のブランチに編集済のファイルが存在する場合は</p>
 <p><img alt="" src="https://gyazo.com/c77c3523202e7e7b9b484803ca04bd8a.png" /></p>
 <p>エラーになってしまうので、コミットするかStash（一時退避場所）に逃がしておく必要がある。</p>
 <h3 id="stash">Stash（一時退避場所）にアップする<a class="headerlink" href="#stash" title="Permanent link">¶</a></h3>
 <p><img alt="" src="https://gyazo.com/95baa15f5178b3907ab2d0d6abd08ee7.png" /></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git stash
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git stash
+</code></pre></div></td></tr></table></div>
 <p>一時的に逃がす場合はStashに入れる。  </p>
 <h3 id="_6">コミット～プッシュする<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>編集結果をGitのリモートリポジトリにアップする</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git add hogehoge.txt
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>git add hogehoge.txt
 git commit -m &quot;hogehoge&quot;
 git push -u origin hogehoge
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>アップするには、まず add を使用して「変更した」というフラグを立てる。<br />
 そしてアップ対象をセットしたら、 commit で、ローカルリポジトリにコミットする。<br />
 -m で、コメントを記入する。<br />
@@ -7551,25 +7546,21 @@ git push -u origin hogehoge
 ここでコードレビューを行い、問題がなければマージを押します。  </p>
 <h3 id="groupfork">マージされたGroupのリポジトリをFork先にマージする<a class="headerlink" href="#groupfork" title="Permanent link">¶</a></h3>
 <p>Groupに自分のプルリクがマージされたら、その結果を自分のForkしたリポジトリに適応します。  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git checkout master
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git checkout master
+</code></pre></div></td></tr></table></div><br />
 まずはmasterブランチに切り替えて  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git remote add upstream &lt;URL&gt;
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git remote add upstream &lt;URL&gt;
+</code></pre></div></td></tr></table></div>
 <p>remoteに、Group側のURLを追加します。  </p>
 <p><img alt="" src="https://gyazo.com/d741139c9500af6a2c7f45612cdf20ca.png" /></p>
 <p>追加すると、Remoteに upstream が追加されます。  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git fetch upstream
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git fetch upstream
+</code></pre></div></td></tr></table></div><br />
 追加したリモートをFetchして</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git pull
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>git pull
 git merge upstream/master
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 upstreamのmasterを自分のmasterにマージします。  </p>
 <p><img alt="" src="https://gyazo.com/5577f0c9aa30fb4c277f87d028838a6b.png" /></p>
 <p>変更内容が取り込まれました。<br />
@@ -7578,9 +7569,8 @@ upstreamのmasterを自分のmasterにマージします。  </p>
 <p>コミットやPushは、コマンドでやるとステージするのが面倒だったり<br />
 コメントを日本語で入れるのが面倒だったりするので、<br />
 GUIを使用します。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git gui
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git gui
+</code></pre></div></td></tr></table></div><br />
 <img alt="" src="https://gyazo.com/1a9f38cca286d2d43ab0989e02760827.png" /></p>
 <p>addするのとかはコマンドでやるのは地味にめんどくさいけど、GUIならわりと楽。<br />
 UnstagedChangesにファイルがある状態で「Stage Changed」するとコミットできる状態になるので<br />
@@ -7594,25 +7584,21 @@ UnstagedChangesにファイルがある状態で「Stage Changed」するとコ�
 <h2 id="_10">ローカルブランチをマージする<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
 <p>ローカルブランチで、別ブランチを切った状態で作業しているときに<br />
 ほかのブランチをマージしたい場合は、とりこみ先でチェックアウトをして<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git merge 取り込みたいリポジトリ名
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git merge 取り込みたいリポジトリ名
+</code></pre></div></td></tr></table></div><br />
 これで、リポジトリを現在のブランチにマージすることができる。</p>
 <h2 id="_11">ローカルリポジトリとリモートリポジトリで衝突した場合<a class="headerlink" href="#_11" title="Permanent link">¶</a></h2>
 <p>衝突してしまったら、まずローカル側を逃がしてからPullしてマージする。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git stash
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>git stash
 git stash list
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まず、現在の編集情報をStashに逃がす。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git pull
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git pull
+</code></pre></div></td></tr></table></div>
 <p>そしてリモートの状態をPullして最新の状態にする</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git stash pop
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git stash pop
+</code></pre></div></td></tr></table></div><br />
 Stashに入れてた内容を元に戻す。<br />
 取り出したらコンフリクトが発生するので、必要に応じてマージしてからコミットする。<br />
 マージ処理はわりと自動でやってくれる。<br />
@@ -7764,7 +7750,7 @@ Stashに入れてた内容を元に戻す。<br />
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

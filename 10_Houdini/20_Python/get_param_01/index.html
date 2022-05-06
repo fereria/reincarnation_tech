@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Houdini/20_Python/get_param_01/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7297,22 +7297,20 @@ PathはパラメーターがあるNode/パラメーター名。<br />
 アクセス用の名前が知りたい場合は、<br />
 取得したいパラメーター名をクリックし、PythonShellにDrag&amp;Dropすればフルパスが表示される。</p>
 <h2 id="node">Nodeのアトリビュートを取得する<a class="headerlink" href="#node" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;/obj/geo1/testgeometry_pighead1&#39;</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;/obj/geo1/testgeometry_pighead1&#39;</span><span class="p">)</span>
 <span class="n">node</span><span class="o">.</span><span class="n">parm</span><span class="p">(</span><span class="s1">&#39;difficulty&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>指定のオブジェクトのパラメーターを取得したい場合は、 parm('parm_name')でOK。  </p>
 <h2 id="_1">プルダウンの中身を取得したい<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p><img alt="" src="https://gyazo.com/b1e756b57d76af9a3f63952561baf791.png" /></p>
 <p>こんな感じのListの中の要素を取得したい場合。  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">param</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parm</span><span class="p">(</span><span class="s1">&#39;difficulty&#39;</span><span class="p">)</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">param</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parm</span><span class="p">(</span><span class="s1">&#39;difficulty&#39;</span><span class="p">)</span>
 <span class="n">p_temp</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">parmTemplate</span><span class="p">()</span>
 <span class="n">p_temp</span><span class="o">.</span><span class="n">menuItems</span><span class="p">()</span> <span class="c1"># Tupleで取得</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 MenuParmTemplate形式で取得できる。  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -7320,9 +7318,8 @@ MenuParmTemplate形式で取得できる。  </p>
 </div>
 <h2 id="_2">値をセットする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>指定のパラメーターに値をセットする場合は、 set を使用する。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">param</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">param</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div><br />
 このようにすると、Listの0番目が選択される。</p>
 
   <hr>
@@ -7444,7 +7441,7 @@ MenuParmTemplate形式で取得できる。  </p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

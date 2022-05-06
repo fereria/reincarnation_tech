@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/50_VSCode/vscode_jupyter/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7317,7 +7317,7 @@
 <p>Jupyterの環境を作成する前に、Pipenvを使用して環境を構築します。  </p>
 <p><img alt="" src="https://gyazo.com/bb59a891a8dea4b109982792059b6795.png" /></p>
 <p>VSCodeのワークスペースを作成し、その下に「.venv」を作成します。  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7335,7 +7335,7 @@
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[[source]]
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>[[source]]
 url = &quot;https://pypi.org/simple&quot;
 verify_ssl = true
 name = &quot;pypi&quot;
@@ -7354,15 +7354,14 @@ pytest = &quot;*&quot;
 
 [requires]
 python_version = &quot;3.6&quot;
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 今回の環境はこんな感じにしています。<br />
 Pythonのバージョンは3.6です。  </p>
 <p>Jupyterに関して調べたときにはAnacondaで構築している例のほうが圧倒的に多いですが、<br />
 Pipenvを使用しても環境構築はできました。</p>
 <h2 id="_2">コードを作成する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>まず、実行するコードを書きます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7376,7 +7375,7 @@ Pipenvを使用しても環境構築はできました。</p>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># %%</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># %%</span>
 
 <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">solve</span>
 
@@ -7391,13 +7390,11 @@ Pipenvを使用しても環境構築はできました。</p>
 <span class="c1"># %%</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Jupyterは、「セル」と呼ばれる単位でスクリプトを実行していきます。<br />
 ざっくりというと、1つのPythonファイルだけど複数のコードを区切って記述できる機能で  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># %%
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code># %%
+</code></pre></div></td></tr></table></div><br />
 コードの区切り部分にコレを記述しておくと、そこがセルの開始・終了地点扱いになります。<br />
 そして、  </p>
 <p><img alt="" src="https://gyazo.com/6276c083c75014b2aa1ea3928f648198.png" /></p>
@@ -7410,14 +7407,14 @@ Pipenvを使用しても環境構築はできました。</p>
 <p><img alt="" src="https://gyazo.com/54cfda0226941ef1714d0eb51267d7bb.png" /></p>
 <p>実行すると、こんな感じで現在の変数と、セルの実行結果が表示されます。  </p>
 <p>結果は、printをしていなくても表示される模様。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
@@ -7425,22 +7422,20 @@ Pipenvを使用しても環境構築はできました。</p>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Jupyterの便利なところは、こんな感じでグラフを表示するコードを書いた場合  </p>
 <p><img alt="" src="https://gyazo.com/9ba6509c311dc4f640b8835d9234eb2a.png" /></p>
 <p>Python Interactive画面にグラフを描画してくれるところ。  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#%% [markdown]
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>#%% [markdown]
 
 # # HOGEHOGE
 # * fugafuga
 # * fugafuga
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 通常のJupyterの場合、セル内にMarkdownを書くと<br />
 Markdown扱いにしてくれますが<br />
 VSCodeの場合はコメントアウトが必要のようです。</p>
@@ -7452,9 +7447,8 @@ VSCodeの場合はコメントアウトが必要のようです。</p>
 <h2 id="notebook">notebookを起動して、実行する<a class="headerlink" href="#notebook" title="Permanent link">¶</a></h2>
 <p>Anacondaでインストールした場合は、Windowsのスタートアップからノートブックを起動<br />
 できるようですが、Pipenvの場合は特にないので  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>.venv\Scripts\jupyter-notebook.exe
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>.venv\Scripts\jupyter-notebook.exe
+</code></pre></div></td></tr></table></div>
 <p>この実行ファイルを実行します。  </p>
 <p><img alt="" src="https://gyazo.com/cbb77f6f598aeaad37b95f69730570bd.png" /></p>
 <p>実行すると、サーバーが起動してブラウザからJupyterを開くことができます。<br />
@@ -7597,7 +7591,7 @@ VSCodeのエラーがでてしまい実行できませんでした。  </p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

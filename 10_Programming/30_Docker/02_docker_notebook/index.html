@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/30_Docker/02_docker_notebook/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7226,7 +7226,7 @@
 <a href="http://localhost:8888">http://localhost:8888</a><br />
 のように、ブラウザからDockerのコンテナ内で起動しているJupyterにアクセスしてみます。</p>
 <p>まずはDockerfile</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7246,7 +7246,7 @@
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>FROM python:3.7-slim
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code>FROM python:3.7-slim
 USER root
 
 RUN apt-get update
@@ -7267,34 +7267,31 @@ WORKDIR /work_dir
 RUN pip install -r requirements.txt
 
 EXPOSE 8888
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>すでにJupyterをインストールしているイメージもありますが<br />
 Usdを利用したかったので 3.7-slimをベースにします。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usd-core
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>usd-core
 jupyter
 jupyterlab
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 requirements.txtはこのとおり。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>c = get_config()
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>c = get_config()
 c.NotebookApp.ip = &#39;0.0.0.0&#39;
 c.NotebookApp.open_browser = False
 c.NotebookApp.port = 8888
 c.NotebookApp.notebook_dir = &#39;/work_dir&#39;
 c.NotebookApp.password = u&#39;&#39;
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Jupyterの設定ファイルを用意して、ADDで追加したあと<br />
 jupyter 用のフォルダ以下にコピーします。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7309,7 +7306,7 @@ jupyter 用のフォルダ以下にコピーします。</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>version: &quot;3&quot;
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>version: &quot;3&quot;
 
 services:
   usdnotebook:
@@ -7325,15 +7322,13 @@ services:
     environment:
       - JUPYTER_ENABLE_LAB=yes
     command: jupyter lab --NotebookApp.token=&#39;&#39; --allow-root --no-browser --port 8888 --ip=0.0.0.0
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>最後に docker-compose.yml を書きます。</p>
 <p>ports が、コンテナ側のポートと実際にアクセスするポートの対応関係を指定するもの<br />
 command は、コンテナ起動後に実行したいコマンドになります。</p>
 <p>準備ができたら、 <br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>docker-compose -f docker/docker-compose.yml up 
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>docker-compose -f docker/docker-compose.yml up 
+</code></pre></div></td></tr></table></div><br />
 で、コンテナを起動します。</p>
 <p><img alt="" src="https://gyazo.com/5cdf95114d90b2aefeb2d0ca2d01b464.png" /></p>
 <p>コンテナが起動できたら、</p>
@@ -7495,7 +7490,7 @@ volumes でローカルPCのディレクトリをマウントしていれば<br 
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

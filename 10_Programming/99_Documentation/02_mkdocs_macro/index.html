@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/02_mkdocs_macro/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7285,11 +7285,10 @@
 その結果を表示できるようにできます。<br />
 というのを前からあるのは知ってましたが、mkdocs をバージョンアップするついでに<br />
 使い方を色々調べてみました。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install mkdocs-macros-plugin
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install mkdocs-macros-plugin
+</code></pre></div></td></tr></table></div>
 <p>まずはプラグインを pip でインストールします。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7298,7 +7297,7 @@
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>plugins:
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>plugins:
   - git-revision-date-localized:
       type: iso_datetime
       locale: ja
@@ -7308,50 +7307,44 @@
         - ja
   - awesome-pages
   - macros
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 そしてpluginsに macroを追加します。<br />
 これで準備は完了。</p>
 <p>次に呼び出し用のpythonを作ります。<br />
 mkdocsのプロジェクト直下に main.py を準備して、そこに</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">define_env</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">define_env</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
     <span class="c1"># マクロはここに書く</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 define_env 関数を作ります。<br />
 マクロプラグインが呼び出すための関数で、<br />
 マクロに必要な値がこの関数の引数として渡されます。</p>
 <h2 id="_1">マクロを作る<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>マクロとは、<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{{hoge()}}
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>{{hoge()}}
+</code></pre></div></td></tr></table></div><br />
 こんな感じで {{ }} で main.py の define_env に書かれた関数を呼び出して<br />
 そのreturnを表示できるようになります。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nd">@env</span><span class="o">.</span><span class="n">macro</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="nd">@env</span><span class="o">.</span><span class="n">macro</span>
     <span class="k">def</span> <span class="nf">fontstyle</span><span class="p">(</span><span class="n">comment</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#000000&#39;</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&lt;div style=&quot;font-size:</span><span class="si">{</span><span class="n">size</span> <span class="o">*</span> <span class="mi">100</span><span class="si">}</span><span class="s1">%;color:</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s1">&quot;&gt;</span><span class="si">{</span><span class="n">comment</span><span class="si">}</span><span class="s1">&lt;/div&gt;&#39;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>例えばこんな感じの定義を作り、@env.macro のデコレーターをつけます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">testHoge</span><span class="p">():</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">testHoge</span><span class="p">():</span>
         <span class="k">return</span> <span class="s1">&#39;return hogehoge</span>
     <span class="c1"># デコレーターを使わない場合</span>
     <span class="n">env</span><span class="o">.</span><span class="n">macro</span><span class="p">(</span><span class="n">testHoge</span><span class="p">,</span> <span class="s1">&#39;hogevalue&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 あるいは、デコレーターを使わない場合は、env.macroの第１引数で関数を渡し<br />
 第２引数で呼び出し用の {{return hogehoge}}に指定する文字列を指定しておきます。</p>
 <p>出来上がったマクロは、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{{fontstyle(&#39;ここに文字を書く&#39;,1.2,&#39;#ff0000&#39;)}}
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>{{fontstyle(&#39;ここに文字を書く&#39;,1.2,&#39;#ff0000&#39;)}}
+</code></pre></div></td></tr></table></div>
 <p>mkdocsにこのように書くと</p>
 <div style="font-size:120.0%;color:#ff0000">ここに文字を書く</div>
 
@@ -7360,24 +7353,21 @@ define_env 関数を作ります。<br />
 とても便利です。</p>
 <h2 id="_2">フィルターを作る<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>フィルターとは、 Jinja2 の機能で<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{{name|lower}}
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>{{name|lower}}
+</code></pre></div></td></tr></table></div><br />
 こんなかんじで {{}} の1つ目の変数を2つ目の定義されたフィルターで変換して<br />
 結果を表示させることのできる機能です。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nd">@env</span><span class="o">.</span><span class="n">filter</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="nd">@env</span><span class="o">.</span><span class="n">filter</span>
     <span class="k">def</span> <span class="nf">twitter</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;a href=&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot;&gt;&lt;/a&gt;&lt;/blockquote&gt;&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&#39;</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 フィルターの作り方はかんたんで、<br />
 デコレーターで @env.filterをつけた関数を作り、入力の値を引数として<br />
 その結果を return します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{{&#39;https://twitter.com/fereria/status/1164544426967875584&#39;|twitter}}
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>{{&#39;https://twitter.com/fereria/status/1164544426967875584&#39;|twitter}}
+</code></pre></div></td></tr></table></div>
 <p>上のTwitterフィルターは、値でTwitterのURLを渡すと</p>
 <blockquote class="twitter-tweet"><a href="https://twitter.com/fereria/status/1164544426967875584"></a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -7536,7 +7526,7 @@ return で文字列を返せば何でもできるので、mkdocsのかゆいと�
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/00_mkdocs_setting/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7516,11 +7516,10 @@
 <h2 id="_1">インストール<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>mkdocs は、python で作成されているので<br />
 まず Python をインストールして、pip を使用してインストールをします。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install mkdocs
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install mkdocs
 pip install pip install mkdocs-material
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>インストールのときに、テンプレートも一緒にインストールしておきます。</p>
 <h2 id="_2">リポジトリ作成～コミット<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>今回は GitHubPages を使用するので、<br />
@@ -7532,22 +7531,19 @@ pip install pip install mkdocs-material
 この中に markdown ファイルを入れていきます。<br />
 次に、mkdocs の設定ファイルである mkdocs.yml を、フォルダ直下に作ります。<br />
 中身は</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>site_name: My Docs
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>site_name: My Docs
+</code></pre></div></td></tr></table></div>
 <p>デフォルトだとサイトの名前のみで設定はとくにありません。</p>
 <p>最後に docs フォルダ直下に index.md を作成します。<br />
 このあたりは</p>
 <p><img alt="" src="https://gyazo.com/2dc2ce3d62c83f461cd2a4cd4e6e163e.png" /></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>mkdocs new my-project
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdocs new my-project
+</code></pre></div></td></tr></table></div>
 <p>を使用しても作れますが<br />
 あえてコマンドを使うまでもないので、手動でつくりました。</p>
 <p>以上ができたら、GitHub にデータをプッシュしつつ</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>mkdocs gh-deploy
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdocs gh-deploy
+</code></pre></div></td></tr></table></div>
 <p>専用の GitHub 公開用コマンドを実行すれば作業は完了です。<br />
 おしまい。</p>
 <h2 id="_3">設定ファイルを編集する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
@@ -7555,14 +7551,14 @@ pip install pip install mkdocs-material
 細かい設定を加えていきます。</p>
 <h3 id="_4">テーマを設定する<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>見やすさ・機能両方とも、とても優秀な <a href="https://squidfunk.github.io/mkdocs-material/">Material Theme</a> を使用します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>theme:
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>theme:
   feature:
     tabs: true
   language: ja
@@ -7570,8 +7566,7 @@ pip install pip install mkdocs-material
   palette:
     accent: Green
     primary: Green
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>最近はじめてこの YML 形式を知りましたが、シンプルで編集しやすいのが良いです。<br />
 theme:material でテーマを変更し、それ以外はそのテーマの各種オプションをセットしています。<br />
 palette がテーマの色。<br />
@@ -7579,7 +7574,7 @@ tabs は後に追加する pages の 1 階層目をタブで切り替えでき�
 <h2 id="extension">Extension を追加する<a class="headerlink" href="#extension" title="Permanent link">¶</a></h2>
 <p>MkDocs にはいろいろな拡張機能がありますので、<br />
 使いやすそうな物をいれていきます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7590,7 +7585,7 @@ tabs は後に追加する pages の 1 階層目をタブで切り替えでき�
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>markdown_extensions:
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>markdown_extensions:
   - meta
   - pymdownx.mark
   - pymdownx.magiclink
@@ -7602,40 +7597,35 @@ tabs は後に追加する pages の 1 階層目をタブで切り替えでき�
   - codehilite:
       linenums: true
       use_pygments: true
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="meta">meta<a class="headerlink" href="#meta" title="Permanent link">¶</a></h4>
 <p>md ファイルの頭に</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>path: docs/98_Other
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>path: docs/98_Other
 source: mkdocs_setting.md
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>このように、GitHub 上でのパスとファイル名を書いておくと、<br />
 <img alt="" src="https://gyazo.com/1cc193efac3fb6c7c98be22a86a6c5b4.png" /></p>
 <p>ページの末に、ソースコードまでのパスのリンクを追加してくれます。</p>
 <h4 id="pymdownxmark">pymdownx.mark<a class="headerlink" href="#pymdownxmark" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>==Mark==
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>==Mark==
+</code></pre></div></td></tr></table></div>
 <p>このように == で囲むと <mark>こうなります</mark></p>
 <h4 id="pymdownxmagiclink">pymdownx.magiclink<a class="headerlink" href="#pymdownxmagiclink" title="Permanent link">¶</a></h4>
 <p>URL を書くだけで、リンク扱いにしてくれます。（デフォルトだとできない）</p>
 <h4 id="pymdownxemojifontawesome_markdown">pymdownx.emoji/fontawesome_markdown<a class="headerlink" href="#pymdownxemojifontawesome_markdown" title="Permanent link">¶</a></h4>
 <p>絵文字 <img alt="😄" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f604.png" title=":smile:" /> やアイコンフォント <i class="fa fa-external-link"></i> を使用できるようにします。</p>
 <h4 id="pymdownxkeys">pymdownx.keys<a class="headerlink" href="#pymdownxkeys" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>++alt+shift+space++
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>++alt+shift+space++
+</code></pre></div></td></tr></table></div>
 <p>こうすると、<br />
 <span class="keys"><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-space">Space</kbd></span><br />
 こんなかんじに、ショートカット表示ができます。</p>
 <h4 id="admonition">admonition<a class="headerlink" href="#admonition" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!!! note
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! note
     hogehoge
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 </div>
@@ -7645,23 +7635,21 @@ source: mkdocs_setting.md
 <p>コードを張り付けた時に、行数やコピペボタンを追加してくれます。<br />
 このサイト的には必須。</p>
 <p>読み込んだ Extension は、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  - codehilite:
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>  - codehilite:
       linenums: true
       use_pygments: true
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こんな感じで、１つ下のインデントにオプションを追加すれば OK です。</p>
 <h2 id="_5">ローカルで確認する<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>書きながら結果を確認したい場合は、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>mkdocs serve
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdocs serve
+</code></pre></div></td></tr></table></div>
 <p>を実行して、サーバーを起動します。</p>
 <p>が、毎度サーバーを起動するためにコンソールを開くのはめんどくさいので<br />
 VSCode のタスクを作成しておきます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7673,7 +7661,7 @@ VSCode のタスクを作成しておきます。</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>{
   &quot;version&quot;: &quot;2.0.0&quot;,
   &quot;tasks&quot;: [
     {
@@ -7686,8 +7674,7 @@ VSCode のタスクを作成しておきます。</p>
       }
     }
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>.vscode/tasks.json に ↑ を追加しておきます。</p>
 <p><img alt="" src="https://gyazo.com/36f624879ebf4fbcb9b045996fb9a76b.png" /></p>
 <p>あとは、ビルドタスクで設定したタスクを選択すると</p>
@@ -7706,17 +7693,16 @@ md を編集したら、随時ページ側も更新されるのでらくちん�
 こちらから。</p>
 <p>設定は、mkdocs.yml に追加する必要があるので<br />
 今回はテキスト処理ではなく yaml モジュールを使用して処理をします。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_mkdocs_yml</span><span class="p">():</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_mkdocs_yml</span><span class="p">():</span>
     <span class="c1"># Jsonのように扱える</span>
     <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">MKDOCS</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
         <span class="n">yml</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">yml</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>読み込むと、json と同じように、Dict と List 形式に展開してくれるので<br />
 とても扱いやすいです。</p>
 <p>このスクリプトを書くときに、素直に YML に持っていける Dict と配列を構成しようと<br />
@@ -7728,15 +7714,14 @@ md を編集したら、随時ページ側も更新されるのでらくちん�
 <li>get_mkdocs_yml()で取得したメインの設定に pages を追加する</li>
 </ol>
 <p>という方法で処理をしました。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;!-- SUMMARY:メニューに表示される名前 --&gt;
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;!-- SUMMARY:メニューに表示される名前 --&gt;
+</code></pre></div></td></tr></table></div>
 <p>md ファイル名は英語、メニューは日本語にするのには、<br />
 というコメントを追加しておいて<br />
 この行をメニュー扱いにして置きかえるようにしています。</p>
 <p>最後に、毎度スクリプトを実行しにいくのはめんどくさいので<br />
 VSCode のビルドタスクを作成しておきます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7749,7 +7734,7 @@ VSCode のビルドタスクを作成しておきます。</p>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
@@ -7763,13 +7748,11 @@ VSCode のビルドタスクを作成しておきます。</p>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>create_mkdocs_pages.py
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>create_mkdocs_pages.py
 mkdocs gh-deploy
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>メニューの更新とデプロイコマンドをセットにしたバッチを<br />
 ビルドタスクに登録しておけば<br />
 とくに意識しないでもメニューの更新ができるようになりました。</p>
@@ -7778,14 +7761,13 @@ mkdocs gh-deploy
 メニューの幅が狭すぎるのと、どれがフォルダなのか記事へのリンクなのかわかりにくかったので<br />
 CSS を調整して幅を広げました。</p>
 <p>カスタムな CSS を入れたい場合は</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>extra_css:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>extra_css:
   - stylesheets/extra.css
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>extra_css: で、読み込みたい CSS を指定します。<br />
 （docs 以下のパスで指定）</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7816,7 +7798,7 @@ CSS を調整して幅を広げました。</p>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">only</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">100em</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">only</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span><span class="w"> </span><span class="nt">100em</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">label</span><span class="p">.</span><span class="nc">md-nav__link</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#3cb340</span><span class="mi">57</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
@@ -7848,8 +7830,7 @@ CSS を調整して幅を広げました。</p>
 <span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.7</span><span class="kt">rem</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>CSS はほとんど知らないので苦戦しました。<br />
 <mark>@media only screen and (min-width: 100em) {</mark><br />
 この行で、デスクトップ用の時の時のみ設定が反映されるようにしています。<br />
@@ -7861,13 +7842,12 @@ CSS を調整して幅を広げました。</p>
 <p>GitBook でもそうですが、全部のタブをチクチク開いて探していかないといけないのは<br />
 けっこうな苦行なので<br />
 デフォルトで全部オープンしておくようにしました。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>extra_javascript:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>extra_javascript:
   - javascripts/extra.js
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まず、シーンに読み込みたい JS を追加して</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7880,22 +7860,21 @@ CSS を調整して幅を広げました。</p>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">nav</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;md-nav&quot;</span><span class="p">);</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">nav</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">nav</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-md-level&quot;</span><span class="p">))</span> <span class="p">{</span>
-      <span class="nx">nav</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&quot;block&quot;</span><span class="p">;</span>
-      <span class="nx">nav</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="s2">&quot;visible&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">nav</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;md-nav&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">nav</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">nav</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-md-level&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nx">nav</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="nx">nav</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;visible&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="kd">var</span> <span class="nx">nav</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;md-nav__toggle&quot;</span><span class="p">);</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">nav</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">nav</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">checked</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-</td></tr></table>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">nav</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;md-nav__toggle&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">nav</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">nav</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>このコードをコピペします。</p>
 <p><img alt="" src="https://gyazo.com/245531c7d601c2a24bba5946f5b0d49b.png" /></p>
 <p>設定の結果。<br />
@@ -8037,7 +8016,7 @@ mkdocs+GitHubPages に落ち着きそうです。<br />
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

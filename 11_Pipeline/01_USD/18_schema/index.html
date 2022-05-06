@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/18_schema/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7457,9 +7457,8 @@
 <p>当然、DCCツールからデータをExportする時には、Primに対してはSchemaが定義されています。<br />
 そのため、Schemaやその分類については意識しなくても大丈夫ですが、<br />
 Python等でUSDを操作しようとした場合はその限りではありません。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/hogehoge&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/hogehoge&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <p>たとえば、このように UsdStageからDefinePrimした場合。<br />
 構造化されていない野良データになります。</p>
 <p>その場合、<a href="https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09#prim-%E3%81%AB%E3%81%AF%E5%9E%8B%E3%82%92%E3%81%A4%E3%81%91%E3%82%89%E3%82%8C%E3%82%8B">ツールによってはTypeの解釈がうまくいかなくて問題になったりする</a>ので<br />
@@ -7475,23 +7474,21 @@ Schemaと一言で言っても、様々な種類があります。</p>
 <h3 id="prim-schema">Prim Schema<a class="headerlink" href="#prim-schema" title="Permanent link">¶</a></h3>
 <p>PrimSchemaは、その名の通りPrimに対して指定されるSchemaのことを指します。<br />
 多くの場合、SchemaはこのPrimSchemaです。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 野良Primを作った場合</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 野良Primを作った場合</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s2">&quot;/noraPrim&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>最初に説明した通り、UsdStageからDefinePrimした場合は、Schemaの定義されていない空の野良Primになります。<br />
 このPrimに対してType（Prim Schema）を指定します。</p>
 <p>作成するには、各SchemaのクラスのDefineからPrim作成を実行します。<br />
 すると、指定されたSchemaでPrimを定義することができます。</p>
 <p>例として、Cubeを作成したい場合。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">geom</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="s1">&#39;/sample&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>このように <strong>UsdGeomCube</strong>を <strong>Define</strong>すると、<br />
 Primは指定したSchemaのPrim(UsdGeomCube)になります。</p>
 <p><img alt="" src="https://gyazo.com/e601ec4885edbce8422ed314002dba99.png" /></p>
@@ -7532,29 +7529,27 @@ Xformableなら、TransformできるようにするPrimに対して指定され�
 与えるためのクラスが、AbstractSchemaです。</p>
 <p>このAbstractSchemaは、Primを（インスタンスを）つくることができません。</p>
 <p>対して、実際に <strong>Primを作成できるものを Concrete Schema</strong> と呼び、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">geom</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="s1">&#39;/sample&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">geom</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="s1">&#39;/sample&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <p>このように、Stageに対してDefineすることができます。</p>
 <h2 id="api-schema">API Schema<a class="headerlink" href="#api-schema" title="Permanent link">¶</a></h2>
 <p>API Schema は、IsAとは違いある一連のデータをオーサリングしたり抽出したりするためのインターフェースとして<br />
 機能するPrim Schemaのことです。<br />
 APISchemaは、 <a href="https://ja.wikipedia.org/wiki/Is-a">IsA</a> に対して <a href="https://ja.wikipedia.org/wiki/Has-a">HasA</a> Schemaとも呼ばれます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">geom</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="s1">&#39;/sample&#39;</span><span class="p">)</span>
 
 <span class="n">xformAPI</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">XformCommonAPI</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span>
 <span class="n">xformAPI</span><span class="o">.</span><span class="n">SetTranslate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>シンプルな例として、スケール・回転・移動などのオーサリングや取得をすることができる XformCommonAPを<br />
 みてみます。<br />
 このAPIは、指定のPrim（ samplePrim ) に対して、Y方向に100移動する処理を適応しています。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7566,7 +7561,7 @@ APISchemaは、 <a href="https://ja.wikipedia.org/wiki/Is-a">IsA</a> に対し�
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">rootLayer</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span>
 
 <span class="c1"># Mesh作成</span>
@@ -7579,8 +7574,7 @@ APISchemaは、 <a href="https://ja.wikipedia.org/wiki/Is-a">IsA</a> に対し�
 
 <span class="c1"># Bind</span>
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>このほかに、 UsdShadeMaterialBindingAPI のように、あるMeshに対してMaterialをAssignする<br />
 といったような操作のインターフェースも、このAPI Schemaを使用します。</p>
 <p>API Schema にも、大きく分けると non-applied single-apply multi-apply の３種類があります。</p>
@@ -7591,13 +7585,12 @@ APISchemaは、 <a href="https://ja.wikipedia.org/wiki/Is-a">IsA</a> に対し�
 <h3 id="non-applied">non-Applied<a class="headerlink" href="#non-applied" title="Permanent link">¶</a></h3>
 <p>non-applied は、プロパティをセットするためなどに存在するAPIで、PrimTypeや定義には影響しないもののことを指します。<br />
 例として、 UsdModelAPI 等があり、<a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/11_kind_modelhierarchy/">Kindの指定</a> などで、</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
 <span class="n">api</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ModelAPI</span><span class="p">(</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">prim</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">SetKind</span><span class="p">(</span><span class="s1">&#39;chargroup&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 Primに対してKindを指定していますが、これはあくまでも決められた値をセットするためにあるもので<br />
 APISchemaが適応されているわけではありません。</p>
 <h3 id="multi-apply">Multi-Apply<a class="headerlink" href="#multi-apply" title="Permanent link">¶</a></h3>
@@ -7766,7 +7759,7 @@ Collectionは、１つのPrimに対して複数のCollectionを適応するこ�
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

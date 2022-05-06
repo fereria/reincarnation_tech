@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/05_gradation_picker/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7530,7 +7530,7 @@ PySide のイベントは Window 外だと Event を拾ってくれません。<
 （画面外でもイベントを拾う方法は調べてもわからず...）</p>
 <p>というわけでこれをどうやって処理したらよいかというと、</p>
 <p><a href="../04_screen_shot/">PySide で範囲スクリーンショットを作る</a> でやったのと同じ処理で作ることができます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7540,7 +7540,7 @@ PySide のイベントは Window 外だと Event を拾ってくれません。<
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ColorPick</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ColorPick</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
 
     <span class="n">getGradation</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 
@@ -7551,36 +7551,33 @@ PySide のイベントは Window 外だと Event を拾ってくれません。<
 
         <span class="bp">self</span><span class="o">.</span><span class="n">screen</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">primaryScreen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">originalPixmap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">screen</span><span class="o">.</span><span class="n">grabWindow</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">desktop</span><span class="p">()</span><span class="o">.</span><span class="n">winId</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>それが、Picker ツール部分で<br />
 スクリーンを取得し、現在の ScreenShot を撮影する処理をしています。</p>
 <p>あと、今回はマウスの動きをトラッキングしたいので setMouseTracking(True) をいれておきます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 
         <span class="n">painter</span> <span class="o">=</span> <span class="n">QPainter</span><span class="p">()</span>
         <span class="n">painter</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">rectSize</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">desktop</span><span class="p">()</span><span class="o">.</span><span class="n">screenGeometry</span><span class="p">()</span>
         <span class="n">painter</span><span class="o">.</span><span class="n">drawPixmap</span><span class="p">(</span><span class="n">rectSize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">originalPixmap</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>そのスクリーンショットを、paintEvent 内で Window 内に描画して</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">showPick</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">showPick</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># ボタンを押すと、ピッカーGUIが全画面に表示される</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">ColorPick</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">a</span><span class="o">.</span><span class="n">showFullScreen</span><span class="p">()</span>
         <span class="n">a</span><span class="o">.</span><span class="n">getGradation</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">setGradationColor</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>そのスクリーンショットを描画した Window を全画面表示します。</p>
 <p>こうすることで、マウスのイベントを取得しつつ画面に対してなにかするということが<br />
 可能になります。</p>
@@ -7589,15 +7586,14 @@ PySide のイベントは Window 外だと Event を拾ってくれません。<
 このあたりは書き方次第で回避策はあるかもしれません。</p>
 <p>これで、画面のドラッグをする部分の下準備ができました。</p>
 <h3 id="_5">マウス位置の色を取得する<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">getCurrentColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">getCurrentColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">originalPixmap</span><span class="o">.</span><span class="n">toImage</span><span class="p">()</span><span class="o">.</span><span class="n">pixelColor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>準備ができたので、実際に色の取得をしていきます。<br />
 色を取得するには、上の画像描画用に取得した ScreenShot のイメージを使用します。<br />
 Pixmap のままだとピクセルカラーは取得できないので<br />
@@ -7610,23 +7606,22 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 <h4 id="mousepressevent">mousePressEvent<a class="headerlink" href="#mousepressevent" title="Permanent link">¶</a></h4>
 <p>まずはここから。Press すると、色の取得を開始したいので<br />
 処理を開始できるようにフラグをたてて開始位置の色を取得します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currentPos</span> <span class="o">=</span> <span class="n">QCursor</span><span class="p">()</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
         <span class="c1"># クリックしたタイミングを0としてグラデーションをピックする</span>
         <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getCurrentColor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currentPos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">startColor</span> <span class="o">=</span> <span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>グラデーションの位置を決めるのにはマウスの移動量の取得が必要なので<br />
 その計算用に今のマウスポジションを取得しておきます。</p>
 <h4 id="mousemoveevent">mouseMoveEvent<a class="headerlink" href="#mousemoveevent" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7639,7 +7634,7 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseMoveEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="c1"># GradColorを処理する</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span><span class="p">:</span>
             <span class="n">pos</span> <span class="o">=</span> <span class="n">QCursor</span><span class="p">()</span><span class="o">.</span><span class="n">pos</span><span class="p">()</span>
@@ -7653,29 +7648,27 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 
             <span class="bp">self</span><span class="o">.</span><span class="n">currentPos</span> <span class="o">=</span> <span class="n">pos</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">repaint</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>MoveEvent が今回のメイン処理です。<br />
 まず、ドラッグ中のみの実行なので isDrag = True のときのみ処理をさせます。<br />
 そして、前のマウスポジションと今のマウスポジションの移動量を計算しておきます。</p>
 <p>ここではとりあえず全部の値を入れておき、あとで同じ色だった場合は外す処理を行います。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">colorDifference</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">colorDifference</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
     <span class="c1"># 超シンプルな色差を求める関数</span>
     <span class="n">rd</span> <span class="o">=</span> <span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span>
     <span class="n">gd</span> <span class="o">=</span> <span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">dst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span>
     <span class="n">bd</span> <span class="o">=</span> <span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">dst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rd</span> <span class="o">*</span> <span class="n">rd</span> <span class="o">+</span> <span class="n">gd</span> <span class="o">*</span> <span class="n">gd</span> <span class="o">+</span> <span class="n">bd</span> <span class="o">*</span> <span class="n">bd</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>色の差の取得は、今回はシンプルに距離に応じて 0-1 を返すようにしました。</p>
 <h4 id="mousereleaseevent">mouseReleaseEvent<a class="headerlink" href="#mousereleaseevent" title="Permanent link">¶</a></h4>
 <p>最後にマウスをはなしたときに今まで記録した内容をシグナルで返す処理を追加します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7693,7 +7686,7 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">isDrag</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="c1"># 1つ目は0なので、そのまま取り出す</span>
@@ -7712,23 +7705,21 @@ mousePressEvent mouseMoveEvent mouseReleaseEvent<br />
         <span class="bp">self</span><span class="o">.</span><span class="n">getGradation</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">retVal</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>今回はグラーデーション位置は 0-1 で取得したいので、マウスの総移動量で各<br />
 ポイントの移動量を割って 0-1 に値が収まるようにします。</p>
 <p>更に、グラデーションカラーの調整で前後の色を見て、色の差が大きい場合のみreturnを返すようにすることで<br />
 SD のグラデーション的な挙動をつくることができるようです。（大翔士さんの修正版に変更、ありがとうございます！）</p>
 <p>最後に、その結果を Signal で送信して、Window を閉じて終了です。</p>
 <p>これで、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[[0,(0,0,0)],[0.5,(1,1,1)]]
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>[[0,(0,0,0)],[0.5,(1,1,1)]]
+</code></pre></div></td></tr></table></div>
 <p>こんな感じの配列を、Signal で取得できるようになりました。</p>
 <h3 id="_7">現在のピクセル色をマウス位置に表示する<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <p><img alt="" src="https://gyazo.com/8dc4ccdef266e61a3c0640d05d07a158.png" /></p>
 <p>メインの処理はできましたが、ピック中の色がわかるように<br />
 マウス位置に色を表示できるようにします。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7757,7 +7748,7 @@ SD のグラデーション的な挙動をつくることができるようで�
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 
         <span class="n">painter</span> <span class="o">=</span> <span class="n">QPainter</span><span class="p">()</span>
         <span class="n">painter</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -7787,13 +7778,12 @@ SD のグラデーション的な挙動をつくることができるようで�
                              <span class="s2">&quot;RGB(</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">red</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">green</span><span class="p">(),</span> <span class="n">color</span><span class="o">.</span><span class="n">blue</span><span class="p">()))</span>
 
         <span class="n">painter</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>描画部分は、まずスクリーンショットを全画面に表示させて<br />
 現在のマウス位置基準で右下あたりに文字と色の矩形を表示させるようにしました。</p>
 <p>とりあえずこれで必要な配列はできたので、Houdini でツールをつくるなりすれば OK ですが<br />
 それだとわかりにくかったのでグラデーションの GUI をつくってみました。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7852,7 +7842,7 @@ SD のグラデーション的な挙動をつくることができるようで�
 <span class="normal">57</span>
 <span class="normal">58</span>
 <span class="normal">59</span>
-<span class="normal">60</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Gradation</span><span class="p">(</span><span class="n">QGraphicsScene</span><span class="p">):</span>
+<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Gradation</span><span class="p">(</span><span class="n">QGraphicsScene</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Gradation</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -7912,8 +7902,7 @@ SD のグラデーション的な挙動をつくることができるようで�
 
         <span class="bp">self</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">colorList</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">repaint</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こちらのコードは、もちおさんが速攻作ってくれた <a href="https://github.com/mochio326/GradationWidget">https://github.com/mochio326/GradationWidget</a><br />
 こちらを参考に、グラデーション表示部分だけ作ってみました。</p>
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">若干挙動が怪しい気もするけど、明日のはここまで... <a href="https://t.co/qCSZ8dzrvb">pic.twitter.com/qCSZ8dzrvb</a></p>&mdash; あんどうめぐみ@れみりあ (@fereria) <a href="https://twitter.com/fereria/status/1243533080154918914?ref_src=twsrc%5Etfw">March 27, 2020</a></blockquote>
@@ -8075,7 +8064,7 @@ QWidget は一応全画面化できるものの、parent で親 Widget をして
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/11_custom_layout/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7450,14 +7450,14 @@
 <p>まず、QLayoutItemが、QLayoutが操作する抽象的なアイテムを提供します。<br />
 QLayoutを継承して作るカスタムレイアウトは、このQLayoutItemで指定された関数を<br />
 再実装することで、作ることができます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SampleGridLayout</span><span class="p">(</span><span class="n">QLayout</span><span class="p">):</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SampleGridLayout</span><span class="p">(</span><span class="n">QLayout</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hSpacing</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">vSpacing</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
@@ -7465,8 +7465,7 @@ QLayoutを継承して作るカスタムレイアウトは、このQLayoutItem�
         <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span> <span class="o">=</span> <span class="n">hSpacing</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vSpacing</span> <span class="o">=</span> <span class="n">vSpacing</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まずは基本構造。</p>
 <p>カスタムレイアウトを作る場合は、QLayoutを継承したクラスを作成します。<br />
 まず、レイアウトは、Widgetに対して配置します。<br />
@@ -7497,7 +7496,7 @@ QLayoutでレイアウトを実装する場合<br />
 </ul>
 <p>です。</p>
 <h4 id="_2">レイアウトの追加/取得<a class="headerlink" href="#_2" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7515,7 +7514,7 @@ QLayoutでレイアウトを実装する場合<br />
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">QLayoutItem</span><span class="p">):</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">addItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">QLayoutItem</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
@@ -7534,8 +7533,7 @@ QLayoutでレイアウトを実装する場合<br />
         <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">itemList</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="widget">Widgetの追加・取得関係<a class="headerlink" href="#widget" title="Permanent link">¶</a></h4>
 <p>addItemは、QLayoutで addWidget したときに呼ばれる関数で<br />
 その名の通りレイアウトに配置するアイテムを変数に入れる部分です。<br />
@@ -7545,19 +7543,18 @@ QLayoutでレイアウトを実装する場合<br />
 <p>countはその名の通りレイアウトに配置しているWidget数を返します。  </p>
 <p>itemAtは、指定のIndexのアイテムを返し<br />
 takeAtは、指定のIndexのアイテムを取り出して返します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">hasHeightForWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">hasHeightForWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">heightForWidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">height</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>次にhasHeightForWidth と heightForWidth。<br />
 これは、レイアウトのサイズが横サイズに応じて縦のサイズが決定する場合<br />
 hasHeightForWidth をTrueにします。<br />
@@ -7566,7 +7563,7 @@ hasHeightForWidth をTrueにします。<br />
 その分処理を軽くすることができます。</p>
 <p>heightForWidthの処理は doLayout のときに詳しく書きます。</p>
 <h4 id="sizehint">sizeHint<a class="headerlink" href="#sizehint" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7576,7 +7573,7 @@ hasHeightForWidth をTrueにします。<br />
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">sizeHint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimumSize</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">minimumSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -7587,12 +7584,11 @@ hasHeightForWidth をTrueにします。<br />
 
         <span class="n">margins</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contentsMargins</span><span class="p">()</span>
         <span class="n">size</span> <span class="o">+=</span> <span class="n">QSize</span><span class="p">(</span><span class="n">margins</span><span class="o">.</span><span class="n">left</span><span class="p">()</span> <span class="o">+</span> <span class="n">margins</span><span class="o">.</span><span class="n">right</span><span class="p">(),</span> <span class="n">margins</span><span class="o">.</span><span class="n">top</span><span class="p">()</span> <span class="o">+</span> <span class="n">margins</span><span class="o">.</span><span class="n">bottom</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>次にレイアウトサイズ関連。<br />
 今回の場合の最小サイズは、レイアウトに配置しているWidgetの中で最も大きな値＋マージンを指定するようにします。</p>
 <h4 id="dolayout">doLayout<a class="headerlink" href="#dolayout" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7618,7 +7614,7 @@ hasHeightForWidth をTrueにします。<br />
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">setGeomertry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rect</span><span class="p">):</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">setGeomertry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rect</span><span class="p">):</span>
         <span class="c1"># 配置されるWidgetのジオメトリを計算するときに呼び出される</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
@@ -7645,8 +7641,7 @@ hasHeightForWidth をTrueにします。<br />
             <span class="n">lineHeight</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">lineHeight</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
 
         <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">lineHeight</span> <span class="o">-</span> <span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>そしてこれが今回のメインになるレイアウト部分です。</p>
 <p>まず、レイアウトの再配置の計算が必要になるタイミングがなにかというと</p>
 <ul>
@@ -7658,9 +7653,8 @@ hasHeightForWidth をTrueにします。<br />
 そのサイズにレイアウトサイズを変更後、その枠内に収まるように再配置をします。</p>
 <p>ウィンドウサイズを変更した場合が heightForWidth で、<br />
 ウィンドウを変更したときにこの関数が呼ばれ、その中の処理が実行されるようになります。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doLayout</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
 <p>そのときに呼ぶのがこの再配置のメイン処理を行う doLayout。<br />
 このときは横のサイズは決定しているので横サイズ以外は0にしたQRectを<br />
 引数として渡します。</p>
@@ -7681,15 +7675,14 @@ widgetのサイズは、 item.sizeHint().width() で取得することができ�
 配置位置は 前回の配置位置 + Widgetサイズ（sizeHint().width()) + 最初にしていたスペースです。<br />
 そして、その位置がレイアウトの大きさ（geometry()）よりも大きい場合は<br />
 次の行に改行したいので、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>            <span class="k">if</span> <span class="n">nextX</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span> <span class="o">&gt;</span> <span class="n">rect</span><span class="o">.</span><span class="n">right</span><span class="p">()</span> <span class="ow">and</span> <span class="n">lineHeight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>            <span class="k">if</span> <span class="n">nextX</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span> <span class="o">&gt;</span> <span class="n">rect</span><span class="o">.</span><span class="n">right</span><span class="p">()</span> <span class="ow">and</span> <span class="n">lineHeight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">x</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
                 <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">lineHeight</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">vSpacing</span>
                 <span class="n">nextX</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hSpacing</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>xは初期位置（引数で指定された左側）に戻し、<br />
 配置しているアイテムの height() つまり右下の位置にスペース分の値を追加した値を<br />
 セットします。</p>
@@ -7869,7 +7862,7 @@ heightForWidthとgometryを理解できれば、全体像がわかりやすく�
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

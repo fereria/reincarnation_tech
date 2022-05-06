@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/00_Python/00_Setup/pipenv_statup/">
       
       <link rel="icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7394,9 +7394,8 @@ py.exe とは、最近のPythonをインストールすると一緒にインス�
 複数のPythonをインストールしている場合の使用バージョンスイッチを用意にしてくれるものです。<br />
 exeは C:/Windows/py.exe に入っているので、コマンドライン上では py というコマンドで使用することができます。</p>
 <p>使い方は、<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>py -3.6 
+</code></pre></div></td></tr></table></div><br />
 このようにすると、指定のバージョンのPythonを使用できます。</p>
 <p>これを活用することで、環境変数のPythonPathを毎度変えたりすることなく<br />
 Pythonを使用することができます。</p>
@@ -7407,30 +7406,26 @@ py を使用することでも pip install を使用することができるの�
 そちらを利用して説明していきます。</p>
 <h2 id="_1">インストール方法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>というわけで、まずは pipenvを使えるようにインストールします。<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pip install pipenv
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>py -3.6 -m pip install pipenv
+</code></pre></div></td></tr></table></div><br />
 今回は、python3.6を基準として扱うPythonとして使用するので -3.6 とします。</p>
 <p>インストールが完了すると</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv ～～～
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>py -3.6 -m pipenv ～～～
+</code></pre></div></td></tr></table></div><br />
 これで、pipenvを使用することができます。</p>
 <h2 id="_2">インストール先を変更する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>準備ができたら、次にpipenvの設定をします。<br />
 pipenvは、仮想環境を .venv 下に作成するのですが、<br />
 デフォルトだとHOME下に仮想環境が作成されてしまうので、プロジェクト下になるように環境変数で指定します。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PIPENV_VENV_IN_PROJECT=true
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>PIPENV_VENV_IN_PROJECT=true
+</code></pre></div></td></tr></table></div><br />
 この設定を入れておくと、現在のフォルダ下に .venv が作成されます。</p>
 <h2 id="versionpipenv">Versionを指定してPIPENVの環境を作成する<a class="headerlink" href="#versionpipenv" title="Permanent link">¶</a></h2>
 <p>準備ができたら、実際の環境を作っていきます。</p>
 <p>仮想環境を作りたいPythonのプロジェクトフォルダのルートに移動して、<br />
 以下のコマンドを実行します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv --python 3.6 install
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>py -3.6 -m pipenv --python 3.6 install
+</code></pre></div></td></tr></table></div>
 <p>pipenvでの環境構築は、 --python ### install の ### ここで<br />
 仮想環境のバージョンを指定することができます。<br />
 上の場合は 3.6用の仮想環境をつくります。</p>
@@ -7438,13 +7433,11 @@ pipenvは、仮想環境を .venv 下に作成するのですが、<br />
 <p>構築が完了したら、このように .venv フォルダができあがります。<br />
 これでもとりあえずOKなのですが、<br />
 これだと毎回 py -3.6 pipenv のように書かないといけないので<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv install pipenv
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>py -3.6 -m pipenv install pipenv
+</code></pre></div></td></tr></table></div><br />
 作成した仮想環境にも pipenv を入れておきます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 -m pipenv shell
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>py -3.6 -m pipenv shell
+</code></pre></div></td></tr></table></div><br />
 pipenvが入れ終わったら、作った仮想環境をセットします。</p>
 <h2 id="vscode">VSCodeの設定<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
 <p>まず、pipenvをインストールしたフォルダを開きます。</p>
@@ -7455,9 +7448,8 @@ pipenvが入れ終わったら、作った仮想環境をセットします。</
 <p><img alt="" src="https://gyazo.com/fa506a203231cada557b92957c4ad90d.png" /></p>
 <p>この設定をすると、VSCodeのターミナルを開いたときに自動的に .venv にアクティベートした<br />
 状態でコンソールを開いてくれるので</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pipenv install pyside2
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pipenv install pyside2
+</code></pre></div></td></tr></table></div><br />
 こんなかんじで、pipを使用するのと同じ感覚で仮想環境にモジュールをインストールすることができます。</p>
 <h2 id="pipenv_1">pipenvの主要なコマンド<a class="headerlink" href="#pipenv_1" title="Permanent link">¶</a></h2>
 <table>
@@ -7496,7 +7488,7 @@ pipenvが入れ終わったら、作った仮想環境をセットします。</
 </table>
 <h2 id="_3">設定済みファイルから環境を構築する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>pipenvは、設定ファイルをベースに仮想環境を再構築することができます。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7512,7 +7504,7 @@ pipenvが入れ終わったら、作った仮想環境をセットします。</
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[[source]]
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>[[source]]
 url = &quot;https://pypi.org/simple&quot;
 verify_ssl = true
 name = &quot;pypi&quot;
@@ -7529,8 +7521,7 @@ pyopengl = &quot;*&quot;
 
 [requires]
 python_version = &quot;2.7&quot;
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まずは、空のフォルダに Pipfile という名前の空のテキストを作成します。<br />
 作成したファイルを開いて、↑のようにインストールしたいパッケージや、Pythonのバージョンを<br />
 記載して保存します。<br />
@@ -7538,9 +7529,8 @@ python_version = &quot;2.7&quot;
 すでに別の仮想環境を作っていた場合はファイルが作成されています。<br />
 ので、すでにあるファイルをコピペしてくるのでもOKです。  </p>
 <p>次に、コマンドプロンプトでフォルダに移動して</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 pipenv install
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>py -3.6 pipenv install
+</code></pre></div></td></tr></table></div><br />
 を実行します。  </p>
 <p>実行すると、 Pipfile に記載されているパッケージのうちインストールされていない物があれば<br />
 インストールされます。<br />
@@ -7550,21 +7540,20 @@ python_version = &quot;2.7&quot;
 行うことができます。</p>
 <p>VSCodeと組み合わせるとより快適になるので、とても便利です。</p>
 <h2 id="_4">追記<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
 ; <span class="k">path</span> version
 <span class="k">mkdir</span> <span class="nv">%1</span>
 <span class="k">cd</span> /d <span class="nv">%1</span>
 C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"> -3.6 -m pip install pipenv</span>
 C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"> -3.6 -m pipenv --python %2 install</span>
 C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"> -3.6 -m pipenv install pipenv</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>毎度プロジェクト作るときにコマンド叩くの面倒だったので、Batを書いた。</p>
 <p>これで </p>
 <p>create_pipenvproj.bat D:\hogehoge 3.6 とかやるとかんたんにプロジェクトがつくれる!</p>
@@ -7722,7 +7711,7 @@ C<span class="p">:</span><span class="nl">\Windows\py.exe</span><span class="c1"
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

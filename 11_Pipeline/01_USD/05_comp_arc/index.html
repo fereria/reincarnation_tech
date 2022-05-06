@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/05_comp_arc/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7516,7 +7516,7 @@ SdfPath とは、USD 内のシーングラフの階層構造をファイルパ�
 <h3 id="_4">解決のサンプル<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>まずこの LIVRPS は、L（Local）側が一番優先で、定義がなければ I V ... といった感じに評価していきます。</p>
 <h4 id="_5">一番シンプルなパターン<a class="headerlink" href="#_5" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7531,7 +7531,7 @@ SdfPath とは、USD 内のシーングラフの階層構造をファイルパ�
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 class &quot;TestClass&quot;
 {
@@ -7547,8 +7547,7 @@ def &quot;hoge&quot;
         custom bool testValue = True
     }
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>1 つの usda ファイル内に継承元のクラスがあり、それを継承したプリムがあり<br />
 そのプリムに対して値がセットされている例。</p>
 <p><img alt="" src="https://gyazo.com/9c6d2f20d92327eacbc4e27e36855a16.png" /><br />
@@ -7558,7 +7557,7 @@ testValue が 2 つ定義されているのがわかります。</p>
 <p>この場合に testValue を取得しようした場合、どちらが優先になるのか？というと、<br />
 「Local」のほうが「Inherits（継承）」より優先なので「True」が取得できます。</p>
 <h4 id="_6">複数のコンポジションアークが重なった場合<a class="headerlink" href="#_6" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7569,7 +7568,7 @@ testValue が 2 つ定義されているのがわかります。</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 class &quot;TestClass&quot;
 {
@@ -7581,26 +7580,24 @@ def &quot;hoge&quot; (
 )
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>もし、このように、 hoge プリムでなにも定義されていない場合<br />
 次は Inherits を解決しにいくので、この場合「False」が帰ってきます。</p>
 <p>この例だととてもシンプルですが、では複数が重複した場合はどうなるでしょうか。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 class &quot;TestClass&quot;
 {
     custom int testIntVal = 100
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まず、 class.usda があり</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7610,7 +7607,7 @@ class &quot;TestClass&quot;
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;hoge&quot;
 )
@@ -7621,11 +7618,10 @@ def &quot;hoge&quot;
         custom int testIntVal = 10
     }
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こんな感じの refSample.usda<br />
 があったとします。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7642,7 +7638,7 @@ def &quot;hoge&quot;
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @class.usda@,
@@ -7660,8 +7656,7 @@ def &quot;hgoe&quot;
     {
     }
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>それぞれを Reference と Inherits で合成します。</p>
 <p><img alt="" src="https://gyazo.com/bf5aeae34c0757abd918ed48bf3410d7.png" /></p>
 <p>合成結果はこうなります。</p>
@@ -7678,14 +7673,14 @@ class.usda の /TestClass の testIntVal = 100<br />
 LIVRPS の原則によって「Inherits（継承）」のほうが強いので、取得出来るのは「10」になります。</p>
 <h4 id="_7">コンポジション先にまた別のコンポジションがあった場合<a class="headerlink" href="#_7" title="Permanent link">¶</a></h4>
 <p>上の例だと、Local からみて Reference か Inherits かでしたが、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;hoge&quot;
 (
@@ -7693,10 +7688,9 @@ def &quot;hoge&quot;
 )
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>というファイルを開いた時、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7717,7 +7711,7 @@ def &quot;hoge&quot;
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;hoge&quot;
 )
@@ -7739,10 +7733,9 @@ def &quot;hgoe&quot;
     {
     }
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>このような referenceA.usda があり</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7750,7 +7743,7 @@ def &quot;hgoe&quot;
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;fuga&quot;
 )
@@ -7759,8 +7752,7 @@ def &quot;fuga&quot;
 {
      custom int testIntVal = 50
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>この usda を読んでいたとします。</p>
 <p><img alt="" src="https://gyazo.com/bafb407cf05a6f34f8751fef0cca1a45.png" /></p>
 <p>図にするとこんな感じ。</p>
@@ -7947,7 +7939,7 @@ def &quot;fuga&quot;
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

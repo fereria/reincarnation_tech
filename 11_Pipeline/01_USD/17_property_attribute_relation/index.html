@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/17_property_attribute_relation/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7394,16 +7394,15 @@ Primに定義された「TimeSampleすること」「コンポジションアー
 <a href="https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09">昨日のこちらの記事のアトリビュートについて</a> でも触れられていましたが、<br />
 一般的に、3Dで使われる型など<a href="https://graphics.pixar.com/usd/release/api/_usd__page__datatypes.html">DataType</a>で指定されたものが使用できます。</p>
 <p>jsonやtoml、yaml、xmlといったフォーマットとは違い、Attributeに対しては必ず型指定必用なのが特徴です。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/samplePrim&#39;</span><span class="p">)</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;sampleValuer&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7412,7 +7411,7 @@ Primに定義された「TimeSampleすること」「コンポジションアー
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer 
 &quot;&quot;&quot;
@@ -7422,8 +7421,7 @@ def &quot;samplePrim&quot;
 {
     custom bool sampleValuer = 1
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>シンプルなPrimを作成して、Attributeを追加・指定した例。<br />
 CreateAttributeで指定した型でAttributeが追加されていることがわかります。</p>
 <blockquote>
@@ -7436,22 +7434,21 @@ PythonとC++（Help記載の内容）だと違うという罠がごくまれに�
 <p>USDのAttributeでは、TimeCodeを指定することで、TimeSampling　いわゆるアニメーションを<br />
 させることができます。<br />
 以下、シンプルなAttributeを作成して、動作を確認してみます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/samplePrim&#39;</span><span class="p">)</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;intValue&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</code></pre></div></td></tr></table></div><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7464,7 +7461,7 @@ PythonとC++（Help記載の内容）だと違うという罠がごくまれに�
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer 
 &quot;&quot;&quot;
@@ -7478,13 +7475,11 @@ def &quot;samplePrim&quot;
         10: 10,
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 Setするときに、 Set(\&lt;Value>,\&lt;Timecode>) とすることで、Attributeに対してキーを追加できました。<br />
 この状態で、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
 <blockquote>
 <p>5.0</p>
 </blockquote>
@@ -7495,21 +7490,20 @@ TimeCodeとTimeCodeの間が補間された値が取得されました。</p>
 サポートされているのは Held と Linear の２つ。</p>
 <p>デフォルトは Linearで、TimeCodeとTimeCodeの間をリニアに保管します。<br />
 Heldの場合は、MayaでいうところのStepTangentで、次のTimeCodeまでAttributeの値を一定に保ちます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">SetInterpolationType</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">InterpolationTypeHeld</span><span class="p">)</span> <span class="c1"># デフォルトは、UsdInterpolationTypeLinear </span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">SetInterpolationType</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">InterpolationTypeHeld</span><span class="p">)</span> <span class="c1"># デフォルトは、UsdInterpolationTypeLinear </span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/samplePrim&#39;</span><span class="p">)</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;intValue&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <blockquote>
 <p>0.0</p>
 </blockquote>
@@ -7532,7 +7526,7 @@ USDのソースコード以下 USD/pxr/usd/usdGeom/generatedSchema.usda を読�
 <p>例として、 doubleSided。<br />
 Ball.usd内には doubleSided Attributeに値をセットする記述はありませんが、usdviewを見ると<br />
 セットされていることがわかります。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7541,7 +7535,7 @@ Ball.usd内には doubleSided Attributeに値をセットする記述はあり�
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>stage = Usd.Stage.CreateInMemory()
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>stage = Usd.Stage.CreateInMemory()
 layer = stage.GetRootLayer()
 layer.subLayerPaths = [r&quot;D:\Kitchen_set\assets\Ball\Ball.usd&quot;]
 
@@ -7551,9 +7545,8 @@ prim.GetAttribute(&#39;doubleSided&#39;).Set(True)
 prim.CreateAttribute(&#39;sample&#39;,Sdf.ValueTypeNames.Int).Set(0)
 
 print(layer.ExportToString())
-</code></pre></div>
-</td></tr></table><br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</code></pre></div></td></tr></table></div><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7570,7 +7563,7 @@ print(layer.ExportToString())
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @D:\Kitchen_set\assets\Ball\Ball.usd@
@@ -7588,19 +7581,16 @@ over &quot;Ball&quot;
         }
     }
 }
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <p>このようなAttributeに値をSetした場合は custom にはなりません。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">&#39;doubleSided&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">IsCustom</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">&#39;doubleSided&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">IsCustom</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 <blockquote>
 <p>False</p>
 </blockquote>
 <p>IsCustomで確認しても、Falseになります。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">IsCustom</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">IsCustom</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 <blockquote>
 <p>True</p>
 </blockquote>
@@ -7608,7 +7598,7 @@ over &quot;Ball&quot;
 customが追加され、 IsCustomで確認してもTrueになります。</p>
 <h3 id="relationship">Relationship<a class="headerlink" href="#relationship" title="Permanent link">¶</a></h3>
 <p>Relationshipとは、その名の通り、あるPrimへの「リレーション」を持つプロパティのことです。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7617,7 +7607,7 @@ customが追加され、 IsCustomで確認してもTrueになります。</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 
 <span class="n">basePrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/samplePrim&#39;</span><span class="p">)</span>
 <span class="n">primA</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/primA&#39;</span><span class="p">)</span>
@@ -7627,9 +7617,8 @@ customが追加され、 IsCustomで確認してもTrueになります。</p>
 <span class="n">rel</span><span class="o">.</span><span class="n">AddTarget</span><span class="p">(</span><span class="n">primA</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span>
 <span class="n">rel</span><span class="o">.</span><span class="n">AddTarget</span><span class="p">(</span><span class="n">primB</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7649,7 +7638,7 @@ customが追加され、 IsCustomで確認してもTrueになります。</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     doc = &quot;&quot;&quot;Generated from Composed Stage of root layer 
 &quot;&quot;&quot;
@@ -7670,21 +7659,19 @@ def &quot;primA&quot;
 def &quot;primB&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>同じPropertyですが、Attributeとは違いリレーションは指定のPrimまでのSdfPathを持ちます。<br />
 上の例でいうと、 basePrimの sampleプロパティは primA と primB へのRelationshipを持ちます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Relationで接続したPrimを取得できる</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Relationで接続したPrimを取得できる</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rel</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">())</span>
 <span class="c1"># そのPathから、Primを取得</span>
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">rel</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Relationshipは、ターゲットまでのSdfPathを持っているので<br />
 このように、別のPrimとのコネクションを作成できます。（Property - 複数Primの関係）</p>
 <p>このRelationshipは、主に<a href="https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/Material/USDMaterial_02/">MaterialAssign</a>や<a href="https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/APISchema/USDCollectoinSample/">Collection</a>といった、あるPropertyによって指定のPrimとを関連付けるときなどに<br />
@@ -7692,7 +7679,7 @@ def &quot;primB&quot;
 <h2 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">¶</a></h2>
 <p>最後にPropertyのNamespaceについて。<br />
 USDのProperty名には Namespace:PropName = Value のように、 : を使用することでNamespaceを指定することができます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7706,7 +7693,7 @@ USDのProperty名には Namespace:PropName = Value のように、 : を使用�
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">&#39;/samplePrim&#39;</span><span class="p">)</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">&#39;sampleA:hoge&#39;</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Bool</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -7721,8 +7708,7 @@ USDのProperty名には Namespace:PropName = Value のように、 : を使用�
 <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetPropertiesInNamespace</span><span class="p">(</span><span class="s1">&#39;sampleB&#39;</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>このNamespaceをつけると何ができるかというと、指定のNamespace以下のPropertyを GetPropertiesInNamespaceできるようになります。<br />
 サンプルのように、１つだけでなく複数Namespaceをつけることもできるので<br />
 これを利用して、Propertyをグループとして扱うなどができます。</p>
@@ -7895,7 +7881,7 @@ Schemaによって定義されたものはレイヤーに値が設定されて�
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/65_SampleCode/Notebook/USD/UsdSkel/usdskel_02/">
       
       <link rel="icon" href="../../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7439,75 +7439,67 @@
 <img alt="" src="https://gyazo.com/3cff154efad7ae5d9276b781d0ac9703.png" /></p>
 <p>こんな感じの最寄りのJointにweight1つけたシンプルなCubeでテスト</p>
 <h4 id="in-118">In [118]:<a class="headerlink" href="#in-118" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">UsdSkel</span><span class="p">,</span><span class="n">UsdGeom</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">UsdSkel</span><span class="p">,</span><span class="n">UsdGeom</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-107">In [107]:<a class="headerlink" href="#in-107" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\SimpleSkelB.usd&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;D:\SimpleSkelB.usd&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-108">In [108]:<a class="headerlink" href="#in-108" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">rootPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root&quot;</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">rootPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root&quot;</span><span class="p">)</span>
 <span class="n">usdRoot</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">Root</span><span class="p">(</span><span class="n">rootPrim</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-109">In [109]:<a class="headerlink" href="#in-109" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># UsdSkelSkeleton は、Skeletonのトポロジー定義し、BindPoseを保持する</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># UsdSkelSkeleton は、Skeletonのトポロジー定義し、BindPoseを保持する</span>
 <span class="n">skel</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">Skeleton</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root/joint1&quot;</span><span class="p">))</span>
 <span class="c1"># Animation は、SkeletonとBlendShapeのアニメーションを保持する</span>
 <span class="n">anim</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">Animation</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root/joint1/Animation&quot;</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-110">In [110]:<a class="headerlink" href="#in-110" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">skelPrim</span> <span class="o">=</span> <span class="n">skel</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">skelPrim</span> <span class="o">=</span> <span class="n">skel</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
 <span class="c1"># SkeletonのAnimationはRelationでAnimationPrimが指定されている</span>
 <span class="n">animPath</span> <span class="o">=</span> <span class="n">skelPrim</span><span class="o">.</span><span class="n">GetRelationship</span><span class="p">(</span><span class="s2">&quot;skel:animationSource&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="c1"># Animationの値はVector</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetRotationsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetTranslationsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetScalesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[(1, 0, 0, 0), (1, 0, 0, 0)]
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>[(1, 0, 0, 0), (1, 0, 0, 0)]
 [(0, 0, 0), (0, 2, 0)]
 [(1, 1, 1), (1, 1, 1)]
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-111">In [111]:<a class="headerlink" href="#in-111" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># UsdSkelの構造を取得</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># UsdSkelの構造を取得</span>
 <span class="c1"># UsdSkelは、SkeletonPrimのアトリビュートとしてSkeletonの構造を持つ</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">skel</span><span class="o">.</span><span class="n">GetJointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>joint1
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>joint1
 joint1/joint2
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-112">In [112]:<a class="headerlink" href="#in-112" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7521,7 +7513,7 @@ joint1/joint2
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Skelの構造は Topology を利用すると解析できる</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Skelの構造は Topology を利用すると解析できる</span>
 <span class="n">joints</span> <span class="o">=</span> <span class="n">skel</span><span class="o">.</span><span class="n">GetJointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
 <span class="n">topology</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">Topology</span><span class="p">(</span><span class="n">skel</span><span class="o">.</span><span class="n">GetJointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 
@@ -7536,92 +7528,82 @@ joint1/joint2
 
 <span class="c1"># ParentのIndexを全部取得 -1 がRoot</span>
 <span class="c1"># print(topology.GetParentIndices())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>2
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>2
 True
 joint1/joint2
 joint1
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-113">In [113]:<a class="headerlink" href="#in-113" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># JointsAttr の配列に対応するTransformのリスト</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># JointsAttr の配列に対応するTransformのリスト</span>
 <span class="c1"># 配列はWorldSpaceのMatrix(GfMatrix4d)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">skel</span><span class="o">.</span><span class="n">GetBindTransformsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
 ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 2, 0, 1) )
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-114">In [114]:<a class="headerlink" href="#in-114" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">meshPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root/Geom/pCube1&quot;</span><span class="p">)</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">meshPrim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root/Geom/pCube1&quot;</span><span class="p">)</span>
 
 <span class="n">bindingAPI</span> <span class="o">=</span> <span class="n">UsdSkel</span><span class="o">.</span><span class="n">BindingAPI</span><span class="p">(</span><span class="n">meshPrim</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-115">In [115]:<a class="headerlink" href="#in-115" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Mesh にBindされているJointをリストできる</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Mesh にBindされているJointをリストできる</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bindingAPI</span><span class="o">.</span><span class="n">GetJointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 <span class="c1"># SkeletonPrimのPathを取得する</span>
 <span class="n">bindingAPI</span><span class="o">.</span><span class="n">GetSkeletonRel</span><span class="p">()</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()</span> 
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[joint1, joint1/joint2]
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>[joint1, joint1/joint2]
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[Sdf.Path(&#39;/World/Root/joint1&#39;)]
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>[Sdf.Path(&#39;/World/Root/joint1&#39;)]
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-119">In [119]:<a class="headerlink" href="#in-119" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># WeightのついているMeshのVertexの値を確認してみる</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># WeightのついているMeshのVertexの値を確認してみる</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">&quot;/World/Root/Geom/pCube1&quot;</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h4 id="in-125">In [125]:<a class="headerlink" href="#in-125" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># 上の頂点のIndexは 2 3 4 5</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 上の頂点のIndexは 2 3 4 5</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>(-0.5, -0.5, 0.5)
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>(-0.5, -0.5, 0.5)
 (0.5, -0.5, 0.5)
 (-0.5, 0.5, 0.5)
 (0.5, 0.5, 0.5)
@@ -7629,11 +7611,10 @@ joint1
 (0.5, 0.5, -0.5)
 (-0.5, -0.5, -0.5)
 (0.5, -0.5, -0.5)
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="in-129">In [129]:<a class="headerlink" href="#in-129" title="Permanent link">¶</a></h4>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7644,7 +7625,7 @@ joint1
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># MeshのSkin情報は primvars:skel:jointIndices と primvars:skel:jointWeights で保持されている。</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># MeshのSkin情報は primvars:skel:jointIndices と primvars:skel:jointWeights で保持されている。</span>
 <span class="c1"># indeces は、あるVtxの影響をしているJointのIndex weightはそのIndexの影響力のWeightを持つ</span>
 <span class="c1"># このIndexは、 VertexSize * JointNum 分のIndex</span>
 <span class="n">indicesPrimvar</span> <span class="o">=</span> <span class="n">bindingAPI</span><span class="o">.</span><span class="n">GetJointIndicesPrimvar</span><span class="p">()</span> <span class="c1"># UsdGeomPrimvar</span>
@@ -7656,19 +7637,17 @@ joint1
 <span class="c1"># 下の頂点のWeight</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">indicesPrimvar</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">weightPrimvar</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[1, 0]
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>[1, 0]
 [0.9998923, 0.00010770559]
 [0, 1]
 [0.99999505, 0.0000049471855]
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </div>
 
   <hr>
@@ -7676,7 +7655,7 @@ joint1
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 11:03:47</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 12:00:12</span>
       
     
   </small>
@@ -7790,7 +7769,7 @@ joint1
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../../javascripts/extra.js"></script>
       

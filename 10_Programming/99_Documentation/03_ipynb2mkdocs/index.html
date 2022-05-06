@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/03_ipynb2mkdocs/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7297,9 +7297,8 @@ GitHubにUPするとか<br />
 <h2 id="nbconvert">nbconvertを使う<a class="headerlink" href="#nbconvert" title="Permanent link">¶</a></h2>
 <p>まず、ipynbをmarkdownに変換します。<br />
 これは公式で使えるコマンドライン  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jupyter nbconvert --to markdown --output &lt;PATH&gt; &lt;ipynbファイルPATH&gt;
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>jupyter nbconvert --to markdown --output &lt;PATH&gt; &lt;ipynbファイルPATH&gt;
+</code></pre></div></td></tr></table></div>
 <p>これで変換できます。<br />
 なので、とりあえずdocsと同じ階層に notebook フォルダを作り<br />
 そのフォルダ階層を、docs下の notebookフォルダに対してmarkdown出力するようにして<br />
@@ -7326,7 +7325,7 @@ SuccessとError部分はわかりやすくブロック化すること。  </p>
 <p>完了はこうだし、  </p>
 <p><img alt="" src="https://gyazo.com/2372df7122bd85dc5b5f5fe518168e3d.png" /></p>
 <p>エラーの場合、こんな風に表示されます。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7394,7 +7393,7 @@ SuccessとError部分はわかりやすくブロック化すること。  </p>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
-<span class="normal">69</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="normal">69</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">nbconvert</span>
 <span class="kn">import</span> <span class="nn">nbformat</span>
 <span class="kn">import</span> <span class="nn">codecs</span>
@@ -7463,16 +7462,14 @@ SuccessとError部分はわかりやすくブロック化すること。  </p>
 
     <span class="k">for</span> <span class="n">ipynb</span> <span class="ow">in</span> <span class="n">ipynbFiles</span><span class="p">:</span>
         <span class="n">createNoteBookMD</span><span class="p">(</span><span class="n">ipynb</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">md</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>後はこんな感じでPythonコードを書いて、Deployするコードと同じBatchに</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>py -3.6 create_jupyter_markdown.py
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>py -3.6 create_jupyter_markdown.py
 py -3.6 create_mkdocs_pages.py
 mkdocs gh-deploy
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こんな感じで書きます。<br />
 create_mkdocs_pages.pyは、mkdocs.ymlに自動でnavカテゴリを追加してくれるコマンドです。<br />
 なので、<br />
@@ -7637,7 +7634,7 @@ create_mkdocs_pages.pyは、mkdocs.ymlに自動でnavカテゴリを追加して
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

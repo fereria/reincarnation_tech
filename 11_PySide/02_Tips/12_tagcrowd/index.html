@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/12_tagcrowd/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7336,7 +7336,7 @@ FlowLayout部分は前回と同じなので、説明は省きます。</p>
 <p>一覧のタグを追加・削除することができる機能、<br />
 そして現在のタグの一覧を取得できるようにします。</p>
 <h2 id="tag">Tag部分<a class="headerlink" href="#tag" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7367,7 +7367,7 @@ FlowLayout部分は前回と同じなので、説明は省きます。</p>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">QFrame</span><span class="p">):</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">QFrame</span><span class="p">):</span>
 
     <span class="n">deleteTag</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
 
@@ -7399,8 +7399,7 @@ FlowLayout部分は前回と同じなので、説明は省きます。</p>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">deleteTag</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p><img alt="" src="https://gyazo.com/77bb6bef1469f25d8f1041c39fa67488.png" /></p>
 <p>最初はタグ部分。<br />
 ベースはQFrameを使用します。<br />
@@ -7415,7 +7414,7 @@ QFrameのマージンでいい感じになるように調整しています。</
 このシグナルを受け取ったTagCrowd側で削除します。</p>
 <p>タグの色は引数で変えられるようにしておきます。</p>
 <h2 id="tagcrowd">TagCrowd<a class="headerlink" href="#tagcrowd" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7465,7 +7464,7 @@ QFrameのマージンでいい感じになるように調整しています。</
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TagCrowd</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TagCrowd</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addNewTag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">deletetable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -7516,8 +7515,7 @@ QFrameのマージンでいい感じになるように調整しています。</
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">addNewTag</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>続いてタグクラウド本体。<br />
 構造はシンプルで、先ほどのTagウィジェットをFlowLayoutを利用して配置します。<br />
 FlowLayout側で配置しているオブジェクトの管理や増減をするか迷ったのですが<br />
@@ -7529,7 +7527,7 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
 <p>削除は、Tagのシグナルで削除されたときにdeleteTagを呼ぶようにします。<br />
 そして該当タグを tags から削除して、自分自身を deleteLater で削除します。<br />
 （deleteLaterしてから Tagオブジェクトを削除するとレイアウトがぶっ壊れるので注意）</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7559,7 +7557,7 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PopupEdit</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PopupEdit</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="n">send</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
@@ -7590,11 +7588,10 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
         <span class="c1"># Enterしたら文字をEmitして閉じる</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>addTagするときのDialogは、<a href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/02_completer/">QCompleterでLineEditに予測変換を入れる</a>の時のコードを流用して、Popupで表示＋閉じるときにEmitする簡単な入力を作りました。</p>
 <h2 id="_2">使ってみる<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7615,7 +7612,7 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SampleUI</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SampleUI</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -7637,8 +7634,7 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
 
     <span class="k">def</span> <span class="nf">showTags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">getTagNames</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 <a href="https://gist.github.com/fereria/036b2ee82789c33a204dfa3308ee2d59">sroll.ui</a>は前に使ったものにボタンを追加しています。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>FlowLayoutと合わせてよく使いそうなタグクラウドウィジェットができました。<br />
@@ -7798,7 +7794,7 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

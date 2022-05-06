@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/00_install_USD/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7372,23 +7372,20 @@
 <img alt="" src="https://gyazo.com/b9e01b33a2198d006d082dbe6c43320e.png" /></p>
 <p>Python37 直下と Scripts を環境変数の PATH に追加します。<br />
 さらに USDView を使用する場合必要になる　 PySide2 と PyOpenGL をインストールしておきます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install PyOpenGL PyOpenGL_accelerate PySide2
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install PyOpenGL PyOpenGL_accelerate PySide2
+</code></pre></div></td></tr></table></div>
 <p>下準備はこれで完了です。</p>
 <h3 id="_3">リポジトリをクローンする<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>インストールが終わったら、USD の Github からリポジトリをクローンします。</p>
 <p>コマンドプロンプトで、ダウンロード先のディレクトリに移動し</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git clone https://github.com/PixarAnimationStudios/USD.git
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git clone https://github.com/PixarAnimationStudios/USD.git
+</code></pre></div></td></tr></table></div>
 <p>クローンします。</p>
 <p>クローンしたら、VisualStudio の Developer Command Prompt を開きます。</p>
 <p><img alt="" src="https://gyazo.com/ecddefa1fda425ead85330b083d05044.png" /></p>
 <p>開いたら、リポジトリをクローンしたフォルダに移動して、ビルドを実行します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>python build_scripts\build_usd.py &lt;ビルド成果物の出力先&gt;
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python build_scripts\build_usd.py &lt;ビルド成果物の出力先&gt;
+</code></pre></div></td></tr></table></div>
 <h2 id="path">Path を通す<a class="headerlink" href="#path" title="Permanent link">¶</a></h2>
 <p>ダウンロードが終わったら、必要な PATH を通します。<br />
 必要なのは 2 つ</p>
@@ -7421,9 +7418,8 @@ pyd ファイルをインポート使用とするときに Error になるので
 <p><a href="http://graphics.pixar.com/usd/downloads.html">http://graphics.pixar.com/usd/downloads.html</a></p>
 <p>サンプルデータは PIXAR の公式サイトにあるので、その KitchenSet をダウンロードします。</p>
 <p>ダウンロードしたら、解凍したあとコマンドプロンプトを開き</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdview Kitchen_set.usd
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdview Kitchen_set.usd
+</code></pre></div></td></tr></table></div>
 <p>usdview で Kitchen_set.usd をひらいてみます。</p>
 <p><img alt="" src="https://gyazo.com/85f886a67bcafe10082f3e1e178848eb.png" /></p>
 <p>USDView を使用すると、usd ファイルのシーングラフや Layer、プロパティなどを確認<br />
@@ -7433,26 +7429,25 @@ pyd ファイルをインポート使用とするときに Error になるので
 <h2 id="python-usd">python から usd ファイルを作ってみる<a class="headerlink" href="#python-usd" title="Permanent link">¶</a></h2>
 <p>準備ができたら、公式のチュートリアルを実行してみます。<br />
 <a href="https://graphics.pixar.com/usd/docs/Hello-World---Creating-Your-First-USD-Stage.html">https://graphics.pixar.com/usd/docs/Hello-World---Creating-Your-First-USD-Stage.html</a></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdGeom</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="s1">&#39;HelloWorld.usda&#39;</span><span class="p">)</span>
 <span class="n">xformPrim</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Xform</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/hello&#39;</span><span class="p">)</span>
 <span class="n">spherePrim</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Sphere</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39;/hello/world&#39;</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>実行すると、指定のフォルダに HelloWorld.usda ファイルが出力されます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">#usda 1.0</span><span class="w"></span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span>Xform<span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -7460,8 +7455,7 @@ pyd ファイルをインポート使用とするときに Error になるので
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>中身はシンプルな（空の）USD ファイル。</p>
 <p><img alt="" src="https://gyazo.com/56dcb8770dbbd7053dd164a261f19fbe.png" /></p>
 <p>usdeview で開くと、シンプルな Sphere が表示されました。</p>
@@ -7619,7 +7613,7 @@ Synology の NAS 上のフォルダを保存先に指定するとパーミッシ
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

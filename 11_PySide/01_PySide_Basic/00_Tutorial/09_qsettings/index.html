@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_PySide/01_PySide_Basic/00_Tutorial/09_qsettings/">
       
       <link rel="icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
 
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7380,7 +7380,7 @@
 <h1 id="qsettingsui">QSettingsを使用してUIの情報を保存する<a class="headerlink" href="#qsettingsui" title="Permanent link">¶</a></h1>
 <p>UIの各種Widgetの情報を、終了時に保存しておきたい場合はQSettingクラスを使用します。<br />
 サンプルに使用するuiファイルは <a href="https://snippets.cacher.io/snippet/0021421020ef095007ce">こちら</a></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
 <span class="normal">  4</span>
@@ -7482,7 +7482,7 @@
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
-<span class="normal">103</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!python3</span>
+<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -7585,16 +7585,14 @@
     <span class="n">a</span> <span class="o">=</span> <span class="n">UISample</span><span class="p">()</span>
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>実行結果は</p>
 <p><img alt="" src="https://gyazo.com/e7b3ed08d966e6d15eb4e107ca0ccae1.png" /></p>
 <p>こんな感じになります。  </p>
 <h2 id="_1">基本的な使い方<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、情報を保存したい場合は QSettingsオブジェクトを作成します。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">setting</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="p">(</span><span class="s2">&quot;setting.ini&quot;</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="o">.</span><span class="n">IniFormat</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">setting</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="p">(</span><span class="s2">&quot;setting.ini&quot;</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QSettings</span><span class="o">.</span><span class="n">IniFormat</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div><br />
 保存ファイルのフォーマットは、ini以外にもレジストリなども選べますが<br />
 iniで出力するのが色々と楽なので今回はiniを使用します。<br />
 引数の1つめがiniファイルのフルパス＋名前を指定します。  </p>
@@ -7617,64 +7615,57 @@ iniに保存された情報がない場合はNoneが帰ってきます。<br />
 <p>ListViewの「選択を変える」コマンドの setCurrentIndex は、<br />
 取得も設定も ModelIndexを使用します。<br />
 そのため、<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span><span class="o">.</span><span class="n">row</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span><span class="o">.</span><span class="n">row</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div><br />
 保存時は、 indexのrow()でintを取得し保存します。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="k">if</span> <span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">())</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="k">if</span> <span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">())</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">objectName</span><span class="p">())),</span> <span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>復帰してListViewを選択する場合は、<br />
 ListViewにセットしているModelの index関数を使用して、ModelIndexを取得して<br />
 その取得したModelIndexをsetCurrentINdexを使用してセットするようにします。  </p>
 <h3 id="radiobutton">RadioButtonの場合<a class="headerlink" href="#radiobutton" title="Permanent link">¶</a></h3>
 <p>radioButtonは、ButtonGroupを使用して選択肢のグルーピングを行います。<br />
 ので、選択情報も<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;grp&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">btnGrp</span><span class="o">.</span><span class="n">checkedId</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;grp&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">btnGrp</span><span class="o">.</span><span class="n">checkedId</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div><br />
 ButtonGroupのcheckedIdを使用して保存します。  </p>
 <p>復帰させる場合は</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>        <span class="c1"># RadioButtonの選択を復帰</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="c1"># RadioButtonの選択を復帰</span>
         <span class="k">if</span> <span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;grp&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">btnGrp</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;grp&quot;</span><span class="p">)))</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>ButtonGroupのbuttonでRadioButtonオブジェクトを取得できるので<br />
 取得したオブジェクトに対してsetCheckedをすればOKです。  </p>
 <h3 id="splittergeometrywindow">Splitter/Geometry（Window位置）の場合<a class="headerlink" href="#splittergeometrywindow" title="Permanent link">¶</a></h3>
 <p>SplitterやWindow位置は保存用の固有コマンドがあるのでソレを使用して保存します。<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Splitterの位置保存</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Splitterの位置保存</span>
 <span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">objectName</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">saveState</span><span class="p">())</span>
 <span class="c1"># UIの位置保存</span>
 <span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">saveGeometry</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 ほぞんされる値はバイナリ値になりますが<br />
 その辺はあまり意識しないでもOKです。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Splitterの位置を復帰</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Splitterの位置を復帰</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">restoreState</span><span class="p">(</span><span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">objectName</span><span class="p">()))</span>
 <span class="c1"># UIの位置復帰</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">restoreGeometry</span><span class="p">(</span><span class="n">setting</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 復帰するときは restore～を実行することで元に戻せます。</p>
 <p>今回はGUIの値の復帰に使用していましたが  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">,</span><span class="s1">&#39;fugafuga&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table><br />
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">setting</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s1">&#39;hogehoge&#39;</span><span class="p">,</span><span class="s1">&#39;fugafuga&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div><br />
 のようにすれば、Widgetの値にかかわらずに値を保存出来るので<br />
 外部ファイルに書いておきたい物がある場合は<br />
 使用すると便利かなぁと思います。</p>
@@ -7798,7 +7789,7 @@ ButtonGroupのcheckedIdを使用して保存します。  </p>
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

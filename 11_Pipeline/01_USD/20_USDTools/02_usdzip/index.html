@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/20_USDTools/02_usdzip/">
       
       <link rel="icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -30,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7412,18 +7412,16 @@ usdviewでみると、テクスチャも表示された状態になります。<
 使用することができて、この usdz を作成することができるツールが usdzip です。</p>
 <h2 id="_1">つかってみる<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>実際に使ってみます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdzip D:\usdzSample\sample.usdz D:\usdzSample\sample.usd
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdzip D:\usdzSample\sample.usdz D:\usdzSample\sample.usd
+</code></pre></div></td></tr></table></div>
 <p>最もシンプルな使い方は、<br />
 usdzip ＜usdzの出力先＞ ＜USDファイルパス＞<br />
 このように、usdzにしたいファイルを指定します。</p>
 <h3 id="_2">フォルダを指定する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>上の例の場合は、単一のusdファイルがusdzファイルになりますが、Kitchen_setのように<br />
 複数のアセットを含むデータを usdzにしたい場合は、以下のようにします。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdzip D:/kitchen_set.usdz D:\Kitchen_set -r
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdzip D:/kitchen_set.usdz D:\Kitchen_set -r
+</code></pre></div></td></tr></table></div>
 <p>inputPathをディレクトリにした上で、 -r (recursive) のフラグを入れると<br />
 指定のフォルダ以下をすべて usdz にすることができます。<br />
 (指定しない場合、assets以下のサブディレクトリはusdzに入らないので注意)</p>
@@ -7433,9 +7431,8 @@ usdzip ＜usdzの出力先＞ ＜USDファイルパス＞<br />
 <p>usdzは、最初に説明した通りzipファイルなので<br />
 zipにリネームすると中身を除くことができます。</p>
 <h3 id="usdz_1">usdzのデータに含まれるファイルを確認する<a class="headerlink" href="#usdz_1" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>usdzip -l D:\kitchen_set.usdz
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdzip -l D:\kitchen_set.usdz
+</code></pre></div></td></tr></table></div>
 <p>usdzipを使用すれば、 usdz 内にどんなファイルが含まれているのか確認することができます。</p>
 <h3 id="resolver">resolverとの組み合わせ<a class="headerlink" href="#resolver" title="Permanent link">¶</a></h3>
 <p>usdzipにしているPathは、 --asset ASSET_PATH と指定することで<br />
@@ -7448,38 +7445,35 @@ usdzip --asset asset:Buzz/Buzz.usd D:/buzz.usdz<br />
 </div>
 <h2 id="python">Python で実行する<a class="headerlink" href="#python" title="Permanent link">¶</a></h2>
 <p>usdzip の内部実装をみると、Pythonからも実行できることがわかるので試しにやってみます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Ar</span><span class="p">,</span><span class="n">Sdf</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span><span class="n">Ar</span><span class="p">,</span><span class="n">Sdf</span>
 
 <span class="k">with</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ZipFileWriter</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="s2">&quot;D:/usdzSample/sample.usdz&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">usdwriter</span><span class="p">:</span>
     <span class="n">usdwriter</span><span class="o">.</span><span class="n">AddFile</span><span class="p">(</span><span class="s1">&#39;D:/usdzSample/sample.usd&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>作成方法は、 Usd.ZipFileWrite を使用して、<br />
 usdzに入れたいファイルを AddFile すればＯＫです。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">zipFile</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ZipFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;D:/usdzSample/sample.usdz&quot;</span><span class="p">)</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">zipFile</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ZipFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;D:/usdzSample/sample.usdz&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">fileName</span> <span class="ow">in</span> <span class="n">zipFile</span><span class="o">.</span><span class="n">GetFileNames</span><span class="p">():</span>
     <span class="n">fileinfo</span> <span class="o">=</span> <span class="n">zipFile</span><span class="o">.</span><span class="n">GetFileInfo</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">fileinfo</span><span class="o">.</span><span class="n">dataOffset</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">fileinfo</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">fileinfo</span><span class="o">.</span><span class="n">uncompressedSize</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>usdz内のファイル情報は、 ZipFile.Openして、 GetFileNames() から取得できます。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;D:/usdzSample/sample.usdz&quot;</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;D:/usdzSample/sample.usdz&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>ファイルの情報ではなくStageを取得したい場合は、<br />
 通常のusdファイルと同様です。</p>
 <blockquote>
@@ -7652,7 +7646,7 @@ AssetResolverと組み合わせて usdzip 化すると、データを配布し�
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

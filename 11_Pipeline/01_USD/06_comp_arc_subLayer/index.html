@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/06_comp_arc_subLayer/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7352,7 +7352,7 @@ DCCツール的に言えばシーンのインポートに近い処理です。  
 <p><a href="https://1drv.ms/u/s!AlUBmJYsMwMhhNRt4KxBpMYIPL8SdQ?e=mA179E">サンプルのUSDはこちら</a></p>
 <p><img alt="" src="https://gyazo.com/910f45d935ff0960a1e072d7c67608ec.png" /></p>
 <p>まず base.usda を usdview で開いてみると緑の玉が出てきます。  </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7375,7 +7375,7 @@ DCCツール的に言えばシーンのインポートに近い処理です。  
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 def &quot;Model&quot;
 {
     def Sphere &quot;Sphere&quot;
@@ -7399,14 +7399,13 @@ def &quot;Material&quot;
         }
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 usda の中身はこんな感じ。  </p>
 <p>次に add_color.usda を開いてみると</p>
 <p><img alt="" src="https://gyazo.com/463b153a50480a4f59c534e7233e3e98.png" /></p>
 <p>見た目はこのように「赤いSphere」が出ています。<br />
 usdaを開いてみると</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7422,7 +7421,7 @@ usdaを開いてみると</p>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @base.usda@
@@ -7439,8 +7438,7 @@ over &quot;Material&quot;
         }
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 こうなっています。<br />
 このフォーマットを見てみると、<br />
 上の base.usda に対して testShader にある inputs:diffuseColor = (1,0,0) だけが書かれ<br />
@@ -7461,7 +7459,7 @@ over &quot;Material&quot;
 この差分情報を評価し、最終的なステージのシーングラフを構築します。  </p>
 <p><img alt="" src="https://gyazo.com/130909b25755df7bd5a9dfd471985a83.png" /></p>
 <p>なので、最後の final.usda を開いたときにこのようなCubeが出てきますが</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7473,7 +7471,7 @@ over &quot;Material&quot;
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @add_color.usda@
@@ -7486,8 +7484,7 @@ over &quot;Model&quot;
     {
     }
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>マテリアルの色情報や構造は base.usda + add_color.usda の情報が来ていますが<br />
 最後の final.usda で、形状の Sphereプリムを Cubeにオーバーライドしているので<br />
 形状がCubeに変化しつつも<br />
@@ -7496,7 +7493,7 @@ over &quot;Model&quot;
 <p>それぞれのレイヤーが差分情報を持ち、オーバーライドされていくのはわかりましたが<br />
 では、このレイヤー結合はどのような優先順位で評価されるのでしょうか。<br />
 サンプルシーンで試してみます。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7506,7 +7503,7 @@ over &quot;Model&quot;
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @subA.usda@,
@@ -7517,22 +7514,20 @@ over &quot;Model&quot;
 def &quot;testPrim&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>まずこんなファイルを作り、</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;testPrim&quot;
 {
     string hoge = &quot;subA&quot;
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>サブレイヤーで読んでいるusda中身は、こんな感じのファイル名のはいった<br />
 アトリビュートを入れておきます。  </p>
 <p><img alt="" src="https://gyazo.com/78b8685417417a112dbe35c79a5720c2.png" /></p>
@@ -7546,7 +7541,7 @@ def &quot;testPrim&quot;
 今回のように複数のレイヤーを結合していった際に使用したすべてのレイヤーをまとめた物<br />
 の事を指します。  </p>
 <p>それを踏まえてもうすこし複雑にしてみます。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7558,7 +7553,7 @@ def &quot;testPrim&quot;
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 (
     subLayers = [
@@ -7571,8 +7566,7 @@ def &quot;testPrim&quot;
 {
 
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>subA.usdaをこのように書き換えて 同じような構造のCとDを作ります。  </p>
 <p><img alt="" src="https://gyazo.com/dcaa4e96d204e633af6e02bdbc686bdc.png" /></p>
 <p>関係図を書くとこうなります。  </p>
@@ -7766,7 +7760,7 @@ def &quot;testPrim&quot;
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

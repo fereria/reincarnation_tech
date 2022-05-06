@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/03_usd_format_cheatsheets/">
       
       <link rel="icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7569,106 +7569,98 @@
 <h2 id="usdpath">Usdファイル内でのPathの記述方法<a class="headerlink" href="#usdpath" title="Permanent link">¶</a></h2>
 <p>USD内で外部ファイルを読んでいる場合は @@ で囲う。<br />
 例）Reference等<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;sphereA&quot; (
     prepend references = @sphere.usda@
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 USD内のSdfPathを指定する場合は</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;hoge&quot; (
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;hoge&quot; (
     prepend inherits = &lt;/TestClass&gt;
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 &lt;&gt;で囲う。<br />
 / から始まる場合はRootからの絶対パス、なにもない場合は現在のPrimからの相対パスになる。  </p>
 <h2 id="_1">最低限の構造<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
+</code></pre></div></td></tr></table></div>
 <p>USDファイルを記述する場合は、一番頭に #usda 1.0 と書きます。<br />
 コレがあれば、すべてUSDファイルとしてロードできます。  </p>
 <h2 id="prim">Primを定義する<a class="headerlink" href="#prim" title="Permanent link">¶</a></h2>
 <h3 id="prim_1">スキーマなしでPrimを定義<a class="headerlink" href="#prim_1" title="Permanent link">¶</a></h3>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;sphereA&quot;
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 Primと呼ばれるタグを作成する</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;sphereA&quot;
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;sphereA&quot;
 {
     def &quot;sub&quot;
     {
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 Primは、このように {} の中に def を記述することでネストできる。  </p>
 <h3 id="typeprim">スキーマ（Type指定）付きでPrimを定義する<a class="headerlink" href="#typeprim" title="Permanent link">¶</a></h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def Xform &quot;hoge&quot;
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>def Xform &quot;hoge&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="_2">クラスを定義する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>class &quot;className&quot;
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>class &quot;className&quot;
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 クラスで定義されているものは、usdview等でシーンを読んでもシーングラフには表示されない。  </p>
 <h2 id="over">Overを定義する<a class="headerlink" href="#over" title="Permanent link">¶</a></h2>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>over &quot;name&quot;
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>over &quot;name&quot;
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 Overの場合は、Primと違い<br />
 すでにPrimがある場合のみ値を上書きする。<br />
 定義されているPrimがない場合はなにもしない。</p>
 <h2 id="defaultprim">DefaultPrimを指定する<a class="headerlink" href="#defaultprim" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     defaultPrim = &quot;sphereA&quot;
 )
@@ -7676,27 +7668,25 @@ Overの場合は、Primと違い<br />
 def &quot;sphereA&quot;
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>DefaultPrimとは、リファレンスでusdを読み込んだ場合の起点になるPrimの事。  </p>
 <h2 id="_3">アトリビュートに値をセットする<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def Xform &quot;base&quot;
 {
     bool test = false
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 アトリビュートを追加する場合、Primの{}の中に 型 名前 = 値<br />
 のように指定する。  </p>
 <h2 id="metadata">Metadataを追加する<a class="headerlink" href="#metadata" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7709,7 +7699,7 @@ def Xform &quot;base&quot;
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     &quot;Hello World&quot;
     defaultPrim = &quot;sphereA&quot;
@@ -7723,13 +7713,12 @@ def &quot;sphereA&quot; (
         &quot;Attribute Comment&quot;
     )
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Metadataはレイヤー、プリム、アトリビュートそれぞれに付加情報として設定できる。<br />
 指定したい場合は それぞれの定義の後に () を入れて、その中にアトリビュートを追加するように<br />
 記述する。  </p>
 <h2 id="customdata">CustomDataを追加する<a class="headerlink" href="#customdata" title="Permanent link">¶</a></h2>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7737,7 +7726,7 @@ def &quot;sphereA&quot; (
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;defPrim&quot; (
     customData = {
@@ -7746,68 +7735,64 @@ def &quot;defPrim&quot; (
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 customData = {} を使うと、好きに自分の入れたいMeta情報をレイヤー、プリム、アトリビュートに対して<br />
 追加できる。  </p>
 <h2 id="_4">リファレンスでモデルを読み込む<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <h3 id="defaultprim_1">DefaultPrimが指定されている場合<a class="headerlink" href="#defaultprim_1" title="Permanent link">¶</a></h3>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;sphereA&quot; (
     prepend references = @sphere.usda@
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 リファレンスで読み込む場合は、読み込む先のPrimのMetadataに prepend references = ### で<br />
 ファイルを指定する。<br />
 ファイルパスは @@でかこって表現する。<br />
 ファイルパスは、現在の usd ファイルからの相対または絶対パスで指定する。  </p>
 <h3 id="referencesprim">references時にPrimを指定する場合<a class="headerlink" href="#referencesprim" title="Permanent link">¶</a></h3>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;sphereA&quot; (
     prepend references = @sphere.usda@&lt;/Model&gt;
 )
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 DefaultPrimの指定がない、あるいはそれ以外のPrimを狙ってリファレンスしたい場合は<br />
 ファイル指定の後に &lt;&gt;で囲ってSdfPathを指定する。  </p>
 <h2 id="sublayer">SubLayerで読み込む<a class="headerlink" href="#sublayer" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @D:/usdClass.usda@
     ]
 )
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>サブレイヤーで読み込むときは、レイヤーのMetadataに対して subLayers = []<br />
 を追加して、配列で読み込みたいファイルパスを指定する。<br />
 ファイルパスは @@ で囲う。  </p>
 <h2 id="_5">リレーションを追加する<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7824,7 +7809,7 @@ DefaultPrimの指定がない、あるいはそれ以外のPrimを狙ってリ�
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;test&quot;
 {
@@ -7842,24 +7827,22 @@ def &quot;rel&quot;
     {
     }
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>リレーションを追加したい場合は、 アトリビュートを rel で宣言して、<br />
 リレーション先のSdfPathを配列で指定する。  </p>
 <h2 id="inherits">継承(Inherits)する<a class="headerlink" href="#inherits" title="Permanent link">¶</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>def &quot;hoge&quot; (
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>def &quot;hoge&quot; (
     prepend inherits = &lt;/TestClass&gt;
 )
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>継承の場合は、継承したいPrimのMetadataに対して prepend inherits = SdfPath を追加する。  </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7870,7 +7853,7 @@ def &quot;rel&quot;
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     subLayers = [
         @D:/usdClass.usda@
@@ -7882,13 +7865,12 @@ def &quot;hoge&quot; (
 )
 {
 }
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>継承は、SdfPathで指定する。<br />
 ので、例えば別ファイルに定義されているclass や defを継承したい場合は<br />
 subLayerで読み込んでから inheritsで指定をする。  </p>
 <h2 id="variantset">VariantSetを定義する<a class="headerlink" href="#variantset" title="Permanent link">¶</a></h2>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7917,7 +7899,7 @@ subLayerで読み込んでから inheritsで指定をする。  </p>
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     &quot;Hello World&quot;
 )
@@ -7947,14 +7929,13 @@ def Xform &quot;World&quot;
         }
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 variantSetは、 variantSet で定義する。<br />
 定義したvariantSetをPrimで使う場合は、Metadata内に prepend variantSets = "名前"<br />
 を追加する。<br />
 そのvariantSetのうち、選択されているセットは variants で、選択中の値を指定する。  </p>
 <h2 id="_6">アニメーションの定義<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7970,7 +7951,7 @@ variantSetは、 variantSet で定義する。<br />
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
     endTimeCode = 100
     startTimeCode = 0
@@ -7987,14 +7968,13 @@ def Xform &quot;World&quot;
         uniform token[] xformOpOrder = [&quot;xformOp:rotateZ:spin&quot;]
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 コレを手で書くことはないと思うけど念のため。<br />
 スタートフレームとエンドフレームは、レイヤーのMetadataに記載。<br />
 Key情報は、timeSamplesにDict型で記載。  </p>
 <p>xformOpOrderは、どういう順序でTransformを行うのかを指定する。  </p>
 <h2 id="_7">マテリアルのアサイン<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -8022,7 +8002,7 @@ Key情報は、timeSamplesにDict型で記載。  </p>
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#usda 1.0
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 
 def &quot;test&quot;
 {
@@ -8051,8 +8031,7 @@ def &quot;Model&quot;
         }
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 これもまぁ手では書かないけど念のため。  </p>
 <p>Materialアサインはリレーションによって定義されている。<br />
 MeshデータはリレーションでBind先のMaterial情報を保持し、<br />
@@ -8204,7 +8183,7 @@ Materialは、ShaderとのConnectionで値を受け取る。  </p>
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../../javascripts/extra.js"></script>
       

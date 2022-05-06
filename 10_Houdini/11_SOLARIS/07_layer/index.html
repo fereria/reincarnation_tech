@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/07_layer/">
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
     
     
     
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e411adfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
           
           
@@ -7382,7 +7382,7 @@
 LayerStackとは、複数のLayerをサブレイヤーで合成するときのLayerを束ねたものです。<br />
 1Layerにはそれぞれいろんな定義（主張）が書かれていているわけですが<br />
 それがどういうふうな関係になっているのかを確認することができます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -7390,7 +7390,7 @@ LayerStackとは、複数のLayerをサブレイヤーで合成するときのLa
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
 
 <span class="c1"># Add code to modify the stage.</span>
@@ -7399,15 +7399,14 @@ LayerStackとは、複数のLayerをサブレイヤーで合成するときのLa
 <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 確認用のコードはこちら。</p>
 <p><img alt="" src="https://gyazo.com/7928a27a9ce948c490ae450206d0c522.png" /></p>
 <p>これを、まずはこんな感じでPythonノードに入れて、結果をみていきます。</p>
 <p>全部は長いので<br />
 <a href="https://snippets.cacher.io/snippet/b7130348f4ac41539759?t=U1ojSBLJ66yL6IovpVdLdABDfCtdx3">https://snippets.cacher.io/snippet/b7130348f4ac41539759?t=U1ojSBLJ66yL6IovpVdLdABDfCtdx3</a><br />
 こちらに結果は貼っておきましたが、一部抜粋で重要なところをみていきます。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7428,7 +7427,7 @@ LayerStackとは、複数のLayerをサブレイヤーで合成するときのLa
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007B132340&#39;)
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code>Sdf.Find(&#39;anon:000000007B132340&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -7450,8 +7449,7 @@ def Sphere &quot;sphere1&quot; (
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 LayerStackを取得すると Sdf.Find という形でLayerオブジェクトを取得できます。<br />
 このLayerが、上のようなusdaの定義が記述されています。</p>
 <p>で、上のコードをよく見ると HoudiniEditorNodes というアトリビュートがあるのがわかりますが<br />
@@ -7465,7 +7463,7 @@ LayerStackを取得すると Sdf.Find という形でLayerオブジェクトを�
 <p>結果はこうなって<br />
 <a href="https://snippets.cacher.io/snippet/6141d563cd41b4502d3f">https://snippets.cacher.io/snippet/6141d563cd41b4502d3f</a><br />
 重要な部分だけ書き出すと</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7486,7 +7484,7 @@ LayerStackを取得すると Sdf.Find という形でLayerオブジェクトを�
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2FC0&#39;)
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2FC0&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -7508,10 +7506,9 @@ def Sphere &quot;sphere1&quot; (
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 これと<br />
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7532,7 +7529,7 @@ def Sphere &quot;sphere1&quot; (
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2E80&#39;)
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2E80&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -7554,10 +7551,9 @@ def Cube &quot;cube1&quot; (
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 これのように、1Layerごとに1つのノード、そしてそれぞれが</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7566,7 +7562,7 @@ def Cube &quot;cube1&quot; (
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E159800:root.usd&#39;)
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>Sdf.Find(&#39;anon:000000007E159800:root.usd&#39;)
 #usda 1.0
 (
     subLayers = [
@@ -7576,13 +7572,12 @@ def Cube &quot;cube1&quot; (
         @anon:000000007E0D2E80@
     ]
 )
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>こんな感じでサブレイヤーで合成されているのがわかります。<br />
 つまりは、Houdiniのノードの右下に ～Layersが出ている場合、</p>
 <p><img alt="" src="https://gyazo.com/427a9abebd979a6def3c83e5a45f4561.png" /></p>
 <p>ノードの縁の色ごとに、1つのLayerとしてメモリー内でLayerが構築されている...ということになります。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7592,7 +7587,7 @@ def Cube &quot;cube1&quot; (
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
 
 <span class="c1"># Add code to modify the stage.</span>
@@ -7603,13 +7598,12 @@ def Cube &quot;cube1&quot; (
 <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetLayerStack</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 試しに、Pythonノードのコマンドをこんなふうにして<br />
 PythonノードでもPrimを定義してみると</p>
 <p><img alt="" src="https://gyazo.com/fdc10a6c4bd2172e7c706803b5e5ff95.png" /></p>
 <p>Pythonノード部分が 3Layers目になり</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7622,7 +7616,7 @@ PythonノードでもPrimを定義してみると</p>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2D40&#39;)
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>Sdf.Find(&#39;anon:000000007E0D2D40&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -7636,8 +7630,7 @@ def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
 def &quot;hoge&quot;
 {
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 LayerStackには、PythonscriptのHoudiniCreatorNode が追加され、<br />
 そこに PythonScriptで定義をしたPrimが追加されていることがわかります。</p>
 <h2 id="_2">どういうときにレイヤーが分かれるのか<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -7653,7 +7646,7 @@ LayerStackには、PythonscriptのHoudiniCreatorNode が追加され、<br />
 それぞれを個別のLayerとして扱ってサブレイヤーで合成する設定になっています。</p>
 <p><img alt="" src="https://gyazo.com/df7531ccc140ed5f5cc1bad410b99134.png" /></p>
 <p>それをFlatten Layersに変更すると、</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7685,7 +7678,7 @@ LayerStackには、PythonscriptのHoudiniCreatorNode が追加され、<br />
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:00000000BD376D40&#39;)
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code>Sdf.Find(&#39;anon:00000000BD376D40&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -7718,8 +7711,7 @@ def Sphere &quot;sphere1&quot; (
     matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
     uniform token[] xformOpOrder = [&quot;xformOp:transform&quot;]
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 入力のLayer２つが1つのLayerにまとまった状態になります。</p>
 <p><img alt="" src="https://gyazo.com/8ab27ef99d1fa46c6e6fc4b2e794c92e.png" /></p>
 <p>この差がどういうところに影響するかというと、<br />
@@ -7735,7 +7727,7 @@ LOP Actionsの Inspect ActiveLayer (現在の編集ターゲットになって�
 <p><img alt="" src="https://gyazo.com/708c2eac7dd10e90e8f7535d4882848f.png" /></p>
 <p>結果。<br />
 Mergeとは違い、Graftした場合は　Layersという記述が増えず</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -7784,7 +7776,7 @@ Mergeとは違い、Graftした場合は　Layersという記述が増えず</p>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Sdf.Find(&#39;anon:00000000701C5440&#39;)
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code>Sdf.Find(&#39;anon:00000000701C5440&#39;)
 #sdf 1.4.32
 
 def HoudiniLayerInfo &quot;HoudiniLayerInfo&quot; (
@@ -7834,8 +7826,7 @@ def Xform &quot;root&quot; (
         }
     }
 }
-</code></pre></div>
-</td></tr></table><br />
+</code></pre></div></td></tr></table></div><br />
 1つのLayerに、 Input1のノードもInput2のノードもまとまった状態になります。<br />
 これは <a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/Python/02_reparentPrim/">PrimのReparent</a>のときにわかったことですが<br />
 Reparentの処理はUSDのコンポジションには存在しない（Referenceであるノードに対して構造を追加することはある）わけで、<br />
@@ -8027,7 +8018,7 @@ Layerは１つにまとまっているのかなと思います。</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ed9748b7.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       
