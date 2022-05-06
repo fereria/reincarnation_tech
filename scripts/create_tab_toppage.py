@@ -63,7 +63,7 @@ def createIndexMd(rootDir):
                 mdPath = path.replace(f"{rootDir}/", "")
                 indent = len(mdPath.split("/")) - 1
                 line = f"{indent * '    '}- [{header['title']}]({mdPath})"
-                if 'description' in header:
+                if 'description' in header and header['description']:
                     line += f": {header['description']}"
                 writeLines.append(line)
 
