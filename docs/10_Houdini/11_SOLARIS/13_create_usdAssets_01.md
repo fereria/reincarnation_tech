@@ -7,6 +7,12 @@ tags:
     - HoudiniAdventCalendar
 ---
 
+!!! info
+
+    現在（Houtini19）では、ComponentBuilderを使用することで
+    以下の内容をもう少し簡単につくることができます。
+    ComponentBuilderについては :fa-external-link: [こちら](./16_component_builder.md)
+
 [Houdini Advent Calendar 2020](https://qiita.com/advent-calendar/2020/houdini) 12日目は **SOLARISでUSDアセットを作ろう** です。
 
 ## ゴール

@@ -2,7 +2,8 @@
 title: ThreadPool でスレッド作成
 tags:
     - PySide
-description:
+    - Python
+description: ThreadPoolとQRunnableを使用した並列処理の書き方
 ---
 
 以前 :fa-external-link: [QThread で増地スレッドを使う](https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/06_qthread_01/)という記事で、 QThread を継承して Thread を使用するサンプルを紹介しましたが、

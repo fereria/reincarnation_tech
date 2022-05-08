@@ -1,10 +1,14 @@
 ---
 title: シンプルなタイマーを作ろう
+tags:
+    - PySide
+    - Python
+description: QTimerを使用して、指定の時間ごとに何かしらの処理を実行するやり方
 ---
 
-PySideのGUIを、定期的にアップデートしたいような事はよくあります。
-そういったときにQThreadをつかって更新をスレッドにする手もありますが、簡単なものなら
-QTimerを使用することで、手軽に作成できるので使い方を説明します。
+PySide の GUI を、定期的にアップデートしたいような事はよくあります。
+そういったときに QThread をつかって更新をスレッドにする手もありますが、簡単なものなら
+QTimer を使用することで、手軽に作成できるので使い方を説明します。
 
 ```python
 # -*- coding: utf-8 -*-
@@ -35,7 +39,7 @@ class TimerSample(QDialog):
         self.timer.start()
         self.timer.singleShot(10000, self.singleShotA)
         self.timer.singleShot(15000, self.singleShotB)
-        
+
 
     def timeout(self):
 
@@ -46,9 +50,9 @@ class TimerSample(QDialog):
 
         self.timer.stop()
         self.line.setText("カウント終了！")
-        
+
     def singleShotB(self):
-        
+
         self.timer.start()
 
 
@@ -65,10 +69,10 @@ if __name__ == "__main__":
 
 ![](https://gyazo.com/adcba2b323f589b2a53e8b34a5a290fe.png)
 
-QTimerは、その名の通り一定間隔でシグナルを発する機能を持ちます。
+QTimer は、その名の通り一定間隔でシグナルを発する機能を持ちます。
 間隔は setInterval(ミリ秒) または、 start() の引数で間隔を指定します。
 上の例ならば、１秒おきにシグナルが発行されて、 timeout シグナルに接続された
-timeout関数が呼ばれます。
+timeout 関数が呼ばれます。
 
 ## SingleShot
 
@@ -83,8 +87,8 @@ start を使用することで、定期的にシグナルを発行できまし�
         self.timer.singleShot(10000, self.singleShotA)
         self.timer.singleShot(15000, self.singleShotB)
 ```
-10秒後にsingleShotA関数を実行し、タイマーを停止したあと、
-15秒後に再開する関数を呼び出します。
 
-singleShotはこのように複数指定ができます。
+10 秒後に singleShotA 関数を実行し、タイマーを停止したあと、
+15 秒後に再開する関数を呼び出します。
 
+singleShot はこのように複数指定ができます。
