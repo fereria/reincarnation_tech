@@ -110,6 +110,17 @@ TreeView で表示して、リストが変更されたら json も変更しま�
 変更できるかどうかは、TreeWidget ではなく、各 Item ごとに指定します。
 その指定は Flags で指定されます。
 
+```python
+        # Listにアイテムを追加する
+        for i in data:
+            rootItem = QTreeWidgetItem()
+            rootItem.setFlags(rootItem.flags() | Qt.ItemIsEditable) # この部分
+            rootItem.setText(0, i[0])
+            rootItem.setText(1, i[1])
+            # 一番上のItemを追加
+            self.treeWidget.addTopLevelItem(rootItem)
+```
+
 この Flags は、 :fa-external-link: [Qt.ItemFlag](https://doc.qt.io/qtforpython-5/PySide2/QtCore/Qt.html?highlight=itemflags#PySide2.QtCore.PySide2.QtCore.Qt.ItemFlag) にあるフラグで指定します。
 編集可能にしたいのならば、 Qt.ItemIsEditable を追加します。
 
@@ -120,6 +131,16 @@ TreeView で表示して、リストが変更されたら json も変更しま�
 これを入れれば変更は可能になります。
 
 ## itemChanged
+
+```python
+    def edit(self, item):
+        items = []
+        for i in range(self.treeWidget.topLevelItemCount()):
+            items.append(self.treeWidget.topLevelItem(i))
+
+        with codecs.open(self.jsonPath, 'w', 'utf-8') as f:
+            f.write(json.dumps(items, cls=Encode, ensure_ascii=False))
+```
 
 編集したら、その編集をトリガーにして何かをしたい場合には この itemChanged で Signal を送ります。
 今回の場合、Json がリストになっていて、それが TopLevel 以下に指定されているので
