@@ -7037,6 +7037,22 @@ TreeView で表示して、リストが変更されたら json も変更しま�
 <p>まず一番大切な個所が、 item に対して指定する Flags です。<br />
 変更できるかどうかは、TreeWidget ではなく、各 Item ごとに指定します。<br />
 その指定は Flags で指定されます。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="c1"># Listにアイテムを追加する</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">rootItem</span> <span class="o">=</span> <span class="n">QTreeWidgetItem</span><span class="p">()</span>
+            <span class="n">rootItem</span><span class="o">.</span><span class="n">setFlags</span><span class="p">(</span><span class="n">rootItem</span><span class="o">.</span><span class="n">flags</span><span class="p">()</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">ItemIsEditable</span><span class="p">)</span> <span class="c1"># この部分</span>
+            <span class="n">rootItem</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">rootItem</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="c1"># 一番上のItemを追加</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">treeWidget</span><span class="o">.</span><span class="n">addTopLevelItem</span><span class="p">(</span><span class="n">rootItem</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <p>この Flags は、 <i class="fa fa-external-link"></i> <a href="https://doc.qt.io/qtforpython-5/PySide2/QtCore/Qt.html?highlight=itemflags#PySide2.QtCore.PySide2.QtCore.Qt.ItemFlag">Qt.ItemFlag</a> にあるフラグで指定します。<br />
 編集可能にしたいのならば、 Qt.ItemIsEditable を追加します。</p>
 <p>この Flags は、ビットフラグになっているので複数指定したい場合は | を使用します。<br />
@@ -7044,6 +7060,20 @@ TreeView で表示して、リストが変更されたら json も変更しま�
 を指定したい場合は、 item.flags() | Qt.ItemIsEditable のようにして指定を追加します。</p>
 <p>これを入れれば変更は可能になります。</p>
 <h2 id="itemchanged">itemChanged<a class="headerlink" href="#itemchanged" title="Permanent link">¶</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">treeWidget</span><span class="o">.</span><span class="n">topLevelItemCount</span><span class="p">()):</span>
+            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">treeWidget</span><span class="o">.</span><span class="n">topLevelItem</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+        <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">jsonPath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">Encode</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
 <p>編集したら、その編集をトリガーにして何かをしたい場合には この itemChanged で Signal を送ります。<br />
 今回の場合、Json がリストになっていて、それが TopLevel 以下に指定されているので<br />
 TopLevel の数を数えて、全部の Item を Json に対して Dump するようにしています。</p>
@@ -7064,7 +7094,7 @@ TopLevel の数を数えて、全部の Item を Json に対して Dump する�
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-08 14:03:49</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-08 14:13:05</span>
       
     
   </small>
