@@ -4051,6 +4051,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../11_PySide/01_PySide_Basic/00_Tutorial/16_listwidget_edit/" class="md-nav__link">
+        基本Widgetを使ってみる(5) TreeWidgetで編集する
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -6464,6 +6478,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../pyside_editItem/" class="md-nav__link">
+        pyside editItem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -6477,6 +6505,20 @@
         Pyside listwidget
       </a>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyside_listwidget_edit/" class="md-nav__link">
+        Pyside listwidget edit
+      </a>
     </li>
   
 
@@ -6740,11 +6782,16 @@
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="c1"># from PySide2.QtCore import ()</span>
-<span class="c1"># from PySide2.QtGui import ()</span>
-<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QApplication</span><span class="p">,</span> <span class="n">QMainWindow</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QListWidget</span><span class="p">,</span> <span class="n">QListWidgetItem</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QApplication</span><span class="p">,</span> <span class="n">QMainWindow</span><span class="p">,</span> <span class="n">QListWidget</span><span class="p">,</span> <span class="n">QListWidgetItem</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QBrush</span><span class="p">,</span> <span class="n">QColor</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span>
 
 
 <span class="k">class</span> <span class="nc">SampleUI</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
@@ -6752,16 +6799,21 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
-        <span class="n">listWidget</span> <span class="o">=</span> <span class="n">QListWidget</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="n">listWidget</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span> <span class="o">=</span> <span class="n">QListWidget</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="p">)</span>
         <span class="c1"># Listにアイテムを追加する</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]:</span>
-            <span class="n">QListWidgetItem</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">listWidget</span><span class="p">)</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="n">QListWidgetItem</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="p">)</span>
+            <span class="c1"># 背景色を指定したい場合</span>
+            <span class="n">item</span><span class="o">.</span><span class="n">setBackground</span><span class="p">(</span><span class="n">QBrush</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
 
-        <span class="n">listWidget</span><span class="o">.</span><span class="n">itemClicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clicked</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="o">.</span><span class="n">itemClicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clicked</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="c1"># Signalで受け取る場合</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+        <span class="c1"># listWidgetから選択されている値を取得したい場合</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listWidget</span><span class="o">.</span><span class="n">currentItem</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -6777,7 +6829,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-06 14:06:09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-08 13:55:38</span>
       
     
   </small>
@@ -6800,7 +6852,7 @@
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../pyside_dirmodel/" class="md-footer__link md-footer__link--prev" aria-label="前: Pyside dirmodel" rel="prev">
+        <a href="../pyside_editItem/" class="md-footer__link md-footer__link--prev" aria-label="前: pyside editItem" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -6809,20 +6861,20 @@
               <span class="md-footer__direction">
                 前
               </span>
-              Pyside dirmodel
+              pyside editItem
             </div>
           </div>
         </a>
       
       
         
-        <a href="../pyside_treewidget/" class="md-footer__link md-footer__link--next" aria-label="次: Pyside treewidget" rel="next">
+        <a href="../pyside_listwidget_edit/" class="md-footer__link md-footer__link--next" aria-label="次: Pyside listwidget edit" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              Pyside treewidget
+              Pyside listwidget edit
             </div>
           </div>
           <div class="md-footer__button md-icon">

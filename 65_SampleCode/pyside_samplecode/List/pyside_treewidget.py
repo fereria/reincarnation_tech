@@ -29,8 +29,20 @@ class SampleUI(QMainWindow):
         treeWidget.itemClicked.connect(self.clicked)
 
     def clicked(self, item):
+
         print(item.text(0))  # クリックしたItemをプリント
-        print(item.text(1))
+        # 子供のItemを取得する場合
+        if item.childCount() == 0:
+            print('子供はいません')
+        else:
+            for i in range(item.childCount()):
+                print(item.child(i).text(0))
+
+        # 親を取得
+        if item.parent():
+            print(item.parent().text(0))
+        else:
+            print('RootItemです。')
 
 
 if __name__ == "__main__":
