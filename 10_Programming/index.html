@@ -59,8 +59,8 @@
   
 
 
-  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-134257918-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-0Z0ZWECHNT",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT"></script>
 
 
     
@@ -6750,6 +6750,20 @@
   <h1>Index</h1>
 
 <ul>
+<li>VSCode<ul>
+<li><a href="50_VSCode/vscode_cacher/">VSCodeでCacherを使う</a></li>
+<li><a href="50_VSCode/vscode_create_task/">VSCode のタスクを作成する</a></li>
+<li><a href="50_VSCode/vscode_debug/">VSCodeでPythonデバッグ</a></li>
+<li><a href="50_VSCode/vscode_edit/">VSCode 便利な機能</a></li>
+<li><a href="50_VSCode/vscode_env_setting/">VSCodeのターミナルを設定する</a></li>
+<li><a href="50_VSCode/vscode_extension/">VSCode の拡張機能を作る</a></li>
+<li><a href="50_VSCode/vscode_jupyter/">VSCodeでJupyter</a></li>
+<li><a href="50_VSCode/vscode_note/">VSCodeでノートをつける</a></li>
+<li><a href="50_VSCode/vscode_pytest/">VSCodeでPyTest</a>: VSCodeのテスト機能で pytestする方法</li>
+<li><a href="50_VSCode/vscode_snippet_sc/">キーバインドに指定スニペットを挿入を指定</a></li>
+<li><a href="50_VSCode/vscode_task/">VSCodeでタスク管理</a></li>
+</ul>
+</li>
 <li>Docker<ul>
 <li><a href="30_Docker/00_dockerfile/">Dockerfileを作成してVSCodeでアタッチする</a></li>
 <li><a href="30_Docker/01_docker_compose/">DockerComposeを使ってVolumeを指定してコンテナを起動する</a>: DockerComposeからコンテナ起動してVolume指定するあたり</li>
@@ -6768,47 +6782,6 @@
 <li><a href="00_Settings/hyper-v/">Hpyer-V で仮想デスクトップを作成する</a></li>
 </ul>
 </li>
-<li>template_code<ul>
-<li><a href="99_template_code/python/">Python</a></li>
-</ul>
-</li>
-<li>Github<ul>
-<li><a href="40_Github/00_GithubActions_01/">GithubActionsで自動化(1) 基本構造</a>: GihtubActionsの基本構文 jobs-steps</li>
-<li><a href="40_Github/01_GithubActions_02_release/">GithubActionsで自動化(2) リリース</a>: GithubActionsでコードをリリースする</li>
-<li><a href="40_Github/git_command/">Gitよく使うコマンドやら操作メモ</a></li>
-<li><a href="40_Github/push_github_ssh/">VSCode から SSH 経由で Push</a></li>
-</ul>
-</li>
-<li>Python<ul>
-<li>Python3<ul>
-<li><a href="00_Python/10_Python3/class_list/">クラスのインスタンス変数とクラス変数</a></li>
-<li><a href="00_Python/10_Python3/graphviz_parse/">Graphvizのノードの配置情報をパースする</a></li>
-<li><a href="00_Python/10_Python3/py_import/">Import 関係の構造</a></li>
-</ul>
-</li>
-<li>Python2<ul>
-<li><a href="00_Python/10_Python2/gitbook_create_summary/">GitBook の SUMMARY ファイルを自動作成</a></li>
-<li><a href="00_Python/10_Python2/super_class/">Python のクラスで多重継承した場合の<strong>init</strong>順序</a></li>
-</ul>
-</li>
-<li>PythonLib<ul>
-<li><a href="00_Python/11_PythonLib/pyinstaller_01/">PyInstallerでexeを作る</a></li>
-<li>PIL<ul>
-<li><a href="00_Python/11_PythonLib/PIL/00_rotate_image/">PIL_EXIFの回転情報に合わせて画像を回転する</a></li>
-</ul>
-</li>
-<li>defaultLib<ul>
-<li><a href="00_Python/11_PythonLib/defaultLib/00_argparse/">Pythonで引数をパースする</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Setup<ul>
-<li><a href="00_Python/00_Setup/pipenv_statup/">pipenvを使用したPython開発環境の作り方</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li>Documentation<ul>
 <li><a href="99_Documentation/00_mkdocs_setting/">mkdocs を設定する</a></li>
 <li><a href="99_Documentation/01_mkdocs_autobuild/">続、mkdocsを設定する(自動ビルド)</a></li>
@@ -6819,22 +6792,49 @@
 <li><a href="99_Documentation/99_mkdocs_sample/">mkdocsでのMarkdown記載サンプル</a>: this is also a sample</li>
 </ul>
 </li>
-<li>VSCode<ul>
-<li><a href="50_VSCode/vscode_cacher/">VSCodeでCacherを使う</a></li>
-<li><a href="50_VSCode/vscode_create_task/">VSCode のタスクを作成する</a></li>
-<li><a href="50_VSCode/vscode_debug/">VSCodeでPythonデバッグ</a></li>
-<li><a href="50_VSCode/vscode_edit/">VSCode 便利な機能</a></li>
-<li><a href="50_VSCode/vscode_env_setting/">VSCodeのターミナルを設定する</a></li>
-<li><a href="50_VSCode/vscode_extension/">VSCode の拡張機能を作る</a></li>
-<li><a href="50_VSCode/vscode_jupyter/">VSCodeでJupyter</a></li>
-<li><a href="50_VSCode/vscode_note/">VSCodeでノートをつける</a></li>
-<li><a href="50_VSCode/vscode_pytest/">VSCodeでPyTest</a>: VSCodeのテスト機能で pytestする方法</li>
-<li><a href="50_VSCode/vscode_snippet_sc/">キーバインドに指定スニペットを挿入を指定</a></li>
-<li><a href="50_VSCode/vscode_task/">VSCodeでタスク管理</a></li>
+<li>template_code<ul>
+<li><a href="99_template_code/python/">Python</a></li>
+</ul>
+</li>
+<li>Python<ul>
+<li>Python2<ul>
+<li><a href="00_Python/10_Python2/gitbook_create_summary/">GitBook の SUMMARY ファイルを自動作成</a></li>
+<li><a href="00_Python/10_Python2/super_class/">Python のクラスで多重継承した場合の<strong>init</strong>順序</a></li>
+</ul>
+</li>
+<li>PythonLib<ul>
+<li><a href="00_Python/11_PythonLib/pyinstaller_01/">PyInstallerでexeを作る</a></li>
+<li>defaultLib<ul>
+<li><a href="00_Python/11_PythonLib/defaultLib/00_argparse/">Pythonで引数をパースする</a></li>
+</ul>
+</li>
+<li>PIL<ul>
+<li><a href="00_Python/11_PythonLib/PIL/00_rotate_image/">PIL_EXIFの回転情報に合わせて画像を回転する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Setup<ul>
+<li><a href="00_Python/00_Setup/pipenv_statup/">pipenvを使用したPython開発環境の作り方</a></li>
+</ul>
+</li>
+<li>Python3<ul>
+<li><a href="00_Python/10_Python3/class_list/">クラスのインスタンス変数とクラス変数</a></li>
+<li><a href="00_Python/10_Python3/graphviz_parse/">Graphvizのノードの配置情報をパースする</a></li>
+<li><a href="00_Python/10_Python3/py_import/">Import 関係の構造</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>JavaScripts<ul>
 <li><a href="00_JavaScripts/00_npm_install/">npm の基本</a></li>
+</ul>
+</li>
+<li>Github<ul>
+<li><a href="40_Github/00_GithubActions_01/">GithubActionsで自動化(1) 基本構造</a>: GihtubActionsの基本構文 jobs-steps</li>
+<li><a href="40_Github/01_GithubActions_02_release/">GithubActionsで自動化(2) リリース</a>: GithubActionsでコードをリリースする</li>
+<li><a href="40_Github/git_command/">Gitよく使うコマンドやら操作メモ</a></li>
+<li><a href="40_Github/push_github_ssh/">VSCode から SSH 経由で Push</a></li>
 </ul>
 </li>
 </ul>
@@ -6844,7 +6844,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-08 14:24:07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-05-10 14:46:44</span>
       
     
   </small>
