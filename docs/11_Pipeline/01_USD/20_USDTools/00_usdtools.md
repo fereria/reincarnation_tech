@@ -5,28 +5,28 @@ tags:
     - AdventCalendar2021
 ---
 
-[USD AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 4日目は USDに付属する便利ツール usdcheckerについて
+[USD AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 4 日目は USD に付属する便利ツール usdchecker について
 紹介したいとおもいます。
 
-USDには、シーングラフを扱うライブラリ以外にも、[様々なコマンドライン・GUIツールセット](https://graphics.pixar.com/usd/release/toolset.html)が多数用意されています。
-usdviewは、様々な場所で紹介されているので知っている人も多いかとおもいますが、それ以外にも
+USD には、シーングラフを扱うライブラリ以外にも、[様々なコマンドライン・GUI ツールセット](https://graphics.pixar.com/usd/release/toolset.html)が多数用意されています。
+usdview は、様々な場所で紹介されているので知っている人も多いかとおもいますが、それ以外にも
 非常に便利なものが多いので、何回かに分けて便利なツールを紹介していこうと思います。
 
-初回は、USDのデータエラーをチェックしたい場合に使用できる usdcheckerを紹介します。
+初回は、USD のデータエラーをチェックしたい場合に使用できる usdchecker を紹介します。
 
-## usdcheckerとは
+## usdchecker とは
 
 https://graphics.pixar.com/usd/release/toolset.html#usdchecker
 
-usdcheckerとは、その名の通り usdまたはusdzファイルを検証して、問題がないかをチェックするための
+usdchecker とは、その名の通り usd または usdz ファイルを検証して、問題がないかをチェックするための
 コマンドラインツールです。
-その指定のアセットが、Hydraによってレンダリングで可能であるかを
+その指定のアセットが、Hydra によってレンダリングで可能であるかを
 実行することで確認できます。
 
 ## 使い方
 
 まず使用方法。
-チェックしたい usdファイルをコマンドプロンプトなどで以下のように指定します。
+チェックしたい usd ファイルをコマンドプロンプトなどで以下のように指定します。
 
 ```bat
 usdchecker D:/sample.usda
@@ -35,7 +35,7 @@ usdchecker D:/sample.usda
 {{'c9b5d59bd398f9a87fdc2dd6a1d453b8'|gist}}
 
 たとえばこんな感じの usda を書いたとしましょう。
-こんなPrim定義して大丈夫なのかよ...と思うかと思いますが、
+こんな Prim 定義して大丈夫なのかよ...と思うかと思いますが、
 
 ```
 Traceback (most recent call last):
@@ -49,7 +49,7 @@ pxr.Tf.ErrorException:
         Error in 'textFileFormatYyerror' at line 3116 in file pxr/usd/sdf/textFileFormat.yy : ''😄' is not a valid prim name at '"😄"' in </> on line 3 in file d:\sample.usda
 ```
 
-こんな不届きなusdaは絶対に、絶対に許さない と、usdcheckerに怒られます。
+こんな不届きな usda は絶対に、絶対に許さない と、usdchecker に怒られます。
 
 {{'721b03ee90083c0373ebf27020fe6eb6'|gist}}
 
@@ -63,7 +63,7 @@ Failed!
 ```
 
 まだ許されませんでした。
-ログをみると、**upAxisを指定しろ、metersPerUnitを指定しろ、defaultPrimがない**と怒られているのがわかります。
+ログをみると、**upAxis を指定しろ、metersPerUnit を指定しろ、defaultPrim がない**と怒られているのがわかります。
 
 {{'e429922483916c6da418182495819a50'|gist}}
 
@@ -74,22 +74,22 @@ Success!
 ```
 
 ようやく許してもらうことができました。
-ありがとうusdchecker。
+ありがとう usdchecker。
 
-## usdcheckerの引数
+## usdchecker の引数
 
 チェックしたいファイル以外にも引数を指定することができます。
 
-| 引数                    | 効果                                                                                                                                                |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| --dumpRules             | 引数を追加すると、チェック項目の詳細をDumpしてくれます。                                                                                            |
-| --out -o \<outputPath\> | 指定のoutputPathに、チェック結果を保存てくれます                                                                                                    |
-| --skiVariants           | 現在の選択されているバリアントのみチェックします                                                                                                    |
-| --rooPackageOnly        | 指定のパッケージ以下にネストされているデータはスキップします                                                                                        |
-| --arkit                 | arkit用のより厳しいチェック（ARKitRootLayerChecker）をします。<br>例として、upAxisがYか、usdcかどうか、等。                                         |
-| --noAssetChecks         | Asset用のチェック（DefaultPrimが指定されているかなど）のような<br>後述のチェックルールのうち、AssetLevelCheck向こうのチェックルールはスキップします |
+| 引数                    | 効果                                                                                                                                                   |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| --dumpRules             | 引数を追加すると、チェック項目の詳細を Dump してくれます。                                                                                             |
+| --out -o \<outputPath\> | 指定の outputPath に、チェック結果を保存てくれます                                                                                                     |
+| --skiVariants           | 現在の選択されているバリアントのみチェックします                                                                                                       |
+| --rooPackageOnly        | 指定のパッケージ以下にネストされているデータはスキップします                                                                                           |
+| --arkit                 | arkit 用のより厳しいチェック（ARKitRootLayerChecker）をします。<br>例として、upAxis が Y か、usdc かどうか、等。                                       |
+| --noAssetChecks         | Asset 用のチェック（DefaultPrim が指定されているかなど）のような<br>後述のチェックルールのうち、AssetLevelCheck 向こうのチェックルールはスキップします |
 
-たとえば、アセットではなくレンダリング用アセットを配置したUSDファイルをチェックして、その結果を
+たとえば、アセットではなくレンダリング用アセットを配置した USD ファイルをチェックして、その結果を
 指定ファイルに保存したい場合。
 
 ```
@@ -97,21 +97,21 @@ usdchecker --noAssetChecks --o c001_results.txt c001_render.usda
 ```
 
 このようになります。
-レンダリングする前など、アセットをパブリッシュする前などに この usdcheckerを挟むことで
+レンダリングする前など、アセットをパブリッシュする前などに この usdchecker を挟むことで
 ミスを防ぐことができるかと思います。
 
 ## 実装をみる
 
 最後に、サクッと実装をみてみます。
-USDツールのソースコードは、
+USD ツールのソースコードは、
 
 > USD/pxr/usd/bin
 
 以下にあります。
-usdcheckerであれば bin 以下のusdchecker/usdchecker.py
+usdchecker であれば bin 以下の usdchecker/usdchecker.py
 が、元になります。
 
-チェック本体は、UsdUtilsモジュールから実行することができます。
+チェック本体は、UsdUtils モジュールから実行することができます。
 
 ```python
 from pxr import UsdUtils
@@ -123,10 +123,10 @@ verbose = False
 noAssetCheck = False
 
 
-checker = UsdUtils.ComplianceChecker(arkit=arKit, 
-                                         skipARKitRootLayerCheck=False, 
-                                         rootPackageOnly=rootPackageOnly, 
-                                         skipVariants=skipVariants, 
+checker = UsdUtils.ComplianceChecker(arkit=arKit,
+                                         skipARKitRootLayerCheck=False,
+                                         rootPackageOnly=rootPackageOnly,
+                                         skipVariants=skipVariants,
                                          verbose=verbose,
                                          assetLevelChecks=noAssetCheck)
 
@@ -136,23 +136,24 @@ checker.CheckCompliance("D:/sample.usda")
 print(checker.GetWarnings())
 print(checker.GetErrors())
 ```
+
 > USD/pxr/usd/usdUtils/complianceChecker.py
 
-チェック本体は、このComplianceChecker.pyで、BaseRuleCheckerを継承したクラスを定義し
-チェックしたい項目（Stage/Layer等）の指定の名前でチェック関数を定義。
+チェック本体は、この ComplianceChecker.py で、BaseRuleChecker を継承したクラスを定義し
+チェックしたい項目（Stage/Layer 等）の指定の名前でチェック関数を定義。
 そして GetBaseRules または GetARKitRules に、定義したクラスを指定しています。
 
 実装までは試せていないですが、定型化されているので必要に応じてオリジナルのチェック項目を
 簡単にできそうです。
 
-usdcheckerに限らずですが、USDのツールセットはすべてUSDリポジトリ以下にソースコードがあります。
-このコード類は、USDを使わなかった場合でも自社ツールを開発するうえでも非常に参考になるサンプルなので
+usdchecker に限らずですが、USD のツールセットはすべて USD リポジトリ以下にソースコードがあります。
+このコード類は、USD を使わなかった場合でも自社ツールを開発するうえでも非常に参考になるサンプルなので
 興味がある人はツールを使うだけではなくソースコードも覗いてみるのをお勧めします。
 
 ## まとめ
 
-以上、USDツール紹介第一弾 usdcheckerでした。
+以上、USD ツール紹介第一弾 usdchecker でした。
 レンダリングした後にデータのミスが見つかり、もう一度レンダリングをし直す...というのは
-CG屋あるあるだと思います。
+CG 屋あるあるだと思います。
 そういった悲劇を防ぐためにもデータのチェックはとても大切です。
-USDを使用したパイプラインを構築する場合は、ぜひとも導入したいツールの１つです。
+USD を使用したパイプラインを構築する場合は、ぜひとも導入したいツールの１つです。

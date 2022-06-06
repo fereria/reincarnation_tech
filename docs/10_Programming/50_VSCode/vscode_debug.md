@@ -7,7 +7,7 @@ tags:
 
 ![](https://gyazo.com/e0d44ec678d31e063aa16f86afd65302.png)
 
-VSCodeでデバッグするときは、Debugアイコンを押して
+VSCode でデバッグするときは、Debug アイコンを押して
 
 ![](https://gyazo.com/68829a27d4102e77d9ad868d9ad1f679.png)
 
@@ -19,20 +19,20 @@ launch.json ファイルを作成します　を押します。
 
 ```json
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Python: Current File",
-      "type": "python",
-      "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal"
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Python: Current File",
+			"type": "python",
+			"request": "launch",
+			"program": "${file}",
+			"console": "integratedTerminal"
+		}
+	]
 }
 ```
 
-選ぶと、Python用のlaunch.json が出来がります。
+選ぶと、Python 用の launch.json が出来がります。
 この launch.json には、実行時の引数や、環境変数等を指定することができます。
 
 ```json
@@ -54,7 +54,7 @@ launch.json ファイルを作成します　を押します。
 
 ![](https://gyazo.com/05856587c0ecfb2fa1bdd20966d64985.png)
 
-VSCodeの場合、行の左側あたりをクリックすることで追加できます。
+VSCode の場合、行の左側あたりをクリックすることで追加できます。
 
 ![](https://gyazo.com/16015d395bb50efa12d9cb450bc118e7.png)
 
@@ -68,7 +68,7 @@ VSCodeの場合、行の左側あたりをクリックすることで追加で�
 ![](https://gyazo.com/d030cabc38a9f08cf73fc4f329fdc7ed.png)
 
 作成したブレークポイントは、「ブレークポイント」で確認することができて
-ここでON / OFF することができます。
+ここで ON / OFF することができます。
 
 #### ブレークポイントの条件式
 
@@ -84,7 +84,7 @@ VSCodeの場合、行の左側あたりをクリックすることで追加で�
 
 ![](https://gyazo.com/fe3130cfae20682838ccf17769b8b52a.png)
 
-例として、3の時のみブレークポイントで止めたいとします。
+例として、3 の時のみブレークポイントで止めたいとします。
 その時は、こんな感じで評価式を入れておきます。
 
 #### ウォッチ式
@@ -97,7 +97,7 @@ VSCodeの場合、行の左側あたりをクリックすることで追加で�
 
 ![](https://gyazo.com/7c5d26a0091e1174cc4070e8fbda3464.png)
 
-すると、 __file__ の中身を評価した結果を表示してくれます。
+すると、 **file** の中身を評価した結果を表示してくれます。
 
 ```python
 import argparse
@@ -108,6 +108,7 @@ parser.add_argument('message')
 
 args = parser.parse_args()
 ```
+
 評価式には関数を書くこともできるので、例えばこのようなコードがあったとして
 実行時に引数を受け取るようなコードがあるときに
 
@@ -133,7 +134,7 @@ test("hoge")
 
 ```
 
-たとえばこのようなコードを実行して、ブレークポイントは printの行にしておきます。
+たとえばこのようなコードを実行して、ブレークポイントは print の行にしておきます。
 
 ![](https://gyazo.com/73bb69d1b2fe7cdc54b5ea9c183d3890.png)
 
@@ -151,7 +152,7 @@ def test(message):
 test("hoge")
 ```
 
-もう１つ関数を追加した場合、printにブレークポイントを追加して実行すると、
+もう１つ関数を追加した場合、print にブレークポイントを追加して実行すると、
 
 ![](https://gyazo.com/63678dcabc8f01e9f67ead8306b338bf.png)
 
@@ -190,5 +191,3 @@ test("hoge")
 
 デバッグコンソールを使用することで、あえて違う値を入れたり
 今の値の状態を確認したりといったことが可能になります。
-
-
