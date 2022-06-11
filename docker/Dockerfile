@@ -25,10 +25,9 @@ RUN DEBIAN_FRONTEND=noninteractive
 ADD requirements.txt /work_dir/
 WORKDIR /work_dir
 RUN pip install -r requirements.txt
-RUN pip install git+https://github.com/srymh/MkdocsTagPlugin.git#egg=mdoctag
 
 # drawioのインストール
-ENV DRAWIO_VERSION 16.5.1
+ENV DRAWIO_VERSION 19.0.3
 
 RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-amd64-${DRAWIO_VERSION}.deb
 RUN dpkg --install drawio-amd64-${DRAWIO_VERSION}.deb
