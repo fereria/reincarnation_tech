@@ -258,7 +258,7 @@ QComboBox を継承したクラスを作成し、currentTextChanged で
 使いかたは ComboBox と同じで、 addItems で選択肢を追加し、
 setCurrentText() で、現在の値を選択するようにします。
 
-!!!
+!!! note
 
     ComboBoxItemの引数で選択肢を渡すようにして、
     コンストラクタ内で self.setCurrentText(self.item.text(self.column))
