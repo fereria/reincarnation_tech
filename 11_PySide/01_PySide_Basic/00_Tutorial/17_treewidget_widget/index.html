@@ -3218,13 +3218,12 @@ GUI を作成できます。</p>
 </code></pre></div></td></tr></table></div>
 <p>使いかたは ComboBox と同じで、 addItems で選択肢を追加し、<br/>
 setCurrentText() で、現在の値を選択するようにします。</p>
-<p>!!!</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>ComboBoxItemの引数で選択肢を渡すようにして、
-コンストラクタ内で self.setCurrentText(self.item.text(self.column))
-のようにしてもよさそう
-</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ComboBoxItemの引数で選択肢を渡すようにして、<br/>
+コンストラクタ内で self.setCurrentText(self.item.text(self.column))<br/>
+のようにしてもよさそう</p>
+</div>
 <p>拡張したウィジェットで値が変更された場合も、<br/>
 TreeWidget の itemChanged が実行されるようになるので<br/>
 これで問題なく JSON が更新できるようになりました。</p>
@@ -3240,7 +3239,7 @@ TreeWidget の itemChanged が実行されるようになるので<br/>
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-11 18:03:41</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-11 18:15:32</span>
 </small>
 </div>
 </article>
