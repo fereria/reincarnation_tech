@@ -28,7 +28,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#widget2radiobutton">
+<a class="md-skip" href="#widget-2radiobutton">
           コンテンツにスキップ
         </a>
 </div>
@@ -2772,19 +2772,24 @@
 <a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_PySide/01_PySide_Basic/00_Tutorial/06_widget_sample_02.md" title="編集">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="widget2radiobutton">基本Widgetを使ってみる(2):RadioButton<a class="headerlink" href="#widget2radiobutton" title="Permanent link">¶</a></h1>
-<p>複数の選択肢からなにかを選ぶときに使用するのがRadioButton。<br/>
-その基本的な使い方を解説。  </p>
+<nav class="md-tags">
+<a class="md-tag" href="../../../../tags/#pyside">
+          PySide
+        </a>
+</nav>
+<h1 id="widget-2radiobutton">基本 Widget を使ってみる(2):RadioButton<a class="headerlink" href="#widget-2radiobutton" title="Permanent link">¶</a></h1>
+<p>複数の選択肢からなにかを選ぶときに使用するのが RadioButton。<br/>
+その基本的な使い方を解説。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/6cf831e4fe126a407870f8b82bde509e.png"><img alt="" src="https://gyazo.com/6cf831e4fe126a407870f8b82bde509e.png"/></a></p>
-<p>完成したUIはこんな感じ。<br/>
-選択したCheckBoxの文字を、「SelectCheck」ボタンを押すとプリントしてくれます。  </p>
-<p>使用しているuiファイルは<br/>
+<p>完成した UI はこんな感じ。<br/>
+選択した CheckBox の文字を、「SelectCheck」ボタンを押すとプリントしてくれます。</p>
+<p>使用している ui ファイルは<br/>
 <a href="https://snippets.cacher.io/snippet/82070300e6a8c34b8f12">https://snippets.cacher.io/snippet/82070300e6a8c34b8f12</a><br/>
-こちら。  </p>
+こちら。</p>
 <script src="https://embed.cacher.io/d6026a815967a314a1f845970c294ea62e59fc17.js?a=abcd6b52889638d633a3f71e5bb228a9"></script>
 <h2 id="_1">基本的な使い方<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>まず、使用するButtonを「ButtonGroup」でまとめてから使用します。  </p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>まず、使用する Button を「ButtonGroup」でまとめてから使用します。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2793,48 +2798,48 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">grpA</span><span class="o">.</span><span class="n">addButton</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">radioButton_5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grpA</span><span class="o">.</span><span class="n">addButton</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">radioButton_6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grpA</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-このButtonGroupはAbstractButtonクラスを継承して作成されているButtonを<br/>
+</code></pre></div></td></tr></table></div>
+<p>この ButtonGroup は AbstractButton クラスを継承して作成されている Button を<br/>
 グルーピングすることができます。<br/>
-使い方は、上のコードのように、addButtonに対してButtonのオブジェクトをセットするだけ。<br/>
-その時に、アクセス用のIDを指定しておきます。  </p>
+使い方は、上のコードのように、addButton に対して Button のオブジェクトをセットするだけ。<br/>
+その時に、アクセス用の ID を指定しておきます。</p>
 <p>以降は、ButtonGroup.button( <strong>id</strong> )で、<br/>
-Groupに含まれるButtonのオブジェクトの取得を行うことができる。  </p>
-<p>そして、取得方法は  </p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">grpA</span><span class="o">.</span><span class="n">checkedButton</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div><br/>
-ButtonGroupのcheckedButtonで選択中のButtonのオブジェクトを<br/>
-取得することができます。  </p>
+Group に含まれる Button のオブジェクトの取得を行うことができる。</p>
+<p>そして、取得方法は</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">grpA</span><span class="o">.</span><span class="n">checkedButton</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>ButtonGroup の checkedButton で選択中の Button のオブジェクトを<br/>
+取得することができます。</p>
 <h2 id="_2">それ以外の使い方<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>ButtonGroupのSignalの中には、クリックしたときに<br/>
-クリックしたボタンを取得する関数があります。<br/>
+<p>ButtonGroup の Signal の中には、クリックしたときに<br/>
+クリックしたボタンを取得する関数があります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">grpA</span><span class="o">.</span><span class="n">buttonClicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checkButtonA</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-使い方は、このようなシグナルを作成し、<br/>
+</code></pre></div></td></tr></table></div>
+<p>使い方は、このようなシグナルを作成し、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">checkButtonA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">btn</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">btn</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div><br/>
-スロットの関数にはButtonのオブジェクトを受け取るための引数を<br/>
+</code></pre></div></td></tr></table></div>
+<p>スロットの関数には Button のオブジェクトを受け取るための引数を<br/>
 用意しておきます。<br/>
-こうしておくと、Buttonをクリックしたときに<br/>
-今選択したButtonオブジェクトを受け取って、何かしらの処理をはさむことができます。  </p>
+こうしておくと、Button をクリックしたときに<br/>
+今選択した Button オブジェクトを受け取って、何かしらの処理をはさむことができます。</p>
 <p>同様な処理で buttonPressed buttonReleased などがありますが<br/>
-使い方は同じなので、用途に応じて差し替えます。  </p>
-<p>参考のHelpは<br/>
+使い方は同じなので、用途に応じて差し替えます。</p>
+<p>参考の Help は<br/>
 ButtonGroup<br/>
 <a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QButtonGroup.html#PySide2.QtWidgets.PySide2.QtWidgets.QButtonGroup.checkedButton">https://doc.qt.io/qtforpython/PySide2/QtWidgets/QButtonGroup.html#PySide2.QtWidgets.PySide2.QtWidgets.QButtonGroup.checkedButton</a><br/>
 RadioButton<br/>
 <a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QRadioButton.html">https://doc.qt.io/qtforpython/PySide2/QtWidgets/QRadioButton.html</a><br/>
-ただし、RadioButtonはほぼAbstractButtonを継承したものなので<br/>
+ただし、RadioButton はほぼ AbstractButton を継承したものなので<br/>
 <a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QAbstractButton.html#PySide2.QtWidgets.QAbstractButton">https://doc.qt.io/qtforpython/PySide2/QtWidgets/QAbstractButton.html#PySide2.QtWidgets.QAbstractButton</a><br/>
-Buttonに関数は、AbstractButton側のヘルプを参照すると良いです。  </p>
+Button に関数は、AbstractButton 側のヘルプを参照すると良いです。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2019-11-01 16:15:38</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-12 06:01:13</span>
 </small>
 </div>
 </article>

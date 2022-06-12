@@ -28,7 +28,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#graphicsviewqcolor">
+<a class="md-skip" href="#graphicsview-qcolor">
           コンテンツにスキップ
         </a>
 </div>
@@ -1769,17 +1769,17 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#property">
-    Propertyを作る
+    Property を作る
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#propertyanimation">
-    PropertyAnimationの引数
+    PropertyAnimation の引数
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#graphicsobject">
-    GraphicsObjectを使う
+    GraphicsObject を使う
   </a>
 </li>
 <li class="md-nav__item">
@@ -2799,17 +2799,17 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#property">
-    Propertyを作る
+    Property を作る
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#propertyanimation">
-    PropertyAnimationの引数
+    PropertyAnimation の引数
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#graphicsobject">
-    GraphicsObjectを使う
+    GraphicsObject を使う
   </a>
 </li>
 <li class="md-nav__item">
@@ -2840,10 +2840,21 @@
 <a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_PySide/02_Tips/GraphicsView/graphics_view_color_anim.md" title="編集">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="graphicsviewqcolor">GraphicsViewでQColorをアニメーションさせる<a class="headerlink" href="#graphicsviewqcolor" title="Permanent link">¶</a></h1>
+<nav class="md-tags">
+<a class="md-tag" href="../../../../tags/#graphicsview">
+          GraphicsView
+        </a>
+<a class="md-tag" href="../../../../tags/#pyside">
+          PySide
+        </a>
+<a class="md-tag" href="../../../../tags/#python">
+          Python
+        </a>
+</nav>
+<h1 id="graphicsview-qcolor">GraphicsView で QColor をアニメーションさせる<a class="headerlink" href="#graphicsview-qcolor" title="Permanent link">¶</a></h1>
 <p>タイトルの通り。<br/>
-GraphicsViewのアイテムの色などをアニメーションさせるやり方を<br/>
-調べてみました。  </p>
+GraphicsView のアイテムの色などをアニメーションさせるやり方を<br/>
+調べてみました。</p>
 <h2 id="_1">コード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
@@ -3050,58 +3061,58 @@ GraphicsViewのアイテムの色などをアニメーションさせるやり�
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c8bb0a55b87ccdea7a22a10c2056f48b.gif"><img alt="" src="https://gyazo.com/c8bb0a55b87ccdea7a22a10c2056f48b.gif"/></a></p>
-<p>実行すると、こんな感じで白→青にアニメーションするようになります。  </p>
+<p>実行すると、こんな感じで白 → 青にアニメーションするようになります。</p>
 <h2 id="_2">いくつかはまりポイント<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>一応できたのですが、いくつかはまりポイントがあったので軽く解説。  </p>
-<h3 id="property">Propertyを作る<a class="headerlink" href="#property" title="Permanent link">¶</a></h3>
+<p>一応できたのですが、いくつかはまりポイントがあったので軽く解説。</p>
+<h3 id="property">Property を作る<a class="headerlink" href="#property" title="Permanent link">¶</a></h3>
 <p>アニメーションを使用するには、「プロパティ」を作成する必要があります。<br/>
-ネットで調べた限りだと、出てくるプロパティは「Property関数」を使用して<br/>
+ネットで調べた限りだと、出てくるプロパティは「Property 関数」を使用して<br/>
 作っている例しかありませんでした。<br/>
-が、PySideの場合なのかはわかりませんが<br/>
+が、PySide の場合なのかはわかりませんが</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">'color'</span><span class="p">,</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="s1">'red'</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div><br/>
-こんな感じで setProperty(プロパティ名、初期値)<br/>
-のように指定する必要がありました。  </p>
-<p>そしてこのプロパティを使用する場合は<br/>
+</code></pre></div></td></tr></table></div>
+<p>こんな感じで setProperty(プロパティ名、初期値)<br/>
+のように指定する必要がありました。</p>
+<p>そしてこのプロパティを使用する場合は</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">property</span><span class="p">(</span><span class="n">プロパティ名</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-のようにする必要があります。  </p>
-<h3 id="propertyanimation">PropertyAnimationの引数<a class="headerlink" href="#propertyanimation" title="Permanent link">¶</a></h3>
-<p>アニメーションを行う　PropertyAnimation　ですが、<br/>
+</code></pre></div></td></tr></table></div>
+<p>のようにする必要があります。</p>
+<h3 id="propertyanimation">PropertyAnimation の引数<a class="headerlink" href="#propertyanimation" title="Permanent link">¶</a></h3>
+<p>アニメーションを行う　 PropertyAnimation 　ですが、<br/>
 引数は　プロパティのあるオブジェクト、プロパティ名　のように指定します。<br/>
-が、<br/>
+が、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'color'</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/644bde1386e5bafe9051158f400f13b6.png"><img alt="" src="https://gyazo.com/644bde1386e5bafe9051158f400f13b6.png"/></a><br/>
-これだとエラーになってしまいます。  </p>
-<p>対応方法は、エラーのSupported signaturesを見て分かるとおり<br/>
+</code></pre></div></td></tr></table></div>
+<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/644bde1386e5bafe9051158f400f13b6.png"><img alt="" src="https://gyazo.com/644bde1386e5bafe9051158f400f13b6.png"/></a><br/>
+これだとエラーになってしまいます。</p>
+<p>対応方法は、エラーの Supported signatures を見て分かるとおり<br/>
 第二引数は「ByteArray」である必要があるので</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QPropertyAnimation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'color'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>こうすればOKです。  </p>
-<h3 id="graphicsobject">GraphicsObjectを使う<a class="headerlink" href="#graphicsobject" title="Permanent link">¶</a></h3>
-<p>プロパティを使用するためには、QObjectを継承している必要があります。<br/>
-が、QGraphicsItemのほうはQObjectを継承していません。<br/>
-なので、QGraphicsItemではなく<br/>
-QObjectを継承している「 <strong>QGraphicsObject</strong> 」を使用する必要があります。  </p>
+<p>こうすれば OK です。</p>
+<h3 id="graphicsobject">GraphicsObject を使う<a class="headerlink" href="#graphicsobject" title="Permanent link">¶</a></h3>
+<p>プロパティを使用するためには、QObject を継承している必要があります。<br/>
+が、QGraphicsItem のほうは QObject を継承していません。<br/>
+なので、QGraphicsItem ではなく<br/>
+QObject を継承している「 <strong>QGraphicsObject</strong> 」を使用する必要があります。</p>
 <h3 id="_3">ずっとループする<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<p>PropertyAnimationには「何回ループするか」の設定はあるのですが<br/>
+<p>PropertyAnimation には「何回ループするか」の設定はあるのですが<br/>
 ずっとループしてほしいという設定はありません。<br/>
-ので、ずっとループしたい場合は<br/>
+ので、ずっとループしたい場合は</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-このようにすればとりあえずできます。  </p>
+</code></pre></div></td></tr></table></div>
+<p>このようにすればとりあえずできます。</p>
 <p>が、これだと絶対に終了しなくなるので<br/>
-今回はBoolでフラグを作って、ダブルクリックで停止と再開をできるようにしています。  </p>
+今回は Bool でフラグを作って、ダブルクリックで停止と再開をできるようにしています。</p>
 <h3 id="_4">アニメーションカーブの指定<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<p>アニメーションカーブは<br/>
+<p>アニメーションカーブは</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">ani</span><span class="o">.</span><span class="n">setEasingCurve</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QEasingCurve</span><span class="o">.</span><span class="n">OutCubic</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-これで指定できます。  </p>
-<p>今回は    </p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/e7cade6c28d215792ea8b5d16fdec7d5.png"><img alt="" src="https://gyazo.com/e7cade6c28d215792ea8b5d16fdec7d5.png"/></a> </p>
-<p>こんなカーブになりました。  </p>
-<p>他にも種類は色々あるので、詳しくは <a href="http://pyside.github.io/docs/pyside/PySide/QtCore/QEasingCurve.html?highlight=qeasingcurve">こちら</a> を参照してください。  </p>
+</code></pre></div></td></tr></table></div>
+<p>これで指定できます。</p>
+<p>今回は</p>
+<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/e7cade6c28d215792ea8b5d16fdec7d5.png"><img alt="" src="https://gyazo.com/e7cade6c28d215792ea8b5d16fdec7d5.png"/></a></p>
+<p>こんなカーブになりました。</p>
+<p>他にも種類は色々あるので、詳しくは <a href="http://pyside.github.io/docs/pyside/PySide/QtCore/QEasingCurve.html?highlight=qeasingcurve">こちら</a> を参照してください。</p>
 <p>色々と罠はありましたが、分かってしまえば簡単なので<br/>
 色々幅が広がりそう。</p>
 <h2 id="_5">参考<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
@@ -3115,7 +3126,7 @@ QObjectを継承している「 <strong>QGraphicsObject</strong> 」を使用す
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2020-03-19 15:16:19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-12 06:01:13</span>
 </small>
 </div>
 </article>

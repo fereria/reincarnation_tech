@@ -28,7 +28,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#widget3combobox_">
+<a class="md-skip" href="#widget-3combobox_">
           コンテンツにスキップ
         </a>
 </div>
@@ -1629,7 +1629,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#combobox">
-    指定の文字列をComboBoxから探す
+    指定の文字列を ComboBox から探す
   </a>
 </li>
 <li class="md-nav__item">
@@ -2809,7 +2809,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#combobox">
-    指定の文字列をComboBoxから探す
+    指定の文字列を ComboBox から探す
   </a>
 </li>
 <li class="md-nav__item">
@@ -2830,66 +2830,71 @@
 <a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_PySide/01_PySide_Basic/00_Tutorial/07_widget_sample_03.md" title="編集">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="widget3combobox_">基本Widgetを使ってみる(3):ComboBox_基本編<a class="headerlink" href="#widget3combobox_" title="Permanent link">¶</a></h1>
+<nav class="md-tags">
+<a class="md-tag" href="../../../../tags/#pyside">
+          PySide
+        </a>
+</nav>
+<h1 id="widget-3combobox_">基本 Widget を使ってみる(3):ComboBox_基本編<a class="headerlink" href="#widget-3combobox_" title="Permanent link">¶</a></h1>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/46ed1187e4b03d1fc1390b851ea50157.png"><img alt="" src="https://gyazo.com/46ed1187e4b03d1fc1390b851ea50157.png"/></a></p>
-<p>複数の項目から1つを選びたい時などに使用する<br/>
-「POPUPを表示→選択する」ができるのがComboBox。<br/>
-今回はその基本的な使い方を説明します。  </p>
+<p>複数の項目から 1 つを選びたい時などに使用する<br/>
+「POPUP を表示 → 選択する」ができるのが ComboBox。<br/>
+今回はその基本的な使い方を説明します。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>基本のみなのでModel-Viewが絡む物はまたこんど。</p>
 </div>
+<p>基本のみなので Model-View が絡む物はまたこんど。</p>
 <h2 id="_1">サンプルコード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <script src="https://embed.cacher.io/865138d20d30a842faab429b0c2a49a67a5aff48.js?a=a0dda4a847058f1775f1abbc859c6be7"></script>
-<p>実行すると、  </p>
+<p>実行すると、</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/bf1e8e55b528cfd27a350b110850c2f1.PNG"><img alt="" src="https://gyazo.com/bf1e8e55b528cfd27a350b110850c2f1.PNG"/></a></p>
-<p>このようなUIが表示されます。  </p>
+<p>このような UI が表示されます。</p>
 <h2 id="_2">基本的な使い方<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <h3 id="_3">新規追加<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">combobox</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span><span class="s1">'abc'</span><span class="p">,</span> <span class="s1">'def'</span><span class="p">,</span> <span class="s1">'gef'</span><span class="p">])</span>
-</code></pre></div></td></tr></table></div><br/>
-まず、Boxのリストに項目を追加します。<br/>
-サンプルではListで指定していますが、<br/>
-addItem('hogehoge')ならば、複数ではなく1つだけ追加することができます。  </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">combobox</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span><span class="s1">'abc'</span><span class="p">,</span> <span class="s1">'def'</span><span class="p">,</span> <span class="s1">'gef'</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+<p>まず、Box のリストに項目を追加します。<br/>
+サンプルでは List で指定していますが、<br/>
+addItem('hogehoge')ならば、複数ではなく 1 つだけ追加することができます。</p>
 <h3 id="_4">編集可能にする<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<p>デフォルトの場合は、ComboBoxは編集不可になっていますが<br/>
+<p>デフォルトの場合は、ComboBox は編集不可になっていますが</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">combobox</span><span class="o">.</span><span class="n">setEditable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-EditableをTrueにすることで、新しい項目をユーザーが追加できるようになります。  </p>
+</code></pre></div></td></tr></table></div>
+<p>Editable を True にすることで、新しい項目をユーザーが追加できるようになります。</p>
 <h3 id="_5">現在の選択項目を取得する<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/034e8ac96ba26fcf741ef42a4d721f17.png"><img alt="" src="https://gyazo.com/034e8ac96ba26fcf741ef42a4d721f17.png"/></a></p>
 <p>現在の項目を選択するには「Current＃＃＃＃」を使用します。<br/>
-ComboBoxのリストは「Index」を使用してアクセスすることができます。<br/>
-その場合は、0番目からスタートし、下にいくにつれて+1されたIndexで<br/>
-取得することが出来ます。  </p>
-<p>直接テキストを取得したい場合は、currentTextでテキストを取得することができます。  </p>
-<p>Indexを使用してなにかする例としては<br/>
+ComboBox のリストは「Index」を使用してアクセスすることができます。<br/>
+その場合は、0 番目からスタートし、下にいくにつれて+1 された Index で<br/>
+取得することが出来ます。</p>
+<p>直接テキストを取得したい場合は、currentText でテキストを取得することができます。</p>
+<p>Index を使用してなにかする例としては<br/>
 「現在選択している項目を削除したい」場合など。<br/>
-この場合は、removeItemの引数が  </p>
+この場合は、removeItem の引数が</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/d1cf903ffee46e606864896dabcc41b0.png"><img alt="" src="https://gyazo.com/d1cf903ffee46e606864896dabcc41b0.png"/></a></p>
-<p>indexになっているので、currentIndexでIndexを取得し<br/>
-そのIndexを使用してremoveItemを実行することで<br/>
-現在の選択状態を削除することができます。  </p>
-<h3 id="combobox">指定の文字列をComboBoxから探す<a class="headerlink" href="#combobox" title="Permanent link">¶</a></h3>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">combobox</span><span class="o">.</span><span class="n">findText</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-引数の文字列を含む項目をComboBox内から探したい場合は<br/>
-findTextを使用します。<br/>
-このコマンドを実行すると、引数で与えた文字列を含むIndexを<br/>
-しゅとくすることができます。  </p>
+<p>index になっているので、currentIndex で Index を取得し<br/>
+その Index を使用して removeItem を実行することで<br/>
+現在の選択状態を削除することができます。</p>
+<h3 id="combobox">指定の文字列を ComboBox から探す<a class="headerlink" href="#combobox" title="Permanent link">¶</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">combobox</span><span class="o">.</span><span class="n">findText</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>引数の文字列を含む項目を ComboBox 内から探したい場合は<br/>
+findText を使用します。<br/>
+このコマンドを実行すると、引数で与えた文字列を含む Index を<br/>
+しゅとくすることができます。</p>
 <h3 id="_6">参考<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>ComboBox<br/>
 <a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QComboBox.html#PySide2.QtWidgets.PySide2.QtWidgets.QComboBox.removeItem">https://doc.qt.io/qtforpython/PySide2/QtWidgets/QComboBox.html#PySide2.QtWidgets.PySide2.QtWidgets.QComboBox.removeItem</a></p>
-<p>ComboBoxについてはModel_Viewなどを使用することで色々と拡張<br/>
-することもできますが、今のところは基本的な使い方と言うことでここまで。  </p>
-<p>今度解説するListViewにくらべて、UIの領域を使わずに<br/>
-選択するUIを追加できるのでComboBoxはとても便利です。  </p>
+<p>ComboBox については Model_View などを使用することで色々と拡張<br/>
+することもできますが、今のところは基本的な使い方と言うことでここまで。</p>
+<p>今度解説する ListView にくらべて、UI の領域を使わずに<br/>
+選択する UI を追加できるので ComboBox はとても便利です。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2019-11-01 16:15:38</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-12 06:01:13</span>
 </small>
 </div>
 </article>
