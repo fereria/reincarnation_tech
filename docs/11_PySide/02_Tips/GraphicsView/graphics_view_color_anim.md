@@ -1,14 +1,19 @@
 ---
 title: GraphicsViewでQColorをアニメーションさせる
+tags:
+    - GraphicsView
+    - PySide
+    - Python
 ---
-# GraphicsViewでQColorをアニメーションさせる
+
+# GraphicsView で QColor をアニメーションさせる
 
 タイトルの通り。  
-GraphicsViewのアイテムの色などをアニメーションさせるやり方を  
-調べてみました。  
+GraphicsView のアイテムの色などをアニメーションさせるやり方を  
+調べてみました。
 
 ## コード
-  
+
 ```python
 #!python3
 # -*- coding: utf-8 -*-
@@ -116,93 +121,101 @@ if __name__ == '__main__':
 
 ![](https://gyazo.com/c8bb0a55b87ccdea7a22a10c2056f48b.gif)
 
-実行すると、こんな感じで白→青にアニメーションするようになります。  
-  
-## いくつかはまりポイント  
-  
-一応できたのですが、いくつかはまりポイントがあったので軽く解説。  
-  
-### Propertyを作る  
-  
+実行すると、こんな感じで白 → 青にアニメーションするようになります。
+
+## いくつかはまりポイント
+
+一応できたのですが、いくつかはまりポイントがあったので軽く解説。
+
+### Property を作る
+
 アニメーションを使用するには、「プロパティ」を作成する必要があります。  
-ネットで調べた限りだと、出てくるプロパティは「Property関数」を使用して  
+ネットで調べた限りだと、出てくるプロパティは「Property 関数」を使用して  
 作っている例しかありませんでした。  
-が、PySideの場合なのかはわかりませんが  
+が、PySide の場合なのかはわかりませんが
+
 ```python
 self.setProperty('color', QtGui.QColor('red'))
 ```
+
 こんな感じで setProperty(プロパティ名、初期値)  
-のように指定する必要がありました。  
-  
-そしてこのプロパティを使用する場合は  
+のように指定する必要がありました。
+
+そしてこのプロパティを使用する場合は
+
 ```python
 self.property(プロパティ名)
 ```
-のようにする必要があります。  
-  
 
-### PropertyAnimationの引数
+のようにする必要があります。
 
-アニメーションを行う　PropertyAnimation　ですが、  
+### PropertyAnimation の引数
+
+アニメーションを行う　 PropertyAnimation 　ですが、  
 引数は　プロパティのあるオブジェクト、プロパティ名　のように指定します。  
 が、
+
 ```python
 self.ani = QtCore.QPropertyAnimation(self, 'color')
 ```
+
 ![](https://gyazo.com/644bde1386e5bafe9051158f400f13b6.png)
-これだとエラーになってしまいます。  
-  
-対応方法は、エラーのSupported signaturesを見て分かるとおり  
+これだとエラーになってしまいます。
+
+対応方法は、エラーの Supported signatures を見て分かるとおり  
 第二引数は「ByteArray」である必要があるので
 
 ```python
 self.ani = QtCore.QPropertyAnimation(self, b'color')
 ```
 
-こうすればOKです。  
-  
+こうすれば OK です。
 
-### GraphicsObjectを使う
+### GraphicsObject を使う
 
-プロパティを使用するためには、QObjectを継承している必要があります。  
-が、QGraphicsItemのほうはQObjectを継承していません。  
-なので、QGraphicsItemではなく  
-QObjectを継承している「 **QGraphicsObject** 」を使用する必要があります。  
-  
+プロパティを使用するためには、QObject を継承している必要があります。  
+が、QGraphicsItem のほうは QObject を継承していません。  
+なので、QGraphicsItem ではなく  
+QObject を継承している「 **QGraphicsObject** 」を使用する必要があります。
+
 ### ずっとループする
 
-PropertyAnimationには「何回ループするか」の設定はあるのですが  
+PropertyAnimation には「何回ループするか」の設定はあるのですが  
 ずっとループしてほしいという設定はありません。  
 ので、ずっとループしたい場合は
+
 ```python
 self.ani.finished.connect(self.ani.start)
 ```
-このようにすればとりあえずできます。  
-  
+
+このようにすればとりあえずできます。
+
 が、これだと絶対に終了しなくなるので  
-今回はBoolでフラグを作って、ダブルクリックで停止と再開をできるようにしています。  
-  
+今回は Bool でフラグを作って、ダブルクリックで停止と再開をできるようにしています。
+
 ### アニメーションカーブの指定
 
 アニメーションカーブは
+
 ```python
 self.ani.setEasingCurve(QtCore.QEasingCurve.OutCubic)
 ```
-これで指定できます。  
-  
-今回は    
 
-![](https://gyazo.com/e7cade6c28d215792ea8b5d16fdec7d5.png)  
-  
-こんなカーブになりました。  
-  
-他にも種類は色々あるので、詳しくは [こちら](http://pyside.github.io/docs/pyside/PySide/QtCore/QEasingCurve.html?highlight=qeasingcurve) を参照してください。  
-  
+これで指定できます。
+
+今回は
+
+![](https://gyazo.com/e7cade6c28d215792ea8b5d16fdec7d5.png)
+
+こんなカーブになりました。
+
+他にも種類は色々あるので、詳しくは [こちら](http://pyside.github.io/docs/pyside/PySide/QtCore/QEasingCurve.html?highlight=qeasingcurve) を参照してください。
+
 色々と罠はありましたが、分かってしまえば簡単なので  
 色々幅が広がりそう。
 
 ## 参考
 
-* https://dftalk.jp/?p=19675
-* https://stackoverflow.com/questions/8191255/how-do-i-create-and-animate-a-custom-widget-property-in-pyqt4
-* https://github.com/janbodnar/pyqt-qpropertyanimation/blob/master/color_anim.py
+-   https://dftalk.jp/?p=19675
+-   https://stackoverflow.com/questions/8191255/how-do-i-create-and-animate-a-custom-widget-property-in-pyqt4
+-   https://github.com/janbodnar/pyqt-qpropertyanimation/blob/master/color_anim.py

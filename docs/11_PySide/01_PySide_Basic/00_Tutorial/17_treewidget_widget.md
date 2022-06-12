@@ -2,6 +2,8 @@
 title: 基本Widgetを使ってみる(7) TreeWidgetでWidgetを使う
 tags:
     - PySide
+    - ListView
+description: TreeWidgetにWidgetを配置して編集できるようにする方法
 ---
 
 :fa-external-link: [前回](./16_treewidget_edit.md) TreeWidget を使用して編集 UI を作るのをやりましたが
