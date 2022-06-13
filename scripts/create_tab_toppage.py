@@ -54,7 +54,7 @@ def createIndexMd(rootDir):
             buff = dirName.split("/")
             dirTitle = re.sub("[0-9][0-9]_", "", buff[-1])
             dirIndent = len(buff) - 1
-            writeLines.append(f"{'    ' * dirIndent}- {dirTitle}")
+            writeLines.append(f"\n{'#' * dirIndent}{dirTitle}\n")
 
         for f in files:
             path = os.path.join(root, f).replace("\\", "/")
@@ -62,7 +62,7 @@ def createIndexMd(rootDir):
                 header = getHeader(path)
                 mdPath = path.replace(f"{rootDir}/", "")
                 indent = len(mdPath.split("/")) - 1
-                line = f"{indent * '    '}- [{header['title']}]({mdPath})"
+                line = f"- [{header['title']}]({mdPath})"
                 if 'description' in header and header['description']:
                     line += f": {header['description']}"
                 writeLines.append(line)
@@ -83,4 +83,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    docs = (os.getcwd() + "/docs").replace("\\", "/")
+    createIndexMd(f"{docs}/10_PGLang")
