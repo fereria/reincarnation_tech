@@ -3,7 +3,7 @@ title: PySideでFontAwesomeを使う
 tags:
     - PySide
     - Python
-description:
+description: PySideのアイコンにFontAwesomeを使う方法
 ---
 
 https://fontawesome.com/
@@ -27,8 +27,6 @@ pip で qtawesome をインストールします。
 ```python
 # -*- coding: utf-8 -*-
 import sys
-# from PySide2.QtCore import ()
-# from PySide2.QtGui import ()
 from PySide2.QtWidgets import (QApplication, QMainWindow, QDialog, QListWidget, QListWidgetItem)
 import qtawesome as qta
 
