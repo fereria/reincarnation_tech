@@ -54,7 +54,7 @@ def createIndexMd(rootDir):
             buff = dirName.split("/")
             dirTitle = re.sub("[0-9][0-9]_", "", buff[-1])
             dirIndent = len(buff) - 1
-            writeLines.append(f"\n{'#' * dirIndent}{dirTitle}\n")
+            writeLines.append(f"\n#{'#' * dirIndent}{dirTitle}\n")
 
         for f in files:
             path = os.path.join(root, f).replace("\\", "/")
