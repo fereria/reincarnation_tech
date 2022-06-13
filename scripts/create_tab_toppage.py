@@ -11,7 +11,8 @@ import glob
 import yaml
 
 EXCLUSION = [".git", ".github", ".vscode", ".history", "_book",
-             "node_modules", "stylesheets", "javascripts", 'pycache', 'workflows', 'ipynb']
+             "node_modules", "stylesheets", "javascripts", 'pycache', 'workflows', 'ipynb',
+             'blender_samplecode', 'pyside_samplecode', 'python_samplecode']
 
 
 def getHeader(path):
@@ -48,24 +49,28 @@ def createIndexMd(rootDir):
         if root != rootDir:
             root = root.replace("\\", "/")
             dirName = root.replace(rootDir + "/", "")
-            for e in EXCLUSION:
-                if e in dirName:
-                    break
-            buff = dirName.split("/")
-            dirTitle = re.sub("[0-9][0-9]_", "", buff[-1])
-            dirIndent = len(buff) - 1
-            writeLines.append(f"\n#{'#' * dirIndent}{dirTitle}\n")
 
-        for f in files:
-            path = os.path.join(root, f).replace("\\", "/")
-            if os.path.splitext(path)[1] == ".md":
-                header = getHeader(path)
-                mdPath = path.replace(f"{rootDir}/", "")
-                indent = len(mdPath.split("/")) - 1
-                line = f"- [{header['title']}]({mdPath})"
-                if 'description' in header and header['description']:
-                    line += f": {header['description']}"
-                writeLines.append(line)
+            flg = False
+            for e in EXCLUSION:
+                if e == dirName:
+                    flg = True
+
+            if not flg:
+                buff = dirName.split("/")
+                dirTitle = re.sub("[0-9][0-9]_", "", buff[-1])
+                dirIndent = len(buff) - 1
+                writeLines.append(f"\n#{'#' * dirIndent}{dirTitle}\n")
+
+                for f in files:
+                    path = os.path.join(root, f).replace("\\", "/")
+                    if os.path.splitext(path)[1] == ".md":
+                        header = getHeader(path)
+                        mdPath = path.replace(f"{rootDir}/", "")
+                        indent = len(mdPath.split("/")) - 1
+                        line = f"- [{header['title']}]({mdPath})"
+                        if 'description' in header and header['description']:
+                            line += f": {header['description']}"
+                        writeLines.append(line)
 
     with codecs.open(f"{rootDir}/index.md", 'w', 'utf-8') as f:
         f.write("\n".join(writeLines))
@@ -82,5 +87,12 @@ def main():
                 createIndexMd(path)
 
 
+def samplecode():
+
+    docs = (os.getcwd() + "/docs").replace("\\", "/")
+    createIndexMd(f"{docs}/11_PySide")
+
+
 if __name__ == "__main__":
     main()
+    # samplecode()

@@ -3,6 +3,7 @@ title: USDとは
 tags:
     - USD
     - USD基本
+description: USDとはどういうものか概要の説明
 ---
 
 # USD とは

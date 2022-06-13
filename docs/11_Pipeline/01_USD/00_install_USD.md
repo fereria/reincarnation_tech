@@ -59,8 +59,6 @@ git clone https://github.com/PixarAnimationStudios/USD.git
 python build_scripts\build_usd.py <ビルド成果物の出力先>
 ```
 
-
-
 ## Path を通す
 
 ダウンロードが終わったら、必要な PATH を通します。  

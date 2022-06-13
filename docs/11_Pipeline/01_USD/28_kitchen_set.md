@@ -1,8 +1,9 @@
 ---
 title: USDの機能の多くはKitchen_setが教えてくれる
 tags:
-  - USD
-  - AdventCalendar2021
+    - USD
+    - AdventCalendar2021
+description: 公式サンプルをくわしくみてみる
 ---
 
 [Universal Scene Description AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 25 日目(最終日)は、
@@ -160,11 +161,11 @@ Kind は、ルートの DefaultPrim を assembly それ以下の Asset をグル
 そのため、Component 以下には Component は作ってはいけないことになっています。
 
 !!! info
-    これは可能ではあるものの、USD のコンポジションやレイヤーの構成上
-    シンプルな状態を保つ（いくらでも複雑化できるけど、適切に扱える範囲に整理する）ための
-    ルールです。
-    もちろん、このルールに沿わなくてもシーンの構築は可能ですが、
-    あまり推奨されません。
+これは可能ではあるものの、USD のコンポジションやレイヤーの構成上
+シンプルな状態を保つ（いくらでも複雑化できるけど、適切に扱える範囲に整理する）ための
+ルールです。
+もちろん、このルールに沿わなくてもシーンの構築は可能ですが、
+あまり推奨されません。
 
 Kitchen_set のアセットは、
 
@@ -198,7 +199,7 @@ USD の Instance は、「同じ」オブジェクトのインスタンスが、
 
 instanced.usd の場合は、各アセットが Payload で呼ばれているのは共通ですが
 それに加えて「instanceable」が True に指定されています。
-instanceableとは
+instanceable とは
 
 > Instanceable is a metadatum that declares whether a given prim should be considered as a candidate for instancing
 > 引用元: https://graphics.pixar.com/usd/release/glossary.html#instanceable
