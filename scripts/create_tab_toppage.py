@@ -83,6 +83,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    docs = (os.getcwd() + "/docs").replace("\\", "/")
-    createIndexMd(f"{docs}/10_PGLang")
+    main()
