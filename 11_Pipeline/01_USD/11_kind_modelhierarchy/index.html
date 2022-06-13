@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="USDでのシーンアッセンブリ時のルールについて" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/11_kind_modelhierarchy/" rel="canonical"/>
 <link href="../../../favicon.ico" rel="icon"/>
@@ -1301,7 +1302,7 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#kind">
-    Kindとは
+    Kind とは
   </a>
 </li>
 <li class="md-nav__item">
@@ -1311,9 +1312,9 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#kind_1">
-    Kindの種類
+    Kind の種類
   </a>
-<nav aria-label="Kindの種類" class="md-nav">
+<nav aria-label="Kind の種類" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#model">
@@ -1337,7 +1338,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#model-hierarchy_1">
-    Model Hierarchyのまとめ
+    Model Hierarchy のまとめ
   </a>
 </li>
 <li class="md-nav__item">
@@ -1356,7 +1357,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#plugin">
-    Pluginを作る
+    Plugin を作る
   </a>
 </li>
 </ul>
@@ -2817,7 +2818,7 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#kind">
-    Kindとは
+    Kind とは
   </a>
 </li>
 <li class="md-nav__item">
@@ -2827,9 +2828,9 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#kind_1">
-    Kindの種類
+    Kind の種類
   </a>
-<nav aria-label="Kindの種類" class="md-nav">
+<nav aria-label="Kind の種類" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#model">
@@ -2853,7 +2854,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#model-hierarchy_1">
-    Model Hierarchyのまとめ
+    Model Hierarchy のまとめ
   </a>
 </li>
 <li class="md-nav__item">
@@ -2872,7 +2873,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#plugin">
-    Pluginを作る
+    Plugin を作る
   </a>
 </li>
 </ul>
@@ -2894,14 +2895,14 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>Kind と Model と ModelHierarchy</h1>
-<p>今回は、<a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/">SOLARISでUSDアセットを作ろう</a>記事内でほんの少し触れた <strong>「Kind」</strong> についてを見ていきます。</p>
-<h2 id="kind">Kindとは<a class="headerlink" href="#kind" title="Permanent link">¶</a></h2>
-<p>USDにおけるKindとは、</p>
+<p>今回は、<a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/">SOLARIS で USD アセットを作ろう</a>記事内でほんの少し触れた <strong>「Kind」</strong> についてを見ていきます。</p>
+<h2 id="kind">Kind とは<a class="headerlink" href="#kind" title="Permanent link">¶</a></h2>
+<p>USD における Kind とは、</p>
 <blockquote>
 <p>Kind is a reserved, prim-level metadatum whose authored value is a simple string token<br/>
-公式Docsから引用</p>
+公式 Docs から引用</p>
 </blockquote>
-<p>公式の用語集をみると、Prim単位で指定することができるメタデータの一種とのことです。<br/>
+<p>公式の用語集をみると、Prim 単位で指定することができるメタデータの一種とのことです。<br/>
 Kind 自体はシンプルな文字列（Token）で表されています。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2913,125 +2914,125 @@ Kind 自体はシンプルな文字列（Token）で表されています。</p>
 {
 }
 </code></pre></div></td></tr></table></div>
-<p>Kindを指定すると、このようになります。<br/>
+<p>Kind を指定すると、このようになります。<br/>
 Kind は他のメタデータと同じように Prim に対して指定することができます。<br/>
 この Kind は、後述する <strong>ModelHierarchy</strong> という概念に応じて指定の役割を持っていて<br/>
 その役割を Prim に対して指定することができます。</p>
 <h2 id="model-hierarchy">Model Hierarchy<a class="headerlink" href="#model-hierarchy" title="Permanent link">¶</a></h2>
-<p>では、この Model Hierarchyとはなんでしょう。</p>
-<p>USDは、多数のレイヤーを複雑に組み合わせることで１つの巨大なシーングラフを<br/>
+<p>では、この Model Hierarchy とはなんでしょう。</p>
+<p>USD は、多数のレイヤーを複雑に組み合わせることで１つの巨大なシーングラフを<br/>
 構築することができます。<br/>
-そうして出来上がったシーングラフはとても巨大で、PrimTypeや名前だけで<br/>
+そうして出来上がったシーングラフはとても巨大で、PrimType や名前だけで<br/>
 その巨大で複雑なシーングラフをコントロールするのは非常に大変です。<br/>
 その巨大なシーングラフを、管理可能な単位に分割するために<br/>
 この「Kind」と呼ばれるラベルを付けて、管理するための概念が<br/>
 この ModelHierarchy となります。</p>
-<p>シーングラフ内のPrimのうち、 <strong>重要な目次に当たる重要なPrim</strong>、<br/>
+<p>シーングラフ内の Prim のうち、 <strong>重要な目次に当たる重要な Prim</strong>、<br/>
 それは <strong>シーン内に配置されたモデル部分</strong> であったり、<br/>
 <strong>それらを分類ごとにまとめるグループ</strong> であったり<br/>
-<strong>パブリッシュされるアセットのRootPrimであったり</strong><br/>
+<strong>パブリッシュされるアセットの RootPrim であったり</strong><br/>
 そういった階層を構築する上で重要となる箇所にインデックスとして<br/>
-決められたルールに沿ったKindを指定し、階層構造を作成します。</p>
-<p>この Model Hierarchy によって定義されているKindが<br/>
+決められたルールに沿った Kind を指定し、階層構造を作成します。</p>
+<p>この Model Hierarchy によって定義されている Kind が<br/>
 <strong>model group assembly component subcomponent</strong><br/>
-の5つです。<br/>
+の 5 つです。<br/>
 この５つを指定のルールに則って使用することで、<br/>
 巨大な構造をコントロールすることができます。</p>
 <p>この Model Hierarchy で定義されている Kind とそのルールを<br/>
 順番に見ていきます。</p>
-<h2 id="kind_1">Kindの種類<a class="headerlink" href="#kind_1" title="Permanent link">¶</a></h2>
+<h2 id="kind_1">Kind の種類<a class="headerlink" href="#kind_1" title="Permanent link">¶</a></h2>
 <h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">¶</a></h3>
 <p>まず、すべての基本となるのがこの「 <strong>Model</strong> 」です。<br/>
 モデルとは、 Assembly Group Component などの各種類の基本となるもので<br/>
 これらの要素を抽象化したものが Model になります。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f733b4db896dffc799cda986c51d83b5.png"><img alt="" src="https://gyazo.com/f733b4db896dffc799cda986c51d83b5.png"/></a></p>
 <p>関係図を表すとこのようになっています。<br/>
-Modelとは、Hierarchyを構成する上での抽象化された概念<br/>
-（すべてのKindはModelに属する）<br/>
-なので、Kindでは model は指定しません。</p>
-<p>そのかわり、このあと説明するKind（Assembly Group Component）は<br/>
-すべてModelに属したものという意味になります。<br/>
-そのため、Assembly Group Component が指定されたPrimに対して<br/>
+Model とは、Hierarchy を構成する上での抽象化された概念<br/>
+（すべての Kind は Model に属する）<br/>
+なので、Kind では model は指定しません。</p>
+<p>そのかわり、このあと説明する Kind（Assembly Group Component）は<br/>
+すべて Model に属したものという意味になります。<br/>
+そのため、Assembly Group Component が指定された Prim に対して<br/>
 IsModel() を実行すると、True になります。</p>
-<p>では、それぞれのKindを見ていきます。</p>
+<p>では、それぞれの Kind を見ていきます。</p>
 <h3 id="assembly">Assembly<a class="headerlink" href="#assembly" title="Permanent link">¶</a></h3>
-<p>Assemblyは、Publishされたセット、またはPublishされたアセットへのリファレンスに<br/>
+<p>Assembly は、Publish されたセット、または Publish されたアセットへのリファレンスに<br/>
 対してつけられます。<br/>
-この「Publishされたアセット」というのが、<br/>
+この「Publish されたアセット」というのが、<br/>
 一般的に言われる「 <strong>使用可能な状態になっている（リリース済）アセット</strong> 」のことで<br/>
-BGだったり、小物類だったりと、アーティストがShotワーク時に扱うモデルを<br/>
+BG だったり、小物類だったりと、アーティストが Shot ワーク時に扱うモデルを<br/>
 指すのかと思います。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/9728de9268c4e4a9a00962c0ab4c7b2a.png"><img alt="" src="https://gyazo.com/9728de9268c4e4a9a00962c0ab4c7b2a.png"/></a></p>
-<p>キッチンセットをみてみると、RootPrim以下にあるアセット名のPrim<br/>
-（DefaultPrim）がこの assembly が指定されたPrimになります。</p>
+<p>キッチンセットをみてみると、RootPrim 以下にあるアセット名の Prim<br/>
+（DefaultPrim）がこの assembly が指定された Prim になります。</p>
 <h3 id="group">Group<a class="headerlink" href="#group" title="Permanent link">¶</a></h3>
-<p>次にGroup。<br/>
-これは名前の通り複数のPrimをまとめるためのものです。<br/>
-上の Assembly も Groupの一種ですが、AssemblyはPublish用のアセットのルートを定義<br/>
+<p>次に Group。<br/>
+これは名前の通り複数の Prim をまとめるためのものです。<br/>
+上の Assembly も Group の一種ですが、Assembly は Publish 用のアセットのルートを定義<br/>
 するものなのに対して、こちらはシンプルに Model Hierarchy の階層化するために<br/>
 存在するシンプルなものです。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/987075c47963fc1f3dbfb47cd39d848a.png"><img alt="" src="https://gyazo.com/987075c47963fc1f3dbfb47cd39d848a.png"/></a></p>
-<p>キッチンセットの ####_grp となっているPrimが</p>
+<p>キッチンセットの ####_grp となっている Prim が</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c86374d6a3bb5424cd928436d905299c.png"><img alt="" src="https://gyazo.com/c86374d6a3bb5424cd928436d905299c.png"/></a></p>
 <p>この group にあたります。</p>
 <h3 id="component">Component<a class="headerlink" href="#component" title="Permanent link">¶</a></h3>
-<p>次にComponent。<br/>
+<p>次に Component。<br/>
 これは、このアセットを構成する最小要素のアセットにあたります。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c7ff9afc7f22901a4fdcf3b8ad724657.png"><img alt="" src="https://gyazo.com/c7ff9afc7f22901a4fdcf3b8ad724657.png"/></a></p>
 <p>キッチンセット上にリファレンスでロードされている小物アセットが</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/b0258f68034165b310ef0f4cab2757ad.png"><img alt="" src="https://gyazo.com/b0258f68034165b310ef0f4cab2757ad.png"/></a></p>
 <p>component になっています。<br/>
-このcomponent は「leaf model」と呼ばれていて、<br/>
-Model Hierarchyの概念では末端の構成要素になります。</p>
-<p>このComponent以下には別のModelは存在しません。</p>
+この component は「leaf model」と呼ばれていて、<br/>
+Model Hierarchy の概念では末端の構成要素になります。</p>
+<p>この Component 以下には別の Model は存在しません。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/103a5fc6d8ee97eacfdfabcc91472994.png"><img alt="" src="https://gyazo.com/103a5fc6d8ee97eacfdfabcc91472994.png"/></a></p>
-<p>なので、Component以下（リファレンスでロードされている各アセット以下）のXformプリムは<br/>
-Meshをまとめるためのグループの階層として利用されていても</p>
+<p>なので、Component 以下（リファレンスでロードされている各アセット以下）の Xform プリムは<br/>
+Mesh をまとめるためのグループの階層として利用されていても</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/95c3f1c8a1a18adc70fccf235696d636.png"><img alt="" src="https://gyazo.com/95c3f1c8a1a18adc70fccf235696d636.png"/></a></p>
 <p>子のプリムには Kind は指定されていません。</p>
-<p>Componentの指定はどこで行うと良いのか？というと、<br/>
-この /Kitchen_set 以下の Primに対して行うのではなく</p>
+<p>Component の指定はどこで行うと良いのか？というと、<br/>
+この /Kitchen_set 以下の Prim に対して行うのではなく</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/01772bcfc0d2ed26bb40bac180e4a214.png"><img alt="" src="https://gyazo.com/01772bcfc0d2ed26bb40bac180e4a214.png"/></a><br/>
 <a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/636805213c366a1b7ed315f77fc44ba7.png"><img alt="" src="https://gyazo.com/636805213c366a1b7ed315f77fc44ba7.png"/></a></p>
-<p>リファレンス元のレイヤーのdefaultPrim に対して指定します。<br/>
+<p>リファレンス元のレイヤーの defaultPrim に対して指定します。<br/>
 このようにすると、リファレンスでロードするレイヤーが「leaf model」<br/>
-あるModel Hierarchyを構成する末端の要素として機能するようになります。</p>
-<h3 id="model-hierarchy_1">Model Hierarchyのまとめ<a class="headerlink" href="#model-hierarchy_1" title="Permanent link">¶</a></h3>
+ある Model Hierarchy を構成する末端の要素として機能するようになります。</p>
+<h3 id="model-hierarchy_1">Model Hierarchy のまとめ<a class="headerlink" href="#model-hierarchy_1" title="Permanent link">¶</a></h3>
 <p>まとめると、 Model Hierarchy の概念で、アセット内のシーングラフを<br/>
 書き表すとこうなります。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"><img alt="" src="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"/></a></p>
-<p>末端にあたる Component Primには、アセットを構成する細かいアセットが<br/>
+<p>末端にあたる Component Prim には、アセットを構成する細かいアセットが<br/>
 リファレンスでロードされています。</p>
-<p>USDで複数の細かなアセット（Component、リファレンスでロードされるレイヤー）を<br/>
+<p>USD で複数の細かなアセット（Component、リファレンスでロードされるレイヤー）を<br/>
 配置して１つの大きな背景などとしてレイアウトしたい場合は、<br/>
-TopNodeに Assembly(Publishされて、利用される１つの背景アセット)としてレイヤーを<br/>
+TopNode に Assembly(Publish されて、利用される１つの背景アセット)としてレイヤーを<br/>
 用意します。<br/>
-そして、区画や、タイプごとにGroupを作ってまとめ<br/>
+そして、区画や、タイプごとに Group を作ってまとめ<br/>
 実際に配置するモデル（Component）をロードする...<br/>
 それが、シーンを構築する上での　基本構造になります。</p>
 <h3 id="_1">活用方法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f562caa3aaf7c2a43fbd6751f1bb771d.png"><img alt="" src="https://gyazo.com/f562caa3aaf7c2a43fbd6751f1bb771d.png"/></a></p>
 <p>この Kind を利用することでどのようなことが可能になるかというと、<br/>
-例えば「USDView」のPickModelで「Models」に変更すると、</p>
+例えば「USDView」の PickModel で「Models」に変更すると、</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://i.gyazo.com/2d2cb6209886ec9ebc67abf1ae70e75f.gif"><img alt="" src="https://i.gyazo.com/2d2cb6209886ec9ebc67abf1ae70e75f.gif"/></a></p>
-<p>モデルをピックするときにShapeのPrimではなく、Kindが指定されたPrimを選択する...<br/>
+<p>モデルをピックするときに Shape の Prim ではなく、Kind が指定された Prim を選択する...<br/>
 といったことが可能になります。<br/>
-この選択しているPrimは「Component」が指定されている つまりはレイアウトで配置する<br/>
+この選択している Prim は「Component」が指定されている つまりはレイアウトで配置する<br/>
 階層をビューポート上でピックする...といったような<br/>
-指定のPrimに対して追加機能を入れたりすることができます。</p>
+指定の Prim に対して追加機能を入れたりすることができます。</p>
 <h2 id="_2">拡張する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>ここまでで、kindの指定を利用したModelHierarchy構築を説明していきましたが<br/>
+<p>ここまでで、kind の指定を利用した ModelHierarchy 構築を説明していきましたが<br/>
 ここまででてきた assembly group component だけでは足りなかったり<br/>
 もう少し詳細な分類をつけたいということも出てくるかと思います。</p>
 <p>たとえば、背景の中でも建物と小物で別の分類を作りたいとか<br/>
-Assemblyの中でも、背景とキャラとプロップとで別の種類を指定しておきたい<br/>
-（そうすることでシーンをTraverseするときに効率化したい）<br/>
+Assembly の中でも、背景とキャラとプロップとで別の種類を指定しておきたい<br/>
+（そうすることでシーンを Traverse するときに効率化したい）<br/>
 などなど。</p>
 <p>その場合は、必要に応じて kind の指定を拡張することができます。<br/>
-拡張するには、USDのPluginを作成します。</p>
-<h3 id="plugin">Pluginを作る<a class="headerlink" href="#plugin" title="Permanent link">¶</a></h3>
-<p>作るには、Pluginを作成します。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+拡張するには、USD の Plugin を作成します。</p>
+<h3 id="plugin">Plugin を作る<a class="headerlink" href="#plugin" title="Permanent link">¶</a></h3>
+<p>作るには、Plugin を作成します。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -3070,52 +3071,52 @@ Assemblyの中でも、背景とキャラとプロップとで別の種類を指
     }
   ]
 }
-</code></pre></div></td></tr></table></div><br/>
-内容はHelpの内容を持ってきたものです。<br/>
-このjsonを plugInfo.json として保存して、<br/>
-USD以下 <strong>plugin/usd/####/resources/plugInfo.json</strong> に保存します。</p>
-<p>指定方法はかんたんで、ベースになるkindを指定して、新しいKind名をつけるだけです。<br/>
+</code></pre></div></td></tr></table></div>
+<p>内容は Help の内容を持ってきたものです。<br/>
+この json を plugInfo.json として保存して、<br/>
+USD 以下 <strong>plugin/usd/####/resources/plugInfo.json</strong> に保存します。</p>
+<p>指定方法はかんたんで、ベースになる kind を指定して、新しい Kind 名をつけるだけです。<br/>
 上の例だと、 assembly つまり、パブリッシュするアセットのルートにつける指定に<br/>
-charであったりbgであったりpropであったりといった、より細かい分類を指定した<br/>
-kindを追加しています。</p>
+char であったり bg であったり prop であったりといった、より細かい分類を指定した<br/>
+kind を追加しています。</p>
 <p>同様に、 leaf model 実際に配置しているモデルに charprop というより詳細な指定を<br/>
 した kind を追加しています。</p>
 <p>プラグイン作成は以上で完了です。<br/>
 実際に動いているか確認してみます。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
 <span class="n">api</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">ModelAPI</span><span class="p">(</span><span class="n">usdviewApi</span><span class="o">.</span><span class="n">prim</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">SetKind</span><span class="p">(</span><span class="s1">'chargroup'</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-試しにusdviewで開いたモデルに、作成したKindをセットします。</p>
+</code></pre></div></td></tr></table></div>
+<p>試しに usdview で開いたモデルに、作成した Kind をセットします。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/341b1b7995beea7768286c64b517cd12.png"><img alt="" src="https://gyazo.com/341b1b7995beea7768286c64b517cd12.png"/></a></p>
 <p>セットできました。<br/>
-ただし、このセットはPluginで追加していなくても追加が可能です。</p>
-<p>ですが、<br/>
+ただし、このセットは Plugin で追加していなくても追加が可能です。</p>
+<p>ですが、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">usdviewApi</span><span class="o">.</span><span class="n">prim</span><span class="o">.</span><span class="n">IsGroup</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div><br/>
-セットしたPrimに対して IsGroup()を実行すると、 Trueが帰ってくるようになります。<br/>
+</code></pre></div></td></tr></table></div>
+<p>セットした Prim に対して IsGroup()を実行すると、 True が帰ってくるようになります。<br/>
 これは、ベースとなる kind に assembly を指定しているので<br/>
-group に属する assembly に属しているため、IsGroupでTrueになっています。</p>
-<p>このように、kindを拡張することで<br/>
+group に属する assembly に属しているため、IsGroup で True になっています。</p>
+<p>このように、kind を拡張することで<br/>
 より細かく作成しているアセットの階層をコントロールできる<br/>
 （検索して必要な Component に行きつける）<br/>
 ようになることがわかりました。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>はじめはどのように扱うかわかりにくかった Kind でしたが、<br/>
-PrimTypeや名前ではなく別のタグで<br/>
+PrimType や名前ではなく別のタグで<br/>
 シーン全体をトラバースし、コントロールできるようにすることで<br/>
 複雑で巨大なシーングラフを構築するときに、大きな助けになる機能であるとわかりました。</p>
-<p>また、このKindやModelHierarchyの概念（定義）を理解することは、<br/>
-USDのシーングラフをどのように体系化させ、定義し、実際に構築するかを考える上で<br/>
+<p>また、この Kind や ModelHierarchy の概念（定義）を理解することは、<br/>
+USD のシーングラフをどのように体系化させ、定義し、実際に構築するかを考える上で<br/>
 重要な指標になると思いました。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2020-12-21 13:25:21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-13 16:00:49</span>
 </small>
 </div>
 </article>
