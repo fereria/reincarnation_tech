@@ -26,6 +26,10 @@ for root, dirs, files in os.walk(sampleDir):
                 if hasattr(mod, 'title'):
                     text += ["---",
                              "title: " + mod.title]
+                else:
+                    text += ["---",
+                             "title: " + file]
+
                 if hasattr(mod, 'tags'):
                     text += ['tags:']
                     for tag in mod.tags:
