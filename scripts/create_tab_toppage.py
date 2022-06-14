@@ -95,5 +95,5 @@ def samplecode():
 
 
 if __name__ == "__main__":
-    #main()
-    samplecode()
+    main()
+    # samplecode()
