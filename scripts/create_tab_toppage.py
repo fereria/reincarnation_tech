@@ -59,14 +59,15 @@ def createIndexMd(rootDir):
                 buff = dirName.split("/")
                 dirTitle = re.sub("[0-9][0-9]_", "", buff[-1])
                 dirIndent = len(buff) - 1
-                writeLines.append(f"\n#{'#' * dirIndent}{dirTitle}\n")
+
+                if len(glob.glob(root + "/*.md")) > 0:
+                    writeLines.append(f"\n#{'#' * dirIndent}{dirTitle}\n")
 
                 for f in files:
                     path = os.path.join(root, f).replace("\\", "/")
                     if os.path.splitext(path)[1] == ".md":
                         header = getHeader(path)
                         mdPath = path.replace(f"{rootDir}/", "")
-                        indent = len(mdPath.split("/")) - 1
                         line = f"- [{header['title']}]({mdPath})"
                         if 'description' in header and header['description']:
                             line += f": {header['description']}"
@@ -90,9 +91,9 @@ def main():
 def samplecode():
 
     docs = (os.getcwd() + "/docs").replace("\\", "/")
-    createIndexMd(f"{docs}/11_PySide")
+    createIndexMd(f"{docs}/11_Pipeline")
 
 
 if __name__ == "__main__":
-    main()
-    # samplecode()
+    #main()
+    samplecode()
