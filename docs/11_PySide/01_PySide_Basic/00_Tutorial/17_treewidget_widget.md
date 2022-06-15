@@ -1,5 +1,5 @@
 ---
-title: 基本Widgetを使ってみる(7) TreeWidgetでWidgetを使う
+title: List/Tree Widgetを使おう(3) Widget配置編
 tags:
     - PySide
     - ListView

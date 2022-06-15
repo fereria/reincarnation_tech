@@ -1,5 +1,5 @@
 ---
-title: 基本Widgetを使ってみる(5) ListWidget TreeWidget
+title: List/Tree Widgetを使おう(1) 基本編
 tags:
     - PySide
     - Python

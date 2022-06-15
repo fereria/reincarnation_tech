@@ -1,5 +1,5 @@
 ---
-title: 基本Widgetを使ってみる(6) TreeWidgetで編集する
+title: List/Tree Widgetを使おう(2) 編集編
 tags:
     - PySide
     - ListView
