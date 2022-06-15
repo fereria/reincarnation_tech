@@ -42,7 +42,7 @@ def createIndexMd(rootDir):
 
     writeLines = []
 
-    for root, dirs, files in os.walk(rootDir):
+    for root, dirs, files in os.walk(rootDir, topdown=False):
 
         files.sort()
 
@@ -91,9 +91,8 @@ def main():
 def samplecode():
 
     docs = (os.getcwd() + "/docs").replace("\\", "/")
-    createIndexMd(f"{docs}/11_Pipeline")
+    createIndexMd(f"{docs}/11_PySide")
 
 
 if __name__ == "__main__":
     main()
-    # samplecode()
