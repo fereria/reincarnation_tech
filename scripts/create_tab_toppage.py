@@ -42,7 +42,7 @@ def createIndexMd(rootDir):
 
     writeLines = []
 
-    for root, dirs, files in os.walk(rootDir, topdown=False):
+    for root, dirs, files in os.walk(rootDir, topdown=True):
 
         files.sort()
 
@@ -95,4 +95,5 @@ def samplecode():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    samplecode()
