@@ -1,6 +1,8 @@
 ---
 title: mkdocs を設定する
+description: このサイトを構築するのに使用しているmkdocsの基本設定方法
 ---
+
 テクニカル系の内容をまとめるための記事作成用に  
 静的サイト生成ツールの mkdocs を使用してみました。
 
@@ -69,13 +71,13 @@ mkdocs gh-deploy
 
 ```yml
 theme:
-  feature:
-    tabs: true
-  language: ja
-  name: material
-  palette:
-    accent: Green
-    primary: Green
+    feature:
+        tabs: true
+    language: ja
+    name: material
+    palette:
+        accent: Green
+        primary: Green
 ```
 
 最近はじめてこの YML 形式を知りましたが、シンプルで編集しやすいのが良いです。  
@@ -90,17 +92,17 @@ MkDocs にはいろいろな拡張機能がありますので、
 
 ```yml
 markdown_extensions:
-  - meta
-  - pymdownx.mark
-  - pymdownx.magiclink
-  - pymdownx.emoji
-  - fontawesome_markdown
-  - pymdownx.keys
-  - def_list
-  - admonition
-  - codehilite:
-      linenums: true
-      use_pygments: true
+    - meta
+    - pymdownx.mark
+    - pymdownx.magiclink
+    - pymdownx.emoji
+    - fontawesome_markdown
+    - pymdownx.keys
+    - def_list
+    - admonition
+    - codehilite:
+          linenums: true
+          use_pygments: true
 ```
 
 #### meta
@@ -259,18 +261,18 @@ VSCode のビルドタスクを作成しておきます。
 
 ```json
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "update_summary",
-      "type": "shell",
-      "command": "deploy.bat",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    }
-  ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "update_summary",
+			"type": "shell",
+			"command": "deploy.bat",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
 }
 ```
 
@@ -293,7 +295,7 @@ CSS を調整して幅を広げました。
 
 ```yml
 extra_css:
-  - stylesheets/extra.css
+    - stylesheets/extra.css
 ```
 
 extra_css: で、読み込みたい CSS を指定します。  
@@ -301,36 +303,36 @@ extra_css: で、読み込みたい CSS を指定します。
 
 ```css
 @media only screen and (min-width: 100em) {
-  label.md-nav__link {
-    background-color: #3cb34057;
-    padding: 2px 2px 2px 10px;
-    font-size: 1.3rem;
-  }
-  a.md-nav__link {
-    font-size: 1.3rem;
-  }
+	label.md-nav__link {
+		background-color: #3cb34057;
+		padding: 2px 2px 2px 10px;
+		font-size: 1.3rem;
+	}
+	a.md-nav__link {
+		font-size: 1.3rem;
+	}
 
-  .md-grid {
-    max-width: 142rem;
-    margin-right: auto;
-    margin-left: auto;
-  }
+	.md-grid {
+		max-width: 142rem;
+		margin-right: auto;
+		margin-left: auto;
+	}
 
-  .md-content {
-    margin-left: 34.2rem;
-  }
+	.md-content {
+		margin-left: 34.2rem;
+	}
 
-  .md-sidebar--secondary {
-    margin-left: 142rem;
-  }
+	.md-sidebar--secondary {
+		margin-left: 142rem;
+	}
 
-  .md-sidebar--primary {
-    width: 34.2rem;
-  }
+	.md-sidebar--primary {
+		width: 34.2rem;
+	}
 
-  .md-nav__title {
-    font-size: 1.7rem;
-  }
+	.md-nav__title {
+		font-size: 1.7rem;
+	}
 }
 ```
 
@@ -350,25 +352,25 @@ GitBook でもそうですが、全部のタブをチクチク開いて探して
 
 ```yml
 extra_javascript:
-  - javascripts/extra.js
+    - javascripts/extra.js
 ```
 
 まず、シーンに読み込みたい JS を追加して
 
 ```js
-document.addEventListener("DOMContentLoaded", function() {
-  var nav = document.getElementsByClassName("md-nav");
-  for (var i = 0; i < nav.length; i++) {
-    if (nav.item(i).getAttribute("data-md-level")) {
-      nav.item(i).style.display = "block";
-      nav.item(i).style.overflow = "visible";
-    }
-  }
+document.addEventListener("DOMContentLoaded", function () {
+	var nav = document.getElementsByClassName("md-nav");
+	for (var i = 0; i < nav.length; i++) {
+		if (nav.item(i).getAttribute("data-md-level")) {
+			nav.item(i).style.display = "block";
+			nav.item(i).style.overflow = "visible";
+		}
+	}
 
-  var nav = document.getElementsByClassName("md-nav__toggle");
-  for (var i = 0; i < nav.length; i++) {
-    nav.item(i).checked = true;
-  }
+	var nav = document.getElementsByClassName("md-nav__toggle");
+	for (var i = 0; i < nav.length; i++) {
+		nav.item(i).checked = true;
+	}
 });
 ```
 
@@ -398,4 +400,4 @@ mkdocs+GitHubPages に落ち着きそうです。
 
 ## 参考
 
-- https://qiita.com/mebiusbox2/items/a61d42878266af969e3c
+-   https://qiita.com/mebiusbox2/items/a61d42878266af969e3c

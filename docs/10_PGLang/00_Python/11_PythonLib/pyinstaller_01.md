@@ -2,7 +2,7 @@
 title: PyInstallerでexeを作る
 tags:
     - Python
-description:
+description: 単独で実行できるファイルにコンバートする方法
 ---
 
 PyInstaller を利用すると、Python のコードを exe 化して
@@ -92,4 +92,4 @@ a = Analysis(
 https://stackoverflow.com/questions/7674790/bundling-data-files-with-pyinstaller-onefile
 
 その場合は、ファイルパスの取得をするための関数を用意して
-pyinstallerで固められている場合は、MEIPASSを指定するようにする必要があります。
+pyinstaller で固められている場合は、MEIPASS を指定するようにする必要があります。

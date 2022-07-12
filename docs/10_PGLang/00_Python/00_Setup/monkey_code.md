@@ -3,6 +3,7 @@ title: MonkeyTypeで自動アノテーション追加
 tags:
     - Python
     - VSCode
+description: 関数の引数や返り値の型指定を自動でやる方法
 ---
 
 Python3 から追加された機能で、関数の引数や戻り値の型指定をすることができるようになりました。

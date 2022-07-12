@@ -1,5 +1,6 @@
 ---
 title: Pythonで引数をパースする
+description: コマンドラインツールを作成するときに使用するargparserの使い方
 ---
 
 基本的な argparse の使い方をメモ。
@@ -67,5 +68,5 @@ optional arguments:
 
 ## 参考
 
-- https://docs.python.jp/3/library/argparse.html#action
-- http://python.civic-apps.com/argparse/
+-   https://docs.python.jp/3/library/argparse.html#action
+-   http://python.civic-apps.com/argparse/
