@@ -67,7 +67,7 @@ def createIndexMd(rootDir):
                             line += f": {header['description']}"
                         if 'tags' in header:
                             for i in header['tags']:
-                                line += " {{'" + i + "'|green_badge}}"
+                                line += "{{'" + i + "'|green_badge}}"
                         writeLines.append(line)
 
     with codecs.open(f"{rootDir}/index.md", 'w', 'utf-8') as f:
