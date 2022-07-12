@@ -1,8 +1,9 @@
 ---
 title: PCPでコンポジションアークの構造を解析・編集対象を取得する
+description: USDのコンポジションアークを深堀する
 ---
 
-このサイトのほかページでも何度か説明している通り、USDは複数のファイルを合成して
+このサイトのほかページでも何度か説明している通り、USD は複数のファイルを合成して
 １つのシーングラフに構築することができます。
 
 ![](https://gyazo.com/e2d4b11418ae5af3a10c27a1e9531b1a.png)
@@ -14,9 +15,9 @@ title: PCPでコンポジションアークの構造を解析・編集対象を�
 
 ![](https://gyazo.com/8f504a6f53f8f40b0384fac654508624.png)
 
-このusdは１つのusdではなく、複数のUSDをコンポジションアークを使用して１つのusdに合成して
+この usd は１つの usd ではなく、複数の USD をコンポジションアークを使用して１つの usd に合成して
 上のようなキッチンセットになっているわけです。
-(この１つのアセットを構成するusdファイルは 228ファイルありました)
+(この１つのアセットを構成する usd ファイルは 228 ファイルありました)
 
 では、この複雑なファイルの組み合わせでできあがったシーングラフが
 
@@ -34,29 +35,29 @@ for spec in prim.GetPrimStack():
     print(spec.layer)
 ```
 
-指定のPrimのPrimStackを取得して、そのPrimを構築するためのSpecを取得する方法つかったり、
-編集対象を取得して切り替える場合は、以前に説明を書いた[EditTargetでLayerを操作する](01_editTarget.md)を利用して
-編集レイヤーを取得してTargetを切り替えて編集する...という手を使うことができます。
+指定の Prim の PrimStack を取得して、その Prim を構築するための Spec を取得する方法つかったり、
+編集対象を取得して切り替える場合は、以前に説明を書いた[EditTarget で Layer を操作する](01_editTarget.md)を利用して
+編集レイヤーを取得して Target を切り替えて編集する...という手を使うことができます。
 
 しかし、サブレイヤー以外のコンポジションの場合はこの手段を使うことができません。
 
 では、この場合はどうしたらよいかというと
-今まで使っていたUsdネームスペースのAPIでは実行できませんが、 **PcpAPI** を使うことで実現することができます。
+今まで使っていた Usd ネームスペースの API では実行できませんが、 **PcpAPI** を使うことで実現することができます。
 
-## PCPとは
+## PCP とは
 
-PCPとは **「Prim Cache Population」** の略で、これが何をするものかというと、
+PCP とは **「Prim Cache Population」** の略で、これが何をするものかというと、
 **コンポジションアーク（シーン合成）を司る機構** になります。
 
-あるPrimがシーンディスクリプション（usdファイルすべて）がこのPrimにどのような影響を与えているか
-どのように構成されているのかを、PCPを使用することで知ることができます。
+ある Prim がシーンディスクリプション（usd ファイルすべて）がこの Prim にどのような影響を与えているか
+どのように構成されているのかを、PCP を使用することで知ることができます。
 
 文章だけだとわかりにくいので具体的にみてみます。
 
 ![](https://gyazo.com/7e114528268de0918d4857c9fabcffed.png)
 
 サンプルのキッチンセットから、冷蔵庫アセットを選択します。
-このPrimがどのようなファイルによって構成されているのかPCPをつかって調べてみます。
+この Prim がどのようなファイルによって構成されているのか PCP をつかって調べてみます。
 
 調べるには、DumpToIndex を使って Index 情報を Dump してみます。
 
@@ -102,30 +103,30 @@ Node 1:
     Has specs:                TRUE
     Has symmetry:             FALSE
 ```
+
 長いので全部は貼りませんが、
-IndexをDumpするとこのような情報が表示されます。
+Index を Dump するとこのような情報が表示されます。
 
-このPrimIndexは、シーンディスクリプションのうち、ある特定のPrimに主張（Opinion）があるIndexで、
-「あるPrimに影響を与えている要素」を取得するために使用します。
+この PrimIndex は、シーンディスクリプションのうち、ある特定の Prim に主張（Opinion）がある Index で、
+「ある Prim に影響を与えている要素」を取得するために使用します。
 
-これを見ると、このPrimがどのようにコンポジションされているのか。
+これを見ると、この Prim がどのようにコンポジションされているのか。
 コンポジションする要素（Opinion）がどうなっているのかを見ることができます。
 
-例えば、 Typeを見ればどのコンポジションを使用しているのか
+例えば、 Type を見ればどのコンポジションを使用しているのか
 
 !!! info
-    Type:                     reference
+Type: reference
 
 Source layer stack を見ればどのレイヤーかどうか、
 !!! info
-    Source layer stack:       @d:/Kitchen_set/assets/Refridgerator/Refridgerator.usd@
+Source layer stack: @d:/Kitchen_set/assets/Refridgerator/Refridgerator.usd@
 
-Target Path は、そのレイヤーのどのPrimが対象か
+Target Path は、そのレイヤーのどの Prim が対象か
 !!! info
-    Target path:              </Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1>
-    
-など。
+Target path: </Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1>
 
+など。
 
 ### Map To Parent / Map To Rot
 
@@ -133,7 +134,7 @@ Target Path は、そのレイヤーのどのPrimが対象か
 
 ![](https://gyazo.com/512c736aa34652db07e5a174774ec081.png)
 
-たとえば、Node1 のレイヤーを見てみると、冷蔵庫Primは /Refridgerator というPrimが
+たとえば、Node1 のレイヤーを見てみると、冷蔵庫 Prim は /Refridgerator という Prim が
 あります。
 それがリファレンスされると、
 
@@ -141,22 +142,22 @@ Target Path は、そのレイヤーのどのPrimが対象か
 
 Target Path のネームスペースにマップされている... というのがわかります。
 
-このように、PCPを見ることで、
-複数のレイヤーをコンポジションして最終的なPrimが出来上がるまで
+このように、PCP を見ることで、
+複数のレイヤーをコンポジションして最終的な Prim が出来上がるまで
 どのようなコンポジションが行われているのか取得できているのがわかるわけです。
 
 !!! info
-    PcpPrimIndexはコンポジション機能だけを担うもので、シーングラフの親子関係（階層構造）
-    は持ちません。
-    Pcp自体は、あるPrimに誰が意見を持っているかを提供しているだけで
-    **最終的な値はなにか とか、シーングラフのオブジェクトの型であったりスキーマ** は
-    UsdPrimの役割として分離されています。
+PcpPrimIndex はコンポジション機能だけを担うもので、シーングラフの親子関係（階層構造）
+は持ちません。
+Pcp 自体は、ある Prim に誰が意見を持っているかを提供しているだけで
+**最終的な値はなにか とか、シーングラフのオブジェクトの型であったりスキーマ** は
+UsdPrim の役割として分離されています。
 
 ## PCPNodeRef
 
-このDumpした情報をみると「Node」というキーワードが出てきます。
+この Dump した情報をみると「Node」というキーワードが出てきます。
 
-このNode (PcpNodeRef)は、コンポジションの木構造を表現するためのノードで、
+この Node (PcpNodeRef)は、コンポジションの木構造を表現するためのノードで、
 
 たとえば、
 
@@ -165,7 +166,7 @@ Target Path のネームスペースにマップされている... というの�
 3. どのネームスペースにマップするか
 
 という
-あるPrimを構成する要素を確認することができます。
+ある Prim を構成する要素を確認することができます。
 
 この構造を視覚化してみます。
 
@@ -176,9 +177,10 @@ prim = stage.GetPrimAtPath("/Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refr
 index = prim.GetPrimIndex()
 index.DumpToDotGraph("D:/graph.dot")
 ```
-まず、構成をしらべたいPrimを選択して、PrimIndexを取得します。
 
-Indexの DumpToDotGraph を使用するとGraphVizのフォーマットで情報を出力できるので、
+まず、構成をしらべたい Prim を選択して、PrimIndex を取得します。
+
+Index の DumpToDotGraph を使用すると GraphViz のフォーマットで情報を出力できるので、
 それを使用してグラフを表示してみると、
 
 ![](https://gyazo.com/5f2f50f295856a245262f85d87f65e9f.png)
@@ -202,20 +204,20 @@ def traverse(node):
 traverse(rootRef)
 ```
 
-Primを構成する各レイヤーを検索することができます。
+Prim を構成する各レイヤーを検索することができます。
 
 ### レイヤースタックとコンポジション
 
-上のDumpした結果をみると、コンポジションの中でも「サブレイヤー」が含まれていないことがわかります。
+上の Dump した結果をみると、コンポジションの中でも「サブレイヤー」が含まれていないことがわかります。
 
-このPcpでコンポジションを追いかけたときにサブレイヤーの扱いはどうなっているのかを確認してみます。
+この Pcp でコンポジションを追いかけたときにサブレイヤーの扱いはどうなっているのかを確認してみます。
 
 ![](https://gyazo.com/db7179c0a291f9155e60a7681bcfb295.png)
 
 まずはこんな感じの構成の usda を用意します。
 
 subLayerB.usda をサブレイヤーした subLayer.usda を root.usda にサブレイヤー
-そしてsubLayerB.usda で定義しているPrim subLayerBを sublayerReference プリムに Reference します。
+そして subLayerB.usda で定義している Prim subLayerB を sublayerReference プリムに Reference します。
 
 ```python
 index = prim.GetPrimIndex()
@@ -234,9 +236,10 @@ def traverse(node):
 traverse(index.rootNode)
 ```
 
-PcpNodeRefから LayerStack を使用することで、レイヤーを取得できます。
+PcpNodeRef から LayerStack を使用することで、レイヤーを取得できます。
 
 実行すると
+
 ```
 >> / -> /
 Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/root.usda')
@@ -248,14 +251,12 @@ Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayer.usda')
 Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayerB.usda')
 ```
 
-
-
 ## 編集ターゲットを取得する
 
-では、このPcpを使用してあるPrimを構成するレイヤーの１つを取得して
+では、この Pcp を使用してある Prim を構成するレイヤーの１つを取得して
 変更できるようにしてみます。
-基本的には[EditTargetを使用する](01_editTarget.md)と同じように、UsdEditTargetを作れればよい
-ので、PcpPrimIndexとPcpNodeRefを使用してEditTargetを取得します。
+基本的には[EditTarget を使用する](01_editTarget.md)と同じように、UsdEditTarget を作れればよい
+ので、PcpPrimIndex と PcpNodeRef を使用して EditTarget を取得します。
 
 ```python
 et = Usd.EditTarget(rootRef.layerStack.layers[0],rootRef)
@@ -264,28 +265,28 @@ stage.DefinePrim(～～～)
 ```
 
 取得方法はこのとおり。
-PcpNodeRefからlayerStackを取得し、構成するレイヤーを取得します。
-このlayerStackは、サブレイヤーの場合はこのStackにレイヤーが積まれた状態になっています。
-そこからSdfLayerオブジェクトを取得することができます。
+PcpNodeRef から layerStack を取得し、構成するレイヤーを取得します。
+この layerStack は、サブレイヤーの場合はこの Stack にレイヤーが積まれた状態になっています。
+そこから SdfLayer オブジェクトを取得することができます。
 
-そして、レイヤーのネームスペースを取得するためPcpNodeRefをEditTargetに渡します。
-あとは、SetEditTarget で、編集ターゲットをステージに渡せばOKです。
+そして、レイヤーのネームスペースを取得するため PcpNodeRef を EditTarget に渡します。
+あとは、SetEditTarget で、編集ターゲットをステージに渡せば OK です。
 
 ## まとめ
 
-UsdのAPIを使用すれば、コンポジションアークを構築したり
+Usd の API を使用すれば、コンポジションアークを構築したり
 シーングラフを管理したりできましたが
-このUsdAPIからコンポジションを実際にどのように管理しているのかというのが
-Pcpを見ることで理解できました。
+この UsdAPI からコンポジションを実際にどのように管理しているのかというのが
+Pcp を見ることで理解できました。
 
 ![](https://gyazo.com/129e378b6ad3eb75beaf300a264aa135.png)
 
-usdviewでPrimを選択しているときに表示される この Compositionや Layer Stackなどの情報も
-今までの自分の理解だと Primから頑張って取得する。。。ぐらいしか思いつかなかったですが
-PrimIndexからPcpNodeRefを使用することで
+usdview で Prim を選択しているときに表示される この Composition や Layer Stack などの情報も
+今までの自分の理解だと Prim から頑張って取得する。。。ぐらいしか思いつかなかったですが
+PrimIndex から PcpNodeRef を使用することで
 コンポジションの木構造を取得して表示してるんだなー　というのがよく分かるようになりました。
-(むしろここに表示されてるTreeはPcpPrimIndexから取得できるNodeRefのツリーだった)
+(むしろここに表示されてる Tree は PcpPrimIndex から取得できる NodeRef のツリーだった)
 
 これを利用すれば、より複雑なコンポジションであっても
-ターゲットレイヤーを選択して編集対象にして、usdを更新する...みたいなツールも
+ターゲットレイヤーを選択して編集対象にして、usd を更新する...みたいなツールも
 簡単に作ることができそうです。

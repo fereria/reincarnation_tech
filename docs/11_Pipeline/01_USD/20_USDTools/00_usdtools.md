@@ -3,6 +3,7 @@ title: USDの便利なツールたち (1) checker
 tags:
     - USD
     - AdventCalendar2021
+description: USDのデータをチェックする機能の使い方
 ---
 
 [USD AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 4 日目は USD に付属する便利ツール usdchecker について
