@@ -186,5 +186,9 @@ def define_env(env):
         return f'<span class="blue-badge badge-all">{comment}</span>'
 
     @env.filter
+    def tag_badge(comment):
+        return f'<span class="badge-all tag-badge">{comment}</span>'
+
+    @env.filter
     def macroprint(value):
         return "{{" + value + "}}"
