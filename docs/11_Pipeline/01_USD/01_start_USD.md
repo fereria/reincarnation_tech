@@ -1,195 +1,202 @@
 ---
 title: USDをPythonから色々操作するための環境を作る
+description: JupyterNotebookを活用する方法
 ---
-# USDをPythonから色々操作するための環境を作る
 
-USD周りの基本であったり、構造周りの説明を先にやろうと思いましたが  
+# USD を Python から色々操作するための環境を作る
+
+USD 周りの基本であったり、構造周りの説明を先にやろうと思いましたが  
 なんとなく中途半端な理解で書くと~~~微妙に恥ずかしいことになりそうなきがするので~~~  
-混乱をうみそうなので、そっちはもうちょっと自分の中で咀嚼しつつ.....  
-  
-前回usdviewでUSDを開くまではできたので、  
-USDファイルをそのまま直書きするのではなく、Python側から操作して  
-なにがどうなっているのか検証するための環境を作ってみようとおもいます。  
-  
+混乱をうみそうなので、そっちはもうちょっと自分の中で咀嚼しつつ.....
+
+前回 usdview で USD を開くまではできたので、  
+USD ファイルをそのまま直書きするのではなく、Python 側から操作して  
+なにがどうなっているのか検証するための環境を作ってみようとおもいます。
+
 ## じゅんび
 
 まず、準備。  
-モデルをチェックできるusdviewですが、これはあくまでもビューワーなので  
-AttributeEditorで数値をいれてコントール...のようなことはできません。  
+モデルをチェックできる usdview ですが、これはあくまでもビューワーなので  
+AttributeEditor で数値をいれてコントール...のようなことはできません。
 
 ![](https://gyazo.com/c9db8ccab23266051d25085db95c77bd.png)
 
-が、数値を弄りたければPythonInterpreterがついているので  
-そちらからコントロールすることはできます。  
-  
+が、数値を弄りたければ PythonInterpreter がついているので  
+そちらからコントロールすることはできます。
+
 が...このインタープリタで頑張るのは無理があるので  
-私はVSCodeとJupyterを使用して環境をつくってみることにしました。  
-  
-まず、使用するPythonは３系を使用します。  
-しかしこちらにはusdviewは入っていないので  
-別途Python2用のUSD（nvidiaビルド）をダウンロードしておき  
-そちらからusdviewを開いておきます。  
-  
+私は VSCode と Jupyter を使用して環境をつくってみることにしました。
+
+まず、使用する Python は３系を使用します。  
+しかしこちらには usdview は入っていないので  
+別途 Python2 用の USD（nvidia ビルド）をダウンロードしておき  
+そちらから usdview を開いておきます。
+
 ```
 cd /d I:\jupyter_notebook_root
 jupyter notebook
 ```
-とりあえず、こんな感じで固定の場所でJupyterを起動できるBatchを作り  
-裏でnotebookを起動しておきます。  
-しかし、このnotebookをブラウザから使用すると、
+
+とりあえず、こんな感じで固定の場所で Jupyter を起動できる Batch を作り  
+裏で notebook を起動しておきます。  
+しかし、この notebook をブラウザから使用すると、
 
 ![](https://gyazo.com/b3a8bf3a0e527f61b217b5cab8d82e9d.png)
 
-一応使えますが、この場合AutoCompleteがきかないのと  
-ショートカットが使いにくいので、korewoVSCode側からたたくようにします。  
-  
+一応使えますが、この場合 AutoComplete がきかないのと  
+ショートカットが使いにくいので、korewoVSCode 側からたたくようにします。
+
 ![](https://gyazo.com/de2de82522cab139a46da49981bae9cc.png)
 
-Pythonの Jupyter Server URIの設定を開き、  
-裏で起動しているNotebookのURLを入力します。  
-  
-が、Tokenを入れたりするのが面倒だったので
+Python の Jupyter Server URI の設定を開き、  
+裏で起動している Notebook の URL を入力します。
+
+が、Token を入れたりするのが面倒だったので
 
 ```
 jupyter notebook --generate-config
 ```
-まず、Configを作り、  
-  
-C:/Users/<ユーザー名>/.jupyter  
-  
-下にある、 jupyter_notebook_config.py の中の  
+
+まず、Config を作り、
+
+C:/Users/<ユーザー名>/.jupyter
+
+下にある、 jupyter_notebook_config.py の中の
+
 ```python
 c.NotebookApp.token = ''
 ```
-Tokenを消しておいて、  
+
+Token を消しておいて、
 
 ```python
 c.NotebookApp.password = "sha1:～～～～"
 ```
 
-パスワードをいれておきます。  
-  
+パスワードをいれておきます。
+
 パスワードは
 
 ```
 python -c "import IPython;print(IPython.lib.passwd())"
 ```
 
-このコマンドで生成できます。  
-  
-で。  
-  
-ここまで準備ができたら、あとはVSCode側でいろいろ検証していきます。  
-  
-## VSCodeでいろいろやる  
-  
+このコマンドで生成できます。
+
+で。
+
+ここまで準備ができたら、あとは VSCode 側でいろいろ検証していきます。
+
+## VSCode でいろいろやる
+
 ![](https://gyazo.com/f0178ed34c457eb832a04ea1ead65f11.png)
 
-まず、VSCodeでどうやってセルを指定するかというと、処理を分けたいところで  
+まず、VSCode でどうやってセルを指定するかというと、処理を分けたいところで
 
 ```
-# %% 
+# %%
 ```
 
-これを入れて上げればOKです。  
-あとは、実行したいときに「Run Cell」を押せばOKです。  
-  
-![](https://gyazo.com/c6c65af50bd2333a0c711671b179002a.png)  
-  
-Run Cellを実行すると、Python Interactiveタブが表示され、  
-そこに実行結果が表示されます。  
-  
-## USDの中身を確認する  
+これを入れて上げれば OK です。  
+あとは、実行したいときに「Run Cell」を押せば OK です。
+
+![](https://gyazo.com/c6c65af50bd2333a0c711671b179002a.png)
+
+Run Cell を実行すると、Python Interactive タブが表示され、  
+そこに実行結果が表示されます。
+
+## USD の中身を確認する
 
 ## プリントする
-  
-まず、usdviewで開く前に　USDファイルの中身をプリントで確認してみます。  
-  
+
+まず、usdview で開く前に　 USD ファイルの中身をプリントで確認してみます。
+
 ```python
 print(stage.GetRootLayer().ExportToString())
 ```
+
 たびたび確認をしたくなるので、ここだけをセルで分けておいて  
 必要に応じてプリントしてみます。
 
 ![](https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png)
 
-こんな感じで、現在のUSDファイル（正確にはレイヤー）を  
-プリントすることができます。  
-  
+こんな感じで、現在の USD ファイル（正確にはレイヤー）を  
+プリントすることができます。
+
 注意点として、プリントする場合は「 print(～～～)」のように  
 ちゃんとプリントコマンドを使用する必要があること。  
-なしでも表示はできますが、その場合改行ができません。  
-  
+なしでも表示はできますが、その場合改行ができません。
+
 ### 保存する
 
-保存するときは StageをExportします。  
-ここも度々やるのでセルにしておくと便利です。  
-  
+保存するときは Stage を Export します。  
+ここも度々やるのでセルにしておくと便利です。
+
 ```python
 stage.GetRootLayer().Export(USD_PATH_ROOT + "/refTest.usda")
 ```
 
-こんな感じで出力します。  
-  
-USDは、開くときにNewOpenしてSaveすることもできるのですが  
-すでにファイルがある場合エラーになってしまったりと微妙に面倒だったので  
-  
+こんな感じで出力します。
+
+USD は、開くときに NewOpen して Save することもできるのですが  
+すでにファイルがある場合エラーになってしまったりと微妙に面倒だったので
+
 ```python
 # 一度メモリ上にファイルを作り
 stage = Usd.Stage.CreateInMemory()
 # Export
 stage.GetRootLayer().Export("PATH")
 ```
-こんな感じでメモリ上にシーンを作り、最後にExportする方が  
-毎回新規シーンでテストできてお手軽かなと思います。（たぶん）  
-  
-### usdviewで開く  
-  
-Exportしたら、usdviewでファイルを開きます。  
-  
+
+こんな感じでメモリ上にシーンを作り、最後に Export する方が  
+毎回新規シーンでテストできてお手軽かなと思います。（たぶん）
+
+### usdview で開く
+
+Export したら、usdview でファイルを開きます。
+
 ```
 usdview I:\usd_test\refTest.usda
 ```
 
-Windowsでusdviewを使う場合のトラップなのか  
-引数で渡すusdファイルはフルパスである必要がある上、引数にusdファイルを必ず渡す必要があります。
+Windows で usdview を使う場合のトラップなのか  
+引数で渡す usd ファイルはフルパスである必要がある上、引数に usd ファイルを必ず渡す必要があります。
 また、このツール起動が尋常じゃなく遅いので  
 初回のみ適当なファイルで開いておいて  
-ツール上のメニューからファイルをNewOpenしたりReloadしたりするのがオススメです。  
-  
+ツール上のメニューからファイルを NewOpen したり Reload したりするのがオススメです。
+
 ![](https://gyazo.com/052b4430de2622643f14ae59322af78d.png)
 
-とりあえずファイルが開けました。  
-  
-ここまで準備ができたら、あとはVSCode側でコードを書きつつ  
-保存したらusdviewでCtrl+RでシーンをリロードしてプロパティやらPrimやら見た目やらが  
-望む形になっているのか確認します。  
-  
+とりあえずファイルが開けました。
+
+ここまで準備ができたら、あとは VSCode 側でコードを書きつつ  
+保存したら usdview で Ctrl+R でシーンをリロードしてプロパティやら Prim やら見た目やらが  
+望む形になっているのか確認します。
+
 https://snippets.cacher.io/snippet/e4a461c3093c7ce7929f
 
-あとは、テストした結果はCacherにメモとしてUPするようにしています。  
+あとは、テストした結果は Cacher にメモとして UP するようにしています。
 
 ## 小ネタ
 
 ![](https://gyazo.com/5878a971ba83dcf4312eb3e6d1afcaae.png)
 
-VSCodeのPythonInteractive の実行結果表示ですが  
+VSCode の PythonInteractive の実行結果表示ですが  
 どんどんたまっていきます。  
-が、Interactiveの右上にある×ボタンを押せばリセットできます。  
-  
-また、フロッピアイコンを押すことでJupyterの ipynb ファイルとしても出力できます。  
-  
+が、Interactive の右上にある × ボタンを押せばリセットできます。
+
+また、フロッピアイコンを押すことで Jupyter の ipynb ファイルとしても出力できます。
+
 https://snippets.cacher.io/snippet/90166b7fd86eb73d7d0e
 
-出力はできるけど、そこまで使わなそう。  
-  
-  
-とりあえず、ここまでやったらPythonで色々弄りたおすのに  
-ストレスがないぐらいまでの環境ができました。  
-  
-多分、Exporterとかでデータフォーマットとして使う分には  
+出力はできるけど、そこまで使わなそう。
+
+とりあえず、ここまでやったら Python で色々弄りたおすのに  
+ストレスがないぐらいまでの環境ができました。
+
+多分、Exporter とかでデータフォーマットとして使う分には  
 ここまでやらなくても良いかと思うのですが  
-やはりUSDの合成を扱うにはPythonやC++での操作は必須になりますし  
-データ構造を理解する意味でもPython側から扱うのは重要なので  
-  
+やはり USD の合成を扱うには Python や C++での操作は必須になりますし  
+データ構造を理解する意味でも Python 側から扱うのは重要なので
+
 テスト環境をストレスなくできるようにするのは大切かなーと思います。

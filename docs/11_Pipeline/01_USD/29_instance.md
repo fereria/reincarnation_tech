@@ -2,7 +2,7 @@
 title: USDのInstanceについて
 tags:
     - USD
-description:
+description: USDでインスタンスを使用する方法とその構造
 ---
 
 USD のインスタンス化は、

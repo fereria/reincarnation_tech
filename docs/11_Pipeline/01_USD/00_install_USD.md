@@ -2,6 +2,7 @@
 title: USDを使ってみる
 tags:
     - USD
+description: USDをビルドする方法
 ---
 
 # USD を使ってみる
