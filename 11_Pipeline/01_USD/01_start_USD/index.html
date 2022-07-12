@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="JupyterNotebookを活用する方法" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/01_start_USD/" rel="canonical"/>
 <link href="../../../favicon.ico" rel="icon"/>
@@ -28,7 +29,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#usdpython">
+<a class="md-skip" href="#usd-python">
           コンテンツにスキップ
         </a>
 </div>
@@ -1256,12 +1257,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#vscode">
-    VSCodeでいろいろやる
+    VSCode でいろいろやる
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usd">
-    USDの中身を確認する
+    USD の中身を確認する
   </a>
 </li>
 <li class="md-nav__item">
@@ -1277,7 +1278,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdview">
-    usdviewで開く
+    usdview で開く
   </a>
 </li>
 </ul>
@@ -2773,12 +2774,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#vscode">
-    VSCodeでいろいろやる
+    VSCode でいろいろやる
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usd">
-    USDの中身を確認する
+    USD の中身を確認する
   </a>
 </li>
 <li class="md-nav__item">
@@ -2794,7 +2795,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdview">
-    usdviewで開く
+    usdview で開く
   </a>
 </li>
 </ul>
@@ -2815,135 +2816,135 @@
 <a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_Pipeline/01_USD/01_start_USD.md" title="編集">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="usdpython">USDをPythonから色々操作するための環境を作る<a class="headerlink" href="#usdpython" title="Permanent link">¶</a></h1>
-<p>USD周りの基本であったり、構造周りの説明を先にやろうと思いましたが<br/>
+<h1 id="usd-python">USD を Python から色々操作するための環境を作る<a class="headerlink" href="#usd-python" title="Permanent link">¶</a></h1>
+<p>USD 周りの基本であったり、構造周りの説明を先にやろうと思いましたが<br/>
 なんとなく中途半端な理解で書くと<del><sub>微妙に恥ずかしいことになりそうなきがするので</sub></del><br/>
-混乱をうみそうなので、そっちはもうちょっと自分の中で咀嚼しつつ.....  </p>
-<p>前回usdviewでUSDを開くまではできたので、<br/>
-USDファイルをそのまま直書きするのではなく、Python側から操作して<br/>
-なにがどうなっているのか検証するための環境を作ってみようとおもいます。  </p>
+混乱をうみそうなので、そっちはもうちょっと自分の中で咀嚼しつつ.....</p>
+<p>前回 usdview で USD を開くまではできたので、<br/>
+USD ファイルをそのまま直書きするのではなく、Python 側から操作して<br/>
+なにがどうなっているのか検証するための環境を作ってみようとおもいます。</p>
 <h2 id="_1">じゅんび<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、準備。<br/>
-モデルをチェックできるusdviewですが、これはあくまでもビューワーなので<br/>
-AttributeEditorで数値をいれてコントール...のようなことはできません。  </p>
+モデルをチェックできる usdview ですが、これはあくまでもビューワーなので<br/>
+AttributeEditor で数値をいれてコントール...のようなことはできません。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c9db8ccab23266051d25085db95c77bd.png"><img alt="" src="https://gyazo.com/c9db8ccab23266051d25085db95c77bd.png"/></a></p>
-<p>が、数値を弄りたければPythonInterpreterがついているので<br/>
-そちらからコントロールすることはできます。  </p>
+<p>が、数値を弄りたければ PythonInterpreter がついているので<br/>
+そちらからコントロールすることはできます。</p>
 <p>が...このインタープリタで頑張るのは無理があるので<br/>
-私はVSCodeとJupyterを使用して環境をつくってみることにしました。  </p>
-<p>まず、使用するPythonは３系を使用します。<br/>
-しかしこちらにはusdviewは入っていないので<br/>
-別途Python2用のUSD（nvidiaビルド）をダウンロードしておき<br/>
-そちらからusdviewを開いておきます。  </p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+私は VSCode と Jupyter を使用して環境をつくってみることにしました。</p>
+<p>まず、使用する Python は３系を使用します。<br/>
+しかしこちらには usdview は入っていないので<br/>
+別途 Python2 用の USD（nvidia ビルド）をダウンロードしておき<br/>
+そちらから usdview を開いておきます。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>cd /d I:\jupyter_notebook_root
 jupyter notebook
-</code></pre></div></td></tr></table></div><br/>
-とりあえず、こんな感じで固定の場所でJupyterを起動できるBatchを作り<br/>
-裏でnotebookを起動しておきます。<br/>
-しかし、このnotebookをブラウザから使用すると、</p>
+</code></pre></div></td></tr></table></div>
+<p>とりあえず、こんな感じで固定の場所で Jupyter を起動できる Batch を作り<br/>
+裏で notebook を起動しておきます。<br/>
+しかし、この notebook をブラウザから使用すると、</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/b3a8bf3a0e527f61b217b5cab8d82e9d.png"><img alt="" src="https://gyazo.com/b3a8bf3a0e527f61b217b5cab8d82e9d.png"/></a></p>
-<p>一応使えますが、この場合AutoCompleteがきかないのと<br/>
-ショートカットが使いにくいので、korewoVSCode側からたたくようにします。  </p>
+<p>一応使えますが、この場合 AutoComplete がきかないのと<br/>
+ショートカットが使いにくいので、korewoVSCode 側からたたくようにします。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/de2de82522cab139a46da49981bae9cc.png"><img alt="" src="https://gyazo.com/de2de82522cab139a46da49981bae9cc.png"/></a></p>
-<p>Pythonの Jupyter Server URIの設定を開き、<br/>
-裏で起動しているNotebookのURLを入力します。  </p>
-<p>が、Tokenを入れたりするのが面倒だったので</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>jupyter notebook --generate-config
-</code></pre></div></td></tr></table></div><br/>
-まず、Configを作り、  </p>
-<p>C:/Users/&lt;ユーザー名&gt;/.jupyter  </p>
-<p>下にある、 jupyter_notebook_config.py の中の<br/>
+<p>Python の Jupyter Server URI の設定を開き、<br/>
+裏で起動している Notebook の URL を入力します。</p>
+<p>が、Token を入れたりするのが面倒だったので</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>jupyter notebook --generate-config
+</code></pre></div></td></tr></table></div>
+<p>まず、Config を作り、</p>
+<p>C:/Users/&lt;ユーザー名&gt;/.jupyter</p>
+<p>下にある、 jupyter_notebook_config.py の中の</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="s1">''</span>
-</code></pre></div></td></tr></table></div><br/>
-Tokenを消しておいて、  </p>
+</code></pre></div></td></tr></table></div>
+<p>Token を消しておいて、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s2">"sha1:～～～～"</span>
 </code></pre></div></td></tr></table></div>
-<p>パスワードをいれておきます。  </p>
+<p>パスワードをいれておきます。</p>
 <p>パスワードは</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python -c "import IPython;print(IPython.lib.passwd())"
 </code></pre></div></td></tr></table></div>
-<p>このコマンドで生成できます。  </p>
-<p>で。  </p>
-<p>ここまで準備ができたら、あとはVSCode側でいろいろ検証していきます。  </p>
-<h2 id="vscode">VSCodeでいろいろやる<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
+<p>このコマンドで生成できます。</p>
+<p>で。</p>
+<p>ここまで準備ができたら、あとは VSCode 側でいろいろ検証していきます。</p>
+<h2 id="vscode">VSCode でいろいろやる<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f0178ed34c457eb832a04ea1ead65f11.png"><img alt="" src="https://gyazo.com/f0178ed34c457eb832a04ea1ead65f11.png"/></a></p>
-<p>まず、VSCodeでどうやってセルを指定するかというと、処理を分けたいところで  </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code># %% 
+<p>まず、VSCode でどうやってセルを指定するかというと、処理を分けたいところで</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code># %%
 </code></pre></div></td></tr></table></div>
-<p>これを入れて上げればOKです。<br/>
-あとは、実行したいときに「Run Cell」を押せばOKです。  </p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c6c65af50bd2333a0c711671b179002a.png"><img alt="" src="https://gyazo.com/c6c65af50bd2333a0c711671b179002a.png"/></a> </p>
-<p>Run Cellを実行すると、Python Interactiveタブが表示され、<br/>
-そこに実行結果が表示されます。  </p>
-<h2 id="usd">USDの中身を確認する<a class="headerlink" href="#usd" title="Permanent link">¶</a></h2>
+<p>これを入れて上げれば OK です。<br/>
+あとは、実行したいときに「Run Cell」を押せば OK です。</p>
+<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c6c65af50bd2333a0c711671b179002a.png"><img alt="" src="https://gyazo.com/c6c65af50bd2333a0c711671b179002a.png"/></a></p>
+<p>Run Cell を実行すると、Python Interactive タブが表示され、<br/>
+そこに実行結果が表示されます。</p>
+<h2 id="usd">USD の中身を確認する<a class="headerlink" href="#usd" title="Permanent link">¶</a></h2>
 <h2 id="_2">プリントする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>まず、usdviewで開く前に　USDファイルの中身をプリントで確認してみます。  </p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div><br/>
-たびたび確認をしたくなるので、ここだけをセルで分けておいて<br/>
+<p>まず、usdview で開く前に　 USD ファイルの中身をプリントで確認してみます。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<p>たびたび確認をしたくなるので、ここだけをセルで分けておいて<br/>
 必要に応じてプリントしてみます。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png"><img alt="" src="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png"/></a></p>
-<p>こんな感じで、現在のUSDファイル（正確にはレイヤー）を<br/>
-プリントすることができます。  </p>
+<p>こんな感じで、現在の USD ファイル（正確にはレイヤー）を<br/>
+プリントすることができます。</p>
 <p>注意点として、プリントする場合は「 print(～～～)」のように<br/>
 ちゃんとプリントコマンドを使用する必要があること。<br/>
-なしでも表示はできますが、その場合改行ができません。  </p>
+なしでも表示はできますが、その場合改行ができません。</p>
 <h3 id="_3">保存する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<p>保存するときは StageをExportします。<br/>
-ここも度々やるのでセルにしておくと便利です。  </p>
+<p>保存するときは Stage を Export します。<br/>
+ここも度々やるのでセルにしておくと便利です。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">USD_PATH_ROOT</span> <span class="o">+</span> <span class="s2">"/refTest.usda"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>こんな感じで出力します。  </p>
-<p>USDは、開くときにNewOpenしてSaveすることもできるのですが<br/>
-すでにファイルがある場合エラーになってしまったりと微妙に面倒だったので  </p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>こんな感じで出力します。</p>
+<p>USD は、開くときに NewOpen して Save することもできるのですが<br/>
+すでにファイルがある場合エラーになってしまったりと微妙に面倒だったので</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 一度メモリ上にファイルを作り</span>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="c1"># Export</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">"PATH"</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-こんな感じでメモリ上にシーンを作り、最後にExportする方が<br/>
-毎回新規シーンでテストできてお手軽かなと思います。（たぶん）  </p>
-<h3 id="usdview">usdviewで開く<a class="headerlink" href="#usdview" title="Permanent link">¶</a></h3>
-<p>Exportしたら、usdviewでファイルを開きます。  </p>
+</code></pre></div></td></tr></table></div>
+<p>こんな感じでメモリ上にシーンを作り、最後に Export する方が<br/>
+毎回新規シーンでテストできてお手軽かなと思います。（たぶん）</p>
+<h3 id="usdview">usdview で開く<a class="headerlink" href="#usdview" title="Permanent link">¶</a></h3>
+<p>Export したら、usdview でファイルを開きます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdview I:\usd_test\refTest.usda
 </code></pre></div></td></tr></table></div>
-<p>Windowsでusdviewを使う場合のトラップなのか<br/>
-引数で渡すusdファイルはフルパスである必要がある上、引数にusdファイルを必ず渡す必要があります。<br/>
+<p>Windows で usdview を使う場合のトラップなのか<br/>
+引数で渡す usd ファイルはフルパスである必要がある上、引数に usd ファイルを必ず渡す必要があります。<br/>
 また、このツール起動が尋常じゃなく遅いので<br/>
 初回のみ適当なファイルで開いておいて<br/>
-ツール上のメニューからファイルをNewOpenしたりReloadしたりするのがオススメです。  </p>
+ツール上のメニューからファイルを NewOpen したり Reload したりするのがオススメです。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/052b4430de2622643f14ae59322af78d.png"><img alt="" src="https://gyazo.com/052b4430de2622643f14ae59322af78d.png"/></a></p>
-<p>とりあえずファイルが開けました。  </p>
-<p>ここまで準備ができたら、あとはVSCode側でコードを書きつつ<br/>
-保存したらusdviewでCtrl+RでシーンをリロードしてプロパティやらPrimやら見た目やらが<br/>
-望む形になっているのか確認します。  </p>
+<p>とりあえずファイルが開けました。</p>
+<p>ここまで準備ができたら、あとは VSCode 側でコードを書きつつ<br/>
+保存したら usdview で Ctrl+R でシーンをリロードしてプロパティやら Prim やら見た目やらが<br/>
+望む形になっているのか確認します。</p>
 <p><a href="https://snippets.cacher.io/snippet/e4a461c3093c7ce7929f">https://snippets.cacher.io/snippet/e4a461c3093c7ce7929f</a></p>
-<p>あとは、テストした結果はCacherにメモとしてUPするようにしています。  </p>
+<p>あとは、テストした結果は Cacher にメモとして UP するようにしています。</p>
 <h2 id="_4">小ネタ<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/5878a971ba83dcf4312eb3e6d1afcaae.png"><img alt="" src="https://gyazo.com/5878a971ba83dcf4312eb3e6d1afcaae.png"/></a></p>
-<p>VSCodeのPythonInteractive の実行結果表示ですが<br/>
+<p>VSCode の PythonInteractive の実行結果表示ですが<br/>
 どんどんたまっていきます。<br/>
-が、Interactiveの右上にある×ボタンを押せばリセットできます。  </p>
-<p>また、フロッピアイコンを押すことでJupyterの ipynb ファイルとしても出力できます。  </p>
+が、Interactive の右上にある × ボタンを押せばリセットできます。</p>
+<p>また、フロッピアイコンを押すことで Jupyter の ipynb ファイルとしても出力できます。</p>
 <p><a href="https://snippets.cacher.io/snippet/90166b7fd86eb73d7d0e">https://snippets.cacher.io/snippet/90166b7fd86eb73d7d0e</a></p>
-<p>出力はできるけど、そこまで使わなそう。  </p>
-<p>とりあえず、ここまでやったらPythonで色々弄りたおすのに<br/>
-ストレスがないぐらいまでの環境ができました。  </p>
-<p>多分、Exporterとかでデータフォーマットとして使う分には<br/>
+<p>出力はできるけど、そこまで使わなそう。</p>
+<p>とりあえず、ここまでやったら Python で色々弄りたおすのに<br/>
+ストレスがないぐらいまでの環境ができました。</p>
+<p>多分、Exporter とかでデータフォーマットとして使う分には<br/>
 ここまでやらなくても良いかと思うのですが<br/>
-やはりUSDの合成を扱うにはPythonやC++での操作は必須になりますし<br/>
-データ構造を理解する意味でもPython側から扱うのは重要なので  </p>
+やはり USD の合成を扱うには Python や C++での操作は必須になりますし<br/>
+データ構造を理解する意味でも Python 側から扱うのは重要なので</p>
 <p>テスト環境をストレスなくできるようにするのは大切かなーと思います。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2019-11-24 03:29:28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-12 14:59:57</span>
 </small>
 </div>
 </article>
