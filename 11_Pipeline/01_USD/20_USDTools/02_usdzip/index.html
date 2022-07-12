@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="usdzipの作り方" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/20_USDTools/02_usdzip/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
@@ -1403,9 +1404,9 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdzip">
-    usdzipについて
+    usdzip について
   </a>
-<nav aria-label="usdzipについて" class="md-nav">
+<nav aria-label="usdzip について" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdz">
@@ -1428,12 +1429,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdz_1">
-    usdzのデータに含まれるファイルを確認する
+    usdz のデータに含まれるファイルを確認する
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#resolver">
-    resolverとの組み合わせ
+    resolver との組み合わせ
   </a>
 </li>
 </ul>
@@ -2777,9 +2778,9 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdzip">
-    usdzipについて
+    usdzip について
   </a>
-<nav aria-label="usdzipについて" class="md-nav">
+<nav aria-label="usdzip について" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdz">
@@ -2802,12 +2803,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdz_1">
-    usdzのデータに含まれるファイルを確認する
+    usdz のデータに含まれるファイルを確認する
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#resolver">
-    resolverとの組み合わせ
+    resolver との組み合わせ
   </a>
 </li>
 </ul>
@@ -2842,20 +2843,20 @@
         </a>
 </nav>
 <h1>USDの便利なツールたち (3) usdzip</h1>
-<p><a href="https://qiita.com/advent-calendar/2021/usd">USD AdventCalendar2021</a> 18日目は USDに付属する便利ツール usdzipについて<br/>
+<p><a href="https://qiita.com/advent-calendar/2021/usd">USD AdventCalendar2021</a> 18 日目は USD に付属する便利ツール usdzip について<br/>
 紹介したいとおもいます。</p>
-<h2 id="usdzip">usdzipについて<a class="headerlink" href="#usdzip" title="Permanent link">¶</a></h2>
-<p>usdzipとは、usdファイルからusdzパッケージを作成することができるコマンドラインツールです。</p>
+<h2 id="usdzip">usdzip について<a class="headerlink" href="#usdzip" title="Permanent link">¶</a></h2>
+<p>usdzip とは、usd ファイルから usdz パッケージを作成することができるコマンドラインツールです。</p>
 <h3 id="usdz">usdz<a class="headerlink" href="#usdz" title="Permanent link">¶</a></h3>
 <p><a href="https://graphics.pixar.com/usd/release/wp_usdz.html">https://graphics.pixar.com/usd/release/wp_usdz.html</a></p>
-<p>USDのアセット（usdファイル、テクスチャなどを含む）をzipで１つのファイルにアーカイブしたものです。<br/>
-AppleのArKitで使用されていたり、iPhoneの 3d Scanner App などからはテクスチャとスキャンしたモデルを<br/>
+<p>USD のアセット（usd ファイル、テクスチャなどを含む）を zip で１つのファイルにアーカイブしたものです。<br/>
+Apple の ArKit で使用されていたり、iPhone の 3d Scanner App などからはテクスチャとスキャンしたモデルを<br/>
 出力するためなどに使用されています。</p>
 <blockquote class="twitter-tweet"><a href="https://twitter.com/fereria/status/1350777261335564288"></a></blockquote>
 <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
-<p>以前 3d Scanner Appを使用してモデルをスキャン＆PCにもってきて usdview で眺めてみた例。<br/>
+<p>以前 3d Scanner App を使用してモデルをスキャン＆PC にもってきて usdview で眺めてみた例。<br/>
 この例だと、 usdz にはスキャンしたときのテクスチャも含まれていて<br/>
-usdviewでみると、テクスチャも表示された状態になります。</p>
+usdview でみると、テクスチャも表示された状態になります。</p>
 <p>こんなかんじで、 usdz はテクスチャ等も含んだアセットのパッケージとして<br/>
 使用することができて、この usdz を作成することができるツールが usdzip です。</p>
 <h2 id="_1">つかってみる<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
@@ -2863,36 +2864,36 @@ usdviewでみると、テクスチャも表示された状態になります。<
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdzip D:\usdzSample\sample.usdz D:\usdzSample\sample.usd
 </code></pre></div></td></tr></table></div>
 <p>最もシンプルな使い方は、<br/>
-usdzip ＜usdzの出力先＞ ＜USDファイルパス＞<br/>
-このように、usdzにしたいファイルを指定します。</p>
+usdzip ＜ usdz の出力先＞ ＜ USD ファイルパス＞<br/>
+このように、usdz にしたいファイルを指定します。</p>
 <h3 id="_2">フォルダを指定する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p>上の例の場合は、単一のusdファイルがusdzファイルになりますが、Kitchen_setのように<br/>
-複数のアセットを含むデータを usdzにしたい場合は、以下のようにします。</p>
+<p>上の例の場合は、単一の usd ファイルが usdz ファイルになりますが、Kitchen_set のように<br/>
+複数のアセットを含むデータを usdz にしたい場合は、以下のようにします。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdzip D:/kitchen_set.usdz D:\Kitchen_set -r
 </code></pre></div></td></tr></table></div>
-<p>inputPathをディレクトリにした上で、 -r (recursive) のフラグを入れると<br/>
+<p>inputPath をディレクトリにした上で、 -r (recursive) のフラグを入れると<br/>
 指定のフォルダ以下をすべて usdz にすることができます。<br/>
-(指定しない場合、assets以下のサブディレクトリはusdzに入らないので注意)</p>
+(指定しない場合、assets 以下のサブディレクトリは usdz に入らないので注意)</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/9f3ea9f4e76cb93c8ab6809c0247bbf4.png"><img alt="" src="https://gyazo.com/9f3ea9f4e76cb93c8ab6809c0247bbf4.png"/></a></p>
-<p>usdzipにすると、ReferenceのAssetPathは usdzip内のPathになります。</p>
+<p>usdzip にすると、Reference の AssetPath は usdzip 内の Path になります。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ae7995b486322659107a11f80d1152fb.png"><img alt="" src="https://gyazo.com/ae7995b486322659107a11f80d1152fb.png"/></a></p>
-<p>usdzは、最初に説明した通りzipファイルなので<br/>
-zipにリネームすると中身を除くことができます。</p>
-<h3 id="usdz_1">usdzのデータに含まれるファイルを確認する<a class="headerlink" href="#usdz_1" title="Permanent link">¶</a></h3>
+<p>usdz は、最初に説明した通り zip ファイルなので<br/>
+zip にリネームすると中身を除くことができます。</p>
+<h3 id="usdz_1">usdz のデータに含まれるファイルを確認する<a class="headerlink" href="#usdz_1" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdzip -l D:\kitchen_set.usdz
 </code></pre></div></td></tr></table></div>
-<p>usdzipを使用すれば、 usdz 内にどんなファイルが含まれているのか確認することができます。</p>
-<h3 id="resolver">resolverとの組み合わせ<a class="headerlink" href="#resolver" title="Permanent link">¶</a></h3>
-<p>usdzipにしているPathは、 --asset ASSET_PATH と指定することで<br/>
-Resolverを経由したPathからusdzを作成できます。</p>
+<p>usdzip を使用すれば、 usdz 内にどんなファイルが含まれているのか確認することができます。</p>
+<h3 id="resolver">resolver との組み合わせ<a class="headerlink" href="#resolver" title="Permanent link">¶</a></h3>
+<p>usdzip にしている Path は、 --asset ASSET_PATH と指定することで<br/>
+Resolver を経由した Path から usdz を作成できます。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>ただし usdResolverExampleだと Resolveですべてを解決されたファイルが取得できないので<br/>
-usdzip --asset asset:Buzz/Buzz.usd D:/buzz.usdz<br/>
-は上手くいかないので、ResolverPluginでの _Resolve の実装をやる必要がある</p>
 </div>
+<p>ただし usdResolverExample だと Resolve ですべてを解決されたファイルが取得できないので<br/>
+usdzip --asset asset:Buzz/Buzz.usd D:/buzz.usdz<br/>
+は上手くいかないので、ResolverPlugin での _Resolve の実装をやる必要がある</p>
 <h2 id="python">Python で実行する<a class="headerlink" href="#python" title="Permanent link">¶</a></h2>
-<p>usdzip の内部実装をみると、Pythonからも実行できることがわかるので試しにやってみます。</p>
+<p>usdzip の内部実装をみると、Python からも実行できることがわかるので試しにやってみます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2902,7 +2903,7 @@ usdzip --asset asset:Buzz/Buzz.usd D:/buzz.usdz<br/>
     <span class="n">usdwriter</span><span class="o">.</span><span class="n">AddFile</span><span class="p">(</span><span class="s1">'D:/usdzSample/sample.usd'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>作成方法は、 Usd.ZipFileWrite を使用して、<br/>
-usdzに入れたいファイルを AddFile すればＯＫです。</p>
+usdz に入れたいファイルを AddFile すればＯＫです。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2917,35 +2918,35 @@ usdzに入れたいファイルを AddFile すればＯＫです。</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">fileinfo</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">fileinfo</span><span class="o">.</span><span class="n">uncompressedSize</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>usdz内のファイル情報は、 ZipFile.Openして、 GetFileNames() から取得できます。</p>
+<p>usdz 内のファイル情報は、 ZipFile.Open して、 GetFileNames() から取得できます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">"D:/usdzSample/sample.usdz"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-<p>ファイルの情報ではなくStageを取得したい場合は、<br/>
-通常のusdファイルと同様です。</p>
+<p>ファイルの情報ではなく Stage を取得したい場合は、<br/>
+通常の usd ファイルと同様です。</p>
 <blockquote>
 <p>pxr/usd/bin/usdzip/usdzip.py</p>
 </blockquote>
-<p>usdzipはすべてのコードがPythonなので、<br/>
+<p>usdzip はすべてのコードが Python なので、<br/>
 このコードを見ると、何が行われているかわかります。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>以上 usdzipの使いかたとPythonでのusdzの作り方でした。<br/>
-usdzipを使用して、アセットをusdzにすると<br/>
+<p>以上 usdzip の使いかたと Python での usdz の作り方でした。<br/>
+usdzip を使用して、アセットを usdz にすると<br/>
 テクスチャを含めたアセットを１つのパッケージとして扱えるようになります。</p>
 <p>また、usdzip には arKit 用のオプションも用意されていて<br/>
 その場合は UsdUtils.UsdUtilsCreateNewARKitUsdzPackage で指定の処理がされるようになっています。<br/>
-（コンポジションがある場合、Flattenして usdc にしてExport？）</p>
-<p>デフォルトで付属している usdzip だと、ディレクトリ以下をusdzにするだけですが<br/>
+（コンポジションがある場合、Flatten して usdc にして Export？）</p>
+<p>デフォルトで付属している usdzip だと、ディレクトリ以下を usdz にするだけですが<br/>
 事前に収集して usdzip するなど自動化したり<br/>
-AssetResolverと組み合わせて usdzip 化すると、データを配布したり<br/>
+AssetResolver と組み合わせて usdzip 化すると、データを配布したり<br/>
 するのがやりやすくなるのでは？と思います。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-28 18:19:54</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-12 16:29:57</span>
 </small>
 </div>
 </article>

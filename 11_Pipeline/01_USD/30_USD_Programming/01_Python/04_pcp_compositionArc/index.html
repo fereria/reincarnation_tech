@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="USDのコンポジションアークを深堀する" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_Python/04_pcp_compositionArc/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
@@ -1505,9 +1506,9 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#pcp">
-    PCPとは
+    PCP とは
   </a>
-<nav aria-label="PCPとは" class="md-nav">
+<nav aria-label="PCP とは" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#map-to-parent-map-to-rot">
@@ -2777,9 +2778,9 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#pcp">
-    PCPとは
+    PCP とは
   </a>
-<nav aria-label="PCPとは" class="md-nav">
+<nav aria-label="PCP とは" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#map-to-parent-map-to-rot">
@@ -2824,16 +2825,16 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>PCPでコンポジションアークの構造を解析・編集対象を取得する</h1>
-<p>このサイトのほかページでも何度か説明している通り、USDは複数のファイルを合成して<br/>
+<p>このサイトのほかページでも何度か説明している通り、USD は複数のファイルを合成して<br/>
 １つのシーングラフに構築することができます。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/e2d4b11418ae5af3a10c27a1e9531b1a.png"><img alt="" src="https://gyazo.com/e2d4b11418ae5af3a10c27a1e9531b1a.png"/></a></p>
 <p>たとえば、毎度おなじみキッチンセットでみてみます。</p>
 <p>このキッチンセットは、 Kitchen_set.usd を開いた段階だとこのように１つのシーングラフに<br/>
 なっていますが、</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/8f504a6f53f8f40b0384fac654508624.png"><img alt="" src="https://gyazo.com/8f504a6f53f8f40b0384fac654508624.png"/></a></p>
-<p>このusdは１つのusdではなく、複数のUSDをコンポジションアークを使用して１つのusdに合成して<br/>
+<p>この usd は１つの usd ではなく、複数の USD をコンポジションアークを使用して１つの usd に合成して<br/>
 上のようなキッチンセットになっているわけです。<br/>
-(この１つのアセットを構成するusdファイルは 228ファイルありました)</p>
+(この１つのアセットを構成する usd ファイルは 228 ファイルありました)</p>
 <p>では、この複雑なファイルの組み合わせでできあがったシーングラフが</p>
 <ol>
 <li>どのようなファイルによって構成されているのか</li>
@@ -2846,23 +2847,23 @@
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimStack</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>指定のPrimのPrimStackを取得して、そのPrimを構築するためのSpecを取得する方法つかったり、<br/>
-編集対象を取得して切り替える場合は、以前に説明を書いた<a href="../01_editTarget/">EditTargetでLayerを操作する</a>を利用して<br/>
-編集レイヤーを取得してTargetを切り替えて編集する...という手を使うことができます。</p>
+<p>指定の Prim の PrimStack を取得して、その Prim を構築するための Spec を取得する方法つかったり、<br/>
+編集対象を取得して切り替える場合は、以前に説明を書いた<a href="../01_editTarget/">EditTarget で Layer を操作する</a>を利用して<br/>
+編集レイヤーを取得して Target を切り替えて編集する...という手を使うことができます。</p>
 <p>しかし、サブレイヤー以外のコンポジションの場合はこの手段を使うことができません。</p>
 <p>では、この場合はどうしたらよいかというと<br/>
-今まで使っていたUsdネームスペースのAPIでは実行できませんが、 <strong>PcpAPI</strong> を使うことで実現することができます。</p>
-<h2 id="pcp">PCPとは<a class="headerlink" href="#pcp" title="Permanent link">¶</a></h2>
-<p>PCPとは <strong>「Prim Cache Population」</strong> の略で、これが何をするものかというと、<br/>
+今まで使っていた Usd ネームスペースの API では実行できませんが、 <strong>PcpAPI</strong> を使うことで実現することができます。</p>
+<h2 id="pcp">PCP とは<a class="headerlink" href="#pcp" title="Permanent link">¶</a></h2>
+<p>PCP とは <strong>「Prim Cache Population」</strong> の略で、これが何をするものかというと、<br/>
 <strong>コンポジションアーク（シーン合成）を司る機構</strong> になります。</p>
-<p>あるPrimがシーンディスクリプション（usdファイルすべて）がこのPrimにどのような影響を与えているか<br/>
-どのように構成されているのかを、PCPを使用することで知ることができます。</p>
+<p>ある Prim がシーンディスクリプション（usd ファイルすべて）がこの Prim にどのような影響を与えているか<br/>
+どのように構成されているのかを、PCP を使用することで知ることができます。</p>
 <p>文章だけだとわかりにくいので具体的にみてみます。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/7e114528268de0918d4857c9fabcffed.png"><img alt="" src="https://gyazo.com/7e114528268de0918d4857c9fabcffed.png"/></a></p>
 <p>サンプルのキッチンセットから、冷蔵庫アセットを選択します。<br/>
-このPrimがどのようなファイルによって構成されているのかPCPをつかって調べてみます。</p>
+この Prim がどのようなファイルによって構成されているのか PCP をつかって調べてみます。</p>
 <p>調べるには、DumpToIndex を使って Index 情報を Dump してみます。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2941,51 +2942,51 @@ Node 1:
     Contribute specs:         TRUE
     Has specs:                TRUE
     Has symmetry:             FALSE
-</code></pre></div></td></tr></table></div><br/>
-長いので全部は貼りませんが、<br/>
-IndexをDumpするとこのような情報が表示されます。</p>
-<p>このPrimIndexは、シーンディスクリプションのうち、ある特定のPrimに主張（Opinion）があるIndexで、<br/>
-「あるPrimに影響を与えている要素」を取得するために使用します。</p>
-<p>これを見ると、このPrimがどのようにコンポジションされているのか。<br/>
+</code></pre></div></td></tr></table></div>
+<p>長いので全部は貼りませんが、<br/>
+Index を Dump するとこのような情報が表示されます。</p>
+<p>この PrimIndex は、シーンディスクリプションのうち、ある特定の Prim に主張（Opinion）がある Index で、<br/>
+「ある Prim に影響を与えている要素」を取得するために使用します。</p>
+<p>これを見ると、この Prim がどのようにコンポジションされているのか。<br/>
 コンポジションする要素（Opinion）がどうなっているのかを見ることができます。</p>
-<p>例えば、 Typeを見ればどのコンポジションを使用しているのか</p>
+<p>例えば、 Type を見ればどのコンポジションを使用しているのか</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Type:                     reference</p>
 </div>
+<p>Type: reference</p>
 <p>Source layer stack を見ればどのレイヤーかどうか、</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Source layer stack:       @d:/Kitchen_set/assets/Refridgerator/Refridgerator.usd@</p>
 </div>
-<p>Target Path は、そのレイヤーのどのPrimが対象か</p>
+<p>Source layer stack: @d:/Kitchen_set/assets/Refridgerator/Refridgerator.usd@</p>
+<p>Target Path は、そのレイヤーのどの Prim が対象か</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Target path:              </p>
 </div>
+<p>Target path: </p>
 <p>など。</p>
 <h3 id="map-to-parent-map-to-rot">Map To Parent / Map To Rot<a class="headerlink" href="#map-to-parent-map-to-rot" title="Permanent link">¶</a></h3>
 <p>または、 Map to Parent という情報もここから取得できます。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/512c736aa34652db07e5a174774ec081.png"><img alt="" src="https://gyazo.com/512c736aa34652db07e5a174774ec081.png"/></a></p>
-<p>たとえば、Node1 のレイヤーを見てみると、冷蔵庫Primは /Refridgerator というPrimが<br/>
+<p>たとえば、Node1 のレイヤーを見てみると、冷蔵庫 Prim は /Refridgerator という Prim が<br/>
 あります。<br/>
 それがリファレンスされると、</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/322781bde3a7663a33117e76a55dc07b.png"><img alt="" src="https://gyazo.com/322781bde3a7663a33117e76a55dc07b.png"/></a></p>
 <p>Target Path のネームスペースにマップされている... というのがわかります。</p>
-<p>このように、PCPを見ることで、<br/>
-複数のレイヤーをコンポジションして最終的なPrimが出来上がるまで<br/>
+<p>このように、PCP を見ることで、<br/>
+複数のレイヤーをコンポジションして最終的な Prim が出来上がるまで<br/>
 どのようなコンポジションが行われているのか取得できているのがわかるわけです。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>PcpPrimIndexはコンポジション機能だけを担うもので、シーングラフの親子関係（階層構造）<br/>
-は持ちません。<br/>
-Pcp自体は、あるPrimに誰が意見を持っているかを提供しているだけで<br/>
-<strong>最終的な値はなにか とか、シーングラフのオブジェクトの型であったりスキーマ</strong> は<br/>
-UsdPrimの役割として分離されています。</p>
 </div>
+<p>PcpPrimIndex はコンポジション機能だけを担うもので、シーングラフの親子関係（階層構造）<br/>
+は持ちません。<br/>
+Pcp 自体は、ある Prim に誰が意見を持っているかを提供しているだけで<br/>
+<strong>最終的な値はなにか とか、シーングラフのオブジェクトの型であったりスキーマ</strong> は<br/>
+UsdPrim の役割として分離されています。</p>
 <h2 id="pcpnoderef">PCPNodeRef<a class="headerlink" href="#pcpnoderef" title="Permanent link">¶</a></h2>
-<p>このDumpした情報をみると「Node」というキーワードが出てきます。</p>
-<p>このNode (PcpNodeRef)は、コンポジションの木構造を表現するためのノードで、</p>
+<p>この Dump した情報をみると「Node」というキーワードが出てきます。</p>
+<p>この Node (PcpNodeRef)は、コンポジションの木構造を表現するためのノードで、</p>
 <p>たとえば、</p>
 <ol>
 <li>どのレイヤーか</li>
@@ -2993,9 +2994,9 @@ UsdPrimの役割として分離されています。</p>
 <li>どのネームスペースにマップするか</li>
 </ol>
 <p>という<br/>
-あるPrimを構成する要素を確認することができます。</p>
+ある Prim を構成する要素を確認することができます。</p>
 <p>この構造を視覚化してみます。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -3004,9 +3005,9 @@ UsdPrimの役割として分離されています。</p>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">"/Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1"</span><span class="p">)</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimIndex</span><span class="p">()</span>
 <span class="n">index</span><span class="o">.</span><span class="n">DumpToDotGraph</span><span class="p">(</span><span class="s2">"D:/graph.dot"</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-まず、構成をしらべたいPrimを選択して、PrimIndexを取得します。</p>
-<p>Indexの DumpToDotGraph を使用するとGraphVizのフォーマットで情報を出力できるので、<br/>
+</code></pre></div></td></tr></table></div>
+<p>まず、構成をしらべたい Prim を選択して、PrimIndex を取得します。</p>
+<p>Index の DumpToDotGraph を使用すると GraphViz のフォーマットで情報を出力できるので、<br/>
 それを使用してグラフを表示してみると、</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/5f2f50f295856a245262f85d87f65e9f.png"><img alt="" src="https://gyazo.com/5f2f50f295856a245262f85d87f65e9f.png"/></a></p>
 <p>このようになります。<br/>
@@ -3034,14 +3035,14 @@ rootNode から複数のコンポジションアークが木構造で表され�
         <span class="n">traverse</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 <span class="n">traverse</span><span class="p">(</span><span class="n">rootRef</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Primを構成する各レイヤーを検索することができます。</p>
+<p>Prim を構成する各レイヤーを検索することができます。</p>
 <h3 id="_2">レイヤースタックとコンポジション<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p>上のDumpした結果をみると、コンポジションの中でも「サブレイヤー」が含まれていないことがわかります。</p>
-<p>このPcpでコンポジションを追いかけたときにサブレイヤーの扱いはどうなっているのかを確認してみます。</p>
+<p>上の Dump した結果をみると、コンポジションの中でも「サブレイヤー」が含まれていないことがわかります。</p>
+<p>この Pcp でコンポジションを追いかけたときにサブレイヤーの扱いはどうなっているのかを確認してみます。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/db7179c0a291f9155e60a7681bcfb295.png"><img alt="" src="https://gyazo.com/db7179c0a291f9155e60a7681bcfb295.png"/></a></p>
 <p>まずはこんな感じの構成の usda を用意します。</p>
 <p>subLayerB.usda をサブレイヤーした subLayer.usda を root.usda にサブレイヤー<br/>
-そしてsubLayerB.usda で定義しているPrim subLayerBを sublayerReference プリムに Reference します。</p>
+そして subLayerB.usda で定義している Prim subLayerB を sublayerReference プリムに Reference します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3070,8 +3071,8 @@ rootNode から複数のコンポジションアークが木構造で表され�
 
 <span class="n">traverse</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">rootNode</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>PcpNodeRefから LayerStack を使用することで、レイヤーを取得できます。</p>
-<p>実行すると<br/>
+<p>PcpNodeRef から LayerStack を使用することで、レイヤーを取得できます。</p>
+<p>実行すると</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3087,12 +3088,12 @@ Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayerB.usda')
 Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/root.usda')
 Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayer.usda')
 Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayerB.usda')
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h2 id="_3">編集ターゲットを取得する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>では、このPcpを使用してあるPrimを構成するレイヤーの１つを取得して<br/>
+<p>では、この Pcp を使用してある Prim を構成するレイヤーの１つを取得して<br/>
 変更できるようにしてみます。<br/>
-基本的には<a href="../01_editTarget/">EditTargetを使用する</a>と同じように、UsdEditTargetを作れればよい<br/>
-ので、PcpPrimIndexとPcpNodeRefを使用してEditTargetを取得します。</p>
+基本的には<a href="../01_editTarget/">EditTarget を使用する</a>と同じように、UsdEditTarget を作れればよい<br/>
+ので、PcpPrimIndex と PcpNodeRef を使用して EditTarget を取得します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">et</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">EditTarget</span><span class="p">(</span><span class="n">rootRef</span><span class="o">.</span><span class="n">layerStack</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">rootRef</span><span class="p">)</span>
@@ -3100,31 +3101,31 @@ Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayerB.usda')
 <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="err">～～～</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>取得方法はこのとおり。<br/>
-PcpNodeRefからlayerStackを取得し、構成するレイヤーを取得します。<br/>
-このlayerStackは、サブレイヤーの場合はこのStackにレイヤーが積まれた状態になっています。<br/>
-そこからSdfLayerオブジェクトを取得することができます。</p>
-<p>そして、レイヤーのネームスペースを取得するためPcpNodeRefをEditTargetに渡します。<br/>
-あとは、SetEditTarget で、編集ターゲットをステージに渡せばOKです。</p>
+PcpNodeRef から layerStack を取得し、構成するレイヤーを取得します。<br/>
+この layerStack は、サブレイヤーの場合はこの Stack にレイヤーが積まれた状態になっています。<br/>
+そこから SdfLayer オブジェクトを取得することができます。</p>
+<p>そして、レイヤーのネームスペースを取得するため PcpNodeRef を EditTarget に渡します。<br/>
+あとは、SetEditTarget で、編集ターゲットをステージに渡せば OK です。</p>
 <h2 id="_4">まとめ<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<p>UsdのAPIを使用すれば、コンポジションアークを構築したり<br/>
+<p>Usd の API を使用すれば、コンポジションアークを構築したり<br/>
 シーングラフを管理したりできましたが<br/>
-このUsdAPIからコンポジションを実際にどのように管理しているのかというのが<br/>
-Pcpを見ることで理解できました。</p>
+この UsdAPI からコンポジションを実際にどのように管理しているのかというのが<br/>
+Pcp を見ることで理解できました。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/129e378b6ad3eb75beaf300a264aa135.png"><img alt="" src="https://gyazo.com/129e378b6ad3eb75beaf300a264aa135.png"/></a></p>
-<p>usdviewでPrimを選択しているときに表示される この Compositionや Layer Stackなどの情報も<br/>
-今までの自分の理解だと Primから頑張って取得する。。。ぐらいしか思いつかなかったですが<br/>
-PrimIndexからPcpNodeRefを使用することで<br/>
+<p>usdview で Prim を選択しているときに表示される この Composition や Layer Stack などの情報も<br/>
+今までの自分の理解だと Prim から頑張って取得する。。。ぐらいしか思いつかなかったですが<br/>
+PrimIndex から PcpNodeRef を使用することで<br/>
 コンポジションの木構造を取得して表示してるんだなー　というのがよく分かるようになりました。<br/>
-(むしろここに表示されてるTreeはPcpPrimIndexから取得できるNodeRefのツリーだった)</p>
+(むしろここに表示されてる Tree は PcpPrimIndex から取得できる NodeRef のツリーだった)</p>
 <p>これを利用すれば、より複雑なコンポジションであっても<br/>
-ターゲットレイヤーを選択して編集対象にして、usdを更新する...みたいなツールも<br/>
+ターゲットレイヤーを選択して編集対象にして、usd を更新する...みたいなツールも<br/>
 簡単に作ることができそうです。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-28 18:19:54</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-12 16:29:57</span>
 </small>
 </div>
 </article>

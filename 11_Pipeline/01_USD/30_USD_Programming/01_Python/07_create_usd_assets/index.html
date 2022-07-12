@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="PythonでUSDアセットのセットアップをする方法" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_Python/07_create_usd_assets/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
@@ -1526,7 +1527,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#variant">
-    Variant作り
+    Variant 作り
   </a>
 </li>
 </ul>
@@ -1534,12 +1535,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#inherits">
-    Inherits作り
+    Inherits 作り
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#layer">
-    メインのLayerを作る
+    メインの Layer を作る
   </a>
 </li>
 <li class="md-nav__item">
@@ -2774,7 +2775,7 @@
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#variant">
-    Variant作り
+    Variant 作り
   </a>
 </li>
 </ul>
@@ -2782,12 +2783,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#inherits">
-    Inherits作り
+    Inherits 作り
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#layer">
-    メインのLayerを作る
+    メインの Layer を作る
   </a>
 </li>
 <li class="md-nav__item">
@@ -2814,15 +2815,15 @@
         </a>
 </nav>
 <h1>Pythonで作るUSDアセット</h1>
-<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description AdventCalendar2021</a> 20日目は、<br/>
-以前紹介した <a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/16_component_builder/">Houdini SOLARISのComponentBuilder</a> に近い内容をPythonでやりながら<br/>
-Pythonを使用したUSDのコンポジションの作り方を説明していきます。</p>
+<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description AdventCalendar2021</a> 20 日目は、<br/>
+以前紹介した <a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/16_component_builder/">Houdini SOLARIS の ComponentBuilder</a> に近い内容を Python でやりながら<br/>
+Python を使用した USD のコンポジションの作り方を説明していきます。</p>
 <h2 id="_1">最終的な構成<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、最終的にどのようになるのかを見てみます。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/cebf8930f814a9d174b40269e5ef7865.png"><img alt="" src="https://gyazo.com/cebf8930f814a9d174b40269e5ef7865.png"/></a></p>
 <p>今回はマテリアル回りは省いて、ジオメトリのみの構成です。<br/>
-Kitchen_setの構造をベースにしつつ、ジオメトリのヴァリエーションは個別のレイヤーに分けつつ<br/>
-Payloadの構造と、Inheritsの構造をデフォルトで仕込むようにします。</p>
+Kitchen_set の構造をベースにしつつ、ジオメトリのヴァリエーションは個別のレイヤーに分けつつ<br/>
+Payload の構造と、Inherits の構造をデフォルトで仕込むようにします。</p>
 <p>では、順番に処理を見ていきます。</p>
 <h2 id="_2">アセット名の指定など<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2833,13 +2834,13 @@ Payloadの構造と、Inheritsの構造をデフォルトで仕込むように�
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">os</span>
 </code></pre></div></td></tr></table></div>
-<p>まずは必用なモジュールをImportします。</p>
+<p>まずは必用なモジュールを Import します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ASSETS_DIR</span> <span class="o">=</span> <span class="s2">"D:/sample/assets"</span>
 </code></pre></div></td></tr></table></div>
-<p>そしてAssetのルートディレクトリを決めておきます。</p>
+<p>そして Asset のルートディレクトリを決めておきます。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/d0a2700028ce196b44e30532eb93d902.png"><img alt="" src="https://gyazo.com/d0a2700028ce196b44e30532eb93d902.png"/></a></p>
 <p>各アセット以下はこのような構成になるようにします。<br/>
-Primやフォルダ名、レイヤー名などには、AssetNameを使用するので<br/>
+Prim やフォルダ名、レイヤー名などには、AssetName を使用するので<br/>
 事前に変数で定義しておきます。<br/>
 （実際に使用する場合は、この辺りは関数にしたほうが良いけど、今回はベタ書きします）</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2852,7 +2853,7 @@ Primやフォルダ名、レイヤー名などには、AssetNameを使用する�
 
 <span class="n">assetDir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">ASSETS_DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div></td></tr></table></div>
-<p>ディレクトリは決まったので、USDのPrimを作っていきます。<br/>
+<p>ディレクトリは決まったので、USD の Prim を作っていきます。<br/>
 最初に、 payload のレイヤーを作り、その中にすでにあるジオメトリのレイヤーを<br/>
 リファレンスするようにします。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2865,19 +2866,19 @@ Primやフォルダ名、レイヤー名などには、AssetNameを使用する�
 <span class="n">payloadStage</span><span class="o">.</span><span class="n">SetDefaultPrim</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 <span class="n">rootPath</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>CreateInMemoryで、Stageを作り、空のPrimの作成＋DefaultPrimの設定をします。<br/>
+<p>CreateInMemory で、Stage を作り、空の Prim の作成＋ DefaultPrim の設定をします。<br/>
 新しいレイヤーを作る場合は、いくつかやり方があります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateNew</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.payload.usd"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>このように、CreateNewする手もありますが<br/>
+<p>このように、CreateNew する手もありますが<br/>
 この場合既にファイルがあるとエラーになるので、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">payloadLayer</span> <span class="o">=</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">Layer</span><span class="o">.</span><span class="n">FindOrOpen</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.payload.usd"</span><span class="p">)</span>
 <span class="n">pyaloadStage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">payloadLayer</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>FindOrOpenするか、サンプルのように CreateInMemory しておくほうが個人的には好きです。<br/>
+<p>FindOrOpen するか、サンプルのように CreateInMemory しておくほうが個人的には好きです。<br/>
 (CreateInMemory なら、必ず作り直すのでアセットづくりの場合なおのこと。)</p>
-<h3 id="variant">Variant作り<a class="headerlink" href="#variant" title="Permanent link">¶</a></h3>
+<h3 id="variant">Variant 作り<a class="headerlink" href="#variant" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2928,23 +2929,23 @@ Primやフォルダ名、レイヤー名などには、AssetNameを使用する�
 
 <span class="n">payloadsLayer</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.payload.usd"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Payload用のStageができたら、その中にVariantSetを作り、<br/>
-ジオメトリのレイヤーをVariantSetで切り替えできるようにします。</p>
+<p>Payload 用の Stage ができたら、その中に VariantSet を作り、<br/>
+ジオメトリのレイヤーを VariantSet で切り替えできるようにします。</p>
 <p><strong>今回は、指定フォルダ以下にあるレイヤーを切り替えできるようにする</strong><br/>
 感じで処理をするので、モデルの置き場所を指定して<br/>
-Asset以下にコピーしたうえでVariantSetを作ります。<br/>
+Asset 以下にコピーしたうえで VariantSet を作ります。<br/>
 （この辺りはお好みで）</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/1b4f611b3d204416eb55d56a3c963a9a.png"><img alt="" src="https://gyazo.com/1b4f611b3d204416eb55d56a3c963a9a.png"/></a></p>
 <p>実行すると、このようなレイヤーが出来上がります。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/0e366efcb2b2da1a9ca7f8e425e46cf1.png"><img alt="" src="https://gyazo.com/0e366efcb2b2da1a9ca7f8e425e46cf1.png"/></a></p>
-<p>payload.usd をusdviewで確認すると、こんな感じになります。<br/>
-RootPrimにVariantSetが追加され、指定フォルダ以下のLayerがVariantで切り替えできるようになります。</p>
-<h2 id="inherits">Inherits作り<a class="headerlink" href="#inherits" title="Permanent link">¶</a></h2>
-<p>次にInheritsするためのレイヤーを用意します。<br/>
-Referenceは指定Primに対してReferenceするLayerのPath（あるいはSdfPath）を指定しますが<br/>
-Inheritsは、SdfPathを指定します。<br/>
-そのため、Inherits用のClassPrimを別レイヤー化したい場合は、<br/>
-SubLayerと組み合わせる必要があります。</p>
+<p>payload.usd を usdview で確認すると、こんな感じになります。<br/>
+RootPrim に VariantSet が追加され、指定フォルダ以下の Layer が Variant で切り替えできるようになります。</p>
+<h2 id="inherits">Inherits 作り<a class="headerlink" href="#inherits" title="Permanent link">¶</a></h2>
+<p>次に Inherits するためのレイヤーを用意します。<br/>
+Reference は指定 Prim に対して Reference する Layer の Path（あるいは SdfPath）を指定しますが<br/>
+Inherits は、SdfPath を指定します。<br/>
+そのため、Inherits 用の ClassPrim を別レイヤー化したい場合は、<br/>
+SubLayer と組み合わせる必要があります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2955,13 +2956,13 @@ SubLayerと組み合わせる必要があります。</p>
 <span class="n">inheritsStage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s2">"/__class__"</span><span class="p">)</span>
 <span class="n">inheritsLayer</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.class.usd"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>こんな感じで、 <strong>class</strong> （ Specifierは class ) だけを定義した別レイヤーを作成します。<br/>
-このように分けておけば、あとで継承したPrimに対して何かしたい場合は<br/>
-このレイヤーを編集すればOKになります。</p>
-<h2 id="layer">メインのLayerを作る<a class="headerlink" href="#layer" title="Permanent link">¶</a></h2>
-<p>最後に、実際にレイアウトなどで配置するときに読み込むLayerを作ります。<br/>
+<p>こんな感じで、 <strong>class</strong> （ Specifier は class ) だけを定義した別レイヤーを作成します。<br/>
+このように分けておけば、あとで継承した Prim に対して何かしたい場合は<br/>
+このレイヤーを編集すれば OK になります。</p>
+<h2 id="layer">メインの Layer を作る<a class="headerlink" href="#layer" title="Permanent link">¶</a></h2>
+<p>最後に、実際にレイアウトなどで配置するときに読み込む Layer を作ります。<br/>
 レイヤー名は、アセット名になるようにして<br/>
-これまで作成したLayerを読み込みつつ、AssetInfoとKindを指定します。</p>
+これまで作成した Layer を読み込みつつ、AssetInfo と Kind を指定します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3013,18 +3014,18 @@ SubLayerと組み合わせる必要があります。</p>
 <span class="n">layer</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">assetDir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assetName</span><span class="si">}</span><span class="s2">.usd"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ffedff5e328a93184a62ec4ff15b5946.png"><img alt="" src="https://gyazo.com/ffedff5e328a93184a62ec4ff15b5946.png"/></a></p>
-<p>完成した USDファイルを usdview で開いてみます。<br/>
-Compositionを見ると、Rootになる sampleAssets には SubLayer Inherits Payload Variant<br/>
-Geomには Reference と、（Specializeを除いた）５つのコンポジションアークを使用した<br/>
+<p>完成した USD ファイルを usdview で開いてみます。<br/>
+Composition を見ると、Root になる sampleAssets には SubLayer Inherits Payload Variant<br/>
+Geom には Reference と、（Specialize を除いた）５つのコンポジションアークを使用した<br/>
 アセットが出来上がりました。</p>
 <p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/bf39666757b7ee7eb76e7dac2424001c.png"><img alt="" src="https://gyazo.com/bf39666757b7ee7eb76e7dac2424001c.png"/></a></p>
 <p>Meta Data を確認すると、 variant assetInfo kind が指定されています。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>以上、Pythonを使用してAssetのセットアップでした。<br/>
-このようにPythonで書くと、どこで何をして、最終的にどうなるのかが<br/>
+<p>以上、Python を使用して Asset のセットアップでした。<br/>
+このように Python で書くと、どこで何をして、最終的にどうなるのかが<br/>
 わかりやすくなるのではと思います。<br/>
 <a href="https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/CompArc/usd-comp-arc/">https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/CompArc/usd-comp-arc/</a><br/>
-今回はNotebookで書いたのですが、実際に使う場合は<br/>
+今回は Notebook で書いたのですが、実際に使う場合は<br/>
 関数化して、コマンドラインツール化して各種自動化と組み合わせると良いかと思います。<br/>
 公式のリポジトリの</p>
 <blockquote>
@@ -3037,7 +3038,7 @@ Geomには Reference と、（Specializeを除いた）５つのコンポジシ�
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-28 18:19:54</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-12 16:29:57</span>
 </small>
 </div>
 </article>
