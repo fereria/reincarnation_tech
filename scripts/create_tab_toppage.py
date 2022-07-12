@@ -43,26 +43,20 @@ def createIndexMd(rootDir):
     writeLines = []
 
     for root, dirs, files in os.walk(rootDir, topdown=True):
-
         files.sort()
-
         if root != rootDir:
             root = root.replace("\\", "/")
             dirName = root.replace(rootDir + "/", "")
-
             flg = False
             for e in EXCLUSION:
                 if e == dirName:
                     flg = True
-
             if not flg:
                 buff = dirName.split("/")
                 dirTitle = re.sub("[0-9][0-9]_", "", buff[-1])
                 dirIndent = len(buff) - 1
-
-                if len(glob.glob(root + "/*.md")) > 0:
+                if len(glob.glob(root + "/*.md")) > 0 or re.search('^[0-9][0-9].*', buff[-1]):
                     writeLines.append(f"\n#{'#' * dirIndent}{dirTitle}\n")
-
                 for f in files:
                     path = os.path.join(root, f).replace("\\", "/")
                     if os.path.splitext(path)[1] == ".md":
@@ -91,7 +85,7 @@ def main():
 def samplecode():
 
     docs = (os.getcwd() + "/docs").replace("\\", "/")
-    createIndexMd(f"{docs}/11_PySide")
+    createIndexMd(f"{docs}/05_DCCTool")
 
 
 if __name__ == "__main__":
