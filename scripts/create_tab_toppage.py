@@ -70,7 +70,7 @@ def createIndexMd(rootDir):
                             for i in header['tags']:
                                 tag += "{{'" + i + "'|tag_badge}}"
                         if len(tag) > 0:
-                            writeLines.append(tag)
+                            writeLines.append('    ' + tag)
 
     with codecs.open(f"{rootDir}/index.md", 'w', 'utf-8') as f:
         f.write("\n".join(writeLines))
