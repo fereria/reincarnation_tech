@@ -62,14 +62,14 @@ def createIndexMd(rootDir):
                     if os.path.splitext(path)[1] == ".md":
                         header = getHeader(path)
                         mdPath = path.replace(f"{rootDir}/", "")
-                        line = f"- [{header['title']}]({mdPath})"
-                        if 'description' in header and header['description']:
-                            line += f": {header['description']}"
+                        linkValue = f"**[{header['title']}]({mdPath})**"
                         if 'tags' in header:
                             for i in header['tags']:
-                                pass
-                                # line += "{{'" + i + "'|green_badge}}"
-                        writeLines.append(line)
+                                linkValue += "{{'" + i + "'|green_badge}}"
+                        writeLines.append(linkValue)
+
+                        if 'description' in header and header['description']:
+                            writeLines.append(f"{header['description']}")
 
     with codecs.open(f"{rootDir}/index.md", 'w', 'utf-8') as f:
         f.write("\n".join(writeLines))
