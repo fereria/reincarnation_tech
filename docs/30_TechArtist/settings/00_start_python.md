@@ -3,7 +3,7 @@ title: 0から始めるTA環境作り - エディタの設定
 tags:
     - Python
     - VSCode
-description:
+description: VSCodeでPythonを書くための設定をする
 ---
 
 「日常的な作業をもっと楽にしたい」

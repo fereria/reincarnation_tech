@@ -3,7 +3,7 @@ title: 0から始めるTA環境作り - エディタの設定(2)
 tags:
     - Python
     - VSCode
-description:
+description: VSCodeの設定続き
 ---
 
 第１回で、Python をインストールして VSCode をインストール、Python を実行できる環境になりました。

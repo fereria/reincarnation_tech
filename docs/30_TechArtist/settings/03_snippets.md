@@ -3,7 +3,7 @@ title: 0から始めるTA環境作り - エディタの設定(3) スニペット
 tags:
     - Python
     - VSCode
-description:
+description: スニペットを登録して快適にする
 ---
 
 一通りの環境構築はできましたが、作業しながら知識をためながら
