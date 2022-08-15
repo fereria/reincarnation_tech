@@ -3,6 +3,7 @@ title: FileFormatPluginについて
 tags:
     - USD
     - AdventCalendar2021
+    - CEDEC2022
 description: USDでAlembicなどを使用する方法
 ---
 
