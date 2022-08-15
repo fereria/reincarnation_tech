@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/13_create_usdAssets_01/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.0, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.4.0" name="generator"/>
 <title>SOLARISでUSDアセットを作ろう - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.69437709.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -19,10 +19,10 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link href="../../../../stylesheets/extra.css" rel="stylesheet"/>
 <link href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css" rel="stylesheet"/>
-<script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-0Z0ZWECHNT",{page_path:e.pathname})})})</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT"></script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){if(document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document.forms.feedback){var e,a=document.forms.feedback;for(e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}"undefined"!=typeof location$&&location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -91,7 +91,7 @@
 <div class="md-header__source">
 <a class="md-source" data-md-component="source" href="https://github.com/fereria/reincarnation_tech" title="リポジトリへ">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -177,7 +177,7 @@
 <div class="md-nav__source">
 <a class="md-source" data-md-component="source" href="https://github.com/fereria/reincarnation_tech" title="リポジトリへ">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -2976,7 +2976,7 @@ USDのコンポジションの理屈と合わせてまとめていければと�
 <h2 id="_2">ここでいうアセットとは<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>これは分野や会社によっても定義は変わるかと思いますが、<br/>
 ここではショットワークで使用する各種モデルなどの素材を指します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/1e324b32c176801299477fa8238123aa.png"><img alt="" src="https://gyazo.com/1e324b32c176801299477fa8238123aa.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/1e324b32c176801299477fa8238123aa.png"><img alt="" src="https://gyazo.com/1e324b32c176801299477fa8238123aa.png"/></a></p>
 <p>ものすごいざっくりと書き出すとこういう関係になります。<br/>
 映像作品などを作る場合は、各カットごとにアニメーションをつけてエフェクトをつけたりして<br/>
 映像を作成します。<br/>
@@ -3009,20 +3009,20 @@ USDはファイルを好きに分割することができます。<br/>
 <li>共通素材になるところは分ける</li>
 </ol>
 <p>だと思います。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/52e201c1d7f3a3244d3b4ccce7960053.png"><img alt="" src="https://gyazo.com/52e201c1d7f3a3244d3b4ccce7960053.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/52e201c1d7f3a3244d3b4ccce7960053.png"><img alt="" src="https://gyazo.com/52e201c1d7f3a3244d3b4ccce7960053.png"/></a></p>
 <p>キッチンセットは、 assetsフォルダ以下に複数のアセットが保存されています。<br/>
 その中のKitchenTableを開いてみると</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ba44d0885069324d93a5b8f5b3d94dd1.png"><img alt="" src="https://gyazo.com/ba44d0885069324d93a5b8f5b3d94dd1.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/ba44d0885069324d93a5b8f5b3d94dd1.png"><img alt="" src="https://gyazo.com/ba44d0885069324d93a5b8f5b3d94dd1.png"/></a></p>
 <p>その下には KitchenTable.geom.usd KitchenTable_payload.usd KitchenTable.usd<br/>
 という３つのモデルが入っています。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/a823dbf6db30a31f3839c46f0712a091.png"><img alt="" src="https://gyazo.com/a823dbf6db30a31f3839c46f0712a091.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/a823dbf6db30a31f3839c46f0712a091.png"><img alt="" src="https://gyazo.com/a823dbf6db30a31f3839c46f0712a091.png"/></a></p>
 <p>そのTableが、「キッチンセット」という１つのアセットにリファレンスで<br/>
 読み込まれているのがわかります。<br/>
 （payloadの階層などはこのあとで説明）</p>
 <p>これから読み取れることは、<br/>
 Kitchen_setというアセット（カテゴリ的にはこれはBGに当たる）の中には<br/>
 数多くの別のアセット（小物等）がリファレンスで読み込まれています。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/8460327ed096a587d4ea8305fd0448aa.png"><img alt="" src="https://gyazo.com/8460327ed096a587d4ea8305fd0448aa.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/8460327ed096a587d4ea8305fd0448aa.png"><img alt="" src="https://gyazo.com/8460327ed096a587d4ea8305fd0448aa.png"/></a></p>
 <p>１つのBGを構築しようとしたときに、共通の小物<br/>
 （家具、机の上の小物、街路樹、信号などなどBGを構成する要素）は<br/>
 <strong>共通素材となるパーツ</strong> となります。<br/>
@@ -3032,24 +3032,24 @@ Kitchen_setというアセット（カテゴリ的にはこれはBGに当たる�
 最小単位はまずほかのセット（BG）でも使い回せる小物類にしておくのが良さそうです。</p>
 <h3 id="solaris">SOLARISで構築開始<a class="headerlink" href="#solaris" title="Permanent link">¶</a></h3>
 <p>とりあえず、SOLARIS上で組み立ててみます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/6efa7045e9576ef4d5695eef54d57913.png"><img alt="" src="https://gyazo.com/6efa7045e9576ef4d5695eef54d57913.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/6efa7045e9576ef4d5695eef54d57913.png"><img alt="" src="https://gyazo.com/6efa7045e9576ef4d5695eef54d57913.png"/></a></p>
 <p>いつものように豚さんを召喚します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/6a69984a208888699126c53d312d8e0d.png"><img alt="" src="https://gyazo.com/6a69984a208888699126c53d312d8e0d.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/6a69984a208888699126c53d312d8e0d.png"><img alt="" src="https://gyazo.com/6a69984a208888699126c53d312d8e0d.png"/></a></p>
 <p>ネットワークはこちら。<br/>
 召喚方法はいろいろありますが、今回は sopimportを使用して<br/>
 指定のモデルを指定のネームスペース以下に生成します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/e5e0d129754b7b6b06174c67ad89dc52.png"><img alt="" src="https://gyazo.com/e5e0d129754b7b6b06174c67ad89dc52.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/e5e0d129754b7b6b06174c67ad89dc52.png"><img alt="" src="https://gyazo.com/e5e0d129754b7b6b06174c67ad89dc52.png"/></a></p>
 <p>なにもしないとこうなります。<br/>
 これじゃあ何がなんだかわからないので、ちゃんと整理してみます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/34964b14ee5a7055bf44a2c4e1a5af1c.png"><img alt="" src="https://gyazo.com/34964b14ee5a7055bf44a2c4e1a5af1c.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/34964b14ee5a7055bf44a2c4e1a5af1c.png"><img alt="" src="https://gyazo.com/34964b14ee5a7055bf44a2c4e1a5af1c.png"/></a></p>
 <p>こうなりました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ef82df203693df5e84cec84d70771fb6.png"><img alt="" src="https://gyazo.com/ef82df203693df5e84cec84d70771fb6.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/ef82df203693df5e84cec84d70771fb6.png"><img alt="" src="https://gyazo.com/ef82df203693df5e84cec84d70771fb6.png"/></a></p>
 <p>これは、アセットを作る場合はPixarが提供しているサンプルをみるとわかりますが<br/>
 トップノードはアセット名がルート以下に来るようにしています。<br/>
 そしてこのアセット名Primを <strong>「defaultPrim」</strong> に指定します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/1bed7bdb3c6fa0888aece11637be9ce9.png"><img alt="" src="https://gyazo.com/1bed7bdb3c6fa0888aece11637be9ce9.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/1bed7bdb3c6fa0888aece11637be9ce9.png"><img alt="" src="https://gyazo.com/1bed7bdb3c6fa0888aece11637be9ce9.png"/></a></p>
 <p>最近ずっと調べていた ConfigureLayerノードを作り</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ccc8c77b6b44e05300fdff2345bec17e.png"><img alt="" src="https://gyazo.com/ccc8c77b6b44e05300fdff2345bec17e.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/ccc8c77b6b44e05300fdff2345bec17e.png"><img alt="" src="https://gyazo.com/ccc8c77b6b44e05300fdff2345bec17e.png"/></a></p>
 <p>Default Primitive を、ルート以下につくった アセット名のPrimに指定します。</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -3076,20 +3076,20 @@ Kitchen_setというアセット（カテゴリ的にはこれはBGに当たる�
 <h3 id="_5">マテリアルの設定<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <p>これだけですと、メッシュがあるだけでマテリアルも何もないので<br/>
 次にマテリアルを設定していきます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/98bfe657cafaa2adc89f00e4762c460e.png"><img alt="" src="https://gyazo.com/98bfe657cafaa2adc89f00e4762c460e.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/98bfe657cafaa2adc89f00e4762c460e.png"><img alt="" src="https://gyazo.com/98bfe657cafaa2adc89f00e4762c460e.png"/></a></p>
 <p>マテリアルは、SOP側ですでに指定されている場合は、MaterialLibraryを使用して</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/a2aca5c90ad3a4190a56ba9181c319d5.png"><img alt="" src="https://gyazo.com/a2aca5c90ad3a4190a56ba9181c319d5.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/a2aca5c90ad3a4190a56ba9181c319d5.png"><img alt="" src="https://gyazo.com/a2aca5c90ad3a4190a56ba9181c319d5.png"/></a></p>
 <p>shopnetのマテリアルをSOLARIS上に読み込みます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/07a6bc9ca2889a9ce24d9b0032331b48.png"><img alt="" src="https://gyazo.com/07a6bc9ca2889a9ce24d9b0032331b48.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/07a6bc9ca2889a9ce24d9b0032331b48.png"><img alt="" src="https://gyazo.com/07a6bc9ca2889a9ce24d9b0032331b48.png"/></a></p>
 <p>MaterialLibraryはこんなかんじです。<br/>
 SOLARIS側でマテリアルを作るのならば <a href="../12_usd_preview_surface/">UsdPreviewSurface</a>を使用して<br/>
 作る方法もあります。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f4461f100f42e4b350d25e1ba2152b06.png"><img alt="" src="https://gyazo.com/f4461f100f42e4b350d25e1ba2152b06.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/f4461f100f42e4b350d25e1ba2152b06.png"><img alt="" src="https://gyazo.com/f4461f100f42e4b350d25e1ba2152b06.png"/></a></p>
 <p>結果。<br/>
 注意点として、デフォルトだとマテリアルは /materials に作られますが<br/>
 それだとPig以下にならないので、 Material Path Prefix にアセットのPrim以下の<br/>
 Material用の階層（この場合はMaya準拠のLooks）を作成します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c30d254fc20af49568bb5284b15be863.png"><img alt="" src="https://gyazo.com/c30d254fc20af49568bb5284b15be863.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/c30d254fc20af49568bb5284b15be863.png"><img alt="" src="https://gyazo.com/c30d254fc20af49568bb5284b15be863.png"/></a></p>
 <p>そして最後にUSD ROPを使用して USDファイルに出力します。</p>
 <p>この段階だと、 pig.usda という USDファイルが１つあり<br/>
 その中にアセットが入っているという状態になります。<br/>
@@ -3098,12 +3098,12 @@ Material用の階層（この場合はMaya準拠のLooks）を作成します。
 <h3 id="_6">マテリアルを別レイヤー化する例<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>上の構成でもOKですが、もう少しレイヤーを分割する例も軽く触れておきます。<br/>
 それはマテリアルを分割したい場合。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/0b5c37920c6462a8885b82013c4b90be.png"><img alt="" src="https://gyazo.com/0b5c37920c6462a8885b82013c4b90be.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/0b5c37920c6462a8885b82013c4b90be.png"><img alt="" src="https://gyazo.com/0b5c37920c6462a8885b82013c4b90be.png"/></a></p>
 <p>豚のマテリアルを共有化したいケースはまぁさすがに無いとは思いますが<br/>
 汎用的なマテリアルは他のモデルでも使いたい場合が出てくると思います。<br/>
 そういう場合などは、マテリアルのUSDは別途出力しておいて、<br/>
 それをアセットのレイヤーに合成して使用する...といった構造も作ることができます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/b03bac2d737f690e2a075803a41f4428.png"><img alt="" src="https://gyazo.com/b03bac2d737f690e2a075803a41f4428.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/b03bac2d737f690e2a075803a41f4428.png"><img alt="" src="https://gyazo.com/b03bac2d737f690e2a075803a41f4428.png"/></a></p>
 <p>この、Materialを作る　で作ったレイヤーは、<br/>
 こんなふうにルート以下にMaterialがあるような構造になっています。<br/>
 これをリファレンスでMeshのシーンに合成して<br/>
@@ -3130,14 +3130,14 @@ SOLARIS上で構築していきつつ説明していきます。</p>
 </code></pre></div></td></tr></table></div><br/>
 例として、キッチンセットをアンロード状態で開いてみます。<br/>
 usdviewの引数に --unloaded して実行します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ac8092319fd8396164a40b8ad24cb7d0.png"><img alt="" src="https://gyazo.com/ac8092319fd8396164a40b8ad24cb7d0.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/ac8092319fd8396164a40b8ad24cb7d0.png"><img alt="" src="https://gyazo.com/ac8092319fd8396164a40b8ad24cb7d0.png"/></a></p>
 <p>実行すると、開いてもモデルが何も表示されなくなりました。<br/>
 そのかわり、USDViewがものすごい高速で起動します。</p>
 <p>これは、キッチンセットで使用している大量のアセットは、かならずルートに<br/>
 ペイロードの構造を持っているからです。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/2a90779e47cb545577271df7313f9fb3.png"><img alt="" src="https://gyazo.com/2a90779e47cb545577271df7313f9fb3.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/2a90779e47cb545577271df7313f9fb3.png"><img alt="" src="https://gyazo.com/2a90779e47cb545577271df7313f9fb3.png"/></a></p>
 <p>たとえば、この中のKitchen TableをLoadしてみます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/74dfafe0ba62762639d4aa5fa5011c6c.png"><img alt="" src="https://gyazo.com/74dfafe0ba62762639d4aa5fa5011c6c.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/74dfafe0ba62762639d4aa5fa5011c6c.png"><img alt="" src="https://gyazo.com/74dfafe0ba62762639d4aa5fa5011c6c.png"/></a></p>
 <p>すると、Tableのみがロードされました。</p>
 <p>この機能を使うと何が良いかというと、<br/>
 たとえばあるショットが超巨大なビル群などの背景に大量のキャラクターが配置され、<br/>
@@ -3151,7 +3151,7 @@ usdviewの引数に --unloaded して実行します。</p>
 <p>なので、使用するアセットのルートにはペイロードの階層を<br/>
 必ず入れることで、アンロードしたあとアセット単位でのロードが可能になります。</p>
 <h4 id="_9">ペイロードの構造をつくる<a class="headerlink" href="#_9" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/0ad9748545265d3bf5123123df8e704c.png"><img alt="" src="https://gyazo.com/0ad9748545265d3bf5123123df8e704c.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/0ad9748545265d3bf5123123df8e704c.png"><img alt="" src="https://gyazo.com/0ad9748545265d3bf5123123df8e704c.png"/></a></p>
 <p>以上を踏まえて、最初の基本サンプルを変更しました。</p>
 <p>結果。<br/>
 このレイヤー構成はまだまだ考える余地はあるのですが、<br/>
@@ -3164,7 +3164,7 @@ usdviewの引数に --unloaded して実行します。</p>
 <li>Pig.usda ペイロードの構造を追加するレイヤー</li>
 </ul>
 <p>という３つのレイヤーが作成されました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c3693928ee8f287a13d7775ba5439fd3.png"><img alt="" src="https://gyazo.com/c3693928ee8f287a13d7775ba5439fd3.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/c3693928ee8f287a13d7775ba5439fd3.png"><img alt="" src="https://gyazo.com/c3693928ee8f287a13d7775ba5439fd3.png"/></a></p>
 <p>別案。<br/>
 先程のに＋して、マテリアルアサインとモデル部分を分離した場合。<br/>
 この場合は</p>
@@ -3182,18 +3182,18 @@ usdviewの引数に --unloaded して実行します。</p>
 <h3 id="_10">バリアント<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
 <p>次にバリアントの構造を作っていきます。<br/>
 この参考には、<a href="https://github.com/PixarAnimationStudios/USD/blob/release/extras/usd/examples/usdMakeFileVariantModelAsset/usdMakeFileVariantModelAsset.py">こちら</a>のコードを参考にします。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c1daae2dc47f07077ba7b1971dacb8d0.png"><img alt="" src="https://gyazo.com/c1daae2dc47f07077ba7b1971dacb8d0.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/c1daae2dc47f07077ba7b1971dacb8d0.png"><img alt="" src="https://gyazo.com/c1daae2dc47f07077ba7b1971dacb8d0.png"/></a></p>
 <p>バリアントが入った場合も、基本的な考え方は同じです。<br/>
 バリアントで切り替えるモデル自体も、最小単位のアセットとして構築しておきます。<br/>
 （このサンプルの場合は、面倒なのでマテリアルは分離していません）</p>
 <p>そして、切り替えしたいモデルを <strong>Add Variant</strong> につなぎます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f489e662268bc108014ac20349f416a4.png"><img alt="" src="https://gyazo.com/f489e662268bc108014ac20349f416a4.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/f489e662268bc108014ac20349f416a4.png"><img alt="" src="https://gyazo.com/f489e662268bc108014ac20349f416a4.png"/></a></p>
 <p>PrimitivePathは、このアセットの名前（HoudiniFriends）<br/>
 バリアントの切り替えはこのルートPrimに対して作りたいので Variant Primitive は / にします。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/82b4ce46fed1edbe312b1a25f6343598.png"><img alt="" src="https://gyazo.com/82b4ce46fed1edbe312b1a25f6343598.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/82b4ce46fed1edbe312b1a25f6343598.png"><img alt="" src="https://gyazo.com/82b4ce46fed1edbe312b1a25f6343598.png"/></a></p>
 <p>結果、ルートの HoudiniFriendsPrim に対して、バリアントセットが追加されます。<br/>
 これでモデルの切り替えができるようになりました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/0b3b1d7d0b3ab09990ffae36f1177811.png"><img alt="" src="https://gyazo.com/0b3b1d7d0b3ab09990ffae36f1177811.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/0b3b1d7d0b3ab09990ffae36f1177811.png"><img alt="" src="https://gyazo.com/0b3b1d7d0b3ab09990ffae36f1177811.png"/></a></p>
 <p>あとは、このモデルに対してペイロードの構造を追加し、<br/>
 USDROPでエクスポートします。</p>
 <p>バリアントを使えば、複数のアセットを１つのアセットとして切り替えて使用できるように<br/>
@@ -3217,19 +3217,19 @@ Houdiniのページでもあまり言及がないのと、いまいち使い方�
 <p>継承に関しては、<a href="http://graphics.pixar.com/usd/downloads.html">Pixar公式のDownloads</a> にある USD Composition の内容がわかりやすいですので、あわせて参考にしてもらえれば。</p>
 <h4 id="_12">基本的な継承構造の作り方<a class="headerlink" href="#_12" title="Permanent link">¶</a></h4>
 <p>まず、継承の特徴はあるPrimを対象のPrimに内容を「継承させる」ことができます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/116a34743780ccef395210b1fb9f5a15.png"><img alt="" src="https://gyazo.com/116a34743780ccef395210b1fb9f5a15.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/116a34743780ccef395210b1fb9f5a15.png"><img alt="" src="https://gyazo.com/116a34743780ccef395210b1fb9f5a15.png"/></a></p>
 <p>USDの定義には Define 以外に Class が存在します。（あとはOver）<br/>
 このClassは、いわゆるプログラミングのClasと同様で<br/>
 あくまでも型であり実体ではありません。<br/>
 ので、このClassで定義しただけではなにも作られません。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/15194aa46f037529c8d23e21100eecdb.png"><img alt="" src="https://gyazo.com/15194aa46f037529c8d23e21100eecdb.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/15194aa46f037529c8d23e21100eecdb.png"><img alt="" src="https://gyazo.com/15194aa46f037529c8d23e21100eecdb.png"/></a></p>
 <p>このClass定義は Primitive ノードで作成できます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c4eab92bb7a4ddafb9ac2162c5457c90.png"><img alt="" src="https://gyazo.com/c4eab92bb7a4ddafb9ac2162c5457c90.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/c4eab92bb7a4ddafb9ac2162c5457c90.png"><img alt="" src="https://gyazo.com/c4eab92bb7a4ddafb9ac2162c5457c90.png"/></a></p>
 <p>このClassを継承（Referenceノードの Reference Typeを Inherit From First Input にする）<br/>
 で継承します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/8e439cf6284b99f089165846b338ef28.png"><img alt="" src="https://gyazo.com/8e439cf6284b99f089165846b338ef28.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/8e439cf6284b99f089165846b338ef28.png"><img alt="" src="https://gyazo.com/8e439cf6284b99f089165846b338ef28.png"/></a></p>
 <p>すると、ClassのPrimを継承したPrimができあがりました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/dd80d26350d1246d251db41b6ca84d6c.png"><img alt="" src="https://gyazo.com/dd80d26350d1246d251db41b6ca84d6c.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/dd80d26350d1246d251db41b6ca84d6c.png"><img alt="" src="https://gyazo.com/dd80d26350d1246d251db41b6ca84d6c.png"/></a></p>
 <p>BaseClassを複数継承してくる...のような使い方も可能です。<br/>
 このとき、ベースクラスのPrimを編集すれば<br/>
 継承先のPrimも変更されます。</p>
@@ -3237,31 +3237,31 @@ Houdiniのページでもあまり言及がないのと、いまいち使い方�
 <p>これだけだと、Referenceと代わりがありません。<br/>
 ですが、他のコンポジションアークと組み合わせたとき、この継承は意味をなしていきます。</p>
 <p>この継承も、<a href="https://github.com/PixarAnimationStudios/USD/blob/release/extras/usd/examples/usdMakeFileVariantModelAsset/usdMakeFileVariantModelAsset.py">こちら</a>のコードを参考に組み立ててみます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/94612c12719c6d8230facd3858ed26f3.png"><img alt="" src="https://gyazo.com/94612c12719c6d8230facd3858ed26f3.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/94612c12719c6d8230facd3858ed26f3.png"><img alt="" src="https://gyazo.com/94612c12719c6d8230facd3858ed26f3.png"/></a></p>
 <p>全貌はこちら。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c2afe1153bff8e075c6e2dcb7e90f0d6.png"><img alt="" src="https://gyazo.com/c2afe1153bff8e075c6e2dcb7e90f0d6.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/c2afe1153bff8e075c6e2dcb7e90f0d6.png"><img alt="" src="https://gyazo.com/c2afe1153bff8e075c6e2dcb7e90f0d6.png"/></a></p>
 <p>アセットの構築部分はこのあたりになります。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/afa89c339886b0bddae6537af0331b21.png"><img alt="" src="https://gyazo.com/afa89c339886b0bddae6537af0331b21.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/afa89c339886b0bddae6537af0331b21.png"><img alt="" src="https://gyazo.com/afa89c339886b0bddae6537af0331b21.png"/></a></p>
 <p>その結果、こんなシーングラフができあがります。<br/>
 この __class__Pig を、Pigが継承しています。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/308f91dc3ae4f52836de020c79740dc7.png"><img alt="" src="https://gyazo.com/308f91dc3ae4f52836de020c79740dc7.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/308f91dc3ae4f52836de020c79740dc7.png"><img alt="" src="https://gyazo.com/308f91dc3ae4f52836de020c79740dc7.png"/></a></p>
 <p>この作成したアセットを、Referenceで配置します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/6fca8e8eef1cf817c50ab5914c0a2175.png"><img alt="" src="https://gyazo.com/6fca8e8eef1cf817c50ab5914c0a2175.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/6fca8e8eef1cf817c50ab5914c0a2175.png"><img alt="" src="https://gyazo.com/6fca8e8eef1cf817c50ab5914c0a2175.png"/></a></p>
 <p>ブタさん２匹が配置されました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/2c73191c6298ee0ff8bbff0f5244f4ba.png"><img alt="" src="https://gyazo.com/2c73191c6298ee0ff8bbff0f5244f4ba.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/2c73191c6298ee0ff8bbff0f5244f4ba.png"><img alt="" src="https://gyazo.com/2c73191c6298ee0ff8bbff0f5244f4ba.png"/></a></p>
 <p>シーングラフはこのとおり。<br/>
 先程作った __class__Pig は見当たりませんが<br/>
 LayoutPrim以下にPigが２匹召喚されていることがわかります。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/9e311e424ba6d149667836495e22b69d.png"><img alt="" src="https://gyazo.com/9e311e424ba6d149667836495e22b69d.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/9e311e424ba6d149667836495e22b69d.png"><img alt="" src="https://gyazo.com/9e311e424ba6d149667836495e22b69d.png"/></a></p>
 <p>それとは別の系統で、このような構造を作ります。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/27365d217d0cfb9247e86484eb565ecf.png"><img alt="" src="https://gyazo.com/27365d217d0cfb9247e86484eb565ecf.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/27365d217d0cfb9247e86484eb565ecf.png"><img alt="" src="https://gyazo.com/27365d217d0cfb9247e86484eb565ecf.png"/></a></p>
 <p>この構造では、最初のPigアセットの構造と同じ<br/>
 __class__Pig 以下に、 Pig以下にあるマテリアルの構造 Looks/Pig を作っています。<br/>
 このMaterialは「赤くする」マテリアルです。<br/>
 このマテリアルを、 __class__Pig 以下に作っているわけです。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/1e9f1a383efe990d2581a1e2fdef0e6a.png"><img alt="" src="https://gyazo.com/1e9f1a383efe990d2581a1e2fdef0e6a.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/1e9f1a383efe990d2581a1e2fdef0e6a.png"><img alt="" src="https://gyazo.com/1e9f1a383efe990d2581a1e2fdef0e6a.png"/></a></p>
 <p>これを、レイアウトした構造とサブレイヤーで合成してみます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/dae67cdaaaabc6b5a6b44f55d1f2ab4a.png"><img alt="" src="https://gyazo.com/dae67cdaaaabc6b5a6b44f55d1f2ab4a.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/dae67cdaaaabc6b5a6b44f55d1f2ab4a.png"><img alt="" src="https://gyazo.com/dae67cdaaaabc6b5a6b44f55d1f2ab4a.png"/></a></p>
 <p>結果。<br/>
 二匹とも赤くなってしまいました。</p>
 <p>ルート以下の __class__Pig 1つに対して設定していたはずなのに<br/>
@@ -3269,7 +3269,7 @@ __class__Pig 以下に、 Pig以下にあるマテリアルの構造 Looks/Pig �
 <p>これだけだと何が起きたのが全くわかりません。<br/>
 ので、図解してみます。</p>
 <h4 id="_13">継承のしくみ<a class="headerlink" href="#_13" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/53fb5ac97ec3752f0988a7e10f63dfe5.png"><img alt="" src="https://gyazo.com/53fb5ac97ec3752f0988a7e10f63dfe5.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/53fb5ac97ec3752f0988a7e10f63dfe5.png"><img alt="" src="https://gyazo.com/53fb5ac97ec3752f0988a7e10f63dfe5.png"/></a></p>
 <p>今の状況を図にするとこうなっています。</p>
 <p>コンポジションが１つのPrimに対して複数ある場合は、 <strong>「LIVRPS」の原則</strong> によって<br/>
 順番が解決していきます。<br/>
@@ -3291,16 +3291,16 @@ PigPrimが Root 以下にあるPrimを「継承」しています。<br/>
 しかし、この段階だと継承もとのPrimは何も定義されていないのでなにも起きません。</p>
 <p>そして、サブレイヤーで合成された構造は右上です。</p>
 <p>この合成を順番に（弱い順に）見ていくと、</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/6f09120fad5ea86a81a69da233e66da6.png"><img alt="" src="https://gyazo.com/6f09120fad5ea86a81a69da233e66da6.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/6f09120fad5ea86a81a69da233e66da6.png"><img alt="" src="https://gyazo.com/6f09120fad5ea86a81a69da233e66da6.png"/></a></p>
 <p>まず、リファレンスで、「Pigアセット」が配置されます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/bce8ced76e7e7a302b30df62b7cf737f.png"><img alt="" src="https://gyazo.com/bce8ced76e7e7a302b30df62b7cf737f.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/bce8ced76e7e7a302b30df62b7cf737f.png"><img alt="" src="https://gyazo.com/bce8ced76e7e7a302b30df62b7cf737f.png"/></a></p>
 <p>アセットの段階で、 __class__Pig という空のClassを defaultPrimの「Pig（リファレンス元）」<br/>
 が継承していたので、このようになっています。<br/>
 （ Layout/__class__Pig ではないのがミソ）</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/0e66b976a10100bf2b10461671dc9ddc.png"><img alt="" src="https://gyazo.com/0e66b976a10100bf2b10461671dc9ddc.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/0e66b976a10100bf2b10461671dc9ddc.png"><img alt="" src="https://gyazo.com/0e66b976a10100bf2b10461671dc9ddc.png"/></a></p>
 <p>この「リファレンス元で継承しておいた Root以下の __class__Pig に<br/>
 サブレイヤーで「赤いマテリアルにする」というMaterialプリムを合成します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/33864c65bc96e48c322d2b30d34ce154.png"><img alt="" src="https://gyazo.com/33864c65bc96e48c322d2b30d34ce154.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/33864c65bc96e48c322d2b30d34ce154.png"><img alt="" src="https://gyazo.com/33864c65bc96e48c322d2b30d34ce154.png"/></a></p>
 <p>すると、リファレンスの段階で仕込んでいた「継承」の構造は<br/>
 サブレイヤーで合成された __class__Pig 以下のPrimを合成します。</p>
 <p>Pig1とPig2というネームスペース以下にリファレンスされた「Pigアセット」は、<br/>
@@ -3358,19 +3358,19 @@ Local -&gt; Inherits -&gt; Varint -&gt; Reference -&gt; Paylaods -&gt; Specializ
 <p>一通りの構造は完成したので、最後にこの作成するアセットの情報を仕込みます。<br/>
 この情報とは、例えば「名前」だったり「バージョン」だったり<br/>
 それ以外にもアセットに紐づく様々な情報を、usda内に埋め込むことができます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/d859caca4afb093ee7f0193b85070533.png"><img alt="" src="https://gyazo.com/d859caca4afb093ee7f0193b85070533.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/d859caca4afb093ee7f0193b85070533.png"><img alt="" src="https://gyazo.com/d859caca4afb093ee7f0193b85070533.png"/></a></p>
 <p>ペイロードの手前に ConfigurePrimitive と ConfigureLayer を追加します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/435f39b7065172f04e229c6e888a5796.png"><img alt="" src="https://gyazo.com/435f39b7065172f04e229c6e888a5796.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/435f39b7065172f04e229c6e888a5796.png"><img alt="" src="https://gyazo.com/435f39b7065172f04e229c6e888a5796.png"/></a></p>
 <p>ConfigureLayerは、FlattenInputを <strong>Flatten Input Layers</strong> に変更します。<br/>
 これを入れることで、メタ情報を入れるUSDファイルを pig.usda になるようにします。</p>
 <p>次に ConfigurePrimitive</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/95b8dcc2396c85b59053627dd11b7bbc.png"><img alt="" src="https://gyazo.com/95b8dcc2396c85b59053627dd11b7bbc.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/95b8dcc2396c85b59053627dd11b7bbc.png"><img alt="" src="https://gyazo.com/95b8dcc2396c85b59053627dd11b7bbc.png"/></a></p>
 <p>Primitivesは、メタ情報を入れたいPrimのPathです。<br/>
 今回は /Pig （Root以下にあるアセット名のPrim）に指定します。</p>
 <p>ここは必要な値を入れれば良いですが、今回はアセット名とバージョン、Kind（今回は割愛）<br/>
 を指定します。<br/>
 ここに無いパラメーターは、 Custom Data に仕込むことができて</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c6eb843866344eb42e36eedfa1236d27.png"><img alt="" src="https://gyazo.com/c6eb843866344eb42e36eedfa1236d27.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/c6eb843866344eb42e36eedfa1236d27.png"><img alt="" src="https://gyazo.com/c6eb843866344eb42e36eedfa1236d27.png"/></a></p>
 <p>こんなかんじに入れると</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -3404,7 +3404,7 @@ usd のメタ情報が追加されます。<br/>
 このようにメタ情報を入れるようにすれば、どのバージョンのファイルなのかを明確化<br/>
 することができます。</p>
 <h2 id="_15">完成<a class="headerlink" href="#_15" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/5bb6d311a44b34c6f9206b2b63cb7a43.png"><img alt="" src="https://gyazo.com/5bb6d311a44b34c6f9206b2b63cb7a43.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/5bb6d311a44b34c6f9206b2b63cb7a43.png"><img alt="" src="https://gyazo.com/5bb6d311a44b34c6f9206b2b63cb7a43.png"/></a></p>
 <p>いろいろやってきましたが、こんなかんじになりました。<br/>
 できあがった hip ファイルは <i class="fa fa-download"></i><a href="https://1drv.ms/u/s!AlUBmJYsMwMhhOcoB7mqcctbgbO2GA?e=hGuenm">こちら</a></p>
 <p>これに必要に応じてバリアントで切り替えを追加すれば基本的なUSDの構造を含んだ<br/>
@@ -3503,13 +3503,13 @@ usd のメタ情報が追加されます。<br/>
 </div>
 <div class="md-social">
 <a class="md-social__link" href="https://github.com/fereria" rel="noopener" target="_blank" title="github.com">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
 </a>
 <a class="md-social__link" href="https://twitter.com/fereria" rel="noopener" target="_blank" title="twitter.com">
-<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
 </a>
 <a class="md-social__link" href="https://zenn.dev/remiria" rel="noopener" target="_blank" title="zenn.dev">
-<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M384 48v464L192 400 0 512V48C0 21.5 21.5 0 48 0h288c26.5 0 48 21.5 48 48z"></path></svg>
+<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M48 0h288c26.5 0 48 21.49 48 48v439.7c0 13.4-10.9 24.3-24.3 24.3-5 0-9.9-1.5-14-4.4L192 400 38.28 507.6c-4.09 2.9-8.96 4.4-13.95 4.4C10.89 512 0 501.1 0 487.7V48C0 21.49 21.49 0 48 0z"></path></svg>
 </a>
 </div>
 </div>
@@ -3519,9 +3519,9 @@ usd のメタ情報が追加されます。<br/>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
+<script src="../../../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script type="text/javascript">const lightbox = GLightbox({"touchNavigation": false, "loop": false});</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

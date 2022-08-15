@@ -9,9 +9,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_Python/06_shader/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.0, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.4.0" name="generator"/>
 <title>UsdPreviewSurfaceを使う - Reincarnation+#Tech</title>
-<link href="../../../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/main.69437709.min.css" rel="stylesheet"/>
 <link href="../../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -20,10 +20,10 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link href="../../../../../stylesheets/extra.css" rel="stylesheet"/>
 <link href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css" rel="stylesheet"/>
-<script>__md_scope=new URL("../../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-0Z0ZWECHNT",{page_path:e.pathname})})})</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT"></script>
-<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+<script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){if(document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document.forms.feedback){var e,a=document.forms.feedback;for(e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}"undefined"!=typeof location$&&location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -92,7 +92,7 @@
 <div class="md-header__source">
 <a class="md-source" data-md-component="source" href="https://github.com/fereria/reincarnation_tech" title="リポジトリへ">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -178,7 +178,7 @@
 <div class="md-nav__source">
 <a class="md-source" data-md-component="source" href="https://github.com/fereria/reincarnation_tech" title="リポジトリへ">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -1536,8 +1536,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usdgeommeshuv">
-    UsdGeomMeshのUV
+<a class="md-nav__link" href="#usdgeommesh-uv">
+    UsdGeomMesh の UV
   </a>
 </li>
 </ul>
@@ -1545,7 +1545,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#face">
-    Face単位のアサイン
+    Face 単位のアサイン
   </a>
 </li>
 <li class="md-nav__item">
@@ -2754,8 +2754,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usdgeommeshuv">
-    UsdGeomMeshのUV
+<a class="md-nav__link" href="#usdgeommesh-uv">
+    UsdGeomMesh の UV
   </a>
 </li>
 </ul>
@@ -2763,7 +2763,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#face">
-    Face単位のアサイン
+    Face 単位のアサイン
   </a>
 </li>
 <li class="md-nav__item">
@@ -2794,24 +2794,27 @@
 <a class="md-tag" href="../../../../../tags/#python">
           Python
         </a>
+<a class="md-tag" href="../../../../../tags/#cedec2022">
+          CEDEC2022
+        </a>
 </nav>
 <h1>UsdPreviewSurfaceを使う</h1>
-<p><a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/12_usd_preview_surface/">SOLARISでのUsdPreviewSurface以前</a>の記事を書いたのですが<br/>
-今回はPythonをベースにPreviewSurfaceをまとめてみようと思います。</p>
+<p><a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/12_usd_preview_surface/">SOLARIS での UsdPreviewSurface 以前</a>の記事を書いたのですが<br/>
+今回は Python をベースに PreviewSurface をまとめてみようと思います。</p>
 <h2 id="_1">基本構造<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/d9576c9061fcdeb24117c432243b3964.png"><img alt="" src="https://gyazo.com/d9576c9061fcdeb24117c432243b3964.png"/></a></p>
-<p>UsdPreviewSurfaceを使用する場合は、 MaterialとShaderの２つのPrimを使用します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="../shader.drawio#0"><img alt="" src="../shader.drawio-0.svg"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/d9576c9061fcdeb24117c432243b3964.png"><img alt="" src="https://gyazo.com/d9576c9061fcdeb24117c432243b3964.png"/></a></p>
+<p>UsdPreviewSurface を使用する場合は、 Material と Shader の２つの Prim を使用します。</p>
+<p><a class="glightbox" href="../shader.drawio#0"><img alt="" src="../shader.drawio-0.svg"/></a></p>
 <p>ルート以下の構造はこのようにします。</p>
 <p>必要に応じて変えても良いですが、</p>
 <ul>
-<li>マテリアルはLooks</li>
-<li>ジオメトリなどはGeom</li>
-<li>レンダーセッティングはRender</li>
+<li>マテリアルは Looks</li>
+<li>ジオメトリなどは Geom</li>
+<li>レンダーセッティングは Render</li>
 </ul>
 <p>が、比較的スタンダードな構造かとおもうので今回はこれで説明します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="../shader.drawio#1"><img alt="" src="../shader.drawio-1.svg"/></a></p>
-<p>Mesh、Material、Shaderの関係性はこのようになります。</p>
+<p><a class="glightbox" href="../shader.drawio#1"><img alt="" src="../shader.drawio-1.svg"/></a></p>
+<p>Mesh、Material、Shader の関係性はこのようになります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2842,29 +2845,29 @@
 <span class="n">mat</span><span class="o">.</span><span class="n">CreateSurfaceOutput</span><span class="p">()</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">shader</span><span class="o">.</span><span class="n">ConnectableAPI</span><span class="p">(),</span> <span class="s2">"surface"</span><span class="p">)</span>
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>それを、Pythonで書くとこのようになります。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png"><img alt="" src="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png"/></a></p>
-<p>結果できあがったusdaをusdviewでひらくと、このように赤いSphereができあがります。</p>
-<p>次は、MaterialとShaderをもう少し詳しく見ていきます。</p>
+<p>それを、Python で書くとこのようになります。</p>
+<p><a class="glightbox" href="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png"><img alt="" src="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png"/></a></p>
+<p>結果できあがった usda を usdview でひらくと、このように赤い Sphere ができあがります。</p>
+<p>次は、Material と Shader をもう少し詳しく見ていきます。</p>
 <h2 id="usdshadematerial">UsdShadeMaterial<a class="headerlink" href="#usdshadematerial" title="Permanent link">¶</a></h2>
-<p>UsdShadeMaterialは、MayaでいうところのShadingGroupのような役割を持つPrimです。<br/>
-レンダーターゲットとなるPrim（Mesh等）とシェーダーとをつなぐ働きをします。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/0140601734293f7728cdd922a04198d5.png"><img alt="" src="https://gyazo.com/0140601734293f7728cdd922a04198d5.png"/></a></p>
-<p>MaterialとMeshとはリレーションで接続されています。</p>
-<p>Meshに対してMaterialをBindするには、UsdShadeMaterialBindingAPIを使用します。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-BindingAPIがアサインするMesh、そしてBind(materialPrim)でアサインすることができます。</p>
+<p>UsdShadeMaterial は、Maya でいうところの ShadingGroup のような役割を持つ Prim です。<br/>
+レンダーターゲットとなる Prim（Mesh 等）とシェーダーとをつなぐ働きをします。</p>
+<p><a class="glightbox" href="https://gyazo.com/0140601734293f7728cdd922a04198d5.png"><img alt="" src="https://gyazo.com/0140601734293f7728cdd922a04198d5.png"/></a></p>
+<p>Material と Mesh とはリレーションで接続されています。</p>
+<p>Mesh に対して Material を Bind するには、UsdShadeMaterialBindingAPI を使用します。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>BindingAPI がアサインする Mesh、そして Bind(materialPrim)でアサインすることができます。</p>
 <h2 id="usdshadeshader">UsdShadeShader<a class="headerlink" href="#usdshadeshader" title="Permanent link">¶</a></h2>
 <p>次にシェーダー。</p>
-<p>USDのシェーダーは、<br/>
+<p>USD のシェーダーは、<br/>
 <a href="https://graphics.pixar.com/usd/docs/UsdPreviewSurface-Proposal.html">https://graphics.pixar.com/usd/docs/UsdPreviewSurface-Proposal.html</a><br/>
-公式Helpのこちらに一覧があります。</p>
-<p>ShaderPrimとまとめられていますが、ShaderPrimは id を指定することで<br/>
-Mayaでいうところのマテリアルであったり、ファイルノードであったり、Place2DTextureのような<br/>
+公式 Help のこちらに一覧があります。</p>
+<p>ShaderPrim とまとめられていますが、ShaderPrim は id を指定することで<br/>
+Maya でいうところのマテリアルであったり、ファイルノードであったり、Place2DTexture のような<br/>
 ノードの働きをします。<br/>
 そして、それらには Inputs/Outputs のアトリビュートがあり、<br/>
-ShaderPrim同士を接続することができます。</p>
+ShaderPrim 同士を接続することができます。</p>
 <h3 id="usdpreviewsurface">UsdPreviewSurface<a class="headerlink" href="#usdpreviewsurface" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2875,36 +2878,38 @@ ShaderPrim同士を接続することができます。</p>
 <span class="n">mat</span><span class="o">.</span><span class="n">CreateSurfaceOutput</span><span class="p">()</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">shader</span><span class="o">.</span><span class="n">ConnectableAPI</span><span class="p">(),</span> <span class="s2">"surface"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>まずは、シンプルなシェーダーを作成します。<br/>
-CreateIdAttr というのが、このShaderがどう振る舞うものかを指定するものになります。<br/>
-「UsdPreviewSurface」が、いわゆるPixarがデフォルトで用意しているPBRシェーダーです。</p>
+CreateIdAttr というのが、この Shader がどう振る舞うものかを指定するものになります。<br/>
+「UsdPreviewSurface」が、いわゆる Pixar がデフォルトで用意している PBR シェーダーです。</p>
 <p>そのシェーダーに対して、アトリビュートを追加します。<br/>
-アトリビュートのうちなにが指定できるかは Helpページの Core Nodes / Preview Surface 以下に<br/>
+アトリビュートのうちなにが指定できるかは Help ページの Core Nodes / Preview Surface 以下に<br/>
 まとめてあります。</p>
 <blockquote>
-<p>Inputs (name - type - fallback)<br/>
- * diffuseColor - color3f - (0.18, 0.18, 0.18)<br/>
-    When using metallic workflow this is interpreted as albedo.</p>
+<p>Inputs (name - type - fallback)</p>
+<ul>
+<li>diffuseColor - color3f - (0.18, 0.18, 0.18)<br/>
+    When using metallic workflow this is interpreted as albedo.</li>
+</ul>
 </blockquote>
-<p>CreateInput(～)でアトリビュートを作り（idを指定したからといってアトリビュートがデフォルトで用意されているわけではない）<br/>
+<p>CreateInput(～)でアトリビュートを作り（id を指定したからといってアトリビュートがデフォルトで用意されているわけではない）<br/>
 その作成したアトリビュートに対して、色をセットします。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="../shader.drawio#4"><img alt="" src="../shader.drawio-4.svg"/></a></p>
+<p><a class="glightbox" href="../shader.drawio#4"><img alt="" src="../shader.drawio-4.svg"/></a></p>
 <p>そして、シェーダーとマテリアルを接続します。<br/>
-ConnectToSourceは <br/>
+ConnectToSource は<br/>
 接続先.ConnectToSource(接続元.ConnectableAPI(),'接続するアトリビュート')<br/>
 です。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>ShaderPrimのUsdShadeConnectableAPI は、シェーディングパラメーターの入力と出力<br/>
-の間の接続を行うための共通インターフェースを提供するAPIスキーマです。<br/>
-USDのUsdShadeMaterialの CreateSurfaceOutput().ConnectToSourceや、<br/>
-サンプルコードを見ると ConnectableAPI() を使わずに shader, "surface"  となっているが<br/>
-それだと現状はエラーになってしまいます。<br/>
-Input/Outputの接続処理全般を扱うのであれば、UsdShadeConnectableAPIを使うのが推奨なのかも？</p>
 </div>
+<p>ShaderPrim の UsdShadeConnectableAPI は、シェーディングパラメーターの入力と出力<br/>
+の間の接続を行うための共通インターフェースを提供する API スキーマです。<br/>
+USD の UsdShadeMaterial の CreateSurfaceOutput().ConnectToSource や、<br/>
+サンプルコードを見ると ConnectableAPI() を使わずに shader, "surface" となっているが<br/>
+それだと現状はエラーになってしまいます。<br/>
+Input/Output の接続処理全般を扱うのであれば、UsdShadeConnectableAPI を使うのが推奨なのかも？</p>
 <h3 id="usduvtexture-usdprimvarreader">UsdUVTexture / UsdPrimvarReader<a class="headerlink" href="#usduvtexture-usdprimvarreader" title="Permanent link">¶</a></h3>
 <p>基本的な色の指定ができた次は、テクスチャを指定してみます。</p>
-<p>UsdPreviewSurfaceを使用する場合は、UsdShadeShaderPrimに対して UsdPreviewSurfaceをIDに指定しましたが<br/>
-テクスチャを使用する場合は、UsdShadeShaderPrimに対して別のIDを使用することで<br/>
+<p>UsdPreviewSurface を使用する場合は、UsdShadeShaderPrim に対して UsdPreviewSurface を ID に指定しましたが<br/>
+テクスチャを使用する場合は、UsdShadeShaderPrim に対して別の ID を使用することで<br/>
 構築することができます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2929,33 +2934,33 @@ Input/Outputの接続処理全般を扱うのであれば、UsdShadeConnectableA
 <span class="n">billboard</span><span class="o">.</span><span class="n">CreateFaceVertexCountsAttr</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
 <span class="n">billboard</span><span class="o">.</span><span class="n">CreateFaceVertexIndicesAttr</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">billboard</span><span class="o">.</span><span class="n">CreateExtentAttr</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">9.6</span><span class="p">,</span><span class="mf">5.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
-<span class="n">texCoords</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">CreatePrimvar</span><span class="p">(</span><span class="s2">"st"</span><span class="p">,</span> 
-                                    <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TexCoord2fArray</span><span class="p">,</span> 
+<span class="n">texCoords</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">CreatePrimvar</span><span class="p">(</span><span class="s2">"st"</span><span class="p">,</span>
+                                    <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TexCoord2fArray</span><span class="p">,</span>
                                     <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">varying</span><span class="p">)</span>
 <span class="n">texCoords</span><span class="o">.</span><span class="n">Set</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
 </code></pre></div></td></tr></table></div>
 <p>まず、アサインするメッシュを用意します。</p>
-<p>テクスチャを使用するには、 UsdUVTextureを使用するのですが<br/>
-テクスチャを貼るには、Mayaで言うところのPlace2DTextureのように<br/>
-UV座標を取得して来る必要があります。</p>
-<h3 id="usdgeommeshuv">UsdGeomMeshのUV<a class="headerlink" href="#usdgeommeshuv" title="Permanent link">¶</a></h3>
-<p>USDのUVは「Primvar」と呼ばれるアトリビュートで指定することができます。<br/>
-Primvarとは、レンダラーに渡すための特別なアトリビュートです。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="../shader.drawio#5"><img alt="" src="../shader.drawio-5.svg"/></a></p>
-<p>例えばUVの場合。<br/>
-st PrimvarはいわゆるあるVertexに対応するUV座標を保持しています。<br/>
-これは各Vertexごとに指定されていますが<br/>
+<p>テクスチャを使用するには、 UsdUVTexture を使用するのですが<br/>
+テクスチャを貼るには、Maya で言うところの Place2DTexture のように<br/>
+UV 座標を取得して来る必要があります。</p>
+<h3 id="usdgeommesh-uv">UsdGeomMesh の UV<a class="headerlink" href="#usdgeommesh-uv" title="Permanent link">¶</a></h3>
+<p>USD の UV は「Primvar」と呼ばれるアトリビュートで指定することができます。<br/>
+Primvar とは、レンダラーに渡すための特別なアトリビュートです。</p>
+<p><a class="glightbox" href="../shader.drawio#5"><img alt="" src="../shader.drawio-5.svg"/></a></p>
+<p>例えば UV の場合。<br/>
+st Primvar はいわゆるある Vertex に対応する UV 座標を保持しています。<br/>
+これは各 Vertex ごとに指定されていますが<br/>
 その頂点間に関しては、表面や体積に応じて「補完（Interpolate）」されます。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>デフォルトだとPrimvarのIndexはDirect（VertexとUVのIndexが同じ）モードですが<br/>
-１頂点に対して複数UV指定がある場合は UsdGeom.Tokens.faceVarying にします。<br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="../shader.drawio#3"><img alt="" src="../shader.drawio-3.svg"/></a><br/>
-その場合は、primvarsのindicesにMeshのpointsと同じ並びのアトリビュートを追加し<br/>
-そのアトリビュートには、対応するUV（primvar:st）のIndexを指定します。</p>
 </div>
+<p>デフォルトだと Primvar の Index は Direct（Vertex と UV の Index が同じ）モードですが<br/>
+１頂点に対して複数 UV 指定がある場合は UsdGeom.Tokens.faceVarying にします。<br/>
+<a class="glightbox" href="../shader.drawio#3"><img alt="" src="../shader.drawio-3.svg"/></a><br/>
+その場合は、primvars の indices に Mesh の points と同じ並びのアトリビュートを追加し<br/>
+そのアトリビュートには、対応する UV（primvar:st）の Index を指定します。</p>
 <p>で。<br/>
-このUVを使用してテクスチャをマテリアルにアサインしたいので<br/>
+この UV を使用してテクスチャをマテリアルにアサインしたいので<br/>
 そういう場合に使用するのが「UsdPrimvarReader」になります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2975,7 +2980,7 @@ st PrimvarはいわゆるあるVertexに対応するUV座標を保持してい�
 
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">billboard</span><span class="p">)</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>まず、MaterialとShaderを作成します。<br/>
+<p>まず、Material と Shader を作成します。<br/>
 ここまではテクスチャなしのときと同じです。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -3005,37 +3010,37 @@ st PrimvarはいわゆるあるVertexに対応するUV座標を保持してい�
 
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">'varname'</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Token</span><span class="p">)</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">stInput</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="../shader.drawio#6"><img alt="" src="../shader.drawio-6.svg"/></a></p>
+<p><a class="glightbox" href="../shader.drawio#6"><img alt="" src="../shader.drawio-6.svg"/></a></p>
 <p>この構造を図に表すとこのようになります。<br/>
- まず、テクスチャを指定するには UsdUVTexture を使用します。<br/>
- そしてファイルパスやUV座標をInputで受け取り、その結果を rgb でOutputで渡します。<br/>
- そのOutputの結果を、UsdPreviewSurfaceのdiffuseColorアトリビュートに接続します。</p>
-<p>UV座標を取得するのが UsdPrimvarReaderです。<br/>
- これが、その名の通りメッシュに指定してあるPrimvarのアトリビュートを参照するためのノードで<br/>
- UVの場合は float2 なので、IDは UsdPrimvarReader_float2 を指定します。</p>
-<p>Inputsの「st」は、Materialにある stPrimvarName で指定した名前です。<br/>
-この名前は、いわゆるUVSetの名前です。<br/>
+まず、テクスチャを指定するには UsdUVTexture を使用します。<br/>
+そしてファイルパスや UV 座標を Input で受け取り、その結果を rgb で Output で渡します。<br/>
+その Output の結果を、UsdPreviewSurface の diffuseColor アトリビュートに接続します。</p>
+<p>UV 座標を取得するのが UsdPrimvarReader です。<br/>
+これが、その名の通りメッシュに指定してある Primvar のアトリビュートを参照するためのノードで<br/>
+UV の場合は float2 なので、ID は UsdPrimvarReader_float2 を指定します。</p>
+<p>Inputs の「st」は、Material にある stPrimvarName で指定した名前です。<br/>
+この名前は、いわゆる UVSet の名前です。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">texCoords</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">CreatePrimvar</span><span class="p">(</span><span class="s2">"st"</span><span class="p">,</span> 
-                                    <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TexCoord2fArray</span><span class="p">,</span> 
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">texCoords</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">CreatePrimvar</span><span class="p">(</span><span class="s2">"st"</span><span class="p">,</span>
+                                    <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TexCoord2fArray</span><span class="p">,</span>
                                     <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">varying</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-MeshにPrimvarを指定したときの名前がUVSetNameで<br/>
-任意の名前を指定できます。（複数のUVを作ることができる）<br/>
-その、複数あるUVのうち<br/>
-どのUVを使用するのか指定するのが、この PrimvarReader の varname アトリビュートです。</p>
-<p>サンプルでは、Materialにアトリビュートを作成して<br/>
+</code></pre></div></td></tr></table></div>
+<p>Mesh に Primvar を指定したときの名前が UVSetName で<br/>
+任意の名前を指定できます。（複数の UV を作ることができる）<br/>
+その、複数ある UV のうち<br/>
+どの UV を使用するのか指定するのが、この PrimvarReader の varname アトリビュートです。</p>
+<p>サンプルでは、Material にアトリビュートを作成して<br/>
 その値をコネクションすることで値を設定していますが</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># これを</span>
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">'varname'</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Token</span><span class="p">)</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">stInput</span><span class="p">)</span>
 <span class="c1"># こうする</span>
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">'varname'</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Token</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s1">'st'</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-これでも同じです。</p>
+</code></pre></div></td></tr></table></div>
+<p>これでも同じです。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3052,18 +3057,18 @@ MeshにPrimvarを指定したときの名前がUVSetNameで<br/>
 <span class="n">diffuseTextureSampler</span><span class="o">.</span><span class="n">CreateOutput</span><span class="p">(</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span>
 <span class="n">pbrShader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s2">"opacity"</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">diffuseTextureSampler</span><span class="o">.</span><span class="n">ConnectableAPI</span><span class="p">(),</span><span class="s1">'r'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>また、diffuseColor以外のアトリビュートに別のテクスチャを指したい場合も基本と同じで<br/>
-CreateOutputであるチャンネルのみを取得して、<br/>
-指定のアトリビュートに対してConnectToSourceで接続すればOKです。</p>
+<p>また、diffuseColor 以外のアトリビュートに別のテクスチャを指したい場合も基本と同じで<br/>
+CreateOutput であるチャンネルのみを取得して、<br/>
+指定のアトリビュートに対して ConnectToSource で接続すれば OK です。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>これ以外にも、Transform2dが使用可能です。<br/>
-Transform2dを使用すると、テクスチャ座標系でイメージを移動・リサイズ・回転をすることができます。</p>
 </div>
-<h2 id="face">Face単位のアサイン<a class="headerlink" href="#face" title="Permanent link">¶</a></h2>
-<p>Primを指定すると、１Meshに対して１Materialをアサインします。<br/>
-そうではなく、Face単位でアサインしたい場合はどのようにするかというと<br/>
-Subsetを使用してBindします。</p>
+<p>これ以外にも、Transform2d が使用可能です。<br/>
+Transform2d を使用すると、テクスチャ座標系でイメージを移動・リサイズ・回転をすることができます。</p>
+<h2 id="face">Face 単位のアサイン<a class="headerlink" href="#face" title="Permanent link">¶</a></h2>
+<p>Prim を指定すると、１ Mesh に対して１ Material をアサインします。<br/>
+そうではなく、Face 単位でアサインしたい場合はどのようにするかというと<br/>
+Subset を使用して Bind します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3100,32 +3105,32 @@ Subsetを使用してBindします。</p>
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">"subset.usd"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png"><img alt="" src="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png"/></a></p>
-<p>実行すると、Meshの子PrimとしてUsdGeomSubsetPrimが作成されます。<br/>
-UsdGeomSubsetは、その名の通りUsdGeomのサブセットで<br/>
+<p><a class="glightbox" href="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png"><img alt="" src="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png"/></a></p>
+<p>実行すると、Mesh の子 Prim として UsdGeomSubsetPrim が作成されます。<br/>
+UsdGeomSubset は、その名の通り UsdGeom のサブセットで<br/>
 メッシュのインデックスを保持します。<br/>
-これを利用することで、あるメッシュのうちの指定のFaceにマテリアルをアサインすることができます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f5de0e93f09774bbac22339c5c1ba70a.png"><img alt="" src="https://gyazo.com/f5de0e93f09774bbac22339c5c1ba70a.png"/></a></p>
-<p>アサインした結果、インデックスが 0 のFaceにのみマテリアルがアサインできました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png"><img alt="" src="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png"/></a></p>
-<p>GeomSubsetのアトリビュートをみると、インデックスと アサインされているマテリアルがmaterial:binding のリレーション<br/>
+これを利用することで、あるメッシュのうちの指定の Face にマテリアルをアサインすることができます。</p>
+<p><a class="glightbox" href="https://gyazo.com/f5de0e93f09774bbac22339c5c1ba70a.png"><img alt="" src="https://gyazo.com/f5de0e93f09774bbac22339c5c1ba70a.png"/></a></p>
+<p>アサインした結果、インデックスが 0 の Face にのみマテリアルがアサインできました。</p>
+<p><a class="glightbox" href="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png"><img alt="" src="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png"/></a></p>
+<p>GeomSubset のアトリビュートをみると、インデックスと アサインされているマテリアルが material:binding のリレーション<br/>
 が含まれていることがわかります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">subset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span><span class="o">.</span><span class="n">GetRelationship</span><span class="p">(</span><span class="s2">"material:binding"</span><span class="p">)</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>Pythonでマテリアルを取得する場合は、<br/>
-subsetからPrimを取得して、そのPrimのリレーションからターゲットを取得できます。</p>
+<p>Python でマテリアルを取得する場合は、<br/>
+subset から Prim を取得して、その Prim のリレーションからターゲットを取得できます。</p>
 <h2 id="_2">まとめ<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>これで、USDの基本的なシェーダーの構築方法がわかりました。<br/>
+<p>これで、USD の基本的なシェーダーの構築方法がわかりました。<br/>
 <a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/12_usd_preview_surface/">https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/12_usd_preview_surface/</a><br/>
-SOLARISのUsdPreviewSurfaceなどを使用すればもう少し楽に作れると思いますが<br/>
-PrimvarReaderや、Fileノードなどの構造はUSDの構造をベースにしているので<br/>
+SOLARIS の UsdPreviewSurface などを使用すればもう少し楽に作れると思いますが<br/>
+PrimvarReader や、File ノードなどの構造は USD の構造をベースにしているので<br/>
 <a href="https://graphics.pixar.com/usd/docs/UsdPreviewSurface-Proposal.html">こちら</a>とあわせて確認すると扱いやすいのではないかとおもいます。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-28 18:19:54</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-08-15 16:04:59</span>
 </small>
 </div>
 </article>
@@ -3177,13 +3182,13 @@ PrimvarReaderや、Fileノードなどの構造はUSDの構造をベースにし
 </div>
 <div class="md-social">
 <a class="md-social__link" href="https://github.com/fereria" rel="noopener" target="_blank" title="github.com">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
 </a>
 <a class="md-social__link" href="https://twitter.com/fereria" rel="noopener" target="_blank" title="twitter.com">
-<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
 </a>
 <a class="md-social__link" href="https://zenn.dev/remiria" rel="noopener" target="_blank" title="zenn.dev">
-<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M384 48v464L192 400 0 512V48C0 21.5 21.5 0 48 0h288c26.5 0 48 21.5 48 48z"></path></svg>
+<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M48 0h288c26.5 0 48 21.49 48 48v439.7c0 13.4-10.9 24.3-24.3 24.3-5 0-9.9-1.5-14-4.4L192 400 38.28 507.6c-4.09 2.9-8.96 4.4-13.95 4.4C10.89 512 0 501.1 0 487.7V48C0 21.49 21.49 0 48 0z"></path></svg>
 </a>
 </div>
 </div>
@@ -3193,9 +3198,9 @@ PrimvarReaderや、Fileノードなどの構造はUSDの構造をベースにし
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
+<script src="../../../../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script type="text/javascript">const lightbox = GLightbox({"touchNavigation": false, "loop": false});</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

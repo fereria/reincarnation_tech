@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/16_component_builder/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.0, mkdocs-material-8.3.9" name="generator"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.4.0" name="generator"/>
 <title>ComponentBuilderで遊ぼう - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.69437709.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -19,10 +19,10 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link href="../../../../stylesheets/extra.css" rel="stylesheet"/>
 <link href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css" rel="stylesheet"/>
-<script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-0Z0ZWECHNT",{page_path:e.pathname})})})</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT"></script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){if(document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document.forms.feedback){var e,a=document.forms.feedback;for(e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}"undefined"!=typeof location$&&location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -91,7 +91,7 @@
 <div class="md-header__source">
 <a class="md-source" data-md-component="source" href="https://github.com/fereria/reincarnation_tech" title="リポジトリへ">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -177,7 +177,7 @@
 <div class="md-nav__source">
 <a class="md-source" data-md-component="source" href="https://github.com/fereria/reincarnation_tech" title="リポジトリへ">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -2955,28 +2955,28 @@
 このComponentBuilderを使用すれば汎用アセットをセットアップできるようになります。</p>
 <p>まさかの翌年で前年に書いた内容が公式のノードとして用意してるとはHoudini恐ろしい子...</p>
 <h2 id="_1">まずはざっくり<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/bb8b2de7caaa3016ddf2a2e78dbf31d9.png"><img alt="" src="https://gyazo.com/bb8b2de7caaa3016ddf2a2e78dbf31d9.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/bb8b2de7caaa3016ddf2a2e78dbf31d9.png"><img alt="" src="https://gyazo.com/bb8b2de7caaa3016ddf2a2e78dbf31d9.png"/></a></p>
 <p>まずは、SOLARISのStageで Component Builderを選びます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ddd39553ad7b000d3b36cd073a956ea5.png"><img alt="" src="https://gyazo.com/ddd39553ad7b000d3b36cd073a956ea5.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/ddd39553ad7b000d3b36cd073a956ea5.png"><img alt="" src="https://gyazo.com/ddd39553ad7b000d3b36cd073a956ea5.png"/></a></p>
 <p>すると、このようなノードができます。<br/>
 このComponentOutputの結果できあがるシーングラフは、</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/d29e64202edc48286b2187967681f14a.png"><img alt="" src="https://gyazo.com/d29e64202edc48286b2187967681f14a.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/d29e64202edc48286b2187967681f14a.png"><img alt="" src="https://gyazo.com/d29e64202edc48286b2187967681f14a.png"/></a></p>
 <p>このようになります。</p>
 <p>多少違いますが、 <a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/#_15">ComponentBuilderを使わなかったときの結果</a>と同じような構成になっていて<br/>
 Payloadの構造、GeometryとMaterialの別レイヤー化などした状態で<br/>
 USDアセットのセットアップを行ってくれます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/17d03acde31d3a1458f31d669df1b9c5.png"><img alt="" src="https://gyazo.com/17d03acde31d3a1458f31d669df1b9c5.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/17d03acde31d3a1458f31d669df1b9c5.png"><img alt="" src="https://gyazo.com/17d03acde31d3a1458f31d669df1b9c5.png"/></a></p>
 <p>試しにUSDファイルにExportします。<br/>
 今までだとUSDROPノードでExportしていましたが、ComponentBuilderの場合はComponentOutputノードが<br/>
 Exportを担当します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ee6b7cd3b4f108c43518941f4159a477.png"><img alt="" src="https://gyazo.com/ee6b7cd3b4f108c43518941f4159a477.png"/></a><br/>
+<p><a class="glightbox" href="https://gyazo.com/ee6b7cd3b4f108c43518941f4159a477.png"><img alt="" src="https://gyazo.com/ee6b7cd3b4f108c43518941f4159a477.png"/></a><br/>
 Load from Diskのチェックを入れるとTOPsっぽいものがノードの左側に表示されます。<br/>
 そしたら、Save to Disk します。</p>
 <p>デフォルトだとHipと同じフォルダ以下に出力されるようになっているので、<br/>
 出力先に指定されたフォルダを覗いてみると、<br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/3e6f91938c6153a1d8cedd8ae32b6d66.png"><img alt="" src="https://gyazo.com/3e6f91938c6153a1d8cedd8ae32b6d66.png"/></a><br/>
+<a class="glightbox" href="https://gyazo.com/3e6f91938c6153a1d8cedd8ae32b6d66.png"><img alt="" src="https://gyazo.com/3e6f91938c6153a1d8cedd8ae32b6d66.png"/></a><br/>
 出力されていました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/7458ffed7eabc857083608056ad31c5a.png"><img alt="" src="https://gyazo.com/7458ffed7eabc857083608056ad31c5a.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/7458ffed7eabc857083608056ad31c5a.png"><img alt="" src="https://gyazo.com/7458ffed7eabc857083608056ad31c5a.png"/></a></p>
 <p>出力した usdcをusdviewで開いてみると</p>
 <p>AssetInfo、Kindといったメタデータ、<br/>
 Payloads、MaterialのVariant、Material・Geometryの分離等含めてすべてされた状態の<br/>
@@ -3001,12 +3001,12 @@ AssetInfoは近いうちにUSDアドカレに書きます。</p>
 <p>ComponentGeometryは、その名の通りUSDアセットのうち、Geometry部分のレイヤーを作成するためのノードです。<br/>
 そして、そのGeometryに対してVariantSet（ヴァリエーション、モデルのパターン）を作成するために使用するのが<br/>
 Component Geometry Variantsです。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/3ca90e7a4e77d61a41dedc768ce87aba.png"><img alt="" src="https://gyazo.com/3ca90e7a4e77d61a41dedc768ce87aba.png"/></a></p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/b76b0f853024e3ab2473f8a46bc208cc.png"><img alt="" src="https://gyazo.com/b76b0f853024e3ab2473f8a46bc208cc.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/3ca90e7a4e77d61a41dedc768ce87aba.png"><img alt="" src="https://gyazo.com/3ca90e7a4e77d61a41dedc768ce87aba.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/b76b0f853024e3ab2473f8a46bc208cc.png"><img alt="" src="https://gyazo.com/b76b0f853024e3ab2473f8a46bc208cc.png"/></a></p>
 <p>ComponentGeometryを使用することで、USDのGeometryPrim以下の構造を作ってくれます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/0d812572371fbc86c58955a2554d796d.png"><img alt="" src="https://gyazo.com/0d812572371fbc86c58955a2554d796d.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/0d812572371fbc86c58955a2554d796d.png"><img alt="" src="https://gyazo.com/0d812572371fbc86c58955a2554d796d.png"/></a></p>
 <p>Geometryは、ComponentGeometryノードをダブルクリックすると、中にOutputノードが３つ用意されています。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/a898c9e17771da7d417c5dfd025d5757.png"><img alt="" src="https://gyazo.com/a898c9e17771da7d417c5dfd025d5757.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/a898c9e17771da7d417c5dfd025d5757.png"><img alt="" src="https://gyazo.com/a898c9e17771da7d417c5dfd025d5757.png"/></a></p>
 <p>このComponentGeometryノード内はSOPNetworkになっていて、SOPでプロシージャルに作成したモデルを<br/>
 そのまま出力することができます。<br/>
 使い方は、 output#0 ～ #2 に指定のPurpose（目的）のノードを接続します。</p>
@@ -3017,20 +3017,20 @@ Component Geometry Variantsです。</p>
 が指定できて、それぞれの枠割でどのモデルを表示するかを指定できます。<br/>
 詳しくはまた別の記事で。</p>
 </blockquote>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/2b5697b1ff3d1936ebacf32fc43e5012.png"><img alt="" src="https://gyazo.com/2b5697b1ff3d1936ebacf32fc43e5012.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/2b5697b1ff3d1936ebacf32fc43e5012.png"><img alt="" src="https://gyazo.com/2b5697b1ff3d1936ebacf32fc43e5012.png"/></a></p>
 <p>試しに、defaultにpig proxy に boxを接続します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f03d0d3aee51a9d8504a0adfdbd93196.png"><img alt="" src="https://gyazo.com/f03d0d3aee51a9d8504a0adfdbd93196.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/f03d0d3aee51a9d8504a0adfdbd93196.png"><img alt="" src="https://gyazo.com/f03d0d3aee51a9d8504a0adfdbd93196.png"/></a></p>
 <p>このようになります。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/e2d2e354bf7f6dd9666f385861026e42.png"><img alt="" src="https://gyazo.com/e2d2e354bf7f6dd9666f385861026e42.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/e2d2e354bf7f6dd9666f385861026e42.png"><img alt="" src="https://gyazo.com/e2d2e354bf7f6dd9666f385861026e42.png"/></a></p>
 <p>Stageに戻りビューポートを見ると、Proxyモデルが表示されています。<br/>
 これはComponentGeometryノードで proxy (OpenGL用の軽量Geometry)のPurposeが指定されている<br/>
 Geometryが表示されているからです。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/c6e38640d8bbf4f4faa35b3c2bc4f652.png"><img alt="" src="https://gyazo.com/c6e38640d8bbf4f4faa35b3c2bc4f652.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/c6e38640d8bbf4f4faa35b3c2bc4f652.png"><img alt="" src="https://gyazo.com/c6e38640d8bbf4f4faa35b3c2bc4f652.png"/></a></p>
 <p>これをKarmaに変更します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ecae8f4501a62df4d51ae115e8bba7e0.png"><img alt="" src="https://gyazo.com/ecae8f4501a62df4d51ae115e8bba7e0.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/ecae8f4501a62df4d51ae115e8bba7e0.png"><img alt="" src="https://gyazo.com/ecae8f4501a62df4d51ae115e8bba7e0.png"/></a></p>
 <p>変更すると、Pigに変わりました。<br/>
 Karmaの場合（OpenGLではない場合）はdefaultGeometry表示になります。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/70d00e3033af8e6a2ce243ed0b2fc8b6.png"><img alt="" src="https://gyazo.com/70d00e3033af8e6a2ce243ed0b2fc8b6.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/70d00e3033af8e6a2ce243ed0b2fc8b6.png"><img alt="" src="https://gyazo.com/70d00e3033af8e6a2ce243ed0b2fc8b6.png"/></a></p>
 <p>現在のシーングラフはこの通り。<br/>
 geo以下にproxy/renderの３つのScopeができていて、それが ASSET のXformでまとめられているのがわかります。</p>
 <p>ComponentGeometryノード（SOP）で出力した場合は、shapeMesh１つにまとまって出力されます。<br/>
@@ -3039,11 +3039,11 @@ geo以下にproxy/renderの３つのScopeができていて、それが ASSET �
 <h4 id="facematerialassign">FaceへのMaterialAssign<a class="headerlink" href="#facematerialassign" title="Permanent link">¶</a></h4>
 <p>ComponentGeometryでMeshを出力した場合、Pack等しない場合は１つのMeshになりますが<br/>
 その場合どうやって複数のマテリアルをアサインすればいいのか？というと、<br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/b18bfb3fd0c52e9b7a1787a3ce950492.png"><img alt="" src="https://gyazo.com/b18bfb3fd0c52e9b7a1787a3ce950492.png"/></a><br/>
+<a class="glightbox" href="https://gyazo.com/b18bfb3fd0c52e9b7a1787a3ce950492.png"><img alt="" src="https://gyazo.com/b18bfb3fd0c52e9b7a1787a3ce950492.png"/></a><br/>
 SOP側でPrimitivesにGroupを指定します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/48a6b7d8f2fd83015b79b66b5f392391.png"><img alt="" src="https://gyazo.com/48a6b7d8f2fd83015b79b66b5f392391.png"/></a><br/>
+<p><a class="glightbox" href="https://gyazo.com/48a6b7d8f2fd83015b79b66b5f392391.png"><img alt="" src="https://gyazo.com/48a6b7d8f2fd83015b79b66b5f392391.png"/></a><br/>
 SOPで指定したGroupの名前を、 Subnet Groups に、スペースを空けてグループ名を追加します。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/b989e7c1f506392feb6a59e1658f256f.png"><img alt="" src="https://gyazo.com/b989e7c1f506392feb6a59e1658f256f.png"/></a><br/>
+<p><a class="glightbox" href="https://gyazo.com/b989e7c1f506392feb6a59e1658f256f.png"><img alt="" src="https://gyazo.com/b989e7c1f506392feb6a59e1658f256f.png"/></a><br/>
 Subset Groupsを作ると、UsdGeomSubsetが作成されます。</p>
 <blockquote>
 <p>UsdGeomSubsetは、その名の通りUsdGeomのサブセットで<br/>
@@ -3055,56 +3055,56 @@ Subset Groupsを作ると、UsdGeomSubsetが作成されます。</p>
 <h3 id="componentmaterial">ComponentMaterial<a class="headerlink" href="#componentmaterial" title="Permanent link">¶</a></h3>
 <p>次はComponentMaterial。<br/>
 その名の通りマテリアルをアサインするためのノードです。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/abfcfb0ff3db960014d5bbfcc7fd14cc.png"><img alt="" src="https://gyazo.com/abfcfb0ff3db960014d5bbfcc7fd14cc.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/abfcfb0ff3db960014d5bbfcc7fd14cc.png"><img alt="" src="https://gyazo.com/abfcfb0ff3db960014d5bbfcc7fd14cc.png"/></a></p>
 <p>使い方は簡単で、Input0にComponentGeometryをつなぎ、Input1にMaterialLibraryをつなぎ<br/>
 ComponentMaterialで指定のMeshに対してMaterialLibraryで作成したマテリアルをアサインします。</p>
 <h4 id="materialassign">MaterialAssignの方法<a class="headerlink" href="#materialassign" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/937da41a82f82658dab4ed26ce71815c.png"><img alt="" src="https://gyazo.com/937da41a82f82658dab4ed26ce71815c.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/937da41a82f82658dab4ed26ce71815c.png"><img alt="" src="https://gyazo.com/937da41a82f82658dab4ed26ce71815c.png"/></a></p>
 <p>ComponentMaterialは、マテリアルをアサインするPrimitiveと、アサインしたいMaterialのPathを<br/>
 指定することでアサインが可能です。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/108c1acd8b809c76ae11c034f84192b0.png"><img alt="" src="https://gyazo.com/108c1acd8b809c76ae11c034f84192b0.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/108c1acd8b809c76ae11c034f84192b0.png"><img alt="" src="https://gyazo.com/108c1acd8b809c76ae11c034f84192b0.png"/></a></p>
 <p>ComponentGeometryでSubsetGeomを指定していた場合、ComponentMaterialで<br/>
 SubsetGeomをPrimitivesで指定、アサインしたいMaterialのPathを指定することで</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/6fa971249367b7e90d6431fb5a218dab.png"><img alt="" src="https://gyazo.com/6fa971249367b7e90d6431fb5a218dab.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/6fa971249367b7e90d6431fb5a218dab.png"><img alt="" src="https://gyazo.com/6fa971249367b7e90d6431fb5a218dab.png"/></a></p>
 <p>Face単位でのアサインができました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/15db8e1a39331a629e98d2481042e7a0.png"><img alt="" src="https://gyazo.com/15db8e1a39331a629e98d2481042e7a0.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/15db8e1a39331a629e98d2481042e7a0.png"><img alt="" src="https://gyazo.com/15db8e1a39331a629e98d2481042e7a0.png"/></a></p>
 <p>Assignの結果、出来上がったシーングラフはこのようになります。<br/>
 shapeとそのSubset、そしてマテリアルという構造になります。</p>
 <h4 id="materiallibrary">MaterialLibrary<a class="headerlink" href="#materiallibrary" title="Permanent link">¶</a></h4>
 <p>Material Libraryの設定で、指定のVOPからマテリアルをLOPにインポートすることもできますが<br/>
 それ以外にMaterialLibraryノードをダブルクリックすれば<br/>
 そこがVOPになっているので</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ae772e695bbb7746fb030eff7b5f62d4.png"><img alt="" src="https://gyazo.com/ae772e695bbb7746fb030eff7b5f62d4.png"/></a></p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/d8de81954d5555fefeea75b1d08d765f.png"><img alt="" src="https://gyazo.com/d8de81954d5555fefeea75b1d08d765f.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/ae772e695bbb7746fb030eff7b5f62d4.png"><img alt="" src="https://gyazo.com/ae772e695bbb7746fb030eff7b5f62d4.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/d8de81954d5555fefeea75b1d08d765f.png"><img alt="" src="https://gyazo.com/d8de81954d5555fefeea75b1d08d765f.png"/></a></p>
 <p>そこでマテリアルを作れば、特に指定をしないでも<br/>
 Material Path Prefix 以下にMaterialを出力してくれますので、<br/>
 お好みで使い分けるとよさそうです。</p>
 <h4 id="componentmaterial_1">ComponentMaterialを使用した場合の特徴<a class="headerlink" href="#componentmaterial_1" title="Permanent link">¶</a></h4>
 <p>このComponentMaterialを使用しないでも<br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/b31c4c08701c17205a41c1848f1024b4.png"><img alt="" src="https://gyazo.com/b31c4c08701c17205a41c1848f1024b4.png"/></a></p>
+<a class="glightbox" href="https://gyazo.com/b31c4c08701c17205a41c1848f1024b4.png"><img alt="" src="https://gyazo.com/b31c4c08701c17205a41c1848f1024b4.png"/></a></p>
 <p>MaterialLinkerを使用して</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/208cf6b58a0b84439b410adadc6ca265.png"><img alt="" src="https://gyazo.com/208cf6b58a0b84439b410adadc6ca265.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/208cf6b58a0b84439b410adadc6ca265.png"><img alt="" src="https://gyazo.com/208cf6b58a0b84439b410adadc6ca265.png"/></a></p>
 <p>このようにすれば、視覚的にも楽にマテリアルアサインが可能ですが、<br/>
 ComponentMaterialを使用した場合、大きく以下２つが変わります。</p>
 <h4 id="material">Materialの別レイヤー化<a class="headerlink" href="#material" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/2a1eab56a846b11becb94d07709c1ed1.png"><img alt="" src="https://gyazo.com/2a1eab56a846b11becb94d07709c1ed1.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/2a1eab56a846b11becb94d07709c1ed1.png"><img alt="" src="https://gyazo.com/2a1eab56a846b11becb94d07709c1ed1.png"/></a></p>
 <p>のちに説明するComponentOutputで、マテリアルを別レイヤーとしてExportします。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/3830b785f711e9f359c718ff36f79cce.png"><img alt="" src="https://gyazo.com/3830b785f711e9f359c718ff36f79cce.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/3830b785f711e9f359c718ff36f79cce.png"><img alt="" src="https://gyazo.com/3830b785f711e9f359c718ff36f79cce.png"/></a></p>
 <p>この時のレイヤーとコンポジションの構造はこんな感じになります。</p>
 <blockquote>
 <p>MaterialAssignは mtl.usdc側<br/>
 リファレンスの順序的でマテリアルレイヤーのほうが強い</p>
 </blockquote>
 <h4 id="materialassign-onoffvariantset">MaterialAssign ON/OFFのVariantSetの追加<a class="headerlink" href="#materialassign-onoffvariantset" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/a0fc405506081cea76c5009f76512203.png"><img alt="" src="https://gyazo.com/a0fc405506081cea76c5009f76512203.png"/></a><br/>
+<p><a class="glightbox" href="https://gyazo.com/a0fc405506081cea76c5009f76512203.png"><img alt="" src="https://gyazo.com/a0fc405506081cea76c5009f76512203.png"/></a><br/>
 マテリアルのアサインをVariantSetを使用してON/OFFする構造を自動で追加してくれます。</p>
 <blockquote>
 <p>自分用メモ<br/>
 ComponentMaterialのノードをダブルクリックすると、その中はLOP<br/>
 InputでStageを受け取り、その中でノードベースでもMaterialAssignができる。<br/>
 ここで指定した値は over で mtl.usdcに入る<br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ad65b2a11f68aca1d5fa998ca7464d36.png"><img alt="" src="https://gyazo.com/ad65b2a11f68aca1d5fa998ca7464d36.png"/></a></p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/528368a3aef76d904a7eb51e5bdc4a87.png"><img alt="" src="https://gyazo.com/528368a3aef76d904a7eb51e5bdc4a87.png"/></a><br/>
+<a class="glightbox" href="https://gyazo.com/ad65b2a11f68aca1d5fa998ca7464d36.png"><img alt="" src="https://gyazo.com/ad65b2a11f68aca1d5fa998ca7464d36.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/528368a3aef76d904a7eb51e5bdc4a87.png"><img alt="" src="https://gyazo.com/528368a3aef76d904a7eb51e5bdc4a87.png"/></a><br/>
 ※ただし、この方法でマテリアルを作ると、ComponentGeometryVariantsで<br/>
 　マテリアルが消失するらしい？</p>
 </blockquote>
@@ -3112,68 +3112,68 @@ InputでStageを受け取り、その中でノードベースでもMaterialAssig
 <p>次にComponentGeometryVariants。<br/>
 これは、その名の通りGeometryのVariantSetを作成するためのノードです。<br/>
 ComponentGeometryをInputに接続すると、いい感じにComponentのVariantを作成してくれます。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/fcb6c63b99363b8b5d567b87b50948eb.png"><img alt="" src="https://gyazo.com/fcb6c63b99363b8b5d567b87b50948eb.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/fcb6c63b99363b8b5d567b87b50948eb.png"><img alt="" src="https://gyazo.com/fcb6c63b99363b8b5d567b87b50948eb.png"/></a></p>
 <p>ComponentMaterialを追加した後に、ComponentGeometryVariantノードを作成し２つを接続します。<br/>
 この例だと、CubeとTorusの２つのMeshが作られて、</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/006869fdca7135ec80761b824377a954.PNG"><img alt="" src="https://gyazo.com/006869fdca7135ec80761b824377a954.PNG"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/006869fdca7135ec80761b824377a954.PNG"><img alt="" src="https://gyazo.com/006869fdca7135ec80761b824377a954.PNG"/></a></p>
 <p>ASSETノードに対して geo Variants が追加されます。<br/>
 ここには、ComponentGeometryで指定した名前（デフォルトはComponentGeometryのノード名）でバリアントが作られます。</p>
 <p>これで、MaterialAssignと合わせて ASSET Primには、geo と mtl（アサインオンオフ）のVariantSetがある状態になります。</p>
 <blockquote>
 <p>自分用メモ<br/>
 ComponentGeometryVariantのノードの段階だと、マテリアルのVariantがちょっとおかしい気がする<br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/3c0d9b6126d503ef075406c093093c57.png"><img alt="" src="https://gyazo.com/3c0d9b6126d503ef075406c093093c57.png"/></a><br/>
+<a class="glightbox" href="https://gyazo.com/3c0d9b6126d503ef075406c093093c57.png"><img alt="" src="https://gyazo.com/3c0d9b6126d503ef075406c093093c57.png"/></a><br/>
 mtl.usdc的にはASSETにVariantSetが入っているけど、このノードタイミングだとVariantはあってもVariantにならない。<br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/d25c8352b757f75e18173469a84efd2c.png"><img alt="" src="https://gyazo.com/d25c8352b757f75e18173469a84efd2c.png"/></a><br/>
+<a class="glightbox" href="https://gyazo.com/d25c8352b757f75e18173469a84efd2c.png"><img alt="" src="https://gyazo.com/d25c8352b757f75e18173469a84efd2c.png"/></a><br/>
 （ComponentOutputが入ると正しいので、そういうものなのかもしれない）</p>
 </blockquote>
 <h3 id="component-output">Component Output<a class="headerlink" href="#component-output" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/3a8f28e984b6f4cc69d3677e4d9d313d.png"><img alt="" src="https://gyazo.com/3a8f28e984b6f4cc69d3677e4d9d313d.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/3a8f28e984b6f4cc69d3677e4d9d313d.png"><img alt="" src="https://gyazo.com/3a8f28e984b6f4cc69d3677e4d9d313d.png"/></a></p>
 <p>最後はComponentOutputです。<br/>
 これはその名の通り、ここまで作ったUSDAssetを指定のレイヤー構成でExportしてくれます。<br/>
 Exportする以外に、USDアセット用のメタデータの追加、継承の追加、RootPrimの指定などの構造を<br/>
 指定します。</p>
 <h4 id="export">Exportする<a class="headerlink" href="#export" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/6c2bfd65e5b80e9a1eddf82f15c3e56f.png"><img alt="" src="https://gyazo.com/6c2bfd65e5b80e9a1eddf82f15c3e56f.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/6c2bfd65e5b80e9a1eddf82f15c3e56f.png"><img alt="" src="https://gyazo.com/6c2bfd65e5b80e9a1eddf82f15c3e56f.png"/></a></p>
 <p>まずはOutput。<br/>
 Caching の Load From Disk をONにして、SaveToDiskを押します。<br/>
 押すと、デフォルトの場合はHipと同じフォルダ以下の usd/assets/以下にモデルを出力します。</p>
 <p>出力すると、</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/00930fcba64e907f9ba732c7699ea3f9.png"><img alt="" src="https://gyazo.com/00930fcba64e907f9ba732c7699ea3f9.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/00930fcba64e907f9ba732c7699ea3f9.png"><img alt="" src="https://gyazo.com/00930fcba64e907f9ba732c7699ea3f9.png"/></a></p>
 <p>このようなレイヤーが出力されます。<br/>
 このレイヤーの関係性は以下のようになります。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/7b102916c5168ffabc384bff62768b15.png"><img alt="" src="https://gyazo.com/7b102916c5168ffabc384bff62768b15.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/7b102916c5168ffabc384bff62768b15.png"><img alt="" src="https://gyazo.com/7b102916c5168ffabc384bff62768b15.png"/></a></p>
 <blockquote>
 <p>備考<br/>
 geo / mtl 内のvariantは<br/>
-<a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/a96d97b13401cdec7223a3b3b5579d03.png"><img alt="" src="https://gyazo.com/a96d97b13401cdec7223a3b3b5579d03.png"/></a><br/>
+<a class="glightbox" href="https://gyazo.com/a96d97b13401cdec7223a3b3b5579d03.png"><img alt="" src="https://gyazo.com/a96d97b13401cdec7223a3b3b5579d03.png"/></a><br/>
 overで定義した ASSET_geo_variant_#/ASSET を AssetName Prim にReference<br/>
 このoverそれぞれにVariantが指定されていて、Referenceでそれが合成されている</p>
 </blockquote>
 <h4 id="layoutassetgallery">LayoutAssetGalleryに登録する<a class="headerlink" href="#layoutassetgallery" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/8b504e3bb5b31b66992778c4ae58d9fa.png"><img alt="" src="https://gyazo.com/8b504e3bb5b31b66992778c4ae58d9fa.png"/></a><br/>
+<p><a class="glightbox" href="https://gyazo.com/8b504e3bb5b31b66992778c4ae58d9fa.png"><img alt="" src="https://gyazo.com/8b504e3bb5b31b66992778c4ae58d9fa.png"/></a><br/>
 Caching のAdd to AssetGalleryボタンを押すと、</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/11c244f3a7fbb9ffd897c4c1de6ba0dc.png"><img alt="" src="https://gyazo.com/11c244f3a7fbb9ffd897c4c1de6ba0dc.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/11c244f3a7fbb9ffd897c4c1de6ba0dc.png"><img alt="" src="https://gyazo.com/11c244f3a7fbb9ffd897c4c1de6ba0dc.png"/></a></p>
 <p>簡単に登録できました。</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/ec9a95a5dd7efbdc55bb278fdf8ca018.png"><img alt="" src="https://gyazo.com/ec9a95a5dd7efbdc55bb278fdf8ca018.png"/></a></p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/18327791cc0c265d0737db26c5eef09b.png"><img alt="" src="https://gyazo.com/18327791cc0c265d0737db26c5eef09b.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/ec9a95a5dd7efbdc55bb278fdf8ca018.png"><img alt="" src="https://gyazo.com/ec9a95a5dd7efbdc55bb278fdf8ca018.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/18327791cc0c265d0737db26c5eef09b.png"><img alt="" src="https://gyazo.com/18327791cc0c265d0737db26c5eef09b.png"/></a></p>
 <p>作成したアセットは、Layoutノードを使用すると、簡単にレイアウトすることができます。</p>
 <h4 id="_2">サムネイルを作る<a class="headerlink" href="#_2" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/07b1d39e34e70139c29c887c3be179b0.png"><img alt="" src="https://gyazo.com/07b1d39e34e70139c29c887c3be179b0.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/07b1d39e34e70139c29c887c3be179b0.png"><img alt="" src="https://gyazo.com/07b1d39e34e70139c29c887c3be179b0.png"/></a></p>
 <p>Thumbnailの Generator Thumbnailボタンを押すと、Assetフォルダ以下にThumbnail.pngが作成されます。</p>
 <h4 id="variant">Variantごとの別レイヤー作成<a class="headerlink" href="#variant" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/61eb367bbc5fb4fe49d304e162bf39eb.png"><img alt="" src="https://gyazo.com/61eb367bbc5fb4fe49d304e162bf39eb.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/61eb367bbc5fb4fe49d304e162bf39eb.png"><img alt="" src="https://gyazo.com/61eb367bbc5fb4fe49d304e162bf39eb.png"/></a></p>
 <p>Component Output のVariantLayersをONにすると、バリアントを別アセットとして登録することができます。<br/>
 （別レイヤーですが、本体のAssetName.usdcをリファレンスして、SetVariantしている）</p>
 <h4 id="assetinfokind">AssetInfoやKind<a class="headerlink" href="#assetinfokind" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f89e3e7f8acdd00ce6bb0db0981ae1f1.png"><img alt="" src="https://gyazo.com/f89e3e7f8acdd00ce6bb0db0981ae1f1.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/f89e3e7f8acdd00ce6bb0db0981ae1f1.png"><img alt="" src="https://gyazo.com/f89e3e7f8acdd00ce6bb0db0981ae1f1.png"/></a></p>
 <p>Component Outputでは、USDの各種メタデータも指定が可能です。<br/>
 Kindについては最初にも書いた通り<a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/11_kind_modelhierarchy/">こちらの記事</a>で、どう使うのかを書いたのですが、AssetInfoについてはそこまでふれてないはず<br/>
 個別にUSDアドカレにて記事を投稿予定です。<br/>
 （<a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/#assetinfo">去年のあどかれのこのあたり</a>で言及してた）</p>
 <p>以上でモデルとマテリアルを作り、アサインして、出力するまでの構造ができました。</p>
 <h4 id="layer">Layer名の指定<a class="headerlink" href="#layer" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/64fb05f6389b1e7c85ae06009c0b6b47.png"><img alt="" src="https://gyazo.com/64fb05f6389b1e7c85ae06009c0b6b47.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/64fb05f6389b1e7c85ae06009c0b6b47.png"><img alt="" src="https://gyazo.com/64fb05f6389b1e7c85ae06009c0b6b47.png"/></a></p>
 <p>Component Outputを使用すると、ExportOptionsで各レイヤーの名前を変更して出力することができます。<br/>
 デフォルトだと AssetName.usd payload.usdc geo.usdc mtl.usdc extra.usdc となっています。<br/>
 ですが、<br/>
@@ -3183,14 +3183,14 @@ usdは、中身がアスキーでもバイナリでも大丈夫で、リファ�
 <p>さらに、複雑なコンポジションになってきたときに、どのアセットのどのレイヤーを明示しておいたほうが良いとおもうので、<br/>
 各レイヤーの頭にアセット名を入れておきます。<br/>
 （Kitchen_setなども、このようにアセット名が入っていますのでそれ準拠）</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/f36928b169c168d051ee0b9152fe5208.png"><img alt="" src="https://gyazo.com/f36928b169c168d051ee0b9152fe5208.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/f36928b169c168d051ee0b9152fe5208.png"><img alt="" src="https://gyazo.com/f36928b169c168d051ee0b9152fe5208.png"/></a></p>
 <p>最終的にはこのようなレイヤーになりました。</p>
 <h2 id="_3">サンプル<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p><a href="https://1drv.ms/u/s!AlUBmJYsMwMhhOcoB7mqcctbgbO2GA?e=J2djhB">https://1drv.ms/u/s!AlUBmJYsMwMhhOcoB7mqcctbgbO2GA?e=J2djhB</a></p>
 <p>ComponentBuilderがなかったHoudini18.5で作ったアセットセットアップサンプルと比較すると、</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/53867097178c8e2b8909f420cd8f7a37.png"><img alt="" src="https://gyazo.com/53867097178c8e2b8909f420cd8f7a37.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/53867097178c8e2b8909f420cd8f7a37.png"><img alt="" src="https://gyazo.com/53867097178c8e2b8909f420cd8f7a37.png"/></a></p>
 <p>これが、</p>
-<p><a class="glightbox" data-draggable="True" data-effect="zoom" data-height="auto" data-width="100%" data-zoomable="True" href="https://gyazo.com/8fbb4dd1033e3a5f8051816c5fc5c678.png"><img alt="" src="https://gyazo.com/8fbb4dd1033e3a5f8051816c5fc5c678.png"/></a></p>
+<p><a class="glightbox" href="https://gyazo.com/8fbb4dd1033e3a5f8051816c5fc5c678.png"><img alt="" src="https://gyazo.com/8fbb4dd1033e3a5f8051816c5fc5c678.png"/></a></p>
 <p>こうなって、以前のUSDをがっつり理解していないとかなり難解なネットワークだったのが、<br/>
 かなり直感的でシンプルなネットワークになっているのがわかると思います。<br/>
 （以前のサンプルはVariantSetを入れていなくてもこれだけ複雑）</p>
@@ -3266,13 +3266,13 @@ LayoutとComponentBuilderを使うことで、以前までとは比較になら�
 </div>
 <div class="md-social">
 <a class="md-social__link" href="https://github.com/fereria" rel="noopener" target="_blank" title="github.com">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
 </a>
 <a class="md-social__link" href="https://twitter.com/fereria" rel="noopener" target="_blank" title="twitter.com">
-<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
 </a>
 <a class="md-social__link" href="https://zenn.dev/remiria" rel="noopener" target="_blank" title="zenn.dev">
-<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M384 48v464L192 400 0 512V48C0 21.5 21.5 0 48 0h288c26.5 0 48 21.5 48 48z"></path></svg>
+<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M48 0h288c26.5 0 48 21.49 48 48v439.7c0 13.4-10.9 24.3-24.3 24.3-5 0-9.9-1.5-14-4.4L192 400 38.28 507.6c-4.09 2.9-8.96 4.4-13.95 4.4C10.89 512 0 501.1 0 487.7V48C0 21.49 21.49 0 48 0z"></path></svg>
 </a>
 </div>
 </div>
@@ -3282,9 +3282,9 @@ LayoutとComponentBuilderを使うことで、以前までとは比較になら�
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
+<script src="../../../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script type="text/javascript">const lightbox = GLightbox({"touchNavigation": false, "loop": false});</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>
