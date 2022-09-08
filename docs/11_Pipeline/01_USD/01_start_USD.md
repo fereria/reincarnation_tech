@@ -89,23 +89,11 @@ python -c "import IPython;print(IPython.lib.passwd())"
 
 ## VSCode でいろいろやる
 
-![](https://gyazo.com/f0178ed34c457eb832a04ea1ead65f11.png)
+![](https://gyazo.com/833bf64be619f449b049a72ce03c982b.png)
 
-まず、VSCode でどうやってセルを指定するかというと、処理を分けたいところで
-
-```
-# %%
-```
-
-これを入れて上げれば OK です。  
-あとは、実行したいときに「Run Cell」を押せば OK です。
-
-![](https://gyazo.com/c6c65af50bd2333a0c711671b179002a.png)
-
-Run Cell を実行すると、Python Interactive タブが表示され、  
-そこに実行結果が表示されます。
-
-## USD の中身を確認する
+現在のバージョンの VSCode は、 .ipynb (JupyterNotebook のフォーマット)を開くと
+VSCode 上で Notebook の編集をすることができます。
+（ショートカットなども VSCode のものが使用できる）
 
 ## プリントする
 
