@@ -124,12 +124,13 @@ ConnectToSource は
 です。
 
 !!! note
-ShaderPrim の UsdShadeConnectableAPI は、シェーディングパラメーターの入力と出力
-の間の接続を行うための共通インターフェースを提供する API スキーマです。
-USD の UsdShadeMaterial の CreateSurfaceOutput().ConnectToSource や、
-サンプルコードを見ると ConnectableAPI() を使わずに shader, "surface" となっているが
-それだと現状はエラーになってしまいます。
-Input/Output の接続処理全般を扱うのであれば、UsdShadeConnectableAPI を使うのが推奨なのかも？
+
+    ShaderPrim の UsdShadeConnectableAPI は、シェーディングパラメーターの入力と出力
+    の間の接続を行うための共通インターフェースを提供する API スキーマです。
+    USD の UsdShadeMaterial の CreateSurfaceOutput().ConnectToSource や、
+    サンプルコードを見ると ConnectableAPI() を使わずに shader, "surface" となっているが
+    それだと現状はエラーになってしまいます。
+    Input/Output の接続処理全般を扱うのであれば、UsdShadeConnectableAPI を使うのが推奨なのかも？
 
 ### UsdUVTexture / UsdPrimvarReader
 
@@ -175,8 +176,10 @@ st Primvar はいわゆるある Vertex に対応する UV 座標を保持して
 その頂点間に関しては、表面や体積に応じて「補完（Interpolate）」されます。
 
 !!! info
-デフォルトだと Primvar の Index は Direct（Vertex と UV の Index が同じ）モードですが
-１頂点に対して複数 UV 指定がある場合は UsdGeom.Tokens.faceVarying にします。
+
+    デフォルトだと Primvar の Index は Direct（Vertex と UV の Index が同じ）モードですが
+    １頂点に対して複数 UV 指定がある場合は UsdGeom.Tokens.faceVarying にします。
+
 ![](shader.drawio#3)
 その場合は、primvars の indices に Mesh の points と同じ並びのアトリビュートを追加し
 そのアトリビュートには、対応する UV（primvar:st）の Index を指定します。
@@ -270,8 +273,9 @@ CreateOutput であるチャンネルのみを取得して、
 指定のアトリビュートに対して ConnectToSource で接続すれば OK です。
 
 !!! info
-これ以外にも、Transform2d が使用可能です。
-Transform2d を使用すると、テクスチャ座標系でイメージを移動・リサイズ・回転をすることができます。
+
+    これ以外にも、Transform2d が使用可能です。
+    Transform2d を使用すると、テクスチャ座標系でイメージを移動・リサイズ・回転をすることができます。
 
 ## Face 単位のアサイン
 
