@@ -57,7 +57,7 @@ def createNoteBookMD(ipynbFile, root, exportPath):
     title = ['---',
              f'title: {title}',
              '---',
-             f'**ipynbFile** [{os.path.basename(ipynbFile)}]({utils.getGithubRoot()}/blob/master/notebooks/{buff[1]})']
+             f'**ipynbFile** [{os.path.basename(ipynbFile)}](https://github.com/fereria/notebooks/blob/master/notebooks/{buff[1]})']
 
     with codecs.open(md, 'r', 'utf8') as f:
         lines = [x.replace("\n", "") for x in f.readlines()]
