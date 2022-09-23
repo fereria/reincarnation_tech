@@ -1,0 +1,3215 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Megumi Ando@Remiria" name="author"/>
+<link href="https://fereria.github.io/reincarnation_tech/ja/11_PySide/00_Tutorial/08_widget_sample_04/" rel="canonical"/>
+<link href="../../../../favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<title>基本Widgetを使ってみる(4):ListView - Reincarnation+#Tech</title>
+<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<meta content="#4cae4f" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="../../../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#widget-4listview">
+          コンテンツにスキップ
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="ヘッダー" class="md-header__inner md-grid">
+<a aria-label="Reincarnation+#Tech" class="md-header__button md-logo" data-md-component="logo" href="../../../" title="Reincarnation+#Tech">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Reincarnation+#Tech
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              基本Widgetを使ってみる(4):ListView
+            
+          </span>
+</div>
+</div>
+</div>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Select language" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="../../../../" hreflang="ja">
+                    Japanese
+                  </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="../../../../en/" hreflang="en">
+                    English
+                  </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="検索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="検索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="クリア" class="md-search__icon md-icon" tabindex="-1" title="クリア" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            検索を初期化
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/fereria/reincarnation_tech" title="リポジトリへ">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="タブ" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../">
+      Introduction
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tags/">
+      Tags
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../update_docs/">
+      更新履歴
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../05_DCCTool/">
+        DCCTool
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../10_PGLang/">
+        プログラミング言語
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../10_Programming/">
+        環境構築
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../11_Pipeline/">
+        Pipeline
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+        PySide
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../30_TechArtist/">
+        TechArtist
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../65_SampleCode/">
+        SampleCode
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../99_Link/">
+        Link
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="ナビゲーション" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Reincarnation+#Tech" class="md-nav__button md-logo" data-md-component="logo" href="../../../" title="Reincarnation+#Tech">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Reincarnation+#Tech
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/fereria/reincarnation_tech" title="リポジトリへ">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tags/">
+        Tags
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../update_docs/">
+        更新履歴
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          DCCTool
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="DCCTool" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          DCCTool
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/">
+        Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2">
+          Blender
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Blender" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          Blender
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_1" id="__nav_4_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2_1">
+          basic operation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="basic operation" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_2_1">
+<span class="md-nav__icon md-icon"></span>
+          basic operation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_1_1" id="__nav_4_2_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2_1_1">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Operation" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_2_1_1">
+<span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/00_basic_operation/00_Operation/00_basic/">
+        Blender基本操作メモ
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_1_2" id="__nav_4_2_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2_1_2">
+          Materials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Materials" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_4_2_1_2">
+<span class="md-nav__icon md-icon"></span>
+          Materials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/00_basic_operation/10_Materials/vertexColor/">
+        Blenderの頂点カラー
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" id="__nav_4_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2_2">
+          data structure
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="data structure" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_2_2">
+<span class="md-nav__icon md-icon"></span>
+          data structure
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/01_data_structure/000_collection_object/">
+        オブジェクトの共有・構造・ユーザーについて
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/01_data_structure/001_user_link_proxy/">
+        Data-Block の User,Link,Proxy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/01_data_structure/002_link_32_01/">
+        Blender3.2でのLinkを使用したキャラクターの読み込み方
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" id="__nav_4_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2_3">
+          BlenderAssets
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="BlenderAssets" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_2_3">
+<span class="md-nav__icon md-icon"></span>
+          BlenderAssets
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/05_BlenderAssets/00_introduction/">
+        BlenderのAssetLibrary
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" id="__nav_4_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2_4">
+          Scripts
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scripts" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Scripts
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/10_Scripts/00_vscode_settings/">
+        VSCodeでBlenderPython開発をしよう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/10_Scripts/01_dataacess/">
+        BlenderPythonの基本(1) dataアクセス
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/10_Scripts/02_dataaccess_2/">
+        BlenderPythonの基本(2) linkする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/10_Scripts/03_vscode_addon_dev/">
+        VSCodeでAddon開発
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/10_Scripts/04_operator/">
+        Operator と Context
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Blender/10_Scripts/05_add_props/">
+        Propertyを追加する
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          Houdini
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Houdini" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          Houdini
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_1" id="__nav_4_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_1">
+          Basic
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Basic" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_1">
+<span class="md-nav__icon md-icon"></span>
+          Basic
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/00_Basic/00_start_houdini/">
+        初めての Houdini 基本用語と構造
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/00_Basic/02_mesh_polygon/">
+        Vtx Point Primitive Mesh Polygon について
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/00_Basic/03_group/">
+        Houdini の Group
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/00_Basic/04_HDA/">
+        HDA の作り方
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/00_Basic/99_shortcut/">
+        Houdini のショートカット
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_2" id="__nav_4_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_2">
+          VOP
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="VOP" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_2">
+<span class="md-nav__icon md-icon"></span>
+          VOP
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/10_VOP/01_vex_to_vop_noise/">
+        VEX を VOP に置き換える 01 ノイズ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/10_VOP/02_add_attribute/">
+        Attribute を追加して VOP で使用する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/10_VOP/03_add_param/">
+        パラメーターを追加する
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_3" id="__nav_4_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_3">
+          SOLARIS
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SOLARIS" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_3">
+<span class="md-nav__icon md-icon"></span>
+          SOLARIS
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/01_solaris_open_usd/">
+        SOLARISでUSDファイルを開く
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/02_comp_arc/">
+        SOLARISでコンポジションアーク
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/03_comp_arc_inherits/">
+        SOLARISでInherits(継承)/Reference(継承)を扱う
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/04_agent_to_solaris/">
+        Houdiniの群衆をSOLARISに持って行ってみよう(1)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/05_point_instancer/">
+        SOLARISでInstancerを使う(1) 配置編
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/06_point_instancer/">
+        SOLARISでInstancerを使う(2) 編集編
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/07_layer/">
+        SOLARISでのLayerの扱い
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/08_solaris_variant/">
+        SOLARIS で VariantSet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/09_solaris_vex/">
+        SOLARISのVEXで遊ぼう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/10_edit_layer/">
+        configureLayerを使おう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/11_edit_layer_flatten/">
+        Flattenでレイヤーをコントロールしよう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/12_usd_preview_surface/">
+        UsdPreviewSurfaceでマテリアルを設定する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/13_create_usdAssets_01/">
+        SOLARISでUSDアセットを作ろう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/14_edit_properties/">
+        SOLARISでAttributeを編集する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/15_inline_usd/">
+        InlineUSDを使おう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/16_component_builder/">
+        ComponentBuilderで遊ぼう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/17_layout_asset_gallery/">
+        LayoutAssetGalleryとLayout
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/90_solaris_lop_node/">
+        Houdini18で追加されたLOPノードを調べてみた
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOLARIS/99_solaris_usd_sampledata/">
+        SOLARISのサンプルhipデータ
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_4" id="__nav_4_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_4">
+          SOP
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SOP" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_4">
+<span class="md-nav__icon md-icon"></span>
+          SOP
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/11_SOP/00_usdexport/">
+        PackedPrimitivesとUSDExport
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_5" id="__nav_4_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Python" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_5">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/20_Python/get_param_01/">
+        PythonでHoudiniのパラメーターを取得・セットする
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_6" id="__nav_4_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_6">
+          Houdini写経
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Houdini写経" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_6">
+<span class="md-nav__icon md-icon"></span>
+          Houdini写経
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/50_imitate/00_glue_constraint_rbd/">
+        Houdini 写経 01 RBD_ClueConstraint
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Houdini/50_imitate/01_ifend/">
+        Houdini 写経 02
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4">
+          Maya
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Maya" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+          Maya
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_1" id="__nav_4_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_1">
+          Env Maya
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Env Maya" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_1">
+<span class="md-nav__icon md-icon"></span>
+          Env Maya
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Env_Maya/VSCode_debug/">
+        VSCodeでリモートデバッグ環境を作る
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_2" id="__nav_4_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_2">
+          Scripts
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scripts" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_2">
+<span class="md-nav__icon md-icon"></span>
+          Scripts
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Scripts/99_error_memo/">
+        スクリプト関係の問題が起きたときの対処法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Scripts/driven_key/">
+        DrivenKey を取得する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Scripts/exec_python/">
+        Python ファイル(.py)を実行する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Scripts/material_tips/">
+        Materials 関係の Tips
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Scripts/maya_set_project/">
+        cmds_MayaのSetProjectをする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Scripts/maya_wireframe/">
+        Maya のビューポートの描画をワイヤーフレームにする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Scripts/mel2python/">
+        melをpythonに書き換えるテクニック
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../05_DCCTool/10_Maya/Scripts/pyside_2017_/">
+        Maya2017 以降での PySide の使い方
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          プログラミング言語
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="プログラミング言語" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          プログラミング言語
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/">
+        Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2">
+          JavaScripts
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="JavaScripts" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+          JavaScripts
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_JavaScripts/00_npm_install/">
+        npm の基本
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Python" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" id="__nav_5_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3_1">
+          Setup
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Setup" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_1">
+<span class="md-nav__icon md-icon"></span>
+          Setup
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/00_Setup/monkey_code/">
+        MonkeyTypeで自動アノテーション追加
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/00_Setup/pipenv_statup/">
+        pipenvを使用したPython開発環境の作り方
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" id="__nav_5_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3_2">
+          Python2
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Python2" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_2">
+<span class="md-nav__icon md-icon"></span>
+          Python2
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/10_Python2/gitbook_create_summary/">
+        GitBook の SUMMARY ファイルを自動作成
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/10_Python2/super_class/">
+        Python のクラスで多重継承した場合の**init**順序
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_3" id="__nav_5_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3_3">
+          Python3
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Python3" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Python3
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/10_Python3/class_list/">
+        クラスのインスタンス変数とクラス変数
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/10_Python3/graphviz_parse/">
+        Graphvizのノードの配置情報をパースする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/10_Python3/py_import/">
+        Import 関係の構造
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4" id="__nav_5_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3_4">
+          PythonLib
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="PythonLib" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_4">
+<span class="md-nav__icon md-icon"></span>
+          PythonLib
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/11_PythonLib/pyinstaller_01/">
+        PyInstallerでexeを作る
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4_2" id="__nav_5_3_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3_4_2">
+          PIL
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="PIL" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_3_4_2">
+<span class="md-nav__icon md-icon"></span>
+          PIL
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/11_PythonLib/PIL/00_rotate_image/">
+        PIL_EXIFの回転情報に合わせて画像を回転する
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4_3" id="__nav_5_3_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3_4_3">
+          標準ライブラリ
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="標準ライブラリ" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_3_4_3">
+<span class="md-nav__icon md-icon"></span>
+          標準ライブラリ
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_PGLang/00_Python/11_PythonLib/defaultLib/00_argparse/">
+        Pythonで引数をパースする
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          環境構築
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="環境構築" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          環境構築
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/">
+        Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
+          Settings
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Settings" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Settings
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/00_Settings/hyper-v/">
+        Hpyer-V で仮想デスクトップを作成する
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3">
+          GitLab
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="GitLab" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+          GitLab
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/20_GitLab/docker_gitlab_ci/">
+        Docker で Runner を使用する\_セットアップ編
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/20_GitLab/download_artifacts/">
+        Build 結果をダウンロードする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/20_GitLab/gitlab_build_mkdocs/">
+        GitLab+mkdocs+さくらサーバーで自動デプロイ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/20_GitLab/gitlab_windows/">
+        Windows 環境で GitLab の CI/CD を実行する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/20_GitLab/gitlab_windows_nose/">
+        GitLab CI で nosetests
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Docker" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/30_Docker/00_dockerfile/">
+        Dockerfileを作成してVSCodeでアタッチする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/30_Docker/01_docker_compose/">
+        DockerComposeを使ってVolumeを指定してコンテナを起動する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/30_Docker/02_docker_notebook/">
+        DockerでJupyterを起動する
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+          Github
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Github" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          Github
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/40_Github/00_GithubActions_01/">
+        GithubActionsで自動化(1) 基本構造
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/40_Github/01_GithubActions_02_release/">
+        GithubActionsで自動化(2) リリース
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/40_Github/git_command/">
+        Gitよく使うコマンドやら操作メモ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/40_Github/push_github_ssh/">
+        VSCode から SSH 経由で Push
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_6" id="__nav_6_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_6">
+          VSCode
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="VSCode" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
+          VSCode
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_cacher/">
+        VSCodeでCacherを使う
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_create_task/">
+        VSCode のタスクを作成する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_debug/">
+        VSCodeでPythonデバッグ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_edit/">
+        VSCode 便利な機能
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_env_setting/">
+        Vscode env setting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_extension/">
+        VSCode の拡張機能を作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_jupyter/">
+        VSCodeでJupyter
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_note/">
+        VSCodeでノートをつける
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_pytest/">
+        VSCodeでPyTest
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_snippet_sc/">
+        キーバインドに指定スニペットを挿入を指定
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_sql/">
+        VSCodeでSQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/50_VSCode/vscode_task/">
+        VSCodeでタスク管理
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_7" id="__nav_6_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_7">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Documentation" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_7">
+<span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/00_mkdocs_setting/">
+        mkdocs を設定する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/01_mkdocs_autobuild/">
+        続、mkdocsを設定する(自動ビルド)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/02_mkdocs_macro/">
+        mkdocsのマクロプラグインを使う
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/03_ipynb2mkdocs/">
+        mkdocsにJupyterNotebookの結果を表示する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/04_mkdocs_updatelog/">
+        mkdocsの更新履歴を表示する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/05_mkdocs_drawio/">
+        mkdocsでdrawioを使う
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/99_mkdocs_sample/">
+        mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7">
+          Pipeline
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Pipeline" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Pipeline
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/">
+        Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" id="__nav_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2">
+          USD
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="USD" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_2">
+<span class="md-nav__icon md-icon"></span>
+          USD
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/00_install_USD/">
+        USDを使ってみる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/01_start_USD/">
+        USDをPythonから色々操作するための環境を作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/02_whats_USD/">
+        USDとは
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/05_comp_arc/">
+        コンポジションアークとは
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/06_comp_arc_subLayer/">
+        CompArc(1) サブレイヤー
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/07_comp_arc_inherits/">
+        CompArc(2) 継承
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/08_comp_arc_Variant/">
+        CompArc(3) バリアントセット
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/09_comp_arc_reference/">
+        CompArc(4) リファレンス・ペイロード
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/09_comp_arc_specialize/">
+        CompArc(5) 特殊化（Specialize）
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/10_ListEditing/">
+        List Editingについて
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/11_kind_modelhierarchy/">
+        Kind と Model と ModelHierarchy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/12_ValueClip_01/">
+        Value Clips を使おう(基本構造編)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/13_ValueClip_02/">
+        Value Clips を使おう(レイヤー合成編)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/14_usdCollection/">
+        UsdCollectionを使おう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/15_CustomMetadata/">
+        Plugin Metadataを使おう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/16_UsdStageLoadRules/">
+        UsdStageLoadRulesを使用してペイロードをロード/アンロード
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/17_property_attribute_relation/">
+        Property/Attribute/Relationship
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/18_schema/">
+        Schemaについて
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/19_population_mask/">
+        PopulationMask(OpenMasked)について
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/21_stage_layer_spec/">
+        Stage/Layer/Spec
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/23_assetInfo/">
+        AssetInfoについて
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/24_asset_resolution/">
+        AssetResolution(1) - usdResolverExample
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/25_asset_resolution_02/">
+        AssetResolution(2) ResolveとContext
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/26_specifier/">
+        Specifier
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/27_fileformat_plugin/">
+        FileFormatPluginについて
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/28_kitchen_set/">
+        USDの機能の多くはKitchen_setが教えてくれる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/29_instance/">
+        USDのInstanceについて
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_28" id="__nav_7_2_28" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_28">
+          USDTools
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="USDTools" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_2_28">
+<span class="md-nav__icon md-icon"></span>
+          USDTools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/20_USDTools/00_usdtools/">
+        USDの便利なツールたち (1) checker
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/20_USDTools/01_usdtools_usdcat/">
+        USDの便利なツールたち (2) usdcat
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/20_USDTools/02_usdzip/">
+        USDの便利なツールたち (3) usdzip
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_29" id="__nav_7_2_29" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_29">
+          USD 環境構築
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="USD 環境構築" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_7_2_29">
+<span class="md-nav__icon md-icon"></span>
+          USD 環境構築
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_usd_py_docs/">
+        USDPythonドキュメントの読み方
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/02_usd_py_cheatsheets/">
+        UPythonUSDチートシート
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/03_usd_format_cheatsheets/">
+        USDフォーマットチートシート
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_29_4" id="__nav_7_2_29_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_29_4">
+          CPP
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="CPP" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_7_2_29_4">
+<span class="md-nav__icon md-icon"></span>
+          CPP
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/00_CPP/00_create_custom_schema/">
+        オリジナルの New Schema Classを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/00_CPP/00_start_cpp/">
+        C++でUSDのコードを書こう(準備編)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/00_CPP/01_asset_resolver_01/">
+        Custom AssetResolver を作ろう
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_29_5" id="__nav_7_2_29_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_29_5">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Python" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_7_2_29_5">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_Python/00_usdView_tutorial/">
+        USDViewのプラグイン作成チュートリアルをやろう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_Python/01_editTarget/">
+        EditTargetでLayerを操作する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_Python/01_usdview_editstage/">
+        USDViewPluginで自作GUIを追加しよう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_Python/02_reparentPrim/">
+        PrimをReparentする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_Python/04_pcp_compositionArc/">
+        PCPでコンポジションアークの構造を解析・編集対象を取得する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_Python/05_usdSkel/">
+        UsdSkelについて
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_Python/06_shader/">
+        UsdPreviewSurfaceを使う
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../11_Pipeline/01_USD/30_USD_Programming/01_Python/07_create_usd_assets/">
+        Pythonで作るUSDアセット
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8">
+          PySide
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="PySide" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+          PySide
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+        Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" id="__nav_8_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_2">
+          Tutorial
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tutorial" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_2">
+<span class="md-nav__icon md-icon"></span>
+          Tutorial
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_start/">
+        PySideで単独アプリケーションを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_create_designer/">
+        QtDesignerでUIを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_signal_slot_01/">
+        SignalとSlotについて(1)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04_widgets/">
+        Widgetとカスタムウィジェットを作成する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05_widget_sample_01/">
+        基本Widgetを使ってみる(1):LineEdit
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06_widget_sample_02/">
+        基本Widgetを使ってみる(2):RadioButton
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07_widget_sample_03/">
+        基本Widgetを使ってみる(3):ComboBox_基本編
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          基本Widgetを使ってみる(4):ListView
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        基本Widgetを使ってみる(4):ListView
+      </a>
+<nav aria-label="目次" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    サンプルコード
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#model">
+    Model について
+  </a>
+<nav aria-label="Model について" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qstringlistmodel">
+    QStringListModel とは
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    具体的なよく使う関数
+  </a>
+<nav aria-label="具体的なよく使う関数" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#list">
+    List に追加する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#str">
+    現在選択している項目を str で取得する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#match">
+    リストから指定の文字を探してきて Match したら選択
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    まとめ
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09_qsettings/">
+        QSettingsを使用してUIの情報を保存する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10_context_menu/">
+        コンテキストメニューを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11_status_bar/">
+        QMainwindowのStatusBarを使う
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12_layout/">
+        基本的なレイアウトを使おう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13_timer/">
+        シンプルなタイマーを作ろう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14_thread_pool/">
+        ThreadPool でスレッド作成
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15_listwidget/">
+        List/Tree Widgetを使おう(1) 基本編
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16_treewidget_edit/">
+        List/Tree Widgetを使おう(2) 編集編
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17_treewidget_widget/">
+        List/Tree Widgetを使おう(3) Widget配置編
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" id="__nav_8_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_3">
+          Tips
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tips" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_3">
+<span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/01_child_dup_window/">
+        MayaPySideで重複Windowを出さない方法（改
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/02_completer/">
+        QCompleterでLineEditに予測変換を入れる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/03_custom_tooltip/">
+        PySideのTooltipを自作する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/04_screen_shot/">
+        PySideで範囲スクリーンショットを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/05_gradation_picker/">
+        グラデーションピッカーを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/06_qthread_01/">
+        QThreadでマルチスレッドを使う(Signalの注意点)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/07_validator/">
+        LineEditに入力チェック・修正機能を入れる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/08_custom_Model/">
+        QAbstractItemModelのdataの使い方
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/09_rubber_band/">
+        RubberBandを表示する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/10_custom_mdoel_sort/">
+        QAbstractItemModelでSort
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/11_custom_layout/">
+        CustomLayoutを作ろう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/12_tagcrowd/">
+        PySideでタグクラウドっぽいWidgetを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/13_fontawesome/">
+        PySideでFontAwesomeを使う
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3_14" id="__nav_8_3_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_3_14">
+          GraphicsView
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="GraphicsView" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_8_3_14">
+<span class="md-nav__icon md-icon"></span>
+          GraphicsView
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/GraphicsView/graphicsView_01/">
+        GraphicsViewの基本(Sceneをスケールする)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/GraphicsView/graphics_view_color_anim/">
+        GraphicsViewでQColorをアニメーションさせる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/GraphicsView/pyside_graphicsview_child_item/">
+        PySide の GraphicsView で Item を親子化したときの問題
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3_15" id="__nav_8_3_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_3_15">
+          StyleSheet
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="StyleSheet" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_8_3_15">
+<span class="md-nav__icon md-icon"></span>
+          StyleSheet
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/StyleSheet/01_stylesheet_basic/">
+        PySideでStyleSheetを使って編集する(1)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3_16" id="__nav_8_3_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_3_16">
+          ViewModelDelegate
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="ViewModelDelegate" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_8_3_16">
+<span class="md-nav__icon md-icon"></span>
+          ViewModelDelegate
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/ViewModelDelegate/column_view/">
+        ColumnViewを使おう
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/ViewModelDelegate/custom_model/">
+        QtCore.QAbstractItemModelを使用したカスタムモデルの作成
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/ViewModelDelegate/custom_model_2/">
+        AbstractItemModelでItemを追加・削除
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/ViewModelDelegate/tree_view_proxy/">
+        TreeViewの中身を正規表現で検索する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/ViewModelDelegate/view_model_delegate_01/">
+        PySideのTableViewでDelegateを使う(1)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/ViewModelDelegate/view_model_delegate_02/">
+        PySideのTableViewでDelegateを使う(2) paintする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/ViewModelDelegate/view_model_delegate_03/">
+        TableViewの編集画面でDialogを使用する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02_Tips/ViewModelDelegate/view_model_delegate_04/">
+        PySideのTableViewでDelegateを使う(3) もっとpaintする
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_4" id="__nav_8_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8_4">
+          PySide USD
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="PySide USD" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_8_4">
+<span class="md-nav__icon md-icon"></span>
+          PySide USD
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_PySide_USD/01_create_treeview_01/">
+        PySideでUSD関係のGUIを作ろう - SceneGraph(1)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03_PySide_USD/01_create_treeview_02/">
+        PySideでUSD関係のGUIを作ろう - SceneGraph(2)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9">
+          TechArtist
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TechArtist" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+          TechArtist
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../30_TechArtist/">
+        Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_2" id="__nav_9_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9_2">
+          settings
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="settings" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_9_2">
+<span class="md-nav__icon md-icon"></span>
+          settings
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../30_TechArtist/settings/00_start_python/">
+        0から始めるTA環境作り - エディタの設定
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../30_TechArtist/settings/01_vscode_setting/">
+        0から始めるTA環境作り - エディタの設定(2)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../30_TechArtist/settings/03_snippets/">
+        0から始めるTA環境作り - エディタの設定(3) スニペット
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../30_TechArtist/settings/04_env_path/">
+        環境変数を理解する
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" id="__nav_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10">
+          SampleCode
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SampleCode" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_10">
+<span class="md-nav__icon md-icon"></span>
+          SampleCode
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/">
+        Index
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2" id="__nav_10_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2">
+          Notebook
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Notebook" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_10_2">
+<span class="md-nav__icon md-icon"></span>
+          Notebook
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_1" id="__nav_10_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_1">
+          NotionAPI
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="NotionAPI" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_10_2_1">
+<span class="md-nav__icon md-icon"></span>
+          NotionAPI
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/NotionAPI/notionapi_01/">
+        取得して更新
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/NotionAPI/notionapi_02/">
+        ページを作る
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2" id="__nav_10_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2">
+          USD
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="USD" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_10_2_2">
+<span class="md-nav__icon md-icon"></span>
+          USD
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_1" id="__nav_10_2_2_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_1">
+          APISchema
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="APISchema" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_1">
+<span class="md-nav__icon md-icon"></span>
+          APISchema
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/APISchema/USDCollectoinSample/">
+        USDCollectionの基本操作
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/APISchema/USDCollectoinSample2/">
+        USDCollection応用編
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/APISchema/modelAPI/">
+        modelAPIとKind
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_2" id="__nav_10_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_2">
+          Animation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Animation" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Animation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Animation/animation/">
+        USDでアニメーション
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_3" id="__nav_10_2_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_3">
+          AssetResolution
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="AssetResolution" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+          AssetResolution
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/AssetResolution/useresolve/">
+        useresolveの中の実装を調べる
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_4" id="__nav_10_2_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_4">
+          Attribute
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Attribute" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Attribute
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Attribute/USDAttribute_connections/">
+        USDAttribute_connections
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Attribute/USDMetadata/">
+        Metadataを仕込む
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Attribute/USDPrimvar/">
+        AttributeにPrimvarを指定する
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_5" id="__nav_10_2_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_5">
+          Camera
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Camera" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Camera
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Camera/usdcam/">
+        UsdCameraを使う
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_6" id="__nav_10_2_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_6">
+          CompArc
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="CompArc" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_6">
+<span class="md-nav__icon md-icon"></span>
+          CompArc
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/CompArc_01/">
+        複数のComp組み合わせ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/USDPCP_01/">
+        PcpAPIでコンポジションアークを調べる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/UsdReference1/">
+        ReferenceをしているPrimからUsdのFilePathを取得
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/UsdReference2/">
+        Referenceをつくる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/compQuery/">
+        UsdPrimCompositionQueryを使ってみる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/makefileVariant/">
+        USDAssetsの作り方、基本構造メモ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/usd-comp-arc/">
+        Pythonでアセットのセットアップ
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/variantset01/">
+        Variantの挙動を調べる_1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/CompArc/variantset02/">
+        Variantの挙動を調べる_2
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_7" id="__nav_10_2_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_7">
+          Instance
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Instance" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_7">
+<span class="md-nav__icon md-icon"></span>
+          Instance
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Instance/usd_instance/">
+        USDのインスタンス
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Instance/usd_pointinstancer/">
+        USDのポイントインスタンサ
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_8" id="__nav_10_2_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_8">
+          LayerEdit
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="LayerEdit" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+          LayerEdit
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/LayerEdit/FindOrOpen/">
+        CreateNewとFindOrOpenの違い
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/LayerEdit/USDEditTarget/">
+        EditTargetで指定レイヤーを操作
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_9" id="__nav_10_2_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_9">
+          Material
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Material" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_9">
+<span class="md-nav__icon md-icon"></span>
+          Material
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Material/USDMaterial_01/">
+        USDでMaterial_ShadingNetwork
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Material/USDMaterial_02/">
+        InputOutputを確認する
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Material/USDTextureAssign/">
+        USDでTextureAssign
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Material/geomsubset_01/">
+        Face単位でシェーダーをアサイン
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_10" id="__nav_10_2_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_10">
+          Mesh
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Mesh" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_10">
+<span class="md-nav__icon md-icon"></span>
+          Mesh
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Mesh/USDMeshTest/">
+        USDのMeshをPythonで作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Mesh/gltf2UsdMesh/">
+        gltfからUsdMeshを作る
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_11" id="__nav_10_2_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_11">
+          Stage
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Stage" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_11">
+<span class="md-nav__icon md-icon"></span>
+          Stage
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Stage/SdfLayer_01/">
+        SdfLayer_UsdStage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Stage/Traverse_01/">
+        Stage以下をTraverseする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Stage/UsdStageCache/">
+        usdCacheを使う_Stageをリロードする
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Stage/UsdStage_01/">
+        UsdStageでできること
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/Stage/UsdStage_02/">
+        OpenMaskedで一部だけロード
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_12" id="__nav_10_2_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_12">
+          TimeSample
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="TimeSample" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_12">
+<span class="md-nav__icon md-icon"></span>
+          TimeSample
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/TimeSample/UsdClipsAPI_01/">
+        ClipsAPIの基本構造をつくる
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/TimeSample/UsdClipsAPI_02/">
+        TemplateAssetPathを使う
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_13" id="__nav_10_2_2_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_13">
+          UsdSkel
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UsdSkel" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_13">
+<span class="md-nav__icon md-icon"></span>
+          UsdSkel
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/UsdSkel/usdskel_01/">
+        SOLARISでXformからUsdSkeletonを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/UsdSkel/usdskel_02/">
+        UsdSkelの構造を理解する
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_14" id="__nav_10_2_2_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_14">
+          UsdUtils
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UsdUtils" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_14">
+<span class="md-nav__icon md-icon"></span>
+          UsdUtils
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/UsdUtils/usdapputils/">
+        RenderImage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/UsdUtils/usdutils/">
+        usdzip
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_2_15" id="__nav_10_2_2_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_2_15">
+          UsdZip
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UsdZip" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_2_15">
+<span class="md-nav__icon md-icon"></span>
+          UsdZip
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/USD/UsdZip/load_img/">
+        usdzipの中の画像を読み込んでみる
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_3" id="__nav_10_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_3">
+          pythonBasic
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="pythonBasic" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_10_2_3">
+<span class="md-nav__icon md-icon"></span>
+          pythonBasic
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/pythonBasic/contextlib/">
+        contextlibの使い方
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/pythonBasic/excel_sample/">
+        openpyxlでxlsを作る
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/pythonBasic/functoolTest/">
+        functoolsの使い方
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/pythonBasic/hello_world/">
+        埋め込み用サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/pythonBasic/json_dump/">
+        ClassをJsonにDump
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/pythonBasic/samplecode/">
+        helloworld
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_2_3_7" id="__nav_10_2_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_2_3_7">
+          SQL
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SQL" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_10_2_3_7">
+<span class="md-nav__icon md-icon"></span>
+          SQL
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/Notebook/pythonBasic/SQL/pymssql/">
+        PythonでSQL
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_3" id="__nav_10_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_3">
+          blender samplecode
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="blender samplecode" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_10_3">
+<span class="md-nav__icon md-icon"></span>
+          blender samplecode
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_3_1" id="__nav_10_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_3_1">
+          Practice
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Practice" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_10_3_1">
+<span class="md-nav__icon md-icon"></span>
+          Practice
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/blender_samplecode/Practice/USDCustomNode/">
+        USDCustomNode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/blender_samplecode/Practice/addPropertyPanel/">
+        addPropertyPanel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/blender_samplecode/Practice/sampleAddon/">
+        sampleAddon
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_3_2" id="__nav_10_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_3_2">
+          SampleAddon
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="SampleAddon" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_10_3_2">
+<span class="md-nav__icon md-icon"></span>
+          SampleAddon
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/blender_samplecode/SampleAddon/__init__/">
+          init  
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/blender_samplecode/SampleAddon/addProps/">
+        addProps
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/blender_samplecode/SampleAddon/auto_load/">
+        Auto load
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/blender_samplecode/SampleAddon/createGUI/">
+        createGUI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/blender_samplecode/SampleAddon/simpleOp_HelloWorld/">
+        simpleOp HelloWorld
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_4" id="__nav_10_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_4">
+          pyside samplecode
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="pyside samplecode" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_10_4">
+<span class="md-nav__icon md-icon"></span>
+          pyside samplecode
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/qCompleter/">
+        qCompleter
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/simpleTreeView/">
+        simpleTreeView.py
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/tagCloud/">
+        tagCloud実装サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/threadPool/">
+        PySideのThreadPoolの使い方
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/thredPool_02/">
+        thredPool_02.py
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_4_6" id="__nav_10_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_4_6">
+          List
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="List" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_10_4_6">
+<span class="md-nav__icon md-icon"></span>
+          List
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/List/pyside_Delegate/">
+        pyside_Delegate.py
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/List/pyside_dirmodel/">
+        pyside_dirmodel.py
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/List/pyside_editItem/">
+        pyside_editItem.py
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/List/pyside_listwidget/">
+        pyside_listwidget.py
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/List/pyside_listwidget_edit/">
+        pyside_listwidget_edit.py
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/pyside_samplecode/List/pyside_treewidget/">
+        pyside_treewidget.py
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_5" id="__nav_10_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_5">
+          python samplecode
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="python samplecode" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_10_5">
+<span class="md-nav__icon md-icon"></span>
+          python samplecode
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/python_samplecode/json_dump/">
+        Json dump
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_5_2" id="__nav_10_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10_5_2">
+          tests
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="tests" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_10_5_2">
+<span class="md-nav__icon md-icon"></span>
+          tests
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/python_samplecode/tests/test_ClassTest/">
+        test_ClassTest.py
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../65_SampleCode/python_samplecode/tests/test_simpleTest/">
+        test simpleTest
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" id="__nav_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_11">
+          Link
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Link" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_11">
+<span class="md-nav__icon md-icon"></span>
+          Link
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../99_Link/">
+        Link集
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目次" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    サンプルコード
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#model">
+    Model について
+  </a>
+<nav aria-label="Model について" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qstringlistmodel">
+    QStringListModel とは
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    具体的なよく使う関数
+  </a>
+<nav aria-label="具体的なよく使う関数" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#list">
+    List に追加する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#str">
+    現在選択している項目を str で取得する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#match">
+    リストから指定の文字を探してきて Match したら選択
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    まとめ
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<nav class="md-tags">
+<a class="md-tag" href="../../../../tags/#pyside">PySide</a>
+<a class="md-tag" href="../../../../tags/#listview">ListView</a>
+</nav>
+<a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_PySide/00_Tutorial/08_widget_sample_04.md" title="編集">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
+</a>
+<h1 id="widget-4listview">基本 Widget を使ってみる(4):ListView<a class="headerlink" href="#widget-4listview" title="Permanent link">¶</a></h1>
+<p>次は、これまたよく使うであろう List から指定の行を選択できる<br/>
+ListView を説明していきたいと思います。</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>コレと似たUIでListWidgetというものも存在していますが<br/>
+そちらは、基本的には今回説明するListViewにModel（後で説明）が<br/>
+含まれたWidgetになります。<br/>
+そちらのほうが導入はしやすいですが、あえてListViewで説明していきます。</p>
+</div>
+<h2 id="_1">サンプルコード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span><span class="p">,</span> <span class="n">QtWidgets</span>
+
+
+<span class="k">class</span> <span class="nc">UISample</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">UISample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="c1"># カスタムUIを作成</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listView</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QListView</span><span class="p">()</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">()</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s1">'↓に入力された文字の列を選択'</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">()</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="c1"># ここまでUI作成</span>
+
+        <span class="c1"># Model作成</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QStringListModel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">([</span><span class="s1">'aaa'</span><span class="p">,</span> <span class="s1">'bbb'</span><span class="p">,</span> <span class="s1">'ccc'</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+
+        <span class="c1"># Signal-Slot作成</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">returnPressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">addList</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listClicked</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">returnPressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matchSelect</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">matchSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Listから指定の文字の行を探して、見つかったら選択</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="n">stIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">searchIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">stIndex</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">listClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="c1"># 現在選択している文字列を取得する</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">addList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="n">strList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stringList</span><span class="p">()</span>
+        <span class="n">strList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">(</span><span class="n">strList</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">UISample</span><span class="p">()</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="glightbox" href="https://gyazo.com/078f4613697cb63717fd408f2ea9b2da.png"><img alt="" src="https://gyazo.com/078f4613697cb63717fd408f2ea9b2da.png"/></a></p>
+<p>実行すると、このような GUI が表示されます。</p>
+<h2 id="model">Model について<a class="headerlink" href="#model" title="Permanent link">¶</a></h2>
+<p>まず、ListView を使用する場合切手も切り離すことが出来ないのが「Model」<br/>
+と呼ばれるクラスになります。</p>
+<p>PySide には「Model-View アーキテクチャ」と呼ばれる構造があります。<br/>
+これは <strong>データの管理部分と表示部分を別に管理しよう</strong> という考え方になります。<br/>
+その辺は <a href="https://dftalk.jp/?p=14388">DFTalk</a> にて紹介されているページがありますので<br/>
+そちらを参照してください。</p>
+<p><a class="glightbox" href="https://gyazo.com/a4d9f37b696be0e845d00049896c88c5.jpg"><img alt="" src="https://gyazo.com/a4d9f37b696be0e845d00049896c88c5.jpg"/></a></p>
+<p>ものすごい雑な解説図で説明すると<br/>
+今回説明する「ListView」というのは、「List を表示する部分を受け持つ UI」<br/>
+になっていて、実体自体は持ちません。<br/>
+そのため、デフォルトだとなにも表示されないし、表示する項目をセットする<br/>
+それっぽい関数なども存在しません。</p>
+<p>そのかわりに、実際のデータ管理部分を受け持っている「Model」クラスを作成して、<br/>
+こちら側でデータの管理を行うようにします。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QStringListModel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">([</span><span class="s1">'aaa'</span><span class="p">,</span> <span class="s1">'bbb'</span><span class="p">,</span> <span class="s1">'ccc'</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>今回のサンプルでは、この部分が Model を作成している部分になります。</p>
+<p>モデルはかなり色々とカスタマイズできますが、ソレをするとわけが分からなく<br/>
+なるので、今回は最もシンプルな「QStringListModel」を使用して<br/>
+基本的な動作を解説します。</p>
+<h3 id="qstringlistmodel">QStringListModel とは<a class="headerlink" href="#qstringlistmodel" title="Permanent link">¶</a></h3>
+<p>QStringListModel とは、list 型のデータを View に表示するための Model になります。<br/>
+使い方は、上のサンプルのように model オブジェクトを作成し、<br/>
+setStringList で str の List をセットして、lisetView に対して setModel で<br/>
+登録すれば OK です。</p>
+<p><a class="glightbox" href="data:image/png;base64,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"><img alt="uml diagram" class="uml" src="data:image/png;base64,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" title=""/></a></p>
+<p>構造的には ↑ のようになっていて、<br/>
+ユーザーが触る「表示部分（ListView)」と、データを管理する部分（QStringListModel）<br/>
+そして表側からは見えないですが、<br/>
+実際に表示する List を Model がアクセスして、<br/>
+List を View に表示しています。</p>
+<p>QStringList の Help はこちらになりますが<br/>
+ここからは List の取得と登録のみできるようになっています。</p>
+<p><a href="https://doc.qt.io/qtforpython/PySide2/QtCore/QStringListModel.html#qstringlistmodel">https://doc.qt.io/qtforpython/PySide2/QtCore/QStringListModel.html#qstringlistmodel</a></p>
+<h2 id="_2">具体的なよく使う関数<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>とりあえず今のところは「Model というデータにアクセスする部分をセットするんだな」<br/>
+ぐらいの認識を持ちつつ、実際の使い方をみていきます。</p>
+<h3 id="list">List に追加する<a class="headerlink" href="#list" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" href="https://gyazo.com/8aca6264238c22da6e49a14fdc435bad.gif"><img alt="" src="https://gyazo.com/8aca6264238c22da6e49a14fdc435bad.gif"/></a></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">addList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="n">strList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stringList</span><span class="p">()</span>
+        <span class="n">strList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">setStringList</span><span class="p">(</span><span class="n">strList</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>登録しているのはこの部分になります。<br/>
+QStringListModel の場合は、内部的には list 型を持っているので、<br/>
+一度 list を取り出して、新しく追加したい項目を append で追加して<br/>
+再度 setStringList で登録してあげれば<br/>
+List に新しい項目が追加することができます。</p>
+<h3 id="str">現在選択している項目を str で取得する<a class="headerlink" href="#str" title="Permanent link">¶</a></h3>
+<p>List をクリックしたときに、現在選択している項目を取得したい場合は</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">listClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="c1"># 現在選択している文字列を取得する</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<p>このようにします。<br/>
+clicked の Slot を設定すると、args で index を取得することができます。<br/>
+この index は、現在選択されているデータにアクセスするためのタグのような<br/>
+ものになっています。<br/>
+<a href="https://doc.qt.io/qtforpython/PySide2/QtCore/QModelIndex.html#PySide2.QtCore.QModelIndex">https://doc.qt.io/qtforpython/PySide2/QtCore/QModelIndex.html#PySide2.QtCore.QModelIndex</a><br/>
+この index は QModelIndex オブジェクトで、ここからデータを取得したい場合は<br/>
+index.data() にアクセスすれば OK です。</p>
+<p>スロットではなく、選択しているデータを取得したい場合は、</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>これで index を取得できるので、取得した後に index.data() で<br/>
+データを取得してくれば OK です。</p>
+<h3 id="match">リストから指定の文字を探してきて Match したら選択<a class="headerlink" href="#match" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" href="https://gyazo.com/0d9c51a5e4ba54170664ac5737b4a90c.gif"><img alt="" src="https://gyazo.com/0d9c51a5e4ba54170664ac5737b4a90c.gif"/></a></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchSelect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Listから指定の文字の行を探して、見つかったら選択</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="n">stIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">searchIndex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">stIndex</span><span class="p">,</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">searchIndex</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>List から指定の文字で index を探したい場合は match を使用します。<br/>
+これは若干使い方がわかりにくいですが、</p>
+<p><a class="glightbox" href="https://gyazo.com/62e2dd0b433391a79f7ab13228cd418e.png"><img alt="" src="https://gyazo.com/62e2dd0b433391a79f7ab13228cd418e.png"/></a></p>
+<p>まず、どこから探すかの起点になる Index を作成し（この場合一番上が row=0 column=0)<br/>
+どの文字列と比較するかを指定（UI に表示されている内容なら QtCore.Qt.DisplayRole )<br/>
+最後に match させたい文字を指定します。</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+</div>
+<p>QtCore.Qt.DisplayRole は、Model カスタマイズの際にもう少し詳しく説明します。<br/>
+ ここでは「Model からなにを取得したいかのフラグ」と思えば OK です。</p>
+<p>match を使わない方法としては</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">matchString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">strList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stringList</span><span class="p">()</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEditB</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">txt</span> <span class="ow">in</span> <span class="n">strList</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">strList</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">txt</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">listView</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>list.index('moji')<br/>
+を使用することで list 型のどこに指定の文字が入っているかを数字で取得して<br/>
+index(row,column) の row にその数字を入れて Index を取得してきてから<br/>
+setCurrentIndex するやり方もできます。<br/>
+こちらの場合は文字が完全に一致している場合に有効で<br/>
+match の場合は 1 文字でもあっていれば<br/>
+選択をすることができるようになります。</p>
+<h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>基本を押さえたつもりですがわかりにくいかもしれません orz<br/>
+ListView に限らず View 周りは PySide のなかでもかなり奥が深い分野になるので<br/>
+もうしばらく何回かに分けて解説をして行ければと思います。</p>
+<p>が、難しい！</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-11 13:21:22</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="フッター" class="md-footer__inner md-grid">
+<a aria-label="前: 基本Widgetを使ってみる(3):ComboBox_基本編" class="md-footer__link md-footer__link--prev" href="../07_widget_sample_03/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                前
+              </span>
+              基本Widgetを使ってみる(3):ComboBox_基本編
+            </div>
+</div>
+</a>
+<a aria-label="次: QSettingsを使用してUIの情報を保存する" class="md-footer__link md-footer__link--next" href="../09_qsettings/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                次
+              </span>
+              QSettingsを使用してUIの情報を保存する
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/fereria" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/fereria" rel="noopener" target="_blank" title="twitter.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</a>
+<a class="md-social__link" href="https://zenn.dev/remiria" rel="noopener" target="_blank" title="zenn.dev">
+<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M0 48v439.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400l153.7 107.6c4.1 2.9 9 4.4 14 4.4 13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
+<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../javascripts/extra.js"></script>
+<script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+</html>
