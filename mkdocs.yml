@@ -39,6 +39,11 @@ extra_javascript:
     - https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js
 
 plugins:
+    - i18n:
+          default_language: ja
+          languages:
+              ja: Japanese
+              en: English
     - drawio-exporter:
           cache_dir: "drawio-exporter"
           drawio_executable: null
@@ -88,6 +93,7 @@ markdown_extensions:
           linenums: true
     - plantuml_markdown:
           server: http://www.plantuml.com/plantuml
+
 # Menu生成で日本語に置換する文字列を指定
 replace_foldername:
     - basic_operation: 基本操作
