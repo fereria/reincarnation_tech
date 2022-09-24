@@ -2,7 +2,7 @@
 title: EditTargetでLayerを操作する
 ---
 
-[LayerStage について](/docs/11_Pipeline/01_USD/21_stage_layer_spec.md)の説明にもあるとおり
+[LayerStage について](/11_Pipeline/01_USD/21_stage_layer_spec.md)の説明にもあるとおり
 USD は１つの usd ファイルだけではなく、複数の usd ファイルが「コンポジションアーク」と呼ばれる
 合成機能によって１つのファイルとして構築されている...と説明をしました。
 
