@@ -2,29 +2,29 @@
 title: EditTargetでLayerを操作する
 ---
 
-[LayerStageについて](../../01_USD/04_layer_stage.md)の説明にもあるとおり
-USDは１つのusdファイルだけではなく、複数のusdファイルが「コンポジションアーク」と呼ばれる
+[LayerStage について](/docs/11_Pipeline/01_USD/21_stage_layer_spec.md)の説明にもあるとおり
+USD は１つの usd ファイルだけではなく、複数の usd ファイルが「コンポジションアーク」と呼ばれる
 合成機能によって１つのファイルとして構築されている...と説明をしました。
 
 ![](https://gyazo.com/a3e2e76893dcdc9304cce43ed48ef32c.png)
 
-つまりは、なにかのUSDファイルをOpenしてできあがったStageは
-複数のUsdファイル（レイヤー）によって構成されていて
-その個別のファイル単位でPrimの元になっている「Spec（主張）」をもった
+つまりは、なにかの USD ファイルを Open してできあがった Stage は
+複数の Usd ファイル（レイヤー）によって構成されていて
+その個別のファイル単位で Prim の元になっている「Spec（主張）」をもった
 大量のファイルの塊でもあるわけです。
 
 通常のファイルの場合は、ファイルを開いたら
 そのファイルを編集して保存すれば良いですが
-上に書いたとおりUSDは大量のファイルの塊なので
+上に書いたとおり USD は大量のファイルの塊なので
 「どのファイル（レイヤー）」を「どのように編集するか」というのも
 作成することができます。
 
-なので、今回はUSDの指定のレイヤーをPythonから操作する方法を
-説明しつつ、USDのStageとLayerについて改めて調べてみようと思います。
+なので、今回は USD の指定のレイヤーを Python から操作する方法を
+説明しつつ、USD の Stage と Layer について改めて調べてみようと思います。
 
 ## サンプル
 
-サンプルUSDファイルとして、下の３つを作成します。
+サンプル USD ファイルとして、下の３つを作成します。
 
 ```usd
 #usda 1.0
@@ -40,6 +40,7 @@ def "testPrim"
     string hoge = "Root"
 }
 ```
+
 Root.usda
 
 ```usd
@@ -57,6 +58,7 @@ def "testPrim"
     int val = 20
 }
 ```
+
 layerA.usda
 
 ```usd
@@ -72,6 +74,7 @@ def "addTest"
 {
 }
 ```
+
 layerB.usda
 
 ![](https://gyazo.com/a48c5f5153ea9df1022e7125f66b595c.png)
@@ -84,16 +87,17 @@ layerB.usda
 from pxr import Usd, UsdGeom, Sdf
 stage = Usd.Stage.Open(r"D:\work\usd_py36\usd\rootLayer.usda")
 ```
-まずは、上のUSDファイルを開きます。
+
+まずは、上の USD ファイルを開きます。
 
 ![](https://gyazo.com/5f66e9f4fe98f81081560b245eb45c1b.png)
 
 構造はこんなかんじで、
 
-testPrimのアトリビュートは、
+testPrim のアトリビュートは、
 
 hoge = "Root"
-val  = 20
+val = 20
 
 という値を取得することができます。
 
@@ -109,25 +113,26 @@ val  = 20
 UsdGeom.Xform.Define(stage, "/hoge")
 stage.GetRootLayer().Save()
 ```
-USDの編集はこのようにStageを経由して編集を行います。
+
+USD の編集はこのように Stage を経由して編集を行います。
 これは今のステージに /hoge Prim を作る操作をしています。
 そして保存時は「GetRootLayer」でレイヤーを取得して保存します。
 
-この場合の「レイヤー」とは、usdaファイルのことになります。
+この場合の「レイヤー」とは、usda ファイルのことになります。
 
 ![](https://gyazo.com/c3aca6dc695414b1be879752776705ca.png)
 
 図に表すとこういう状態です。
-GetRootLayerは現在のStage上のRootLayer(開いたusda)を取得することができます。
+GetRootLayer は現在の Stage 上の RootLayer(開いた usda)を取得することができます。
 
 ### 指定のレイヤーを編集する
 
 ![](https://gyazo.com/8609e16fec4bd6d6b8d4365afde9bf1c.png)
 
-では、RootLayerではないレイヤーを編集したい場合はどうすればいいでしょうか。
+では、RootLayer ではないレイヤーを編集したい場合はどうすればいいでしょうか。
 このあたりを理解するには「EditTarget」を理解する必要があります。
 
-EditTargetは、現在のStage内の「編集対象のレイヤー」へのアクセスをできるようにするための
+EditTarget は、現在の Stage 内の「編集対象のレイヤー」へのアクセスをできるようにするための
 クラスです。
 
 ```python
@@ -137,7 +142,8 @@ print(target.GetLayer().identifier)
 # 保存
 target.GetLayer().Save()
 ```
-現在の編集ターゲットはGetEditTargetで取得することができます。
+
+現在の編集ターゲットは GetEditTarget で取得することができます。
 この場合、GetEditTarget = RootLayer になっています。
 
 ```python
@@ -149,10 +155,10 @@ stage.DefinePrim("/addTest")
 targetB.GetLayer().Save()
 ```
 
-では、RootLayer以外を編集したい場合はどうするかというと
-SetEditTargetで編集したいLayerを指定してあげればOKです。
+では、RootLayer 以外を編集したい場合はどうするかというと
+SetEditTarget で編集したい Layer を指定してあげれば OK です。
 
-上はDefinePrimでPrimを定義していますが、
+上は DefinePrim で Prim を定義していますが、
 
 ```python
 print(targetBPrim.attributes['val'].default)
@@ -167,27 +173,28 @@ print(targetBPrim.attributes['val'].default)
 ![](https://gyazo.com/a9bb18ca571cc7fd9a18769b4586c4a2.png)
 
 ざっくりと書くとこんな感じで
-stageのEditTargetを経由して、編集したいLayerを取得して
-Layerオブジェクトを利用して編集を行います。
+stage の EditTarget を経由して、編集したい Layer を取得して
+Layer オブジェクトを利用して編集を行います。
 
 注意点は、ここで書き換えたり編集しているものは「最終的な結果ではない」ということです。
 あくまでも、最終的なコンポジションされた結果ではなく
 コンポジションされる前の「Spec（主張）」を書き換えているので、
 自分よりも強い主張をもつレイヤーやプリム、アトリビュートがある場合は
-いくら書き換えても最終的なPrimには反映されないので
+いくら書き換えても最終的な Prim には反映されないので
 注意が必要です。
 
-### Specとは
+### Spec とは
 
 ```python
 targetBPrim = targetB.GetLayer().GetPrimAtPath('/testPrim')
 ```
-EditTargetの GetLayerを使用した場合、
-通常の stage.GetRootLayer() とは違いGetPrimAtPathでPrimを取得すると
+
+EditTarget の GetLayer を使用した場合、
+通常の stage.GetRootLayer() とは違い GetPrimAtPath で Prim を取得すると
 
 ![](https://gyazo.com/2df47f719f8dda18e0a699556ed5c80d.png)
 
-PrimSpecというオブジェクトになります。
+PrimSpec というオブジェクトになります。
 
 ```python
 help(stage.GetPrimAtPath("/testPrim"))
@@ -195,63 +202,68 @@ help(stage.GetPrimAtPath("/testPrim"))
 
 ![](https://gyazo.com/af3e54f1385994c4b0a992a40198ebfa.png)
 
-stage経由の場合は、 Primオブジェクトになります。
+stage 経由の場合は、 Prim オブジェクトになります。
 
-ここでいうところのSpecというのがなにかというと、
+ここでいうところの Spec というのがなにかというと、
 各レイヤーに記述された「合成される前の主張」です。
 
-PrimSpecの場合は「こういうPrimを作りたい！！」という主張で
-この段階では他のPrimSpecとの兼ね合い（コンポジション優先順位）によって未解決
+PrimSpec の場合は「こういう Prim を作りたい！！」という主張で
+この段階では他の PrimSpec との兼ね合い（コンポジション優先順位）によって未解決
 の状態になります。
 
 ### Sdf.Find のトラップ
 
 ここで盛大にハマったのが「Sdf.Find」という関数です。
-この関数、PixarのAPIドキュメント（C++）には存在しません。
+この関数、Pixar の API ドキュメント（C++）には存在しません。
 print(dir(Sdf.Find(～～)))のようにしても、ものによって使える関数などが異なり
 こいつはいったいなんなんだよ！！！と思っていました。
 
-が、 help関数を使用してみるとなんとなく実態がわかります。
+が、 help 関数を使用してみるとなんとなく実態がわかります。
 
 ```python
 help(Sdf.Find('d:/work/usd_py36/usd/layerB.usda'))
 ```
-試しにHelp関数を使用してSdf.FindのHelpを見てみます。
+
+試しに Help 関数を使用して Sdf.Find の Help を見てみます。
 
 ![](https://gyazo.com/e3ca0b5d2a6e388f94590a2cb40abbb8.png)
 
-Sdf.Find表示になっているものの実態はなにかというと、Layerだったり
+Sdf.Find 表示になっているものの実態はなにかというと、Layer だったり
 
 ```
 print(targetB.GetLayer().GetPrimAtPath('/testPrim'))
 ```
+
 こうしたときの
 ![](https://gyazo.com/5852f350fb8d60bc6d509d3a5f3b547a.png)
 このばあいは
+
 ```
 help(targetB.GetLayer().GetPrimAtPath('/testPrim'))
 ```
+
 こうすると
 
 ![](https://gyazo.com/e64d952293197949e1bd3d0f03c9bcc0.png)
 
 こうなったりと、オブジェクトの実体は別のものになっているようです。
-~~わかりにくすぎるよPythonnnnnn!!!!!~~
+~~わかりにくすぎるよ Pythonnnnnn!!!!!~~
 
 なので、GetEditTargetForLocalLayer の引数として渡している
+
 ```python
 Sdf.Find('d:/work/usd_py36/usd/layerB.usda')
 ```
-は、Sdf.Layerオブジェクトを渡しているということになります。
 
+は、Sdf.Layer オブジェクトを渡しているということになります。
 
 ### このアトリビュートはどこで「主張」されているのか？
 
-各レイヤーが合成され、最終的なPrimが出来上がりますが
-ではそのPrimが「どこのレイヤーで定義されているのか」というのを調べたくなることがあります。
+各レイヤーが合成され、最終的な Prim が出来上がりますが
+ではその Prim が「どこのレイヤーで定義されているのか」というのを調べたくなることがあります。
 
 サンプルの hoge は layerA と layerB で定義されていることがわかりますが
-これをPythonで確認してみます。
+これを Python で確認してみます。
 
 ```python
 prim = stage.GetPrimAtPath("/testPrim")
@@ -265,31 +277,32 @@ stack = attr.GetPropertyStack(Usd.TimeCode())
 print(stack[0].default)
 print(stack[0].layer)
 ```
+
 指定のプロパティがどのような主張を持っていて結果どうなったかを
-見たい場合はｐGetPropertyStackを確認します。
+見たい場合はｐ GetPropertyStack を確認します。
 
 ![](https://gyazo.com/c74967e595daa075bddcfef8e9b1bb2f.png)
 
-stack は、こんなかんじにSdf.Findの配列になっていて
-この場合のSdf.Findの中身は
+stack は、こんなかんじに Sdf.Find の配列になっていて
+この場合の Sdf.Find の中身は
 
 ![](https://gyazo.com/602aebc46d2cfd4313256e5c6a38f3df.png)
 
-AttributeSpecになります。
-Specなので、ここのアトリビュートは「主張」になります。
+AttributeSpec になります。
+Spec なので、ここのアトリビュートは「主張」になります。
 
 これを見ると、 rootLayer layerA layerB の３つに主張があり
-rootLayerが最も強い主張をもっていて、最終的にコンポジションされた結果になっているのが
+rootLayer が最も強い主張をもっていて、最終的にコンポジションされた結果になっているのが
 わかります。
 
 GetPropertyStack で Usd.TimeCode() を渡しているのは、
-アトリビュートはPrimと違いアニメーションのキーフレームのようにフレームごとに
+アトリビュートは Prim と違いアニメーションのキーフレームのようにフレームごとに
 あるかどうかが異なります。
-なので、タイムコードをわたして、指定のタイムコードでのStackを取得しています。
+なので、タイムコードをわたして、指定のタイムコードでの Stack を取得しています。
 
 ### レイヤーに「主張」があるかどうか
 
-PrimからSpecを探すのはできましたが、今度は指定レイヤーにSpecがあるかどうか
+Prim から Spec を探すのはできましたが、今度は指定レイヤーに Spec があるかどうか
 調べたいこともあります。
 
 ```python
@@ -305,43 +318,43 @@ print(attrSpec)
 print(attrSpec.default)
 ```
 
-ここのあたりもC++とPythonとで全く挙動が違っていて
-APIドキュメントが全く参考にならず苦戦しました。
+ここのあたりも C++と Python とで全く挙動が違っていて
+API ドキュメントが全く参考にならず苦戦しました。
 
-まずは、EditTargetを経由して
+まずは、EditTarget を経由して
 編集したいレイヤーを取得します。
 
-取得したら、定義の有無を確認するために primSpecからAttributeSpecを取得します。
-AttributeSpecの取得方法がかなり特殊で
-attributes はDict型になっているので、取得したいアトリビュートを引数とすることで
-AttributeSpecを取得できます。
+取得したら、定義の有無を確認するために primSpec から AttributeSpec を取得します。
+AttributeSpec の取得方法がかなり特殊で
+attributes は Dict 型になっているので、取得したいアトリビュートを引数とすることで
+AttributeSpec を取得できます。
 
 つまりは、指定のレイヤーで主張があるかを確認するためには
-'name' in spec.attributes のようにして、Dictにアトリビュート名が含まれているか
-確認すればOKです。
+'name' in spec.attributes のようにして、Dict にアトリビュート名が含まれているか
+確認すれば OK です。
 
 ## まとめ
 
-いままではEditTargetを知らずに、なんとなく開いているファイルを編集すればOKという
+いままでは EditTarget を知らずに、なんとなく開いているファイルを編集すれば OK という
 イメージを持っていましたが、
-EditTargetを使用することで、開いている以外のレイヤーもPhotoShopのレイヤーを
+EditTarget を使用することで、開いている以外のレイヤーも PhotoShop のレイヤーを
 編集するようにコントロールできることがわかりました。
 
 いままでの GetRootLayer() での編集というのは、言ってしまえば
-PhotoShopの一番上に新規でレイヤーを作成して、そこに絵を書き足しているような
+PhotoShop の一番上に新規でレイヤーを作成して、そこに絵を書き足しているような
 操作だったわけですね。
 
 これで、できることの幅などが大きく変わりそうです。
-USDすごい。
+USD すごい。
 
-このあたりの検証をしていたときのJupyterNotebookが
-[EditTargetで指定レイヤーを操作](https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/USDEditTarget/)
+このあたりの検証をしていたときの JupyterNotebook が
+[EditTarget で指定レイヤーを操作](https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/USDEditTarget/)
 でした。
 
-やはり日々研究していかないとUSDを有効活用できないなーと思いました。
+やはり日々研究していかないと USD を有効活用できないなーと思いました。
 がんばろう。
 
-あと、今回やったあたりはAPIドキュメントが全く参考になりません。
+あと、今回やったあたりは API ドキュメントが全く参考になりません。
 ひたすら pprint.pprint(dir(hogehoge)) したりしながら関数をさがしてまわってた週末でしたが
-help(hogehoge)すればちょっとだけまともなHelpを見れるという知見を得たので
-しばらくはこれを利用してPythonでの操作方法を全力で調べていこうと思います。
+help(hogehoge)すればちょっとだけまともな Help を見れるという知見を得たので
+しばらくはこれを利用して Python での操作方法を全力で調べていこうと思います。
