@@ -156,3 +156,5 @@ graph TD
 ---
 
 [[05_mkdocs_drawio]]
+
+![[icon.jpg]]
