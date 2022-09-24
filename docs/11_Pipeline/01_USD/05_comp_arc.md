@@ -10,7 +10,7 @@ description: USDの基本コンポジションアークについて
 
 # コンポジションアークとは
 
-前回、[USD の基本構造（Stage/Layer/Prim)](04_layer_stage.md) を解説しましたが  
+前回、[USD の基本構造（Stage/Layer/Prim)](21_stage_layer_spec.md) を解説しましたが  
 その中でも度々でてきたのが「USD を合成する」という言葉。
 
 初回 USD の概要でも  
