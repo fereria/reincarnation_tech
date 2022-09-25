@@ -82,6 +82,8 @@ Manifest なども自前で作らなければいけないなど、かなり USD 
 USD Stitch Clips は、Value Clip の Manifest と Template ファイル、
 Input をベースにした Topology ファイルを生成します。
 
+![[houdini_valueclip.svg]]
+
 Topology ファイルとは、対象の Clip 以外の構造を出力したもので
 ValueClip を指定するレイヤーからサブレイヤーで使用します。
 
