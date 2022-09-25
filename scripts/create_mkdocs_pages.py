@@ -13,7 +13,7 @@ import sys
 import utils
 
 # 無視するフォルダ
-EXCLUSION = [".git", ".vscode", ".history", "_book", "node_modules", "stylesheets", "javascripts"]
+EXCLUSION = [".git", ".vscode", ".history", "_book", "node_modules", "stylesheets", "javascripts", "__pycache__"]
 
 # --------------------------------------------------------- #
 
