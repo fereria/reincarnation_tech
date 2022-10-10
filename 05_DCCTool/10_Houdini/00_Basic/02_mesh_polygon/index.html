@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/00_Basic/02_mesh_polygon/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>Vtx Point Primitive Mesh Polygon について - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1294,6 +1302,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2717,7 +2730,7 @@
 <h1>Vtx Point Primitive Mesh Polygon について</h1>
 <p>Houdini を調べていると、Maya 以上に細かくノードやコンポーネントに<br/>
 名前が付いていて？？？になることが多いです。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/9cc9f56715d8e1666158de9b675eadc6.png"><img alt="" src="https://i.gyazo.com/9cc9f56715d8e1666158de9b675eadc6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/9cc9f56715d8e1666158de9b675eadc6.png"><img alt="" src="https://i.gyazo.com/9cc9f56715d8e1666158de9b675eadc6.png"/></a></p>
 <p>とくに分からなかったのが、 Polygon と Mesh の違い。<br/>
 Maya 使い的には「同じじゃね？？？」になりましたが<br/>
 別の物として区別されている。ということはこれには意味があるはず。</p>
@@ -2725,7 +2738,7 @@ Maya 使い的には「同じじゃね？？？」になりましたが<br/>
 <h2 id="geometry">Geometry の要素<a class="headerlink" href="#geometry" title="Permanent link">¶</a></h2>
 <p>まず、Geometry。<br/>
 Maya 的に言えば Geometry は Shape ノードに近い？</p>
-<p><a class="glightbox" href="https://i.gyazo.com/2b520a48117ce829d3eb1d9cb65df3a1.png"><img alt="" src="https://i.gyazo.com/2b520a48117ce829d3eb1d9cb65df3a1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/2b520a48117ce829d3eb1d9cb65df3a1.png"><img alt="" src="https://i.gyazo.com/2b520a48117ce829d3eb1d9cb65df3a1.png"/></a></p>
 <p>そして Geometry は、 Point Vertices Primitives を持っている。</p>
 <p>Maya の場合は、<br/>
 <strong>Vertex - Edge - Face</strong><br/>
@@ -2735,10 +2748,10 @@ Maya 的に言えば Geometry は Shape ノードに近い？</p>
 このようになっている。</p>
 <p>また、この Point Vertex Primitive のように Geometry を構成する要素のことを「エレメント」と呼ぶ。</p>
 <h3 id="vertex-point">Vertex と Point<a class="headerlink" href="#vertex-point" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://i.gyazo.com/2adac0b985a90ae253e601ea4039f556.png"><img alt="" src="https://i.gyazo.com/2adac0b985a90ae253e601ea4039f556.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/2adac0b985a90ae253e601ea4039f556.png"><img alt="" src="https://i.gyazo.com/2adac0b985a90ae253e601ea4039f556.png"/></a></p>
 <p>Point が Maya の Vertex に近い。<br/>
 Vertex は、Face 単位の Vertex で、複数の Vertex→Point のような構造になっている。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/5e9b9fc936c1cec1f98e4f0a1b395275.png"><img alt="" src="https://i.gyazo.com/5e9b9fc936c1cec1f98e4f0a1b395275.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/5e9b9fc936c1cec1f98e4f0a1b395275.png"><img alt="" src="https://i.gyazo.com/5e9b9fc936c1cec1f98e4f0a1b395275.png"/></a></p>
 <p>GeometrySpreadSheet を確認すると、Vertex はいずれかの PointNum と対応した構造になっている。</p>
 <h3 id="primitive">Primitive<a class="headerlink" href="#primitive" title="Permanent link">¶</a></h3>
 <p>Primitive は、Maya でいうところの Face にあたる部分。<br/>
@@ -2757,14 +2770,14 @@ Mesh と Polygon の違いとはなにか？という話。</p>
 <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
 <p>まず、内部の構造がどう違うのか確認します。</p>
 <h3 id="polygon">Polygon<a class="headerlink" href="#polygon" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://i.gyazo.com/3150e3ab000768be436682a240aefcd4.png"><img alt="" src="https://i.gyazo.com/3150e3ab000768be436682a240aefcd4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/3150e3ab000768be436682a240aefcd4.png"><img alt="" src="https://i.gyazo.com/3150e3ab000768be436682a240aefcd4.png"/></a></p>
 <p>Polygon の表示を見ると、 <primitivenum:id -=""> PointNum&gt; のように表示されます。</primitivenum:id></p>
-<p><a class="glightbox" href="https://i.gyazo.com/613985eacbe029f8f3559330205fe531.png"><img alt="" src="https://i.gyazo.com/613985eacbe029f8f3559330205fe531.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/613985eacbe029f8f3559330205fe531.png"><img alt="" src="https://i.gyazo.com/613985eacbe029f8f3559330205fe531.png"/></a></p>
 <p>それぞれの Primitive ごとに ID が振られていて、それが結線情報になっています。</p>
 <h3 id="mesh">Mesh<a class="headerlink" href="#mesh" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://i.gyazo.com/b657c2a5636fbefc28936bec51ffbbe5.png"><img alt="" src="https://i.gyazo.com/b657c2a5636fbefc28936bec51ffbbe5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/b657c2a5636fbefc28936bec51ffbbe5.png"><img alt="" src="https://i.gyazo.com/b657c2a5636fbefc28936bec51ffbbe5.png"/></a></p>
 <p>対して、Mesh の場合は 1 つの Primitive のみ。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/4513c183d2c4f671b8dd014a45540308.png"><img alt="" src="https://i.gyazo.com/4513c183d2c4f671b8dd014a45540308.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/4513c183d2c4f671b8dd014a45540308.png"><img alt="" src="https://i.gyazo.com/4513c183d2c4f671b8dd014a45540308.png"/></a></p>
 <p>ID を確認してみても Primitive の ID は１つのみで、Point が 9 点あるのみになっています。</p>
 <h3 id="polygons-and-meshes">Polygons and Meshes のヘルプを確認<a class="headerlink" href="#polygons-and-meshes" title="Permanent link">¶</a></h3>
 <blockquote>
@@ -2786,14 +2799,14 @@ and unlike most regular polygons you can convert it directly to NURBS.</p>
 <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
 <p>つまりは、Mesh とは Maya でいうところの History を維持した状態の Surface to Mesh Convert した<br/>
 オブジェクトのこと。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/784be6bb75393d4903c6e468341f7766.png"><img alt="" src="https://i.gyazo.com/784be6bb75393d4903c6e468341f7766.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/784be6bb75393d4903c6e468341f7766.png"><img alt="" src="https://i.gyazo.com/784be6bb75393d4903c6e468341f7766.png"/></a></p>
 <p>Cube の Primitive Type を Polygon にした場合は、</p>
-<p><a class="glightbox" href="https://i.gyazo.com/f5278821c4c297f9c636885830c3470f.png"><img alt="" src="https://i.gyazo.com/f5278821c4c297f9c636885830c3470f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/f5278821c4c297f9c636885830c3470f.png"><img alt="" src="https://i.gyazo.com/f5278821c4c297f9c636885830c3470f.png"/></a></p>
 <p>ポリゴン系ツールが使用できるので、ベベルの効果がかかっているが<br/>
 Type を Mesh にした場合は、ベベルの効果はかからない。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/4158fbdf2ee3407a63be6e5ab7abaf40.png"><img alt="" src="https://i.gyazo.com/4158fbdf2ee3407a63be6e5ab7abaf40.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/4158fbdf2ee3407a63be6e5ab7abaf40.png"><img alt="" src="https://i.gyazo.com/4158fbdf2ee3407a63be6e5ab7abaf40.png"/></a></p>
 <p>このように、Mesh から Polygon に変換すれば</p>
-<p><a class="glightbox" href="https://i.gyazo.com/4fee5cd5b57ccf551a37ef4c82a7b499.png"><img alt="" src="https://i.gyazo.com/4fee5cd5b57ccf551a37ef4c82a7b499.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/4fee5cd5b57ccf551a37ef4c82a7b499.png"><img alt="" src="https://i.gyazo.com/4fee5cd5b57ccf551a37ef4c82a7b499.png"/></a></p>
 <p>効果がかかる。<br/>
 なるほど。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
@@ -2885,8 +2898,8 @@ Mesh は、内部的には NURBS からサーフェイスが作られていて�
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

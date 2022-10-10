@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/05_DCCTool/10_Houdini/11_SOLARIS/01_solaris_open_usd/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>SOLARISでUSDファイルを開く - Reincarnation+#Tech</title>
-<link href="../../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1338,6 +1346,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        EnglishTitle
       </a>
 </li>
 </ul>
@@ -2819,12 +2832,12 @@ USD というのは Pixar が作成したシーングラフを扱うためのラ
 <p>いままでのファイルフォーマットと大きく違うのは<br/>
 「プロシージャルシーングラフ」と呼ばれる、複数の USD ファイルを「プロシージャル」に<br/>
 合成して、１つのシーングラフを構築できることです。</p>
-<p><a class="glightbox" href="https://gyazo.com/c08ab343dda8859f5b408132e8ddf508.jpg"><img alt="" src="https://gyazo.com/c08ab343dda8859f5b408132e8ddf508.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c08ab343dda8859f5b408132e8ddf508.jpg"><img alt="" src="https://gyazo.com/c08ab343dda8859f5b408132e8ddf508.jpg"/></a></p>
 <p>ローンチセミナーのスライドより。</p>
 <p>SOLARIS では、この USD をネイティブでサポートし<br/>
 その USD ファイルを SOP を扱うように、プロシージャルに合成し、<br/>
 １つのシーングラフを構築することができます。</p>
-<p><a class="glightbox" href="https://gyazo.com/0b54cdb337ab5eaa35ab5ead0e7429bc.png"><img alt="" src="https://gyazo.com/0b54cdb337ab5eaa35ab5ead0e7429bc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0b54cdb337ab5eaa35ab5ead0e7429bc.png"><img alt="" src="https://gyazo.com/0b54cdb337ab5eaa35ab5ead0e7429bc.png"/></a></p>
 <p>もう１つの特徴が、この SOLARIS（Stage ネットワーク）上のノードというのは<br/>
 メモリ上であったり、ファイルだったりはある物の<br/>
 そのノード１つづつが USD ファイルであり、レイヤーとして扱われています。</p>
@@ -2839,11 +2852,11 @@ SOLARIS の世界は USD の世界そのものでもあります。</p>
 <p>場所は公式のダウンロードサイトから、毎度おなじみ KITCHEN SET をダウンロードします。</p>
 <h2 id="solaris">SOLARIS を開く<a class="headerlink" href="#solaris" title="Permanent link">¶</a></h2>
 <p>ダウンロードできたら Houdini18 を起動します。</p>
-<p><a class="glightbox" href="https://gyazo.com/12c067a991b01b4c2f7ddb3398d1c0c9.png"><img alt="" src="https://gyazo.com/12c067a991b01b4c2f7ddb3398d1c0c9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/12c067a991b01b4c2f7ddb3398d1c0c9.png"><img alt="" src="https://gyazo.com/12c067a991b01b4c2f7ddb3398d1c0c9.png"/></a></p>
 <p>起動できたら画面のレイアウトを Solaris に変更します。</p>
 <h3 id="_1">画面構成<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p>SOLARIS の画面には、今までの Houdini にはなかったビューが２つほど追加されています。</p>
-<p><a class="glightbox" href="https://gyazo.com/fbf024ed32a3bcb741cd10c7cdd239dc.png"><img alt="" src="https://gyazo.com/fbf024ed32a3bcb741cd10c7cdd239dc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fbf024ed32a3bcb741cd10c7cdd239dc.png"><img alt="" src="https://gyazo.com/fbf024ed32a3bcb741cd10c7cdd239dc.png"/></a></p>
 <p>まずひとつめが、 Scene Graph Tree<br/>
 これは、現在選択中のノードの段階の「USD のシーングラフ（いわゆるステージ）」を表示します。<br/>
 このSOLARISは、「USDのプロシージャルシーングラフ」を表し<br/>
@@ -2854,7 +2867,7 @@ SOLARIS の世界は USD の世界そのものでもあります。</p>
 <p>その結果できあがったシーングラフが表示されているのが<br/>
 この「Scene Grapth Path」です。  </p>
 <p>もうひとつが「Scene Graph Detail」です。  </p>
-<p><a class="glightbox" href="https://gyazo.com/77fcd27b285a8dbdb75b48de3ba3e258.png"><img alt="" src="https://gyazo.com/77fcd27b285a8dbdb75b48de3ba3e258.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/77fcd27b285a8dbdb75b48de3ba3e258.png"><img alt="" src="https://gyazo.com/77fcd27b285a8dbdb75b48de3ba3e258.png"/></a></p>
 <p>これは、選択中のプリミティブのアトリビュートやその他諸々情報を核に出来るパネルです。<br/>
 細かいところを説明し始めると、ここだけで１記事できるぐらいの物量があるので<br/>
 今回は割愛しますが、個々を見るとどうコンポジションされてるかとか<br/>
@@ -2867,26 +2880,26 @@ SOLARISでシーングラフを構築された結果がこの２つに表示さ�
 <h2 id="usd_1">USD、開いてみよう<a class="headerlink" href="#usd_1" title="Permanent link">¶</a></h2>
 <p>というわけでようやく本題に移動します。<br/>
 ダウンロードしたUSDファイルをHoudini/SOLARISで開いてみます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/d33dec1b340af443fcaae9bb7d9ce326.png"><img alt="" src="https://gyazo.com/d33dec1b340af443fcaae9bb7d9ce326.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d33dec1b340af443fcaae9bb7d9ce326.png"><img alt="" src="https://gyazo.com/d33dec1b340af443fcaae9bb7d9ce326.png"/></a></p>
 <p>まず、USD ファイルを開くには「LoadLayer」ノードを使用します。<br/>
 何故に LoadUSD ではないのかというと、<br/>
 USD では USD ファイルのことをレイヤーと呼ぶからです。</p>
 <p>このあたりの詳細は、<br/>
 <a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/04_layer_stage/">https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/04_layer_stage/</a><br/>
 以前の記事を参照をば。</p>
-<p><a class="glightbox" href="https://gyazo.com/87d8b7fcbb7e911938c72c9112a23d0d.png"><img alt="" src="https://gyazo.com/87d8b7fcbb7e911938c72c9112a23d0d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/87d8b7fcbb7e911938c72c9112a23d0d.png"><img alt="" src="https://gyazo.com/87d8b7fcbb7e911938c72c9112a23d0d.png"/></a></p>
 <p>ただし、キッチンセットは Zup なので<br/>
 そのままだとおかしくなるので 3D Viewports を開き、  </p>
-<p><a class="glightbox" href="https://gyazo.com/06048f4a13b907278e50a6711a3f4e70.png"><img alt="" src="https://gyazo.com/06048f4a13b907278e50a6711a3f4e70.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/06048f4a13b907278e50a6711a3f4e70.png"><img alt="" src="https://gyazo.com/06048f4a13b907278e50a6711a3f4e70.png"/></a></p>
 <p>Orientation を「Z UP」に変更します。</p>
-<p><a class="glightbox" href="https://gyazo.com/3e4def8e6db9c4f78fc37b125bda50c9.png"><img alt="" src="https://gyazo.com/3e4def8e6db9c4f78fc37b125bda50c9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3e4def8e6db9c4f78fc37b125bda50c9.png"><img alt="" src="https://gyazo.com/3e4def8e6db9c4f78fc37b125bda50c9.png"/></a></p>
 <p>無事読み込みができました。<br/>
 あとはこれにいろんな処理をしていけば OK です、、、と言いたいところですが<br/>
 実は SOLARIS にはいろんな USD の読み込み方法があります。<br/>
 せっかくなので、他の読み込み方法もみていきましょう。</p>
 <h2 id="loadlayer">LoadLayer<a class="headerlink" href="#loadlayer" title="Permanent link">¶</a></h2>
 <p>まず、上で使用した LoadLayer は「指定の USD をレイヤーとして読み込み」ます。</p>
-<p><a class="glightbox" href="https://gyazo.com/db5e31904a121df2625dd543d1a0dfe2.png"><img alt="" src="https://gyazo.com/db5e31904a121df2625dd543d1a0dfe2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/db5e31904a121df2625dd543d1a0dfe2.png"><img alt="" src="https://gyazo.com/db5e31904a121df2625dd543d1a0dfe2.png"/></a></p>
 <p>SceneGraphPathを見るとわかりやすいですが、このノードを使用すると<br/>
 ルートしたにたいして、指定のUSDをそのまま「ロード」します。<br/>
 他のことはなにもしていません。  </p>
@@ -2908,25 +2921,25 @@ USDファイルをロードできます。<br/>
 参考にしてください。</p>
 <h3 id="sublayer">SubLayerで開く<a class="headerlink" href="#sublayer" title="Permanent link">¶</a></h3>
 <p>まずは、Sublayerノードで開いてみます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/65d86205563105def4a757da5fd482d9.png"><img alt="" src="https://gyazo.com/65d86205563105def4a757da5fd482d9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/65d86205563105def4a757da5fd482d9.png"><img alt="" src="https://gyazo.com/65d86205563105def4a757da5fd482d9.png"/></a></p>
 <p>サブレイヤーで開いた場合は、基本はLoadLayerで読み込んだ場合と同様です。  </p>
-<p><a class="glightbox" href="https://gyazo.com/7fe464cc59894c03a62fa89d912489e2.png"><img alt="" src="https://gyazo.com/7fe464cc59894c03a62fa89d912489e2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7fe464cc59894c03a62fa89d912489e2.png"><img alt="" src="https://gyazo.com/7fe464cc59894c03a62fa89d912489e2.png"/></a></p>
 <p>Scene Graph Path も、LoadLayerしたときと同様になります。<br/>
 loadlayerしたときとの違いは、このノード１つでUSDファイルをサブレイヤーで合成できることです。  </p>
-<p><a class="glightbox" href="https://gyazo.com/8579995b8c8d05ed79a24f27d2c7ead4.png"><img alt="" src="https://gyazo.com/8579995b8c8d05ed79a24f27d2c7ead4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8579995b8c8d05ed79a24f27d2c7ead4.png"><img alt="" src="https://gyazo.com/8579995b8c8d05ed79a24f27d2c7ead4.png"/></a></p>
 <p>たとえばこんな感じで３つのファイルをロードします。  </p>
-<p><a class="glightbox" href="https://gyazo.com/9bff0fba0911963e70b5f414ffda6280.png"><img alt="" src="https://gyazo.com/9bff0fba0911963e70b5f414ffda6280.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9bff0fba0911963e70b5f414ffda6280.png"><img alt="" src="https://gyazo.com/9bff0fba0911963e70b5f414ffda6280.png"/></a></p>
 <p>base.usdaがこんな感じの緑の玉として。  </p>
-<p><a class="glightbox" href="https://gyazo.com/8616c46e18c492f7360d3be25481107a.png"><img alt="" src="https://gyazo.com/8616c46e18c492f7360d3be25481107a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8616c46e18c492f7360d3be25481107a.png"><img alt="" src="https://gyazo.com/8616c46e18c492f7360d3be25481107a.png"/></a></p>
 <p>add_color.usda で赤く色を変えて  </p>
-<p><a class="glightbox" href="https://gyazo.com/663563ef426f159324fc653667463a7e.png"><img alt="" src="https://gyazo.com/663563ef426f159324fc653667463a7e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/663563ef426f159324fc653667463a7e.png"><img alt="" src="https://gyazo.com/663563ef426f159324fc653667463a7e.png"/></a></p>
 <p>final.usda で四角くするようにしてみます。  </p>
 <p>そうすると上から順番に合成されていき、すべてが合成された結果がこのノードの結果として出力されます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/1517709aa704c16940649eed8e3ef207.png"><img alt="" src="https://gyazo.com/1517709aa704c16940649eed8e3ef207.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1517709aa704c16940649eed8e3ef207.png"><img alt="" src="https://gyazo.com/1517709aa704c16940649eed8e3ef207.png"/></a></p>
 <p>このサブレイヤーで複数USDを合成するメリットとしては<br/>
 Mute Layer や Enable を使用してUSDの効果をON/OFF出来ることです。<br/>
 たとえば、この３つのサンプルのうち「add_color.usda」をミュートにしてみるとします。  </p>
-<p><a class="glightbox" href="https://gyazo.com/1f40bdf1ef7f38294768e6bb6b66b417.png"><img alt="" src="https://gyazo.com/1f40bdf1ef7f38294768e6bb6b66b417.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1f40bdf1ef7f38294768e6bb6b66b417.png"><img alt="" src="https://gyazo.com/1f40bdf1ef7f38294768e6bb6b66b417.png"/></a></p>
 <p>するとどうなるかというと、「赤くする」という レイヤー（USDファイル）だけがミュートされて<br/>
 緑のキューブになります。<br/>
 このように、2DソフトのレイヤーをON/OFFするように<br/>
@@ -2934,24 +2947,24 @@ USDのレイヤー効果を簡単に切り替えつつ確認出来るのがSubla
 <p>読み込みしつつ、PhotoShopのレイヤーのようにON・OFFしたりできるのが<br/>
 このノードを使用して読み込むメリットですね。</p>
 <h3 id="reference">Referenceで開く<a class="headerlink" href="#reference" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://gyazo.com/01bc89a88163c456fa10e185ba3085ad.png"><img alt="" src="https://gyazo.com/01bc89a88163c456fa10e185ba3085ad.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/01bc89a88163c456fa10e185ba3085ad.png"><img alt="" src="https://gyazo.com/01bc89a88163c456fa10e185ba3085ad.png"/></a></p>
 <p>つぎに、Referenceノードを使用してロードしてみます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/8e657966e5a397e2e394f6dae0af7f4b.png"><img alt="" src="https://gyazo.com/8e657966e5a397e2e394f6dae0af7f4b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8e657966e5a397e2e394f6dae0af7f4b.png"><img alt="" src="https://gyazo.com/8e657966e5a397e2e394f6dae0af7f4b.png"/></a></p>
 <p>リファレンスノードは、MultiInputの入力結果をReference化するという機能もありますが  </p>
-<p><a class="glightbox" href="https://gyazo.com/00bddb25883ddc0c7803c433a9ae0830.png"><img alt="" src="https://gyazo.com/00bddb25883ddc0c7803c433a9ae0830.png"/></a><br/>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/00bddb25883ddc0c7803c433a9ae0830.png"><img alt="" src="https://gyazo.com/00bddb25883ddc0c7803c433a9ae0830.png"/></a><br/>
 Reference TypeをReference Filesにすることで、<br/>
 このノードを使用して「ReferenceでUSDファイルを読み込み」することができます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/39cab059035ce2a16e068a57bc790e86.png"><img alt="" src="https://gyazo.com/39cab059035ce2a16e068a57bc790e86.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/39cab059035ce2a16e068a57bc790e86.png"><img alt="" src="https://gyazo.com/39cab059035ce2a16e068a57bc790e86.png"/></a></p>
 <p>SceneGraphPathを見ると、プリミティブ名が緑になっていることが分かります。<br/>
 また、LoadLayerの時と大きく違うのは「トップのノード名が違う」事です。<br/>
 LoadLayerで読み込んだ場合は、USDファイルに書かれているプリミティブの構造が<br/>
 そのままロードされます。<br/>
 しかし、リファレンスの場合は違い  </p>
-<p><a class="glightbox" href="https://gyazo.com/db1f6e2700a342d292056e2c555ea4e9.png"><img alt="" src="https://gyazo.com/db1f6e2700a342d292056e2c555ea4e9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/db1f6e2700a342d292056e2c555ea4e9.png"><img alt="" src="https://gyazo.com/db1f6e2700a342d292056e2c555ea4e9.png"/></a></p>
 <p>Destination Primitiveで指定したプリミティブ名の下に<br/>
 Referenceで読み込むUSDのPrimitiveを読み込みます。<br/>
 $OSとは、ノード名のことなので、ノード名である reference1 下に子のプリミティブが読み込まれています。  </p>
-<p><a class="glightbox" href="https://gyazo.com/47e20b46bcea9c6562f67f7b98b05c4e.png"><img alt="" src="https://gyazo.com/47e20b46bcea9c6562f67f7b98b05c4e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/47e20b46bcea9c6562f67f7b98b05c4e.png"><img alt="" src="https://gyazo.com/47e20b46bcea9c6562f67f7b98b05c4e.png"/></a></p>
 <p>試しに リファレンスノードを右クリックし、LOP Actions &gt; Inspect Active Layer を開いてみます。</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -3002,7 +3015,7 @@ prepend references = @C:/pyEnv/JupyterUSD_py27/usd/Kitchen_set/Kitchen_set.usd@<
 こんな感じにファイルパス指定で、指定PathのUSDAのDefaultPrimまたはSdfPathで指定したPrim<br/>
 をリファレンスでロードするようになります。</p>
 <h2 id="stagemanager">StageManager で開く<a class="headerlink" href="#stagemanager" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/a3cbe3fa1431c43261fd9c6e2b227f6d.png"><img alt="" src="https://gyazo.com/a3cbe3fa1431c43261fd9c6e2b227f6d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a3cbe3fa1431c43261fd9c6e2b227f6d.png"><img alt="" src="https://gyazo.com/a3cbe3fa1431c43261fd9c6e2b227f6d.png"/></a></p>
 <p>最後に、コンポジションアーク以外での開き方。<br/>
 それがStageManagerノード。  </p>
 <p>チュートリアル動画だとこのStageManagerを使用している例も多くありますが<br/>
@@ -3010,31 +3023,31 @@ prepend references = @C:/pyEnv/JupyterUSD_py27/usd/Kitchen_set/Kitchen_set.usd@<
 <p>大きな違いが「Stage」マネージャーとある通り、このノードは<br/>
 これ単体でステージの構築を行うことが出来ます。  </p>
 <p>この場合のステージとは、複数のUSDファイルをコンポジションした結果の事を指します。  </p>
-<p><a class="glightbox" href="https://gyazo.com/bc946750eba4166a0a9ac58e4b768464.png"><img alt="" src="https://gyazo.com/bc946750eba4166a0a9ac58e4b768464.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bc946750eba4166a0a9ac58e4b768464.png"><img alt="" src="https://gyazo.com/bc946750eba4166a0a9ac58e4b768464.png"/></a></p>
 <p>開くと、StageManagerの画面は上の画像のようなウィンドウになります。<br/>
 その中のフォルダアイコンをクリックします。  </p>
-<p><a class="glightbox" href="https://i.gyazo.com/154b283e8603f72965cb9740531eb334.gif"><img alt="" src="https://i.gyazo.com/154b283e8603f72965cb9740531eb334.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/154b283e8603f72965cb9740531eb334.gif"><img alt="" src="https://i.gyazo.com/154b283e8603f72965cb9740531eb334.gif"/></a></p>
 <p>今までのノードは、１つのノードで１つのUSDファイルを読み込むものが中心でしたが<br/>
 このStageManagerはこれ単体でステージ（USDのコンポジションした結果のシーングラフ）を構築<br/>
 出来るノードのため、複数のUSDをリファレンスなどでロードして<br/>
 グループ化などをしつつステージを構築することができます。</p>
-<p><a class="glightbox" href="https://gyazo.com/d2c5c7780351d44e75f13c514d036357.png"><img alt="" src="https://gyazo.com/d2c5c7780351d44e75f13c514d036357.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d2c5c7780351d44e75f13c514d036357.png"><img alt="" src="https://gyazo.com/d2c5c7780351d44e75f13c514d036357.png"/></a></p>
 <p>なので、このStageManagerノード単体で、ScenerGraphPathはリファレンスを含めて<br/>
 完成されたステージが構築されます。（オレンジ色はコンポジションアークで読み込まれている物）  </p>
 <h2 id="_3">アスキーファイルをそのまま書いて開く<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/c57bdcde55538e2b7bab3e01d50b719f.png"><img alt="" src="https://gyazo.com/c57bdcde55538e2b7bab3e01d50b719f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c57bdcde55538e2b7bab3e01d50b719f.png"><img alt="" src="https://gyazo.com/c57bdcde55538e2b7bab3e01d50b719f.png"/></a></p>
 <p>こんなことをするひとはほぼいませんが、inlineusd を使用すると、<br/>
 USDファイルをファイルではなく手書きで書いて読み込むことができます。</p>
-<p><a class="glightbox" href="https://gyazo.com/ddc9efcb3436aa6016fb37a1d36f2349.png"><img alt="" src="https://gyazo.com/ddc9efcb3436aa6016fb37a1d36f2349.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ddc9efcb3436aa6016fb37a1d36f2349.png"><img alt="" src="https://gyazo.com/ddc9efcb3436aa6016fb37a1d36f2349.png"/></a></p>
 <p>こんな感じで USD Source に対してアスキーで記述することで、</p>
-<p><a class="glightbox" href="https://gyazo.com/6e567590ef26de63133b389d93f99478.png"><img alt="" src="https://gyazo.com/6e567590ef26de63133b389d93f99478.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6e567590ef26de63133b389d93f99478.png"><img alt="" src="https://gyazo.com/6e567590ef26de63133b389d93f99478.png"/></a></p>
 <p>こんな感じで実際にSceneGraphPathにステージを構築することが出来ます。  </p>
 <h2 id="_4">じゃあ実際の所、どうやって開いたら良いの！！？？<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p>見ての通り、USDファイルを開くだけでもやり方はたくさんあります。<br/>
 こんなんじゃどうしたらいいかわからんよ！<br/>
 って言う方に自分的オススメをご紹介。  </p>
 <h3 id="stagemnaager">たくさんのオブジェクトを配置したい場合は「StageMnaager」<a class="headerlink" href="#stagemnaager" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://gyazo.com/602c4cd806705c1680efdef7b8891968.png"><img alt="" src="https://gyazo.com/602c4cd806705c1680efdef7b8891968.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/602c4cd806705c1680efdef7b8891968.png"><img alt="" src="https://gyazo.com/602c4cd806705c1680efdef7b8891968.png"/></a></p>
 <p>ステージ内でレイアウトをしたい場合、下手をしたら何百というアセットを<br/>
 ロードして配置する必要がでてきます。<br/>
 そんなときに１つづつ読み込んだり、グループでまとめたりするのは非常に面倒くさいです。  </p>
@@ -3043,7 +3056,7 @@ USDファイルをファイルではなく手書きで書いて読み込むこ�
 グループ化したり、階層を変更したりと言ったオペレーションが手軽に行えます。  </p>
 <p>つまりは、このノード１つでステージの構築が完結するわけです。<br/>
 なので、レイアウトなどはこのノードがオススメです。</p>
-<p><a class="glightbox" href="https://gyazo.com/f680a2f9047f6d24c24673460f2f66cb.png"><img alt="" src="https://gyazo.com/f680a2f9047f6d24c24673460f2f66cb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f680a2f9047f6d24c24673460f2f66cb.png"><img alt="" src="https://gyazo.com/f680a2f9047f6d24c24673460f2f66cb.png"/></a></p>
 <p>もちろん、１つのStageMnagerでまとめるとごちゃごちゃしちゃう！！！<br/>
 という場合は、複数のStageMnaagerを接続することも出来ます。<br/>
 この場合、入力で受け取ったステージのシーングラフに対して＋αでアセットを足したりといった<br/>
@@ -3061,7 +3074,7 @@ Referenceノードで読み込んだ場合は、指定Prim以外は隠蔽され<
 <p>LoadLayerで読むパターンは、このあとSOLARISのノードベースで何かしらの構造を構築したい<br/>
 （バリアントでバリエーションを作りたい、シェーダーのアサインをしたいライトノードを組み合わせながら<br/>
 シーンを構築したい....等。  </p>
-<p><a class="glightbox" href="https://gyazo.com/65827db5367f92eb61c4d309a4d860ac.png"><img alt="" src="https://gyazo.com/65827db5367f92eb61c4d309a4d860ac.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/65827db5367f92eb61c4d309a4d860ac.png"><img alt="" src="https://gyazo.com/65827db5367f92eb61c4d309a4d860ac.png"/></a></p>
 <p>SubLayerやReferenceでも直接ファイルを読み事ができますが<br/>
 その場合入力順序を差し替えたり、一時的にOFFにしたりするのが非常にやりにくく<br/>
 ノードでの一覧性があまり良くなくて私は使いにくく感じました。  </p>
@@ -3070,7 +3083,7 @@ Referenceノードで読み込んだ場合は、指定Prim以外は隠蔽され<
 個人的にはUSDファイルの単発でのロードはLoadLayerを使うのが良いかなと思います。  </p>
 <h3 id="_5">もちろん併用もできます<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <p>もちろんStageMnaagerとLoadLayer＋コンポジションアーク系ノードの併用も可能です。  </p>
-<p><a class="glightbox" href="https://gyazo.com/ea296ad1a04c0989d6fd3d60428d4fbc.png"><img alt="" src="https://gyazo.com/ea296ad1a04c0989d6fd3d60428d4fbc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ea296ad1a04c0989d6fd3d60428d4fbc.png"><img alt="" src="https://gyazo.com/ea296ad1a04c0989d6fd3d60428d4fbc.png"/></a></p>
 <p>まとめてStageMnagerでシーンを構築しつつ、細かいバリエーションはノードで作って<br/>
 最終的に合成する、、、、という風に<br/>
 複数のUSDの開き方を、良い感じに使い分ける事で<br/>
@@ -3158,8 +3171,8 @@ SOLARISはUSDを扱う上では非常に柔軟かつ、考え方次第でいろ�
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

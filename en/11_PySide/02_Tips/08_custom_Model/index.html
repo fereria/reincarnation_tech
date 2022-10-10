@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_PySide/02_Tips/08_custom_Model/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>QAbstractItemModelのdataの使い方 - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1223,6 +1231,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/mult_lang/">
+        EnglishTitle
       </a>
 </li>
 </ul>
@@ -2723,7 +2736,7 @@
 <p>そういうときは、Model 内の data の <strong>Role</strong> を使用することで、<br/>
 ある程度表示を調整できたりするので<br/>
 今回は使えそうなものをいくつかテストしてみました。</p>
-<p><a class="glightbox" href="https://gyazo.com/d300bfc02ecbc24d74860a5ec863ae33.png"><img alt="" src="https://gyazo.com/d300bfc02ecbc24d74860a5ec863ae33.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d300bfc02ecbc24d74860a5ec863ae33.png"><img alt="" src="https://gyazo.com/d300bfc02ecbc24d74860a5ec863ae33.png"/></a></p>
 <p>完成図はこちら。</p>
 <p><a href="https://snippets.cacher.io/snippet/27cf2d61d60cc5220fce">https://snippets.cacher.io/snippet/27cf2d61d60cc5220fce</a></p>
 <p>コードはそこそこ長いので、全コードは ↑ にアップしました。</p>
@@ -2845,7 +2858,7 @@ data 関数の 2 つ目の引数としてうけとります。</p>
         <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">BackgroundRole</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">getBackgroundColor</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://gyazo.com/b9b196c53c9748a6a5214e43c9b23960.png"><img alt="" src="https://gyazo.com/b9b196c53c9748a6a5214e43c9b23960.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b9b196c53c9748a6a5214e43c9b23960.png"><img alt="" src="https://gyazo.com/b9b196c53c9748a6a5214e43c9b23960.png"/></a></p>
 <p>BackgroundRole は、QColor を返すことで、背景色を変更することができます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2878,7 +2891,7 @@ Item クラス側などに色を取得する関数を入れておくなどがで
             <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">QColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://gyazo.com/5698b72cbe22d1e516913f3b4cf38664.png"><img alt="" src="https://gyazo.com/5698b72cbe22d1e516913f3b4cf38664.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5698b72cbe22d1e516913f3b4cf38664.png"><img alt="" src="https://gyazo.com/5698b72cbe22d1e516913f3b4cf38664.png"/></a></p>
 <p>TextColorRole は、表示される文字の色を変更するときに使用します。</p>
 <h3 id="textalignmentrole">TextAlignmentRole<a class="headerlink" href="#textalignmentrole" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2901,7 +2914,7 @@ Item クラス側などに色を取得する関数を入れておくなどがで
                 <span class="k">return</span> <span class="n">QPixmap</span><span class="p">(</span><span class="s2">"D:/icons8-folder.svg"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>DecorationRole は、文字の左側にアイコンを指定することができる Role です。<br/>
-<a class="glightbox" href="https://gyazo.com/6811ce76f03787ea3c3a042f8279d531.png"><img alt="" src="https://gyazo.com/6811ce76f03787ea3c3a042f8279d531.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6811ce76f03787ea3c3a042f8279d531.png"><img alt="" src="https://gyazo.com/6811ce76f03787ea3c3a042f8279d531.png"/></a><br/>
 表示したい Icon の QPixmap または QIcon または QColor を指定することができます。</p>
 <h3 id="tooltiprole">ToolTipRole<a class="headerlink" href="#tooltiprole" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -3030,8 +3043,8 @@ UserRole は実際にデータを使うときに</p>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

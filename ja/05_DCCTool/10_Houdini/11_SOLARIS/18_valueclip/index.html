@@ -9,9 +9,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOLARIS/18_valueclip/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>CacheとValueClip - Reincarnation+#Tech</title>
-<link href="../../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,7 +23,15 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1247,6 +1255,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2633,25 +2646,25 @@
 <p>Houdini19.5 からは、USD のキャッシュを作るためのノード <a href="https://www.sidefx.com/docs/houdini19.5/nodes/lop/filecache.html">File Cache</a> が新規で追加されました。<br/>
 このノードは USD ROP と SublayerLOP の機能を組み合わせたもので<br/>
 これを利用することで、各フレームごとのキャッシュを USD で出力できます。</p>
-<p><a class="glightbox" href="https://gyazo.com/64eebd06fe760cc4099b8069bd17e9f5.png"><img alt="" src="https://gyazo.com/64eebd06fe760cc4099b8069bd17e9f5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/64eebd06fe760cc4099b8069bd17e9f5.png"><img alt="" src="https://gyazo.com/64eebd06fe760cc4099b8069bd17e9f5.png"/></a></p>
 <p>基本的な使用方法は、キャッシュしたいノードを Input に入力して、<br/>
 BaseFolder や BaseName などを指定します。<br/>
 Cache Range の Evaluate As を SingleFrame から Frame Range に変更し<br/>
 指定のフレーム分だけキャッシュを出力します。</p>
 <p>Frame Range に指定した場合は、そのままだと全フレームが同じファイル名で出力<br/>
 されてしまうので、 Advanced タブの Path Construction の Cache Name に</p>
-<p><a class="glightbox" href="https://gyazo.com/3bb1a21190034c6ed7ea84ae788495b2.png"><img alt="" src="https://gyazo.com/3bb1a21190034c6ed7ea84ae788495b2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3bb1a21190034c6ed7ea84ae788495b2.png"><img alt="" src="https://gyazo.com/3bb1a21190034c6ed7ea84ae788495b2.png"/></a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>`chs("basename")`.`$F``chs("filetype")`
 </code></pre></div></td></tr></table></div>
 <p>こんな感じで、 $F を足します。</p>
 <p>USD の出力関係では<br/>
 USD タブにある Save Style は</p>
-<p><a class="glightbox" href="https://gyazo.com/d5bedee845d003945a90b80e8025fc5e.png"><img alt="" src="https://gyazo.com/d5bedee845d003945a90b80e8025fc5e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d5bedee845d003945a90b80e8025fc5e.png"><img alt="" src="https://gyazo.com/d5bedee845d003945a90b80e8025fc5e.png"/></a></p>
 <p>デフォルトの Flatten Implicit Layers（アノニマスレイヤー部分を統合）で基本 OK だと思いますが<br/>
 完全にキャッシュと割り切って切り離すなら Flatten Stage（それまでのレイヤーを 1 レイヤーにすべて統合）とかでもアリかと思います。</p>
-<p><a class="glightbox" href="https://gyazo.com/da7d6fc7bd23c697455443c522835e77.png"><img alt="" src="https://gyazo.com/da7d6fc7bd23c697455443c522835e77.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/da7d6fc7bd23c697455443c522835e77.png"><img alt="" src="https://gyazo.com/da7d6fc7bd23c697455443c522835e77.png"/></a></p>
 <p>準備ができたら Save to Disk in Background で出力します。</p>
-<p><a class="glightbox" href="https://gyazo.com/5776c4aff6d3a787677bc91873c4d302.png"><img alt="" src="https://gyazo.com/5776c4aff6d3a787677bc91873c4d302.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5776c4aff6d3a787677bc91873c4d302.png"><img alt="" src="https://gyazo.com/5776c4aff6d3a787677bc91873c4d302.png"/></a></p>
 <p>指定フォルダー以下に連番 USD が出力されました。<br/>
 Load from Disk にチェックが入っていれば、これ以降はキャッシュが使用されるようになります。</p>
 <h2 id="usd-stitch-clips">USD Stitch Clips<a class="headerlink" href="#usd-stitch-clips" title="Permanent link">¶</a></h2>
@@ -2666,17 +2679,17 @@ husk などを使用して実行したいケースのが多いでしょう。<br
 レイヤー分割をする機能を使用できます。<br/>
 しかし、このノードの場合は、<br/>
 指定の PrimitivePath に対して個別に ValueClip を指定する必要があるので<br/>
-<a class="glightbox" href="https://gyazo.com/5687a47d5ed4d8c7d920a98df771a8ad.png"><img alt="" src="https://gyazo.com/5687a47d5ed4d8c7d920a98df771a8ad.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5687a47d5ed4d8c7d920a98df771a8ad.png"><img alt="" src="https://gyazo.com/5687a47d5ed4d8c7d920a98df771a8ad.png"/></a><br/>
 PrimitivePath は Clip PrimitivePath と同一のスキーマでないといけなかったり<br/>
 Manifest なども自前で作らなければいけないなど、かなり USD を直接触る感じで<br/>
 あまり使い勝手がよくありません。</p>
 <blockquote class="twitter-tweet"><a href="https://twitter.com/suamaGod/status/1567403383568633857"></a></blockquote>
 <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
 <p>これをもう少し使いやすくしたものが、すあまのかみさんに教えてもらった ROP Network の USD Stitch Clips ノードです。</p>
-<p><a class="glightbox" href="https://gyazo.com/2c87cfb56bf0ec3c4e3f12db2e4f9add.png"><img alt="" src="https://gyazo.com/2c87cfb56bf0ec3c4e3f12db2e4f9add.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2c87cfb56bf0ec3c4e3f12db2e4f9add.png"><img alt="" src="https://gyazo.com/2c87cfb56bf0ec3c4e3f12db2e4f9add.png"/></a></p>
 <p>USD Stitch Clips は、Value Clip の Manifest と Template ファイル、<br/>
 Input をベースにした Topology ファイルを生成します。</p>
-<p><a class="glightbox" href="../../../../img/houdini_valueclip.svg"><img alt="houdini_valueclip.svg" src="../../../../img/houdini_valueclip.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../../../../img/houdini_valueclip.svg"><img alt="houdini_valueclip.svg" src="../../../../img/houdini_valueclip.svg"/></a></p>
 <p>Topology ファイルとは、対象の Clip 以外の構造を出力したもので<br/>
 ValueClip を指定するレイヤーからサブレイヤーで使用します。</p>
 <p>Manifest は、ValueClip の Clip 対象の Prim にある対象の Attribute を記述したものです。<br/>
@@ -2686,10 +2699,10 @@ ValueClip を指定するレイヤーからサブレイヤーで使用します�
 <p>今回は 1Prim だけ Clip しましたが、 Stitch Files を追加することで<br/>
 複数の ValueClip を作成できます。</p>
 <p>設定ができたら、 Render ボタンを押すと、</p>
-<p><a class="glightbox" href="https://gyazo.com/afb2a3e6fa76d01d73f0fd407228c4da.png"><img alt="" src="https://gyazo.com/afb2a3e6fa76d01d73f0fd407228c4da.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/afb2a3e6fa76d01d73f0fd407228c4da.png"><img alt="" src="https://gyazo.com/afb2a3e6fa76d01d73f0fd407228c4da.png"/></a></p>
 <p>必要なファイルが出力されました。<br/>
 このファイルのうち template.usda が、レンダリング用の連番データが統合されたファイルになります。</p>
-<p><a class="glightbox" href="https://gyazo.com/18a46cd914f30fbdc73ca11d96a3615c.png"><img alt="" src="https://gyazo.com/18a46cd914f30fbdc73ca11d96a3615c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/18a46cd914f30fbdc73ca11d96a3615c.png"><img alt="" src="https://gyazo.com/18a46cd914f30fbdc73ca11d96a3615c.png"/></a></p>
 <p>開くと無事ロードができました。</p>
 <p>実際に使用するときには、この Template.usda をキャラクターごとに作成し<br/>
 背景などと合わせて Payloads などでロードし、<br/>
@@ -2771,8 +2784,8 @@ PrimName や Namespace に変化がなければ更新する必要はありませ
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

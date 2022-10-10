@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/07_layer/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>SOLARISでのLayerの扱い - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1275,6 +1283,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2716,7 +2729,7 @@ LayerStackとは、複数のLayerをサブレイヤーで合成するときのLa
     <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div><br/>
 確認用のコードはこちら。</p>
-<p><a class="glightbox" href="https://gyazo.com/7928a27a9ce948c490ae450206d0c522.png"><img alt="" src="https://gyazo.com/7928a27a9ce948c490ae450206d0c522.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7928a27a9ce948c490ae450206d0c522.png"><img alt="" src="https://gyazo.com/7928a27a9ce948c490ae450206d0c522.png"/></a></p>
 <p>これを、まずはこんな感じでPythonノードに入れて、結果をみていきます。</p>
 <p>全部は長いので<br/>
 <a href="https://snippets.cacher.io/snippet/b7130348f4ac41539759?t=U1ojSBLJ66yL6IovpVdLdABDfCtdx3">https://snippets.cacher.io/snippet/b7130348f4ac41539759?t=U1ojSBLJ66yL6IovpVdLdABDfCtdx3</a><br/>
@@ -2770,7 +2783,7 @@ LayerStackを取得すると Sdf.Find という形でLayerオブジェクトを�
 <p>で、上のコードをよく見ると HoudiniEditorNodes というアトリビュートがあるのがわかりますが<br/>
 このLayerを作るのに使われているノードがここに書かれています。</p>
 <h2 id="_1">複数レイヤーの場合<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/be037461737f283efeff13a80b53711b.png"><img alt="" src="https://gyazo.com/be037461737f283efeff13a80b53711b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/be037461737f283efeff13a80b53711b.png"><img alt="" src="https://gyazo.com/be037461737f283efeff13a80b53711b.png"/></a></p>
 <p>1ノードのみだと、定義があるLayerは１つのみだったですが<br/>
 こんな感じでMergeを使って複数のPrimを組み合わせた場合はどうなるかみてみます。<br/>
 この場合、ノードの右下に「2Layers」というのがでているのがわかるかと思いますが、これが意味<br/>
@@ -2890,7 +2903,7 @@ def Cube "cube1" (
 </code></pre></div></td></tr></table></div>
 <p>こんな感じでサブレイヤーで合成されているのがわかります。<br/>
 つまりは、Houdiniのノードの右下に ～Layersが出ている場合、</p>
-<p><a class="glightbox" href="https://gyazo.com/427a9abebd979a6def3c83e5a45f4561.png"><img alt="" src="https://gyazo.com/427a9abebd979a6def3c83e5a45f4561.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/427a9abebd979a6def3c83e5a45f4561.png"><img alt="" src="https://gyazo.com/427a9abebd979a6def3c83e5a45f4561.png"/></a></p>
 <p>ノードの縁の色ごとに、1つのLayerとしてメモリー内でLayerが構築されている...ということになります。</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2916,7 +2929,7 @@ def Cube "cube1" (
 </code></pre></div></td></tr></table></div><br/>
 試しに、Pythonノードのコマンドをこんなふうにして<br/>
 PythonノードでもPrimを定義してみると</p>
-<p><a class="glightbox" href="https://gyazo.com/fdc10a6c4bd2172e7c706803b5e5ff95.png"><img alt="" src="https://gyazo.com/fdc10a6c4bd2172e7c706803b5e5ff95.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fdc10a6c4bd2172e7c706803b5e5ff95.png"><img alt="" src="https://gyazo.com/fdc10a6c4bd2172e7c706803b5e5ff95.png"/></a></p>
 <p>Pythonノード部分が 3Layers目になり</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2955,11 +2968,11 @@ LayerStackには、PythonscriptのHoudiniCreatorNode が追加され、<br/>
 ですが、詳しく調べるとどういう処理なのかが見えてきます。</p>
 <h3 id="merge">Merge<a class="headerlink" href="#merge" title="Permanent link">¶</a></h3>
 <p>まず、Merge。<br/>
-<a class="glightbox" href="https://gyazo.com/19abb3222d90fdb3752b8914feafbb0b.png"><img alt="" src="https://gyazo.com/19abb3222d90fdb3752b8914feafbb0b.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/19abb3222d90fdb3752b8914feafbb0b.png"><img alt="" src="https://gyazo.com/19abb3222d90fdb3752b8914feafbb0b.png"/></a></p>
 <p>Mergeには、MergeStyleというものがあり<br/>
 デフォルトだと Separate Layers 、上の出力結果の通り<br/>
 それぞれを個別のLayerとして扱ってサブレイヤーで合成する設定になっています。</p>
-<p><a class="glightbox" href="https://gyazo.com/df7531ccc140ed5f5cc1bad410b99134.png"><img alt="" src="https://gyazo.com/df7531ccc140ed5f5cc1bad410b99134.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/df7531ccc140ed5f5cc1bad410b99134.png"><img alt="" src="https://gyazo.com/df7531ccc140ed5f5cc1bad410b99134.png"/></a></p>
 <p>それをFlatten Layersに変更すると、</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -3028,7 +3041,7 @@ def Sphere "sphere1" (
 }
 </code></pre></div></td></tr></table></div><br/>
 入力のLayer２つが1つのLayerにまとまった状態になります。</p>
-<p><a class="glightbox" href="https://gyazo.com/8ab27ef99d1fa46c6e6fc4b2e794c92e.png"><img alt="" src="https://gyazo.com/8ab27ef99d1fa46c6e6fc4b2e794c92e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8ab27ef99d1fa46c6e6fc4b2e794c92e.png"><img alt="" src="https://gyazo.com/8ab27ef99d1fa46c6e6fc4b2e794c92e.png"/></a></p>
 <p>この差がどういうところに影響するかというと、<br/>
 LOP Actionsの Inspect ActiveLayer (現在の編集ターゲットになっているLayerの中身を確認する)<br/>
 が、Flattenした方で確認できるようになります。（Flattenしていない方は見れない）<br/>
@@ -3036,10 +3049,10 @@ LOP Actionsの Inspect ActiveLayer (現在の編集ターゲットになって�
 ターゲットになるLayerが選択されていないからかと思われます。</p>
 <h3 id="graft">Graft<a class="headerlink" href="#graft" title="Permanent link">¶</a></h3>
 <p>もう一つ、レイヤーが統合されるケースが　Prim階層が編集されている場合です。</p>
-<p><a class="glightbox" href="https://gyazo.com/3b3716e91cfd791b5c5e9ac569dada5f.png"><img alt="" src="https://gyazo.com/3b3716e91cfd791b5c5e9ac569dada5f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3b3716e91cfd791b5c5e9ac569dada5f.png"><img alt="" src="https://gyazo.com/3b3716e91cfd791b5c5e9ac569dada5f.png"/></a></p>
 <p>Graftノードを使用すると、Input1のStageに対して指定の構造で「接ぎ木」するように<br/>
 結合してくれます。</p>
-<p><a class="glightbox" href="https://gyazo.com/708c2eac7dd10e90e8f7535d4882848f.png"><img alt="" src="https://gyazo.com/708c2eac7dd10e90e8f7535d4882848f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/708c2eac7dd10e90e8f7535d4882848f.png"><img alt="" src="https://gyazo.com/708c2eac7dd10e90e8f7535d4882848f.png"/></a></p>
 <p>結果。<br/>
 Mergeとは違い、Graftした場合は　Layersという記述が増えず</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3151,7 +3164,7 @@ Layerは１つにまとまっているのかなと思います。</p>
 <p>という感じで、SOLARISではレイヤーが暗黙的に構築されてサブレイヤーされて出力されていました。</p>
 <p>多くの場合はあんまりここまでLayerの構築単位を考える必要はないと思うのですが<br/>
 これが影響するケースが１つあって</p>
-<p><a class="glightbox" href="https://gyazo.com/0c366c7465cbf386aace7e741f52d1aa.png"><img alt="" src="https://gyazo.com/0c366c7465cbf386aace7e741f52d1aa.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0c366c7465cbf386aace7e741f52d1aa.png"><img alt="" src="https://gyazo.com/0c366c7465cbf386aace7e741f52d1aa.png"/></a></p>
 <p>USD ROPでUSDをExportするときに、 SaveStyle を Separate Layers にした場合<br/>
 出力されるusdの単位が変わります。</p>
 <p>このオプションはその名の通り、出力されるUSDファイルを<br/>
@@ -3246,8 +3259,8 @@ Layerは１つにまとまっているのかなと思います。</p>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

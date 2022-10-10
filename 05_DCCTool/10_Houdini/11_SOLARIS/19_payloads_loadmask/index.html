@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/19_payloads_loadmask/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>SOLARISのPayloadの使い方 - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1255,6 +1263,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2648,42 +2661,42 @@
 そのため、モデルデータをロードする場合はリファレンスではなくペイロードを使用した上で<br/>
 アンロードにしておくほうが多いです。</p>
 <p>そんなペイロードを SOLARIS 上で使用する方法などをまとめておきます。</p>
-<p><a class="glightbox" href="https://gyazo.com/5471484816a8848d69f619a0afdf1246.png"><img alt="" src="https://gyazo.com/5471484816a8848d69f619a0afdf1246.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5471484816a8848d69f619a0afdf1246.png"><img alt="" src="https://gyazo.com/5471484816a8848d69f619a0afdf1246.png"/></a></p>
 <p>Payload でファイルを読む場合は、Payload ノードを使用します。</p>
-<p><a class="glightbox" href="https://gyazo.com/ff84522e36b05a77f9afd286cf643307.png"><img alt="" src="https://gyazo.com/ff84522e36b05a77f9afd286cf643307.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ff84522e36b05a77f9afd286cf643307.png"><img alt="" src="https://gyazo.com/ff84522e36b05a77f9afd286cf643307.png"/></a></p>
 <p>使用すると、Payload とあわせて LoftPaylaodInfo ノードが作成されます。</p>
-<p><a class="glightbox" href="https://gyazo.com/8a0c4ef8c70040d94655de0dd12bf75d.png"><img alt="" src="https://gyazo.com/8a0c4ef8c70040d94655de0dd12bf75d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8a0c4ef8c70040d94655de0dd12bf75d.png"><img alt="" src="https://gyazo.com/8a0c4ef8c70040d94655de0dd12bf75d.png"/></a></p>
 <p>この LoftPayloadInfo は、アンロードしているモデルの BoundingBox を表示するための<br/>
 パラメーターを追加するノードです。</p>
-<p><a class="glightbox" href="https://gyazo.com/2817f9f1760931125496e999f1e57996.png"><img alt="" src="https://gyazo.com/2817f9f1760931125496e999f1e57996.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2817f9f1760931125496e999f1e57996.png"><img alt="" src="https://gyazo.com/2817f9f1760931125496e999f1e57996.png"/></a></p>
 <p>ノードがある場合、こんな感じでアンロード状態でも BoundingBox が表示されます。</p>
-<p><a class="glightbox" href="https://gyazo.com/5c4e9e5defa29910d44a09e3bb9f010d.png"><img alt="" src="https://gyazo.com/5c4e9e5defa29910d44a09e3bb9f010d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5c4e9e5defa29910d44a09e3bb9f010d.png"><img alt="" src="https://gyazo.com/5c4e9e5defa29910d44a09e3bb9f010d.png"/></a></p>
 <p>Payload ノードは Reference ノードのパラメーター違いです。<br/>
 Reference Type が Payload File の場合、Payload 扱いになります。</p>
 <p>PrimitivePath にペイロードする Prim を指定し、<br/>
 FilePattern に USD ファイルパスを書きます。<br/>
 これでロードは完了です。</p>
 <h2 id="_1">アンロードする<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/8883082db52690de9c39b9df9510fbe6.png"><img alt="" src="https://gyazo.com/8883082db52690de9c39b9df9510fbe6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8883082db52690de9c39b9df9510fbe6.png"><img alt="" src="https://gyazo.com/8883082db52690de9c39b9df9510fbe6.png"/></a></p>
 <p>Payload のロード・アンロードは Scene Graph Three で制御します。<br/>
 デフォルトだとロードされますが、</p>
-<p><a class="glightbox" href="https://gyazo.com/b214ea0d90835a7fc3d6a45945b1c7c9.png"><img alt="" src="https://gyazo.com/b214ea0d90835a7fc3d6a45945b1c7c9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b214ea0d90835a7fc3d6a45945b1c7c9.png"><img alt="" src="https://gyazo.com/b214ea0d90835a7fc3d6a45945b1c7c9.png"/></a></p>
 <p>Manage viewport load masks の Load all payloads in viewport を OFF にすることで<br/>
 デフォルトをオフにできます。</p>
-<p><a class="glightbox" href="https://gyazo.com/4cf7346227eddd29968bffd053fe5672.png"><img alt="" src="https://gyazo.com/4cf7346227eddd29968bffd053fe5672.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4cf7346227eddd29968bffd053fe5672.png"><img alt="" src="https://gyazo.com/4cf7346227eddd29968bffd053fe5672.png"/></a></p>
 <p>「L」のチェックをオンにすると、チェックされたモデルのみロードできます。</p>
 <h3 id="_2">ロード状況を保存・呼び出す<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://gyazo.com/18b9553321e99d1958ee184a03d7117c.png"><img alt="" src="https://gyazo.com/18b9553321e99d1958ee184a03d7117c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/18b9553321e99d1958ee184a03d7117c.png"><img alt="" src="https://gyazo.com/18b9553321e99d1958ee184a03d7117c.png"/></a></p>
 <p>設定した Payload は、 Save viewport load masks で保存できます。</p>
-<p><a class="glightbox" href="https://gyazo.com/2ba3b5685902ea318f83e3a21e059599.png"><img alt="" src="https://gyazo.com/2ba3b5685902ea318f83e3a21e059599.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2ba3b5685902ea318f83e3a21e059599.png"><img alt="" src="https://gyazo.com/2ba3b5685902ea318f83e3a21e059599.png"/></a></p>
 <p>名前をつけると</p>
-<p><a class="glightbox" href="https://gyazo.com/6ca779ef499d3def6b8c817e3a075df7.png"><img alt="" src="https://gyazo.com/6ca779ef499d3def6b8c817e3a075df7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6ca779ef499d3def6b8c817e3a075df7.png"><img alt="" src="https://gyazo.com/6ca779ef499d3def6b8c817e3a075df7.png"/></a></p>
 <p>プリセットを保存できます。</p>
 <h2 id="configure-stage">Configure Stage で編集<a class="headerlink" href="#configure-stage" title="Permanent link">¶</a></h2>
 <p>SceneGraphTree 以外でも、ConfigureStage を使用すると<br/>
 ノードで Payload のロード・アンロードを変更できます。</p>
 <p>Load all payloads in viewport を ON にした上で、</p>
-<p><a class="glightbox" href="https://gyazo.com/33045cb8768d1c0d3d144f58aa3fa755.png"><img alt="" src="https://gyazo.com/33045cb8768d1c0d3d144f58aa3fa755.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/33045cb8768d1c0d3d144f58aa3fa755.png"><img alt="" src="https://gyazo.com/33045cb8768d1c0d3d144f58aa3fa755.png"/></a></p>
 <p>ConfigureStage ノードを追加します。<br/>
 Configure ノードを使用すると、</p>
 <ul>
@@ -2691,7 +2704,7 @@ Configure ノードを使用すると、</p>
 <li><a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/16_UsdStageLoadRules/">UsdStageLoadRules</a></li>
 </ul>
 <p>を、SOLARIS 上で設定・使用できます。</p>
-<p><a class="glightbox" href="https://gyazo.com/35380489c544140dfe178bb23b1c66cd.png"><img alt="" src="https://gyazo.com/35380489c544140dfe178bb23b1c66cd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/35380489c544140dfe178bb23b1c66cd.png"><img alt="" src="https://gyazo.com/35380489c544140dfe178bb23b1c66cd.png"/></a></p>
 <p>今回は、 UsdStageLoadRules を使用します。<br/>
 Load Primitives を Set primitives to load に変更します。<br/>
 そして、Load Paths にロードしたい PrimitivePath を指定します。<br/>
@@ -2699,7 +2712,7 @@ Load Primitives を Set primitives to load に変更します。<br/>
 <p>Add and Remove Primitives to Load にすると、現在の設定に対して削除と追加が可能で<br/>
 Set Primitives to Load だと、現在の指定はすべて廃棄して変更します。<br/>
 Load all primitives だと、問答無用ですべてロードするようになります。</p>
-<p><a class="glightbox" href="https://gyazo.com/986a0741d6c8a1bf2da9d7f46c546a45.png"><img alt="" src="https://gyazo.com/986a0741d6c8a1bf2da9d7f46c546a45.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/986a0741d6c8a1bf2da9d7f46c546a45.png"><img alt="" src="https://gyazo.com/986a0741d6c8a1bf2da9d7f46c546a45.png"/></a></p>
 <p>ConfigureStage を使用する場合は、<br/>
 Switch を組み合わせることで、Payloads の ON/OFF をを切り替えるなどが可能になます。</p>
 <hr/>
@@ -2776,8 +2789,8 @@ Switch を組み合わせることで、Payloads の ON/OFF をを切り替え�
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

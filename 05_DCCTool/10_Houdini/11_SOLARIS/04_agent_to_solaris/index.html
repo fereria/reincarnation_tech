@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/04_agent_to_solaris/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>Houdiniの群衆をSOLARISに持って行ってみよう(1) - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1290,6 +1298,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2717,27 +2730,27 @@ Houdiniの群衆をSOLARISに持って行くと、<br/>
 AgentがUsdSkelになるというのを聞いたので<br/>
 どういう形で出てくるのかをチェックしてみました。</p>
 <h2 id="_1">サンプルを開く<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/c21bb05d6fe5ffe936d9aa15fb86e8d8.png"><img alt="" src="https://gyazo.com/c21bb05d6fe5ffe936d9aa15fb86e8d8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c21bb05d6fe5ffe936d9aa15fb86e8d8.png"><img alt="" src="https://gyazo.com/c21bb05d6fe5ffe936d9aa15fb86e8d8.png"/></a></p>
 <p>まずは、群衆のサンプルシーンを開きます。<br/>
 開くには「Crowd」タののギフトボッククスっぽいものをクリックすると<br/>
 群衆サンプルシーンを開くことができます。</p>
-<p><a class="glightbox" href="https://gyazo.com/81208ab88b2b8fe5de5ca0b47975f9d6.png"><img alt="" src="https://gyazo.com/81208ab88b2b8fe5de5ca0b47975f9d6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/81208ab88b2b8fe5de5ca0b47975f9d6.png"><img alt="" src="https://gyazo.com/81208ab88b2b8fe5de5ca0b47975f9d6.png"/></a></p>
 <p>読み込むと、こんな感じのシーンを開くことが出来ます。</p>
-<p><a class="glightbox" href="https://gyazo.com/8dd6607c3b22e600d75c93e52d7be62d.png"><img alt="" src="https://gyazo.com/8dd6607c3b22e600d75c93e52d7be62d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8dd6607c3b22e600d75c93e52d7be62d.png"><img alt="" src="https://gyazo.com/8dd6607c3b22e600d75c93e52d7be62d.png"/></a></p>
 <p>Streetなので、こんな感じのシーンです。</p>
 <h2 id="solaris">SOLARISに持って行く<a class="headerlink" href="#solaris" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/cd964b08f3676bc6aaecca82eeff6aea.png"><img alt="" src="https://gyazo.com/cd964b08f3676bc6aaecca82eeff6aea.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cd964b08f3676bc6aaecca82eeff6aea.png"><img alt="" src="https://gyazo.com/cd964b08f3676bc6aaecca82eeff6aea.png"/></a></p>
 <p>読み込んだら、シーンをSOLARISにもって行きます。<br/>
 StageNetworkに移動して、SceneImport(all)ノードを作ります。<br/>
 このノードを使用すると、Houdiniの世界をそのままSOLARISに持ち込むことが出来ます。</p>
 <h2 id="usdview">usdviewで表示<a class="headerlink" href="#usdview" title="Permanent link">¶</a></h2>
 <p>持ち込むことができたら、とりあえずusdviewで見れるように出力します。<br/>
-<a class="glightbox" href="https://gyazo.com/9ecb724ec6995f61f837133e735e7993.png"><img alt="" src="https://gyazo.com/9ecb724ec6995f61f837133e735e7993.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9ecb724ec6995f61f837133e735e7993.png"><img alt="" src="https://gyazo.com/9ecb724ec6995f61f837133e735e7993.png"/></a></p>
 <p>USDROPを使用して、usdファイルとして出力してみます。</p>
-<p><a class="glightbox" href="https://gyazo.com/dbbe29718fe122a4dcf3d8e73944e26a.png"><img alt="" src="https://gyazo.com/dbbe29718fe122a4dcf3d8e73944e26a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/dbbe29718fe122a4dcf3d8e73944e26a.png"><img alt="" src="https://gyazo.com/dbbe29718fe122a4dcf3d8e73944e26a.png"/></a></p>
 <p>ValidFrameRangeがデフォルトだとCurrentFrameだけでアニメーションが出力されないので<br/>
 Render Specific Frame Range にしておきます。</p>
-<p><a class="glightbox" href="https://gyazo.com/7c5ae4719fca6d7a02e584616be0a0ec.png"><img alt="" src="https://gyazo.com/7c5ae4719fca6d7a02e584616be0a0ec.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7c5ae4719fca6d7a02e584616be0a0ec.png"><img alt="" src="https://gyazo.com/7c5ae4719fca6d7a02e584616be0a0ec.png"/></a></p>
 <p>完了すると、指定フォルダにusdファイルが出力されます。<br/>
 出力されたファイルはusdviewなどでも開くことができるようになります。</p>
 <h2 id="_2">もう少し詳しく見てみる<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -2745,20 +2758,20 @@ Render Specific Frame Range にしておきます。</p>
 <h3 id="_3">全体<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>まず、全体のシーングラフ。<br/>
 これはHoudiniの構造がそのままUSDのシーングラフとして出力されます。</p>
-<p><a class="glightbox" href="https://gyazo.com/cbef024cd72e8fdc049b1167efd6f676.png"><img alt="" src="https://gyazo.com/cbef024cd72e8fdc049b1167efd6f676.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cbef024cd72e8fdc049b1167efd6f676.png"><img alt="" src="https://gyazo.com/cbef024cd72e8fdc049b1167efd6f676.png"/></a></p>
 <p>こちらがHoudini</p>
-<p><a class="glightbox" href="https://gyazo.com/e2f2bd7c37018123f7451adc09a6c27b.png"><img alt="" src="https://gyazo.com/e2f2bd7c37018123f7451adc09a6c27b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e2f2bd7c37018123f7451adc09a6c27b.png"><img alt="" src="https://gyazo.com/e2f2bd7c37018123f7451adc09a6c27b.png"/></a></p>
 <p>USDはこちら。</p>
 <p>大きな違いは「crowd_sim(DOP Network)」が出力された側には存在しません。<br/>
 あくまでも出力されているのはSOP Networkのノードのようです。</p>
 <h3 id="agent">Agent<a class="headerlink" href="#agent" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://gyazo.com/2c02014d098384bb3434fcd2eb5dc0c0.png"><img alt="" src="https://gyazo.com/2c02014d098384bb3434fcd2eb5dc0c0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2c02014d098384bb3434fcd2eb5dc0c0.png"><img alt="" src="https://gyazo.com/2c02014d098384bb3434fcd2eb5dc0c0.png"/></a></p>
 <p>エージェントは個別のモデルデータです。</p>
-<p><a class="glightbox" href="https://gyazo.com/a4baddd171daddf0d604cb254e1c1a5d.png"><img alt="" src="https://gyazo.com/a4baddd171daddf0d604cb254e1c1a5d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a4baddd171daddf0d604cb254e1c1a5d.png"><img alt="" src="https://gyazo.com/a4baddd171daddf0d604cb254e1c1a5d.png"/></a></p>
 <p>個別のAgentは、それぞれusdとしてMeshが出力されます。<br/>
 しかし注目はこのモデルには <strong>SkelもWeightもはいっていない</strong> です。<br/>
 あくまでもTスタンスのMeshのみが各Agent名のフォルダに出力されます。</p>
-<p><a class="glightbox" href="https://gyazo.com/f53eff552a7f0b8bc1b2cffe85ef3935.png"><img alt="" src="https://gyazo.com/f53eff552a7f0b8bc1b2cffe85ef3935.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f53eff552a7f0b8bc1b2cffe85ef3935.png"><img alt="" src="https://gyazo.com/f53eff552a7f0b8bc1b2cffe85ef3935.png"/></a></p>
 <p>各モデルは、出力されている usda ファイル直下に読み込まれています。<br/>
 しかし、あくまでもこれはHoudiniのシーングラフと同じ場所に同じように出力されているだけで<br/>
 このモデルは並べるのには使用されていません。<br/>
@@ -2766,25 +2779,25 @@ Render Specific Frame Range にしておきます。</p>
 Agent関係のPrimは本来は不要になります。</p>
 <h3 id="crowdsource">crowdsource<a class="headerlink" href="#crowdsource" title="Permanent link">¶</a></h3>
 <p>では、実際のモデルの組み立てがどこで行われているかというと</p>
-<p><a class="glightbox" href="https://gyazo.com/56cb81572ed1b4f37359af5f5736cc6a.png"><img alt="" src="https://gyazo.com/56cb81572ed1b4f37359af5f5736cc6a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/56cb81572ed1b4f37359af5f5736cc6a.png"><img alt="" src="https://gyazo.com/56cb81572ed1b4f37359af5f5736cc6a.png"/></a></p>
 <p>実際のCrowdSimをしているであろうcrowdsourceで</p>
-<p><a class="glightbox" href="https://gyazo.com/92c7a0ae9e305cb0112220a7a680b78d.png"><img alt="" src="https://gyazo.com/92c7a0ae9e305cb0112220a7a680b78d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/92c7a0ae9e305cb0112220a7a680b78d.png"><img alt="" src="https://gyazo.com/92c7a0ae9e305cb0112220a7a680b78d.png"/></a></p>
 <p>USD側もSkelとMeshの組み立てが行われています。</p>
-<p><a class="glightbox" href="https://gyazo.com/737dff65a6dfdb86f7459833d7d59afc.png"><img alt="" src="https://gyazo.com/737dff65a6dfdb86f7459833d7d59afc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/737dff65a6dfdb86f7459833d7d59afc.png"><img alt="" src="https://gyazo.com/737dff65a6dfdb86f7459833d7d59afc.png"/></a></p>
 <p>agentdefinitions内で、Mesh（Meshはshapelibrary内にある）とSkelがReferenceで構築され、</p>
-<p><a class="glightbox" href="https://gyazo.com/c2b6f6c4df40241d504ecf0b2e6f8cac.png"><img alt="" src="https://gyazo.com/c2b6f6c4df40241d504ecf0b2e6f8cac.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c2b6f6c4df40241d504ecf0b2e6f8cac.png"><img alt="" src="https://gyazo.com/c2b6f6c4df40241d504ecf0b2e6f8cac.png"/></a></p>
 <p>個別のagentでReferenceで読み込まれます。<br/>
 注意点としては、このRefernceは「現在のレイヤー内にあるMeshやSkeletonPrimをReferenceしている」<br/>
 ということです。<br/>
 SOLARISから出力されたときに個別のusdとして出力されていますが<br/>
 このファイルは外のAgentは読み込んでいません。</p>
 <h3 id="group">Group<a class="headerlink" href="#group" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://gyazo.com/92c79c31843083fc64ea42ed1ea8161e.png"><img alt="" src="https://gyazo.com/92c79c31843083fc64ea42ed1ea8161e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/92c79c31843083fc64ea42ed1ea8161e.png"><img alt="" src="https://gyazo.com/92c79c31843083fc64ea42ed1ea8161e.png"/></a></p>
 <p>シミュレーションはcrowdsourceで構築されていたようですが、最終的な出力は別のGeometryで出力されています。</p>
-<p><a class="glightbox" href="https://gyazo.com/d3151c4651778e4ab66a4e30151e9f5e.png"><img alt="" src="https://gyazo.com/d3151c4651778e4ab66a4e30151e9f5e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d3151c4651778e4ab66a4e30151e9f5e.png"><img alt="" src="https://gyazo.com/d3151c4651778e4ab66a4e30151e9f5e.png"/></a></p>
 <p>これは、crowdsourceから、objectMergeを使用して<br/>
 指定のGroup名になっているAgentだけになるようにしています。</p>
-<p><a class="glightbox" href="https://gyazo.com/4794e7cb23b727f16682d7f527a87160.png"><img alt="" src="https://gyazo.com/4794e7cb23b727f16682d7f527a87160.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4794e7cb23b727f16682d7f527a87160.png"><img alt="" src="https://gyazo.com/4794e7cb23b727f16682d7f527a87160.png"/></a></p>
 <p>このobjectMerge分も個別のusdになっています。<br/>
 注意が必要なのは、このcrowdsourceを読み込んでいるobjectmergeのusdはcrowdsourceは見ていなくて<br/>
 個別のデータになっていることです。<br/>
@@ -2800,18 +2813,18 @@ SOLARISから出力されたときに個別のusdとして出力されていま�
 ようなので、今回のように「Agentモデル」「Setup」「Sim」「Output（Group化）」のように複数階層存在する場合は<br/>
 Outputとして作成したGeometryのみをSOLARISに持ち込まないとだめです。</p>
 <p>さてどうするかと思ったのですが</p>
-<p><a class="glightbox" href="https://gyazo.com/45fec36eac893ebf798fe2d251648d2d.png"><img alt="" src="https://gyazo.com/45fec36eac893ebf798fe2d251648d2d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/45fec36eac893ebf798fe2d251648d2d.png"><img alt="" src="https://gyazo.com/45fec36eac893ebf798fe2d251648d2d.png"/></a></p>
 <p>素直にsopimport で各グループのジオメトリにしている object_mergeのノードを sopimportでロードして<br/>
 USD ROPで持ち込むのが正解のようです。</p>
-<p><a class="glightbox" href="https://gyazo.com/a8c710f46bb790377309e61de2219b93.png"><img alt="" src="https://gyazo.com/a8c710f46bb790377309e61de2219b93.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a8c710f46bb790377309e61de2219b93.png"><img alt="" src="https://gyazo.com/a8c710f46bb790377309e61de2219b93.png"/></a></p>
 <p>結果。<br/>
 各Agentとアニメーション、Setupをしているagentdefinitionsだけが出力されました。</p>
 <p>Import Allだとほんとうに全部Importしてしまうので、<br/>
 不要なもの（GeometryのDisplayFlagがOffになっているもの）がある場合は気をつけないといけなそうです。</p>
 <h2 id="_5">おまけ<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/7e1a4eefe24244fe711c4579853bdc12.png"><img alt="" src="https://gyazo.com/7e1a4eefe24244fe711c4579853bdc12.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7e1a4eefe24244fe711c4579853bdc12.png"><img alt="" src="https://gyazo.com/7e1a4eefe24244fe711c4579853bdc12.png"/></a></p>
 <p>なにかの不具合か、Skeletonがエラーになる模様。</p>
-<p><a class="glightbox" href="https://gyazo.com/a7dd848f74b109706453b6ad980c785a.png"><img alt="" src="https://gyazo.com/a7dd848f74b109706453b6ad980c785a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a7dd848f74b109706453b6ad980c785a.png"><img alt="" src="https://gyazo.com/a7dd848f74b109706453b6ad980c785a.png"/></a></p>
 <p>MakeInstanceすると壊れる模様（Houdiniもお亡くなりに...）</p>
 <p>ひととおりの挙動は理解できましたが、どうあるべきかはまだまだ考える余地はありそうです。</p>
 <hr/>
@@ -2888,8 +2901,8 @@ USD ROPで持ち込むのが正解のようです。</p>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/00_Basic/00_start_houdini/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>初めての Houdini 基本用語と構造 - Reincarnation+#Tech</title>
-<link href="../../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1255,6 +1263,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2677,29 +2690,29 @@ SurfaceOoeratorが、Geometry（Mesh）を扱うオペレーター<br/>
 VEXというのは、C++ライクなHoudiniのプログラム言語で、<br/>
 MayaでいうところのExpressionに近い（もっといろいろできるけど）<br/>
 VOPは、そのVEXをノードベースで組み立てられるもの。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/acbe156be6af66a38bd29b4409386c0a.png"><img alt="" src="https://i.gyazo.com/acbe156be6af66a38bd29b4409386c0a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/acbe156be6af66a38bd29b4409386c0a.png"><img alt="" src="https://i.gyazo.com/acbe156be6af66a38bd29b4409386c0a.png"/></a></p>
 <p>公式Helpのノードを見ると、このOperatorごとにノードがまとめられている。  </p>
 <h2 id="_2">データ構造について<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>Houdiniは、基本的に「ノード」という単位を基本として出来ている。<br/>
 そしてそのノードは入れ子構造になっている。  </p>
-<p><a class="glightbox" href="https://i.gyazo.com/d3a830b3ca2a60c1e9e41dc064dfd257.png"><img alt="" src="https://i.gyazo.com/d3a830b3ca2a60c1e9e41dc064dfd257.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/d3a830b3ca2a60c1e9e41dc064dfd257.png"><img alt="" src="https://i.gyazo.com/d3a830b3ca2a60c1e9e41dc064dfd257.png"/></a></p>
 <p>シーンの構造を確認するのたTreeView<br/>
 そしてこの階層は、Folder階層のように obj/geo1/attribvop1 のように表すことができる。<br/>
 パラメーターにアクセスするときもこのパスが基本になる。  </p>
-<p><a class="glightbox" href="https://gyazo.com/604e6b248f232a1d2ebec0098b033c9e.png"><img alt="" src="https://gyazo.com/604e6b248f232a1d2ebec0098b033c9e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/604e6b248f232a1d2ebec0098b033c9e.png"><img alt="" src="https://gyazo.com/604e6b248f232a1d2ebec0098b033c9e.png"/></a></p>
 <p>TreeViewのこのアイコンが、上記のOperatorに対応していて<br/>
 各Operatorごとにノードがグループ化されている。  </p>
 <p>このなかのOBJというのは、MayaのDAGノードにおけるTransformノードのようなもの。<br/>
 あるいは、BlenderのObjectのほうが近い。<br/>
 GeometryやLight、Cameraなどを配置する「場所」であり<br/>
 内包する各ノード（SOP等々）を実体化するための出口的な役割を持つ。</p>
-<p><a class="glightbox" href="https://gyazo.com/784596a253781f283d042ed91d73b0b4.png"><img alt="" src="https://gyazo.com/784596a253781f283d042ed91d73b0b4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/784596a253781f283d042ed91d73b0b4.png"><img alt="" src="https://gyazo.com/784596a253781f283d042ed91d73b0b4.png"/></a></p>
 <p>また、このOBJノードをつなぐことで親子化をすることができる。  </p>
 <h3 id="network">Network<a class="headerlink" href="#network" title="Permanent link">¶</a></h3>
 <p>そして、Houdiniの最も重要な部分になるのがNetwork。<br/>
 Networkに表示されているハコがノードで、そのノードそれぞれがさまざまな機能を持っている。<br/>
 そのノードを接続していくことで、データを編集・構築していくことができる。  </p>
-<p><a class="glightbox" href="https://i.gyazo.com/db6fc91ffbad79f2e96b0e2681e67ac8.png"><img alt="" src="https://i.gyazo.com/db6fc91ffbad79f2e96b0e2681e67ac8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/db6fc91ffbad79f2e96b0e2681e67ac8.png"><img alt="" src="https://i.gyazo.com/db6fc91ffbad79f2e96b0e2681e67ac8.png"/></a></p>
 <p>Maya使いの考え方で表すと、TreeViewはアウトライナはハイパーグラフのヒエラルキ<br/>
 表示をしているのがTreeViewで、Networkは、ハイパーグラフをConnection表示にしたようなもの。<br/>
 まずInputからデータが入力され、それぞれのノードがそのノード内でゴニョゴニョしたあと<br/>
@@ -2782,8 +2795,8 @@ Outputとしてデータが出力される。<br/>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

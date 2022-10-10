@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/10_Programming/00_Settings/hyper-v/" rel="canonical"/>
 <link href="../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>Hpyer-V で仮想デスクトップを作成する - Reincarnation+#Tech</title>
-<link href="../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1266,6 +1274,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2661,13 +2674,13 @@
 <h1 id="hpyer-v">Hpyer-V で仮想デスクトップを作成する<a class="headerlink" href="#hpyer-v" title="Permanent link">¶</a></h1>
 <h2 id="hyper-v">Hyper-V の有効化<a class="headerlink" href="#hyper-v" title="Permanent link">¶</a></h2>
 <p>まず、仮想デスクトップを使用出来るようにするために、Hyper-V を有効化します。</p>
-<p><a class="glightbox" href="https://gyazo.com/30cf582edce07f8943019ef6b067de27.png"><img alt="" src="https://gyazo.com/30cf582edce07f8943019ef6b067de27.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/30cf582edce07f8943019ef6b067de27.png"><img alt="" src="https://gyazo.com/30cf582edce07f8943019ef6b067de27.png"/></a></p>
 <p>Windows の検索から、Windows の機能の有効化または無効化を選択します。<br/>
 2<br/>
-<a class="glightbox" href="https://gyazo.com/d3e44f062bf954fc2ee57aef7ecf5f48.png"><img alt="" src="https://gyazo.com/d3e44f062bf954fc2ee57aef7ecf5f48.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d3e44f062bf954fc2ee57aef7ecf5f48.png"><img alt="" src="https://gyazo.com/d3e44f062bf954fc2ee57aef7ecf5f48.png"/></a></p>
 <p>一覧から「hyper-V」を選択します。<br/>
 選択後（たぶん）Windows の再起動がされます。</p>
-<p><a class="glightbox" href="https://gyazo.com/439070bb455a1178cff8c6f9d7359302.png"><img alt="" src="https://gyazo.com/439070bb455a1178cff8c6f9d7359302.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/439070bb455a1178cff8c6f9d7359302.png"><img alt="" src="https://gyazo.com/439070bb455a1178cff8c6f9d7359302.png"/></a></p>
 <p>検索から、「Hyper-V マネージャー」を検索して、実行します。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2675,29 +2688,29 @@
 </div>
 <h2 id="pc">仮想 PC を作る<a class="headerlink" href="#pc" title="Permanent link">¶</a></h2>
 <p>操作 → クリック作成...を選択します。</p>
-<p><a class="glightbox" href="https://gyazo.com/5494adf458e0f5e0bd08ef894b570dcf.png"><img alt="" src="https://gyazo.com/5494adf458e0f5e0bd08ef894b570dcf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5494adf458e0f5e0bd08ef894b570dcf.png"><img alt="" src="https://gyazo.com/5494adf458e0f5e0bd08ef894b570dcf.png"/></a></p>
 <p>オペレーティングシステムを Windows10 の DevEnviroment にします。<br/>
 実行すると、あとは待つだけで仮想 PC 環境が作成されます。</p>
-<p><a class="glightbox" href="https://gyazo.com/16e28445b59f4b49b9ccde1bad693394.png"><img alt="" src="https://gyazo.com/16e28445b59f4b49b9ccde1bad693394.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/16e28445b59f4b49b9ccde1bad693394.png"><img alt="" src="https://gyazo.com/16e28445b59f4b49b9ccde1bad693394.png"/></a></p>
 <p>完了したら「接続」をします。</p>
 <h2 id="_1">設定する<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、作成した仮想環境を起動して、Windows の初期設定の前に<br/>
 仮想環境のネットワークを設定します。</p>
 <p>操作 → 仮想スイッチマネージャーを実行します。</p>
-<p><a class="glightbox" href="https://gyazo.com/840e7b4b953cdc50c092c0caf9bd5cda.png"><img alt="" src="https://gyazo.com/840e7b4b953cdc50c092c0caf9bd5cda.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/840e7b4b953cdc50c092c0caf9bd5cda.png"><img alt="" src="https://gyazo.com/840e7b4b953cdc50c092c0caf9bd5cda.png"/></a></p>
 <p>新しい仮想ネットワークスイッチを選択して、「外部」を選択 → 仮想スイッチの作成　をします。</p>
-<p><a class="glightbox" href="https://gyazo.com/516f1a041ab3232c6a4d9336da760795.png"><img alt="" src="https://gyazo.com/516f1a041ab3232c6a4d9336da760795.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/516f1a041ab3232c6a4d9336da760795.png"><img alt="" src="https://gyazo.com/516f1a041ab3232c6a4d9336da760795.png"/></a></p>
 <p>選択を「外部ネットワーク」の管理ぺレーティングシステムに..　のチェックを ON にして「適応」します。<br/>
 次に、作成した仮想マシンに接続します。<br/>
 仮想マシンから設定を選んで、仮想環境の設定画面を開きます。</p>
-<p><a class="glightbox" href="https://gyazo.com/1a803c6ae305a6a1ed4a697359c98938.png"><img alt="" src="https://gyazo.com/1a803c6ae305a6a1ed4a697359c98938.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1a803c6ae305a6a1ed4a697359c98938.png"><img alt="" src="https://gyazo.com/1a803c6ae305a6a1ed4a697359c98938.png"/></a></p>
 <p>ネットワークアダプタから、仮想スイッチを ↑ で作成したものに変更します。<br/>
 この設定をしていなかった場合、Internet の LAN の設定が表示されず<br/>
 仮想環境内でインターネットが使用できませんでした。</p>
 <h2 id="_2">日本語化<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>まずは設定から「Time&amp;Language」を選択。<br/>
 Settings 内の「Language」を選択し、　 Add a launguage 　を選択。</p>
-<p><a class="glightbox" href="https://gyazo.com/5eb17a5e97d02bd6361d894aae61438a.png"><img alt="" src="https://gyazo.com/5eb17a5e97d02bd6361d894aae61438a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5eb17a5e97d02bd6361d894aae61438a.png"><img alt="" src="https://gyazo.com/5eb17a5e97d02bd6361d894aae61438a.png"/></a></p>
 <p>その中から日本語を選択します。<br/>
 選択したあと再起動すると日本語になります。</p>
 <h2 id="_3">チェックポイントの作成<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
@@ -2707,12 +2720,12 @@ Settings 内の「Language」を選択し、　 Add a launguage 　を選択。<
 ので、最低限のインストールだけした状態の「初期状態」を作っておいて<br/>
 必要に応じてそのタイミングにロールバックしたいわけです。  </p>
 <p>作り方は簡単で、  </p>
-<p><a class="glightbox" href="https://gyazo.com/da8c8d0d1838011b6b5da8cf7177b5e5.png"><img alt="" src="https://gyazo.com/da8c8d0d1838011b6b5da8cf7177b5e5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/da8c8d0d1838011b6b5da8cf7177b5e5.png"><img alt="" src="https://gyazo.com/da8c8d0d1838011b6b5da8cf7177b5e5.png"/></a></p>
 <p>仮想マシン接続画面の「操作」→「チェックポイント」<br/>
 を選択します。  </p>
-<p><a class="glightbox" href="https://gyazo.com/d90cbd215d71c8ed180c4a1f79054929.png"><img alt="" src="https://gyazo.com/d90cbd215d71c8ed180c4a1f79054929.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d90cbd215d71c8ed180c4a1f79054929.png"><img alt="" src="https://gyazo.com/d90cbd215d71c8ed180c4a1f79054929.png"/></a></p>
 <p>あとは名前を付けて「はい」にします。  </p>
-<p><a class="glightbox" href="https://gyazo.com/08384cb96f73225a7f581ae3c0d5c56c.png"><img alt="" src="https://gyazo.com/08384cb96f73225a7f581ae3c0d5c56c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/08384cb96f73225a7f581ae3c0d5c56c.png"><img alt="" src="https://gyazo.com/08384cb96f73225a7f581ae3c0d5c56c.png"/></a></p>
 <p>チェックポイントは、そのタイミングごとにツリーが作成されていきます。<br/>
 なので、ある程度作業を分岐させたいタイミングでチェックポイントを作成したり<br/>
 することで、環境丸ごと戻したりある地点に変更したりできます。<br/>
@@ -2723,7 +2736,7 @@ Settings 内の「Language」を選択し、　 Add a launguage 　を選択。<
 そのタイミングで「起動していたアプリの状態」まで保存されます。  </p>
 <p>たとえば、Maya を起動した状態で「チェックポイント」を作成した場合も<br/>
 Maya が起動した状態が保存されます。</p>
-<p><a class="glightbox" href="https://gyazo.com/6769b487e83a630a0f3f9cc76af8745c.png"><img alt="" src="https://gyazo.com/6769b487e83a630a0f3f9cc76af8745c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6769b487e83a630a0f3f9cc76af8745c.png"><img alt="" src="https://gyazo.com/6769b487e83a630a0f3f9cc76af8745c.png"/></a></p>
 <p>以上で環境作りは完了。<br/>
 仮想マシン上での Maya は普通の PC と同じ感じで操作できました。<br/>
 雰囲気としてはリモートデスクトップ越しに Maya を操作している感じです。</p>
@@ -2808,8 +2821,8 @@ Maya 周りの環境は Windows の設定含めても完全に切り分けてテ
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

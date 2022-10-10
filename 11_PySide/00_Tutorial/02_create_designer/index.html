@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_PySide/00_Tutorial/02_create_designer/" rel="canonical"/>
 <link href="../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>QtDesignerでUIを作る - Reincarnation+#Tech</title>
-<link href="../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1223,6 +1231,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2699,17 +2712,17 @@ where で表示されたPython##のインストールフォルダ以下の  </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Python36\Lib\site-packages\PySide2
 </code></pre></div></td></tr></table></div>
 <p>このフォルダ以下にある  </p>
-<p><a class="glightbox" href="https://gyazo.com/b6fbbba102e33eda115f5b74c6e5bac4.png"><img alt="" src="https://gyazo.com/b6fbbba102e33eda115f5b74c6e5bac4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b6fbbba102e33eda115f5b74c6e5bac4.png"><img alt="" src="https://gyazo.com/b6fbbba102e33eda115f5b74c6e5bac4.png"/></a></p>
 <p>designer.exeを実行します。  </p>
 <h2 id="ui">UIを作る<a class="headerlink" href="#ui" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/b813450957af6cba07c31a82f58caa7f.png"><img alt="" src="https://gyazo.com/b813450957af6cba07c31a82f58caa7f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b813450957af6cba07c31a82f58caa7f.png"><img alt="" src="https://gyazo.com/b813450957af6cba07c31a82f58caa7f.png"/></a></p>
 <p>QtDesignerを起動したら、「新しいフォーム」画面が表示されます。<br/>
 その表示された画面内の「MainWindow」を選択します。  </p>
-<p><a class="glightbox" href="https://gyazo.com/0da33f951253d576109261630167dee2.png"><img alt="" src="https://gyazo.com/0da33f951253d576109261630167dee2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0da33f951253d576109261630167dee2.png"><img alt="" src="https://gyazo.com/0da33f951253d576109261630167dee2.png"/></a></p>
 <p>このような空のWindowが表示されます。<br/>
 次に、このWindowに対してWidgetを配置していきます。</p>
 <h3 id="widget">Widgetを配置する<a class="headerlink" href="#widget" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://gyazo.com/ccb709bd55a99cc994a5dabaf13d7511.gif"><img alt="" src="https://gyazo.com/ccb709bd55a99cc994a5dabaf13d7511.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ccb709bd55a99cc994a5dabaf13d7511.gif"><img alt="" src="https://gyazo.com/ccb709bd55a99cc994a5dabaf13d7511.gif"/></a></p>
 <p>左側の「ウィジェットボックス」からWindowに対して配置したいWidgetをDrag&amp;Dropします。<br/>
 こうすると、ウィンドウにWidgetを置くことが出来ます。  </p>
 <h3 id="_1">レイアウトする<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
@@ -2718,14 +2731,14 @@ where で表示されたPython##のインストールフォルダ以下の  </p>
 それだけだととても微妙な感じになってしまうので「レイアウト」機能を使用して<br/>
 作成したWindowに対して<br/>
 Widgetを配置していきます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/148e380d0d368461c441aa3fe82c975e.png"><img alt="" src="https://gyazo.com/148e380d0d368461c441aa3fe82c975e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/148e380d0d368461c441aa3fe82c975e.png"><img alt="" src="https://gyazo.com/148e380d0d368461c441aa3fe82c975e.png"/></a></p>
 <p>まずは、作成したウィンドウに対してぴったりになるように配置してみます。<br/>
 その場合は、Windowの空いているところで右クリックし、<br/>
 「レイアウト」からどのようにレイアウトをするかを指定します。<br/>
 今回は、「垂直に並べる」に変更してみます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/429c0bb0e5fd52bdc1537f03dac5b1d3.png"><img alt="" src="https://gyazo.com/429c0bb0e5fd52bdc1537f03dac5b1d3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/429c0bb0e5fd52bdc1537f03dac5b1d3.png"><img alt="" src="https://gyazo.com/429c0bb0e5fd52bdc1537f03dac5b1d3.png"/></a></p>
 <p>垂直にすると、このようにウィンドウにフィットするようにボタンが配置されます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/a43f869d7b053eb139ddb07bd72ce39d.gif"><img alt="" src="https://gyazo.com/a43f869d7b053eb139ddb07bd72ce39d.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a43f869d7b053eb139ddb07bd72ce39d.gif"><img alt="" src="https://gyazo.com/a43f869d7b053eb139ddb07bd72ce39d.gif"/></a></p>
 <p>垂直にすると、Widgetを増やすごとに垂直に新しく追加されるようになります。  </p>
 <p>とりあえず、QtDesigner上でWidgetを配置できたので<br/>
 このファイルを保存してPython側からロードしてみます。  </p>
@@ -2742,7 +2755,7 @@ Widgetを配置していきます。  </p>
 「複数のWidgetを使って作ったカスタムWidget」として読み込むための関数になります。<br/>
 そして、その作ったWidgetをGUI上に配置します。<br/>
 その配置をしているのが「setCentralWidget」です。  </p>
-<p><a class="glightbox" href="https://gyazo.com/51ae38c79f85e05d1ab4dde0381daefe.png"><img alt="" src="https://gyazo.com/51ae38c79f85e05d1ab4dde0381daefe.png"/></a> </p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/51ae38c79f85e05d1ab4dde0381daefe.png"><img alt="" src="https://gyazo.com/51ae38c79f85e05d1ab4dde0381daefe.png"/></a> </p>
 <p>今回のサンプルでは「QMainWindow」を継承したクラスで作成していますが<br/>
 このQMainWindowのWindow内は↑のようなレイアウトになっています。<a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QMainWindow.html#detailed-description">詳しくは公式Help参照</a><br/>
 なので、QtDesignerで作成したカスタムWidgetを<br/>
@@ -2755,7 +2768,7 @@ Signal-Slotと呼ばれる機能を使用します。<br/>
 </code></pre></div></td></tr></table></div><br/>
 QUiLoaderを使用してUIを読むときに「self.ui」にロードをしています。<br/>
 ので、この場合は「self.ui.####」という形で、Designerで作成したWidgetにアクセスをすることができます。  </p>
-<p><a class="glightbox" href="https://gyazo.com/dd496d9e609e3b7b54e336a4df500e45.png"><img alt="" src="https://gyazo.com/dd496d9e609e3b7b54e336a4df500e45.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/dd496d9e609e3b7b54e336a4df500e45.png"><img alt="" src="https://gyazo.com/dd496d9e609e3b7b54e336a4df500e45.png"/></a></p>
 <p>この名前はどこで指定するかというと、<br/>
 QtDesignerの「プロパティエディタ」内の「QObject-&gt;objectName」で変更をします。<br/>
 シンプルな場合は問題ないかもですが、複雑なUIになると<br/>
@@ -2764,7 +2777,7 @@ QtDesignerの「プロパティエディタ」内の「QObject-&gt;objectName」
 self.ui.objectName.指定の動作.connect(実行したい関数名)<br/>
 のように記述をします。<br/>
 今回は「押したとき」なので clicked を使用します。</p>
-<p><a class="glightbox" href="https://gyazo.com/9f60bf83b145f096d0d4fe9e23073756.png"><img alt="" src="https://gyazo.com/9f60bf83b145f096d0d4fe9e23073756.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9f60bf83b145f096d0d4fe9e23073756.png"><img alt="" src="https://gyazo.com/9f60bf83b145f096d0d4fe9e23073756.png"/></a></p>
 <p>ボタンを押すと、こんな感じでclick_btn関数が呼ばれます。  </p>
 <hr/>
 <div class="md-source-file">
@@ -2840,8 +2853,8 @@ self.ui.objectName.指定の動作.connect(実行したい関数名)<br/>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

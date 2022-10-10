@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_PySide/02_Tips/06_qthread_01/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>QThreadでマルチスレッドを使う(Signalの注意点) - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1223,6 +1231,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/mult_lang/">
+        EnglishTitle
       </a>
 </li>
 </ul>
@@ -2854,7 +2867,7 @@ GUIをクリックしたときに実行する内容が重くて、実行する�
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
 <p>UIファイルは <a href="https://snippets.cacher.io/snippet/035519fdc7b704e93511">こちら</a> </p>
-<p><a class="glightbox" href="https://gyazo.com/0263ea3b0a4e578f51a53b74c05d6adc.png"><img alt="" src="https://gyazo.com/0263ea3b0a4e578f51a53b74c05d6adc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0263ea3b0a4e578f51a53b74c05d6adc.png"><img alt="" src="https://gyazo.com/0263ea3b0a4e578f51a53b74c05d6adc.png"/></a></p>
 <p>実行するとこんな感じになります。  </p>
 <p>内容はシンプルで、サブのスレッドで何か処理をしていて、<br/>
 その結果のログとかをMainのUIに表示したい...みたいな状況を想定しています。  </p>
@@ -2891,7 +2904,7 @@ Signal周りの挙動やらをちゃんと理解できてなくてうわああ�
         <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <p>メイン側をこうしてみます。</p>
-<p><a class="glightbox" href="https://gyazo.com/527261b5759cd0e6f223bd612cfd2bb0.png"><img alt="" src="https://gyazo.com/527261b5759cd0e6f223bd612cfd2bb0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/527261b5759cd0e6f223bd612cfd2bb0.png"><img alt="" src="https://gyazo.com/527261b5759cd0e6f223bd612cfd2bb0.png"/></a></p>
 <p>実行結果がこちら。<br/>
 python の id関数は、変数のメモリID(参照先)を確認することができます。<br/>
 見ての通り、strの場合はSignalで渡される前と後とでは別のメモリを参照していることがわかります。  </p>
@@ -2914,7 +2927,7 @@ python の id関数は、変数のメモリID(参照先)を確認することが
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div><br/>
 runを変更します。</p>
-<p><a class="glightbox" href="https://gyazo.com/d357ea188831a2db1e29dcf409145ae4.png"><img alt="" src="https://gyazo.com/d357ea188831a2db1e29dcf409145ae4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d357ea188831a2db1e29dcf409145ae4.png"><img alt="" src="https://gyazo.com/d357ea188831a2db1e29dcf409145ae4.png"/></a></p>
 <p>おわかりいただけるだろうか...<br/>
 strの場合は別のメモリを参照していたのが、<br/>
 listの場合は同じメモリを参照しています。  </p>
@@ -2943,7 +2956,7 @@ listの場合は同じメモリを参照しています。  </p>
         <span class="n">line</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"hoge"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>printThreadをうけとるSlotをこうする。</p>
-<p><a class="glightbox" href="https://gyazo.com/f66e5818fb32f2e3aefbcc0baa2fd75d.png"><img alt="" src="https://gyazo.com/f66e5818fb32f2e3aefbcc0baa2fd75d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f66e5818fb32f2e3aefbcc0baa2fd75d.png"><img alt="" src="https://gyazo.com/f66e5818fb32f2e3aefbcc0baa2fd75d.png"/></a></p>
 <p>見ての通り、おなじ場所を参照しているので、メインスレッド側で<br/>
 サブスレッド側の変数の内容を書き換えられてしまいます。<br/>
 まじかよ....  </p>
@@ -2985,7 +2998,7 @@ Signalで送れるようにして  </p>
         <span class="n">line</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span> <span class="s2">"hoge"</span>
 </code></pre></div></td></tr></table></div>
 <p>こうします。  </p>
-<p><a class="glightbox" href="https://gyazo.com/0d975806e70507b363780b730577bb43.png"><img alt="" src="https://gyazo.com/0d975806e70507b363780b730577bb43.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0d975806e70507b363780b730577bb43.png"><img alt="" src="https://gyazo.com/0d975806e70507b363780b730577bb43.png"/></a></p>
 <p>結果。<br/>
 listと同じくメモリが共有されているので、書き換えができてしまいます。<br/>
 （やばい）  </p>
@@ -3017,7 +3030,7 @@ immutableなものは変更不可な型の場合はメモリは共有されま�
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>こんな感じで、別のメモリを参照するようにしてemitすれば  </p>
-<p><a class="glightbox" href="https://gyazo.com/c9df2862746d3f926305bf52e587dbb2.png"><img alt="" src="https://gyazo.com/c9df2862746d3f926305bf52e587dbb2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c9df2862746d3f926305bf52e587dbb2.png"><img alt="" src="https://gyazo.com/c9df2862746d3f926305bf52e587dbb2.png"/></a></p>
 <p>参照先は違うので、別の物として扱われます。  </p>
 <p>これでいいのかは別にしても、このあたりはきちんと意識してやらないと<br/>
 へんなメモリ書き換えが起きてしまってよく分からないエラーの原因になってしまうなぁと<br/>
@@ -3102,8 +3115,8 @@ immutableなものは変更不可な型の場合はメモリは共有されま�
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

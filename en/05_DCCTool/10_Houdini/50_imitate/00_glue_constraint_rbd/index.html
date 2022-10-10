@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/05_DCCTool/10_Houdini/50_imitate/00_glue_constraint_rbd/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>Houdini 写経 01 RBD_ClueConstraint - Reincarnation+#Tech</title>
-<link href="../../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1295,6 +1303,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        EnglishTitle
       </a>
 </li>
 </ul>
@@ -2720,12 +2733,12 @@
 <p><a href="https://www.amazon.co.jp/dp/4844367609/ref=cm_sw_r_tw_dp_U_x_Dt3KCbRA0MCTX">Houdini ビジュアルエフェクトの教科書</a>の内容を写経しながら Houdini のノードの挙動などを調べていきます。<br/>
 基本的な手順は本に書いてあるので省いてます。<br/>
 自分が気になった所をメモ。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/9fe25da90224b1d0543743207e73464a.gif"><img alt="" src="https://i.gyazo.com/9fe25da90224b1d0543743207e73464a.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/9fe25da90224b1d0543743207e73464a.gif"><img alt="" src="https://i.gyazo.com/9fe25da90224b1d0543743207e73464a.gif"/></a></p>
 <p>完成図はこんな感じで、地面に落下すると割れるようにします。</p>
 <h2 id="_1">モデルを割る<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、シミュレーションをする前に<br/>
 モデルを　 voronoifracture を使用して割ります。</p>
-<p><a class="glightbox" href="https://gyazo.com/14200356a195b27d9a01c6f5a9d13b90.png"><img alt="" src="https://gyazo.com/14200356a195b27d9a01c6f5a9d13b90.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/14200356a195b27d9a01c6f5a9d13b90.png"><img alt="" src="https://gyazo.com/14200356a195b27d9a01c6f5a9d13b90.png"/></a></p>
 <p>ネットワークはこんな感じ。<br/>
 基本本の通りに組んであります。</p>
 <p>メッシュからヴォロノイ用のポイントを作り（scatter）、出力する...と言う流れ。<br/>
@@ -2739,37 +2752,37 @@
 超意訳ですが、明示的に「これがおわりの部分ですよ」「ここからはなにもしてないよ」<br/>
 という目印だったり、なにかしらの動作をフックさせるためのアンカーとして<br/>
 慣例になっているぽいですね。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/cd1da4c0685720d47fe17598030a69fc.png"><img alt="" src="https://i.gyazo.com/cd1da4c0685720d47fe17598030a69fc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/cd1da4c0685720d47fe17598030a69fc.png"><img alt="" src="https://i.gyazo.com/cd1da4c0685720d47fe17598030a69fc.png"/></a></p>
 <p>別のオブジェクト内で別のノードのアウトプットを使いたい時など<br/>
 Null で出力させたい部分を指定しておいて、<br/>
 ObjectMerge で Null を指定させるような使い方をするようです。<br/>
 なるほど。</p>
 <h2 id="_2">シミュレーションをする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://i.gyazo.com/da44220c95cab4078a8d49b7250e07d0.png"><img alt="" src="https://i.gyazo.com/da44220c95cab4078a8d49b7250e07d0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/da44220c95cab4078a8d49b7250e07d0.png"><img alt="" src="https://i.gyazo.com/da44220c95cab4078a8d49b7250e07d0.png"/></a></p>
 <p>まず、衝突用の地面を作成します。<br/>
 Collisions -&gt; Ground Plane を作成します。<br/>
 そして、</p>
-<p><a class="glightbox" href="https://i.gyazo.com/229106d432766e3334a2623bcb4607b2.png"><img alt="" src="https://i.gyazo.com/229106d432766e3334a2623bcb4607b2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/229106d432766e3334a2623bcb4607b2.png"><img alt="" src="https://i.gyazo.com/229106d432766e3334a2623bcb4607b2.png"/></a></p>
 <p>RBD Glued Objects をクリックします。<br/>
 RBD は「Rigid Body Dynamic」の略です。</p>
 <p>実行すると、Geometry オブジェクトノード内の Null 以下に</p>
-<p><a class="glightbox" href="https://i.gyazo.com/ffe582bddac4b917c642d6313b64dfd3.png"><img alt="" src="https://i.gyazo.com/ffe582bddac4b917c642d6313b64dfd3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/ffe582bddac4b917c642d6313b64dfd3.png"><img alt="" src="https://i.gyazo.com/ffe582bddac4b917c642d6313b64dfd3.png"/></a></p>
 <p>こんな感じで自動でノードが追加されます。</p>
 <p>RestPositionSOP とは、デフォルトの位置を記録したもの。<br/>
 Assemble は、オブジェクトをパーツ分けしているノード。<br/>
 DOPImport が、シミュレーションにモデルを引き渡している？はず、です。</p>
 <h2 id="autodopnetwork">AutoDopNetwork<a class="headerlink" href="#autodopnetwork" title="Permanent link">¶</a></h2>
 <p>そして、シミュレーションの本体になっているのが AutoDopNetwork オブジェクト。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/0f51335cee8008640a7864a77f0bdf5b.png"><img alt="" src="https://i.gyazo.com/0f51335cee8008640a7864a77f0bdf5b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/0f51335cee8008640a7864a77f0bdf5b.png"><img alt="" src="https://i.gyazo.com/0f51335cee8008640a7864a77f0bdf5b.png"/></a></p>
 <p>中身はこんな感じ。</p>
 <p>大きく分けると、左側がシミュレーションをしている構造で<br/>
 右側の Glue というのが、地面に衝突してもモデルを全部割らずに接着したままにしてくれる<br/>
 GlueConstraint の設定部分になります。</p>
 <h2 id="rigidbody">RigidBody シミュレーション<a class="headerlink" href="#rigidbody" title="Permanent link">¶</a></h2>
 <h3 id="rpdpackedobject">RPDPackedObject<a class="headerlink" href="#rpdpackedobject" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://i.gyazo.com/7202f25a9dccdc45ad66aeaca48b0d3f.png"><img alt="" src="https://i.gyazo.com/7202f25a9dccdc45ad66aeaca48b0d3f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/7202f25a9dccdc45ad66aeaca48b0d3f.png"><img alt="" src="https://i.gyazo.com/7202f25a9dccdc45ad66aeaca48b0d3f.png"/></a></p>
 <p>まず、RigidBody でシミュレーションするモデルは RPDPackedObject で取得する。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/2d84e4f0cdbe140aca1856af41376150.png"><img alt="" src="https://i.gyazo.com/2d84e4f0cdbe140aca1856af41376150.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/2d84e4f0cdbe140aca1856af41376150.png"><img alt="" src="https://i.gyazo.com/2d84e4f0cdbe140aca1856af41376150.png"/></a></p>
 <p>アトリビュートを確認してみると「SOP Path」が、↑ で指定した DOPImport ノードになっています。<br/>
 Help を見ると</p>
 <blockquote>
@@ -2789,17 +2802,17 @@ RigidBody 以外にも StaticSolver と SOPSolver があるのだが<br/>
 Maya のモデルを結合するというよりも、個別のシーンだったものを１つに取りまとめる<br/>
 的なニュアンスなのだと思います。</p>
 <h3 id="glue-constraint">Glue Constraint<a class="headerlink" href="#glue-constraint" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="https://i.gyazo.com/fb16a8065fb0be79cefd7efd67cbfeab.png"><img alt="" src="https://i.gyazo.com/fb16a8065fb0be79cefd7efd67cbfeab.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/fb16a8065fb0be79cefd7efd67cbfeab.png"><img alt="" src="https://i.gyazo.com/fb16a8065fb0be79cefd7efd67cbfeab.png"/></a></p>
 <p>GlueConstraint は、ヴォロノイで分割しているモデルをある一定の衝撃が加わらない限り<br/>
 くっつけておく事が出来るコンストレイン。<br/>
 設定本体は「Glue Constraint RelationShip」ノードで、ここでどのぐらいの衝撃まで<br/>
 結合しておくか等を指定することができる。</p>
 <h3 id="constraint-network">Constraint Network<a class="headerlink" href="#constraint-network" title="Permanent link">¶</a></h3>
 <p>これは GlueConstraint にかぎらず、RBD 内でコンストレインを使用する場合に使用するノード。</p>
-<p><a class="glightbox" href="https://i.gyazo.com/606a4ff0b755dd4403c008d1fa7d8612.png"><img alt="" src="https://i.gyazo.com/606a4ff0b755dd4403c008d1fa7d8612.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/606a4ff0b755dd4403c008d1fa7d8612.png"><img alt="" src="https://i.gyazo.com/606a4ff0b755dd4403c008d1fa7d8612.png"/></a></p>
 <p>Constraint Network 内で SOPPath を指定していて、そのよみさきは<br/>
 Geometry 側で新しく追加された CONTRAINTS の Null。</p>
-<p><a class="glightbox" href="https://gyazo.com/d8c4ac422c5a505c5dd86291794a9a6e.png"><img alt="" src="https://gyazo.com/d8c4ac422c5a505c5dd86291794a9a6e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d8c4ac422c5a505c5dd86291794a9a6e.png"><img alt="" src="https://gyazo.com/d8c4ac422c5a505c5dd86291794a9a6e.png"/></a></p>
 <p>この CONSTRINTS はこうなっていて、Geometry 同士の結線情報？のようになっている。<br/>
 その後に Attribute が追加されているのは、Glue コンストレインを行うのに必須のパラメーターを追加している。</p>
 <h2 id="_3">まとめメモ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
@@ -2887,8 +2900,8 @@ Geometry 側で新しく追加された CONTRAINTS の Null。</p>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

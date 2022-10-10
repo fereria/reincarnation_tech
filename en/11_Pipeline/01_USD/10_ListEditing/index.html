@@ -9,9 +9,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/10_ListEditing/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>List Editingについて - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,7 +23,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1224,6 +1232,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/mult_lang/">
+        EnglishTitle
       </a>
 </li>
 </ul>
@@ -2698,7 +2711,7 @@ prepend とは「付加する」という意味で、文字通り Prim に対し
 }
 </code></pre></div></td></tr></table></div>
 <p>まずは、ベースでこんな感じの構造があったとします。<br/>
-<a class="glightbox" href="https://gyazo.com/5a27d415242ced5e193337774ff709c7.png"><img alt="" src="https://gyazo.com/5a27d415242ced5e193337774ff709c7.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5a27d415242ced5e193337774ff709c7.png"><img alt="" src="https://gyazo.com/5a27d415242ced5e193337774ff709c7.png"/></a><br/>
 Houdini の SOLARIS 上で要素を覗いてみると、<br/>
 aa の Value には、 test/RelA と test/RelB という２つの要素があるのがわかります。</p>
 <p>これに対して test/RelC という Prim をサブレイヤーで rel aaa に「追加したい」とします。</p>
@@ -2717,7 +2730,7 @@ aa の Value には、 test/RelA と test/RelB という２つの要素がある
 }
 </code></pre></div></td></tr></table></div>
 <p>このように prepend とつけることで</p>
-<p><a class="glightbox" href="https://gyazo.com/ebeacff897375086b571d05fa1d9755d.png"><img alt="" src="https://gyazo.com/ebeacff897375086b571d05fa1d9755d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ebeacff897375086b571d05fa1d9755d.png"><img alt="" src="https://gyazo.com/ebeacff897375086b571d05fa1d9755d.png"/></a></p>
 <p>サブレイヤーで合成した結果をみると、<br/>
 prepend で追加した要素が、 aaa の先頭に追加されているのがわかります。</p>
 <p>このように、配列の要素に対して、「追加」したり「削除」したりできるのが<br/>
@@ -2733,7 +2746,7 @@ prepend で追加した要素が、 aaa の先頭に追加されているのが�
 }
 </code></pre></div></td></tr></table></div>
 <p>まず、何もつかない場合。</p>
-<p><a class="glightbox" href="https://gyazo.com/4f5bfb215111dfebfa4eda0357221152.png"><img alt="" src="https://gyazo.com/4f5bfb215111dfebfa4eda0357221152.png"/></a><br/>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4f5bfb215111dfebfa4eda0357221152.png"><img alt="" src="https://gyazo.com/4f5bfb215111dfebfa4eda0357221152.png"/></a><br/>
 この場合、配列のアトリビュートをそのままあった要素を無視して「上書き」します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2751,7 +2764,7 @@ prepend で追加した要素が、 aaa の先頭に追加されているのが�
 </code></pre></div></td></tr></table></div>
 <p>次に、append<br/>
 この場合は、<br/>
-<a class="glightbox" href="https://gyazo.com/ac007e9309dd31d86353a1e49c73163e.png"><img alt="" src="https://gyazo.com/ac007e9309dd31d86353a1e49c73163e.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ac007e9309dd31d86353a1e49c73163e.png"><img alt="" src="https://gyazo.com/ac007e9309dd31d86353a1e49c73163e.png"/></a></p>
 <p>配列の最後に要素が追加されます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2764,7 +2777,7 @@ prepend で追加した要素が、 aaa の先頭に追加されているのが�
 }
 </code></pre></div></td></tr></table></div>
 <p>最後に delete<br/>
-<a class="glightbox" href="https://gyazo.com/c68c399e804f723450f8a1dc45da2b3a.png"><img alt="" src="https://gyazo.com/c68c399e804f723450f8a1dc45da2b3a.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c68c399e804f723450f8a1dc45da2b3a.png"><img alt="" src="https://gyazo.com/c68c399e804f723450f8a1dc45da2b3a.png"/></a><br/>
 delete の場合は、要素が配列から削除されます。</p>
 <p>元のレイヤーを編集せず、サブレイヤー側に ListEditing を追加することで<br/>
 非破壊で配列の編集をすることができました。</p>
@@ -2804,7 +2817,7 @@ def "RefB"
 }
 </code></pre></div></td></tr></table></div>
 <p>まずはこんな usda を用意してみます。<br/>
-<a class="glightbox" href="https://gyazo.com/505e6f8111835ce8a45afb1dc7a6df38.png"><img alt="" src="https://gyazo.com/505e6f8111835ce8a45afb1dc7a6df38.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/505e6f8111835ce8a45afb1dc7a6df38.png"><img alt="" src="https://gyazo.com/505e6f8111835ce8a45afb1dc7a6df38.png"/></a><br/>
 この結果は、 RefA をリファレンスしているので「name」は「RefA」になります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2819,7 +2832,7 @@ def "RefB"
 }
 </code></pre></div></td></tr></table></div>
 <p>このレイヤーに対して、 prepend で RefB を追加するレイヤーを作ってみます。</p>
-<p><a class="glightbox" href="https://gyazo.com/60cfb84d259a216a712b61da54d1340a.png"><img alt="" src="https://gyazo.com/60cfb84d259a216a712b61da54d1340a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/60cfb84d259a216a712b61da54d1340a.png"><img alt="" src="https://gyazo.com/60cfb84d259a216a712b61da54d1340a.png"/></a></p>
 <p>結果、リファレンスの評価の先頭に RefB がきたので、 name は「RefB」になりました。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2835,7 +2848,7 @@ def "RefB"
 </code></pre></div></td></tr></table></div>
 <p>対して append した場合。<br/>
 この場合は、リファレンスの評価順序の末端に RefB が追加されているので</p>
-<p><a class="glightbox" href="https://gyazo.com/054f6a0e4981e9c87543ec30057d747b.png"><img alt="" src="https://gyazo.com/054f6a0e4981e9c87543ec30057d747b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/054f6a0e4981e9c87543ec30057d747b.png"><img alt="" src="https://gyazo.com/054f6a0e4981e9c87543ec30057d747b.png"/></a></p>
 <p>結果は RefA になります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2851,7 +2864,7 @@ def "RefB"
 </code></pre></div></td></tr></table></div>
 <p>最後に、 delete の場合。<br/>
 この場合は当然のように RefA のリファレンスが消えるので</p>
-<p><a class="glightbox" href="https://gyazo.com/18c6758e2eae0e77da7bd4f11642c310.png"><img alt="" src="https://gyazo.com/18c6758e2eae0e77da7bd4f11642c310.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/18c6758e2eae0e77da7bd4f11642c310.png"><img alt="" src="https://gyazo.com/18c6758e2eae0e77da7bd4f11642c310.png"/></a></p>
 <p>アトリビュートがなくなりました。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>こんな感じで、<br/>
@@ -2939,8 +2952,8 @@ delete を使えばリファレンスは消えるし<br/>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

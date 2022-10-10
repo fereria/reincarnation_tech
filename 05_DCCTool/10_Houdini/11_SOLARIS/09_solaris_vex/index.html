@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/09_solaris_vex/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>SOLARISのVEXで遊ぼう - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1339,6 +1347,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2828,15 +2841,15 @@ HoudiniのVEXは全く書けないため、その書き方の基本的な部分�
 公式ドキュメントを参考にします。</p>
 <h2 id="_2">まずは使ってみる<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>まずは基本的なVEXを書くところまでやってみます。</p>
-<p><a class="glightbox" href="https://gyazo.com/e4974283bf0a31bfa20d72d54ade21ce.png"><img alt="" src="https://gyazo.com/e4974283bf0a31bfa20d72d54ade21ce.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e4974283bf0a31bfa20d72d54ade21ce.png"><img alt="" src="https://gyazo.com/e4974283bf0a31bfa20d72d54ade21ce.png"/></a></p>
 <p>まず、SOLARISでVEXで色々処理するために attribwrangle ノードを作り<br/>
 こんな感じのノードを作ります。</p>
 <p>attribwrangleノードのVExpression に、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usd_addprim(0,"/hoge","Cube");
 </code></pre></div></td></tr></table></div>
 <p>と入力してみます。</p>
-<p><a class="glightbox" href="https://gyazo.com/292972c9472ef8224aa92f1455ae3672.png"><img alt="" src="https://gyazo.com/292972c9472ef8224aa92f1455ae3672.png"/></a></p>
-<p><a class="glightbox" href="https://gyazo.com/2e62d880c94ce99ca07b60c5e3853e0a.png"><img alt="" src="https://gyazo.com/2e62d880c94ce99ca07b60c5e3853e0a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/292972c9472ef8224aa92f1455ae3672.png"><img alt="" src="https://gyazo.com/292972c9472ef8224aa92f1455ae3672.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2e62d880c94ce99ca07b60c5e3853e0a.png"><img alt="" src="https://gyazo.com/2e62d880c94ce99ca07b60c5e3853e0a.png"/></a></p>
 <p>無事Cubeが出現しました。</p>
 <p>こんな感じで、VEXにはUSD用の関数が複数追加されていて<br/>
 これを利用してUSDのシーングラフを操作をすることができます。</p>
@@ -2847,9 +2860,9 @@ HoudiniのVEXは全く書けないため、その書き方の基本的な部分�
 デフォルトがこちら。<br/>
 Input 0 に入力されているPrimのうち<br/>
 最後に編集されたPrimの数だけVEXの処理が実行されます。</p>
-<p><a class="glightbox" href="https://gyazo.com/f4263e455687e7352d17b484bc4d5136.png"><img alt="" src="https://gyazo.com/f4263e455687e7352d17b484bc4d5136.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f4263e455687e7352d17b484bc4d5136.png"><img alt="" src="https://gyazo.com/f4263e455687e7352d17b484bc4d5136.png"/></a></p>
 <p>なので、こんなかんじで複数PrimをマージしたあとにWrangleにつなぐと</p>
-<p><a class="glightbox" href="https://gyazo.com/6e981b64dbf816deb1c924bb0d27a4c0.png"><img alt="" src="https://gyazo.com/6e981b64dbf816deb1c924bb0d27a4c0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6e981b64dbf816deb1c924bb0d27a4c0.png"><img alt="" src="https://gyazo.com/6e981b64dbf816deb1c924bb0d27a4c0.png"/></a></p>
 <p>CubeとSphereの２回分実行されます。<br/>
 複数処理する場合は、その処理ごとに @primpath などの Built-in variable(後で説明)が<br/>
 Primの処理ごとに置換されます。<br/>
@@ -2857,7 +2870,7 @@ Primの処理ごとに置換されます。<br/>
 <h2 id="build-in-variables">Build-in variables<a class="headerlink" href="#build-in-variables" title="Permanent link">¶</a></h2>
 <p>Build-in variables とは、SOPでいうところの @Cd や @P といったアトリビュートと同じで<br/>
 InputのPrimを受け取るための変数（？）です。</p>
-<p><a class="glightbox" href="https://gyazo.com/45849f30920fe97750096a0b153e07af.png"><img alt="" src="https://gyazo.com/45849f30920fe97750096a0b153e07af.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/45849f30920fe97750096a0b153e07af.png"><img alt="" src="https://gyazo.com/45849f30920fe97750096a0b153e07af.png"/></a></p>
 <p>受け取るPrimitivesは、このPrimitivesで指定されたものになります。<br/>
 つまり、これを利用するとInputで与えられるなにかしらのPrimitiveに対して<br/>
 Forを使用して何かしらの処理をまとめて実行することができます。</p>
@@ -2934,7 +2947,7 @@ for文などは他の言語とほぼ同じ感じで使用できました。</p>
     usd_addprim(0,@primpath + "/test_" + itoa(i),"Cube");
 }
 </code></pre></div></td></tr></table></div><br/>
-<a class="glightbox" href="https://gyazo.com/da3ed8d36da457ae09c2857e256cd45e.png"><img alt="" src="https://gyazo.com/da3ed8d36da457ae09c2857e256cd45e.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/da3ed8d36da457ae09c2857e256cd45e.png"><img alt="" src="https://gyazo.com/da3ed8d36da457ae09c2857e256cd45e.png"/></a></p>
 <p>固定の数値というのもあれなので、Houdiniのアトリビュートを追加してみた例。<br/>
 今までの関数も使用できます。</p>
 <h2 id="usd">USD固有の関数を使う<a class="headerlink" href="#usd" title="Permanent link">¶</a></h2>
@@ -3028,7 +3041,7 @@ USD側になにか情報を入れておいて処理したい場合などは<br/>
 関数を使用するとアトリビュートへのアクセスができましたが<br/>
 VEX的な書き方でもっと簡略化ができるようです。</p>
 <p>SOPでは、GeometrySpreadSheetなどで</p>
-<p><a class="glightbox" href="https://gyazo.com/19678d56f14ae349eeb6897ee8a1961d.png"><img alt="" src="https://gyazo.com/19678d56f14ae349eeb6897ee8a1961d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/19678d56f14ae349eeb6897ee8a1961d.png"><img alt="" src="https://gyazo.com/19678d56f14ae349eeb6897ee8a1961d.png"/></a></p>
 <p>各オブジェクトの頂点だったりフェースだったりノーマルに対して</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>@P = ～～～
 </code></pre></div></td></tr></table></div><br/>
@@ -3040,19 +3053,19 @@ VEX的な書き方でもっと簡略化ができるようです。</p>
 編集したり取得したりすることが同様の記述方式できます。</p>
 <h3 id="_9">セットする<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
 <p>まずはかんたんなサンプルから。</p>
-<p><a class="glightbox" href="https://gyazo.com/4e9b0ec684b7f97ffa25fe7460999605.png"><img alt="" src="https://gyazo.com/4e9b0ec684b7f97ffa25fe7460999605.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4e9b0ec684b7f97ffa25fe7460999605.png"><img alt="" src="https://gyazo.com/4e9b0ec684b7f97ffa25fe7460999605.png"/></a></p>
 <p>こんなかんじでSphere１を作り、attribwrangleノードにつなげます。</p>
-<p><a class="glightbox" href="https://gyazo.com/cadb08a65f9aea0d25bda269b9be0225.png"><img alt="" src="https://gyazo.com/cadb08a65f9aea0d25bda269b9be0225.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cadb08a65f9aea0d25bda269b9be0225.png"><img alt="" src="https://gyazo.com/cadb08a65f9aea0d25bda269b9be0225.png"/></a></p>
 <p>そしてアトリビュートを追加して、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>f@radius =`chs("/stage/attribwrangle1/sphereSize")`;
 </code></pre></div></td></tr></table></div>
 <p>VEXにこう書きます。</p>
-<p><a class="glightbox" href="https://gyazo.com/89df4236993d4d48da446975e1506987.gif"><img alt="" src="https://gyazo.com/89df4236993d4d48da446975e1506987.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/89df4236993d4d48da446975e1506987.gif"><img alt="" src="https://gyazo.com/89df4236993d4d48da446975e1506987.gif"/></a></p>
 <p>結果。</p>
 <p>fは、アトリビュートの型で、@以降はUSDのAttribute名を指定することで<br/>
 USDのアトリビュートに対して値を設定することができます。<br/>
 この型は、いわゆるUSDのスキーマで定義されているものです。</p>
-<p><a class="glightbox" href="https://gyazo.com/a7383362603807d7f2194eee75f88944.png"><img alt="" src="https://gyazo.com/a7383362603807d7f2194eee75f88944.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a7383362603807d7f2194eee75f88944.png"><img alt="" src="https://gyazo.com/a7383362603807d7f2194eee75f88944.png"/></a></p>
 <p>スキーマが持つアトリビュートは、 Edit Parameter Interface のFromUSDに一覧があるので<br/>
 スキーマのアトリビュートを編集できるようにするのならば、<br/>
 このスキーマのアトリビュートをノードに追加して<br/>
@@ -3203,9 +3216,9 @@ VEXでなにかする場合はUSDのAPIやスキーマの把握が必須にな�
     <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Cube</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="n">path</span><span class="o">.</span><span class="n">AppendChild</span><span class="p">(</span><span class="sa">f</span><span class="s2">"cube_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div></p>
 <p>まずはVex<br/>
-<a class="glightbox" href="https://gyazo.com/2a4795d362c95236f4d6fbd4fa93bd4c.png"><img alt="" src="https://gyazo.com/2a4795d362c95236f4d6fbd4fa93bd4c.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2a4795d362c95236f4d6fbd4fa93bd4c.png"><img alt="" src="https://gyazo.com/2a4795d362c95236f4d6fbd4fa93bd4c.png"/></a></p>
 <p>続いてPython<br/>
-<a class="glightbox" href="https://gyazo.com/25caf240a1198441ef44531e0340b644.png"><img alt="" src="https://gyazo.com/25caf240a1198441ef44531e0340b644.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/25caf240a1198441ef44531e0340b644.png"><img alt="" src="https://gyazo.com/25caf240a1198441ef44531e0340b644.png"/></a></p>
 <p>わかってはいたものの、驚愕の速度差です。</p>
 <p>基本繰り返し処理に関してはPythonは避けてVEXかLOPのノードで実行するほうが<br/>
 良さそうです。</p>
@@ -3214,7 +3227,7 @@ VEXでなにかする場合はUSDのAPIやスキーマの把握が必須にな�
 おかげでいつかわかったことがあります。</p>
 <p>まず使い方について。<br/>
 VEXの場合は、</p>
-<p><a class="glightbox" href="https://gyazo.com/636b86946a69003f3d7c86141db9c512.png"><img alt="" src="https://gyazo.com/636b86946a69003f3d7c86141db9c512.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/636b86946a69003f3d7c86141db9c512.png"><img alt="" src="https://gyazo.com/636b86946a69003f3d7c86141db9c512.png"/></a></p>
 <p>Primitivesで指定されたPrimに対して何らかの処理を書くことができる。<br/>
 基本的なものは関数でカバーされているのでそれを使用すれば<br/>
 USDの操作はほぼカバーできるので、Primに対しての処理はVEXを使うのが良さそうです。</p>
@@ -3308,8 +3321,8 @@ USDのワークフローが作れるようにしていくのが今後の課題�
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

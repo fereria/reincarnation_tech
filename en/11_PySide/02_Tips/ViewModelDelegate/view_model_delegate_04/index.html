@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_PySide/02_Tips/ViewModelDelegate/view_model_delegate_04/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>PySideのTableViewでDelegateを使う(3) もっとpaintする - Reincarnation+#Tech</title>
-<link href="../../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1223,6 +1231,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../10_Programming/99_Documentation/mult_lang/">
+        EnglishTitle
       </a>
 </li>
 </ul>
@@ -2688,9 +2701,9 @@
 <p>今回は、 <a href="../view_model_delegate_02/">paintする</a> に続いて、<br/>
 PySideのTableViewで、Delegate内のpaintを駆使していい感じのGUIを作っていきます。</p>
 <h2 id="_1">完成図<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" href="https://gyazo.com/0508950bbbcbce51b92ee726e1927a6c.png"><img alt="" src="https://gyazo.com/0508950bbbcbce51b92ee726e1927a6c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0508950bbbcbce51b92ee726e1927a6c.png"><img alt="" src="https://gyazo.com/0508950bbbcbce51b92ee726e1927a6c.png"/></a></p>
 <p>実行すると、こんな感じで表示されます。</p>
-<p><a class="glightbox" href="https://gyazo.com/c6f154dbc0dabe6822f07ad61a95d5bb.gif"><img alt="" src="https://gyazo.com/c6f154dbc0dabe6822f07ad61a95d5bb.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c6f154dbc0dabe6822f07ad61a95d5bb.gif"><img alt="" src="https://gyazo.com/c6f154dbc0dabe6822f07ad61a95d5bb.gif"/></a></p>
 <p>表示の工夫としては、ウィンドウの大きさを変更すると、TableViewのセルの数を変更して<br/>
 サイズに収まる量だけ表示するようにします。<br/>
 もう１つは、開いたタイミングだとすべてのセルを表示せず、スクロールバーが一番下に来た時に<br/>
@@ -2887,7 +2900,7 @@ TableViewですが、データはListなので<br/>
 <p>Delegateでは、indexのセルを描画を実装します。<br/>
 データでそのセルのDataItemを取得して、以降は QPainterでひたすら書いていきます。</p>
 <h3 id="_2">セルの範囲<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" href="../delegate.drawio#0"><img alt="" src="../delegate.drawio-0.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../delegate.drawio#0"><img alt="" src="../delegate.drawio-0.svg"/></a></p>
 <p>描画するセルの範囲は、option.rect で取得します。<br/>
 図にすると、上のようなQRectで取得できるので、以降はこの矩形をベースにして<br/>
 描画したい画像や文字を配置します。</p>
@@ -2921,7 +2934,7 @@ TableViewですが、データはListなので<br/>
 </code></pre></div></td></tr></table></div><br/>
 まず、セルの矩形を複製します。<br/>
 （複製しないと元のoption.rectが書き換わるため）</p>
-<p><a class="glightbox" href="../delegate.drawio#1"><img alt="" src="../delegate.drawio-1.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../delegate.drawio#1"><img alt="" src="../delegate.drawio-1.svg"/></a></p>
 <p>画像はセルの縦幅の半分からマージンを引いた数を上限として、<br/>
 縦横比がいい感じになるように調整。<br/>
 そして、中央になるように移動します。</p>
@@ -3051,8 +3064,8 @@ drawText で、中央揃え＋行が溢れたら改行できるようにして�
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

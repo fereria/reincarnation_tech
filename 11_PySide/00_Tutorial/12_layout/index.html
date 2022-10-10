@@ -9,9 +9,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_PySide/00_Tutorial/12_layout/" rel="canonical"/>
 <link href="../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>基本的なレイアウトを使おう - Reincarnation+#Tech</title>
-<link href="../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,7 +23,15 @@
 <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1224,6 +1232,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/mult_lang/">
+        日本語タイトル
       </a>
 </li>
 </ul>
@@ -2747,7 +2760,7 @@
 <p>PySideで、ウィンドウの上にウィジェットを縦や横、格子状に配置して<br/>
 ウィンドウサイズの変更に応じてレイアウトしたい場合は<br/>
 「QLayout」を使用します。</p>
-<p><a class="glightbox" href="https://gyazo.com/b499a2dbc5d276a802343021d1660d90.png"><img alt="" src="https://gyazo.com/b499a2dbc5d276a802343021d1660d90.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b499a2dbc5d276a802343021d1660d90.png"><img alt="" src="https://gyazo.com/b499a2dbc5d276a802343021d1660d90.png"/></a></p>
 <p>レイアウトは、Designerを使用するときにでも使用しますが<br/>
 今回はDesignerを使用せずコードのみで書いた場合の使い方などを説明していきます。</p>
 <h2 id="qvboxlayoutqhboxlayout">QVBoxLayout/QHBoxLayout<a class="headerlink" href="#qvboxlayoutqhboxlayout" title="Permanent link">¶</a></h2>
@@ -2768,7 +2781,7 @@
 <p>例として、QDialogに対して、レイアウトを配置する場合。<br/>
 Widgetは、基本 setLayoutを使用することで<br/>
 レイアウトを指定することができます。</p>
-<p><a class="glightbox" href="../layout.drawio#1"><img alt="" src="../layout.drawio-1.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../layout.drawio#1"><img alt="" src="../layout.drawio-1.svg"/></a></p>
 <p>図に表すとこのようになっていて、<br/>
 あるWidget(QDialog)上に、ウィジェットを配置するためのスペースが準備されます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2777,9 +2790,9 @@ Widgetは、基本 setLayoutを使用することで<br/>
             <span class="n">btn</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sample </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://gyazo.com/52503ecce656e91bf7b50b7eeaaa23e9.png"><img alt="" src="https://gyazo.com/52503ecce656e91bf7b50b7eeaaa23e9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/52503ecce656e91bf7b50b7eeaaa23e9.png"><img alt="" src="https://gyazo.com/52503ecce656e91bf7b50b7eeaaa23e9.png"/></a></p>
 <p>配置した結果はこのようになります。</p>
-<p><a class="glightbox" href="https://gyazo.com/078c0c7c98555b6eff502d1eae92d089.gif"><img alt="" src="https://gyazo.com/078c0c7c98555b6eff502d1eae92d089.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/078c0c7c98555b6eff502d1eae92d089.gif"><img alt="" src="https://gyazo.com/078c0c7c98555b6eff502d1eae92d089.gif"/></a></p>
 <p>このレイアウトに対してWidgetを配置すると、<br/>
 QDialogのサイズに合わせて均等にレイアウトすることができます。</p>
 <p>このように縦方向にレイアウトしたい場合は、「QVBoxLayout」を使用します。</p>
@@ -2807,7 +2820,7 @@ QDialogのサイズに合わせて均等にレイアウトすることができ�
             <span class="n">btn</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sample </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://gyazo.com/ed91246e56bbb3e9ff72ee507145befc.png"><img alt="" src="https://gyazo.com/ed91246e56bbb3e9ff72ee507145befc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ed91246e56bbb3e9ff72ee507145befc.png"><img alt="" src="https://gyazo.com/ed91246e56bbb3e9ff72ee507145befc.png"/></a></p>
 <p>QVBoxLayoutを使用していたところを、QHBoxLayoutに変更すれば、<br/>
 横方向に並べることができます。</p>
 <h3 id="spaceritem">SpacerItem<a class="headerlink" href="#spaceritem" title="Permanent link">¶</a></h3>
@@ -2842,10 +2855,10 @@ Dialogのサイズが変更されても、均等ではなく配置してるWidge
         <span class="n">layout</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">spacerItem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"><img alt="" src="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"><img alt="" src="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"/></a></p>
 <p>QSpacerItemを使用した場合の例はこのようになります。</p>
 <p>SpacerItemとは、その名の通り、レイアウトに対してスペースを配置します。  </p>
-<p><a class="glightbox" href="../layout.drawio#0"><img alt="" src="../layout.drawio-0.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../layout.drawio#0"><img alt="" src="../layout.drawio-0.svg"/></a></p>
 <p>見えていないですが、視覚化するとこのようになります。</p>
 <h4 id="sizepolicy">SizePolicy<a class="headerlink" href="#sizepolicy" title="Permanent link">¶</a></h4>
 <p>QSpacerItemは、引数で SpacerItemのデフォルトの大きさとSizePolicyを渡します。<br/>
@@ -2856,13 +2869,13 @@ Minimumならば、最小の値で固定し Expandingならば、ウィンドウ
 <h5 id="expanding">Expanding<a class="headerlink" href="#expanding" title="Permanent link">¶</a></h5>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">spacerItem</span> <span class="o">=</span> <span class="n">QSpacerItem</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Minimum</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Expanding</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"><img alt="" src="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"><img alt="" src="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"/></a></p>
 <p>Expandingにすると、SpacerItemの範囲がウィンドウサイズに応じて拡張されます。<br/>
 Spacer以外は元のサイズ（SizeHintの大きさで）固定になります。</p>
 <h5 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">¶</a></h5>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">spacerItem</span> <span class="o">=</span> <span class="n">QSpacerItem</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Minimum</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Fixed</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://gyazo.com/6103bbf10ea8293cbf6d2a87c09fd254.gif"><img alt="" src="https://gyazo.com/6103bbf10ea8293cbf6d2a87c09fd254.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6103bbf10ea8293cbf6d2a87c09fd254.gif"><img alt="" src="https://gyazo.com/6103bbf10ea8293cbf6d2a87c09fd254.gif"/></a></p>
 <p>Fixedにすると、指定のSpacerItemで（SizeHintの大きさで）固定され<br/>
 レイアウトに配置してWidgetは均等に配置されます。</p>
 <h2 id="qgridlayout">QGridLayout<a class="headerlink" href="#qgridlayout" title="Permanent link">¶</a></h2>
@@ -2945,14 +2958,14 @@ GridLayoutを使用したサンプルです。</p>
         <span class="n">btn</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">"SampleD"</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" href="https://gyazo.com/d5612891938017ac77d6b076e7c69a35.png"><img alt="" src="https://gyazo.com/d5612891938017ac77d6b076e7c69a35.png"/></a></p>
-<p><a class="glightbox" href="../layout.drawio#4"><img alt="" src="../layout.drawio-4.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d5612891938017ac77d6b076e7c69a35.png"><img alt="" src="https://gyazo.com/d5612891938017ac77d6b076e7c69a35.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../layout.drawio#4"><img alt="" src="../layout.drawio-4.svg"/></a></p>
 <p>まずは、シンプルに格子状に配置したい場合。<br/>
 Row と Column のインデックスを指定することで、<br/>
 その位置に配置できます。</p>
 <h4 id="_2">グリッドの結合<a class="headerlink" href="#_2" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" href="https://gyazo.com/bcf9265132d87819dcf76d2cde6627ca.png"><img alt="" src="https://gyazo.com/bcf9265132d87819dcf76d2cde6627ca.png"/></a></p>
-<p><a class="glightbox" href="../layout.drawio#5"><img alt="" src="../layout.drawio-5.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bcf9265132d87819dcf76d2cde6627ca.png"><img alt="" src="https://gyazo.com/bcf9265132d87819dcf76d2cde6627ca.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../layout.drawio#5"><img alt="" src="../layout.drawio-5.svg"/></a></p>
 <p>次は、そのグリッドを結合したい場合。<br/>
 結合したい場合は、 addWidget(配置するWidget,Row,Column,RowSpan,ColumnSpan)<br/>
 のように、縦・横それぞれいくつ結合するかを引数で指定します。</p>
@@ -2979,7 +2992,7 @@ Row と Column のインデックスを指定することで、<br/>
 </code></pre></div></td></tr></table></div>
 <p>縦の場合も同様で、この場合はRowSpanを2にします。  </p>
 <h5 id="sizepolicy_1">SizePolicy（おまけ）<a class="headerlink" href="#sizepolicy_1" title="Permanent link">¶</a></h5>
-<p><a class="glightbox" href="https://gyazo.com/203f8aac14324d0cea672324af9d5afd.png"><img alt="" src="https://gyazo.com/203f8aac14324d0cea672324af9d5afd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/203f8aac14324d0cea672324af9d5afd.png"><img alt="" src="https://gyazo.com/203f8aac14324d0cea672324af9d5afd.png"/></a></p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="n">btn</span><span class="o">.</span><span class="n">setSizePolicy</span><span class="p">(</span><span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Fixed</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Preferred</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div><br/>
 デフォルトの場合、ボタンサイズは縦方向は固定されているのですが<br/>
@@ -3069,8 +3082,8 @@ PySideではカスタムレイアウトを作成することもできるので�
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
-<script src="../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

@@ -8,9 +8,9 @@
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/12_ValueClip_01/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>Value Clips を使おう(基本構造編) - Reincarnation+#Tech</title>
-<link href="../../../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <meta content="#4cae4f" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,15 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gdesc-inner { font-size: 0.75rem; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
@@ -1223,6 +1231,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../10_Programming/99_Documentation/99_mkdocs_sample/">
         mkdocsでのMarkdown記載サンプル
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../10_Programming/99_Documentation/mult_lang/">
+        EnglishTitle
       </a>
 </li>
 </ul>
@@ -2656,7 +2669,7 @@
 ２つめがClip、これはStageのあるPrimのアトリビュートに対して指定する値を持つレイヤーです。<br/>
 ３つめがManifest、ManifestはあるClipのうち、実際にStageのPrimに対して反映させる<br/>
 アトリビュートを指定するためのレイヤーです。</p>
-<p><a class="glightbox" href="https://gyazo.com/c2c6abc2935d152d221b15691bca6275.png"><img alt="" src="https://gyazo.com/c2c6abc2935d152d221b15691bca6275.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c2c6abc2935d152d221b15691bca6275.png"><img alt="" src="https://gyazo.com/c2c6abc2935d152d221b15691bca6275.png"/></a></p>
 <p>まずはシンプルなCube1つがあるレイヤーを作成します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2773,7 +2786,7 @@ active は、今のステージのフレーム のときに どのClipを使う�
 この場合は、１フレームから rotate.usda を使う...というふうに書かれています。</p>
 <p>ValueClipは、他のコンポジションと違い、メタデータとして書かれているというのも<br/>
 特徴です。</p>
-<p><a class="glightbox" href="https://gyazo.com/55e35f1bf4f6ceb152d2baf0e04dffdd.gif"><img alt="" src="https://gyazo.com/55e35f1bf4f6ceb152d2baf0e04dffdd.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/55e35f1bf4f6ceb152d2baf0e04dffdd.gif"><img alt="" src="https://gyazo.com/55e35f1bf4f6ceb152d2baf0e04dffdd.gif"/></a></p>
 <p>その結果。<br/>
 Clipのレイヤーにあるアニメーションが、TestModelに適応されたのがわかります。<br/>
 ですが、これだけだと１つのClipが読み込まれただけなので<br/>
@@ -2842,13 +2855,13 @@ def Cube "TestModel" (
 Z軸回転するレイヤーを assetPaths に追加して、<br/>
 active で、今のCurrentTimeのときにどのレイヤーを使うかを指定します。<br/>
 今回は１～5まではY軸回転、6～10がZ軸回転をするレイヤーを読むようにしました。</p>
-<p><a class="glightbox" href="https://gyazo.com/92c305e69fa7fdb7c09c6ff81468a935.gif"><img alt="" src="https://gyazo.com/92c305e69fa7fdb7c09c6ff81468a935.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/92c305e69fa7fdb7c09c6ff81468a935.gif"><img alt="" src="https://gyazo.com/92c305e69fa7fdb7c09c6ff81468a935.gif"/></a></p>
 <p>結果。<br/>
 時間方向に、参照するレイヤー（Clip）が変わっているのがわかるかと思います。</p>
-<p><a class="glightbox" href="https://gyazo.com/6ccb38785e6d5454cc7f1707bc94125f.png"><img alt="" src="https://gyazo.com/6ccb38785e6d5454cc7f1707bc94125f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6ccb38785e6d5454cc7f1707bc94125f.png"><img alt="" src="https://gyazo.com/6ccb38785e6d5454cc7f1707bc94125f.png"/></a></p>
 <p>usdviewをみると、Clipを使用しているアトリビュートのLayer Stackを見ると<br/>
 Clipのレイヤーが表示されているのがわかります。</p>
-<p><a class="glightbox" href="https://gyazo.com/9db2f01037beae86ba9a0054035c8205.png"><img alt="" src="https://gyazo.com/9db2f01037beae86ba9a0054035c8205.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9db2f01037beae86ba9a0054035c8205.png"><img alt="" src="https://gyazo.com/9db2f01037beae86ba9a0054035c8205.png"/></a></p>
 <p>CurrentTimeを移動して再度確認すると、LayerStackのレイヤーも変わっています。</p>
 <h2 id="template">Template<a class="headerlink" href="#template" title="Permanent link">¶</a></h2>
 <p>上の例だと、参照先のClipは、CurrentTimeとassetPathsのIndexによって紐付けされていました。<br/>
@@ -2989,8 +3002,8 @@ name.#.usda のように、数字部分を # で書き表したPathで指定し�
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>
