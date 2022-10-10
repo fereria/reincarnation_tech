@@ -104,7 +104,7 @@ multi_lang:
 上のようなコメントタグを用意して
 そのタグの間にある文章は、指定タグでのみ表示するようにします。
 
-{{'https://gist.github.com/fereria/59b31294a847c7c9b8b7f1f66942b9c8'|gist}}
+{{'59b31294a847c7c9b8b7f1f66942b9c8'|gist}}
 
 あとはこんな感じで mdlang という拡張子のファイルがあったら
 ヘッダ部分をいい感じに処理して、個別の言語 Markdown ファイルを生成します。
@@ -118,6 +118,6 @@ multi_lang:
 
 この結果出来上がったページが :fa-external-link: [日本語はこちら](https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/mult_lang/) :fa-external-link: [英語はこちら](https://fereria.github.io/reincarnation_tech/en/10_Programming/99_Documentation/mult_lang/) です。
 
-これで1ファイルで複数言語を記述できる環境ができたので
+これで 1 ファイルで複数言語を記述できる環境ができたので
 あとは記事を書くだけではありますが...英語記事を書くほうが大変なので
 実際に活用するまではもう少しかかりそうです。
