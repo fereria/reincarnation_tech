@@ -18,7 +18,7 @@ def createHeader(data, lang):
     # 分離したDict型にする
     retVal = ['---']
 
-    if lang == 'jp':
+    if lang == 'ja':
         for i in yaml.dump(data, allow_unicode=True).split("\n"):
             if i.strip() != "":
                 retVal.append(re.sub("^- ", "    - ", i))
@@ -38,7 +38,7 @@ def createMultiLangMd(path):
     data = utils.getHeaderYaml(path)
     docs = utils.getMainDocs(path)
 
-    exportDocs = {'jp': createHeader(data, 'jp')}
+    exportDocs = {'ja': createHeader(data, 'ja')}
 
     if data and 'multi_lang' not in data:
         # multi_langフラグがないものはなにもしない
@@ -76,8 +76,7 @@ def createMultiLangMd(path):
     dirName = os.path.dirname(path)
 
     for i in exportDocs.keys():
-        lang = "" if i == "jp" else f".{i}"
-        with codecs.open(f"{dirName}/{bn}{lang}.md", 'w', 'utf-8') as f:
+        with codecs.open(f"{dirName}/{bn}.{i}.md", 'w', 'utf-8') as f:
             f.write("\n".join(exportDocs[i]))
 
 
