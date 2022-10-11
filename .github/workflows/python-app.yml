@@ -11,6 +11,11 @@ on:
         types:
             - submodule_update
 
+env:
+    SLACK_WEBHOOK: ${{ secrets.SlackURL }}
+    SLACK_USERNAME: DeployBot
+    SLACK_CHANNEL: develop
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -36,12 +41,6 @@ jobs:
 
             - name: Update Submodule notebooks
               run: cd notebooks && git fetch && git reset --hard origin/master
-
-            # - name: Update Submodule samplecode
-            #   run: cd docs/65_SampleCode/blender_samplecode && git fetch && git reset --hard origin/master
-
-            # - name: Update Submodule PySide
-            #   run: cd docs/65_SampleCode/pyside_samplecode && git fetch && git reset --hard origin/master
 
             - name: Update Submodule Python
               run: cd docs/65_SampleCode/python_samplecode && git fetch && git reset --hard origin/master
@@ -72,16 +71,16 @@ jobs:
                   TZ: Asia/Tokyo
               run: docker exec mkdocs sudo xvfb-run --server-args="-screen 0, 640x480x24" --auto-servernum --server-num=1  -a mkdocs gh-deploy
 
-            - name: Send Slack Finish(Success)
+            - name: Slack Notification on Success
               if: ${{ success() }}
+              uses: rtCamp/action-slack-notify@v2
               env:
-                  HOOK_URL: ${{ secrets.SlackURL }}
-              run: |
-                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新が完了しました！！\"}" ${HOOK_URL}
+                  SLACK_TITLE: Deploy Success
+                  SLACK_COLOR: good
 
-            - name: Send Slack Finish(Failure)
+            - name: Slack Notification on Failure
               if: ${{ failure() }}
+              uses: rtCamp/action-slack-notify@v2
               env:
-                  HOOK_URL: ${{ secrets.SlackURL }}
-              run: |
-                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新に失敗しました...\"}" ${HOOK_URL}
+                  SLACK_TITLE: Deploy Failure
+                  SLACK_COLOR: danger
