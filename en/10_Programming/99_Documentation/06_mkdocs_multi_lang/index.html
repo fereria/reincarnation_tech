@@ -2661,7 +2661,7 @@
 </a>
 <h1>mkdocsで複数言語に対応する</h1>
 <p>基本日本語で書いているドキュメントですが、<br/>
-USD 関連などは特に英語のコミュニティがメインになるため<br/>
+USD 関連などはとくに英語のコミュニティがメインになるため<br/>
 英語でもページを書けるように環境を構築することにしました。</p>
 <h2 id="mkdocs-static-i18n">mkdocs-static-i18n 導入<a class="headerlink" href="#mkdocs-static-i18n" title="Permanent link">¶</a></h2>
 <p>まず、mkdocs にマルチ言語を入れる場合<br/>
@@ -2689,11 +2689,11 @@ plugins の先頭に書いておかないとエラーになることがありま
 <p>あとは、作成する Markdown に .言語名.md というファイルを作ると</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9942b3b4fd6fe4bbce8a3dd5e9b849b4.png"><img alt="" src="https://gyazo.com/9942b3b4fd6fe4bbce8a3dd5e9b849b4.png"/></a></p>
 <p>ページの検索左にあるボタンで「English」など言語を選ぶことで<br/>
-言語名の Markdown に内容に表示することができます。<br/>
+言語名の Markdown に内容を表示できます。<br/>
 他言語名が入らないものについては、default_language 扱いになります。<br/>
 導入は簡単でした。</p>
 <p>ただし、ページ単位で言語切り替えがうまく動かないらしく<br/>
-トップページに戻ってしまうので、デフォルト言語も.ja.md のように<br/>
+トップページに戻ってしまうので、デフォルト言語も .ja.md のように<br/>
 用意したほうがいいのかもしれません。</p>
 <h2 id="1">1 ファイルで編集したい<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
 <p>導入は簡単だったものの、1 つ大きな問題があります。<br/>
@@ -2752,22 +2752,22 @@ multi_lang:
 そのタグの間にある文章は、指定タグでのみ表示するようにします。</p>
 <script src="https://gist.github.com/fereria/59b31294a847c7c9b8b7f1f66942b9c8.js"></script>
 <p>あとはこんな感じで mdlang という拡張子のファイルがあったら<br/>
-ヘッダ部分をいい感じに処理して、個別の言語 Markdown ファイルを生成します。</p>
+ヘッダー部分をいい感じに処理して、個別の言語 Markdown ファイルを生成します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>- name: Create LangPages
   run: docker exec mkdocs python scripts/multi_langpage.py
 </code></pre></div></td></tr></table></div>
 <p>このスクリプトを、GithubAction で呼び出してビルド時に Markdown を作成します。</p>
-<p>この結果出来上がったページが <i class="fa fa-external-link"></i> <a href="https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/mult_lang/">日本語はこちら</a> <i class="fa fa-external-link"></i> <a href="https://fereria.github.io/reincarnation_tech/en/10_Programming/99_Documentation/mult_lang/">英語はこちら</a> です。</p>
-<p>これで 1 ファイルで複数言語を記述できる環境ができたので<br/>
-あとは記事を書くだけではありますが...英語記事を書くほうが大変なので<br/>
+<p>この結果できあがったページが <i class="fa fa-external-link"></i> <a href="https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/mult_lang/">日本語はこちら</a> <i class="fa fa-external-link"></i> <a href="https://fereria.github.io/reincarnation_tech/en/10_Programming/99_Documentation/mult_lang/">英語はこちら</a> です。</p>
+<p>これで 1 ファイルに複数言語を記述できる環境ができたので<br/>
+あとは記事を書くだけではありますが…英語記事を書くほうが大変なので<br/>
 実際に活用するまではもう少しかかりそうです。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-10-10 14:29:19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-10-11 11:52:24</span>
 </small>
 </div>
 </article>
