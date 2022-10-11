@@ -8,7 +8,7 @@ description:
 ---
 
 基本日本語で書いているドキュメントですが、
-USD 関連などは特に英語のコミュニティがメインになるため
+USD 関連などはとくに英語のコミュニティがメインになるため
 英語でもページを書けるように環境を構築することにしました。
 
 ## mkdocs-static-i18n 導入
@@ -44,12 +44,12 @@ plugins の先頭に書いておかないとエラーになることがありま
 ![](https://gyazo.com/9942b3b4fd6fe4bbce8a3dd5e9b849b4.png)
 
 ページの検索左にあるボタンで「English」など言語を選ぶことで
-言語名の Markdown に内容に表示することができます。
+言語名の Markdown に内容を表示できます。
 他言語名が入らないものについては、default_language 扱いになります。
 導入は簡単でした。
 
 ただし、ページ単位で言語切り替えがうまく動かないらしく
-トップページに戻ってしまうので、デフォルト言語も.ja.md のように
+トップページに戻ってしまうので、デフォルト言語も .ja.md のように
 用意したほうがいいのかもしれません。
 
 ## 1 ファイルで編集したい
@@ -107,7 +107,7 @@ multi_lang:
 {{'59b31294a847c7c9b8b7f1f66942b9c8'|gist}}
 
 あとはこんな感じで mdlang という拡張子のファイルがあったら
-ヘッダ部分をいい感じに処理して、個別の言語 Markdown ファイルを生成します。
+ヘッダー部分をいい感じに処理して、個別の言語 Markdown ファイルを生成します。
 
 ```yml
 - name: Create LangPages
@@ -116,8 +116,8 @@ multi_lang:
 
 このスクリプトを、GithubAction で呼び出してビルド時に Markdown を作成します。
 
-この結果出来上がったページが :fa-external-link: [日本語はこちら](https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/mult_lang/) :fa-external-link: [英語はこちら](https://fereria.github.io/reincarnation_tech/en/10_Programming/99_Documentation/mult_lang/) です。
+この結果できあがったページが :fa-external-link: [日本語はこちら](https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/mult_lang/) :fa-external-link: [英語はこちら](https://fereria.github.io/reincarnation_tech/en/10_Programming/99_Documentation/mult_lang/) です。
 
-これで 1 ファイルで複数言語を記述できる環境ができたので
-あとは記事を書くだけではありますが...英語記事を書くほうが大変なので
+これで 1 ファイルに複数言語を記述できる環境ができたので
+あとは記事を書くだけではありますが…英語記事を書くほうが大変なので
 実際に活用するまではもう少しかかりそうです。
