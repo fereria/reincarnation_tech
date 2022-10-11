@@ -20,11 +20,12 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Send Slack Start
+            - name: Slack Notification on Success
+              if: ${{ success() }}
+              uses: rtCamp/action-slack-notify@v2
               env:
-                  HOOK_URL: ${{ secrets.SlackURL }}
-              run: |
-                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesのビルドを開始しました...\"}" ${HOOK_URL}
+                  SLACK_TITLE: Build Start...
+                  SLACK_COLOR: good
 
             - name: Git config
               run: |
