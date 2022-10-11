@@ -11,22 +11,15 @@ on:
         types:
             - submodule_update
 
-env:
-    SLACK_WEBHOOK: ${{ secrets.SlackURL }}
-    SLACK_USERNAME: DeployBot
-    SLACK_CHANNEL: develop
-
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Slack Notification Success
-              uses: rtCamp/action-slack-notify@v2.0.0
+            - name: Send Slack Start
               env:
-                  SLACK_WEBHOOK: ${{ secrets.SlackURL }}
-                  SLACK_COLOR: "#5cb85c"
-                  SLACK_TITLE: "Success to Deploy to GitHub Pages :rocket:"
-                  SLACK_MESSAGE: ":closed_book: ${{ github.repository }}"
+                  HOOK_URL: ${{ secrets.SlackURL }}
+              run: |
+                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesのビルドを開始しました...\"}" ${HOOK_URL}
 
             - name: Git config
               run: |
@@ -43,6 +36,12 @@ jobs:
 
             - name: Update Submodule notebooks
               run: cd notebooks && git fetch && git reset --hard origin/master
+
+            # - name: Update Submodule samplecode
+            #   run: cd docs/65_SampleCode/blender_samplecode && git fetch && git reset --hard origin/master
+
+            # - name: Update Submodule PySide
+            #   run: cd docs/65_SampleCode/pyside_samplecode && git fetch && git reset --hard origin/master
 
             - name: Update Submodule Python
               run: cd docs/65_SampleCode/python_samplecode && git fetch && git reset --hard origin/master
@@ -73,16 +72,16 @@ jobs:
                   TZ: Asia/Tokyo
               run: docker exec mkdocs sudo xvfb-run --server-args="-screen 0, 640x480x24" --auto-servernum --server-num=1  -a mkdocs gh-deploy
 
-            - name: Slack Notification on Success
+            - name: Send Slack Finish(Success)
               if: ${{ success() }}
-              uses: rtCamp/action-slack-notify@v2
               env:
-                  SLACK_TITLE: Deploy Success
-                  SLACK_COLOR: good
+                  HOOK_URL: ${{ secrets.SlackURL }}
+              run: |
+                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新が完了しました！！\"}" ${HOOK_URL}
 
-            - name: Slack Notification on Failure
+            - name: Send Slack Finish(Failure)
               if: ${{ failure() }}
-              uses: rtCamp/action-slack-notify@v2
               env:
-                  SLACK_TITLE: Deploy Failure
-                  SLACK_COLOR: danger
+                  HOOK_URL: ${{ secrets.SlackURL }}
+              run: |
+                  curl -X POST --data-urlencode "payload={\"channel\": \"#github_actions\", \"username\": \"github_aciton_bot\", \"text\": \"GithubPagesの更新に失敗しました...\"}" ${HOOK_URL}
