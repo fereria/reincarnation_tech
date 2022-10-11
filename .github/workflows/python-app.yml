@@ -20,11 +20,13 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Slack Notification on Success
-              uses: rtCamp/action-slack-notify@v2
+            - name: Slack Notification Success
+              uses: rtCamp/action-slack-notify@v2.0.0
               env:
-                  SLACK_TITLE: Build Start...
-                  SLACK_COLOR: good
+                  SLACK_WEBHOOK: ${{ secrets.SlackURL }}
+                  SLACK_COLOR: "#5cb85c"
+                  SLACK_TITLE: "Success to Deploy to GitHub Pages :rocket:"
+                  SLACK_MESSAGE: ":closed_book: ${{ github.repository }}"
 
             - name: Git config
               run: |
