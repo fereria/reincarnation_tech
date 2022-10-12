@@ -186,6 +186,10 @@ def define_env(env):
         return f'<span class="blue-badge badge-all">{comment}</span>'
 
     @env.filter
+    def img(comment):
+        return f"![](https://fereria.github.io/reincarnation_tech/img/{comment})"
+
+    @env.filter
     def tag_badge(comment):
         return f'<span class="badge-all tag-badge">{comment}</span>'
 

@@ -155,8 +155,12 @@ graph TD
 
 ---
 
-[[05_mkdocs_drawio]]
+[[05_mkdocs_drawio.md]]
 
 ![[icon.jpg]]
 
 ![[sample.svg]]
+
+---
+
+{{'sample.svg'|img}}
