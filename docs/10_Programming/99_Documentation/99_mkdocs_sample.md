@@ -164,3 +164,12 @@ graph TD
 ---
 
 {{'sample.svg'|img}}
+
+roamlinks プラグインを使用することで、サイト内の md はフルパスを書かなくても
+大丈夫
+
+```
+[テスト](01_usd_py_docs)
+```
+
+[テスト](01_usd_py_docs)
