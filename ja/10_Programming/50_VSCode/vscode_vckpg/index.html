@@ -1213,6 +1213,20 @@
     vcpkg でライブラリを取得する
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imgui">
+    imgui をビルドするために必要だったこと
+  </a>
+<nav aria-label="imgui をビルドするために必要だったこと" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imgui-binding">
+    imgui の指定の binding をインストールする
+  </a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </li>
@@ -2641,6 +2655,20 @@
     vcpkg でライブラリを取得する
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imgui">
+    imgui をビルドするために必要だったこと
+  </a>
+<nav aria-label="imgui をビルドするために必要だったこと" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imgui-binding">
+    imgui の指定の binding をインストールする
+  </a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </div>
@@ -2705,12 +2733,58 @@ VS Code でビルドするまでの流れをメモがてらまとめ。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7b46c9c51480bb26cdc71519074c4103.png"><img alt="" src="https://gyazo.com/7b46c9c51480bb26cdc71519074c4103.png"/></a></p>
 <p>無事インストールできました。<br/>
 CMakeLists.txt への書き方が書いてあるので、CMakeLists.txt にコピペします。</p>
+<h2 id="imgui">imgui をビルドするために必要だったこと<a class="headerlink" href="#imgui" title="Permanent link">¶</a></h2>
+<p>基本は ↑ で良いのですが、指定の backends でサンプルを実行するにはいくつか必要だったので<br/>
+メモがてらまとめておきます。</p>
+<h3 id="imgui-binding">imgui の指定の binding をインストールする<a class="headerlink" href="#imgui-binding" title="Permanent link">¶</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>vcpkg install imgui[glfw-binding,opengl2-binding]:x64-windows --recurse
+</code></pre></div></td></tr></table></div>
+<p>imgui のうち、 glfw-binding と opengl2-binding が必要だったので<br/>
+両方をインストールするようにします。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>vcpkg install glfw3:x64-windows
+</code></pre></div></td></tr></table></div>
+<p>さらに glfw3 をインストールします。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>cmake_minimum_required( VERSION 3.6 )
+
+project(SampleProj CXX)
+
+set( CMAKE_CXX_STANDARD 11 )
+set( CMAKE_CXX_STANDARD_REQUIRED ON )
+set( CMAKE_CXX_EXTENSIONS OFF )
+
+find_package(imgui CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+
+add_executable(main main.cpp)
+
+target_link_libraries(main PRIVATE glfw)
+target_link_libraries(main PRIVATE imgui::imgui)
+target_link_libraries(main PRIVATE opengl32.lib)
+</code></pre></div></td></tr></table></div>
+<p>そのうえで CMakeLists.txt を書きます。<br/>
+これで無事 imgui のサンプルを vcpkg でインストールした環境で実行できました。</p>
+<p>難しい！</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-11-20 09:51:20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-11-25 15:35:03</span>
 </small>
 </div>
 </article>
