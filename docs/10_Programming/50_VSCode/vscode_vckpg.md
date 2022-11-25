@@ -61,3 +61,47 @@ vcpkg install imgui:x64-windows
 
 無事インストールできました。
 CMakeLists.txt への書き方が書いてあるので、CMakeLists.txt にコピペします。
+
+## imgui をビルドするために必要だったこと
+
+基本は ↑ で良いのですが、指定の backends でサンプルを実行するにはいくつか必要だったので
+メモがてらまとめておきます。
+
+### imgui の指定の binding をインストールする
+
+```
+vcpkg install imgui[glfw-binding,opengl2-binding]:x64-windows --recurse
+```
+
+imgui のうち、 glfw-binding と opengl2-binding が必要だったので
+両方をインストールするようにします。
+
+```
+vcpkg install glfw3:x64-windows
+```
+
+さらに glfw3 をインストールします。
+
+```
+cmake_minimum_required( VERSION 3.6 )
+
+project(SampleProj CXX)
+
+set( CMAKE_CXX_STANDARD 11 )
+set( CMAKE_CXX_STANDARD_REQUIRED ON )
+set( CMAKE_CXX_EXTENSIONS OFF )
+
+find_package(imgui CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+
+add_executable(main main.cpp)
+
+target_link_libraries(main PRIVATE glfw)
+target_link_libraries(main PRIVATE imgui::imgui)
+target_link_libraries(main PRIVATE opengl32.lib)
+```
+
+そのうえで CMakeLists.txt を書きます。
+これで無事 imgui のサンプルを vcpkg でインストールした環境で実行できました。
+
+難しい！
