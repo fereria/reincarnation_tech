@@ -20,6 +20,49 @@ def getGithubRoot():
     return ""
 
 
+def getHeaderYaml(path):
+    """
+    mdのヘッダーに書かれているYaml形式のメタデータをDictで取得する
+    """
+
+    with codecs.open(path, "r", 'utf-8') as f:
+        lines = f.readlines()
+
+    flg = False
+
+    retVal = []
+
+    for i in lines:
+        if flg and i.strip() == "---":
+            # 最後の ---
+            break
+        elif not flg and i.strip() == "---":
+            # 最初の ---
+            flg = True
+        else:
+            retVal.append(i)
+
+    if len(retVal):
+        return yaml.safe_load("".join(retVal))
+    return None
+
+
+def searchMarkdownFile(fileName):
+
+    for root, dirs, files in os.walk(os.path.join(os.getcwd(), 'docs')):
+        for f in files:
+            bn, ext = os.path.splitext(f)
+            if ext == ".md" and bn == fileName:
+                path = os.path.join(root, f)
+                header = getHeaderYaml(path)
+                buff = root.replace("\\", "/").split("/docs/")
+                linkPath = f"/reincarnation_tech/{buff[1]}/{bn}"
+                return f"[{header['title']}]({linkPath})"
+    return ""
+
+
+searchMarkdownFile('01_usd_py_docs')
+
 FUKIDASHI_HTML = """<div class="balloon5">
   <div class="faceicon">
     <img src="{icon}">
@@ -46,6 +89,10 @@ def define_env(env):
                     if re.search("^title:", i):
                         return i.strip().split(":")[1]
         return None
+
+    @env.macro
+    def markdown_link(filename):
+        return searchMarkdownFile(filename)
 
     @env.macro
     def update_info(num, header="##"):
