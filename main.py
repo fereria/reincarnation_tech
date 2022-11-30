@@ -47,7 +47,7 @@ def getHeaderYaml(path):
     return None
 
 
-def searchMarkdownFile(fileName):
+def searchMarkdownFile(fileName, word=""):
 
     for root, dirs, files in os.walk(os.path.join(os.getcwd(), 'docs')):
         for f in files:
@@ -56,8 +56,9 @@ def searchMarkdownFile(fileName):
                 path = os.path.join(root, f)
                 header = getHeaderYaml(path)
                 buff = root.replace("\\", "/").split("/docs/")
-                linkPath = f"/reincarnation_tech/{buff[1]}/{bn}"
-                return f"[{header['title']}]({linkPath})"
+                linkPath = f"/reincarnation_tech/{buff[-1]}/{bn}"
+                linkText = word if word != "" else header['title']
+                return f":fa-external-link: [{linkText}]({linkPath})"
     return ""
 
 
@@ -91,8 +92,8 @@ def define_env(env):
         return None
 
     @env.macro
-    def markdown_link(filename):
-        return searchMarkdownFile(filename)
+    def markdown_link(filename, word=""):
+        return searchMarkdownFile(filename, word)
 
     @env.macro
     def update_info(num, header="##"):

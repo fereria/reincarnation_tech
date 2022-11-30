@@ -116,15 +116,18 @@ Index を Dump するとこのような情報が表示されます。
 例えば、 Type を見ればどのコンポジションを使用しているのか
 
 !!! info
-Type: reference
+
+    Type: reference
 
 Source layer stack を見ればどのレイヤーかどうか、
 !!! info
-Source layer stack: @d:/Kitchen_set/assets/Refridgerator/Refridgerator.usd@
+
+    Source layer stack: @d:/Kitchen_set/assets/Refridgerator/Refridgerator.usd@
 
 Target Path は、そのレイヤーのどの Prim が対象か
 !!! info
-Target path: </Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1>
+
+    Target path: </Kitchen_set/Props_grp/North_grp/FridgeArea_grp/Refridgerator_1>
 
 など。
 
