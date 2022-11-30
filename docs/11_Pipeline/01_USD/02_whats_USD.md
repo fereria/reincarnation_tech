@@ -4,6 +4,7 @@ tags:
     - USD
     - USD基本
     - CEDEC2022
+    - AdventCalendar2022
 description: USDとはどういうものか概要の説明
 ---
 
