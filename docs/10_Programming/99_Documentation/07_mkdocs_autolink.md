@@ -61,26 +61,27 @@ def define_env(env):
         return searchMarkdownFile(filename, word)
 ```
 
-macro用の main.py に markdown_link を追加して、ファイル名（名前だけ）とリンク用の文字列を
+macro 用の main.py に markdown_link を追加して、ファイル名（名前だけ）とリンク用の文字列を
 引数を受け取る関数を定義します。
 
-![](https://gyazo.com/1a752123d2e4a9cac0ddef6ea9fc8d81.png)
+![](https://gyazo.com/e662d743810975fe7f975a64c8a7191e.png)
 
-Markdown上では、このように記述します。
+Markdown 上では、このように記述します。
 
-{{markdown_link('99_mkdocs_sample.md')}}
+{{markdown_link('99_mkdocs_sample')}}
 
 その結果がこの通り。
 
 やっていること自体は非常にシンプルで、
-docs以下にある mdファイルをさがし、引数で指定した名前にマッチした markdownのファイルに
+![]()
+docs 以下にある md ファイルをさがし、引数で指定した名前にマッチした markdown のファイルに
 アクセスするためのリンクを生成します。
 
-mdファイル名が重複してしまうと成立しないのですが
+md ファイル名が重複してしまうと成立しないのですが
 自分の場合名前は重複しないようにつけているのでこれで問題ありません。
 
 この方式でリンクを書いておけば、ファイルの沖場所が変化しても
 ページをビルドした時に自動的に解決してくれます。
 
 あとは、ページのタイトル名をリンクの文字列にしてくれるので
-毎回Title名を確認したりしなくて済むのもGoodです。
+毎回 Title 名を確認したりしなくて済むのも Good です。
