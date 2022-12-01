@@ -1456,14 +1456,19 @@
         USDのInstanceについて
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../30_procedural_scenegraph/">
+        「プロシージャルシーングラフ」とは
+      </a>
+</li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_28" id="__nav_7_2_28" type="checkbox"/>
-<label class="md-nav__link" for="__nav_7_2_28">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_29" id="__nav_7_2_29" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_29">
           USDTools
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="USDTools" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_7_2_28">
+<label class="md-nav__title" for="__nav_7_2_29">
 <span class="md-nav__icon md-icon"></span>
           USDTools
         </label>
@@ -1487,13 +1492,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_29" id="__nav_7_2_29" type="checkbox"/>
-<label class="md-nav__link" for="__nav_7_2_29">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_30" id="__nav_7_2_30" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_30">
           USD 環境構築
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="USD 環境構築" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_7_2_29">
+<label class="md-nav__title" for="__nav_7_2_30">
 <span class="md-nav__icon md-icon"></span>
           USD 環境構築
         </label>
@@ -1514,13 +1519,13 @@
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_29_4" id="__nav_7_2_29_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_7_2_29_4">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_30_4" id="__nav_7_2_30_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_30_4">
           CPP
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="CPP" class="md-nav" data-md-level="4">
-<label class="md-nav__title" for="__nav_7_2_29_4">
+<label class="md-nav__title" for="__nav_7_2_30_4">
 <span class="md-nav__icon md-icon"></span>
           CPP
         </label>
@@ -1544,13 +1549,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_29_5" id="__nav_7_2_29_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_7_2_29_5">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2_30_5" id="__nav_7_2_30_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_2_30_5">
           Python
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Python" class="md-nav" data-md-level="4">
-<label class="md-nav__title" for="__nav_7_2_29_5">
+<label class="md-nav__title" for="__nav_7_2_30_5">
 <span class="md-nav__icon md-icon"></span>
           Python
         </label>
@@ -2672,16 +2677,16 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>UsdStageLoadRulesを使用してペイロードをロード/アンロード</h1>
-<p>USDのコンポジションの１つに「 <a href="../09_comp_arc_reference/">ペイロード</a>」があります。<br/>
-この、現状のステージのうち、どのSdfPathのPrimがロードされているのか？<br/>
+<p>USD のコンポジションの１つに「 <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/09_comp_arc_reference">ペイロード</a> 」があります。<br/>
+この、現状のステージのうち、どの SdfPath の Prim がロードされているのか？<br/>
 今回は、このペイロードのロード状況の取得方法についてまとめていきます。</p>
 <h2 id="usdstageloadrules">UsdStageLoadRules<a class="headerlink" href="#usdstageloadrules" title="Permanent link">¶</a></h2>
 <p>このロード状況を取得するには、 UsdStageLoadRules クラスを使用します。<br/>
-このクラスは、 <strong>UsdStageに対してペイロードを組み込む先のルール</strong> を表します。</p>
+このクラスは、 <strong>UsdStage に対してペイロードを組み込む先のルール</strong> を表します。</p>
 <p>まずは、通常の場合。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdview D:\usd\Kitchen_set\Kitchen_set.usd
 </code></pre></div></td></tr></table></div>
-<p>このようにusdviewでキッチンセットをロードします。<br/>
+<p>このように usdview でキッチンセットをロードします。<br/>
 この場合は、ペイロードはロードされた状態になっています。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d9c83e62890a6aa9a961b86582071981.png"><img alt="" src="https://gyazo.com/d9c83e62890a6aa9a961b86582071981.png"/></a></p>
 <p>この場合は、ルールは特に指定されていません。</p>
@@ -2690,12 +2695,12 @@
 <p>次に、 --unloaded を追加して、シーン内のペイロードをアンロード状態でステージを開きます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b317b4d2f2b1976ff367b7b261d1f9db.png"><img alt="" src="https://gyazo.com/b317b4d2f2b1976ff367b7b261d1f9db.png"/></a></p>
 <p>結果。<br/>
-LoadRulesを見ると  , NoneRule になっているのがわかります。<br/>
-NoneRuleとは、指定されたPrim（この場合 / なのでルート）以下にある<br/>
+LoadRules を見ると  , NoneRule になっているのがわかります。<br/>
+NoneRule とは、指定された Prim（この場合 / なのでルート）以下にある<br/>
 すべての子孫にあるペイロードを除外します。<br/>
 つまりは、すべてのペイロードがすべてアンロードされている状態です。</p>
 <p>最後に、すべてアンロードされた状態から、<br/>
-ある特定のPrimのみロードしてみます。</p>
+ある特定の Prim のみロードしてみます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2709,10 +2714,10 @@ NoneRuleとは、指定されたPrim（この場合 / なのでルート）以�
 <blockquote>
 <p>UsdStageLoadRules([ (, NoneRule) (, AllRule) ])</p>
 </blockquote>
-<p>実行すると、LoadしたPrimのSdfPathがUsdStageLoadRulesに追加されているのがわかります。<br/>
+<p>実行すると、Load した Prim の SdfPath が UsdStageLoadRules に追加されているのがわかります。<br/>
 ロード状態のものは「 AllRule」となっています。<br/>
-これは、指定されたPrim以下にあるペイロード<br/>
-（この場合はPrimの親子関係ではなく、あるPrimのコンポジションを指す）<br/>
+これは、指定された Prim 以下にあるペイロード<br/>
+（この場合は Prim の親子関係ではなく、ある Prim のコンポジションを指す）<br/>
 すべてをロードするようになります。<br/>
 これ以外のルールに、OnlyRule がありますが、こちらの場合は<br/>
 現在のペイロードのみロードするというオプションになります。</p>
@@ -2727,10 +2732,10 @@ NoneRuleとは、指定されたPrim（この場合 / なのでルート）以�
         <span class="nb">print</span><span class="p">(</span><span class="s2">"[loadPath]"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">sdfPath</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>たとえば、現在ロードされているPrimをすべて取得したい場合は<br/>
-UsdStageLoadRulesの GetRules を使用して、<br/>
-SdfPathとルールを取得すれば、ロード済のもののみ取得できます。</p>
-<p>あるいは、<br/>
+<p>たとえば、現在ロードされている Prim をすべて取得したい場合は<br/>
+UsdStageLoadRules の GetRules を使用して、<br/>
+SdfPath とルールを取得すれば、ロード済のもののみ取得できます。</p>
+<p>あるいは、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2738,12 +2743,12 @@ SdfPathとルールを取得すれば、ロード済のもののみ取得でき�
 <span class="nb">print</span><span class="p">(</span><span class="n">rules</span><span class="o">.</span><span class="n">GetEffectiveRuleForPath</span><span class="p">(</span><span class="n">loadPath</span><span class="p">))</span>
 <span class="c1"># ロードされているか</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rules</span><span class="o">.</span><span class="n">IsLoaded</span><span class="p">(</span><span class="n">loadPath</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div><br/>
-GetEffectiveRuleForPath で、SdfPathを指定すると、<br/>
-指定のSdfPathのPrimのルールを直接取得することができます。</p>
+</code></pre></div></td></tr></table></div>
+<p>GetEffectiveRuleForPath で、SdfPath を指定すると、<br/>
+指定の SdfPath の Prim のルールを直接取得することができます。</p>
 <h2 id="_1">ロードする<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>UsdStageLoadRulesで現状の取得状況を取得できましたが、<br/>
-取得だけではなくペイロードのロードも、UsdStageLoadRulesを使用することで<br/>
+<p>UsdStageLoadRules で現状の取得状況を取得できましたが、<br/>
+取得だけではなくペイロードのロードも、UsdStageLoadRules を使用することで<br/>
 実行できます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2779,10 +2784,10 @@ GetEffectiveRuleForPath で、SdfPathを指定すると、<br/>
 <span class="n">rules</span><span class="o">.</span><span class="n">SetRules</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetLoadRules</span><span class="p">(</span><span class="n">rules</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>追加する場合は、ステージの現在のUsdStageLoadRulesを取得して、<br/>
-そのルールに対して、AddRuleで追加するか<br/>
-SetRulesで、複数ルールを同時に追加してから、<br/>
-編集後のUsdStageLoadRulesを、 SetLoadRules でセットします。</p>
+<p>追加する場合は、ステージの現在の UsdStageLoadRules を取得して、<br/>
+そのルールに対して、AddRule で追加するか<br/>
+SetRules で、複数ルールを同時に追加してから、<br/>
+編集後の UsdStageLoadRules を、 SetLoadRules でセットします。</p>
 <h2 id="_2">全ロード・アンロード<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>すべてをロード・アンロードするのも、基本は同じです。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2794,18 +2799,18 @@ SetRulesで、複数ルールを同時に追加してから、<br/>
 <span class="n">stage</span><span class="o">.</span><span class="n">SetLoadRules</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">StageLoadRules</span><span class="o">.</span><span class="n">LoadAll</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
 <p>すべてをロード・アンロードするルールは、 StageLoadRules.LoadNone() あるいは LoadAll() でルールを作成できます。<br/>
-ので、そのルールをSetLaodRules で設定すれば変更することができます。</p>
+ので、そのルールを SetLaodRules で設定すれば変更することができます。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>StageやPrimのオブジェクトからLoad / Unload できていたペイロードでしたが<br/>
-UsdStageLoadRulesを使用すれば、まとめてコントロールできる事がわかりました。</p>
+<p>Stage や Prim のオブジェクトから Load / Unload できていたペイロードでしたが<br/>
+UsdStageLoadRules を使用すれば、まとめてコントロールできる事がわかりました。</p>
 <p>巨大なシーンをロードする場合は、多数のペイロードを制御することもあると思うので<br/>
-その場合は、この UsdStageLoadRulesを使用するとわかりやすそうです。</p>
+その場合は、この UsdStageLoadRules を使用するとわかりやすそうです。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-09-12 13:08:47</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-01 14:46:09</span>
 </small>
 </div>
 </article>
