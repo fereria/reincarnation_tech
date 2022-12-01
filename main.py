@@ -61,9 +61,6 @@ def searchMarkdownFile(fileName, word=""):
                 return f":fa-external-link: [{linkText}]({linkPath})"
     return ""
 
-
-searchMarkdownFile('01_usd_py_docs')
-
 FUKIDASHI_HTML = """<div class="balloon5">
   <div class="faceicon">
     <img src="{icon}">
