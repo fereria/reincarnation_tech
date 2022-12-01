@@ -6,14 +6,14 @@ tags:
     - Payloads
 ---
 
-USDのコンポジションの１つに「 [ペイロード](09_comp_arc_reference.md)」があります。
-この、現状のステージのうち、どのSdfPathのPrimがロードされているのか？
+USD のコンポジションの１つに「 {{markdown_link('09_comp_arc_reference','ペイロード')}} 」があります。
+この、現状のステージのうち、どの SdfPath の Prim がロードされているのか？
 今回は、このペイロードのロード状況の取得方法についてまとめていきます。
 
 ## UsdStageLoadRules
 
 このロード状況を取得するには、 UsdStageLoadRules クラスを使用します。
-このクラスは、 **UsdStageに対してペイロードを組み込む先のルール** を表します。
+このクラスは、 **UsdStage に対してペイロードを組み込む先のルール** を表します。
 
 まずは、通常の場合。
 
@@ -21,7 +21,7 @@ USDのコンポジションの１つに「 [ペイロード](09_comp_arc_referen
 usdview D:\usd\Kitchen_set\Kitchen_set.usd
 ```
 
-このようにusdviewでキッチンセットをロードします。
+このように usdview でキッチンセットをロードします。
 この場合は、ペイロードはロードされた状態になっています。
 
 ![](https://gyazo.com/d9c83e62890a6aa9a961b86582071981.png)
@@ -37,13 +37,13 @@ usdview D:\usd\Kitchen_set\Kitchen_set.usd --unloaded
 ![](https://gyazo.com/b317b4d2f2b1976ff367b7b261d1f9db.png)
 
 結果。
-LoadRulesを見ると </> , NoneRule になっているのがわかります。
-NoneRuleとは、指定されたPrim（この場合 / なのでルート）以下にある
+LoadRules を見ると </> , NoneRule になっているのがわかります。
+NoneRule とは、指定された Prim（この場合 / なのでルート）以下にある
 すべての子孫にあるペイロードを除外します。
 つまりは、すべてのペイロードがすべてアンロードされている状態です。
 
 最後に、すべてアンロードされた状態から、
-ある特定のPrimのみロードしてみます。
+ある特定の Prim のみロードしてみます。
 
 ```python
 prim = stage.GetPrimAtPath('/Kitchen_set/Props_grp/North_grp/NorthWall_grp/MeasuringSpoon_1')
@@ -55,10 +55,10 @@ print(rules)
 
 > UsdStageLoadRules([ (</>, NoneRule) (</Kitchen_set/Props_grp/North_grp/NorthWall_grp/MeasuringSpoon_1>, AllRule) ])
 
-実行すると、LoadしたPrimのSdfPathがUsdStageLoadRulesに追加されているのがわかります。
+実行すると、Load した Prim の SdfPath が UsdStageLoadRules に追加されているのがわかります。
 ロード状態のものは「 AllRule」となっています。
-これは、指定されたPrim以下にあるペイロード
-（この場合はPrimの親子関係ではなく、あるPrimのコンポジションを指す）
+これは、指定された Prim 以下にあるペイロード
+（この場合は Prim の親子関係ではなく、ある Prim のコンポジションを指す）
 すべてをロードするようになります。
 これ以外のルールに、OnlyRule がありますが、こちらの場合は
 現在のペイロードのみロードするというオプションになります。
@@ -73,24 +73,26 @@ for sdfPath,rule in rules.GetRules():
         print(sdfPath)
 ```
 
-たとえば、現在ロードされているPrimをすべて取得したい場合は
-UsdStageLoadRulesの GetRules を使用して、
-SdfPathとルールを取得すれば、ロード済のもののみ取得できます。
+たとえば、現在ロードされている Prim をすべて取得したい場合は
+UsdStageLoadRules の GetRules を使用して、
+SdfPath とルールを取得すれば、ロード済のもののみ取得できます。
 
 あるいは、
+
 ```python
 # effective rule AllRule/OnlyRule/NoneRule を取得する
 print(rules.GetEffectiveRuleForPath(loadPath))
 # ロードされているか
 print(rules.IsLoaded(loadPath))
 ```
-GetEffectiveRuleForPath で、SdfPathを指定すると、
-指定のSdfPathのPrimのルールを直接取得することができます。
+
+GetEffectiveRuleForPath で、SdfPath を指定すると、
+指定の SdfPath の Prim のルールを直接取得することができます。
 
 ## ロードする
 
-UsdStageLoadRulesで現状の取得状況を取得できましたが、
-取得だけではなくペイロードのロードも、UsdStageLoadRulesを使用することで
+UsdStageLoadRules で現状の取得状況を取得できましたが、
+取得だけではなくペイロードのロードも、UsdStageLoadRules を使用することで
 実行できます。
 
 ```python
@@ -113,10 +115,10 @@ rules.SetRules(r)
 stage.SetLoadRules(rules)
 ```
 
-追加する場合は、ステージの現在のUsdStageLoadRulesを取得して、
-そのルールに対して、AddRuleで追加するか
-SetRulesで、複数ルールを同時に追加してから、
-編集後のUsdStageLoadRulesを、 SetLoadRules でセットします。
+追加する場合は、ステージの現在の UsdStageLoadRules を取得して、
+そのルールに対して、AddRule で追加するか
+SetRules で、複数ルールを同時に追加してから、
+編集後の UsdStageLoadRules を、 SetLoadRules でセットします。
 
 ## 全ロード・アンロード
 
@@ -130,12 +132,12 @@ stage.SetLoadRules(Usd.StageLoadRules.LoadAll())
 ```
 
 すべてをロード・アンロードするルールは、 StageLoadRules.LoadNone() あるいは LoadAll() でルールを作成できます。
-ので、そのルールをSetLaodRules で設定すれば変更することができます。
+ので、そのルールを SetLaodRules で設定すれば変更することができます。
 
 ## まとめ
 
-StageやPrimのオブジェクトからLoad / Unload できていたペイロードでしたが
-UsdStageLoadRulesを使用すれば、まとめてコントロールできる事がわかりました。
+Stage や Prim のオブジェクトから Load / Unload できていたペイロードでしたが
+UsdStageLoadRules を使用すれば、まとめてコントロールできる事がわかりました。
 
 巨大なシーンをロードする場合は、多数のペイロードを制御することもあると思うので
-その場合は、この UsdStageLoadRulesを使用するとわかりやすそうです。
+その場合は、この UsdStageLoadRules を使用するとわかりやすそうです。

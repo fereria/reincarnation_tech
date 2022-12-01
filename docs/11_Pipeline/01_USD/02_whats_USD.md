@@ -10,7 +10,7 @@ description: USDとはどういうものか概要の説明
 
 ## リニューアルに際して
 
-[USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) は、USD についての改訂版です。
+[USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 1 日目は、USD についての改訂版です。
 
 USD の記事を最初に公開したのが 2019 年の秋ごろでした。
 この年の SIGGRAPH で USD を知り、学習を始めた当時に書いたものなので
