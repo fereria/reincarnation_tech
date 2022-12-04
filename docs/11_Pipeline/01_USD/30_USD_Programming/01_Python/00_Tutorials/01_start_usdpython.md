@@ -7,7 +7,7 @@ tags:
 description:
 ---
 
-[Universal Scene Description AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 19 日目は、0 から始める USDPython ということで
+[Universal Scene Description AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 4 日目は、0 から始める USDPython ということで
 これから USD を触り始めるテクニカルアーティスト向けに、
 Python を使用して USD をいろいろ編集するためのチュートリアルを何度かに分けて書いていこうと思います。
 
