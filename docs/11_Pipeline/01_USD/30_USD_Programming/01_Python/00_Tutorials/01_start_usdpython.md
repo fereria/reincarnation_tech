@@ -3,7 +3,7 @@ title: 0から始めるUSDPython(1)
 tags:
     - USD
     - USDPythonTutorial
-    - AdventCalendar2021
+    - AdventCalendar2022
 description:
 ---
 
@@ -169,7 +169,7 @@ stage.GetRootLayer().Save()
 
 今回の内容で、
 開いて、編集して、閉じるといったことがこれでできるようになりました。
-これだけ押さえておけば、USDのシーンの決まったPrimの値を編集するスクリプト
+これだけ押さえておけば、USD のシーンの決まった Prim の値を編集するスクリプト
 が書けるようになりますね。
 
 次回、シーン検索編に続く。
