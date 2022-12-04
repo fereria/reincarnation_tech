@@ -1,0 +1,175 @@
+---
+title: 0から始めるUSDPython(1)
+tags:
+    - USD
+    - USDPythonTutorial
+    - AdventCalendar2021
+description:
+---
+
+[Universal Scene Description AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 19 日目は、0 から始める USDPython ということで
+これから USD を触り始めるテクニカルアーティスト向けに、
+Python を使用して USD をいろいろ編集するためのチュートリアルを何度かに分けて書いていこうと思います。
+
+第 1 回目は、Python でファイルを開いたり、Prim の操作を実行していきたいと思います。
+
+## 準備
+
+まず、始める前に環境を用意します。
+
+[0 から始める TA 環境作り - エディタの設定](00_start_python)
+
+Python をインストールしていない場合は、上記のページを参考に PC に Python をインストールします。
+エディタは好きなものを利用して OK ですが、迷った場合は VSCode を使用するのがおすすめです。
+
+インストールができたら、Python で USD を使用するために pip を使用して usd-core をインストールします。
+
+![](https://gyazo.com/e24f12ef2925ac7cf7173dd36836f981.png)
+
+コマンドプロンプトを起動して、
+
+![](https://gyazo.com/82e88248e8b4f9619904c0b27d364d01.png)
+
+```bat
+pip install usd-core
+```
+
+usd-core をインストールします。
+
+![](https://gyazo.com/999ffb1ff2c79779d59cf5bb59cca3c2.png)
+
+インストールが完了したら、このように Successfully installed usd-core-#### のように表示されます。
+これで準備は完了です。
+
+## サンプルをダウンロードする
+
+USDPython の環境がよういできたら、サンプルの USD ファイルをダウンロードします。
+
+https://graphics.pixar.com/usd/release/dl_downloads.html
+
+毎度おなじみの KitchenSet からダウンロードして、zip を解凍しておきます。
+
+## import Usd
+
+準備ができたら、Python で USD をいじっていきましょう。
+
+USD を使用する場合は、 Usd モジュールをインポートします。
+Usd モジュールは、USD を作成・構成・読み取りをするためのコアモジュールです。
+たとえば、USD のシーンファイルを開いたりする場合などに使用します。
+
+```python
+from import Usd
+
+stage = Usd.Stage.Open("D:/Kitchen_set/Kitchen_set.usd")
+```
+
+Usd.Stage.Open は、その名の通り引数で指定した USD ファイルを Stage としてロードします。
+Stage とはなにかというと、
+複数のファイルを 1 つのシーンに合成して出来上がったシーングラフのことを指しています。
+
+サンプルの Kitchen_set も、数多くの USD ファイルを合成した結果
+
+![](https://gyazo.com/0a41ae104bfbc760c80bf634771c964e.png)
+
+このようなシーンが出来上がっているわけですが、
+Usd.Stage.Open() で開くと、出来上がった結果を取得することができます。
+
+## Prim を取得する
+
+![](https://gyazo.com/a9725cb71fa9930c133a29edb13e7222.png)
+
+ファイルを開くことができたので、次はシーンに含まれている「Prim」を取得してみます。
+Prim とは、データを入れるための「コンテナ（入れ物）」です。
+Maya でいうところの Node にあたり、3D に必要なデータ（アトリビュート）が
+この Prim には保存されています。
+
+まず、取得したい Prim を usdview を使用して確認してみます。
+
+```
+usdview D:/Kitchen_set/Kitchen_set.usd
+```
+
+![](https://gyazo.com/b16ab6f2a9b059d3938b95dd9d7d9058.png)
+
+流し台近くにあるカップをクリックすると、赤枠で囲んでいるあたりに /Kitchen_set/～
+から始まるパスが書かれているのがわかります。
+
+Usd の Prim は、このパス（SdfPath といいます）によって指定の Prim にアクセスすることができます。
+
+```python
+prim = stage.GetPrimAtPath("/Kitchen_set/Props_grp/North_grp/SinkArea_grp/CupCBlue_2/Geom/Cup")
+print(prim)
+```
+
+> Usd.Prim(</Kitchen_set/Props_grp/North_grp/SinkArea_grp/CupCBlue_2/Geom/Cup>)
+
+Prim にアクセスするには GetPrimAtPath コマンドを使用します。
+実行すると、Prim が取得できているのがわかります。
+
+USDPython でなにか処理をしたい場合は、基本この Prim をターゲットにしてして
+何か操作を行います。
+たとえば、オブジェクトを移動する、アトリビュートを指定する等。
+あるいは、オブジェクトの Show・Hide を切り替えたり、
+USD の特徴であるコンポジションで「リファレンス」したり「ペイロード」したり
+「バリアントセット」を指定するのもこの Prim を指定して行います。
+
+試しに、取得したカップのモデルを非表示にしてみます。
+
+![](https://gyazo.com/99936ebe9df404d8b9512bf8b9379710.gif)
+
+usdview の TreeView から Cup モデルを探し、Vis の列の「V」をクリックして表示・非表示を
+切り替えてみます。
+すると、Property の一覧をみていくと「visibility」の Value が変わっているのがわかります。
+
+つまり、モデルの表示・非表示を切り替えたい場合は
+Property を inherited から invisible にセットすればよさそう、というのがわかります。
+
+Prim には、そのデータを表すのに必要な値が [Property](17_property_attribute_relation) という形で持つことができます。
+※ Maya の Node に対して Attribute が指定できるのと同じようなもの
+
+Property には Relationship（ほかの Prim への依存関係を定義するもの）と Attribute（値）があります。
+今回の場合は、visibility という「値」なので Attribute になります。
+Python を使用して visibility を変更してみます。
+
+```python
+prim.GetAttribute("visibility").Set("invisible")
+```
+
+変更する場合は、 GetAttribute で変更したい attribute を指定し、
+Set（～～）で変更後の値を指定します。
+
+## 変更を保存する
+
+変更できたので、結果を usdview で確認してみます。
+そのために変更結果を保存します。
+
+```python
+stage.GetRootLayer().Save()
+```
+
+GetRootLayer() という謎の呪文が出てきましたが、今のところはおまじないとおもって
+このまま書いて下さい（次回ちゃんと説明します）
+これで保存したあとに、もう一度 Kithcn_set.usd を開きなおすと
+マグカップが非表示になっているかと思います。
+
+## まとめ
+
+まずはこれで USD を開いて、編集して、ファイルを保存することができました。
+
+```python
+# usdを開く
+stage = Usd.Stage.Open("D:/Kitchen_set/Kitchen_set.usd")
+# 変更対象のPrimを取得する
+prim = stage.GetPrimAtPath("/Kitchen_set/Props_grp/North_grp/SinkArea_grp/CupCBlue_2/Geom/Cup")
+# Attributeを変更する: 例の場合 Cupを非表示にする
+prim.GetAttribute("visibility").Set("invisible")
+# （上書き）保存する
+stage.GetRootLayer().Save()
+```
+
+今回の内容で、
+開いて、編集して、閉じるといったことがこれでできるようになりました。
+これだけ押さえておけば、USDのシーンの決まったPrimの値を編集するスクリプト
+が書けるようになりますね。
+
+次回、シーン検索編に続く。
