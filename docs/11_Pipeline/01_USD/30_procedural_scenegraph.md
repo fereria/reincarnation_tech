@@ -215,7 +215,7 @@ Maya は、この Stage with New Layer を使用した主にサブレイヤー�
 2023 で Bifrost を使用して、もう少し複雑な操作が可能になっていますが
 Bifrost での取り扱いは、今回の記事では割愛します（別の記事で詳細な対応状況を書こうかと思います）。
 
-## Houdini の場合
+### Houdini の場合
 
 さて、最後が Houdini の場合。
 Houdini の SOLARIS は「USD のシーングラフそのもの」といえるものです。
