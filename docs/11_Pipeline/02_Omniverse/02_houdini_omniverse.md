@@ -1,0 +1,160 @@
+---
+title: HoudiniのOmniverseをまずは触ってみる
+tags:
+    - USD
+    - Omniverse
+    - AdventCalendar2022
+description:
+---
+
+![](https://gyazo.com/d24c26a02ac8477e641dfb61c136ca79.png)
+
+![](https://gyazo.com/58273455bcb4f4d387fbf8a7193af9fb.png)
+
+![](https://gyazo.com/573964ddd30ac6b40fcb9eee82de570c.png)
+
+SideFX Houdini Omniverse Connector をインストールします。
+
+![](https://gyazo.com/d0b707d478b1f5986d8c44f8778b1a41.png)
+
+追加すると、コネクタに SideFX Houdini が追加されますので
+これで準備が完了です。
+
+## Omniverse の環境を作る
+
+!!! info
+
+    すでにOmniverseの設定がされている場合はスキップしてOKです
+
+### Nucleus サーバーの設定
+
+Houdini 側で Omniverse を使用するには、Nucleus サーバーと呼ばれる
+共同作業をする USD を置くためのサーバーを設定する必要があります。
+別 PC にサーバーを立てる方法もありますが、まずは自分の PC にローカルのサーバーを
+立てるのが良いです。
+
+![](https://gyazo.com/e228fee933c5177aa5c9cde766ff1a31.png)
+
+Omniverse の「NUCLEUS」タブを選び、
+ローカル Nucleus サービスを追加する　を選びます。
+
+![](https://gyazo.com/799a4684b3520d087d42c9fffb43ff04.png)
+
+サービスの追加でデータ置き場の指定をして次へを押し、
+
+![](https://gyazo.com/7a20b9e91de61754022aca19b486a528.png)
+
+管理用アカウントを作成します。
+これは、あくまで自分のローカルサーバーの管理アカウントなので
+ログイン情報とは別です。
+（あとで、自分のサーバーを公開して別の人と作業するときに
+アカウントを追加したりといったことをするときのアカウントです）
+
+必要な情報を入力して、「セットアップを完了する」を押すと
+サーバーの準備は完了です。
+
+## Houdini で使用する
+
+準備ができたので、Omniverse に登録されているサンプルデータを呼び出します。
+
+![](https://gyazo.com/280be5f449cf691fdb5ab6be86b0f9dd.png)
+
+Omniverse Loader ノードを作成し、
+
+![](https://gyazo.com/3ab3fe2126121ff80e07258abed6c5c9.png)
+
+Add Server を押します。
+
+![](https://gyazo.com/f602bd97528f34d3d7f5d4d77004c3db.png)
+
+そして、Server を指定（上に書いたローカルのサーバーの場合は localhost を入れる）し、「Connect」を押します。
+
+![](https://gyazo.com/acb81b8071ab498e457e08f9c15900be.png)
+
+すると、先ほどの Set Server のタブに「localhost」があるのでこれを選びます。
+
+![](https://gyazo.com/5256392f541ca8399f484ae9340b48b6.png)
+
+最後に、このアイコンを選び、
+
+![](https://gyazo.com/1b2856cded10d0bfabcbbb2d87db8db2.png)
+
+ファイルダイアログで、開くファイルを選択します。
+
+![](https://gyazo.com/14b8d2bc6fd5b428e76a563db748fc98.png)
+
+インストールされていると、
+このように omniverse://localhost という URI がついかされています。
+この下が Omniverse のサーバー上に置かれているデータになります。
+
+![](https://gyazo.com/550e33e19748fd8865cf472e55ba282d.png)
+
+今回は、NVIDIA/Samples/OldAttic を選び Attic_NVIDIA.usd を開きます。
+
+![](https://gyazo.com/395cdeafb25948d62035c7414f3dbfa0.png)
+
+これで開くことができました。
+
+![](https://i.gyazo.com/82118cc2d40369bddd8e92a87b3ef41f.jpg)
+
+## 現状できること
+
+最後に、[現状のドキュメント](https://docs.omniverse.nvidia.com/con_connect/con_connect/houdini.html)をざっくり読んで、できることをメモしておこうと思います。
+
+### 読み込み
+
+Nucleus のファイルパス（omniverse://localhost/～）から直接 USD を Houdini ロードできるというのがあります。
+これは上に書いたように USD を LOP 上に読むだけではなく、bgeo などでも利用することができ、
+
+![](https://gyazo.com/34451484fc745ef950354b618d483673.png)
+
+SOP などで、 bgeo を Omniverse のサーバー上に保存し、
+
+![](https://gyazo.com/7955cab787fceeb5353e48e0f31cd424.png)
+
+保存したファイルを、 File ノードでロードするときにも
+Geometry File を Omniverse のサーバーのパスで記述できます。
+
+### 保存
+
+![](https://gyazo.com/92883a1de09a8994c5b6bf7c4e1174f8.png)
+
+HoudiniSOLARIS 上で作成したモデルを、Omniverse 上に保存ができます。
+Export 時はは、Omniverse USD ROP 　という、専用の USD ROP を使用します。
+
+![](https://gyazo.com/6eb194191e03485acad091f97f5075dd.png)
+
+material は、 MDL の material が追加されているので、 MaterialNetwork 上で material を作成します。
+
+![](https://gyazo.com/c953d67c054219a6f812950d73dd8390.png)
+
+試しに PigHead のテクスチャを貼り付けておきます。
+
+![](https://gyazo.com/fdfa24e10a500a405101007ed0cff2d1.png)
+
+MaterialLibrary ノードでアサインします。
+
+![](https://gyazo.com/97b383fdc513ff74a893f9d9c8d1c670.png)
+
+USD ROP で Output FIle を、Omniverse のサーバー上に保存します。
+
+![](https://gyazo.com/1e934069b375788ff0478a433b781c79.png)
+
+しかし、このままだと opdef:/sop という Houdini 上でのみ使用できる URI のパスが
+使用されているので、テクスチャがロードできないので
+Omniverse Texture Export を ON にしておきます。
+
+![](https://gyazo.com/6a2762794a741c6ba2a430060695e91a.png)
+
+Create 上で表示した例。
+テクスチャもちゃんと Export され、表示されました。
+
+いわゆる LiveLink 的なことはまだできませんが、Omniverse 上にあるアセットを
+Houdini で簡単にロードしたり、作成したアセットを
+Omniverse で使用できる material 付きのアセットとして保存できるので
+Houdini の便利なプロシージャルでのレイアウトを使いつつ
+Omniverse と連携といったことも簡単にできそうです。
+
+Loader の Checkpoint など、Omniverse 的な情報がわからず
+深堀できていない点も多いので
+引き続き検証していければとおもいます。
