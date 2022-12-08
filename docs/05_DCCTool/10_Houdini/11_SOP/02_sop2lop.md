@@ -7,7 +7,7 @@ tags:
 description:
 ---
 
-[USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 6 日目は
+[USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 9 日目は
 {{markdown_link('01_importlop')}} で無理やり LOP から持ち込んだデータを
 SOP で編集してから LOP 側に戻してみます。
 
