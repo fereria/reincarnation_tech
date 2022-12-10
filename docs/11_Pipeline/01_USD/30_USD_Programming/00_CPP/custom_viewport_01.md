@@ -6,7 +6,7 @@ tags:
 description:
 ---
 
-[USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 日目は C++と imgui で USD のビューポートを作ろう です。
+[USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 10 日目は C++と imgui で USD のビューポートを作ろう です。
 
 ![](https://gyazo.com/c8a3e25d0fb8c6df9558cd966603891a.gif)
 
@@ -85,7 +85,7 @@ Imgui は、メインループの都度舞フレーム実行することにな�
 この場合 while の中がこれにあたり、このメインループの中でカメラの位置計算や実際の描画処理を
 書いていく必要があります。
 
-![[viewport_01.png]]
+<img src="https://gyazo.com/8c0fcf8b1d366bf573090c89de96bf7c.png" width=150>
 
 stageView.py の処理を参考にして全体の流れを書き出すと、こんな感じになります。
 カメラの作成は、シーンに含まれるカメラというより
