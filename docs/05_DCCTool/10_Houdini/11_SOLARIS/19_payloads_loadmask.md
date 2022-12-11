@@ -83,8 +83,8 @@ Load all payloads in viewport を ON にした上で、
 ConfigureStage ノードを追加します。
 Configure ノードを使用すると、
 
--   [PopulationMask](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/19_population_mask/)
--   [UsdStageLoadRules](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/16_UsdStageLoadRules/)
+-   {{markdown_link('19_population_mask')}}
+-   {{markdown_link('16_UsdStageLoadRules')}}
 
 を、SOLARIS 上で設定・使用できます。
 
