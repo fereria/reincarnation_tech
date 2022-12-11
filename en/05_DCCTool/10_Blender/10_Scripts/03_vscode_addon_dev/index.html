@@ -2737,21 +2737,21 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>VSCodeでAddon開発</h1>
-<p>まず、事前に <a href="../00_vscode_settings/">VSCodeの事前準備</a>をしておきます。<br/>
-そして、VSCodeのワークスペースを作ります。</p>
+<p>まず、事前に <a href="../00_vscode_settings/">VSCode の事前準備</a>をしておきます。<br/>
+そして、VSCode のワークスペースを作ります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b166d25f88ebee60d973d9c14e160727.png"><img alt="" src="https://gyazo.com/b166d25f88ebee60d973d9c14e160727.png"/></a></p>
 <p>コマンドパレットから Blender: New Addon を選びます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/695da395f575b9b3d88dadcc84f81d43.png"><img alt="" src="https://gyazo.com/695da395f575b9b3d88dadcc84f81d43.png"/></a></p>
-<p>Templateは、With Auto Loadを選びます。</p>
+<p>Template は、With Auto Load を選びます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f721acc56876b5e14e87ce550853a855.png"><img alt="" src="https://gyazo.com/f721acc56876b5e14e87ce550853a855.png"/></a></p>
-<p>Addonの名前と</p>
+<p>Addon の名前と</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c0dbb117c127358c705a7f36e41325ca.png"><img alt="" src="https://gyazo.com/c0dbb117c127358c705a7f36e41325ca.png"/></a></p>
 <p>名前を入れて、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cb1ac1563b77fe47531d3353a7d7675c.png"><img alt="" src="https://gyazo.com/cb1ac1563b77fe47531d3353a7d7675c.png"/></a></p>
-<p>どこにAddonを作るか聞かれるので、現在のワークスペース以下を指定します。</p>
+<p>どこに Addon を作るか聞かれるので、現在のワークスペース以下を指定します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1c8cc72894009e1882e09b6df5afd277.png"><img alt="" src="https://gyazo.com/1c8cc72894009e1882e09b6df5afd277.png"/></a></p>
-<p>OpenFileは、 __init__.py を選びます。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>OpenFile は、 __init__.py を選びます。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2790,11 +2790,11 @@
 
 <span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
     <span class="n">auto_load</span><span class="o">.</span><span class="n">unregister</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div><br/>
-すると、 __init__.py に、 bl_info や、 register unregisterの構造が<br/>
+</code></pre></div></td></tr></table></div>
+<p>すると、 __init__.py に、 bl_info や、 register unregister の構造が<br/>
 自動で作られます。</p>
-<p>最初に auto_load.py を選んだ場合、現在のプロジェクト以下にあるPythonファイルを自動で検索し、Addon用のクラスが含まれている場合文字通り「自動で」ロードしてくれます。</p>
-<p>試しに、プロジェクト以下にsampleUI.py を作り、</p>
+<p>最初に auto_load.py を選んだ場合、現在のプロジェクト以下にある Python ファイルを自動で検索し、Addon 用のクラスが含まれている場合文字通り「自動で」ロードしてくれます。</p>
+<p>試しに、プロジェクト以下に sampleUI.py を作り、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2821,35 +2821,35 @@
 </code></pre></div></td></tr></table></div>
 <p>中身をこのようにして保存します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3d22729f5c1bb1de63fcce033d2625ee.png"><img alt="" src="https://gyazo.com/3d22729f5c1bb1de63fcce033d2625ee.png"/></a></p>
-<p>保存したら、Blender:StartでBlenderを起動します。</p>
+<p>保存したら、Blender:Start で Blender を起動します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/114b537d4de97d4aa86ccf36bb147c47.png"><img alt="" src="https://gyazo.com/114b537d4de97d4aa86ccf36bb147c47.png"/></a></p>
-<p>Blenderを起動すると、先ほどのAddonは自動でAppData以下にコピーされ<br/>
+<p>Blender を起動すると、先ほどの Addon は自動で AppData 以下にコピーされ<br/>
 ロードされた状態になります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1118781771c2e6d7af01d7aa2c6b1c20.png"><img alt="" src="https://gyazo.com/1118781771c2e6d7af01d7aa2c6b1c20.png"/></a></p>
-<p>無事Addonがロードされ、先ほどの sampleUI にある SamplePanelが追加されました。</p>
+<p>無事 Addon がロードされ、先ほどの sampleUI にある SamplePanel が追加されました。</p>
 <h2 id="_1">自動ロード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>無事追加できましたが、編集するたびにBlenderを再起動するのはめんどくさいです。<br/>
-ので、ファイルを保存したら自動でAddonをリロードするようにしておきます。</p>
+<p>無事追加できましたが、編集するたびに Blender を再起動するのはめんどくさいです。<br/>
+ので、ファイルを保存したら自動で Addon をリロードするようにしておきます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7b5e07b46be8e55a0012fe63109c665a.png"><img alt="" src="https://gyazo.com/7b5e07b46be8e55a0012fe63109c665a.png"/></a></p>
-<p>VSCodeの設定から、 Blender&gt;Addon: Reload On Save をオンにしておきます。<br/>
-ONにすると、ファイルが変更されるたびにAddonがリロードされ<br/>
-Blender側で確認をすることができます。</p>
+<p>VSCode の設定から、 Blender&gt;Addon: Reload On Save をオンにしておきます。<br/>
+ON にすると、ファイルが変更されるたびに Addon がリロードされ<br/>
+Blender 側で確認をすることができます。</p>
 <h2 id="_2">デバッグ<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>VSCodeからStartした場合、VSCodeのデバッグ機能を使うことができます。</p>
+<p>VSCode から Start した場合、VSCode のデバッグ機能を使うことができます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/44f6fbc967e0eb7baa463ec78480b9fe.png"><img alt="" src="https://gyazo.com/44f6fbc967e0eb7baa463ec78480b9fe.png"/></a></p>
-<p>たとえば、ブレークポイントをセットした状態で適当に編集→保存します。<br/>
+<p>たとえば、ブレークポイントをセットした状態で適当に編集 → 保存します。<br/>
 すると、ブレークポイント部分で止めることができました。<br/>
-<a href="https://fereria.github.io/reincarnation_tech/10_Programming/50_VSCode/vscode_debug/">https://fereria.github.io/reincarnation_tech/10_Programming/50_VSCode/vscode_debug/</a><br/>
-あとはこちらにあるとおり、VSCodeの機能を使ってデバッグできます。</p>
+<i class="fa fa-external-link"></i> <a href="/reincarnation_tech/10_Programming/50_VSCode/vscode_debug">VSCodeでPythonデバッグ</a></p>
+<p>あとはこちらにあるとおり、VSCode の機能を使ってデバッグできます。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>VSCodeを使うと、BlenderのAddon開発も<br/>
+<p>VSCode を使うと、Blender の Addon 開発も<br/>
 だいぶ効率的に進められそうです。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-12 01:36:00</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-11 14:36:07</span>
 </small>
 </div>
 </article>

@@ -616,7 +616,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#brush">
-    Brushで配置する
+    Brush で配置する
   </a>
 </li>
 <li class="md-nav__item">
@@ -2751,7 +2751,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#brush">
-    Brushで配置する
+    Brush で配置する
   </a>
 </li>
 <li class="md-nav__item">
@@ -2785,51 +2785,51 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>LayoutAssetGalleryとLayout</h1>
-<p>ComponentBuilderでUSDアセットの作り方を紹介しましたが、<br/>
-Houdini19では、作ったアセットを配置する（レイアウトする）きのうも大幅に強化されていたので<br/>
+<p>ComponentBuilder で USD アセットの作り方を紹介しましたが、<br/>
+Houdini19 では、作ったアセットを配置する（レイアウトする）きのうも大幅に強化されていたので<br/>
 そのあたりを紹介しようと思います。</p>
 <h2 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">¶</a></h2>
-<p>18.5では、USDアセットのレイアウトを使用とした場合<br/>
-Stageに対してオブジェクトを1つずつ読み込んで配置するしかありませんでした。<br/>
-PointInstancerなども<a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/05_point_instancer/">以前こちらに書きました</a>が、SOPでPointを作成してからSOLARIS上で<br/>
+<p>18.5 では、USD アセットのレイアウトを使用とした場合<br/>
+Stage に対してオブジェクトを 1 つずつ読み込んで配置するしかありませんでした。<br/>
+PointInstancer なども<a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/05_point_instancer/">以前こちらに書きました</a>が、SOP で Point を作成してから SOLARIS 上で<br/>
 ノードを作るなど、なかなか直感的ではありませんでした。</p>
-<p>ですが、Houdini19で新しく追加されたLayoutノードと、LayoutAssetGalleryを使用すると<br/>
+<p>ですが、Houdini19 で新しく追加された Layout ノードと、LayoutAssetGallery を使用すると<br/>
 かなり直感的にインスタンスの配置ができるようになっています。</p>
 <h3 id="_1">使ってみる<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ae31bae6e789e2147f35fbbe974779b8.png"><img alt="" src="https://gyazo.com/ae31bae6e789e2147f35fbbe974779b8.png"/></a></p>
-<p>まず、SOLARISのStageで、Layoutノードを作成します。</p>
+<p>まず、SOLARIS の Stage で、Layout ノードを作成します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/65fde9dcf1394b835996d938dc93933f.png"><img alt="" src="https://gyazo.com/65fde9dcf1394b835996d938dc93933f.png"/></a></p>
-<p>Layoutノードを作ると、PointInstancerノードが作成できました。<br/>
-次に、Layoutノードにインスタンス配置したいアセットを読み込みます。</p>
+<p>Layout ノードを作ると、PointInstancer ノードが作成できました。<br/>
+次に、Layout ノードにインスタンス配置したいアセットを読み込みます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d5dc1f36228622ab866293ebac1a05da.png"><img alt="" src="https://gyazo.com/d5dc1f36228622ab866293ebac1a05da.png"/></a></p>
-<p>NewPaneTabTypeからSolaris＞LayoutAssetGalleryを開きます。<br/>
+<p>NewPaneTabType から Solaris ＞ LayoutAssetGallery を開きます。<br/>
 デフォルトだと何も入っていないので、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3d9f9d27943a0f44784b58759d5e2ce4.png"><img alt="" src="https://gyazo.com/3d9f9d27943a0f44784b58759d5e2ce4.png"/></a></p>
 <p>フォルダマークから、アセットのディレクトリを指定して<br/>
-USDアセットを登録します。<br/>
-今回は、Kitchen_setの assetsフォルダを指定します。</p>
+USD アセットを登録します。<br/>
+今回は、Kitchen_set の assets フォルダを指定します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a139d1e3b99392c2dd6e8fc5739c624e.png"><img alt="" src="https://gyazo.com/a139d1e3b99392c2dd6e8fc5739c624e.png"/></a></p>
-<p>OKを押すと、サムネが自動で作成されます（そこそこ時間がかかる）</p>
+<p>OK を押すと、サムネが自動で作成されます（そこそこ時間がかかる）</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/68d47b46595809bb2522ef06b917094b.png"><img alt="" src="https://gyazo.com/68d47b46595809bb2522ef06b917094b.png"/></a></p>
 <p>終わると、このようにアセットの登録ができました。</p>
 <blockquote>
 <p>メモ<br/>
-Kitchen_setはZupだけど、SOLARISはYupのようなのでサムネがおかしなことになった...</p>
+Kitchen_set は Zup だけど、SOLARIS は Yup のようなのでサムネがおかしなことになった...</p>
 </blockquote>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/887f5ffc1741aa0108dccf97751d0a8a.gif"><img alt="" src="https://gyazo.com/887f5ffc1741aa0108dccf97751d0a8a.gif"/></a></p>
-<p>TabをBrushにして、<br/>
-登録したアセットから、レイアウトしたいアセットをDrag＆Dropで移動します。</p>
+<p>Tab を Brush にして、<br/>
+登録したアセットから、レイアウトしたいアセットを Drag＆Drop で移動します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d98affeeb886e05a1a357f3e03610ccd.png"><img alt="" src="https://gyazo.com/d98affeeb886e05a1a357f3e03610ccd.png"/></a></p>
-<p>Drag＆Dropすると、PointInstancerにオブジェクトが登録されます。</p>
-<h2 id="brush">Brushで配置する<a class="headerlink" href="#brush" title="Permanent link">¶</a></h2>
+<p>Drag＆Drop すると、PointInstancer にオブジェクトが登録されます。</p>
+<h2 id="brush">Brush で配置する<a class="headerlink" href="#brush" title="Permanent link">¶</a></h2>
 <p>これで配置する準備ができました。<br/>
-配置するには、Brushを「Place1」に変更します。</p>
+配置するには、Brush を「Place1」に変更します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c5b67006156019d81b601e38320a0991.png"><img alt="" src="https://gyazo.com/c5b67006156019d81b601e38320a0991.png"/></a></p>
-<p>使い方は、Viewportに表示されているので<br/>
+<p>使い方は、Viewport に表示されているので<br/>
 それを参考にポチポチ置いてきます。<br/>
-置いたところにPointが配置され、インスタンスオブジェクトが置かれます。</p>
+置いたところに Point が配置され、インスタンスオブジェクトが置かれます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0c4013e9e68669010abe0106b5c4fe4d.png"><img alt="" src="https://gyazo.com/0c4013e9e68669010abe0106b5c4fe4d.png"/></a></p>
-<p>Place Up/Forwardを、配置するアセットに応じて変更し（Kitchen_setはZup）<br/>
+<p>Place Up/Forward を、配置するアセットに応じて変更し（Kitchen_set は Zup）<br/>
 配置するアセットを選択します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6966e65c5357cc3367ba40c0407fdd5a.gif"><img alt="" src="https://gyazo.com/6966e65c5357cc3367ba40c0407fdd5a.gif"/></a></p>
 <p>あとは、ビューポート上をポチポチすると、インスタンスオブジェクトの配置ができます。</p>
@@ -2838,25 +2838,25 @@ Kitchen_setはZupだけど、SOLARISはYupのようなのでサムネがおか�
 <h2 id="_2">指定の範囲に配置する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c993f8ed87ce3b8f81d8ef110de2c265.gif"><img alt="" src="https://gyazo.com/c993f8ed87ce3b8f81d8ef110de2c265.gif"/></a></p>
 <p>次に、指定範囲内にばらまきたい場合。<br/>
-この場合はFill1を使用して、矩形を指定します。<br/>
+この場合は Fill1 を使用して、矩形を指定します。<br/>
 この場合もオブジェクトに沿った形で（机の上のようなところに）配置できます。</p>
-<p>配置したPointを削除するにはDeleteBrushを使用します。</p>
+<p>配置した Point を削除するには DeleteBrush を使用します。</p>
 <p>このあたりの操作は非常に直感的でわかりやすいです。</p>
 <h2 id="_3">アセットの追加<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>Layout用のアセットを登録したい場合は、ComponentBuilderを使用すれば簡単に追加することができます。<br/>
-<a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/16_component_builder/#layoutassetgallery">https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/16_component_builder/#layoutassetgallery</a><br/>
-追加方法やComponentBuilderの使い方は、↑のページにまとめましたので参考にしてください。</p>
+<p>Layout 用のアセットを登録したい場合は、ComponentBuilder を使用すれば簡単に追加することができます。<br/>
+<i class="fa fa-external-link"></i> <a href="/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/16_component_builder">ComponentBuilderで遊ぼう</a><br/>
+追加方法や ComponentBuilder の使い方は、↑ のページにまとめましたので参考にしてください。</p>
 <h2 id="_4">出力する・確認する<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/16507f0923391b1a58fb649659950ecc.png"><img alt="" src="https://gyazo.com/16507f0923391b1a58fb649659950ecc.png"/></a></p>
-<p>配置したあとは、USDROPで出力が可能です。</p>
+<p>配置したあとは、USDROP で出力が可能です。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/dcdc64429d8b68a79235ae4e3937a47c.png"><img alt="" src="https://gyazo.com/dcdc64429d8b68a79235ae4e3937a47c.png"/></a></p>
-<p>アセットは、PointInstancer以下のPrototypes以下にReferenceで読み込まれ配置されています。<br/>
-もちろん出力したファイルもUSDなので、このファイルをどこかのShotにリファレンスして使うことも可能です。</p>
+<p>アセットは、PointInstancer 以下の Prototypes 以下に Reference で読み込まれ配置されています。<br/>
+もちろん出力したファイルも USD なので、このファイルをどこかの Shot にリファレンスして使うことも可能です。</p>
 <h2 id="_5">まとめ<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<p>以上、Houdini19で追加されたLayoutノードをざっくり触ってみました。<br/>
+<p>以上、Houdini19 で追加された Layout ノードをざっくり触ってみました。<br/>
 <a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/05_point_instancer/">https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/05_point_instancer/</a><br/>
-PointInstancerに関しては以前も調べていましたが、その時に比べて<br/>
-Brushを使ったレイアウトになっていて、非常に扱いやすく強力でした。</p>
+PointInstancer に関しては以前も調べていましたが、その時に比べて<br/>
+Brush を使ったレイアウトになっていて、非常に扱いやすく強力でした。</p>
 <p>アセットの管理も、Layout Asset Gallery を使用すれば</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7c04154ed7e675686de2618183cb7ebd.png"><img alt="" src="https://gyazo.com/7c04154ed7e675686de2618183cb7ebd.png"/></a></p>
 <p>カラータグや</p>
@@ -2864,16 +2864,16 @@ Brushを使ったレイアウトになっていて、非常に扱いやすく強
 <p>お気に入り（★）を追加して、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8156b838bc9f9e2a502fd4b269ac3fb8.png"><img alt="" src="https://gyazo.com/8156b838bc9f9e2a502fd4b269ac3fb8.png"/></a></p>
 <p>細かくフィルタ表示もできるようになっているので、<br/>
-USDベースで作成したアセットライブリが簡単に扱えるようになっているので<br/>
-ComponentBuilderと合わせれば、USDでのレイアウト環境が整ったと思います。</p>
-<p>LayoutBrushは自作もできるようなので、カスタマイズしていけば<br/>
+USD ベースで作成したアセットライブリが簡単に扱えるようになっているので<br/>
+ComponentBuilder と合わせれば、USD でのレイアウト環境が整ったと思います。</p>
+<p>LayoutBrush は自作もできるようなので、カスタマイズしていけば<br/>
 さらに効率的にレイアウトができそうです。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-12 01:36:00</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-11 14:36:07</span>
 </small>
 </div>
 </article>

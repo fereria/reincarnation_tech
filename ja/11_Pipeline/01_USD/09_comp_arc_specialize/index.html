@@ -1365,7 +1365,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#inherits">
-    Inheritsとの比較
+    Inherits との比較
   </a>
 </li>
 <li class="md-nav__item">
@@ -2718,7 +2718,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#inherits">
-    Inheritsとの比較
+    Inherits との比較
   </a>
 </li>
 <li class="md-nav__item">
@@ -2743,66 +2743,66 @@
 </a>
 <h1>CompArc(5) 特殊化（Specialize）</h1>
 <p>コンポジションの中でもかなり特殊すぎて、詳しく構造を調べていなかった<br/>
-Specializeを紹介しようと思います。</p>
-<p>コンポジションの強さ（LIVRPS）では最も弱いのがSpecializeです。<br/>
+Specialize を紹介しようと思います。</p>
+<p>コンポジションの強さ（LIVRPS）では最も弱いのが Specialize です。<br/>
 その挙動は継承（Inherits）とよく似ていますが<br/>
-重要な違いとして Specialize/Inherits とReference 比べてオピニオンが<br/>
+重要な違いとして Specialize/Inherits と Reference 比べてオピニオンが<br/>
 強いか弱いか...という違いがあります。<br/>
 文字だけだとわかりにくいので、<br/>
 <a href="https://graphics.pixar.com/usd/docs/USD-Glossary.html#USDGlossary-Specializes">https://graphics.pixar.com/usd/docs/USD-Glossary.html#USDGlossary-Specializes</a><br/>
-USD GlossaryのSpecialize にかかれているサンプルを使用して<br/>
+USD Glossary の Specialize にかかれているサンプルを使用して<br/>
 図で説明してみようと思います。</p>
 <h2 id="specialize">Specialize<a class="headerlink" href="#specialize" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0929bd6be687af78762b20911fbf22e9.png"><img alt="" src="https://gyazo.com/0929bd6be687af78762b20911fbf22e9.png"/></a></p>
 <p>Robot.usd と RobotScene.usd の２つのレイヤー内のコンポジションは<br/>
 このようになっています。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6cbd36de900b63e8030620da6484f76e.png"><img alt="" src="https://gyazo.com/6cbd36de900b63e8030620da6484f76e.png"/></a></p>
-<p>まず、サンプルをusdviewで表示するとこのようになります。<br/>
+<p>まず、サンプルを usdview で表示するとこのようになります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>            # specialize roughness...
             float inputs:specularRoughness = 0.2
-</code></pre></div></td></tr></table></div><br/>
-Robot.usd の CorrdedMetal の specularRoughness に、 0.2 とある通り<br/>
+</code></pre></div></td></tr></table></div>
+<p>Robot.usd の CorrdedMetal の specularRoughness に、 0.2 とある通り<br/>
 最終的な結果を見ても 0.2 になっています。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3e1854cc497c91cadf44f563ad6aab86.png"><img alt="" src="https://gyazo.com/3e1854cc497c91cadf44f563ad6aab86.png"/></a></p>
 <p>Specialize は Reference よりも弱いオピニオンなので、<br/>
-Compositionを確認すると、Robot.usdでまずSpecializeで合成され<br/>
+Composition を確認すると、Robot.usd でまず Specialize で合成され<br/>
 その合成されたあとに Reference されていることがわかります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a1a62d7f8e46c2a629a4c4a1d46e4eb9.png"><img alt="" src="https://gyazo.com/a1a62d7f8e46c2a629a4c4a1d46e4eb9.png"/></a></p>
 <p>コンポジションの順番を追記すると、このようになります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1a31e11a753fa0cfe381f4ef22a47752.png"><img alt="" src="https://gyazo.com/1a31e11a753fa0cfe381f4ef22a47752.png"/></a></p>
-<p>ここで注目なのが、Robot.usdの CorrodedMetal.specularRoughness です。</p>
+<p>ここで注目なのが、Robot.usd の CorrodedMetal.specularRoughness です。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e5a6133b3ebdf21ee9793f2beffa0392.png"><img alt="" src="https://gyazo.com/e5a6133b3ebdf21ee9793f2beffa0392.png"/></a></p>
-<p>diffuseGainは、Specializeのおかげで Metal.diffuseGainの値が合成されていますが<br/>
-specularRoughness は、CorrodedMetalにオピニオンがあるため、その値が優先され 0.2になります。</p>
-<h2 id="inherits">Inheritsとの比較<a class="headerlink" href="#inherits" title="Permanent link">¶</a></h2>
-<p>比較のためにInheritsに変更するとどうなるか確認してみます。</p>
+<p>diffuseGain は、Specialize のおかげで Metal.diffuseGain の値が合成されていますが<br/>
+specularRoughness は、CorrodedMetal にオピニオンがあるため、その値が優先され 0.2 になります。</p>
+<h2 id="inherits">Inherits との比較<a class="headerlink" href="#inherits" title="Permanent link">¶</a></h2>
+<p>比較のために Inherits に変更するとどうなるか確認してみます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/db15a41b4a4e67e53d46a858a966df36.png"><img alt="" src="https://gyazo.com/db15a41b4a4e67e53d46a858a966df36.png"/></a></p>
-<p>Inheritsの場合は、最終的な合成結果が変わっているのがわかると思います。</p>
+<p>Inherits の場合は、最終的な合成結果が変わっているのがわかると思います。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1992a9c4e6d3d2ba6e9ae9530b593b29.png"><img alt="" src="https://gyazo.com/1992a9c4e6d3d2ba6e9ae9530b593b29.png"/></a></p>
-<p>Compositionを比較してみると、一目瞭然で<br/>
-Referenceを基準にしてみると InheritsはReferenceより強く<br/>
-SpecializeはReferenceより弱いことがわかります。</p>
+<p>Composition を比較してみると、一目瞭然で<br/>
+Reference を基準にしてみると Inherits は Reference より強く<br/>
+Specialize は Reference より弱いことがわかります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/576c961311e8adc5a0aac3b59de59506.png"><img alt="" src="https://gyazo.com/576c961311e8adc5a0aac3b59de59506.png"/></a></p>
-<p>Inheritsの場合は、まず先にReferenceが合成されます。<br/>
-RobotがRosieにリファレンスされ、そのLocalの 0.1 がMetalに合成されます。<br/>
-InheritsはそのPrimを合成するので、 Metal と CorrodedMetalの値が同じになります。</p>
-<p>つまり、SpecializeとはInheritsと基本同じだが、コンポジションの解決順序が異なるため<br/>
-大量のReferenceをInheritsでまとめて編集できるInheritsに対して、<br/>
-Referenceよりも弱いことから、<br/>
-結果、「<strong>Referenceの空間内でInheritsする</strong>」挙動になるということがわかりました。</p>
-<p>最初に説明した通り「Referenceより弱いか・強いか」というのが大きな差になることから、<br/>
-RobotScene.usd にリファレンスする前のRobot.usd では、<br/>
- Inherits であっても Specialize であってもその結果は変わりません。</p>
+<p>Inherits の場合は、まず先に Reference が合成されます。<br/>
+Robot が Rosie にリファレンスされ、その Local の 0.1 が Metal に合成されます。<br/>
+Inherits はその Prim を合成するので、 Metal と CorrodedMetal の値が同じになります。</p>
+<p>つまり、Specialize とは Inherits と基本同じだが、コンポジションの解決順序が異なるため<br/>
+大量の Reference を Inherits でまとめて編集できる Inherits に対して、<br/>
+Reference よりも弱いことから、<br/>
+結果、「<strong>Reference の空間内で Inherits する</strong>」挙動になるということがわかりました。</p>
+<p>最初に説明した通り「Reference より弱いか・強いか」というのが大きな差になることから、<br/>
+RobotScene.usd にリファレンスする前の Robot.usd では、<br/>
+Inherits であっても Specialize であってもその結果は変わりません。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>以上が Specialize(特殊化)の挙動についてのまとめになります。<br/>
 思っていたよりもかなり特殊な処理なので、ぱっと使い所が思いつかないですが<br/>
-<a href="https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/#_11">https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/#_11</a><br/>
-以前HoudiniでのUSDセットアップの継承で説明したように<br/>
-Referenceよりも強いオピニオンであることを利用して、<br/>
-大量のリファレンスしたアセットをまとめて編集する...というのがInherits(継承)であるのに対して<br/>
+<i class="fa fa-external-link"></i> <a href="/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/13_create_usdAssets_01">SOLARISでUSDアセットを作ろう</a></p>
+<p>以前 Houdini での USD セットアップの継承で説明したように<br/>
+Reference よりも強いオピニオンであることを利用して、<br/>
+大量のリファレンスしたアセットをまとめて編集する...というのが Inherits(継承)であるのに対して<br/>
 サンプルのように、リファレンス先のマテリアルの一部バリエーション違いを作る...といった使い方をすれば良いのかな？と思います。</p>
-<p>これにて全6種類のコンポジションの動作説明は終了です。<br/>
+<p>これにて全 6 種類のコンポジションの動作説明は終了です。<br/>
 あとは、このコンポジションの解決順序・挙動を踏まえて、シーンをどのように構築するか<br/>
 考えることになります。</p>
 <hr/>
@@ -2810,7 +2810,7 @@ Referenceよりも強いオピニオンであることを利用して、<br/>
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-06-05 03:47:37</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-11 14:36:07</span>
 </small>
 </div>
 </article>
