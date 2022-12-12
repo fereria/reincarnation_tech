@@ -114,7 +114,7 @@ Layout 用のアセットを登録したい場合は、ComponentBuilder を使�
 ## まとめ
 
 以上、Houdini19 で追加された Layout ノードをざっくり触ってみました。
-https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/05_point_instancer/
+{{markdown_link('05_point_instancer')}}
 PointInstancer に関しては以前も調べていましたが、その時に比べて
 Brush を使ったレイアウトになっていて、非常に扱いやすく強力でした。
 

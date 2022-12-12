@@ -79,7 +79,7 @@ Windows の設定に（いわゆるグローバルな環境に）どんどんイ
 
 VSCode で Python を触る場合に、さらに独立した、再現可能な環境を作りたい場合は
 pipenv を使用した環境を追加で作ることをお勧めします。
-詳細は :fa-external-link: [pipenv を使用した Python 開発環境の作り方](https://fereria.github.io/reincarnation_tech/10_Programming/00_Python/00_Setup/pipenv_statup/) を参照してください。
+詳細は {{markdown_link('pipenv_statup')}} を参照してください。
 
 ## さらに環境を整備していく
 

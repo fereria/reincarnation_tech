@@ -5,13 +5,12 @@ tags:
     - AdventCalendar2021
 ---
 
-[Universal Scene Description](https://qiita.com/advent-calendar/2021/usd) 8日目は、
-USDのStageとLayer、そしてSpecとはなにか？というのを説明していこうと思います。
+[Universal Scene Description](https://qiita.com/advent-calendar/2021/usd) 8 日目は、
+USD の Stage と Layer、そして Spec とはなにか？というのを説明していこうと思います。
 
+## Stage とは
 
-## Stageとは
-
-USDに触れていると、この「Stage（ステージ）」という言葉はあらゆるところで見られます。
+USD に触れていると、この「Stage（ステージ）」という言葉はあらゆるところで見られます。
 [アドカレ２日目の記事](https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09#%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AE-usda)曰く
 
 > しかしちょっと待ってください。USD では厳密に言うと、
@@ -20,30 +19,30 @@ USDに触れていると、この「Stage（ステージ）」という言葉は
 > 八百万の神々が集まり本当に世界を生み出すところは出雲（Stage）と呼ばれますが、
 > その話はこのアドカレの別の記事 で @fereria さんが明らかにしてくれるでしょう。
 
-ということで、今回はそのStageと現在開こうとしているUSDファイルとの違い
+ということで、今回はその Stage と現在開こうとしている USD ファイルとの違い
 八百万の神々が集まり本当に世界を生み出すところは出雲（Stage）について詳しく説明したいとおもいます。
 
-## USDと今までのフォーマットとの違い
+## USD と今までのフォーマットとの違い
 
-多くのフォーマット（FBXだったり、OBJだったり、GLTFだったり）では、
+多くのフォーマット（FBX だったり、OBJ だったり、GLTF だったり）では、
 １つのファイルに１つのシーングラフが保存されています。
 
 ![](https://gyazo.com/d7969029777a1af21f8b1baa2ae23c29.png)
 
-なので、たとえば複数に分かれたFBXをレンダリングする場合などに
-Mayaでインポートなどをした場合も、それはあくまで１つのMayaシーンになる（統合される）
-だけで、Mayaシーンが複数のFBXを持っているわけではありません。
+なので、たとえば複数に分かれた FBX をレンダリングする場合などに
+Maya でインポートなどをした場合も、それはあくまで１つの Maya シーンになる（統合される）
+だけで、Maya シーンが複数の FBX を持っているわけではありません。
 （追いかけようとした場合は、別途なにかしらの情報を持っておく必要がある）
 
-ですが、USDの場合はコンポジションアークによって
-複数のUSDファイルが合成されて、その結果１つのシーングラフになります。
-そのため、 **開いたUSDファイルと実際に出来上がったシーングラフは一致しません。**
+ですが、USD の場合はコンポジションアークによって
+複数の USD ファイルが合成されて、その結果１つのシーングラフになります。
+そのため、 **開いた USD ファイルと実際に出来上がったシーングラフは一致しません。**
 
-このあたりは具体的な例を見ていったほうがわかりやすいので、Kitchen_setをみていきます。
+このあたりは具体的な例を見ていったほうがわかりやすいので、Kitchen_set をみていきます。
 
-## Kitchen_setでみるStage そして Layer
+## Kitchen_set でみる Stage そして Layer
 
-Kitchen_setをダウンロードして解凍したフォルダ内には Kitchen_set.usd というファイルがあります。
+Kitchen_set をダウンロードして解凍したフォルダ内には Kitchen_set.usd というファイルがあります。
 
 ```
 usdview D:\Kitchen_set\Kitchen_set.usd
@@ -51,10 +50,10 @@ usdview D:\Kitchen_set\Kitchen_set.usd
 
 ![](https://gyazo.com/62cfb961c797a4c7a27bc6db984bf3d1.png)
 
-このファイルを、 usdviewで開くとこのようにKitchen_setが表示されます。
+このファイルを、 usdview で開くとこのように Kitchen_set が表示されます。
 開くと、モデルが配置されていて１つの完成されたシーンになっています。
 
-ですが、この Kitchen_set.usd を、[以前解説したusdcat](https://fereria.github.io/reincarnation_tech/11_Pipeline/20_USDTools/01_usdtools_usdcat/)を使用してアスキーファイルでどうなっているかを見てみます。
+ですが、この Kitchen_set.usd を、{{markdown_link('01_usdtools_usdcat')}} を使用してアスキーファイルでどうなっているかを見てみます。
 
 ```
 usdcat D:\Kitchen_set\Kitchen_set.usd
@@ -62,52 +61,51 @@ usdcat D:\Kitchen_set\Kitchen_set.usd
 
 ![](https://gyazo.com/adc274495504010c793b68eea80f263a.png)
 
-実行すると、このようなusdaで表示されます。
-見てわかる通り、ここにあるのはXform（MayaでいうところのGroupノード）と
-リファレンスをしているPrim（Kitchen_1等)と、その配置情報（xformOp:translate)のみが
-書かれているだけで、Meshの情報などは見当たりません。
+実行すると、このような usda で表示されます。
+見てわかる通り、ここにあるのは Xform（Maya でいうところの Group ノード）と
+リファレンスをしている Prim（Kitchen_1 等)と、その配置情報（xformOp:translate)のみが
+書かれているだけで、Mesh の情報などは見当たりません。
 
 つまりは、開いているファイルは Kitchen_set.usd ではあるものの
 このファイルに書かれているのは「私はこうしようとおもうんだよな」という主張（オピニオンと呼ぶ）が書かれているだけで、
 これが最終的なシーングラフの形ではありません。
 
-この計画の記述が書かれているファイルのことを、USDではLayer(レイヤー)と呼び
+この計画の記述が書かれているファイルのことを、USD では Layer(レイヤー)と呼び
 このレイヤーがコンポジションによって組み合わされた結果出来上がったものを Stage と呼びます。
 
 > 実際に配置されているオブジェクトは、 add references = @./assets/Kitchen/Kitchen.usd@ とか書かれている通り
-> Kitchen_set/assets/Kitchenフォルダ以下にあります。
-> 
+> Kitchen_set/assets/Kitchen フォルダ以下にあります。
+>
 > ![](https://gyazo.com/3c51138285d9c3af6f84fcea95aa9c4a.png)
 > このアセットフォルダ以下も、１つのファイルではなく複数ファイルで構成されています。
 > このあたりの詳しい事は別途記事にする予定です。
 
+## Layer と Spec
 
-## LayerとSpec
-
-Kitchen_setだと複雑なので、もっとシンプルなusdファイルで確認してみます。
+Kitchen_set だと複雑なので、もっとシンプルな usd ファイルで確認してみます。
 
 {{'5c2f8cc7ad988bea665dfce639c2050c'|gist}}
 
 {{'2f49e19ff084fe357e19a70660a75a4b'|gist}}
 
-このような、samplePrimに sampleValue = false を設定したレイヤーと
+このような、samplePrim に sampleValue = false を設定したレイヤーと
 そのレイヤーをサブレイヤーしているレイヤーを用意します。
 
 ![](https://gyazo.com/83762e2dc4f33947702cdfcee14d91d8.png)
 
-この２つのPrimを usdcat を使用して Flatten（コンポジションした結果）を表示してみると
+この２つの Prim を usdcat を使用して Flatten（コンポジションした結果）を表示してみると
 このようになります。
 
 ![](https://gyazo.com/ffe14d2a08cf7b39dae9d20450252d66.png)
 
 書き表すとこのようになります。
 
-Stageは、コンポジションアークによって（この場合[サブレイヤー](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/06_comp_arc_subLayer/)によって合成された結果出来上がったものです。
+Stage は、コンポジションアークによって（この場合[サブレイヤー](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/06_comp_arc_subLayer/)によって合成された結果出来上がったものです。
 今回のサンプルならば、 subLayer.usda と root.usda が合成された結果出来上がったシーングラフが
-Stageです。
+Stage です。
 
-LayerとStage、というのの何が違うのか？というのは、
-たとえるならPhotoShopのレイヤーがわかりやすいです。
+Layer と Stage、というのの何が違うのか？というのは、
+たとえるなら PhotoShop のレイヤーがわかりやすいです。
 
 ![](https://gyazo.com/400f7493d7c9c8ccf4f31491d858cd1f.png)
 
@@ -126,81 +124,81 @@ LayerとStage、というのの何が違うのか？というのは、
 重ね方が複雑になっていたら？
 **レイヤーにある絵がなんであろうと、最終的にすべてが合成されるまでどんな絵（どんな色）になるかはわかりません。**
 
-これと同じ考え方がUSDにもあります。
+これと同じ考え方が USD にもあります。
 
-PhotoShopのレイヤーが、すなわちUSDのLayer＝usdファイルにあたりますし、
-キャンバス上に表示されている最終的な絵がStageです。
+PhotoShop のレイヤーが、すなわち USD の Layer ＝ usd ファイルにあたりますし、
+キャンバス上に表示されている最終的な絵が Stage です。
 
-この合成前のUSDのLayer内にもPrimやPropertyの記述はあります。
+この合成前の USD の Layer 内にも Prim や Property の記述はあります。
 ですが、これは最終的な形と同じとは限りません。
 なぜならば、ほかのレイヤーによって上書きされている可能性があるからです。
-**PhotoShopの別のレイヤーに別の何かが書かれていて絵が上書きされるように、
-PrimやPrimに指定されているPropertyは別のレイヤーによって上書きされる可能性があります。**
+**PhotoShop の別のレイヤーに別の何かが書かれていて絵が上書きされるように、
+Prim や Prim に指定されている Property は別のレイヤーによって上書きされる可能性があります。**
 
-そのため、USDでは合成前のレイヤーに書かれている記述を「Prim」とは別に **「PrimSpec」**
+そのため、USD では合成前のレイヤーに書かれている記述を「Prim」とは別に **「PrimSpec」**
 
-> A PrimSpec can be thought of as an “uncomposed prim in a layer”. 
+> A PrimSpec can be thought of as an “uncomposed prim in a layer”.
 > 引用: https://graphics.pixar.com/usd/release/glossary.html#usdglossary-primspec
 
-レイヤー内にある **「合成されていないPrim」** として区別して呼びます。
-Propertyに関しても同様に「PropertySpec」と呼ばれ、合成後とは区別されます。
+レイヤー内にある **「合成されていない Prim」** として区別して呼びます。
+Property に関しても同様に「PropertySpec」と呼ばれ、合成後とは区別されます。
 
 ![](https://gyazo.com/72cfe0edb913f6a8708a9521888f858f.png)
 
-図に書き出すと、Layer内に記述されている内容はこのようになり、
+図に書き出すと、Layer 内に記述されている内容はこのようになり、
 
 ![](https://gyazo.com/a010bb15b790395b74a246e08047eacf.png)
 
-すべてのLayerが合成された結果、出来上がったものが StageでありPrimであり、Propertyです。
+すべての Layer が合成された結果、出来上がったものが Stage であり Prim であり、Property です。
 
 言い換えるならば、
-各StageにあるPrimやPropertyとは多くのレイヤーに記述されているPrimSpecあるいはPropertySpec
+各 Stage にある Prim や Property とは多くのレイヤーに記述されている PrimSpec あるいは PropertySpec
 の寄せ集められた（合成された）結果とも言えます。
 
-### usdviewで確認したい場合
+### usdview で確認したい場合
 
-このLayerやPrimSpec、PropertySpecは
- usdview の Layer Stack と Composition で確認することができます。
+この Layer や PrimSpec、PropertySpec は
+usdview の Layer Stack と Composition で確認することができます。
 
 ![](https://gyazo.com/e8e8861c67ca34a7831bcc012c434e8b.png)
 
 ![](https://gyazo.com/dfb92904ea8916eae4fb9fbf14f68259.png)
 
-samplePrimを選択すると、このPrimがどのレイヤーにどのように定義されていていたのか
-結果どのようなSdfPathになったかがわかりますし、
+samplePrim を選択すると、この Prim がどのレイヤーにどのように定義されていていたのか
+結果どのような SdfPath になったかがわかりますし、
 
-Propertyの場合は、
+Property の場合は、
 
 ![](https://gyazo.com/27e636ac5133dae571b9233f48a4b89b.png)
 
-Compositionを見ると、sampleValue のComposition には２つのレイヤーに主張（オピニオンと呼ぶ）があり
+Composition を見ると、sampleValue の Composition には２つのレイヤーに主張（オピニオンと呼ぶ）があり
 レイヤー内に Spec (合成されていない「合成予定のもの」)があると示す Has Spec が yes になっています。
 
 ![](https://gyazo.com/cae776120021b3791210970da5395430.png)
 
-さらには、 Layer Stack を見ると、それぞれのレイヤーにあるValue（PropertySpec）が書かれていて
+さらには、 Layer Stack を見ると、それぞれのレイヤーにある Value（PropertySpec）が書かれていて
 どのような順番で合成されて、結果なにになったか（上のほうが強い）がわかります。
 
 ![](https://gyazo.com/7a8fae533c0e9b71a46b5ec938092f47.png)
 
-これは、これよりも多くのレイヤーで、複数のコンポジションが絡んできても同様で、たとえばKitchen_setを見ると
+これは、これよりも多くのレイヤーで、複数のコンポジションが絡んできても同様で、たとえば Kitchen_set を見ると
 
 ![](https://gyazo.com/bcd2b57b6096bda7ba4e13be61681e01.png)
 
 どのレイヤーで定義されているのか、
-そのレイヤー内のどのPrimSpec（LayerStackに書かれているPathが、PrimSpecのPath）がもとになっていて
+そのレイヤー内のどの PrimSpec（LayerStack に書かれている Path が、PrimSpec の Path）がもとになっていて
 
 ![](https://gyazo.com/e6d9d09332661d786322b2ee20641e06.png)
 
-それらPrimSpecが、
-どのようなコンポジション順序によって、結果このPrimが出来上がったのかがわかります。
-（CompositionのArcPathがPrimSpecのPath）
+それら PrimSpec が、
+どのようなコンポジション順序によって、結果この Prim が出来上がったのかがわかります。
+（Composition の ArcPath が PrimSpec の Path）
 
-## Pythonから取得する場合
+## Python から取得する場合
 
-これまでのStageとLayer、そしてSpecについてを頭に入れたうえでPythonから取得してみます。
+これまでの Stage と Layer、そして Spec についてを頭に入れたうえで Python から取得してみます。
 
-### Layerで取得
+### Layer で取得
 
 ```python
 # レイヤーを取得
@@ -213,23 +211,23 @@ print(attrSpec.default)
 print(layer.identifier)
 ```
 
-まず、Layerから値を取得する場合。
-この場合はStageではなくSdfLayerと各Specのオブジェクトとして扱います。
+まず、Layer から値を取得する場合。
+この場合は Stage ではなく SdfLayer と各 Spec のオブジェクトとして扱います。
 
 ![](https://gyazo.com/0d34b101444068bbca4f1bc7825ceb2c.png)
 
-Layerから値を取得する場合、Pythonからだと非常に大きな罠があって
-C++のAPIドキュメントとは関数もなにもかも異なります。
+Layer から値を取得する場合、Python からだと非常に大きな罠があって
+C++の API ドキュメントとは関数もなにもかも異なります。
 
-Pythonの場合はどれも Sdf.Find という形で値が取得されますがこれはLayerまたは～～Specといった
+Python の場合はどれも Sdf.Find という形で値が取得されますがこれは Layer または～～ Spec といった
 合成される前の情報のいずれかです。
-上のサンプルコードの場合は、LayerからPrimSpecを取得し、そこからさらにAttributeSpecを
+上のサンプルコードの場合は、Layer から PrimSpec を取得し、そこからさらに AttributeSpec を
 取得しています。
 
 これらはあくまで合成前の「今のレイヤーに書かれている記述」なので
 コンポジション情報やほかのレイヤーへの情報は持ちません。
 
-### Stageから取得
+### Stage から取得
 
 ```python
 stage = Usd.Stage.Open("D:/root.usda")
@@ -247,22 +245,22 @@ for primSpec in prim.GetPrimStack():
     print(layer.identifier)
 ```
 
-次にStageから、Layer・各種Specを取得した例。
+次に Stage から、Layer・各種 Spec を取得した例。
 
-これは、指定のPrimの由来や成り立ちを知るための方法とも言えて
-GetPrimStackは、このPrimが出来上がるまでに合成されたPrimSpecを強い順に取得します。
+これは、指定の Prim の由来や成り立ちを知るための方法とも言えて
+GetPrimStack は、この Prim が出来上がるまでに合成された PrimSpec を強い順に取得します。
 
 ![](https://gyazo.com/555f420fdc669432643fbe8366b9b942.png)
 
 実行するとこのようになります。
-GetPrimStackで取得できるのはPrimSpecなので、そこからAttributeSpecや
+GetPrimStack で取得できるのは PrimSpec なので、そこから AttributeSpec や
 それが記述されているレイヤーなどを知ることができます。
 
 ## まとめ
 
-usdaファイルとStageとの違いが理解できたでしょうか。
+usda ファイルと Stage との違いが理解できたでしょうか。
 
-LayerStackとCompositionの違いはなんだろうとかもろもろ出てくるかもしてませんが
-さらに詳しいことが気になった方は、以前[PCPでコンポジションアークの構造を解析・編集対象を取得する](https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/01_Python/04_pcp_compositionArc/)という
-ここまでいけばUSD１級というディープな記事を以前書きましたので
+LayerStack と Composition の違いはなんだろうとかもろもろ出てくるかもしてませんが
+さらに詳しいことが気になった方は、以前[PCP でコンポジションアークの構造を解析・編集対象を取得する](https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/01_Python/04_pcp_compositionArc/)という
+ここまでいけば USD １級というディープな記事を以前書きましたので
 もしさらに詳しい事を知りたい！！という方はぜひとも合わせて読んでください。

@@ -11,7 +11,7 @@ tags:
 ## ComponentBuilder とは
 
 ComponentBuilder とはなにかというと、
-[去年の Houdini アドカレで書いた USD アセットを作ろう](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/)の内容を
+{{markdown_link('13_create_usdAssets_01')}}の内容を
 もっと簡単にできるようにしたノードです。
 つまりは、去年の記事のような複雑なネットワークを作らないでも、
 この ComponentBuilder を使用すれば汎用アセットをセットアップできるようになります。

@@ -135,7 +135,7 @@ Cacher に登録しているスニペットを呼び出したりすることが�
 たとえば、毎度書くのがめんどくさい こういう import したり QApplication を作るような
 PySide でつかう定型文みたいのは Cacher に登録して、呼び出すようにしています。
 
-https://fereria.github.io/reincarnation_tech/10_Programming/50_VSCode/vscode_cacher/
+{{markdown_link('vscode_cacher')}}
 
 Cacher の詳しい使い方はこちらにまとめてあるので参考にしてください。
 

@@ -15,8 +15,8 @@ Houdini18 から追加された SOLARIS の Stage ネットワーク内で使用
 ただし、追加されたノードはかなり膨大なので全部を 1 度でやるのはムリなので  
 コンポジションアーク、Light のノード以外で、使いそうな物をいくつかピックアップして  
 アドカレ締め切り日までに書けるだけかいてみるようにします。  
-また、とりあえず最初なので、1 つづつは深掘りせず基本的な使い方のみです。  
-  
+また、とりあえず最初なので、1 つづつは深掘りせず基本的な使い方のみです。
+
 検証してたらやっぱり違うかもしれない...ということもあるかもしれませんが  
 そのあたりはご容赦ください。
 
@@ -57,10 +57,10 @@ Scene Graph Path は前回触れましたが、これは現在選択されてい
 最後の Detail は、Scene Graph Path で選択中の Primitive の詳細を確認することが出来ます。  
 確認出来るのは、Primitive の
 
-- Value
-- Metadata
-- Layer Stack
-- Composition
+-   Value
+-   Metadata
+-   Layer Stack
+-   Composition
 
 この 4 つです。  
 が、、、、ここだけでもちゃんと説明書こうとするとかなりのボリュームになるので  
@@ -77,7 +77,7 @@ Scene Graph Path は前回触れましたが、これは現在選択されてい
 
 ### SOP->LOP 関係
 
-SOLARIS空間にSOPのジオメトリを持ち込む方法はいくつかあります。
+SOLARIS 空間に SOP のジオメトリを持ち込む方法はいくつかあります。
 
 #### SOP import
 
@@ -113,37 +113,37 @@ SOP path の下に usd ファイルで保存されます。
 
 ![](https://gyazo.com/c1cd6fc15a67cf2e4f53893606f95e9a.png)
 
-SOP Create は importと違いこのノード内でSOPネットワークを作り、  
-そのOUTPUTをSOLARIS上で使用することができます。  
-  
+SOP Create は import と違いこのノード内で SOP ネットワークを作り、  
+その OUTPUT を SOLARIS 上で使用することができます。
+
 ![](https://gyazo.com/d43ccb2cd59e8525c4b3106d8f3dbe39.png)
 
-例として、このように SOP Create のサブネットワーク内でノードを作ると  
+例として、このように SOP Create のサブネットワーク内でノードを作ると
 
 ![](https://gyazo.com/7b35b415b468cc384ecf116de89c2088.png)
 
-このように、Outputの結果がSOLARIS上に持ち込まれます。  
-  
-この画像を見てもらうと分かりますが、デフォルトだとマテリアルアサインがされません。  
-  
+このように、Output の結果が SOLARIS 上に持ち込まれます。
+
+この画像を見てもらうと分かりますが、デフォルトだとマテリアルアサインがされません。
+
 ![](https://gyazo.com/2a02faf39796491776f642bc68a1c6c5.png)
 
-マテリアルは、SOP CreateノードのMaterialsタブをクリックし、「Auto-fill Materials」をクリック  
-すると、  
-  
+マテリアルは、SOP Create ノードの Materials タブをクリックし、「Auto-fill Materials」をクリック  
+すると、
+
 ![](https://gyazo.com/89620a098d279492da5437f44ce9104d.png)
 
 マテリアルも一緒に持ち込めるようになります。
 
-細かいところは、 SOP import と設定部分は同じです。  
-  
+細かいところは、 SOP import と設定部分は同じです。
+
 ![](https://gyazo.com/31c39831d7d8e44e7a60813f2b275581.png)
 
-SOLARIS上でも、SOPと同じようにTestジオメトリをロードできますが、  
-  
+SOLARIS 上でも、SOP と同じように Test ジオメトリをロードできますが、
+
 ![](https://gyazo.com/da6d34788395a29da0e97714f3ea4184.png)
 
-Testジオメトリは、このSOP Createで持ち込んだものになります。  
+Test ジオメトリは、この SOP Create で持ち込んだものになります。
 
 #### scene import
 
@@ -557,28 +557,31 @@ def Cube "cube2" (
 
 ![](https://gyazo.com/28f423dff229866a96f21589800ea281.png)
 
-pruneは、入力のPrimitiveのうち **「条件に当てはまる」** Primitiveを無効 or 非表示にします。  
+prune は、入力の Primitive のうち **「条件に当てはまる」** Primitive を無効 or 非表示にします。
 
 ![](https://gyazo.com/c6cfba365d4d3dde8a4bc4ef1f1fd533.png)
 
-Pruneノードの条件を指定すると
+Prune ノードの条件を指定すると
 
 ![](https://gyazo.com/4667a9b6bbb63a549a7a66e12cdabeb1.png)
 
-条件に当てはまるノードが非表示になります。  
+条件に当てはまるノードが非表示になります。
 
 ![](https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png)
 
 デフォルトだと Make Invisible の場合は「非表示」になるし Deactivate だと「無効」になります。
 
-出力されるUSDファイルは、非表示なら
+出力される USD ファイルは、非表示なら
+
 ```
 over "cube1"
 {
     token visibility = "invisible"
 }
 ```
+
 無効なら
+
 ```
 over "cube1" (
     active = false
@@ -586,8 +589,8 @@ over "cube1" (
 {
 }
 ```
-こうなります。
 
+こうなります。
 
 ### Material 関係
 
@@ -659,10 +662,10 @@ stage = node.editableStage()
 ```
 
 デフォルトではこのようになっています。  
-後はどうぞご自由に。。。。という感じですね。  
-  
-http://graphics.pixar.com/usd/docs/api/index.html  
-  
+後はどうぞご自由に。。。。という感じですね。
+
+http://graphics.pixar.com/usd/docs/api/index.html
+
 USD は Python からほぼ 100％自由に操作することができます。  
 関連する関数群も充実というかとんでもない物量で、私もできる限りドキュメントを読んでいますが  
 未だに全容を把握することが出来ません。
@@ -683,21 +686,21 @@ for prim in colAPI.GetIncludesRel().GetTargets():
 例として。  
 この Python ノードの前段階までで指定した Collection に含まれる Primitive を取得。  
 取得したノードにたいして処理したい場合なんかは  
-このようにすることで、指定の Primitive に対して編集を行うことが出来ます。  
-  
+このようにすることで、指定の Primitive に対して編集を行うことが出来ます。
+
 やっかいなのは、ドキュメントが C++版なので多少の脳内変換が必要なのと  
 用語関係は USD の用語で書かれているので Houdini 側と一致しないこと。  
 あとは、USD のデータ構造はある程度把握しておく必要があるので  
 若干敷居は高いかもしれません。（Collection は Relation で扱われてる...等）
 
-https://fereria.github.io/reincarnation_tech/11_Pipeline/10_USDTips/02_usd_py_cheatsheets/
+{{markdown_link('02_usd_py_cheatsheets')}}
 
 よく使う Pyton コマンド集は別途ページを作成してあります。
 
 ## まとめ
 
-とりあえずアドカレ締め切りの日までにざっくり調べたノードの使い方でした。  
-  
+とりあえずアドカレ締め切りの日までにざっくり調べたノードの使い方でした。
+
 検証して分かったことは、  
 SOLARIS のノード（コンポジションアーク系ノード以外）は USD の細かい仕様だったりを  
 いいかんじに Houdini 風にラップして  
@@ -706,15 +709,15 @@ SOLARIS のノード（コンポジションアーク系ノード以外）は US
 （特に、コンポジションの解決順序とかをほぼ意識せず直感的に操作できるのが素晴らしい）
 
 個人的に調べていて勉強になったのが Merge/Graft/Switch。  
-この3つとかコンポジションアークのノードと挙動が同じでなにが違うんだろう？？？？？と  
+この 3 つとかコンポジションアークのノードと挙動が同じでなにが違うんだろう？？？？？と  
 ずっと疑問でした。  
 ですが、調べたらどう違うのかが分かったし  
 結果どういうシーングラフが作られるのか理解出来たのが収穫でした。
 
 今回までに調べたノードの中だと、やはり Merge Graft Swith などでのシーングラフ構築と  
 sopimport sceneimport materiallibrary 等の、今まであった Houdini の世界から  
-オブジェクトを持ってくるあたりがよく使うノードになるのではと思います。  
-  
+オブジェクトを持ってくるあたりがよく使うノードになるのではと思います。
+
 なので、USD とはなんぞや？というのはとりあえず横に置いておいて  
 sopimport や scene import で、SOP で作ったモデルを持ち込んで  
 Graft や Merge でシーンのツリーを構築して、ライトをおいてみてレンダリングしてみたり、

@@ -64,8 +64,8 @@ Kitchen_set のアセットは、すべて Kitchen_set.usd からの相対パス
 詳細は、以下のアドカレの記事にて紹介していますが、
 assets をどこに配置してどのようにパスを解決するかはとても重要です。
 
-https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/24_asset_resolution/
-https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/25_asset_resolution_02/
+{{markdown_link('24_asset_resolution')}}
+{{markdown_link('25_asset_resolution_02')}}
 
 ### コンポジションアーク(Payload と Unlaod)
 
@@ -115,7 +115,7 @@ AssetName 以下には Geom Looks(material) Render といった大分類の Prim
 それ以下に関しては、Reference することでかならずユニークになるので
 いわゆるカプセル化された、この Asset 内で完結したデータになります。
 
-> 参考: https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/09_comp_arc_reference/
+> 参考: {{markdown_link('09_comp_arc_reference')}}
 
 ### VariantSet
 
@@ -128,7 +128,7 @@ ShadingVariant と modelingVariant という２つの VariantSet によって
 
 このように、VariantSet を使用することで、配置したあとにマテリアルやモデルを調整するといったことが可能になります。
 
-> 参考: https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/08_comp_arc_Variant/
+> 参考: {{markdown_link('08_comp_arc_Variant')}}
 
 ### AssetInfo
 
@@ -137,7 +137,7 @@ ShadingVariant と modelingVariant という２つの VariantSet によって
 AssetInfo とは、USD で作成されたアセットを管理・識別するために、
 Prim や Property に対して指定することができる辞書型のメタデータ です。
 
-詳細は、[AssetInfo とは](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/23_assetInfo/) こちらのアドカレにて解説していますが
+詳細は、{{markdown_link('23_assetInfo')}} こちらのアドカレにて解説していますが
 Kitchen_set のアセットにも、この AssetInfo が含まれていて
 アンロードしている状態であっても、どのファイルが依存しているのかを確認できるようになっています。
 

@@ -347,8 +347,7 @@ PhotoShop の一番上に新規でレイヤーを作成して、そこに絵を�
 これで、できることの幅などが大きく変わりそうです。
 USD すごい。
 
-このあたりの検証をしていたときの JupyterNotebook が
-[EditTarget で指定レイヤーを操作](https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/USDEditTarget/)
+このあたりの検証をしていたときの JupyterNotebook が {{markdown_link('USDEditTarget')}}
 でした。
 
 やはり日々研究していかないと USD を有効活用できないなーと思いました。
