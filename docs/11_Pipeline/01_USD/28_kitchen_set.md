@@ -35,7 +35,7 @@ assets 以下には AssetName のサブフォルダがあり、
 
 ### assets
 
-assets は、 [ComponentBuilder で遊ぼう](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/16_component_builder/) や [Python で作る USD アセット](https://fereria.github.io/reincarnation_tech/11_Pipeline/30_USD_Programming/01_Python/07_create_usd_assets/) の回で紹介したような
+assets は、 {{markdown_link('16_component_builder')}} や {{markdown_link('07_create_usd_assets')}} の回で紹介したような
 指定のコンポジションやレイヤーでセットアップされた USD のアセットです。
 
 Kitchen_set で配置しているアセットは、すべて決められた構造でセットアップされています。
@@ -53,7 +53,7 @@ assets の各レイヤーと、そのレイヤー内の Prim を図に表すと�
 #### AssetPath
 
 Kitchen_set のアセットは、すべて Kitchen_set.usd からの相対パスで記述されています。
-ためしに、 [usdcat](https://fereria.github.io/reincarnation_tech/11_Pipeline/20_USDTools/01_usdtools_usdcat/) で確認すると
+ためしに、 {{markdown_link('01_usdtools_usdcat')}} で確認すると
 
 ![](https://gyazo.com/adc274495504010c793b68eea80f263a.png)
 
@@ -148,7 +148,7 @@ Kind とは、Prim 単位で指定することができるメタデータの一�
 どのようなルールで階層構造を作り、どのようにリファレンスをするかの指針で
 使用される情報です。
 
-Kind や ModelHierarchy だ一体どういうものかというのは[過去に記事を書いている](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/11_kind_modelhierarchy/)ので
+Kind や ModelHierarchy だ一体どういうものかというのは {{markdown_link('11_kind_modelhierarchy')}}ので
 そちらを参考にしてもらえればですが、
 Kitchen_set はこの ModelHierarchy のルールにのっとって
 作成されています。

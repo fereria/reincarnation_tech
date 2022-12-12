@@ -2,8 +2,8 @@
 title: PySideのTableViewでDelegateを使う(3) もっとpaintする
 ---
 
-今回は、 [paintする](view_model_delegate_02.md) に続いて、
-PySideのTableViewで、Delegate内のpaintを駆使していい感じのGUIを作っていきます。
+今回は、 [paint する](view_model_delegate_02.md) に続いて、
+PySide の TableView で、Delegate 内の paint を駆使していい感じの GUI を作っていきます。
 
 ## 完成図
 
@@ -13,23 +13,22 @@ PySideのTableViewで、Delegate内のpaintを駆使していい感じのGUIを�
 
 ![](https://gyazo.com/c6f154dbc0dabe6822f07ad61a95d5bb.gif)
 
-
-表示の工夫としては、ウィンドウの大きさを変更すると、TableViewのセルの数を変更して
+表示の工夫としては、ウィンドウの大きさを変更すると、TableView のセルの数を変更して
 サイズに収まる量だけ表示するようにします。
 もう１つは、開いたタイミングだとすべてのセルを表示せず、スクロールバーが一番下に来た時に  
 指定の行数以上のデータがある場合は追加でロードするようにします。
 
-セルの中身は、デリゲートのpaintで書きます。
+セルの中身は、デリゲートの paint で書きます。
 
-https://fereria.github.io/reincarnation_tech/65_SampleCode/PySide/pyside_Delegate/
+{{markdown_link('pyside_Delegate')}}
 全コードはこちら。
 
-## Item/Model/Viewを作る
+## Item/Model/View を作る
 
-まずはModel部分とセルに表示するデータの構造を作ります。
+まずは Model 部分とセルに表示するデータの構造を作ります。
 
-今回のTableViewは横の数が可変なので、ItemはList型で持つようにします。
-1セルごとにデータは管理したいので、この部分は
+今回の TableView は横の数が可変なので、Item は List 型で持つようにします。
+1 セルごとにデータは管理したいので、この部分は
 
 ```python
 class DataItem(object):
@@ -55,15 +54,15 @@ class DataItem(object):
         return QtCore.QSize(250, 200)
 ```
 
-Itemクラスを作成し、セル内に表示したい情報はこのクラスで管理するようにします。
-今回はセルの大きさは共通なので、sizeHintは固定の値を返しますが
+Item クラスを作成し、セル内に表示したい情報はこのクラスで管理するようにします。
+今回はセルの大きさは共通なので、sizeHint は固定の値を返しますが
 場合によってはここを変更する...といったこともできるようにしておきます。
 
 ### Model
 
-次にModel部分。
-TableViewですが、データはListなので
-これを適切なRow/Columnでアクセスできるように indexを実装します。
+次に Model 部分。
+TableView ですが、データは List なので
+これを適切な Row/Column でアクセスできるように index を実装します。
 
 ```python
     def index(self, row, column, parent):
@@ -75,8 +74,8 @@ TableViewですが、データはListなので
         return QtCore.QModelIndex()
 ```
 
-(row * columnCount) + column がIndexになるのですが、TableViewの場合
-何もないセルであっても indexは実行されるので 範囲が井の場合は 空のModelIndexを返します。
+(row \* columnCount) + column が Index になるのですが、TableView の場合
+何もないセルであっても index は実行されるので 範囲が井の場合は 空の ModelIndex を返します。
 
 ```python
     def data(self, index, role=QtCore.Qt.DisplayRole):
@@ -90,8 +89,8 @@ TableViewですが、データはListなので
             return item
 ```
 
-dataは、DisplayRoleは使用せず、UserRoleでitemを取得できるようにだけします。
-（表示は全部Delegateのため）
+data は、DisplayRole は使用せず、UserRole で item を取得できるようにだけします。
+（表示は全部 Delegate のため）
 
 ```python
     def rowCount(self, parent=QtCore.QModelIndex()):
@@ -101,7 +100,7 @@ dataは、DisplayRoleは使用せず、UserRoleでitemを取得できるよう�
             return count
         else:
             return self.maxRowCount
-            
+
     def addMaxRow(self, num=5):
 
         if (len(self.items) / self.columnNum) > self.maxRowCount:
@@ -115,14 +114,13 @@ dataは、DisplayRoleは使用せず、UserRoleでitemを取得できるよう�
 ```
 
 最後に、スクロールが一番したに来たら追加する仕組みをつくります。
-構造はシンプルで、 rowCountで返す値に最大値を指定します。
-そして、self.addMaxRow が呼ばれたときに追加分のRowをセットすると
+構造はシンプルで、 rowCount で返す値に最大値を指定します。
+そして、self.addMaxRow が呼ばれたときに追加分の Row をセットすると
 上限が解放されるようになります。
 
 あとは、横のサイズも変更できるように関数を追加します。
 
 どちらの関数も layoutChanged.emit() すれば、表示を更新することができます。
-
 
 ### View
 
@@ -148,19 +146,19 @@ dataは、DisplayRoleは使用せず、UserRoleでitemを取得できるよう�
         self.model().changeColumnNum(num)
 ```
 
-まず、ビューサイズが変更された場合は、 resizeEventで取得できます。
+まず、ビューサイズが変更された場合は、 resizeEvent で取得できます。
 変更前が oldSize() 変更後が size() で取得できるので、横サイズで割って
 配置できる数を取得します。
 
-毎回Emitすると遅くなりそうなので、値が変更したときのみchangeColumnNumを実行します。
+毎回 Emit すると遅くなりそうなので、値が変更したときのみ changeColumnNum を実行します。
 
-スライドバーは、valueChangedで変更を取得できます。
-この valueChangedで取得される最大値は、ModelのRowCountです。
-途中でrowCountが変わった場合は、valueはそのままでmaxが変化します。
+スライドバーは、valueChanged で変更を取得できます。
+この valueChanged で取得される最大値は、Model の RowCount です。
+途中で rowCount が変わった場合は、value はそのままで max が変化します。
 
-## paintする
+## paint する
 
-これで準備ができたのでDelegateのpaintでセル内を書いていきます。
+これで準備ができたので Delegate の paint でセル内を書いていきます。
 
 ```python
     def paint(self, painter, option, index):
@@ -171,15 +169,15 @@ dataは、DisplayRoleは使用せず、UserRoleでitemを取得できるよう�
 
 ```
 
-Delegateでは、indexのセルを描画を実装します。
-データでそのセルのDataItemを取得して、以降は QPainterでひたすら書いていきます。
+Delegate では、index のセルを描画を実装します。
+データでそのセルの DataItem を取得して、以降は QPainter でひたすら書いていきます。
 
 ### セルの範囲
 
 ![](delegate.drawio#0)
 
 描画するセルの範囲は、option.rect で取得します。
-図にすると、上のようなQRectで取得できるので、以降はこの矩形をベースにして
+図にすると、上のような QRect で取得できるので、以降はこの矩形をベースにして
 描画したい画像や文字を配置します。
 
 ```python
@@ -198,8 +196,9 @@ Delegateでは、indexのセルを描画を実装します。
             imgRect.translate(0, ((imgHeight / 2) * -1) + margin)
             painter.drawImage(imgRect, img)
 ```
+
 まず、セルの矩形を複製します。
-（複製しないと元のoption.rectが書き換わるため）
+（複製しないと元の option.rect が書き換わるため）
 
 ![](delegate.drawio#1)
 
@@ -233,13 +232,13 @@ Delegateでは、indexのセルを描画を実装します。
 ```
 
 次に文字の配置。
-基本は同じようにベースとなる矩形を複製し、文字エリアの矩形の縦幅を setHeightで変更。
+基本は同じようにベースとなる矩形を複製し、文字エリアの矩形の縦幅を setHeight で変更。
 drawText で、中央揃え＋行が溢れたら改行できるようにしておきます。
 
-あとは必用に応じて paint内に記述を追加すればOKです。
+あとは必用に応じて paint 内に記述を追加すれば OK です。
 
 ## まとめ
 
-とりあえずこれでカスタムモデル・ビュー・デリゲートを使用したTableViewができました。
-あとはDataItemに必用な情報を足して、paint部分を拡張したりすれば
+とりあえずこれでカスタムモデル・ビュー・デリゲートを使用した TableView ができました。
+あとは DataItem に必用な情報を足して、paint 部分を拡張したりすれば
 いろいろ作れそうです。
