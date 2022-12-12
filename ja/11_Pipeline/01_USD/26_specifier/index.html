@@ -1435,7 +1435,7 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#specifier">
-    Specifierとは？
+    Specifier とは？
   </a>
 </li>
 <li class="md-nav__item">
@@ -2723,7 +2723,7 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#specifier">
-    Specifierとは？
+    Specifier とは？
   </a>
 </li>
 <li class="md-nav__item">
@@ -2761,18 +2761,18 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>Specifier</h1>
-<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description AdventCalendar2021</a> 19日目は、<br/>
-USDの Specifier についてです。</p>
-<h2 id="specifier">Specifierとは？<a class="headerlink" href="#specifier" title="Permanent link">¶</a></h2>
-<p>Specifierとは、PrimSpecに対して指定されるメタデータで<br/>
-PrimSpecがどのようにコンポジションされて、どのように解釈されるのか指定するものです。</p>
-<p><a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/21_stage_layer_spec/">https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/21_stage_layer_spec/</a></p>
-<p>USDは、レイヤーに書かれている「Spec」と呼ばれる主張をコンポジションすることで<br/>
+<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description AdventCalendar2021</a> 19 日目は、<br/>
+USD の Specifier についてです。</p>
+<h2 id="specifier">Specifier とは？<a class="headerlink" href="#specifier" title="Permanent link">¶</a></h2>
+<p>Specifier とは、PrimSpec に対して指定されるメタデータで<br/>
+PrimSpec がどのようにコンポジションされて、どのように解釈されるのか指定するものです。</p>
+<p><i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/21_stage_layer_spec">Stage/Layer/Spec</a></p>
+<p>USD は、レイヤーに書かれている「Spec」と呼ばれる主張をコンポジションすることで<br/>
 最終的案ステージを構築します。<br/>
-このコンポジションをするときに、各レイヤーに記述されたPrimSpecを<br/>
-どのように解釈して最終的なPrimにするか<br/>
-Specifierによってコントロールすることができます。</p>
-<p>このSpecifierには３種類あります。</p>
+このコンポジションをするときに、各レイヤーに記述された PrimSpec を<br/>
+どのように解釈して最終的な Prim にするか<br/>
+Specifier によってコントロールすることができます。</p>
+<p>この Specifier には３種類あります。</p>
 <ul>
 <li>def</li>
 <li>over</li>
@@ -2780,8 +2780,8 @@ Specifierによってコントロールすることができます。</p>
 </ul>
 <p>この３つを詳しく見ていきます。</p>
 <h2 id="def">def<a class="headerlink" href="#def" title="Permanent link">¶</a></h2>
-<p>defは、Primを定義するもので<br/>
-多くの場合PrimSpecは「def」で定義されます。</p>
+<p>def は、Prim を定義するもので<br/>
+多くの場合 PrimSpec は「def」で定義されます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2791,24 +2791,24 @@ Specifierによってコントロールすることができます。</p>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">'/sample'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <script src="https://gist.github.com/fereria/271af5c1a8117467d67d55ae319fb053.js"></script>
-<p>レイヤーに def で定義された PrimSpecは、</p>
+<p>レイヤーに def で定義された PrimSpec は、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8ed673ef78f9aa9096fd4dd7ba5a84de.png"><img alt="" src="https://gyazo.com/8ed673ef78f9aa9096fd4dd7ba5a84de.png"/></a></p>
-<p>最終的にこのようにPrimとして作成されます。</p>
+<p>最終的にこのように Prim として作成されます。</p>
 <h2 id="over">over<a class="headerlink" href="#over" title="Permanent link">¶</a></h2>
 <p>次が over<br/>
-overは、defとは違い over があるだけではPrimは作成されず<br/>
-コンポジションによってあるPrimを編集したい場合に、「上書き」をすることを目的にした<br/>
-PrimSpecを作成します。</p>
+over は、def とは違い over があるだけでは Prim は作成されず<br/>
+コンポジションによってある Prim を編集したい場合に、「上書き」をすることを目的にした<br/>
+PrimSpec を作成します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">OverridePrim</span><span class="p">(</span><span class="s1">'/sample'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <script src="https://gist.github.com/fereria/3ae2ea2525ac8870919123639718ed54.js"></script>
-<p>例として、このような overだけが定義されているレイヤーを作成します。</p>
+<p>例として、このような over だけが定義されているレイヤーを作成します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f7510c34ff94e17eff21d627ac939718.png"><img alt="" src="https://gyazo.com/f7510c34ff94e17eff21d627ac939718.png"/></a></p>
-<p>作成後、usdviewで確認しても、Primはありません。<br/>
-over は、すでに def Prim がある場合に Primの値を上書きするので、<br/>
-overだけの場合、StageにはPrimはありません。</p>
+<p>作成後、usdview で確認しても、Prim はありません。<br/>
+over は、すでに def Prim がある場合に Prim の値を上書きするので、<br/>
+over だけの場合、Stage には Prim はありません。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2840,34 +2840,34 @@ overだけの場合、StageにはPrimはありません。</p>
 <span class="n">layer</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">"D:/sample.usda"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>では、以下のようにサブレイヤーを使用して<br/>
-別のレイヤーで def によってPrimSpecがある場合、over で定義された値はオーバーライドされます。</p>
+別のレイヤーで def によって PrimSpec がある場合、over で定義された値はオーバーライドされます。</p>
 <script src="https://gist.github.com/fereria/2c3281d4f4082a38e8039aacec1ddbc2.js"></script>
 <script src="https://gist.github.com/fereria/fb1465dfe54ff56a34d0c7d76a9c973a.js"></script>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c220e9d71d4a02bf49c10497aefe6ed7.png"><img alt="" src="https://gyazo.com/c220e9d71d4a02bf49c10497aefe6ed7.png"/></a></p>
-<p>base.usda に sample Prim がDefineされているので<br/>
+<p>base.usda に sample Prim が Define されているので<br/>
 サブレイヤーされたレイヤー側に「over」を記述することで<br/>
 over に定義されている value = True が、合成されます。</p>
-<p>Stageで開いて、現在のTargetLayerに対して編集した場合、<br/>
+<p>Stage で開いて、現在の TargetLayer に対して編集した場合、<br/>
 自分より強い主張が別レイヤーに存在する場合は、 over 扱いになります。<br/>
 これがどういうことかというと<br/>
 例えば自分より強いレイヤーの def Prim が削除された場合<br/>
-overだった場合は、 over Primは適応されず Primが削除されます。<br/>
-対して、over ではなく 編集時も def の場合、強いレイヤーの def Primが削除されても<br/>
-Primは削除されず、Stageには残ります。</p>
+over だった場合は、 over Prim は適応されず Prim が削除されます。<br/>
+対して、over ではなく 編集時も def の場合、強いレイヤーの def Prim が削除されても<br/>
+Prim は削除されず、Stage には残ります。</p>
 <p>これはとても重要なことで、<br/>
 例えば レイアウトで配置したあるモデルに対して 次の工程の作業者がマテリアルの調整を<br/>
 したとします。<br/>
 しかし、そのモデルが削除された場合<br/>
 マテリアルの編集は「なかったこと」になってほしいはずです。<br/>
-defで編集されていた場合は、上流工程で削除されていてもPrimは残り続けます。</p>
-<p>Specifierは、Primが最終的にどのように解釈されて解決されるのか。<br/>
-コンポジションの順序なども重要ですが、 PrimがどのSpecifier を持つかによって<br/>
-最終的に解決されるStageも変わってくるというのには注意が必要です。<br/>
-（とはいえ、多くのツールは良しなに計らってくれるし、PythonAPIもそこまで意識しないでも大丈夫ではある）</p>
+def で編集されていた場合は、上流工程で削除されていても Prim は残り続けます。</p>
+<p>Specifier は、Prim が最終的にどのように解釈されて解決されるのか。<br/>
+コンポジションの順序なども重要ですが、 Prim がどの Specifier を持つかによって<br/>
+最終的に解決される Stage も変わってくるというのには注意が必要です。<br/>
+（とはいえ、多くのツールは良しなに計らってくれるし、PythonAPI もそこまで意識しないでも大丈夫ではある）</p>
 <h2 id="class">class<a class="headerlink" href="#class" title="Permanent link">¶</a></h2>
 <p>最後に class<br/>
-classはプラグラミングにおけるクラスと同じで、ある別のPrimにInherits（継承）するための<br/>
-Primを定義するために使用します。</p>
+class はプラグラミングにおけるクラスと同じで、ある別の Prim に Inherits（継承）するための<br/>
+Prim を定義するために使用します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">CreateInMemory</span><span class="p">()</span>
@@ -2875,8 +2875,8 @@ Primを定義するために使用します。</p>
 <span class="bp">cls</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s1">'/__class__'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <script src="https://gist.github.com/fereria/9c53e934655105717136cbabcf4328bb.js"></script>
-<p>例えば、このように __class__  を class で定義します。<br/>
-これを usdview で確認した場合は、 over と同様にPrimはありません。</p>
+<p>例えば、このように __class__ を class で定義します。<br/>
+これを usdview で確認した場合は、 over と同様に Prim はありません。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/760d9d3b799fe03899497e40517cb20d.png"><img alt="" src="https://gyazo.com/760d9d3b799fe03899497e40517cb20d.png"/></a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2894,26 +2894,26 @@ Primを定義するために使用します。</p>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e76cb1d44cfb2b88f875d54e1e8d3528.png"><img alt="" src="https://gyazo.com/e76cb1d44cfb2b88f875d54e1e8d3528.png"/></a></p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cb17fd7aaa327714952f2d16c42cdc58.png"><img alt="" src="https://gyazo.com/cb17fd7aaa327714952f2d16c42cdc58.png"/></a></p>
-<p>しかし、この class Primは Inherits することで、別のPrimに継承することができます。</p>
+<p>しかし、この class Prim は Inherits することで、別の Prim に継承することができます。</p>
 <p>継承については別途<a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/07_comp_arc_inherits/">こちらで解説</a>していますので、そちらを参照してください。</p>
 <p>def を Inherits することも可能ですが、<br/>
 class として定義するのはあくまで「共通定義」であることが多く（例：共通のライト、マテリアル等）<br/>
 そういった共通パラメーターは Traverse や GetChildren で検索には入ってほしくありません。<br/>
-（overも同様）</p>
-<p>そういった場合に、 class で定義することでInheritsするための 定義用Primを<br/>
+（over も同様）</p>
+<p>そういった場合に、 class で定義することで Inherits するための 定義用 Prim を<br/>
 作成することができます。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>以上 Specifier についてでした。<br/>
-Stage/Layer/Spec の回で「Spec」について解説しましたが、このSpecifierはPrimSpecから<br/>
-Primに、Stageに構築する際に「最終的にどのようなPrimになるか」解釈するのに重要な要素になりますので<br/>
-Stageの記事と合わせて、Specifierについても理解できると<br/>
-よりUSDのコンポジションを理解できるのではないかと思います。</p>
+Stage/Layer/Spec の回で「Spec」について解説しましたが、この Specifier は PrimSpec から<br/>
+Prim に、Stage に構築する際に「最終的にどのような Prim になるか」解釈するのに重要な要素になりますので<br/>
+Stage の記事と合わせて、Specifier についても理解できると<br/>
+より USD のコンポジションを理解できるのではないかと思います。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-18 14:55:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-12 12:05:23</span>
 </small>
 </div>
 </article>

@@ -1425,7 +1425,7 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#assetresolution">
-    AssetResolutionとは
+    AssetResolution とは
   </a>
 </li>
 <li class="md-nav__item">
@@ -1460,7 +1460,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#asset">
-    Assetのフォルダ構成
+    Asset のフォルダ構成
   </a>
 </li>
 </ul>
@@ -1468,7 +1468,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#resolver">
-    Resolverの効果について
+    Resolver の効果について
   </a>
 </li>
 <li class="md-nav__item">
@@ -2751,7 +2751,7 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#assetresolution">
-    AssetResolutionとは
+    AssetResolution とは
   </a>
 </li>
 <li class="md-nav__item">
@@ -2786,7 +2786,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#asset">
-    Assetのフォルダ構成
+    Asset のフォルダ構成
   </a>
 </li>
 </ul>
@@ -2794,7 +2794,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#resolver">
-    Resolverの効果について
+    Resolver の効果について
   </a>
 </li>
 <li class="md-nav__item">
@@ -2818,96 +2818,96 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>AssetResolution(1) - usdResolverExample</h1>
-<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description AdventCalendar2021</a> 15日目は、<br/>
-USDの Asset Resolution (アセットパスの解決)についてです。</p>
-<h2 id="assetresolution">AssetResolutionとは<a class="headerlink" href="#assetresolution" title="Permanent link">¶</a></h2>
-<p>AssetResolutionとは、その名の通りアセットの実際のリソースまでのパスを<br/>
+<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description AdventCalendar2021</a> 15 日目は、<br/>
+USD の Asset Resolution (アセットパスの解決)についてです。</p>
+<h2 id="assetresolution">AssetResolution とは<a class="headerlink" href="#assetresolution" title="Permanent link">¶</a></h2>
+<p>AssetResolution とは、その名の通りアセットの実際のリソースまでのパスを<br/>
 解決するためのプロセスのことを指します。</p>
-<p><a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/21_stage_layer_spec/">Stage/Layout/Spec</a>の記事に書いた通り、USDは１つのファイルではなくて複数の（それは多くの）レイヤーによって<br/>
+<p><i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/21_stage_layer_spec">Stage/Layer/Spec</a> の記事に書いた通り、USD は１つのファイルではなくて複数の（それは多くの）レイヤーによって<br/>
 １つのステージが構成されています。<br/>
 つまり、あるレイヤーの中には別のレイヤーへのパスが記述されているはずです。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/adc274495504010c793b68eea80f263a.png"><img alt="" src="https://gyazo.com/adc274495504010c793b68eea80f263a.png"/></a></p>
-<p>例えば、Kitchen_set.usd を見ると、中でReferenceされているモデルは ./assets/～ といった<br/>
+<p>例えば、Kitchen_set.usd を見ると、中で Reference されているモデルは ./assets/～ といった<br/>
 現在開いているファイルからの相対パスで記述されていて、<br/>
 子の相対パスで記述されたアセットのパスを「現在のファイルから見た相対パス」として<br/>
 探し出し、その結果をロードしています。<br/>
 あるいは、 <strong>PXR_AR_DEFAULT_SEARCH_PATH</strong> という環境変数が指定されている場合は<br/>
-WindowsのPATHと同じように、DEFAULT_SEARCH_PATHで指定されたパス以下を検索して<br/>
+Windows の PATH と同じように、DEFAULT_SEARCH_PATH で指定されたパス以下を検索して<br/>
 見つかった場合は、そのフォルダ以下にあるファイルを使用するようになっています。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6d69fa63bd8dff7b570ac14d3d196cdf.png"><img alt="" src="https://gyazo.com/6d69fa63bd8dff7b570ac14d3d196cdf.png"/></a></p>
 <p>図に表すと、このようになります。</p>
 <p>デフォルトの場合はその名の通り「ArDefaultResolver」と呼ばれるアセットのパス解決のための<br/>
 機能が実装されています。<br/>
-このArDefaultResolverは、相対パスで記述されたアセットのパスを検索し<br/>
+この ArDefaultResolver は、相対パスで記述されたアセットのパスを検索し<br/>
 実際のリソースまでのフルパスを返します。<br/>
 これによって、相対パスで記述されていてもフルパスで表示ができるようになっています。</p>
 <p>このように、ある入力のパス（相対パス）からリソースまでのフルパスを検索して<br/>
 その結果を返す機構のことを「Asset Resolution」と呼び、<br/>
 そのためのインターフェースを AssetResolver と呼びます。<br/>
-デフォルトの ArDefaultResolverも ArAssetResolverから継承され<br/>
+デフォルトの ArDefaultResolver も ArAssetResolver から継承され<br/>
 実装されたプラグインです。</p>
 <p>このパスを解決するためのプロセスは、独自にカスタマイズすることが可能です。</p>
 <h2 id="_1">具体的な使い方を見る<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>といっても、これだけでは使用イメージがつかみにくいと思いますので<br/>
-今回は、USDリポジトリ以下にあるサンプルプラグイン usdResolverExampleをみながら<br/>
+今回は、USD リポジトリ以下にあるサンプルプラグイン usdResolverExample をみながら<br/>
 どのようなものか、そしてどう使うのかを説明していこうとおもいます。</p>
 <h3 id="_2">ビルドする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p>まずはUSDをビルドします。</p>
+<p>まずは USD をビルドします。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git clone https://github.com/PixarAnimationStudios/USD.git
 </code></pre></div></td></tr></table></div>
 <p>どこか適当なフォルダにクローンしておきます。<br/>
 そして、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5aa98a788f70b6364b384a9e252c1d72.png"><img alt="" src="https://gyazo.com/5aa98a788f70b6364b384a9e252c1d72.png"/></a></p>
-<p>環境変数のPATHに、PythonのPathを通しておきます。<br/>
-<a href="https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09#%E7%92%B0%E5%A2%83%E3%81%AE%E6%BA%96%E5%82%99">Pythonのバージョンは、3.7.9</a>あたりを入れておきます。<br/>
+<p>環境変数の PATH に、Python の Path を通しておきます。<br/>
+<a href="https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09#%E7%92%B0%E5%A2%83%E3%81%AE%E6%BA%96%E5%82%99">Python のバージョンは、3.7.9</a>あたりを入れておきます。<br/>
 なお私は、3.7.7 ですが多分それでも大丈夫でしょう。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fe39fb957b103f73bf6ba96d601e53aa.png"><img alt="" src="https://gyazo.com/fe39fb957b103f73bf6ba96d601e53aa.png"/></a></p>
-<p>VisualStudio2017を事前にインストールしておいて、開発者コマンドプロンプト for VS 2017 をクリックします。</p>
+<p>VisualStudio2017 を事前にインストールしておいて、開発者コマンドプロンプト for VS 2017 をクリックします。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install PyOpenGL PySide2
 </code></pre></div></td></tr></table></div>
-<p>忘れずに pip でPyOpenGLとPySide2を入れておきましょう。</p>
+<p>忘れずに pip で PyOpenGL と PySide2 を入れておきましょう。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python build_scripts/build_usd.py &lt;インストールするフォルダ&gt;
 </code></pre></div></td></tr></table></div>
 <p>あとは、これを実行して３０分ほど待ちます。<br/>
-Pythonは、環境変数で指定されているPATHのPythonでビルドされるので<br/>
-今回なら 3.7.7 で使用できるUSDができあがります。</p>
+Python は、環境変数で指定されている PATH の Python でビルドされるので<br/>
+今回なら 3.7.7 で使用できる USD ができあがります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/84b5d587edf9cc07bf312956e8a1b464.png"><img alt="" src="https://gyazo.com/84b5d587edf9cc07bf312956e8a1b464.png"/></a></p>
 <p>はじまって</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/06c06cf00fefccb657ecc935ff5f922a.png"><img alt="" src="https://gyazo.com/06c06cf00fefccb657ecc935ff5f922a.png"/></a></p>
 <p>無事終わると、このような表示になります。</p>
 <p>ビルドが完了したら、インストール先のパスを環境変数に指定します。<br/>
-しかし困ったことに、この環境変数を指定してしまうとHoudiniがいろいろおかしなことになってしまうので</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+しかし困ったことに、この環境変数を指定してしまうと Houdini がいろいろおかしなことになってしまうので</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>set PATH=C:\USD\lib;C:\USD\bin;%PATH%
 SET PYTHONPATH=C:\USD\lib\python;%PYTHONPATH%
 cmd /k
-</code></pre></div></td></tr></table></div><br/>
-私はこのようなBatを用意してそこから起動するようにしています。<br/>
-(あるいはVSCodeの環境変数で指定)</p>
+</code></pre></div></td></tr></table></div>
+<p>私はこのような Bat を用意してそこから起動するようにしています。<br/>
+(あるいは VSCode の環境変数で指定)</p>
 <h2 id="_3">サンプルプラグインをコピーする<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>ビルドができたら、usdResolverExampleをpluginにコピーします。<br/>
-ビルドで指定したフォルダ（サンプルの場合C:/USD）以下 share/usd/examples/plugin<br/>
+<p>ビルドができたら、usdResolverExample を plugin にコピーします。<br/>
+ビルドで指定したフォルダ（サンプルの場合 C:/USD）以下 share/usd/examples/plugin<br/>
 にある</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/782f7f65ac64a3007910a620fda88769.png"><img alt="" src="https://gyazo.com/782f7f65ac64a3007910a620fda88769.png"/></a></p>
 <p>この３つのファイルを、 plugin/usd 以下にコピーします。</p>
 <p>コピーができたら準備完了です。</p>
 <h2 id="_4">サンプルを開く<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<p>サンプルのResolverが使えるようになったので、<br/>
-Resolverのサンプルusdファイルを見ながらどのようなものかを見ていきましょう。</p>
+<p>サンプルの Resolver が使えるようになったので、<br/>
+Resolver のサンプル usd ファイルを見ながらどのようなものかを見ていきましょう。</p>
 <p>extras/usd/examples/usdResolverExample/testenv/testUsdResolverExample</p>
 <p>サンプルは、以下のフォルダにあるので<br/>
 このフォルダをどこかわかりやすいところにコピーします。<br/>
-自分の場合は Dドライブ直下に置いておきます。</p>
+自分の場合は D ドライブ直下に置いておきます。</p>
 <p>まずは何も考えず、サンプルの<br/>
 shot_1/shot_1.usda<br/>
 を開いて見ます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c4d872b57cf2cbe8aec3d9e573f330c1.png"><img alt="" src="https://gyazo.com/c4d872b57cf2cbe8aec3d9e573f330c1.png"/></a></p>
 <p>すると、盛大にエラーが出ていて表示できません。</p>
 <p>shot_1.usda をエディタで開いてみると</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>references = @asset:Buzz/Buzz.usd@
-</code></pre></div></td></tr></table></div><br/>
-リファレンスで読み込むファイルが asset: から始まるパスになっていて、相対パスではありません。<br/>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>references = @asset:Buzz/Buzz.usd@
+</code></pre></div></td></tr></table></div>
+<p>リファレンスで読み込むファイルが asset: から始まるパスになっていて、相対パスではありません。<br/>
 この「asset」は、URI(Uniform Resource Identifiers) と呼ばれる<br/>
 通常の相対パスなどではなく特定の処理をするための「識別子」になっています。</p>
 <h3 id="asset-urischemes">asset: と uriSchemes<a class="headerlink" href="#asset-urischemes" title="Permanent link">¶</a></h3>
@@ -2939,7 +2939,7 @@ shot_1/shot_1.usda<br/>
 <span class="w">                    </span><span class="nt">"UsdResolverExampleResolver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                        </span><span class="nt">"bases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ArResolver"</span><span class="p">],</span><span class="w"></span>
 <span class="w">                        </span><span class="nt">"uriSchemes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"asset"</span><span class="p">],</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"implementsContexts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">"implementsContexts"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
 <span class="w">                    </span><span class="p">}</span><span class="w"></span>
 <span class="w">                </span><span class="p">}</span><span class="w"></span>
 <span class="w">            </span><span class="p">},</span><span class="w"></span>
@@ -2956,38 +2956,38 @@ shot_1/shot_1.usda<br/>
 Types の uriSchemes に asset が指定されているのがわかります。<br/>
 これは、<br/>
 <strong>アセットパスに asset:～～ になってい場合は、UsdResolverExampleResolver プラグインを呼び出すようにしてくれ</strong><br/>
-という、AssetResolverプラグインを使用するための設定になっています。</p>
+という、AssetResolver プラグインを使用するための設定になっています。</p>
 <blockquote>
-<p>usdのpluginsは、plugin/usd/pluginfo.json にある内容をロードします。<br/>
+<p>usd の plugins は、plugin/usd/pluginfo.json にある内容をロードします。<br/>
 そして、 plugin/usd/plugin/pluginfo.json は subdir/resources/pluginfo.json を<br/>
-Includeします。<br/>
-なので、今回のResolverプラグインの pluginfo.jsonは plugin/usd/usdResolverExample/resources下にあります。<br/>
+Include します。<br/>
+なので、今回の Resolver プラグインの pluginfo.json は plugin/usd/usdResolverExample/resources 下にあります。<br/>
 このあたりの話はまたいずれ。</p>
 </blockquote>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>set USD_RESOLVER_EXAMPLE_ASSET_DIR=D:\testUsdResolverExample\assets
-</code></pre></div></td></tr></table></div><br/>
-サンプルのResolverは、アセット置き場を別途指定してあげる必要があるので<br/>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>set USD_RESOLVER_EXAMPLE_ASSET_DIR=D:\testUsdResolverExample\assets
+</code></pre></div></td></tr></table></div>
+<p>サンプルの Resolver は、アセット置き場を別途指定してあげる必要があるので<br/>
 上のように USD_RESOLVER_EXAMPLE_ASSET_DIR を指定して<br/>
-もう一度 shot_1/shot_1.usdaを開いてみます。</p>
+もう一度 shot_1/shot_1.usda を開いてみます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/00a841c3b6bcd43bed7ce9c837bdbfe3.png"><img alt="" src="https://gyazo.com/00a841c3b6bcd43bed7ce9c837bdbfe3.png"/></a></p>
 <p>今度は開くことができました。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2e95bf543fe44fb5b0ff4e14fa25400f.png"><img alt="" src="https://gyazo.com/2e95bf543fe44fb5b0ff4e14fa25400f.png"/></a></p>
-<p>usdviewでBuzz Primのコンポジションをみると、 assets以下のBuzzがリファレンスされているのがわかります。<br/>
-usdResolverExampleプラグインは、<br/>
-asset:Buzz の Buzz部分がAssetNameとして解釈して、USD_RESOLVER_EXAMPLE_ASSET_DIR 以下のAssetNameの AssetName.usd<br/>
+<p>usdview で Buzz Prim のコンポジションをみると、 assets 以下の Buzz がリファレンスされているのがわかります。<br/>
+usdResolverExample プラグインは、<br/>
+asset:Buzz の Buzz 部分が AssetName として解釈して、USD_RESOLVER_EXAMPLE_ASSET_DIR 以下の AssetName の AssetName.usd<br/>
 にアセットパスが解決されました。</p>
-<h3 id="asset">Assetのフォルダ構成<a class="headerlink" href="#asset" title="Permanent link">¶</a></h3>
-<p>ではこの呼び出されているBuzzアセットフォルダ以下はどのような構成になっているでしょうか。</p>
+<h3 id="asset">Asset のフォルダ構成<a class="headerlink" href="#asset" title="Permanent link">¶</a></h3>
+<p>ではこの呼び出されている Buzz アセットフォルダ以下はどのような構成になっているでしょうか。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/73011b50e7d064f71e363ad8d51f911b.png"><img alt="" src="https://gyazo.com/73011b50e7d064f71e363ad8d51f911b.png"/></a></p>
-<p>Buzz以下に Buzz.usd があり、<br/>
+<p>Buzz 以下に Buzz.usd があり、<br/>
 サブフォルダでバージョンごとのフォルダがあるのがわかります。</p>
-<p>Buzz以下にある Buzz.usd を usdcat してみると</p>
+<p>Buzz 以下にある Buzz.usd を usdcat してみると</p>
 <script src="https://gist.github.com/fereria/86a90963fe7a3daa5912d7b06b59389b.js"></script>
 <p>Buzz/Buzz.usd は、<br/>
 Buzz 以下 のバージョンフォルダをペイロードしています。</p>
 <p>アセットは、このようにバージョン管理をすることがよくあると思いますが、</p>
 <p>asset:Buzz/Buzz.usd</p>
-<p>asset:\&lt;AssetName&gt;  のように解釈するのに加えて、</p>
+<p>asset:\&lt;AssetName&gt; のように解釈するのに加えて、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3001,7 +3001,7 @@ Buzz 以下 のバージョンフォルダをペイロードしています。</
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b5c1cf3c26219bf2e28328bb3fd45607.png"><img alt="" src="https://gyazo.com/b5c1cf3c26219bf2e28328bb3fd45607.png"/></a></p>
 <p>つまりまとめると、アセットのパスが asset:\&lt;AssetName&gt;/\&lt;AssetName&gt;.usd のように指定されていた場合、</p>
 <ol>
-<li>shot以下の versions.json を見て、環境変数 VESION に AssetNameのバージョンを指定</li>
+<li>shot 以下の versions.json を見て、環境変数 VESION に AssetName のバージョンを指定</li>
 <li>USD_RESOLVER_EXAMPLE_ASSET_DIR で指定したアセットフォルダ以下から</li>
 <li>\&lt;AssetName&gt; 以下の AssetName.usd をリファレンスして</li>
 <li>その本体は、\&lt;AssetName&gt; : version で指定されているバージョン以下のものをペイロードする</li>
@@ -3018,13 +3018,13 @@ Buzz 以下 のバージョンフォルダをペイロードしています。</
 </code></pre></div></td></tr></table></div>
 <p>このようにかきかえてみます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/75b8060c6081d22490339b31cca7a1bf.png"><img alt="" src="https://gyazo.com/75b8060c6081d22490339b31cca7a1bf.png"/></a></p>
-<p>すると、AssetInfoは latest ではなく 2 になっています。</p>
+<p>すると、AssetInfo は latest ではなく 2 になっています。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e6f6b88674f88c5707d33b03ef534a6d.png"><img alt="" src="https://gyazo.com/e6f6b88674f88c5707d33b03ef534a6d.png"/></a></p>
 <p>次は バージョンフォルダを増やしてみます。</p>
-<p>latestをコピーして2 にします。<br/>
-latest以下の Buff_sublayer.usd のAssetInfoを書き換えて version:3 にしておきます。</p>
+<p>latest をコピーして 2 にします。<br/>
+latest 以下の Buff_sublayer.usd の AssetInfo を書き換えて version:3 にしておきます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c8f4950c1c833752b9833ddd63f92ceb.png"><img alt="" src="https://gyazo.com/c8f4950c1c833752b9833ddd63f92ceb.png"/></a></p>
-<p>すると、latest 以下のBuzz.usdが読まれているのがわかります。</p>
+<p>すると、latest 以下の Buzz.usd が読まれているのがわかります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3034,29 +3034,29 @@ latest以下の Buff_sublayer.usd のAssetInfoを書き換えて version:3 に�
 }
 </code></pre></div></td></tr></table></div>
 <p>2 にすれば、 latest ではなく 2 のフォルダを参照しに行きます。</p>
-<h2 id="resolver">Resolverの効果について<a class="headerlink" href="#resolver" title="Permanent link">¶</a></h2>
-<p>以上の検証から、AssetResolverを使用することで以下のような効果が得られることがわかります。</p>
+<h2 id="resolver">Resolver の効果について<a class="headerlink" href="#resolver" title="Permanent link">¶</a></h2>
+<p>以上の検証から、AssetResolver を使用することで以下のような効果が得られることがわかります。</p>
 <ol>
 <li>相対パスではなく、アセット名などを使用して実際のリソースへのパス解決を作れる</li>
-<li>バージョン管理をUSDのプラグイン側でコントロールできる</li>
+<li>バージョン管理を USD のプラグイン側でコントロールできる</li>
 <li>アセットのバージョンを別ファイルに記述して固定化できる</li>
 </ol>
 <p>これらができることによってなにが変わるかというと、<br/>
-アセットの管理側（ShotGridのようなデータベース）とデータ側（USD）とのプラグインレベルでの連携が可能になり、<br/>
-OSのファイルシステムのパスに依存しないアセットのパス管理ができるようになります。</p>
+アセットの管理側（ShotGrid のようなデータベース）とデータ側（USD）とのプラグインレベルでの連携が可能になり、<br/>
+OS のファイルシステムのパスに依存しないアセットのパス管理ができるようになります。</p>
 <ul>
 <li><a href="https://github.com/LumaPictures/usd-uri-resolver">https://github.com/LumaPictures/usd-uri-resolver</a></li>
 <li><a href="https://github.com/westerndigitalcorporation/usd-s3-resolver">https://github.com/westerndigitalcorporation/usd-s3-resolver</a></li>
 </ul>
-<p>たとえば、SQLやS3を使用したAssetResolverのサンプルなどもすでに存在しています。（Resolver2.0だと動かない）<br/>
+<p>たとえば、SQL や S3 を使用した AssetResolver のサンプルなどもすでに存在しています。（Resolver2.0 だと動かない）<br/>
 このサンプルの場合、 sql://～～ のようにアセットパスを指定することで、<br/>
 アセットのパスをデータベースを使用して解決しています。</p>
-<p>usdResolverExample は、versionをjsonで保存していましたが<br/>
-例えばこの部分を ShotGridと連携させて、ShotGridのバージョン管理と連動させることで<br/>
-Shotでどのバージョンのモデルを使うかを管理したり<br/>
-ファイルの置き場所をShotGridあるいはデータベースにて管理したりといったことが<br/>
+<p>usdResolverExample は、version を json で保存していましたが<br/>
+例えばこの部分を ShotGrid と連携させて、ShotGrid のバージョン管理と連動させることで<br/>
+Shot でどのバージョンのモデルを使うかを管理したり<br/>
+ファイルの置き場所を ShotGrid あるいはデータベースにて管理したりといったことが<br/>
 可能になります。</p>
-<p>USDに書かれているアセットパスは asset:Name/Name.usd （もちろん変えられる）なので、<br/>
+<p>USD に書かれているアセットパスは asset:Name/Name.usd （もちろん変えられる）なので、<br/>
 よくありがちな、ファイルの置き場所が変わったらリファレンスやテクスチャのパスが切れて<br/>
 どうにもならなくなる...だったり、<br/>
 フォルダ階層で管理しようとしてものすごく階層が深くなり、人間にはどうにもならない感じになったり<br/>
@@ -3064,25 +3064,25 @@ Shotでどのバージョンのモデルを使うかを管理したり<br/>
 環境が変わったら（以下略<br/>
 といった無数の悲劇を回避することができます。</p>
 <h2 id="_5">まとめ<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<p>AssetResolution そして、AssetResolverがどんなものでどういうことができるかつかめたでしょうか。</p>
+<p>AssetResolution そして、AssetResolver がどんなものでどういうことができるかつかめたでしょうか。</p>
 <blockquote>
 <p>USD/extras/usd/examples/usdResolverExample</p>
 </blockquote>
-<p>今回見てきた usdResolverExampleのソースコードは上記のフォルダにあるので<br/>
+<p>今回見てきた usdResolverExample のソースコードは上記のフォルダにあるので<br/>
 実際にどのように実装すればよいかはサンプルを見るとよくわかります。</p>
-<p>多数のUSDファイル（レイヤー）によって構成されているUSDだからこそ、<br/>
+<p>多数の USD ファイル（レイヤー）によって構成されている USD だからこそ、<br/>
 リソースへのパス解決は重要になりますので<br/>
 パイプラインを設計するときに、アセットのパスをどのように管理するかによって<br/>
-カスタムのAssetResolverを実装すると、よりUSDを便利に扱えるようになると思います。</p>
-<p>次回は、このAssetResolutionを踏まえて<br/>
-USDツールのうちのひとつ usdresolve と、Pythonでのパス解決について<br/>
+カスタムの AssetResolver を実装すると、より USD を便利に扱えるようになると思います。</p>
+<p>次回は、この AssetResolution を踏まえて<br/>
+USD ツールのうちのひとつ usdresolve と、Python でのパス解決について<br/>
 書く予定です。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-08-15 16:04:59</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-12 12:05:23</span>
 </small>
 </div>
 </article>

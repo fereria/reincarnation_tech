@@ -1594,9 +1594,9 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdskel">
-    UsdSkelの基本構造
+    UsdSkel の基本構造
   </a>
-<nav aria-label="UsdSkelの基本構造" class="md-nav">
+<nav aria-label="UsdSkel の基本構造" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdskelroot">
@@ -1628,10 +1628,10 @@
 <nav aria-label="データ構造を理解する" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#skeletonjoint">
-    SkeletonとJoint
+<a class="md-nav__link" href="#skeleton-joint">
+    Skeleton と Joint
   </a>
-<nav aria-label="SkeletonとJoint" class="md-nav">
+<nav aria-label="Skeleton と Joint" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#animation">
@@ -1662,6 +1662,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_4">
     参考・実験資料
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#-httpsgraphicspixarcomusddocsapiusd_skel_page_fronthtml">
+    -   https://graphics.pixar.com/usd/docs/api/usd_skel_page_front.html
   </a>
 </li>
 </ul>
@@ -2770,9 +2775,9 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdskel">
-    UsdSkelの基本構造
+    UsdSkel の基本構造
   </a>
-<nav aria-label="UsdSkelの基本構造" class="md-nav">
+<nav aria-label="UsdSkel の基本構造" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usdskelroot">
@@ -2804,10 +2809,10 @@
 <nav aria-label="データ構造を理解する" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#skeletonjoint">
-    SkeletonとJoint
+<a class="md-nav__link" href="#skeleton-joint">
+    Skeleton と Joint
   </a>
-<nav aria-label="SkeletonとJoint" class="md-nav">
+<nav aria-label="Skeleton と Joint" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#animation">
@@ -2840,6 +2845,11 @@
     参考・実験資料
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#-httpsgraphicspixarcomusddocsapiusd_skel_page_fronthtml">
+    -   https://graphics.pixar.com/usd/docs/api/usd_skel_page_front.html
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -2851,13 +2861,13 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>UsdSkelについて</h1>
-<p>原則RIGは持てないUSDですが、JointとSkinbindに関しては対応していてキャラクターなどは<br/>
-Skeletonを使用して作成することができます。</p>
-<p>現状だと、OmniverseのMayaExportまたはSOLARISの群衆のAgentのいずれかのみできますが<br/>
-今回はOmniverseで出力したデータを確認しながら<br/>
-USDにおけるJointのデータ構造を見ていこうと思います。</p>
-<h2 id="usdskel">UsdSkelの基本構造<a class="headerlink" href="#usdskel" title="Permanent link">¶</a></h2>
-<p>まず、USDでJointとSkinBindを使用する場合は</p>
+<p>原則 RIG は持てない USD ですが、Joint と Skinbind に関しては対応していてキャラクターなどは<br/>
+Skeleton を使用して作成することができます。</p>
+<p>現状だと、Omniverse の MayaExport または SOLARIS の群衆の Agent のいずれかのみできますが<br/>
+今回は Omniverse で出力したデータを確認しながら<br/>
+USD における Joint のデータ構造を見ていこうと思います。</p>
+<h2 id="usdskel">UsdSkel の基本構造<a class="headerlink" href="#usdskel" title="Permanent link">¶</a></h2>
+<p>まず、USD で Joint と SkinBind を使用する場合は</p>
 <ol>
 <li>UsdSkelRoot</li>
 <li>UsdSkeleton</li>
@@ -2866,64 +2876,64 @@ USDにおけるJointのデータ構造を見ていこうと思います。</p>
 <p>この３つの構造を利用します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fc344acb67317ebd62d9ff3b09e4e588.png"><img alt="" src="https://gyazo.com/fc344acb67317ebd62d9ff3b09e4e588.png"/></a></p>
 <p>基本はこのような構造になります。<br/>
-（Animationに関してはこことは限らない）</p>
+（Animation に関してはこことは限らない）</p>
 <h3 id="usdskelroot">UsdSkelRoot<a class="headerlink" href="#usdskelroot" title="Permanent link">¶</a></h3>
-<p>UsdSKelRootは、Jointを使用する場合にSkeletonの親ノードとして作成します。<br/>
-SkelRootはBoundabule（BoundingBoxを持つ）Primで、これ以下にSkelが定義されている<br/>
-Primがあると識別するためのPrimです。<br/>
-また、SkinBindされたモデルを配置する時などは<br/>
-このSkelRootを動かすことで、シーン内に配置することができます。</p>
+<p>UsdSKelRoot は、Joint を使用する場合に Skeleton の親ノードとして作成します。<br/>
+SkelRoot は Boundabule（BoundingBox を持つ）Prim で、これ以下に Skel が定義されている<br/>
+Prim があると識別するための Prim です。<br/>
+また、SkinBind されたモデルを配置する時などは<br/>
+この SkelRoot を動かすことで、シーン内に配置することができます。</p>
 <h3 id="usdskelskeleton">UsdSkelSkeleton<a class="headerlink" href="#usdskelskeleton" title="Permanent link">¶</a></h3>
-<p>次がSkeleton。<br/>
-このSkeletonは、Jointのトポロジを定義し、BindPoseを保持します。<br/>
-UsdSkelは、MayaのようにJointごとにPrimがあるわけではなく<br/>
-このSkeletonPrim以下にJointの構造を持ちます。</p>
+<p>次が Skeleton。<br/>
+この Skeleton は、Joint のトポロジを定義し、BindPose を保持します。<br/>
+UsdSkel は、Maya のように Joint ごとに Prim があるわけではなく<br/>
+この SkeletonPrim 以下に Joint の構造を持ちます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f7dad2bc1c75d7fbf79c8778815db426.png"><img alt="" src="https://gyazo.com/f7dad2bc1c75d7fbf79c8778815db426.png"/></a></p>
-<p>Skeletonには、このようにjointsJointを持ちます。<br/>
-Joint1つごとにIndexが割り振られ、親子構造は / で表されます。</p>
+<p>Skeleton には、このように jointsJoint を持ちます。<br/>
+Joint1 つごとに Index が割り振られ、親子構造は / で表されます。</p>
 <h3 id="usdskelanimation">UsdSkelAnimation<a class="headerlink" href="#usdskelanimation" title="Permanent link">¶</a></h3>
-<p>最後のAnimation。<br/>
-UsdSkelのAnimationは、このAnimationPrimという形で別途定義されます。<br/>
-（SkeletonはあくまでもBindPoseのみを持つ）</p>
+<p>最後の Animation。<br/>
+UsdSkel の Animation は、この AnimationPrim という形で別途定義されます。<br/>
+（Skeleton はあくまでも BindPose のみを持つ）</p>
 <h3 id="_1">それをふまえて<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
-<p>以上のようなRoot Skeleton Animation の3つで構成されたUsdSkelで<br/>
+<p>以上のような Root Skeleton Animation の 3 つで構成された UsdSkel で<br/>
 シーンを構成する場合は、このようになります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9b444a9a78bf063ee6d12545d3004233.png"><img alt="" src="https://gyazo.com/9b444a9a78bf063ee6d12545d3004233.png"/></a></p>
-<p>多くの場合は、キャラクターモデルのusdと各Shotごとのキャラアニメーションのusd<br/>
+<p>多くの場合は、キャラクターモデルの usd と各 Shot ごとのキャラアニメーションの usd<br/>
 という構成になります。</p>
-<p>上で説明したとおり、UsdSkelはMayaのJointとは違い、<br/>
-構造すべてをまとめたものが１つのPrimとして表現されます。<br/>
-なので、Jointの間にGroupノードなどの、Joint以外のノードが混ざることが<br/>
+<p>上で説明したとおり、UsdSkel は Maya の Joint とは違い、<br/>
+構造すべてをまとめたものが１つの Prim として表現されます。<br/>
+なので、Joint の間に Group ノードなどの、Joint 以外のノードが混ざることが<br/>
 許容されていません。<br/>
-なので、Mayaでモデルを作る段階からSkeletonだけの構造として切り分けておく必要があります。</p>
-<p>そして、そのSkeletonPrimを動かすためのAnimationは別Primになるので<br/>
-各ShotごとのAnimationは<br/>
-別レイヤー扱いにして、Referenceまたはサブレイヤーで合成して<br/>
-Skeletonに対してRelationshipでPrimを指定すれば<br/>
-モデル部分は共通化した上で、Shotごとは別のレイヤーでデータを切り分けることができます。</p>
+なので、Maya でモデルを作る段階から Skeleton だけの構造として切り分けておく必要があります。</p>
+<p>そして、その SkeletonPrim を動かすための Animation は別 Prim になるので<br/>
+各 Shot ごとの Animation は<br/>
+別レイヤー扱いにして、Reference またはサブレイヤーで合成して<br/>
+Skeleton に対して Relationship で Prim を指定すれば<br/>
+モデル部分は共通化した上で、Shot ごとは別のレイヤーでデータを切り分けることができます。</p>
 <h2 id="_2">データ構造を理解する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>ざっくりとPrimの関係性などはわかりましたが、<br/>
-ここからはSkelに関係するデータがどのように定義されていているのかを<br/>
+<p>ざっくりと Prim の関係性などはわかりましたが、<br/>
+ここからは Skel に関係するデータがどのように定義されていているのかを<br/>
 もう少し詳しく確認してみます。</p>
-<h3 id="skeletonjoint">SkeletonとJoint<a class="headerlink" href="#skeletonjoint" title="Permanent link">¶</a></h3>
-<p>まずJointについて。</p>
-<p>上のSkeletonで書いたとおり、Skeletonは、jointsアトリビュートに<br/>
-このSkeletonが持つJointのリストを持ちます。</p>
+<h3 id="skeleton-joint">Skeleton と Joint<a class="headerlink" href="#skeleton-joint" title="Permanent link">¶</a></h3>
+<p>まず Joint について。</p>
+<p>上の Skeleton で書いたとおり、Skeleton は、joints アトリビュートに<br/>
+この Skeleton が持つ Joint のリストを持ちます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e0e6841dcb7768ea7f4ccae88e6a1fb3.png"><img alt="" src="https://gyazo.com/e0e6841dcb7768ea7f4ccae88e6a1fb3.png"/></a></p>
-<p>たとえば、このようなキャラクターのSkeletonがあった場合。<br/>
-このSkeletonは１つのSkeletonPrimになっていて、</p>
+<p>たとえば、このようなキャラクターの Skeleton があった場合。<br/>
+この Skeleton は１つの SkeletonPrim になっていて、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e4e76c60ef470025cc52bddbda61c557.png"><img alt="" src="https://gyazo.com/e4e76c60ef470025cc52bddbda61c557.png"/></a></p>
-<p>このように、Skeltonの階層構造のフルパスのリストを持ちます。<br/>
-この各Jointがどの位置にあるかは、</p>
+<p>このように、Skelton の階層構造のフルパスのリストを持ちます。<br/>
+この各 Joint がどの位置にあるかは、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ce3bea8767e1443a63b5b7061979eb86.png"><img alt="" src="https://gyazo.com/ce3bea8767e1443a63b5b7061979eb86.png"/></a></p>
-<p>BindTransformsアトリビュートに保存されています。<br/>
-このTransformsはMatrixの配列になっていて、<br/>
-jointsのIndex（0:Hips とある場合は :より前の数字がIndex）にそれぞれ対応しています。<br/>
+<p>BindTransforms アトリビュートに保存されています。<br/>
+この Transforms は Matrix の配列になっていて、<br/>
+joints の Index（0:Hips とある場合は :より前の数字が Index）にそれぞれ対応しています。<br/>
 そのため、 bindTransforms と joints の要素数は同じになります。</p>
 <h4 id="animation">Animation<a class="headerlink" href="#animation" title="Permanent link">¶</a></h4>
-<p>Skeletonは、BindPoseのみなのでアニメーションは保持しません。<br/>
-アニメーションをセットしたい場合は、SkeletonPrimに対してAnimationPrimを<br/>
-Relationで接続します。<br/>
+<p>Skeleton は、BindPose のみなのでアニメーションは保持しません。<br/>
+アニメーションをセットしたい場合は、SkeletonPrim に対して AnimationPrim を<br/>
+Relation で接続します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2937,15 +2947,15 @@ Relationで接続します。<br/>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetRotationsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetTranslationsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">GetScalesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div></p>
-<p>Relation接続先は skel:animationSource なので、<br/>
-GetRelationshipでRelationを取得し、AddTarget で、AnimationPrimのSdfPathを<br/>
+</code></pre></div></td></tr></table></div>
+<p>Relation 接続先は skel:animationSource なので、<br/>
+GetRelationship で Relation を取得し、AddTarget で、AnimationPrim の SdfPath を<br/>
 指定します。</p>
 <h3 id="topology">Topology<a class="headerlink" href="#topology" title="Permanent link">¶</a></h3>
-<p>Jointは、SkeletonPrimでは /root/a/b のような / で区切られたパスで記述されます。<br/>
-このJoint内の親子階層を検索したり、現在のJointのPathがどこにあたるのかを<br/>
+<p>Joint は、SkeletonPrim では /root/a/b のような / で区切られたパスで記述されます。<br/>
+この Joint 内の親子階層を検索したり、現在の Joint の Path がどこにあたるのかを<br/>
 調べたい場合、文字列で検索したりするのはさすがに面倒です。</p>
-<p>このSkeleton内のJointの構造は UsdSkelTopologyを利用することで<br/>
+<p>この Skeleton 内の Joint の構造は UsdSkelTopology を利用することで<br/>
 把握することができます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2971,30 +2981,30 @@ GetRelationshipでRelationを取得し、AddTarget で、AnimationPrimのSdfPath
 <span class="n">parentIndex</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">GetParent</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">joints</span><span class="p">[</span><span class="n">parentIndex</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
-<p>Topologyに対して、jointsのリストを渡すと、<br/>
-それ以降は あるJointの親がどれなのか などを、Topologyに指定したリストの<br/>
-Indexで取得できます。</p>
-<p>親Jointを探したりする場合も、jointsのIndexの数字でコントロールするというのが<br/>
+<p>Topology に対して、joints のリストを渡すと、<br/>
+それ以降は ある Joint の親がどれなのか などを、Topology に指定したリストの<br/>
+Index で取得できます。</p>
+<p>親 Joint を探したりする場合も、joints の Index の数字でコントロールするというのが<br/>
 最初はわかりにくいですが<br/>
-SkeletonでJointをリストとして持ち、親子階層の確認はUsdSkelTopologyを<br/>
-利用するというところを押さえれば、UsdSkeletonのJointの構造は理解しやすいです。</p>
+Skeleton で Joint をリストとして持ち、親子階層の確認は UsdSkelTopology を<br/>
+利用するというところを押さえれば、UsdSkeleton の Joint の構造は理解しやすいです。</p>
 <h3 id="bindskin">BindSkin<a class="headerlink" href="#bindskin" title="Permanent link">¶</a></h3>
-<p>最後にBindSkin。<br/>
-USDの場合は、SkinWeightの情報はMeshPrimが持ちます。<br/>
+<p>最後に BindSkin。<br/>
+USD の場合は、SkinWeight の情報は MeshPrim が持ちます。<br/>
 その情報が、 primvars:skel:jointIndices と primvars:skel:jointWeights の２つです。</p>
-<p>他のアトリビュートとは違い、Weightのアトリビュートは「primvars」になっています。<br/>
-primvarとは、「プリミティブ変数」の略で<br/>
+<p>他のアトリビュートとは違い、Weight のアトリビュートは「primvars」になっています。<br/>
+primvar とは、「プリミティブ変数」の略で<br/>
 プリミティブの表面・体積にわたって値を変化させる（補完する）ものです（例：UV）</p>
-<p>つまり、Weight情報は各Vertexごとに持っていますが<br/>
-VertexとVertexの間はprimvarによって補完されることになります。</p>
-<p>jointIndeces と jointWeights は、 SkeletonのJoint数 × 頂点数分持ちます。<br/>
-並び順は、MeshのVertexのIndex順になっているようで</p>
-<p>jointIndicesは、SkeletonのIndex jointWeights はその頂点のSkeletonIndexのWeight値を 0-1で持ちます。</p>
+<p>つまり、Weight 情報は各 Vertex ごとに持っていますが<br/>
+Vertex と Vertex の間は primvar によって補完されることになります。</p>
+<p>jointIndeces と jointWeights は、 Skeleton の Joint 数 × 頂点数分持ちます。<br/>
+並び順は、Mesh の Vertex の Index 順になっているようで</p>
+<p>jointIndices は、Skeleton の Index jointWeights はその頂点の SkeletonIndex の Weight 値を 0-1 で持ちます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/43f5faa59188bd1205718bb32beba74e.png"><img alt="" src="https://gyazo.com/43f5faa59188bd1205718bb32beba74e.png"/></a></p>
-<p>たとえば、あるMeshにJointが２つあるSkeletonをBindしたとすると<br/>
+<p>たとえば、ある Mesh に Joint が２つある Skeleton を Bind したとすると<br/>
 構造的にはこのように Mesh の Vertex 順に Skeleton の数だけ並び、、、というふうになります。<br/>
-JointのIndexは順不同で、かならず 0 1 2 ... と増えていくわけではありません。<br/>
-あくまでもあるVertexに対してのjoitnWeightsとの組み合わせになります。</p>
+Joint の Index は順不同で、かならず 0 1 2 ... と増えていくわけではありません。<br/>
+あくまでもある Vertex に対しての joitnWeights との組み合わせになります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3019,43 +3029,40 @@ JointのIndexは順不同で、かならず 0 1 2 ... と増えていくわけ�
 <span class="nb">print</span><span class="p">(</span><span class="n">indicesPrimvar</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">weightPrimvar</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
-<p>Bindしたり、Bind情報を取得する場合は、BindingAPIを経由して取得します。<br/>
-bindingAPIの GetJoitIndicesPrimvar と GetJointWeightsAttr を使用すると<br/>
+<p>Bind したり、Bind 情報を取得する場合は、BindingAPI を経由して取得します。<br/>
+bindingAPI の GetJoitIndicesPrimvar と GetJointWeightsAttr を使用すると<br/>
 値が取得できるし、CreateJointIndicesPrimvar CreateJointWeightsPrimvar で<br/>
 値をセットすることもできます。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>ここまでで、Skeleton - Joint - Animation - SkinBind の関係性が<br/>
 ざっくりと理解できました。</p>
 <ol>
-<li>Joint はSkeletonPrimが持つ</li>
-<li>AnimationはSkeletonとは別にAnimationPrimが持つ</li>
-<li>SkinBindはMeshが持つ</li>
+<li>Joint は SkeletonPrim が持つ</li>
+<li>Animation は Skeleton とは別に AnimationPrim が持つ</li>
+<li>SkinBind は Mesh が持つ</li>
 </ol>
-<p>これを踏まえてUSDのコンポジションと組み合わせて考えると<br/>
-SkeletonとMeshは別レイヤーにして<br/>
-同じキャラでも服や髪型違いがあったときにSkeletonは別レイヤーにしておいて共有し<br/>
+<p>これを踏まえて USD のコンポジションと組み合わせて考えると<br/>
+Skeleton と Mesh は別レイヤーにして<br/>
+同じキャラでも服や髪型違いがあったときに Skeleton は別レイヤーにしておいて共有し<br/>
 コンポジションで合成させたり、<br/>
-SkinWeightとSkeletonとMeshを別レイヤーにしておいてコンポジションで組み合わせたり<br/>
+SkinWeight と Skeleton と Mesh を別レイヤーにしておいてコンポジションで組み合わせたり<br/>
 といったことができるようになります。</p>
-<p>Animationも、キャラモデルは共有しつつ、ShotごとのAnimationは別レイヤーとして出力<br/>
-（Omniverse的にはAnimationClipと呼ぶ）そのファイルをReferenceして<br/>
-Skeletonの animationSourceに接続すれば<br/>
+<p>Animation も、キャラモデルは共有しつつ、Shot ごとの Animation は別レイヤーとして出力<br/>
+（Omniverse 的には AnimationClip と呼ぶ）そのファイルを Reference して<br/>
+Skeleton の animationSource に接続すれば<br/>
 キャラとモーションを別ファイルにすることで<br/>
-モデルが更新されたときに、Shotのレイヤーのモデルも更新する...<br/>
+モデルが更新されたときに、Shot のレイヤーのモデルも更新する...<br/>
 みたいなことができるようになります。</p>
-<p>欠点として、Jointの階層の間にJoint以外の階層が入るのはNGなので<br/>
+<p>欠点として、Joint の階層の間に Joint 以外の階層が入るのは NG なので<br/>
 それを踏まえて構造を考える必要があります。</p>
 <h2 id="_4">参考・実験資料<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<ul>
-<li><a href="https://graphics.pixar.com/usd/docs/api/usd_skel_page_front.html">https://graphics.pixar.com/usd/docs/api/usd_skel_page_front.html</a></li>
-<li><a href="https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/Usdskel_02">https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/Usdskel_02</a></li>
-</ul>
+<h2 id="-httpsgraphicspixarcomusddocsapiusd_skel_page_fronthtml">-   <a href="https://graphics.pixar.com/usd/docs/api/usd_skel_page_front.html">https://graphics.pixar.com/usd/docs/api/usd_skel_page_front.html</a><a class="headerlink" href="#-httpsgraphicspixarcomusddocsapiusd_skel_page_fronthtml" title="Permanent link">¶</a></h2>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-01-28 18:19:54</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-12 12:05:23</span>
 </small>
 </div>
 </article>

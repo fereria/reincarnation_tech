@@ -3052,7 +3052,7 @@ Houdini18 から追加された SOLARIS の Stage ネットワーク内で使用
 <p>ただし、追加されたノードはかなり膨大なので全部を 1 度でやるのはムリなので<br/>
 コンポジションアーク、Light のノード以外で、使いそうな物をいくつかピックアップして<br/>
 アドカレ締め切り日までに書けるだけかいてみるようにします。<br/>
-また、とりあえず最初なので、1 つづつは深掘りせず基本的な使い方のみです。  </p>
+また、とりあえず最初なので、1 つづつは深掘りせず基本的な使い方のみです。</p>
 <p>検証してたらやっぱり違うかもしれない...ということもあるかもしれませんが<br/>
 そのあたりはご容赦ください。</p>
 <h2 id="_1">調べ方<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
@@ -3097,7 +3097,7 @@ SOLARIS では、カレントノードは現在の最新のアクティブレイ
 それぞれもうちょっと掘り下げたいなぁというものは<br/>
 今回以降に個々のページで検証をしていこうかと思います。</p>
 <h3 id="sop-lop">SOP-&gt;LOP 関係<a class="headerlink" href="#sop-lop" title="Permanent link">¶</a></h3>
-<p>SOLARIS空間にSOPのジオメトリを持ち込む方法はいくつかあります。</p>
+<p>SOLARIS 空間に SOP のジオメトリを持ち込む方法はいくつかあります。</p>
 <h4 id="sop-import">SOP import<a class="headerlink" href="#sop-import" title="Permanent link">¶</a></h4>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/23523170781cf45294c0d689b1f11f16.png"><img alt="" src="https://gyazo.com/23523170781cf45294c0d689b1f11f16.png"/></a></p>
 <p>まず sopimport<br/>
@@ -3117,23 +3117,23 @@ SOLARIS では、カレントノードは現在の最新のアクティブレイ
 SOP path の下に usd ファイルで保存されます。</p>
 <h4 id="sop-create">SOP Create<a class="headerlink" href="#sop-create" title="Permanent link">¶</a></h4>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c1cd6fc15a67cf2e4f53893606f95e9a.png"><img alt="" src="https://gyazo.com/c1cd6fc15a67cf2e4f53893606f95e9a.png"/></a></p>
-<p>SOP Create は importと違いこのノード内でSOPネットワークを作り、<br/>
-そのOUTPUTをSOLARIS上で使用することができます。  </p>
+<p>SOP Create は import と違いこのノード内で SOP ネットワークを作り、<br/>
+その OUTPUT を SOLARIS 上で使用することができます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d43ccb2cd59e8525c4b3106d8f3dbe39.png"><img alt="" src="https://gyazo.com/d43ccb2cd59e8525c4b3106d8f3dbe39.png"/></a></p>
-<p>例として、このように SOP Create のサブネットワーク内でノードを作ると  </p>
+<p>例として、このように SOP Create のサブネットワーク内でノードを作ると</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7b35b415b468cc384ecf116de89c2088.png"><img alt="" src="https://gyazo.com/7b35b415b468cc384ecf116de89c2088.png"/></a></p>
-<p>このように、Outputの結果がSOLARIS上に持ち込まれます。  </p>
-<p>この画像を見てもらうと分かりますが、デフォルトだとマテリアルアサインがされません。  </p>
+<p>このように、Output の結果が SOLARIS 上に持ち込まれます。</p>
+<p>この画像を見てもらうと分かりますが、デフォルトだとマテリアルアサインがされません。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2a02faf39796491776f642bc68a1c6c5.png"><img alt="" src="https://gyazo.com/2a02faf39796491776f642bc68a1c6c5.png"/></a></p>
-<p>マテリアルは、SOP CreateノードのMaterialsタブをクリックし、「Auto-fill Materials」をクリック<br/>
-すると、  </p>
+<p>マテリアルは、SOP Create ノードの Materials タブをクリックし、「Auto-fill Materials」をクリック<br/>
+すると、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/89620a098d279492da5437f44ce9104d.png"><img alt="" src="https://gyazo.com/89620a098d279492da5437f44ce9104d.png"/></a></p>
 <p>マテリアルも一緒に持ち込めるようになります。</p>
-<p>細かいところは、 SOP import と設定部分は同じです。  </p>
+<p>細かいところは、 SOP import と設定部分は同じです。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/31c39831d7d8e44e7a60813f2b275581.png"><img alt="" src="https://gyazo.com/31c39831d7d8e44e7a60813f2b275581.png"/></a></p>
-<p>SOLARIS上でも、SOPと同じようにTestジオメトリをロードできますが、  </p>
+<p>SOLARIS 上でも、SOP と同じように Test ジオメトリをロードできますが、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/da6d34788395a29da0e97714f3ea4184.png"><img alt="" src="https://gyazo.com/da6d34788395a29da0e97714f3ea4184.png"/></a></p>
-<p>Testジオメトリは、このSOP Createで持ち込んだものになります。  </p>
+<p>Test ジオメトリは、この SOP Create で持ち込んだものになります。</p>
 <h4 id="scene-import">scene import<a class="headerlink" href="#scene-import" title="Permanent link">¶</a></h4>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/da1dd698dfdb5c56a1c9a5e29dbcf438.png"><img alt="" src="https://gyazo.com/da1dd698dfdb5c56a1c9a5e29dbcf438.png"/></a></p>
 <p>scene improt は、 sopimport とは違い、Houdini の SOP ネットワーク内の全ジオメトリを<br/>
@@ -3424,14 +3424,14 @@ USD の構造としての Variant Set は持ちません。</p>
 この Switch ノードということかとおもいます。</p>
 <h4 id="prune">prune<a class="headerlink" href="#prune" title="Permanent link">¶</a></h4>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/28f423dff229866a96f21589800ea281.png"><img alt="" src="https://gyazo.com/28f423dff229866a96f21589800ea281.png"/></a></p>
-<p>pruneは、入力のPrimitiveのうち <strong>「条件に当てはまる」</strong> Primitiveを無効 or 非表示にします。  </p>
+<p>prune は、入力の Primitive のうち <strong>「条件に当てはまる」</strong> Primitive を無効 or 非表示にします。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c6cfba365d4d3dde8a4bc4ef1f1fd533.png"><img alt="" src="https://gyazo.com/c6cfba365d4d3dde8a4bc4ef1f1fd533.png"/></a></p>
-<p>Pruneノードの条件を指定すると</p>
+<p>Prune ノードの条件を指定すると</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4667a9b6bbb63a549a7a66e12cdabeb1.png"><img alt="" src="https://gyazo.com/4667a9b6bbb63a549a7a66e12cdabeb1.png"/></a></p>
-<p>条件に当てはまるノードが非表示になります。  </p>
+<p>条件に当てはまるノードが非表示になります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png"><img alt="" src="https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png"/></a></p>
 <p>デフォルトだと Make Invisible の場合は「非表示」になるし Deactivate だと「無効」になります。</p>
-<p>出力されるUSDファイルは、非表示なら<br/>
+<p>出力される USD ファイルは、非表示なら</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3439,8 +3439,8 @@ USD の構造としての Variant Set は持ちません。</p>
 {
     token visibility = "invisible"
 }
-</code></pre></div></td></tr></table></div><br/>
-無効なら<br/>
+</code></pre></div></td></tr></table></div>
+<p>無効なら</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3450,8 +3450,8 @@ USD の構造としての Variant Set は持ちません。</p>
 )
 {
 }
-</code></pre></div></td></tr></table></div><br/>
-こうなります。</p>
+</code></pre></div></td></tr></table></div>
+<p>こうなります。</p>
 <h3 id="material">Material 関係<a class="headerlink" href="#material" title="Permanent link">¶</a></h3>
 <h4 id="materiallibrary">materiallibrary<a class="headerlink" href="#materiallibrary" title="Permanent link">¶</a></h4>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4779def23714d785095ca81b09f89c8b.png"><img alt="" src="https://gyazo.com/4779def23714d785095ca81b09f89c8b.png"/></a></p>
@@ -3496,8 +3496,8 @@ USD の Material/Shader として Import することができます。</p>
 <span class="n">stage</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">editableStage</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <p>デフォルトではこのようになっています。<br/>
-後はどうぞご自由に。。。。という感じですね。  </p>
-<p><a href="http://graphics.pixar.com/usd/docs/api/index.html">http://graphics.pixar.com/usd/docs/api/index.html</a> </p>
+後はどうぞご自由に。。。。という感じですね。</p>
+<p><a href="http://graphics.pixar.com/usd/docs/api/index.html">http://graphics.pixar.com/usd/docs/api/index.html</a></p>
 <p>USD は Python からほぼ 100％自由に操作することができます。<br/>
 関連する関数群も充実というかとんでもない物量で、私もできる限りドキュメントを読んでいますが<br/>
 未だに全容を把握することが出来ません。</p>
@@ -3519,15 +3519,15 @@ USD の Material/Shader として Import することができます。</p>
 <p>例として。<br/>
 この Python ノードの前段階までで指定した Collection に含まれる Primitive を取得。<br/>
 取得したノードにたいして処理したい場合なんかは<br/>
-このようにすることで、指定の Primitive に対して編集を行うことが出来ます。  </p>
+このようにすることで、指定の Primitive に対して編集を行うことが出来ます。</p>
 <p>やっかいなのは、ドキュメントが C++版なので多少の脳内変換が必要なのと<br/>
 用語関係は USD の用語で書かれているので Houdini 側と一致しないこと。<br/>
 あとは、USD のデータ構造はある程度把握しておく必要があるので<br/>
 若干敷居は高いかもしれません。（Collection は Relation で扱われてる...等）</p>
-<p><a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/10_USDTips/02_usd_py_cheatsheets/">https://fereria.github.io/reincarnation_tech/11_Pipeline/10_USDTips/02_usd_py_cheatsheets/</a></p>
+<p><i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/02_usd_py_cheatsheets">UPythonUSDチートシート</a></p>
 <p>よく使う Pyton コマンド集は別途ページを作成してあります。</p>
 <h2 id="_6">まとめ<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
-<p>とりあえずアドカレ締め切りの日までにざっくり調べたノードの使い方でした。  </p>
+<p>とりあえずアドカレ締め切りの日までにざっくり調べたノードの使い方でした。</p>
 <p>検証して分かったことは、<br/>
 SOLARIS のノード（コンポジションアーク系ノード以外）は USD の細かい仕様だったりを<br/>
 いいかんじに Houdini 風にラップして<br/>
@@ -3535,13 +3535,13 @@ SOLARIS のノード（コンポジションアーク系ノード以外）は US
 出来ているなと感じました。<br/>
 （特に、コンポジションの解決順序とかをほぼ意識せず直感的に操作できるのが素晴らしい）</p>
 <p>個人的に調べていて勉強になったのが Merge/Graft/Switch。<br/>
-この3つとかコンポジションアークのノードと挙動が同じでなにが違うんだろう？？？？？と<br/>
+この 3 つとかコンポジションアークのノードと挙動が同じでなにが違うんだろう？？？？？と<br/>
 ずっと疑問でした。<br/>
 ですが、調べたらどう違うのかが分かったし<br/>
 結果どういうシーングラフが作られるのか理解出来たのが収穫でした。</p>
 <p>今回までに調べたノードの中だと、やはり Merge Graft Swith などでのシーングラフ構築と<br/>
 sopimport sceneimport materiallibrary 等の、今まであった Houdini の世界から<br/>
-オブジェクトを持ってくるあたりがよく使うノードになるのではと思います。  </p>
+オブジェクトを持ってくるあたりがよく使うノードになるのではと思います。</p>
 <p>なので、USD とはなんぞや？というのはとりあえず横に置いておいて<br/>
 sopimport や scene import で、SOP で作ったモデルを持ち込んで<br/>
 Graft や Merge でシーンのツリーを構築して、ライトをおいてみてレンダリングしてみたり、<br/>
@@ -3561,7 +3561,7 @@ PointInstancer で、Point に対して大量のモデルを配置してみる�
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-12 01:36:00</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-12 12:05:23</span>
 </small>
 </div>
 </article>
