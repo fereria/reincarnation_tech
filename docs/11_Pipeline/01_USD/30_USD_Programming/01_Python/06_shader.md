@@ -9,7 +9,7 @@ tags:
 description: Pythonを使用してUsdPreviewSurfaceを構築する
 ---
 
-[SOLARIS での UsdPreviewSurface 以前](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/12_usd_preview_surface/)の記事を書いたのですが
+{{markdown_link('12_usd_preview_surface')}} の記事を書いたのですが
 今回は Python をベースに PreviewSurface をまとめてみようと思います。
 
 ## 基本構造
@@ -330,7 +330,7 @@ subset から Prim を取得して、その Prim のリレーションからタ�
 ## まとめ
 
 これで、USD の基本的なシェーダーの構築方法がわかりました。
-https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/12_usd_preview_surface/
+{{markdown_link('12_usd_preview_surface')}}
 SOLARIS の UsdPreviewSurface などを使用すればもう少し楽に作れると思いますが
 PrimvarReader や、File ノードなどの構造は USD の構造をベースにしているので
 [こちら](https://graphics.pixar.com/usd/docs/UsdPreviewSurface-Proposal.html)とあわせて確認すると扱いやすいのではないかとおもいます。

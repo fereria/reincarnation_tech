@@ -157,7 +157,7 @@ prim.GetInherits().AddInherit(cls.GetPath())
 
 しかし、この class Prim は Inherits することで、別の Prim に継承することができます。
 
-継承については別途[こちらで解説](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/07_comp_arc_inherits/)していますので、そちらを参照してください。
+継承については別途 {{markdown_link('07_comp_arc_inherits','こちらで解説')}} していますので、そちらを参照してください。
 
 def を Inherits することも可能ですが、
 class として定義するのはあくまで「共通定義」であることが多く（例：共通のライト、マテリアル等）

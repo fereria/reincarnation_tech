@@ -85,7 +85,7 @@ print(stage.ExportToString())
 
 ### mask
 
-mask は、 [PopulationMask](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/19_population_mask/) で説明した OpenMask で指定した Path 以下だけをロード・表示する機能です。
+mask は、 {{markdown_link('19_population_mask')}} で説明した OpenMask で指定した Path 以下だけをロード・表示する機能です。
 
 {{'8bad7d6f561150fc1ee197be85d11c85'|gist}}
 

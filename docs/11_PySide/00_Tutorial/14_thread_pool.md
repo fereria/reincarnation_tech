@@ -24,9 +24,7 @@ PySide で GUI を作るときに、重い処理（ファイルのコピー等�
 
 ## サンプル
 
-全コードは
-https://fereria.github.io/reincarnation_tech/65_SampleCode/PySide/thredPool_02/
-こちらから。
+全コードは {{markdown_link('thredPool_02')}} こちらから。
 
 ![](https://gyazo.com/f966a2327ffb974f871f13e244fd2994.png)
 
