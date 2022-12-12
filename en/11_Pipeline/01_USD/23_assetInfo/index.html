@@ -1420,12 +1420,12 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#assetinfo">
-    AssetInfoとは
+    AssetInfo とは
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#kitchen_set">
-    Kitchen_setみてみる
+    Kitchen_set みてみる
   </a>
 </li>
 <li class="md-nav__item">
@@ -1435,26 +1435,26 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#assetinfo_1">
-    AssetInfoを活用する
+    AssetInfo を活用する
   </a>
-<nav aria-label="AssetInfoを活用する" class="md-nav">
+<nav aria-label="AssetInfo を活用する" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#flattenassetinfo">
-    Flattenした場合のAssetInfo
+<a class="md-nav__link" href="#flatten-assetinfo">
+    Flatten した場合の AssetInfo
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#assetinfo_2">
-    依存解決のためのAssetInfo
+    依存解決のための AssetInfo
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tf_debugassetinfo">
-    TF_DEBUGでのAssetInfoの確認
+<a class="md-nav__link" href="#tf_debug-assetinfo">
+    TF_DEBUG での AssetInfo の確認
   </a>
 </li>
 <li class="md-nav__item">
@@ -2742,12 +2742,12 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#assetinfo">
-    AssetInfoとは
+    AssetInfo とは
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#kitchen_set">
-    Kitchen_setみてみる
+    Kitchen_set みてみる
   </a>
 </li>
 <li class="md-nav__item">
@@ -2757,26 +2757,26 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#assetinfo_1">
-    AssetInfoを活用する
+    AssetInfo を活用する
   </a>
-<nav aria-label="AssetInfoを活用する" class="md-nav">
+<nav aria-label="AssetInfo を活用する" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#flattenassetinfo">
-    Flattenした場合のAssetInfo
+<a class="md-nav__link" href="#flatten-assetinfo">
+    Flatten した場合の AssetInfo
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#assetinfo_2">
-    依存解決のためのAssetInfo
+    依存解決のための AssetInfo
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tf_debugassetinfo">
-    TF_DEBUGでのAssetInfoの確認
+<a class="md-nav__link" href="#tf_debug-assetinfo">
+    TF_DEBUG での AssetInfo の確認
   </a>
 </li>
 <li class="md-nav__item">
@@ -2799,32 +2799,32 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>AssetInfoについて</h1>
-<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description AdventCalendar2021</a> 13日目は、<br/>
-AssetInfoについてとその使い方です。</p>
-<h2 id="assetinfo">AssetInfoとは<a class="headerlink" href="#assetinfo" title="Permanent link">¶</a></h2>
-<p><a href="https://graphics.pixar.com/usd/release/glossary.html#usdglossary-assetinfo">AssetInfo</a>とは、USDで作成されたアセットを管理・識別するために、<br/>
-<strong>PrimやPropertyに対して指定することができる辞書型のメタデータ</strong> です。</p>
-<p>USDは、<a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/21_stage_layer_spec/">Stage/Layer/Spec</a>の回で説明した通り、１つのファイルから構成されているわけではなく<br/>
+<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description AdventCalendar2021</a> 13 日目は、<br/>
+AssetInfo についてとその使い方です。</p>
+<h2 id="assetinfo">AssetInfo とは<a class="headerlink" href="#assetinfo" title="Permanent link">¶</a></h2>
+<p><a href="https://graphics.pixar.com/usd/release/glossary.html#usdglossary-assetinfo">AssetInfo</a>とは、USD で作成されたアセットを管理・識別するために、<br/>
+<strong>Prim や Property に対して指定することができる辞書型のメタデータ</strong> です。</p>
+<p>USD は、 <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/21_stage_layer_spec">Stage/Layer/Spec</a>の回で説明した通り、１つのファイルから構成されているわけではなく<br/>
 １つのステージに対して複数のファイルによって構成されています。<br/>
-その大量のファイルの依存関係がどのようになっているのかをAPIを使用して把握することはできますが<br/>
+その大量のファイルの依存関係がどのようになっているのかを API を使用して把握することはできますが<br/>
 かなり深いところを触る必要があり（たとえば、データをサブミットしたりビルドしたりするときに<br/>
 あるステージの構造を検索しようとすると、かなり大変なことになります。<br/>
 （いわゆる「できないわけではない」）</p>
-<p>AssetInfoをアセットに対して指定しておくと、<br/>
+<p>AssetInfo をアセットに対して指定しておくと、<br/>
 レイアウトしているシーン等から<br/>
 「今のステージがどのようなアセットで構成されているのか」<br/>
 「今のステージがどういう意図になっているのか」<br/>
 を、特定すことができるようになります。</p>
-<h2 id="kitchen_set">Kitchen_setみてみる<a class="headerlink" href="#kitchen_set" title="Permanent link">¶</a></h2>
+<h2 id="kitchen_set">Kitchen_set みてみる<a class="headerlink" href="#kitchen_set" title="Permanent link">¶</a></h2>
 <p>説明を見てもピンとこないので、具体的な例をまず見てみます。</p>
-<p>Kitchen_setにある Ball.usd を usdviewで開いてみます。</p>
+<p>Kitchen_set にある Ball.usd を usdview で開いてみます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1d050ae2719eeeba4d00f5e46976a4d8.png"><img alt="" src="https://gyazo.com/1d050ae2719eeeba4d00f5e46976a4d8.png"/></a></p>
-<p>MetaDataタブを確認するとassetInfoに identifier と name が指定されていることがわかります。</p>
+<p>MetaData タブを確認すると assetInfo に identifier と name が指定されていることがわかります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/599388099f37306efc11461c98119b78.png"><img alt="" src="https://gyazo.com/599388099f37306efc11461c98119b78.png"/></a></p>
-<p>Kitchen_set.usd を開き、Ball.usdをペイロードしているPrimをみると<br/>
-Meta Dataに、 Ball.usd に指定されたAssetInfoが確認できます。</p>
+<p>Kitchen_set.usd を開き、Ball.usd をペイロードしている Prim をみると<br/>
+Meta Data に、 Ball.usd に指定された AssetInfo が確認できます。</p>
 <h2 id="_1">指定できる情報<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>AssetInfoには、そのアセットを管理するための情報がDict型で入っています。</p>
+<p>AssetInfo には、そのアセットを管理するための情報が Dict 型で入っています。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2834,9 +2834,9 @@ Meta Dataに、 Ball.usd に指定されたAssetInfoが確認できます。</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
 <script src="https://gist.github.com/fereria/5611248ba747a0ddc29e649b42b8bd66.js"></script>
-<p>Dict型なので、こんな感じでどんな情報でも入れることができますが、<br/>
+<p>Dict 型なので、こんな感じでどんな情報でも入れることができますが、<br/>
 デフォルトでは以下の４つを推奨していて<br/>
-API側でもその４つがデフォルトで用意されています。</p>
+API 側でもその４つがデフォルトで用意されています。</p>
 <table>
 <thead>
 <tr>
@@ -2849,7 +2849,7 @@ API側でもその４つがデフォルトで用意されています。</p>
 <tr>
 <td>identifier</td>
 <td>asset</td>
-<td>コンポジションアークでターゲットにする時のファイルパス<br/>いわゆるこのAssetInfoが指定されている（自分自身の）ファイルパス</td>
+<td>コンポジションアークでターゲットにする時のファイルパス<br/>いわゆるこの AssetInfo が指定されている（自分自身の）ファイルパス</td>
 </tr>
 <tr>
 <td>name</td>
@@ -2864,51 +2864,51 @@ API側でもその４つがデフォルトで用意されています。</p>
 <tr>
 <td>version</td>
 <td>string</td>
-<td>アセットのバージョンを設定する。<br/>ShotGridなどでアセットを管理している場合などに、追跡するのに使える</td>
+<td>アセットのバージョンを設定する。<br/>ShotGrid などでアセットを管理している場合などに、追跡するのに使える</td>
 </tr>
 </tbody>
 </table>
 <p>以上４つです。<br/>
-アセットのバージョン管理などは、ShotGridなどといったデータベースを使用することが多いとおもいます。<br/>
+アセットのバージョン管理などは、ShotGrid などといったデータベースを使用することが多いとおもいます。<br/>
 ですが、そういったデータベースとは別に、アセット自体にも管理用の情報（name や version)は持たせたいはずです。<br/>
-デフォルトで推奨されているAssetInfoは、まさにそういった用途で使用するものになっています。</p>
+デフォルトで推奨されている AssetInfo は、まさにそういった用途で使用するものになっています。</p>
 <blockquote>
-<p>asset型は、アセット（USDファイル、テクスチャを含む）を指すためのパスを表す<br/>
+<p>asset 型は、アセット（USD ファイル、テクスチャを含む）を指すためのパスを表す<br/>
 参考：<a href="https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09#%E3%82%A2%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%83%88">USD は手書きするもののアトリビュート</a></p>
 </blockquote>
-<h2 id="assetinfo_1">AssetInfoを活用する<a class="headerlink" href="#assetinfo_1" title="Permanent link">¶</a></h2>
+<h2 id="assetinfo_1">AssetInfo を活用する<a class="headerlink" href="#assetinfo_1" title="Permanent link">¶</a></h2>
 <p>どのような情報が保存されているかはわかりました。<br/>
 これを実際にどう活用していけばいいのか、</p>
 <p>「今のステージがどのようなアセットで構成されているのか」</p>
-<p>を、AssetInfoを使用して調べてみます。</p>
-<h3 id="flattenassetinfo">Flattenした場合のAssetInfo<a class="headerlink" href="#flattenassetinfo" title="Permanent link">¶</a></h3>
-<p>USDには、現在のStageを「Flatten」することで、すべてのコンポジションアークを実行した結果の<br/>
+<p>を、AssetInfo を使用して調べてみます。</p>
+<h3 id="flatten-assetinfo">Flatten した場合の AssetInfo<a class="headerlink" href="#flatten-assetinfo" title="Permanent link">¶</a></h3>
+<p>USD には、現在の Stage を「Flatten」することで、すべてのコンポジションアークを実行した結果の<br/>
 シーングラフを出力する機能があります。<br/>
-Flattenしてしまうと、コンポジションの情報もすべて解決された状態になるため、</p>
+Flatten してしまうと、コンポジションの情報もすべて解決された状態になるため、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/82d53c910005559e69c338d092d3b0b4.png"><img alt="" src="https://gyazo.com/82d53c910005559e69c338d092d3b0b4.png"/></a></p>
-<p>Compositionをみても、Layerは存在しません。<br/>
-つまり、Flattenする前、どのようなLayerによって構成されていたのかは<br/>
-Compositionから追うことはできません。</p>
+<p>Composition をみても、Layer は存在しません。<br/>
+つまり、Flatten する前、どのような Layer によって構成されていたのかは<br/>
+Composition から追うことはできません。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8a37db52b438ecc1f7bd00e780f63249.png"><img alt="" src="https://gyazo.com/8a37db52b438ecc1f7bd00e780f63249.png"/></a><br/>
-Flatten前</p>
+Flatten 前</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5c2847686be38266b7376602140ff26b.png"><img alt="" src="https://gyazo.com/5c2847686be38266b7376602140ff26b.png"/></a><br/>
-Flatten後</p>
-<p>ですが、AssetInfoをみてみると<br/>
-どのAssetがどこに置いてあるなんのアセットなのか、Flattenした後でもわかります。</p>
+Flatten 後</p>
+<p>ですが、AssetInfo をみてみると<br/>
+どの Asset がどこに置いてあるなんのアセットなのか、Flatten した後でもわかります。</p>
 <blockquote>
-<p>Kitchen_setにはversionははいっていないが、<br/>
-入っていればFlattenした段階でどのバージョンのアセットかもわかる...ということになる</p>
+<p>Kitchen_set には version ははいっていないが、<br/>
+入っていれば Flatten した段階でどのバージョンのアセットかもわかる...ということになる</p>
 </blockquote>
-<h3 id="assetinfo_2">依存解決のためのAssetInfo<a class="headerlink" href="#assetinfo_2" title="Permanent link">¶</a></h3>
+<h3 id="assetinfo_2">依存解決のための AssetInfo<a class="headerlink" href="#assetinfo_2" title="Permanent link">¶</a></h3>
 <p>もう１つが、アセットの依存解決です。<br/>
-最初に説明した通り、現在のStageがどのようなコンポジションによって構成されているかは<br/>
-PCP等を使用すれば検索することは可能ですが、<br/>
-複雑なStageをPCPを使用して依存を調べるとすると、かなり大変です。<br/>
+最初に説明した通り、現在の Stage がどのようなコンポジションによって構成されているかは<br/>
+PCP 等を使用すれば検索することは可能ですが、<br/>
+複雑な Stage を PCP を使用して依存を調べるとすると、かなり大変です。<br/>
 さらに、「あるレイアウト済のシーンに配置しているアセットを収集したい」ということがあった時<br/>
 使用するアセットを調べるためだけに巨大なシーンを開くのは効率的ではありません。</p>
-<p>そういったときに、PayloadをアンロードにしてStageを開いて（アセットをロードしていないので、配置情報だけのロードで済む）<br/>
+<p>そういったときに、Payload をアンロードにして Stage を開いて（アセットをロードしていないので、配置情報だけのロードで済む）<br/>
 使用しているアセット情報だけを取得したい、、、ということはよくあると思います。<br/>
-そういう場合に、AssetInfoは使用することができます。</p>
+そういう場合に、AssetInfo は使用することができます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2953,35 +2953,35 @@ PCP等を使用すれば検索することは可能ですが、<br/>
 
 <span class="n">traverse</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetDefaultPrim</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-<p>例としてKitchen_setで使用しているアセットの一覧を取得した場合。<br/>
-StageはLodNone（アンロード状態）で開きます。<br/>
+<p>例として Kitchen_set で使用しているアセットの一覧を取得した場合。<br/>
+Stage は LodNone（アンロード状態）で開きます。<br/>
 この状態だと、アセットの依存を取得できません。<br/>
-ですがPrimのAssetInfoを見てidentifierやnameが指定されていれば、そこからデータを収集することができます。</p>
+ですが Prim の AssetInfo を見て identifier や name が指定されていれば、そこからデータを収集することができます。</p>
 <p>上の例だと、アセットの中に別のアセットへのコンポジションがあると検索できませんが、<br/>
-あらかじめ使用しているアセットをpayloadAssetDependenciesにセットしておけば<br/>
-すべてのレイヤーをアンロードにした状態でも、そのStageを構成するアセットの一覧を取得することができます。</p>
+あらかじめ使用しているアセットを payloadAssetDependencies にセットしておけば<br/>
+すべてのレイヤーをアンロードにした状態でも、その Stage を構成するアセットの一覧を取得することができます。</p>
 <blockquote>
 <p>備考<br/>
-Resolverは別の記事にてまとめ予定です。</p>
+Resolver は別の記事にてまとめ予定です。</p>
 </blockquote>
-<h2 id="tf_debugassetinfo">TF_DEBUGでのAssetInfoの確認<a class="headerlink" href="#tf_debugassetinfo" title="Permanent link">¶</a></h2>
+<h2 id="tf_debug-assetinfo">TF_DEBUG での AssetInfo の確認<a class="headerlink" href="#tf_debug-assetinfo" title="Permanent link">¶</a></h2>
 <p><a href="https://qiita.com/takahito-tejima/items/c065c7cd5c3a7abe14f1#tf_debugsdf_asset">USD・Hydra の環境変数と仲良くなる</a> の記事にて、アセットの解決時に<br/>
-どのように変化していくかを確認するためのDebug設定が紹介されていましたので<br/>
-合わせて確認してみると、USDコンポジションの解決がどようにされているか確認できるので<br/>
+どのように変化していくかを確認するための Debug 設定が紹介されていましたので<br/>
+合わせて確認してみると、USD コンポジションの解決がどようにされているか確認できるので<br/>
 試してみると面白そうです。</p>
 <h2 id="_2">まとめ<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>以上AssetInfoについてとその使い方でした。<br/>
-アセットを管理するのにAssetInfoはとても有効です。<br/>
-Houdini19に新しく追加されたComponentBuilderでは、このAssetInfoを自動で追加してくれますので<br/>
+<p>以上 AssetInfo についてとその使い方でした。<br/>
+アセットを管理するのに AssetInfo はとても有効です。<br/>
+Houdini19 に新しく追加された ComponentBuilder では、この AssetInfo を自動で追加してくれますので<br/>
 レンダリングを実行する前に依存を解決してデータチェックをしたい時、<br/>
-ShotGridでアセットを管理するときにアセット側にも情報を持たせたい時など<br/>
+ShotGrid でアセットを管理するときにアセット側にも情報を持たせたい時など<br/>
 ぜひとも活用してください。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-12 14:50:40</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-12 12:17:11</span>
 </small>
 </div>
 </article>

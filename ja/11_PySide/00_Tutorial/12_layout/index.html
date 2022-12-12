@@ -2852,12 +2852,12 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>基本的なレイアウトを使おう</h1>
-<p>PySideで、ウィンドウの上にウィジェットを縦や横、格子状に配置して<br/>
+<p>PySide で、ウィンドウの上にウィジェットを縦や横、格子状に配置して<br/>
 ウィンドウサイズの変更に応じてレイアウトしたい場合は<br/>
 「QLayout」を使用します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b499a2dbc5d276a802343021d1660d90.png"><img alt="" src="https://gyazo.com/b499a2dbc5d276a802343021d1660d90.png"/></a></p>
-<p>レイアウトは、Designerを使用するときにでも使用しますが<br/>
-今回はDesignerを使用せずコードのみで書いた場合の使い方などを説明していきます。</p>
+<p>レイアウトは、Designer を使用するときにでも使用しますが<br/>
+今回は Designer を使用せずコードのみで書いた場合の使い方などを説明していきます。</p>
 <h2 id="qvboxlayoutqhboxlayout">QVBoxLayout/QHBoxLayout<a class="headerlink" href="#qvboxlayoutqhboxlayout" title="Permanent link">¶</a></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2873,12 +2873,12 @@
         <span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>例として、QDialogに対して、レイアウトを配置する場合。<br/>
-Widgetは、基本 setLayoutを使用することで<br/>
+<p>例として、QDialog に対して、レイアウトを配置する場合。<br/>
+Widget は、基本 setLayout を使用することで<br/>
 レイアウトを指定することができます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../layout.drawio#1"><img alt="" src="../layout.drawio-1.svg"/></a></p>
 <p>図に表すとこのようになっていて、<br/>
-あるWidget(QDialog)上に、ウィジェットを配置するためのスペースが準備されます。</p>
+ある Widget(QDialog)上に、ウィジェットを配置するためのスペースが準備されます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -2888,11 +2888,11 @@ Widgetは、基本 setLayoutを使用することで<br/>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/52503ecce656e91bf7b50b7eeaaa23e9.png"><img alt="" src="https://gyazo.com/52503ecce656e91bf7b50b7eeaaa23e9.png"/></a></p>
 <p>配置した結果はこのようになります。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/078c0c7c98555b6eff502d1eae92d089.gif"><img alt="" src="https://gyazo.com/078c0c7c98555b6eff502d1eae92d089.gif"/></a></p>
-<p>このレイアウトに対してWidgetを配置すると、<br/>
-QDialogのサイズに合わせて均等にレイアウトすることができます。</p>
+<p>このレイアウトに対して Widget を配置すると、<br/>
+QDialog のサイズに合わせて均等にレイアウトすることができます。</p>
 <p>このように縦方向にレイアウトしたい場合は、「QVBoxLayout」を使用します。</p>
 <p>同じように横方向に配置したい場合は「QHBoxLayout」を使用します。<br/>
-使い方はVBoxLayoutと同様で、</p>
+使い方は VBoxLayout と同様で、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2916,12 +2916,12 @@ QDialogのサイズに合わせて均等にレイアウトすることができ�
             <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ed91246e56bbb3e9ff72ee507145befc.png"><img alt="" src="https://gyazo.com/ed91246e56bbb3e9ff72ee507145befc.png"/></a></p>
-<p>QVBoxLayoutを使用していたところを、QHBoxLayoutに変更すれば、<br/>
+<p>QVBoxLayout を使用していたところを、QHBoxLayout に変更すれば、<br/>
 横方向に並べることができます。</p>
 <h3 id="spaceritem">SpacerItem<a class="headerlink" href="#spaceritem" title="Permanent link">¶</a></h3>
-<p>QLayoutを使用すると、縦・横方向に並べられることがわかりましたが <br/>
-Dialogのサイズが変更されても、均等ではなく配置してるWidgetは固定したい場合があると思います。<br/>
-その場合は、QSpacerItemを使用します。</p>
+<p>QLayout を使用すると、縦・横方向に並べられることがわかりましたが<br/>
+Dialog のサイズが変更されても、均等ではなく配置してる Widget は固定したい場合があると思います。<br/>
+その場合は、QSpacerItem を使用します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2951,33 +2951,33 @@ Dialogのサイズが変更されても、均等ではなく配置してるWidge
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"><img alt="" src="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"/></a></p>
-<p>QSpacerItemを使用した場合の例はこのようになります。</p>
-<p>SpacerItemとは、その名の通り、レイアウトに対してスペースを配置します。  </p>
+<p>QSpacerItem を使用した場合の例はこのようになります。</p>
+<p>SpacerItem とは、その名の通り、レイアウトに対してスペースを配置します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../layout.drawio#0"><img alt="" src="../layout.drawio-0.svg"/></a></p>
 <p>見えていないですが、視覚化するとこのようになります。</p>
 <h4 id="sizepolicy">SizePolicy<a class="headerlink" href="#sizepolicy" title="Permanent link">¶</a></h4>
-<p>QSpacerItemは、引数で SpacerItemのデフォルトの大きさとSizePolicyを渡します。<br/>
+<p>QSpacerItem は、引数で SpacerItem のデフォルトの大きさと SizePolicy を渡します。<br/>
 これは、ウィンドウを変更したときの振る舞いを表していて、<br/>
-Minimumならば、最小の値で固定し Expandingならば、ウィンドウサイズに応じて幅が変動するようになります。  </p>
+Minimum ならば、最小の値で固定し Expanding ならば、ウィンドウサイズに応じて幅が変動するようになります。</p>
 <p><a href="https://doc.qt.io/qtforpython/PySide6/QtWidgets/QSizePolicy.html#PySide6.QtWidgets.PySide6.QtWidgets.QSizePolicy">詳細はこちら</a>参照ですが、この中からいくつか使いそうなものを紹介します。</p>
-<p>デフォルトはMinimumになっていて、これはSpacerItemを使わなかった場合と同じ挙動になります。</p>
+<p>デフォルトは Minimum になっていて、これは SpacerItem を使わなかった場合と同じ挙動になります。</p>
 <h5 id="expanding">Expanding<a class="headerlink" href="#expanding" title="Permanent link">¶</a></h5>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">spacerItem</span> <span class="o">=</span> <span class="n">QSpacerItem</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Minimum</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Expanding</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"><img alt="" src="https://gyazo.com/5ca1c8d0fec912daf10f225b36fc6e4e.gif"/></a></p>
-<p>Expandingにすると、SpacerItemの範囲がウィンドウサイズに応じて拡張されます。<br/>
-Spacer以外は元のサイズ（SizeHintの大きさで）固定になります。</p>
+<p>Expanding にすると、SpacerItem の範囲がウィンドウサイズに応じて拡張されます。<br/>
+Spacer 以外は元のサイズ（SizeHint の大きさで）固定になります。</p>
 <h5 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">¶</a></h5>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">spacerItem</span> <span class="o">=</span> <span class="n">QSpacerItem</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Minimum</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Fixed</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6103bbf10ea8293cbf6d2a87c09fd254.gif"><img alt="" src="https://gyazo.com/6103bbf10ea8293cbf6d2a87c09fd254.gif"/></a></p>
-<p>Fixedにすると、指定のSpacerItemで（SizeHintの大きさで）固定され<br/>
-レイアウトに配置してWidgetは均等に配置されます。</p>
+<p>Fixed にすると、指定の SpacerItem で（SizeHint の大きさで）固定され<br/>
+レイアウトに配置して Widget は均等に配置されます。</p>
 <h2 id="qgridlayout">QGridLayout<a class="headerlink" href="#qgridlayout" title="Permanent link">¶</a></h2>
-<p>VBoxとHBoxを使用すると、縦・横に配置できましたが、<br/>
-そうではなくExcelのように格子状にウィジェットを配置したい場合もあります。</p>
-<p>その場合は、QGridLayoutを使用します。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>VBox と HBox を使用すると、縦・横に配置できましたが、<br/>
+そうではなく Excel のように格子状にウィジェットを配置したい場合もあります。</p>
+<p>その場合は、QGridLayout を使用します。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -3032,10 +3032,10 @@ Spacer以外は元のサイズ（SizeHintの大きさで）固定になります
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">btn</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">"SampleH"</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-GridLayoutを使用したサンプルです。</p>
-<p>GridLayoutは、レイアウトに対して addWidget(配置したいWidget,Row,Column)で<br/>
-指定したグリッドにWidgetを配置することができます。</p>
+</code></pre></div></td></tr></table></div>
+<p>GridLayout を使用したサンプルです。</p>
+<p>GridLayout は、レイアウトに対して addWidget(配置したい Widget,Row,Column)で<br/>
+指定したグリッドに Widget を配置することができます。</p>
 <h4 id="_1">基本的なグリッド配置<a class="headerlink" href="#_1" title="Permanent link">¶</a></h4>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -3062,15 +3062,15 @@ Row と Column のインデックスを指定することで、<br/>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bcf9265132d87819dcf76d2cde6627ca.png"><img alt="" src="https://gyazo.com/bcf9265132d87819dcf76d2cde6627ca.png"/></a></p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../layout.drawio#5"><img alt="" src="../layout.drawio-5.svg"/></a></p>
 <p>次は、そのグリッドを結合したい場合。<br/>
-結合したい場合は、 addWidget(配置するWidget,Row,Column,RowSpan,ColumnSpan)<br/>
+結合したい場合は、 addWidget(配置する Widget,Row,Column,RowSpan,ColumnSpan)<br/>
 のように、縦・横それぞれいくつ結合するかを引数で指定します。</p>
 <p>例えば、横方向に結合している「SampleE」のボタンの場合、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="n">btn</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">"SampleE"</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>2,0,1,2 なので、 ColumnSpanが2になっています。<br/>
-なので、2つ分のグリッドを結合したレイアウトにボタンが配置されます。</p>
+<p>2,0,1,2 なので、 ColumnSpan が 2 になっています。<br/>
+なので、2 つ分のグリッドを結合したレイアウトにボタンが配置されます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3085,30 +3085,30 @@ Row と Column のインデックスを指定することで、<br/>
         <span class="n">btn</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">"SampleH"</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>縦の場合も同様で、この場合はRowSpanを2にします。  </p>
+<p>縦の場合も同様で、この場合は RowSpan を 2 にします。</p>
 <h5 id="sizepolicy_1">SizePolicy（おまけ）<a class="headerlink" href="#sizepolicy_1" title="Permanent link">¶</a></h5>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/203f8aac14324d0cea672324af9d5afd.png"><img alt="" src="https://gyazo.com/203f8aac14324d0cea672324af9d5afd.png"/></a></p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="n">btn</span><span class="o">.</span><span class="n">setSizePolicy</span><span class="p">(</span><span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Fixed</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Preferred</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div><br/>
-デフォルトの場合、ボタンサイズは縦方向は固定されているのですが<br/>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>        <span class="n">btn</span><span class="o">.</span><span class="n">setSizePolicy</span><span class="p">(</span><span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Fixed</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Preferred</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>デフォルトの場合、ボタンサイズは縦方向は固定されているのですが<br/>
 これをレイアウトにフィットさせたい場合は<br/>
-先程説明したSizePolicyを、ボタンに対して指定します。</p>
+先程説明した SizePolicy を、ボタンに対して指定します。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p><a href="https://snippets.cacher.io/snippet/39af914aa31fd8e7e282">https://snippets.cacher.io/snippet/39af914aa31fd8e7e282</a></p>
 <p>インポート含めてのサンプルコードはこちらです。</p>
-<p>VBoxとHBoxはネストすることができるので<br/>
-これを組み合わせることで複雑なGUIを作ることも可能です。</p>
+<p>VBox と HBox はネストすることができるので<br/>
+これを組み合わせることで複雑な GUI を作ることも可能です。</p>
 <p>それ以外にも、<br/>
-<a href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/11_custom_layout/">https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/11_custom_layout/</a><br/>
-PySideではカスタムレイアウトを作成することもできるので、<br/>
-もっと複雑なレイアウトを作りたい場合などは、QLayoutを継承したおオレオレレイアウトを<br/>
+<i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_PySide/02_Tips/11_custom_layout">CustomLayoutを作ろう</a><br/>
+PySide ではカスタムレイアウトを作成することもできるので、<br/>
+もっと複雑なレイアウトを作りたい場合などは、QLayout を継承したおオレオレレイアウトを<br/>
 作ることもできます。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-11 13:21:22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-12 12:17:11</span>
 </small>
 </div>
 </article>

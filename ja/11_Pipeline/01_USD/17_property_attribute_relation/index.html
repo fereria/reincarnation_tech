@@ -1400,9 +1400,9 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#property">
-    Propertyとは
+    Property とは
   </a>
-<nav aria-label="Propertyとは" class="md-nav">
+<nav aria-label="Property とは" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#attribute">
@@ -1411,8 +1411,8 @@
 <nav aria-label="Attribute" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#timesamplinginterpolation">
-    TimeSamplingとInterpolation
+<a class="md-nav__link" href="#timesampling-interpolation">
+    TimeSampling と Interpolation
   </a>
 </li>
 <li class="md-nav__item">
@@ -2741,9 +2741,9 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#property">
-    Propertyとは
+    Property とは
   </a>
-<nav aria-label="Propertyとは" class="md-nav">
+<nav aria-label="Property とは" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#attribute">
@@ -2752,8 +2752,8 @@
 <nav aria-label="Attribute" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#timesamplinginterpolation">
-    TimeSamplingとInterpolation
+<a class="md-nav__link" href="#timesampling-interpolation">
+    TimeSampling と Interpolation
   </a>
 </li>
 <li class="md-nav__item">
@@ -2797,23 +2797,23 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>Property/Attribute/Relationship</h1>
-<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description</a> 3日目。<br/>
-今回は、今までしっかり説明指定していなかった、USDの「Propertyの基本」について説明していこうと思います。</p>
-<h2 id="property">Propertyとは<a class="headerlink" href="#property" title="Permanent link">¶</a></h2>
-<p>USDのPropertyとは、</p>
+<p><a href="https://qiita.com/advent-calendar/2021/usd">Universal Scene Description</a> 3 日目。<br/>
+今回は、今までしっかり説明指定していなかった、USD の「Property の基本」について説明していこうと思います。</p>
+<h2 id="property">Property とは<a class="headerlink" href="#property" title="Permanent link">¶</a></h2>
+<p>USD の Property とは、</p>
 <blockquote>
 <p>Properties are the other kind of namespace object in USD (Prims being the first).<br/>
 引用: <a href="https://graphics.pixar.com/usd/release/glossary.html#usdglossary-property">https://graphics.pixar.com/usd/release/glossary.html#usdglossary-property</a></p>
 </blockquote>
-<p>とあるとおり、USDのネームスペースを構成する一種で、Primに指定される実データをを含む値のことです。<br/>
-（MayaでいうところのAttribute）</p>
-<p>USDのPropertyは、 <strong>「Attribute」</strong> と <strong>「Relationship」</strong> の種類があります。</p>
+<p>とあるとおり、USD のネームスペースを構成する一種で、Prim に指定される実データをを含む値のことです。<br/>
+（Maya でいうところの Attribute）</p>
+<p>USD の Property は、 <strong>「Attribute」</strong> と <strong>「Relationship」</strong> の種類があります。</p>
 <h3 id="attribute">Attribute<a class="headerlink" href="#attribute" title="Permanent link">¶</a></h3>
-<p>AttributeはいわゆるMayaのAttributeのように、<br/>
-Primに定義された「TimeSampleすること」「コンポジションアークによって合成」ができるパラメーターです。<br/>
+<p>Attribute はいわゆる Maya の Attribute のように、<br/>
+Prim に定義された「TimeSample すること」「コンポジションアークによって合成」ができるパラメーターです。<br/>
 <a href="https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09">昨日のこちらの記事のアトリビュートについて</a> でも触れられていましたが、<br/>
-一般的に、3Dで使われる型など<a href="https://graphics.pixar.com/usd/release/api/_usd__page__datatypes.html">DataType</a>で指定されたものが使用できます。</p>
-<p>jsonやtoml、yaml、xmlといったフォーマットとは違い、Attributeに対しては必ず型指定必用なのが特徴です。</p>
+一般的に、3D で使われる型など<a href="https://graphics.pixar.com/usd/release/api/_usd__page__datatypes.html">DataType</a>で指定されたものが使用できます。</p>
+<p>json や toml、yaml、xml といったフォーマットとは違い、Attribute に対しては必ず型指定必用なのが特徴です。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2833,7 +2833,7 @@ Primに定義された「TimeSampleすること」「コンポジションアー
 <span class="normal"> 9</span>
 <span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
-    doc = """Generated from Composed Stage of root layer 
+    doc = """Generated from Composed Stage of root layer
 """
 )
 
@@ -2842,19 +2842,19 @@ def "samplePrim"
     custom bool sampleValuer = 1
 }
 </code></pre></div></td></tr></table></div>
-<p>シンプルなPrimを作成して、Attributeを追加・指定した例。<br/>
-CreateAttributeで指定した型でAttributeが追加されていることがわかります。</p>
+<p>シンプルな Prim を作成して、Attribute を追加・指定した例。<br/>
+CreateAttribute で指定した型で Attribute が追加されていることがわかります。</p>
 <blockquote>
-<p>余談ですが、このAttributeの型指定は、Pythonから指定する場合公式のDataTypesページのどこにも書かれていないという罠があります。<br/>
-<a href="https://fereria.github.io/reincarnation_tech/11_Pipeline/10_USDTips/01_usd_py_docs/#usdattributetype">https://fereria.github.io/reincarnation_tech/11_Pipeline/10_USDTips/01_usd_py_docs/#usdattributetype</a><br/>
+<p>余談ですが、この Attribute の型指定は、Python から指定する場合公式の DataTypes ページのどこにも書かれていないという罠があります。<br/>
+<i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_usd_py_docs">USDPythonドキュメントの読み方</a><br/>
 そんなトラップを回避するために、過去頑張って調べた一覧がこちら。<br/>
-PythonとC++（Help記載の内容）だと違うという罠がごくまれにあるのがUSDの悲しいところ。</p>
+Python と C++（Help 記載の内容）だと違うという罠がごくまれにあるのが USD の悲しいところ。</p>
 </blockquote>
-<h4 id="timesamplinginterpolation">TimeSamplingとInterpolation<a class="headerlink" href="#timesamplinginterpolation" title="Permanent link">¶</a></h4>
-<p>USDのAttributeでは、TimeCodeを指定することで、TimeSampling　いわゆるアニメーションを<br/>
+<h4 id="timesampling-interpolation">TimeSampling と Interpolation<a class="headerlink" href="#timesampling-interpolation" title="Permanent link">¶</a></h4>
+<p>USD の Attribute では、TimeCode を指定することで、TimeSampling 　いわゆるアニメーションを<br/>
 させることができます。<br/>
-以下、シンプルなAttributeを作成して、動作を確認してみます。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+以下、シンプルな Attribute を作成して、動作を確認してみます。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2867,7 +2867,7 @@ PythonとC++（Help記載の内容）だと違うという罠がごくまれに�
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div><br/>
+</code></pre></div></td></tr></table></div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2883,7 +2883,7 @@ PythonとC++（Help記載の内容）だと違うという罠がごくまれに�
 <span class="normal">13</span>
 <span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
-    doc = """Generated from Composed Stage of root layer 
+    doc = """Generated from Composed Stage of root layer
 """
 )
 
@@ -2895,28 +2895,28 @@ def "samplePrim"
         10: 10,
     }
 }
-</code></pre></div></td></tr></table></div><br/>
-Setするときに、 Set(\&lt;Value&gt;,\&lt;Timecode&gt;) とすることで、Attributeに対してキーを追加できました。<br/>
+</code></pre></div></td></tr></table></div>
+<p>Set するときに、 Set(\&lt;Value&gt;,\&lt;Timecode&gt;) とすることで、Attribute に対してキーを追加できました。<br/>
 この状態で、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p>5.0</p>
 </blockquote>
-<p>.Get(\&lt;TimeCode&gt;) とすると、指定のTimeCodeの値を取得することができます。<br/>
-GetしているのはKeyを打っていない5フレーム目ですが、0フレーム目と10フレーム目のちょうど中間<br/>
-TimeCodeとTimeCodeの間が補間された値が取得されました。</p>
-<p>AttributeのTimeSampleは、UsdStageのSetInterpolationTypeで指定することができます。<br/>
+<p>.Get(\&lt;TimeCode&gt;) とすると、指定の TimeCode の値を取得することができます。<br/>
+Get しているのは Key を打っていない 5 フレーム目ですが、0 フレーム目と 10 フレーム目のちょうど中間<br/>
+TimeCode と TimeCode の間が補間された値が取得されました。</p>
+<p>Attribute の TimeSample は、UsdStage の SetInterpolationType で指定することができます。<br/>
 サポートされているのは Held と Linear の２つ。</p>
-<p>デフォルトは Linearで、TimeCodeとTimeCodeの間をリニアに保管します。<br/>
-Heldの場合は、MayaでいうところのStepTangentで、次のTimeCodeまでAttributeの値を一定に保ちます。</p>
+<p>デフォルトは Linear で、TimeCode と TimeCode の間をリニアに保管します。<br/>
+Held の場合は、Maya でいうところの StepTangent で、次の TimeCode まで Attribute の値を一定に保ちます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">SetInterpolationType</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">InterpolationTypeHeld</span><span class="p">)</span> <span class="c1"># デフォルトは、UsdInterpolationTypeLinear </span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">stage</span><span class="o">.</span><span class="n">SetInterpolationType</span><span class="p">(</span><span class="n">Usd</span><span class="o">.</span><span class="n">InterpolationTypeHeld</span><span class="p">)</span> <span class="c1"># デフォルトは、UsdInterpolationTypeLinear</span>
 <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">DefinePrim</span><span class="p">(</span><span class="s1">'/samplePrim'</span><span class="p">)</span>
 <span class="n">attr</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s1">'intValue'</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span>
 <span class="n">attr</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
@@ -2927,26 +2927,26 @@ Heldの場合は、MayaでいうところのStepTangentで、次のTimeCodeま�
 <blockquote>
 <p>0.0</p>
 </blockquote>
-<p>Holdに変えた場合の結果、補間されず直前の値が取得されました。</p>
+<p>Hold に変えた場合の結果、補間されず直前の値が取得されました。</p>
 <h4 id="customattribute">CustomAttribute<a class="headerlink" href="#customattribute" title="Permanent link">¶</a></h4>
-<p>最後にCustomAttributeについて。<br/>
-空のPrimに対して CreateAttributeをした場合、ExpotToStringをしてみると、Attributeの前に「custom」<br/>
+<p>最後に CustomAttribute について。<br/>
+空の Prim に対して CreateAttribute をした場合、ExpotToString をしてみると、Attribute の前に「custom」<br/>
 が付いていることがわかります。<br/>
 この custom がなにかというと、<br/>
-その名の通りそのAttributeがSchemaによって定義されたものかユーザーによって定義されたものかどうか区別するためのものです。</p>
-<p>まず、Schemaによって定義されたものとはどういうものかというと、<br/>
-以下のKitchen_setにあるBall.usdで見てみます。</p>
+その名の通りその Attribute が Schema によって定義されたものかユーザーによって定義されたものかどうか区別するためのものです。</p>
+<p>まず、Schema によって定義されたものとはどういうものかというと、<br/>
+以下の Kitchen_set にある Ball.usd で見てみます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/786954f7a9dfca11223458c9759c3413.png"><img alt="" src="https://gyazo.com/786954f7a9dfca11223458c9759c3413.png"/></a></p>
-<p>BallにあるMeshPrimは、UsdGeomMeshスキーマが指定されたPrimです。<br/>
-USDのソースコード以下 USD/pxr/usd/usdGeom/generatedSchema.usda を読み進めると、Meshスキーマの classがあり<br/>
-その中に、Meshスキーマに定義されたAttributeがあります。<br/>
-これが、スキーマによって定義されているAttributeで たとえレイヤーにAttributeの記述がなかったとしても<br/>
+<p>Ball にある MeshPrim は、UsdGeomMesh スキーマが指定された Prim です。<br/>
+USD のソースコード以下 USD/pxr/usd/usdGeom/generatedSchema.usda を読み進めると、Mesh スキーマの class があり<br/>
+その中に、Mesh スキーマに定義された Attribute があります。<br/>
+これが、スキーマによって定義されている Attribute で たとえレイヤーに Attribute の記述がなかったとしても<br/>
 スキーマで定義された値がフォールバック値として設定されます。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2c3347b7c11c5c69fa8499f34513a294.png"><img alt="" src="https://gyazo.com/2c3347b7c11c5c69fa8499f34513a294.png"/></a></p>
 <p>例として、 doubleSided。<br/>
-Ball.usd内には doubleSided Attributeに値をセットする記述はありませんが、usdviewを見ると<br/>
+Ball.usd 内には doubleSided Attribute に値をセットする記述はありませんが、usdview を見ると<br/>
 セットされていることがわかります。</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2965,7 +2965,7 @@ prim.GetAttribute('doubleSided').Set(True)
 prim.CreateAttribute('sample',Sdf.ValueTypeNames.Int).Set(0)
 
 print(layer.ExportToString())
-</code></pre></div></td></tr></table></div><br/>
+</code></pre></div></td></tr></table></div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3001,23 +3001,23 @@ over "Ball"
         }
     }
 }
-</code></pre></div></td></tr></table></div></p>
-<p>このようなAttributeに値をSetした場合は custom にはなりません。</p>
+</code></pre></div></td></tr></table></div>
+<p>このような Attribute に値を Set した場合は custom にはなりません。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">'doubleSided'</span><span class="p">)</span><span class="o">.</span><span class="n">IsCustom</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p>False</p>
 </blockquote>
-<p>IsCustomで確認しても、Falseになります。</p>
+<p>IsCustom で確認しても、False になります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s1">'sample'</span><span class="p">)</span><span class="o">.</span><span class="n">IsCustom</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p>True</p>
 </blockquote>
-<p>対する、スキーマにはないAttributeの場合は<br/>
-customが追加され、 IsCustomで確認してもTrueになります。</p>
+<p>対する、スキーマにはない Attribute の場合は<br/>
+custom が追加され、 IsCustom で確認しても True になります。</p>
 <h3 id="relationship">Relationship<a class="headerlink" href="#relationship" title="Permanent link">¶</a></h3>
-<p>Relationshipとは、その名の通り、あるPrimへの「リレーション」を持つプロパティのことです。</p>
+<p>Relationship とは、その名の通り、ある Prim への「リレーション」を持つプロパティのことです。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3060,7 +3060,7 @@ customが追加され、 IsCustomで確認してもTrueになります。</p>
 <span class="normal">20</span>
 <span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
 (
-    doc = """Generated from Composed Stage of root layer 
+    doc = """Generated from Composed Stage of root layer
 """
 )
 
@@ -3080,8 +3080,8 @@ def "primB"
 {
 }
 </code></pre></div></td></tr></table></div>
-<p>同じPropertyですが、Attributeとは違いリレーションは指定のPrimまでのSdfPathを持ちます。<br/>
-上の例でいうと、 basePrimの sampleプロパティは primA と primB へのRelationshipを持ちます。</p>
+<p>同じ Property ですが、Attribute とは違いリレーションは指定の Prim までの SdfPath を持ちます。<br/>
+上の例でいうと、 basePrim の sample プロパティは primA と primB への Relationship を持ちます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3092,13 +3092,13 @@ def "primB"
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">rel</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-<p>Relationshipは、ターゲットまでのSdfPathを持っているので<br/>
-このように、別のPrimとのコネクションを作成できます。（Property - 複数Primの関係）</p>
-<p>このRelationshipは、主に<a href="https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/Material/USDMaterial_02/">MaterialAssign</a>や<a href="https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/APISchema/USDCollectoinSample/">Collection</a>といった、あるPropertyによって指定のPrimとを関連付けるときなどに<br/>
+<p>Relationship は、ターゲットまでの SdfPath を持っているので<br/>
+このように、別の Prim とのコネクションを作成できます。（Property - 複数 Prim の関係）</p>
+<p>この Relationship は、主に <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/65_SampleCode/Notebook/USD/Material/USDMaterial_02">InputOutputを確認する</a> や <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/65_SampleCode/Notebook/USD/APISchema/USDCollectoinSample">USDCollectionの基本操作</a>といった、ある Property によって指定の Prim とを関連付けるときなどに<br/>
 使用します。</p>
 <h2 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">¶</a></h2>
-<p>最後にPropertyのNamespaceについて。<br/>
-USDのProperty名には Namespace:PropName = Value のように、 : を使用することでNamespaceを指定することができます。</p>
+<p>最後に Property の Namespace について。<br/>
+USD の Property 名には Namespace:PropName = Value のように、 : を使用することで Namespace を指定することができます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3129,30 +3129,30 @@ USDのProperty名には Namespace:PropName = Value のように、 : を使用�
 
 <span class="nb">print</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-<p>このNamespaceをつけると何ができるかというと、指定のNamespace以下のPropertyを GetPropertiesInNamespaceできるようになります。<br/>
-サンプルのように、１つだけでなく複数Namespaceをつけることもできるので<br/>
-これを利用して、Propertyをグループとして扱うなどができます。</p>
+<p>この Namespace をつけると何ができるかというと、指定の Namespace 以下の Property を GetPropertiesInNamespace できるようになります。<br/>
+サンプルのように、１つだけでなく複数 Namespace をつけることもできるので<br/>
+これを利用して、Property をグループとして扱うなどができます。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>まとめると、PropertyとはPrimに指定された実データを含む値のことで</p>
+<p>まとめると、Property とは Prim に指定された実データを含む値のことで</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/183b5cd7bbf695a0eda49a9ef22bb3a2.png"><img alt="" src="https://gyazo.com/183b5cd7bbf695a0eda49a9ef22bb3a2.png"/></a></p>
-<p>AttributeとRelationshipの２種類が存在しています。</p>
-<p>Attributeは、型をもった値(実データ)で、任意のTimeCodeを与えることでTimeSampling（アニメーション）することができます。<br/>
-TimeSamplingがある場合、Stageで指定されたInterpolation（補間）でTimeCodeとTimeCodeの間が補間されます。<br/>
-そして、Attributeは、Schemaによって定義されたものと、ユーザーによって定義されたもの２種類が存在し、<br/>
-Schemaによって定義されたものはレイヤーに値が設定されていない場合でもデフォルトが指定されます。</p>
-<p>Relationshipは、</p>
+<p>Attribute と Relationship の２種類が存在しています。</p>
+<p>Attribute は、型をもった値(実データ)で、任意の TimeCode を与えることで TimeSampling（アニメーション）することができます。<br/>
+TimeSampling がある場合、Stage で指定された Interpolation（補間）で TimeCode と TimeCode の間が補間されます。<br/>
+そして、Attribute は、Schema によって定義されたものと、ユーザーによって定義されたもの２種類が存在し、<br/>
+Schema によって定義されたものはレイヤーに値が設定されていない場合でもデフォルトが指定されます。</p>
+<p>Relationship は、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2dd700fff71f07fc4ef050e00b360006.png"><img alt="" src="https://gyazo.com/2dd700fff71f07fc4ef050e00b360006.png"/></a></p>
-<p>あるPrimへのリレーションを作ることができます。<br/>
-これを利用して、MaterialAssignやCollectionといったような他Primとのコネクションを<br/>
+<p>ある Prim へのリレーションを作ることができます。<br/>
+これを利用して、MaterialAssign や Collection といったような他 Prim とのコネクションを<br/>
 表現することができます。</p>
-<p>以上が Property/Attribute/Relationshipの基本でした。</p>
+<p>以上が Property/Attribute/Relationship の基本でした。</p>
 <p>このあたりは、コンポジションがかかわってきた場合さらにいろいろややこしくなりますが、<a href="https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09">こちらの記事</a> で技師長師匠に盛大に丸投げされてしまったので、近いうちに別途詳しく書こうと思います。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-12-04 19:32:17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-12 12:17:11</span>
 </small>
 </div>
 </article>
