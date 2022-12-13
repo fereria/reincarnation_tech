@@ -15,8 +15,6 @@ PointInstancer の場合は、 **位置 方向 スケール** に分割された
 さらに、より小さい容量で、なおかつ位置・方向・スケールをそれぞれアニメーションするときのパラメータを管理できるため、
 通常のインスタンスに比べて、データ量を大きく削減することができます。
 
-これ以外にも、可視性（visibility）
-
 もう 1 つの特徴として、PointInstancer は GPrim ではありません。
 GPrim とは、Primitive の基底クラスで「DoubleSide」や「Orientation（法線を右手・左手系どちらで計算するか）」などのグラフィックの特性を扱い、「DisplayColor」などと合わせて
 シェーダーで使用される primvar を提供するものです。
@@ -24,7 +22,8 @@ GPrim とは、Primitive の基底クラスで「DoubleSide」や「Orientation�
 ![](https://gyazo.com/1d6a7d5e2b3e00d757a07c038fe646a5.png)
 
 そのため、Cube や Sphere のような基本的なプリミティブにしても、Mesh にしても、この UsdGeomGPrim を継承しています。
-しかし、PointInstancer は Gprim ではありませんが、Boundable になります。
+しかし、PointInstancer は Gprim ではありません。
+Grpim ではありませんが、Boundable になります。
 PointInstancer のアトリビュートには extent があり、これが PointInstancer の BoundingBox になっています。
 
 ### アニメーション
@@ -56,8 +55,11 @@ protoIndices アトリビュートによって、どの Point にたいしてど
 ![](https://gyazo.com/acd7f0a22d0d98b2898304df7e14d206.png)
 
 最初に開設した通り、PointInstancer の配置対象の Point には ID が割り振られています。
-各アトリビュート（protoIndices や orientations 等）は、Point の数だけの配列になっていて
-Point の ID に対応します。
+各アトリビュート（protoIndices や orientations 等）は、Point の数だけの配列になっていて、Point の ID に対応します。
+
+![](https://gyazo.com/8171342682e7cc3cfdced655de87cbdf.png)
+
+最初に説明した通り、Point の位置情報もマトリクスではなく point3f で表されています。
 
 ## データを確認する
 
