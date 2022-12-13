@@ -2798,13 +2798,13 @@
 PointInstancer の場合は、 <strong>位置 方向 スケール</strong> に分割された値で保持されています。<br/>
 さらに、より小さい容量で、なおかつ位置・方向・スケールをそれぞれアニメーションするときのパラメータを管理できるため、<br/>
 通常のインスタンスに比べて、データ量を大きく削減することができます。</p>
-<p>これ以外にも、可視性（visibility）</p>
 <p>もう 1 つの特徴として、PointInstancer は GPrim ではありません。<br/>
 GPrim とは、Primitive の基底クラスで「DoubleSide」や「Orientation（法線を右手・左手系どちらで計算するか）」などのグラフィックの特性を扱い、「DisplayColor」などと合わせて<br/>
 シェーダーで使用される primvar を提供するものです。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1d6a7d5e2b3e00d757a07c038fe646a5.png"><img alt="" src="https://gyazo.com/1d6a7d5e2b3e00d757a07c038fe646a5.png"/></a></p>
 <p>そのため、Cube や Sphere のような基本的なプリミティブにしても、Mesh にしても、この UsdGeomGPrim を継承しています。<br/>
-しかし、PointInstancer は Gprim ではありませんが、Boundable になります。<br/>
+しかし、PointInstancer は Gprim ではありません。<br/>
+Grpim ではありませんが、Boundable になります。<br/>
 PointInstancer のアトリビュートには extent があり、これが PointInstancer の BoundingBox になっています。</p>
 <h3 id="_1">アニメーション<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p>それ以外に PointInstancer に必要な仕様はアニメーションです。<br/>
@@ -2826,8 +2826,9 @@ protoIndices アトリビュートによって、どの Point にたいしてど
 表示するかをコントロールしています。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/acd7f0a22d0d98b2898304df7e14d206.png"><img alt="" src="https://gyazo.com/acd7f0a22d0d98b2898304df7e14d206.png"/></a></p>
 <p>最初に開設した通り、PointInstancer の配置対象の Point には ID が割り振られています。<br/>
-各アトリビュート（protoIndices や orientations 等）は、Point の数だけの配列になっていて<br/>
-Point の ID に対応します。</p>
+各アトリビュート（protoIndices や orientations 等）は、Point の数だけの配列になっていて、Point の ID に対応します。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8171342682e7cc3cfdced655de87cbdf.png"><img alt="" src="https://gyazo.com/8171342682e7cc3cfdced655de87cbdf.png"/></a></p>
+<p>最初に説明した通り、Point の位置情報もマトリクスではなく point3f で表されています。</p>
 <h2 id="_3">データを確認する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>まずは実際に PointInstancer を使用したシーンを作成して、中身を確認してみます。<br/>
 作り方は <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/05_point_instancer">SOLARISでInstancerを使う(1) 配置編</a> にまとめてありますのでざっくりとですが、SOP 上で Grid &gt; Scatter で Point を作り、</p>
@@ -2877,7 +2878,7 @@ SOP 上の Point を利用して LOP 側でのレイアウトを効率的に行�
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-13 15:00:36</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-13 15:32:30</span>
 </small>
 </div>
 </article>
