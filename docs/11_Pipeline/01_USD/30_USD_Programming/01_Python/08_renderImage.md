@@ -1,6 +1,7 @@
 ---
 title: RenderImageでUSDをレンダリングしよう
 tags:
+    - USD
 description:
 ---
 
