@@ -8,6 +8,7 @@ title: Link集
 -   [公式 Docs/Tutorials](https://graphics.pixar.com/usd/docs/index.html)
 -   [API Docs](https://graphics.pixar.com/usd/docs/api/index.html)
 -   [nVidia USD](https://developer.nvidia.com/usd)
+-   https://remedy-entertainment.github.io/USDBook/
 
 ### 手島さん資料
 
