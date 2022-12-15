@@ -20,7 +20,7 @@ PySide の TableView で、Delegate 内の paint を駆使していい感じの 
 
 セルの中身は、デリゲートの paint で書きます。
 
-{{markdown_link('pyside_Delegate')}}
+https://gist.github.com/fereria/14e7af9e7e7c062a13bd2e3615ca3edc
 全コードはこちら。
 
 ## Item/Model/View を作る
