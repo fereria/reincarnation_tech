@@ -3,7 +3,6 @@ title: Propertyを追加する
 tags:
     - Blender
     - Python
-description:
 ---
 
 Blender では、Mesh や Camera、Material 等プロジェクトを構成するデータは Data Block と呼ばれる単位で
@@ -122,4 +121,3 @@ Blender の Addon で追加する場合は
 
 :fa-external-link: [サンプルコードの addProps](https://fereria.github.io/reincarnation_tech/65_SampleCode/blender_samplecode/SampleAddon/addProps/) のように、 クラス定義と Property への登録処理をする構造を
 作成すれば OK です。
-
