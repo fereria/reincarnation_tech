@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="USDをPythonで操作するチュートリアル_開いて閉じる" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/01_start_usdpython/" rel="canonical"/>
 <link href="../../../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="0から始めるUSDPython(1) - Reincarnation+#Tech" property="og:title"/>
+<meta content="USDをPythonで操作するチュートリアル_開いて閉じる" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/01_start_usdpython.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/01_start_usdpython/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="0から始めるUSDPython(1) - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="USDをPythonで操作するチュートリアル_開いて閉じる" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/01_start_usdpython.png" name="twitter:image"/>
 <link href="../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -134,7 +150,7 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../../../..">
+<a class="md-tabs__link" href="../../../../../../">
       Introduction
     </a>
 </li>
@@ -215,7 +231,7 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../../../..">
+<a class="md-nav__link" href="../../../../../../">
         Introduction
       </a>
 </li>
@@ -2822,13 +2838,13 @@ Python を使用して USD をいろいろ編集するためのチュートリ�
 <p>Python をインストールしていない場合は、上記のページを参考に PC に Python をインストールします。<br/>
 エディタは好きなものを利用して OK ですが、迷った場合は VSCode を使用するのがおすすめです。</p>
 <p>インストールができたら、Python で USD を使用するために pip を使用して usd-core をインストールします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e24f12ef2925ac7cf7173dd36836f981.png"><img alt="" src="https://gyazo.com/e24f12ef2925ac7cf7173dd36836f981.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e24f12ef2925ac7cf7173dd36836f981.png"><img alt="" src="https://gyazo.com/e24f12ef2925ac7cf7173dd36836f981.png"/></a></p>
 <p>コマンドプロンプトを起動して、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/82e88248e8b4f9619904c0b27d364d01.png"><img alt="" src="https://gyazo.com/82e88248e8b4f9619904c0b27d364d01.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/82e88248e8b4f9619904c0b27d364d01.png"><img alt="" src="https://gyazo.com/82e88248e8b4f9619904c0b27d364d01.png"/></a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install usd-core
 </code></pre></div></td></tr></table></div>
 <p>usd-core をインストールします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/999ffb1ff2c79779d59cf5bb59cca3c2.png"><img alt="" src="https://gyazo.com/999ffb1ff2c79779d59cf5bb59cca3c2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/999ffb1ff2c79779d59cf5bb59cca3c2.png"><img alt="" src="https://gyazo.com/999ffb1ff2c79779d59cf5bb59cca3c2.png"/></a></p>
 <p>インストールが完了したら、このように Successfully installed usd-core-#### のように表示されます。<br/>
 これで準備は完了です。</p>
 <h2 id="_2">サンプルをダウンロードする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -2850,11 +2866,11 @@ Usd モジュールは、USD を作成・構成・読み取りをするための
 Stage とはなにかというと、<br/>
 複数のファイルを 1 つのシーンに合成して出来上がったシーングラフのことを指しています。</p>
 <p>サンプルの Kitchen_set も、数多くの USD ファイルを合成した結果</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0a41ae104bfbc760c80bf634771c964e.png"><img alt="" src="https://gyazo.com/0a41ae104bfbc760c80bf634771c964e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0a41ae104bfbc760c80bf634771c964e.png"><img alt="" src="https://gyazo.com/0a41ae104bfbc760c80bf634771c964e.png"/></a></p>
 <p>このようなシーンが出来上がっているわけですが、<br/>
 Usd.Stage.Open() で開くと、出来上がった結果を取得することができます。</p>
 <h2 id="prim">Prim を取得する<a class="headerlink" href="#prim" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a9725cb71fa9930c133a29edb13e7222.png"><img alt="" src="https://gyazo.com/a9725cb71fa9930c133a29edb13e7222.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a9725cb71fa9930c133a29edb13e7222.png"><img alt="" src="https://gyazo.com/a9725cb71fa9930c133a29edb13e7222.png"/></a></p>
 <p>ファイルを開くことができたので、次はシーンに含まれている「Prim」を取得してみます。<br/>
 Prim とは、データを入れるための「コンテナ（入れ物）」です。<br/>
 Maya でいうところの Node にあたり、3D に必要なデータ（アトリビュート）が<br/>
@@ -2862,7 +2878,7 @@ Maya でいうところの Node にあたり、3D に必要なデータ（アト
 <p>まず、取得したい Prim を usdview を使用して確認してみます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdview D:/Kitchen_set/Kitchen_set.usd
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b16ab6f2a9b059d3938b95dd9d7d9058.png"><img alt="" src="https://gyazo.com/b16ab6f2a9b059d3938b95dd9d7d9058.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b16ab6f2a9b059d3938b95dd9d7d9058.png"><img alt="" src="https://gyazo.com/b16ab6f2a9b059d3938b95dd9d7d9058.png"/></a></p>
 <p>流し台近くにあるカップをクリックすると、赤枠で囲んでいるあたりに /Kitchen_set/～<br/>
 から始まるパスが書かれているのがわかります。</p>
 <p>Usd の Prim は、このパス（SdfPath といいます）によって指定の Prim にアクセスすることができます。</p>
@@ -2882,7 +2898,7 @@ Maya でいうところの Node にあたり、3D に必要なデータ（アト
 USD の特徴であるコンポジションで「リファレンス」したり「ペイロード」したり<br/>
 「バリアントセット」を指定するのもこの Prim を指定して行います。</p>
 <p>試しに、取得したカップのモデルを非表示にしてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/99936ebe9df404d8b9512bf8b9379710.gif"><img alt="" src="https://gyazo.com/99936ebe9df404d8b9512bf8b9379710.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/99936ebe9df404d8b9512bf8b9379710.gif"><img alt="" src="https://gyazo.com/99936ebe9df404d8b9512bf8b9379710.gif"/></a></p>
 <p>usdview の TreeView から Cup モデルを探し、Vis の列の「V」をクリックして表示・非表示を<br/>
 切り替えてみます。<br/>
 すると、Property の一覧をみていくと「visibility」の Value が変わっているのがわかります。</p>
@@ -2934,7 +2950,7 @@ Set（～～）で変更後の値を指定します。</p>
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-04 09:23:28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -3006,5 +3022,5 @@ Set（～～）で変更後の値を指定します。</p>
 <script src="../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

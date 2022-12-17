@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="sopimportを使ってSOPのGeometryをLOPに持ち込む方法" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/20_sopimport/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="SOLARISの sopimportを攻略する - Reincarnation+#Tech" property="og:title"/>
+<meta content="sopimportを使ってSOPのGeometryをLOPに持ち込む方法" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/20_sopimport.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/20_sopimport/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="SOLARISの sopimportを攻略する - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="sopimportを使ってSOPのGeometryをLOPに持ち込む方法" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/20_sopimport.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -134,7 +150,7 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../..">
+<a class="md-tabs__link" href="../../../../">
       Introduction
     </a>
 </li>
@@ -215,7 +231,7 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../..">
+<a class="md-nav__link" href="../../../../">
         Introduction
       </a>
 </li>
@@ -2894,13 +2910,13 @@
 <nav class="md-tags">
 <a class="md-tag" href="../../../../tags/#solaris">SOLARIS</a>
 <a class="md-tag" href="../../../../tags/#houdini">Houdini</a>
-<a class="md-tag" href="../../../../tags/#adventcalendar2021">AdventCalendar2021</a>
+<a class="md-tag" href="../../../../tags/#adventcalendar2022">AdventCalendar2022</a>
 </nav>
 <a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/05_DCCTool/10_Houdini/11_SOLARIS/20_sopimport.md" title="編集">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>SOLARISの sopimportを攻略する</h1>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d09240a437e3e7c0926a2c6a2ed405d5.png"><img alt="" src="https://gyazo.com/d09240a437e3e7c0926a2c6a2ed405d5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d09240a437e3e7c0926a2c6a2ed405d5.png"><img alt="" src="https://gyazo.com/d09240a437e3e7c0926a2c6a2ed405d5.png"/></a></p>
 <p><a href="https://qiita.com/advent-calendar/2021/houdini">Houdini Advent Calendar 2022</a> は、SOLARIS のノード「sopimport」の使い方を、できる限り調査していきたいと思います。</p>
 <h2 id="sopimport">sopimport ノードとは<a class="headerlink" href="#sopimport" title="Permanent link">¶</a></h2>
 <p>sopimport ノードは、その名の通り SOP で作成したジオメトリを LOP の世界に持ち込むことができるノードです。<br/>
@@ -2913,20 +2929,20 @@ Python ノードを使用して自力で Prim を生成していますが、<br/
 ほぼだいたいのことを sopimport ノードを使用することで実行できます。</p>
 <h2 id="_1">基本<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まずは基本的な使い方。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f7bf67dab5e9d56302f04297849e8663.png"><img alt="" src="https://gyazo.com/f7bf67dab5e9d56302f04297849e8663.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f7bf67dab5e9d56302f04297849e8663.png"><img alt="" src="https://gyazo.com/f7bf67dab5e9d56302f04297849e8663.png"/></a></p>
 <p>SOP Network を作成し、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d0b8def247053967bfc1bbe2d4c07683.png"><img alt="" src="https://gyazo.com/d0b8def247053967bfc1bbe2d4c07683.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d0b8def247053967bfc1bbe2d4c07683.png"><img alt="" src="https://gyazo.com/d0b8def247053967bfc1bbe2d4c07683.png"/></a></p>
 <p>シンプルな Pighead モデルと OUTPUT ノードを作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/447a74034a4f94a15f142a1104cc14ef.png"><img alt="" src="https://gyazo.com/447a74034a4f94a15f142a1104cc14ef.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/447a74034a4f94a15f142a1104cc14ef.png"><img alt="" src="https://gyazo.com/447a74034a4f94a15f142a1104cc14ef.png"/></a></p>
 <p>SOP Path を、sopnet 内の OUTPUT になるようにしておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f656108c72e157641f4d66f3da5b42e5.png"><img alt="" src="https://gyazo.com/f656108c72e157641f4d66f3da5b42e5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f656108c72e157641f4d66f3da5b42e5.png"><img alt="" src="https://gyazo.com/f656108c72e157641f4d66f3da5b42e5.png"/></a></p>
 <p>まずはこれで Mesh を持ち込むことができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d3be3eb1eb72d0e42181f4a79b39bd89.png"><img alt="" src="https://gyazo.com/d3be3eb1eb72d0e42181f4a79b39bd89.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d3be3eb1eb72d0e42181f4a79b39bd89.png"><img alt="" src="https://gyazo.com/d3be3eb1eb72d0e42181f4a79b39bd89.png"/></a></p>
 <p>この時の importPrimitive は、デフォルトでは sopimport ノード名になっています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d0d2ca0bdfc5bcd8822f75975fb4a947.png"><img alt="" src="https://gyazo.com/d0d2ca0bdfc5bcd8822f75975fb4a947.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d0d2ca0bdfc5bcd8822f75975fb4a947.png"><img alt="" src="https://gyazo.com/d0d2ca0bdfc5bcd8822f75975fb4a947.png"/></a></p>
 <p>無事ジオメトリが持ち込み出来ました。</p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c8fd47dc1fb299e7c08e417dbde1c3b0.png"><img alt="" src="https://gyazo.com/c8fd47dc1fb299e7c08e417dbde1c3b0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c8fd47dc1fb299e7c08e417dbde1c3b0.png"><img alt="" src="https://gyazo.com/c8fd47dc1fb299e7c08e417dbde1c3b0.png"/></a></p>
 <p>基本的な持ち込み方法では、データはそのままメモリ上のレイヤーにインポートされ、<br/>
 レイヤーを分離して保存したとしてもサブレイヤー扱いになります。<br/>
 そうではなく、Reference で持ち込みたい場合は Load As Reference にチェックをいれます。<br/>
@@ -2934,10 +2950,10 @@ Python ノードを使用して自力で Prim を生成していますが、<br/
 サブレイヤーとは違い、SOP 側で作成したジオメトリと階層構造を<br/>
 指定のパス（PrimitivePath）に読み込むことになるのが大きく異なります。</p>
 <h2 id="copy-contents-into-editable-layer">Copy Contents into Editable Layer<a class="headerlink" href="#copy-contents-into-editable-layer" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/896bbba8ce3f4af48a5c1843eddf9803.png"><img alt="" src="https://gyazo.com/896bbba8ce3f4af48a5c1843eddf9803.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/896bbba8ce3f4af48a5c1843eddf9803.png"><img alt="" src="https://gyazo.com/896bbba8ce3f4af48a5c1843eddf9803.png"/></a></p>
 <p>sopimport でモデルを読み込もうとした場合、そのままだと Warning が表示されます。<br/>
 出ていてもモデルは持ち込めますが、Warning を確認します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/88fdd907845a7d722807249dcd43c7ed.png"><img alt="" src="https://gyazo.com/88fdd907845a7d722807249dcd43c7ed.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/88fdd907845a7d722807249dcd43c7ed.png"><img alt="" src="https://gyazo.com/88fdd907845a7d722807249dcd43c7ed.png"/></a></p>
 <p>sopimport で SOP からインポートした場合、レイヤーが保存されてないよ。<br/>
 SOP ノードのレイヤーは、その Houdini のパスあ k ら生成された<br/>
 ファイルパスに出力されるよ。</p>
@@ -2948,7 +2964,7 @@ LOP Node には Editable Stage と Stage と 2 種類取得方法があります
 取得は可能だが変更不可な read-only の stage として取得できます。</p>
 <p>ということを踏まえて、現状だと read-only の stage として取得されてる<br/>
 状態なので、変更可能な保存先に入れておいてね？ということだと解釈して</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bc1c87d0df5ee2b0e114936f734549ac.png"><img alt="" src="https://gyazo.com/bc1c87d0df5ee2b0e114936f734549ac.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bc1c87d0df5ee2b0e114936f734549ac.png"><img alt="" src="https://gyazo.com/bc1c87d0df5ee2b0e114936f734549ac.png"/></a></p>
 <p>Copy Contetents into Editable Layer オプションを押して<br/>
 現在の LOP 側の EditableLayer（編集可能レイヤー）に構造をコピーして<br/>
 LOP のレイヤーとして扱うことにすれば、Warning は消えます。</p>
@@ -2957,46 +2973,46 @@ LOP のレイヤーとして扱うことにすれば、Warning は消えます�
 その段階の Geometry を取得していますが、そこから条件を指定して<br/>
 一部だけ読み込みたいケースもあるでしょう。</p>
 <p>その場合、SOP の Group を指定して一部だけ持ち込むことができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/48d41f9dabaf504e095b4f4a2df7b6ac.png"><img alt="" src="https://gyazo.com/48d41f9dabaf504e095b4f4a2df7b6ac.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/48d41f9dabaf504e095b4f4a2df7b6ac.png"><img alt="" src="https://gyazo.com/48d41f9dabaf504e095b4f4a2df7b6ac.png"/></a></p>
 <p>Import Group で、SOP 側で指定した Group を指定すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4e92bbef204917ea60c4267590dca459.png"><img alt="" src="https://gyazo.com/4e92bbef204917ea60c4267590dca459.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4e92bbef204917ea60c4267590dca459.png"><img alt="" src="https://gyazo.com/4e92bbef204917ea60c4267590dca459.png"/></a></p>
 <p>指定した Group のモデルだけを LOP 側にインポートできました。</p>
 <h2 id="subsetgeom">SubsetGeom<a class="headerlink" href="#subsetgeom" title="Permanent link">¶</a></h2>
 <p>SubsetGeom とは、USD で Face 単位のマテリアルアサイン等をするときに使用するものです。<br/>
 詳細は <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_Python/06_shader">UsdPreviewSurfaceを使う</a> このあたりに書いたので合わせてみてもらえればですが、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5daffb80355fc78263f770593130e981.png"><img alt="" src="https://gyazo.com/5daffb80355fc78263f770593130e981.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5daffb80355fc78263f770593130e981.png"><img alt="" src="https://gyazo.com/5daffb80355fc78263f770593130e981.png"/></a></p>
 <p>Subset Groups で、SOP 側の Group を指定すれば、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3db457c2d1ac0418d242a710cd91d3f3.png"><img alt="" src="https://gyazo.com/3db457c2d1ac0418d242a710cd91d3f3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3db457c2d1ac0418d242a710cd91d3f3.png"><img alt="" src="https://gyazo.com/3db457c2d1ac0418d242a710cd91d3f3.png"/></a></p>
 <p>GeomSubset が作成され、Group で指定した Face に対してマテリアルアサインを<br/>
 するなどが可能になります。</p>
 <h2 id="point">Point<a class="headerlink" href="#point" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cca87afb5194b5e5d3e33cbee357da06.png"><img alt="" src="https://gyazo.com/cca87afb5194b5e5d3e33cbee357da06.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cca87afb5194b5e5d3e33cbee357da06.png"><img alt="" src="https://gyazo.com/cca87afb5194b5e5d3e33cbee357da06.png"/></a></p>
 <p>デフォルトで SOP から持ってこれるのは Primitives ですが、 Import Group Type で「Points」を選ぶことで、Point としてもインポートが可能です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e3974a321aa1eeebcb33cf283f30c839.png"><img alt="" src="https://gyazo.com/e3974a321aa1eeebcb33cf283f30c839.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e3974a321aa1eeebcb33cf283f30c839.png"><img alt="" src="https://gyazo.com/e3974a321aa1eeebcb33cf283f30c839.png"/></a></p>
 <p>Points として読み込むと、UsdGeomMesh ではなく UsdGeomPoints として読み込むことができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7cd1d5c768401eda0a59a8069c4a7e3b.png"><img alt="" src="https://gyazo.com/7cd1d5c768401eda0a59a8069c4a7e3b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7cd1d5c768401eda0a59a8069c4a7e3b.png"><img alt="" src="https://gyazo.com/7cd1d5c768401eda0a59a8069c4a7e3b.png"/></a></p>
 <p>表示した結果。</p>
 <h2 id="path">Path 指定<a class="headerlink" href="#path" title="Permanent link">¶</a></h2>
 <p>特に何もせずにインポートすると /nodename/mesh_0 のような名前で Mesh が生成されますが <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/05_DCCTool/10_Houdini/11_SOP/00_usdexport">PackedPrimitivesとUSDExport</a> このあたりは、SOP の USDExport ノードのルールと同様に、<br/>
 指定の Attribute を指定することで SOP 側で指定することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4bac97fb9a120672e16a44e4329563ec.png"><img alt="" src="https://gyazo.com/4bac97fb9a120672e16a44e4329563ec.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4bac97fb9a120672e16a44e4329563ec.png"><img alt="" src="https://gyazo.com/4bac97fb9a120672e16a44e4329563ec.png"/></a></p>
 <p>AttributeWrangle を作成し、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/46f9f2539869e332726917aa5045115c.png"><img alt="" src="https://gyazo.com/46f9f2539869e332726917aa5045115c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/46f9f2539869e332726917aa5045115c.png"><img alt="" src="https://gyazo.com/46f9f2539869e332726917aa5045115c.png"/></a></p>
 <p>GroupType を Primtives に変更し、<br/>
 path アトリビュートに、LOP 側の SdfPath を指定します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7bef3552ddfd009b8b48a51b5bfb59b8.png"><img alt="" src="https://gyazo.com/7bef3552ddfd009b8b48a51b5bfb59b8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7bef3552ddfd009b8b48a51b5bfb59b8.png"><img alt="" src="https://gyazo.com/7bef3552ddfd009b8b48a51b5bfb59b8.png"/></a></p>
 <p>こうしておくと、 sopimport で LOP に読み込んだ時の SdfPath を<br/>
 SOP 側でコントロールすることができます。</p>
 <h2 id="instance">Instance<a class="headerlink" href="#instance" title="Permanent link">¶</a></h2>
 <p>次にインスタンスを作成したい場合。<br/>
 インスタンスを使うには、PackedPrimitives を使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d8624b905efbaa4b854ec357cb906d2c.png"><img alt="" src="https://gyazo.com/d8624b905efbaa4b854ec357cb906d2c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d8624b905efbaa4b854ec357cb906d2c.png"><img alt="" src="https://gyazo.com/d8624b905efbaa4b854ec357cb906d2c.png"/></a></p>
 <p>SOP の Copy and Transform ノードで「Pack and Instance」で複製してみると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/18dc6871b34ba495fb72a3cf6c300f06.png"><img alt="" src="https://gyazo.com/18dc6871b34ba495fb72a3cf6c300f06.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/18dc6871b34ba495fb72a3cf6c300f06.png"><img alt="" src="https://gyazo.com/18dc6871b34ba495fb72a3cf6c300f06.png"/></a></p>
 <p>インスタンスのもとになっているジオメトリは「Prototypes」として作成され<br/>
 青文字になっている部分はインスタンス扱いとして作成されます。</p>
 <p>PackedPrimitive になっているものはインスタンス扱いになりますが</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b04b0319a2fb7993078bdf4d28cee83b.png"><img alt="" src="https://gyazo.com/b04b0319a2fb7993078bdf4d28cee83b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b04b0319a2fb7993078bdf4d28cee83b.png"><img alt="" src="https://gyazo.com/b04b0319a2fb7993078bdf4d28cee83b.png"/></a></p>
 <p>sopimport の Packed Primitives でどのように持ち込むかを変更できるので<br/>
 あえてインスタンスにしたくない場合だったり、PointInstancer で持ち込みたい場合は<br/>
 設定で変更が可能です。</p>
@@ -3004,51 +3020,51 @@ SOP 側でコントロールすることができます。</p>
 <p>sopimport で SOP から持ち込まれるデータは、基本的にジオメトリオブジェクトです。<br/>
 ので、この部分だけを別レイヤー扱いにしておいたほうが都合がよいので、<br/>
 sopimport で、レイヤーパスを指定します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0176a346ed9ac01f93ce893f93862b3d.png"><img alt="" src="https://gyazo.com/0176a346ed9ac01f93ce893f93862b3d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0176a346ed9ac01f93ce893f93862b3d.png"><img alt="" src="https://gyazo.com/0176a346ed9ac01f93ce893f93862b3d.png"/></a></p>
 <p>Layer Save Path に、保存先を指定すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f6ff629ec951feb20584e37b3e94c16b."><img alt="" src="https://gyazo.com/f6ff629ec951feb20584e37b3e94c16b."/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f6ff629ec951feb20584e37b3e94c16b."><img alt="" src="https://gyazo.com/f6ff629ec951feb20584e37b3e94c16b."/></a></p>
 <p>USD ROP ノードを作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/34fdaf3f33b82a2e51fb157afbc41f39.png"><img alt="" src="https://gyazo.com/34fdaf3f33b82a2e51fb157afbc41f39.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/34fdaf3f33b82a2e51fb157afbc41f39.png"><img alt="" src="https://gyazo.com/34fdaf3f33b82a2e51fb157afbc41f39.png"/></a></p>
 <p>その結果、sopimport 段階のデータとそれ以外とでレイヤーを分離できます。</p>
 <p>これで USD への出力がコントロールできました。</p>
 <h2 id="attribute">Attribute<a class="headerlink" href="#attribute" title="Permanent link">¶</a></h2>
 <p>SOP では、各頂点や Primitives に対して GeometrySpreadSheet で Attibute をつけることができます。<br/>
 特に指定がない場合は、USD の Attribute としては持ち込めませんが</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f6bf8986545472db8ccdd767ca0c6369.png"><img alt="" src="https://gyazo.com/f6bf8986545472db8ccdd767ca0c6369.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f6bf8986545472db8ccdd767ca0c6369.png"><img alt="" src="https://gyazo.com/f6bf8986545472db8ccdd767ca0c6369.png"/></a></p>
 <p>sopimport の USD custom Attribute で読み込みたい Attribute を指定できます。<br/>
 アスタリスクの場合は、どんなアトリビュートでも全部持ってくるという意味になりますし</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2d59ef1b1ea4ca54b006f9b81d87ddb6.png"><img alt="" src="https://gyazo.com/2d59ef1b1ea4ca54b006f9b81d87ddb6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2d59ef1b1ea4ca54b006f9b81d87ddb6.png"><img alt="" src="https://gyazo.com/2d59ef1b1ea4ca54b006f9b81d87ddb6.png"/></a></p>
 <p>usd<em>*のようにすると、頭が usd</em>のアトリビュートのみを USD のアトリビュートとして<br/>
 インポートできます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9e365091ef7b142264b2aa799fd2acd7.png"><img alt="" src="https://gyazo.com/9e365091ef7b142264b2aa799fd2acd7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9e365091ef7b142264b2aa799fd2acd7.png"><img alt="" src="https://gyazo.com/9e365091ef7b142264b2aa799fd2acd7.png"/></a></p>
 <p>れいとして、これは usd_*でインポートした場合。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a3721e2502ee01666689a5c0f8dc9236.png"><img alt="" src="https://gyazo.com/a3721e2502ee01666689a5c0f8dc9236.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a3721e2502ee01666689a5c0f8dc9236.png"><img alt="" src="https://gyazo.com/a3721e2502ee01666689a5c0f8dc9236.png"/></a></p>
 <p><em>で読み込んだ場合。<br/>
 </em>だとより多くのアトリビュートが持ち込めているのがわかります。</p>
 <h3 id="point_1">Point の場合<a class="headerlink" href="#point_1" title="Permanent link">¶</a></h3>
 <p>先ほどの例は Primitives に対してのアトリビュートでしたが<br/>
 Point に対してもアトリビュートが付加できます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3a7adae62570a4f2cb301d9a6de410c7.png"><img alt="" src="https://gyazo.com/3a7adae62570a4f2cb301d9a6de410c7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3a7adae62570a4f2cb301d9a6de410c7.png"><img alt="" src="https://gyazo.com/3a7adae62570a4f2cb301d9a6de410c7.png"/></a></p>
 <p>試しに、全頂点にランダムな値を入れておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/67406de973b82da06ec4f1efd95a7ad9.png"><img alt="" src="https://gyazo.com/67406de973b82da06ec4f1efd95a7ad9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/67406de973b82da06ec4f1efd95a7ad9.png"><img alt="" src="https://gyazo.com/67406de973b82da06ec4f1efd95a7ad9.png"/></a></p>
 <p>これを持ち込んだ結果はこちら。<br/>
 primvars として頂点分の配列を持ち込むことができました。</p>
 <p>この rpimvars とは primitive variables の略で、<br/>
 Primtives の各頂点単位で指定され、主に material などで頂点間で値を補完して扱うものです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ae2413905acd352fcd99c9507c0b98b8.png"><img alt="" src="https://gyazo.com/ae2413905acd352fcd99c9507c0b98b8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ae2413905acd352fcd99c9507c0b98b8.png"><img alt="" src="https://gyazo.com/ae2413905acd352fcd99c9507c0b98b8.png"/></a></p>
 <p>例えば、SOP 側で Color ノードを使用して頂点カラーを指定した場合。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2c61012fcbd790871d121256fadc2305.png"><img alt="" src="https://gyazo.com/2c61012fcbd790871d121256fadc2305.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2c61012fcbd790871d121256fadc2305.png"><img alt="" src="https://gyazo.com/2c61012fcbd790871d121256fadc2305.png"/></a></p>
 <p>displayColor としてインポートされます。<br/>
 各頂点ごとに指定された値によって、間の Face カラーは補完されて表示されます。</p>
 <p>といった感じで、SOP 側で頂点に対して指定した値は primvar として出力され<br/>
 自由に扱えるようになるというのがわかりました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2dd417352c787f2818b4579c361346bb.png"><img alt="" src="https://gyazo.com/2dd417352c787f2818b4579c361346bb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2dd417352c787f2818b4579c361346bb.png"><img alt="" src="https://gyazo.com/2dd417352c787f2818b4579c361346bb.png"/></a></p>
 <p>primvar はデフォルトだと全部インポート扱いになっていますが<br/>
 Attributes で、Primitives 同様に持ち込むパラメーターを制御できます。</p>
 <h2 id="_2">アニメーション<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a449d9b63ab8d4713b6cea0c675bfe96.png"><img alt="" src="https://gyazo.com/a449d9b63ab8d4713b6cea0c675bfe96.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a449d9b63ab8d4713b6cea0c675bfe96.png"><img alt="" src="https://gyazo.com/a449d9b63ab8d4713b6cea0c675bfe96.png"/></a></p>
 <p>SOP 側でアニメーションを追加した場合は、デフォルトで SOP 側に TimeSampling が追加されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/dac9d32262bff6e99817c6e7361c450e.png"><img alt="" src="https://gyazo.com/dac9d32262bff6e99817c6e7361c450e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/dac9d32262bff6e99817c6e7361c450e.png"><img alt="" src="https://gyazo.com/dac9d32262bff6e99817c6e7361c450e.png"/></a></p>
 <p>USD ROP が、デフォルトだと単一フレームなので、 Valid Frame Range を<br/>
 Render Specific Frame Range に変更すれば、アニメーション付きで Export できます。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
@@ -3069,7 +3085,7 @@ LOP を使用しての USD のセットアップを組み合わせれば<br/>
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-11 04:35:21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -3141,5 +3157,5 @@ LOP を使用しての USD のセットアップを組み合わせれば<br/>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

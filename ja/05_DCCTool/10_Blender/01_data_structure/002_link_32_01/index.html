@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Blender3.2でのLinkを使用したキャラクターの読み込み方 - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Blender/01_data_structure/002_link_32_01.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Blender/01_data_structure/002_link_32_01/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Blender3.2でのLinkを使用したキャラクターの読み込み方 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Blender/01_data_structure/002_link_32_01.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2793,62 +2808,62 @@ Blender3.2 からは Make Library Override という機能に置き換わって�
 <p><a href="https://booth.pm/ja/items/2165393">https://booth.pm/ja/items/2165393</a></p>
 <p>なお、今回のテストには、こちらのコマット通販様の素体モデル SOTA を使用しました。</p>
 <h2 id="collection">Collection を作る<a class="headerlink" href="#collection" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/71885fe1b0962d7d1ceab9634ef92c70.png"><img alt="" src="https://gyazo.com/71885fe1b0962d7d1ceab9634ef92c70.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/71885fe1b0962d7d1ceab9634ef92c70.png"><img alt="" src="https://gyazo.com/71885fe1b0962d7d1ceab9634ef92c70.png"/></a></p>
 <p>まず、Link を前提にした構造にコレクションを作成します。<br/>
 Blender の Link は、Maya とは違い Data 単位（Object とか Armature とか Mesh とか）で Link します。<br/>
 ですが、キャラクターの場合はそれだといろいろと困るので<br/>
 読み込みのたーげっとにするためのコレクションを作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c8e0823399675a08855db141f0fd861d.png"><img alt="" src="https://gyazo.com/c8e0823399675a08855db141f0fd861d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c8e0823399675a08855db141f0fd861d.png"><img alt="" src="https://gyazo.com/c8e0823399675a08855db141f0fd861d.png"/></a></p>
 <p>このように、キャラクター名の Collection を用意しておきます。<br/>
 （スクリプトとかで自動化することを考えるならば、ここの名前は統一のほうがいいのかもしれない？）</p>
 <h2 id="link">Link する<a class="headerlink" href="#link" title="Permanent link">¶</a></h2>
 <p>次に、キャラクターの.blend ファイルを Link します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a1c670b19d9dd861560b1011b95fde81.png"><img alt="" src="https://gyazo.com/a1c670b19d9dd861560b1011b95fde81.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a1c670b19d9dd861560b1011b95fde81.png"><img alt="" src="https://gyazo.com/a1c670b19d9dd861560b1011b95fde81.png"/></a></p>
 <p>File &gt; LInk... を選び、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6d4d11d5a10ff33c81b51f90ddc21857.png"><img alt="" src="https://gyazo.com/6d4d11d5a10ff33c81b51f90ddc21857.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6d4d11d5a10ff33c81b51f90ddc21857.png"><img alt="" src="https://gyazo.com/6d4d11d5a10ff33c81b51f90ddc21857.png"/></a></p>
 <p>.blend ファイルを選び、 Collection から</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4d9deafd2c7697de8a5ee20e984dbdec.png"><img alt="" src="https://gyazo.com/4d9deafd2c7697de8a5ee20e984dbdec.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4d9deafd2c7697de8a5ee20e984dbdec.png"><img alt="" src="https://gyazo.com/4d9deafd2c7697de8a5ee20e984dbdec.png"/></a></p>
 <p>作成した Collection を選びます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e960d2bf971836e23903e14ae6be378f.png"><img alt="" src="https://gyazo.com/e960d2bf971836e23903e14ae6be378f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e960d2bf971836e23903e14ae6be378f.png"><img alt="" src="https://gyazo.com/e960d2bf971836e23903e14ae6be378f.png"/></a></p>
 <p>読み込むことができました。<br/>
 このままだと、変更することができない上に<br/>
 Object 下に Collection があるので、Armature や Mesh が表示されていません。</p>
 <h2 id="makelibraryoverride">MakeLibraryOverride<a class="headerlink" href="#makelibraryoverride" title="Permanent link">¶</a></h2>
 <p>次に、読み込んだモデルでポーズを付けられるようにします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2a4cf1953c6a077d5c85bdc2567c2b4a.png"><img alt="" src="https://gyazo.com/2a4cf1953c6a077d5c85bdc2567c2b4a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2a4cf1953c6a077d5c85bdc2567c2b4a.png"><img alt="" src="https://gyazo.com/2a4cf1953c6a077d5c85bdc2567c2b4a.png"/></a></p>
 <p>まず、Link した Collection を選び、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/54710dd32c455442f9f369ccc662e29d.png"><img alt="" src="https://gyazo.com/54710dd32c455442f9f369ccc662e29d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/54710dd32c455442f9f369ccc662e29d.png"><img alt="" src="https://gyazo.com/54710dd32c455442f9f369ccc662e29d.png"/></a></p>
 <p>Object &gt; Relations &gt; Make Library Override... をクリックします。<br/>
 あるいは<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1fff118d389ed56426c2e476684271a0.png"><img alt="" src="https://gyazo.com/1fff118d389ed56426c2e476684271a0.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1fff118d389ed56426c2e476684271a0.png"><img alt="" src="https://gyazo.com/1fff118d389ed56426c2e476684271a0.png"/></a></p>
 <p>Collection の ID Data &gt; Make Library Override Hierarchy を選びます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/374a47538683dea371fdb3e6c02a3ece.png"><img alt="" src="https://gyazo.com/374a47538683dea371fdb3e6c02a3ece.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/374a47538683dea371fdb3e6c02a3ece.png"><img alt="" src="https://gyazo.com/374a47538683dea371fdb3e6c02a3ece.png"/></a></p>
 <p>Override を作成することができました。<br/>
 すると、Armature が選択できるようになるので、PoseMode にして</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e6106f2f39c795237a63f4a6122d1dd9.png"><img alt="" src="https://gyazo.com/e6106f2f39c795237a63f4a6122d1dd9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e6106f2f39c795237a63f4a6122d1dd9.png"><img alt="" src="https://gyazo.com/e6106f2f39c795237a63f4a6122d1dd9.png"/></a></p>
 <p>あとは普通に動かすことが可能になります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f322d928f0993eeb57043c7399bc64fa.png"><img alt="" src="https://gyazo.com/f322d928f0993eeb57043c7399bc64fa.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f322d928f0993eeb57043c7399bc64fa.png"><img alt="" src="https://gyazo.com/f322d928f0993eeb57043c7399bc64fa.png"/></a></p>
 <p>LibraryOverride を使用した場合は、オーバーライドした箇所の Property が<br/>
 このように表示されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/982f2f814071b1b511efcfcde4ca67c3.png"><img alt="" src="https://gyazo.com/982f2f814071b1b511efcfcde4ca67c3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/982f2f814071b1b511efcfcde4ca67c3.png"><img alt="" src="https://gyazo.com/982f2f814071b1b511efcfcde4ca67c3.png"/></a></p>
 <p>あるいは、Outliner に「Library Overrides」が追加されていて</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8097ab029d650bc19ae40d30d7588669.png"><img alt="" src="https://gyazo.com/8097ab029d650bc19ae40d30d7588669.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8097ab029d650bc19ae40d30d7588669.png"><img alt="" src="https://gyazo.com/8097ab029d650bc19ae40d30d7588669.png"/></a></p>
 <p>Override された Block と Property を確認できます。</p>
 <p>オーバーライドすれば、オブジェクトを動かしたりアニメーションしたりできますが、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a4fe897cc2b976201a2f078ae86849e9.png"><img alt="" src="https://gyazo.com/a4fe897cc2b976201a2f078ae86849e9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a4fe897cc2b976201a2f078ae86849e9.png"><img alt="" src="https://gyazo.com/a4fe897cc2b976201a2f078ae86849e9.png"/></a></p>
 <p>Reset Library Override Hierarchy をすると、元の値に戻すこともできます。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>以前の Proxy だと Collection 内の Armature だといまいちうまく動かなかったのですが<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d601ceb1489e8d571c109b7dced24217.png"><img alt="" src="https://gyazo.com/d601ceb1489e8d571c109b7dced24217.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d601ceb1489e8d571c109b7dced24217.png"><img alt="" src="https://gyazo.com/d601ceb1489e8d571c109b7dced24217.png"/></a><br/>
 ※Collection を Link するとそれ以下が表示されず Armature を選択できない<br/>
 　それを何とかするには Object 以下の Collection を移動しないといけなかった</p>
 <p>今回の LibraryOverride を使用すると、Hierarchy の場合は、指定の DataBlock（Object でも Armature でも）<br/>
 をオーバーライドに指定できるようなので、今回のようにキャラクターなどの複数の Data を持つ Collection でも<br/>
 Link して扱えるようになります。</p>
 <p>今回はキャラクターで試しましたが、それ以外にも<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/89681f818e480f23c1065d78ade2227b.png"><img alt="" src="https://gyazo.com/89681f818e480f23c1065d78ade2227b.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/89681f818e480f23c1065d78ade2227b.png"><img alt="" src="https://gyazo.com/89681f818e480f23c1065d78ade2227b.png"/></a><br/>
 アセットブラウザの Link で読み込んだ場合も</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/26d5affbd145c5f2db514c268c1b8a8b.png"><img alt="" src="https://gyazo.com/26d5affbd145c5f2db514c268c1b8a8b.png"/></a><br/>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/26d5affbd145c5f2db514c268c1b8a8b.png"><img alt="" src="https://gyazo.com/26d5affbd145c5f2db514c268c1b8a8b.png"/></a><br/>
 同様の方法で編集可能にできます。<br/>
 ただし、ブラウザからドラッグ＆ドロップした場合は<br/>
 Appendの場合は設置して置くことができますが、Linkの場合はドロップしたタイミングでは編集不可なせいで<br/>
@@ -2939,5 +2954,5 @@ MayaのReferenceと同等の運用はできそうです。</p>
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

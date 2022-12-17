@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="UsdAppUtilsを使用してUSDのシーンをレンダリングしてみる" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/30_USD_Programming/01_Python/08_renderImage/" rel="canonical"/>
 <link href="../../../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="RenderImageでUSDをレンダリングしよう - Reincarnation+#Tech" property="og:title"/>
+<meta content="UsdAppUtilsを使用してUSDのシーンをレンダリングしてみる" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/08_renderImage.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/30_USD_Programming/01_Python/08_renderImage/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="RenderImageでUSDをレンダリングしよう - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="UsdAppUtilsを使用してUSDのシーンをレンダリングしてみる" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/08_renderImage.png" name="twitter:image"/>
 <link href="../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2793,6 +2809,8 @@
 <article class="md-content__inner md-typeset">
 <nav class="md-tags">
 <a class="md-tag" href="../../../../../../tags/#usd">USD</a>
+<a class="md-tag" href="../../../../../../tags/#python">Python</a>
+<a class="md-tag" href="../../../../../../tags/#adventcalendar2022">AdventCalendar2022</a>
 </nav>
 <a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/11_Pipeline/01_USD/30_USD_Programming/01_Python/08_renderImage.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
@@ -2811,9 +2829,9 @@ UsdAppUtils は pip install でインストール可能な usd-core には含ま
 Path を通しておきます。</p>
 <h3 id="_2">サンプルシーンを作る<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>次に、サンプル用のシーンを用意します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/199d8d99ed0353787c83e98f961789ff.png"><img alt="" src="https://gyazo.com/199d8d99ed0353787c83e98f961789ff.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/199d8d99ed0353787c83e98f961789ff.png"><img alt="" src="https://gyazo.com/199d8d99ed0353787c83e98f961789ff.png"/></a></p>
 <p>今回はシンプルに、Cube とカメラだけあるようなシーンをあらかじめ Houdini で用意しておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4de5cc8814633291d6077f331c18c18e.png"><img alt="" src="https://gyazo.com/4de5cc8814633291d6077f331c18c18e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4de5cc8814633291d6077f331c18c18e.png"><img alt="" src="https://gyazo.com/4de5cc8814633291d6077f331c18c18e.png"/></a></p>
 <p>こんな感じのカメラを作りました。<br/>
 これを保存しておきます。</p>
 <h2 id="_3">レンダリングしてみる<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
@@ -2860,33 +2878,33 @@ Path を通しておきます。</p>
 </code></pre></div></td></tr></table></div>
 <p>使い方は簡単で、Record 関数に、ステージ、カメラ、フレーム数、保存先を渡すと<br/>
 指定場所に画像を出力してくれます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2be0a2dd7985051d5dde23f1b405035e.png"><img alt="" src="https://gyazo.com/2be0a2dd7985051d5dde23f1b405035e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2be0a2dd7985051d5dde23f1b405035e.png"><img alt="" src="https://gyazo.com/2be0a2dd7985051d5dde23f1b405035e.png"/></a></p>
 <p>結果はこちら。<br/>
 無事画像を出力できました。</p>
-<p>今回はデフォルトのStormでレンダリングしていますが、<br/>
-RenderDelegateに対応したレンダラーであれば、同様の方法でレンダリングが可能（なはず）です。<br/>
-pxr/usdImaging/bin/usdrecord/usdrecord.py <br/>
-サンプルとして、USDのリポジトリ以下の usdrecord.py のソースコードを見ると<br/>
+<p>今回はデフォルトの Storm でレンダリングしていますが、<br/>
+RenderDelegate に対応したレンダラーであれば、同様の方法でレンダリングが可能（なはず）です。<br/>
+pxr/usdImaging/bin/usdrecord/usdrecord.py<br/>
+サンプルとして、USD のリポジトリ以下の usdrecord.py のソースコードを見ると<br/>
 どのように実装されているか詳しく理解することができます。</p>
 <h2 id="jupyternotebook">JupyterNotebook での応用<a class="headerlink" href="#jupyternotebook" title="Permanent link">¶</a></h2>
-<p>画像が出力できたので、これを利用してJupyterNotebookでレンダリング結果を<br/>
+<p>画像が出力できたので、これを利用して JupyterNotebook でレンダリング結果を<br/>
 表示したくなります。</p>
 <p>やり方は簡単で、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">"./sample.jpg"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>IPython.display にあるImageで、Recordで保存しておいた画像を指定すればOKです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/dda2a138570b51b4d7fd3a5140991826.png"><img alt="" src="https://gyazo.com/dda2a138570b51b4d7fd3a5140991826.png"/></a></p>
+<p>IPython.display にある Image で、Record で保存しておいた画像を指定すれば OK です。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/dda2a138570b51b4d7fd3a5140991826.png"><img alt="" src="https://gyazo.com/dda2a138570b51b4d7fd3a5140991826.png"/></a></p>
 <p>結果。</p>
-<p>これを利用すれば、Pythonでいろいろ操作して、その結果を簡単にNotebookで<br/>
+<p>これを利用すれば、Python でいろいろ操作して、その結果を簡単に Notebook で<br/>
 確認するといったことも可能になります。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-15 02:15:38</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -2958,5 +2976,5 @@ pxr/usdImaging/bin/usdrecord/usdrecord.py <br/>
 <script src="../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

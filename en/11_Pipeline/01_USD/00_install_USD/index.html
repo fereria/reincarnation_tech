@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="USDを使ってみる - Reincarnation+#Tech" property="og:title"/>
+<meta content="USDをビルドする方法" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/00_install_USD.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/00_install_USD/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="USDを使ってみる - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="USDをビルドする方法" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/00_install_USD.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2834,7 +2849,7 @@
 </ul>
 <p>まず、ビルドに必要な VisualStudio とソースコードを取得するための Git、Python をダウンロードしてインストールします。</p>
 <p>Python は、インストールしたら<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b9e01b33a2198d006d082dbe6c43320e.png"><img alt="" src="https://gyazo.com/b9e01b33a2198d006d082dbe6c43320e.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b9e01b33a2198d006d082dbe6c43320e.png"><img alt="" src="https://gyazo.com/b9e01b33a2198d006d082dbe6c43320e.png"/></a></p>
 <p>Python37 直下と Scripts を環境変数の PATH に追加します。<br/>
 さらに USDView を使用する場合必要になる　 PySide2 と PyOpenGL をインストールしておきます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install PyOpenGL PyOpenGL_accelerate PySide2
@@ -2847,7 +2862,7 @@
 </code></pre></div></td></tr></table></div>
 <p>クローンします。</p>
 <p>クローンしたら、VisualStudio の Developer Command Prompt を開きます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ecddefa1fda425ead85330b083d05044.png"><img alt="" src="https://gyazo.com/ecddefa1fda425ead85330b083d05044.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ecddefa1fda425ead85330b083d05044.png"><img alt="" src="https://gyazo.com/ecddefa1fda425ead85330b083d05044.png"/></a></p>
 <p>開いたら、リポジトリをクローンしたフォルダに移動して、ビルドを実行します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python build_scripts\build_usd.py &lt;ビルド成果物の出力先&gt;
 </code></pre></div></td></tr></table></div>
@@ -2886,7 +2901,7 @@ pyd ファイルをインポート使用とするときに Error になるので
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>usdview Kitchen_set.usd
 </code></pre></div></td></tr></table></div>
 <p>usdview で Kitchen_set.usd をひらいてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/85f886a67bcafe10082f3e1e178848eb.png"><img alt="" src="https://gyazo.com/85f886a67bcafe10082f3e1e178848eb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/85f886a67bcafe10082f3e1e178848eb.png"><img alt="" src="https://gyazo.com/85f886a67bcafe10082f3e1e178848eb.png"/></a></p>
 <p>USDView を使用すると、usd ファイルのシーングラフや Layer、プロパティなどを確認<br/>
 することができます。<br/>
 また、Python コンソールも付属しているので<br/>
@@ -2922,7 +2937,7 @@ pyd ファイルをインポート使用とするときに Error になるので
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>中身はシンプルな（空の）USD ファイル。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/56dcb8770dbbd7053dd164a261f19fbe.png"><img alt="" src="https://gyazo.com/56dcb8770dbbd7053dd164a261f19fbe.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/56dcb8770dbbd7053dd164a261f19fbe.png"><img alt="" src="https://gyazo.com/56dcb8770dbbd7053dd164a261f19fbe.png"/></a></p>
 <p>usdeview で開くと、シンプルな Sphere が表示されました。</p>
 <p>とりあえずこれで USD を触れる環境ができました。<br/>
 プチはまりポイントとしては、lib フォルダに PATH を入れていなかったせいで<br/>
@@ -3008,5 +3023,5 @@ Synology の NAS 上のフォルダを保存先に指定するとパーミッシ
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

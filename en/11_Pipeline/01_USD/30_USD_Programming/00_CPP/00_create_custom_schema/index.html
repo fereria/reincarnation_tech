@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="オリジナルの New Schema Classを作る - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/00_CPP/00_create_custom_schema.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/30_USD_Programming/00_CPP/00_create_custom_schema/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="オリジナルの New Schema Classを作る - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/00_CPP/00_create_custom_schema.png" name="twitter:image"/>
 <link href="../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2903,7 +2918,7 @@ pip install PyOpenGL
 </code></pre></div></td></tr></table></div><br/>
 この2つをインストールします。  </p>
 <p>そして最後に、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a10b6ae596f249d65c96d1866c66f697.png"><img alt="" src="https://gyazo.com/a10b6ae596f249d65c96d1866c66f697.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a10b6ae596f249d65c96d1866c66f697.png"><img alt="" src="https://gyazo.com/a10b6ae596f249d65c96d1866c66f697.png"/></a></p>
 <p>開発者コマンドプロンプト for  VS 2017を開き、<br/>
 クローンしたフォルダに移動して</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python build_scripts\build_usd.py "&lt;Build先&gt;"
@@ -2911,7 +2926,7 @@ pip install PyOpenGL
 コマンドを実行します。<br/>
 <build先>部分は、自分の好みのパスにします（例 I:/USD 等）  </build先></p>
 <p>あとは1時間ほど待つと</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/334872b5d37a7866c0e1c79a81119468.png"><img alt="" src="https://gyazo.com/334872b5d37a7866c0e1c79a81119468.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/334872b5d37a7866c0e1c79a81119468.png"><img alt="" src="https://gyazo.com/334872b5d37a7866c0e1c79a81119468.png"/></a></p>
 <p>ビルドが完了するので<br/>
 あとは、書かれている通りに  </p>
 <p>PYTHONPATH を</p>
@@ -2933,7 +2948,7 @@ pip install PyOpenGL
 まずは、USDの公式のビルドシステム（上の build_usd.pyを使用したやり方）に乗っかって<br/>
 ビルドできるように、CMakeLists.txtを作成していきます。  </p>
 <p>リポジトリのプロジェクト下の  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c73bf027c3b9733d507a0381ae348bad.png"><img alt="" src="https://gyazo.com/c73bf027c3b9733d507a0381ae348bad.png"/></a> </p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c73bf027c3b9733d507a0381ae348bad.png"><img alt="" src="https://gyazo.com/c73bf027c3b9733d507a0381ae348bad.png"/></a> </p>
 <p>USD/extras/usd　下に、 custom というフォルダを作ります。<br/>
 名前は何でもOKです。  </p>
 <p>次に、extras/usd 直下にある CMakeLists.txt に</p>
@@ -2943,7 +2958,7 @@ pip install PyOpenGL
 <span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">tutorials</span><span class="p">)</span>
 <span class="nb">add_subdirectory</span><span class="p">(</span><span class="s">custom</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2c4edeed7bd9153523b4b673828a1805.png"><img alt="" src="https://gyazo.com/2c4edeed7bd9153523b4b673828a1805.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2c4edeed7bd9153523b4b673828a1805.png"><img alt="" src="https://gyazo.com/2c4edeed7bd9153523b4b673828a1805.png"/></a></p>
 <p>add_subdirectory(####) #### は作成したフォルダ名　を追加します。<br/>
 そして、customフォルダしたに作成するスキーマの作業フォルダを作り、<br/>
 customフォルダ下に CMakeLists.txt を作成して</p>
@@ -3017,7 +3032,7 @@ libraryName が必須要素になります。<br/>
 </code></pre></div></td></tr></table></div>
 <p>コンバートをするときは usdGenSchema に、作成した schema.usda を渡せばOKです。<br/>
 Windowsのせいなのか、相対パスでは記述できないのだけ注意が必要です。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b806510f43362a68c1af4e499193c327.png"><img alt="" src="https://gyazo.com/b806510f43362a68c1af4e499193c327.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b806510f43362a68c1af4e499193c327.png"><img alt="" src="https://gyazo.com/b806510f43362a68c1af4e499193c327.png"/></a></p>
 <p>実行すると、同じフォルダに cpp と .h が作成されます。  </p>
 <h4 id="_3">必要なファイルを準備する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h4>
 <p>実行した cpp .h 以外にもいくつか必要なファイルがあるので<br/>
@@ -3172,7 +3187,7 @@ PUBLIC_CLASSES　と　PYMODULE_CPPFILES　部分で、ここに作成するク�
 (指定したクラス名の頭が大文字の場合小文字になります)<br/>
 Python用は、wrapが頭につきます。  </p>
 <p>以上で準備が完了です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/73abbebb98072118a03ba5a511195e3d.png"><img alt="" src="https://gyazo.com/73abbebb98072118a03ba5a511195e3d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/73abbebb98072118a03ba5a511195e3d.png"><img alt="" src="https://gyazo.com/73abbebb98072118a03ba5a511195e3d.png"/></a></p>
 <p>できあがったフォルダがこちら。  </p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python build_scripts\build_usd.py <span class="s2">"&lt;Build先&gt;"</span>
 </code></pre></div></td></tr></table></div><br/>
@@ -3180,20 +3195,20 @@ Python用は、wrapが頭につきます。  </p>
 <h3 id="_4">ビルド結果を確認する<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>特にエラーがなく無事に完了すると、<br/>
 ビルドフォルダとして指定したフォルダ下に、作成したlibとdll等が作成されます。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cf61e13e4ed9a875fed59af4f9a7fab0.png"><img alt="" src="https://gyazo.com/cf61e13e4ed9a875fed59af4f9a7fab0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cf61e13e4ed9a875fed59af4f9a7fab0.png"><img alt="" src="https://gyazo.com/cf61e13e4ed9a875fed59af4f9a7fab0.png"/></a></p>
 <p>まず、 lib と dll。<br/>
 この２つは USD/plugin/usd 下に作成されます。<br/>
 このフォルダにできた２つを lib にコピーしても良いですが<br/>
 カスタムプラグインは分けておいたほうが後々わかりやすいので<br/>
 とりあえずこの USD/plugin/usd にPATHを通しておきます。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5321c4646178c5eaddf4be4c078dd78e.png"><img alt="" src="https://gyazo.com/5321c4646178c5eaddf4be4c078dd78e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5321c4646178c5eaddf4be4c078dd78e.png"><img alt="" src="https://gyazo.com/5321c4646178c5eaddf4be4c078dd78e.png"/></a></p>
 <p>次が python/pxr/Hogehoge<br/>
 これが、Pythonから呼び出すときのモジュールになります。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a85eaf068fb94141d11ca07e0d806d51.png"><img alt="" src="https://gyazo.com/a85eaf068fb94141d11ca07e0d806d51.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a85eaf068fb94141d11ca07e0d806d51.png"><img alt="" src="https://gyazo.com/a85eaf068fb94141d11ca07e0d806d51.png"/></a></p>
 <p>最後に include 下のHeaderファイル。<br/>
 ここは、libraryPath下にプロジェクト名のフォルダが作成され<br/>
 その下にHeaderファイルが作成されます。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ca466eede5ed9ac6586339a6445edc1e.png"><img alt="" src="https://gyazo.com/ca466eede5ed9ac6586339a6445edc1e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ca466eede5ed9ac6586339a6445edc1e.png"><img alt="" src="https://gyazo.com/ca466eede5ed9ac6586339a6445edc1e.png"/></a></p>
 <p>こんなかんじ。  </p>
 <p>libraryPathが . 以外だとうまくいかないのが現状謎なので<br/>
 今は直下にフォルダができます。  </p>
@@ -3212,7 +3227,7 @@ Python用は、wrapが頭につきます。  </p>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>とりあえず、こんな感じでサンプルのUSDファイルを作ります。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cce0e2c321a11a1dead9824733c620bf.png"><img alt="" src="https://gyazo.com/cce0e2c321a11a1dead9824733c620bf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cce0e2c321a11a1dead9824733c620bf.png"><img alt="" src="https://gyazo.com/cce0e2c321a11a1dead9824733c620bf.png"/></a></p>
 <p>UsdViewで開くとこうなります。<br/>
 ここの FugaPrimが schema.usda で指定したクラス名になります。  </p>
 <p>できあがったusda ファイルをPythonでロードしてみます。  </p>
@@ -3316,5 +3331,5 @@ int intAttr = 0<br/>
 <script src="../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

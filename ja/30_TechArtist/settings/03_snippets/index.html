@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="0から始めるTA環境作り - エディタの設定(3) スニペット - Reincarnation+#Tech" property="og:title"/>
+<meta content="スニペットを登録して快適にする" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/30_TechArtist/settings/03_snippets.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/30_TechArtist/settings/03_snippets/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="0から始めるTA環境作り - エディタの設定(3) スニペット - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="スニペットを登録して快適にする" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/30_TechArtist/settings/03_snippets.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2800,9 +2815,9 @@ VSCode にもこのスニペット機能が存在していて、登録・呼び�
 それぞれのメリットを含めて紹介していきます。</p>
 <h2 id="vscode">VSCode の機能<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
 <p>まず１つが VSCode の機能です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9a3b901eb814d9948d04c89c9bb302af.png"><img alt="" src="https://gyazo.com/9a3b901eb814d9948d04c89c9bb302af.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9a3b901eb814d9948d04c89c9bb302af.png"><img alt="" src="https://gyazo.com/9a3b901eb814d9948d04c89c9bb302af.png"/></a></p>
 <p>歯車マークから「ユーザースニペット」を選び、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7eb0d991d36c327123c4124fbb2713c8.png"><img alt="" src="https://gyazo.com/7eb0d991d36c327123c4124fbb2713c8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7eb0d991d36c327123c4124fbb2713c8.png"><img alt="" src="https://gyazo.com/7eb0d991d36c327123c4124fbb2713c8.png"/></a></p>
 <p>指定をする言語を選択します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2835,10 +2850,10 @@ VSCode にもこのスニペット機能が存在していて、登録・呼び�
 <p>例えば、Python でよく使うのが この直接実行したときのみ実行できるようにする記述とか<br/>
 一番頭に入れる utf-8 とか、<br/>
 よく使う import 分だったりとかを登録しておくと</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8b2f72d5269ea4a94634066f5af0aa03.gif"><img alt="" src="https://gyazo.com/8b2f72d5269ea4a94634066f5af0aa03.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8b2f72d5269ea4a94634066f5af0aa03.gif"><img alt="" src="https://gyazo.com/8b2f72d5269ea4a94634066f5af0aa03.gif"/></a></p>
 <p>登録したスニペットを予測変換で出すことができて、<br/>
 入力すれば登録したスニペットを呼び出すことができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/006b7abde0612d025a261db87cdf8cc0.png"><img alt="" src="https://gyazo.com/006b7abde0612d025a261db87cdf8cc0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/006b7abde0612d025a261db87cdf8cc0.png"><img alt="" src="https://gyazo.com/006b7abde0612d025a261db87cdf8cc0.png"/></a></p>
 <p>デフォルトだと、若干登録がめんどくさかったりするのですが、<br/>
 Snippet Generator というアドオンを入れると<br/>
 今選択している部分をスニペットに登録することができるので、<br/>
@@ -2857,12 +2872,12 @@ Snippet Generator というアドオンを入れると<br/>
 短いコードをストックして共有することができる機能です。<br/>
 ですが、Gists はタグ付けやフォルダ分けなどができず<br/>
 大量のコードを管理するのには向きません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4b73ec2d4137ec4990bf30d51b282997.png"><img alt="" src="https://gyazo.com/4b73ec2d4137ec4990bf30d51b282997.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4b73ec2d4137ec4990bf30d51b282997.png"><img alt="" src="https://gyazo.com/4b73ec2d4137ec4990bf30d51b282997.png"/></a></p>
 <p>ですが、この Cacher はタグ管理が可能で</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/feada25c1e0c36988bed1d33815aeab1.png"><img alt="" src="https://gyazo.com/feada25c1e0c36988bed1d33815aeab1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/feada25c1e0c36988bed1d33815aeab1.png"><img alt="" src="https://gyazo.com/feada25c1e0c36988bed1d33815aeab1.png"/></a></p>
 <p>このようにコードをストックしてタグ管理・見出しをつけるなどして保存し、<br/>
 シェアすることなどが可能です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2597988bb78e252ff4eec88e387b7c24.png"><img alt="" src="https://gyazo.com/2597988bb78e252ff4eec88e387b7c24.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2597988bb78e252ff4eec88e387b7c24.png"><img alt="" src="https://gyazo.com/2597988bb78e252ff4eec88e387b7c24.png"/></a></p>
 <p>さらに、Cacher の良いところは Chrome のアドオンが用意されているので<br/>
 選択しているコードを Cacher に保存するといったことが可能になります。</p>
 <p>これを利用して、ネットで調べたときに出てきたサンプルコードを保存しておいて<br/>
@@ -2877,13 +2892,13 @@ Snippet Generator というアドオンを入れると<br/>
 ちゃんと使うのなら有料が必須になります。<br/>
 しかし、お金を払う価値は十分あると思いますので<br/>
 興味があるかたは試しにでも使ってみるのをお勧めします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e03f71566061b1f77023f655d951103e.png"><img alt="" src="https://gyazo.com/e03f71566061b1f77023f655d951103e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e03f71566061b1f77023f655d951103e.png"><img alt="" src="https://gyazo.com/e03f71566061b1f77023f655d951103e.png"/></a></p>
 <p>なお、Cacher も VSCode アドオンが存在していて</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6085bad4761a428820b6824654094260.png"><img alt="" src="https://gyazo.com/6085bad4761a428820b6824654094260.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6085bad4761a428820b6824654094260.png"><img alt="" src="https://gyazo.com/6085bad4761a428820b6824654094260.png"/></a></p>
 <p>VSCode で開いているコードを直接登録したり、<br/>
 Cacher に登録しているスニペットを呼び出したりすることができます。</p>
 <p>ので、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/899769f562d578762c8ef6584f6250f9.png"><img alt="" src="https://gyazo.com/899769f562d578762c8ef6584f6250f9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/899769f562d578762c8ef6584f6250f9.png"><img alt="" src="https://gyazo.com/899769f562d578762c8ef6584f6250f9.png"/></a></p>
 <p>たとえば、毎度書くのがめんどくさい こういう import したり QApplication を作るような<br/>
 PySide でつかう定型文みたいのは Cacher に登録して、呼び出すようにしています。</p>
 <p><i class="fa fa-external-link"></i> <a href="/reincarnation_tech/10_Programming/50_VSCode/vscode_cacher">VSCodeでCacherを使う</a></p>
@@ -2969,5 +2984,5 @@ PySide でつかう定型文みたいのは Cacher に登録して、呼び出�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

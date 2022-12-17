@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Gitよく使うコマンドやら操作メモ - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/40_Github/git_command.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/10_Programming/40_Github/git_command/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Gitよく使うコマンドやら操作メモ - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/40_Github/git_command.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2913,10 +2928,10 @@
 GitLabは、自分で作ったリポジトリを自分でフォークすることは出来ないので<br/>
 まずはGroupを作成し、そのGroup下にフォーク元のリポジトリを作成します。  </p>
 <h2 id="_1">フォークする<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/556611ea36841633526e777d7b1f0707.png"><img alt="" src="https://gyazo.com/556611ea36841633526e777d7b1f0707.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/556611ea36841633526e777d7b1f0707.png"><img alt="" src="https://gyazo.com/556611ea36841633526e777d7b1f0707.png"/></a></p>
 <p>まずはフォーク。<br/>
 フォーク元リポジトリのForkボタンをクリックして  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/95053ba22dda0934b6461b30938c6824.png"><img alt="" src="https://gyazo.com/95053ba22dda0934b6461b30938c6824.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/95053ba22dda0934b6461b30938c6824.png"><img alt="" src="https://gyazo.com/95053ba22dda0934b6461b30938c6824.png"/></a></p>
 <p>自分のアカウントをクリック。<br/>
 そうすると、指定のリポジトリをフォークすることができます。  </p>
 <p>以降は、まずフォークしたリポジトリに対してデータをアップしていきます。  </p>
@@ -2924,7 +2939,7 @@ GitLabは、自分で作ったリポジトリを自分でフォークするこ�
 <h3 id="_3">現在のブランチを確認する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git branch
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1f6cb3de65eb4542ccf75a68280943c1.png"><img alt="" src="https://gyazo.com/1f6cb3de65eb4542ccf75a68280943c1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1f6cb3de65eb4542ccf75a68280943c1.png"><img alt="" src="https://gyazo.com/1f6cb3de65eb4542ccf75a68280943c1.png"/></a></p>
 <h3 id="_4">ブランチを作る<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git checkout -b hogehoge
 </code></pre></div></td></tr></table></div>
@@ -2933,10 +2948,10 @@ GitLabは、自分で作ったリポジトリを自分でフォークするこ�
 </code></pre></div></td></tr></table></div>
 <p>checkout ##### で、指定した名前のブランチに切り替わる。<br/>
 切り替えるときに、現在のブランチに編集済のファイルが存在する場合は</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c77c3523202e7e7b9b484803ca04bd8a.png"><img alt="" src="https://gyazo.com/c77c3523202e7e7b9b484803ca04bd8a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c77c3523202e7e7b9b484803ca04bd8a.png"><img alt="" src="https://gyazo.com/c77c3523202e7e7b9b484803ca04bd8a.png"/></a></p>
 <p>エラーになってしまうので、コミットするかStash（一時退避場所）に逃がしておく必要がある。</p>
 <h3 id="stash">Stash（一時退避場所）にアップする<a class="headerlink" href="#stash" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/95baa15f5178b3907ab2d0d6abd08ee7.png"><img alt="" src="https://gyazo.com/95baa15f5178b3907ab2d0d6abd08ee7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/95baa15f5178b3907ab2d0d6abd08ee7.png"><img alt="" src="https://gyazo.com/95baa15f5178b3907ab2d0d6abd08ee7.png"/></a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git stash
 </code></pre></div></td></tr></table></div>
 <p>一時的に逃がす場合はStashに入れる。  </p>
@@ -2955,21 +2970,21 @@ git push -u origin hogehoge
 <p>Pushするときのコマンドは git push -u ローカルリポジトリのBranch名 リモートリポジトリのBranch名<br/>
 のようにする。<br/>
 -u は、リモートリポジトリに街灯のブランチが存在しない場合は自動で作るというフラグ。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bbe73212bdf4c31e622b9bc63cd20130.png"><img alt="" src="https://gyazo.com/bbe73212bdf4c31e622b9bc63cd20130.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bbe73212bdf4c31e622b9bc63cd20130.png"><img alt="" src="https://gyazo.com/bbe73212bdf4c31e622b9bc63cd20130.png"/></a></p>
 <p>実行すると、無事リモートリポジトリに適応された。  </p>
 <h3 id="_7">プルリクを作る<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <p>フォークしたリポジトリの変更内容を、フォーク元に対してマージするために<br/>
 プルリクを作成します。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e746c3469607631513920e5bedd8fab8.png"><img alt="" src="https://gyazo.com/e746c3469607631513920e5bedd8fab8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e746c3469607631513920e5bedd8fab8.png"><img alt="" src="https://gyazo.com/e746c3469607631513920e5bedd8fab8.png"/></a></p>
 <p>フォークしたページにある「Merge Requests」をクリックして  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1c2b357d33900c3666ea0c3339188a5a.png"><img alt="" src="https://gyazo.com/1c2b357d33900c3666ea0c3339188a5a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1c2b357d33900c3666ea0c3339188a5a.png"><img alt="" src="https://gyazo.com/1c2b357d33900c3666ea0c3339188a5a.png"/></a></p>
 <p>New Merge Request を押します。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c12d442de7bd105c272bab8b70920c88.png"><img alt="" src="https://gyazo.com/c12d442de7bd105c272bab8b70920c88.png"/></a> </p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c12d442de7bd105c272bab8b70920c88.png"><img alt="" src="https://gyazo.com/c12d442de7bd105c272bab8b70920c88.png"/></a> </p>
 <p>SourceBranchには、フォークしたリポジトリとブランチを指定し<br/>
 ターゲットブランチにはフォーク元のリポジトリとマージしたいブランチを指定します。  </p>
 <p>あとはコメントを記入して Submit merge Request を押します。</p>
 <h3 id="_8">マージする<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f7e7b9bebfe370cff0bcefdbd874a554.png"><img alt="" src="https://gyazo.com/f7e7b9bebfe370cff0bcefdbd874a554.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f7e7b9bebfe370cff0bcefdbd874a554.png"><img alt="" src="https://gyazo.com/f7e7b9bebfe370cff0bcefdbd874a554.png"/></a></p>
 <p>プルリクが作成されると、Group側にリクエストが追加されます。<br/>
 ここでコードレビューを行い、問題がなければマージを押します。  </p>
 <h3 id="groupfork">マージされたGroupのリポジトリをFork先にマージする<a class="headerlink" href="#groupfork" title="Permanent link">¶</a></h3>
@@ -2980,7 +2995,7 @@ git push -u origin hogehoge
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git remote add upstream &lt;URL&gt;
 </code></pre></div></td></tr></table></div>
 <p>remoteに、Group側のURLを追加します。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d741139c9500af6a2c7f45612cdf20ca.png"><img alt="" src="https://gyazo.com/d741139c9500af6a2c7f45612cdf20ca.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d741139c9500af6a2c7f45612cdf20ca.png"><img alt="" src="https://gyazo.com/d741139c9500af6a2c7f45612cdf20ca.png"/></a></p>
 <p>追加すると、Remoteに upstream が追加されます。  </p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git fetch upstream
 </code></pre></div></td></tr></table></div><br/>
@@ -2990,7 +3005,7 @@ git push -u origin hogehoge
 git merge upstream/master
 </code></pre></div></td></tr></table></div><br/>
 upstreamのmasterを自分のmasterにマージします。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5577f0c9aa30fb4c277f87d028838a6b.png"><img alt="" src="https://gyazo.com/5577f0c9aa30fb4c277f87d028838a6b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5577f0c9aa30fb4c277f87d028838a6b.png"><img alt="" src="https://gyazo.com/5577f0c9aa30fb4c277f87d028838a6b.png"/></a></p>
 <p>変更内容が取り込まれました。<br/>
 めでたしめでたし。</p>
 <h2 id="gui">GUIを使用する<a class="headerlink" href="#gui" title="Permanent link">¶</a></h2>
@@ -2999,16 +3014,16 @@ upstreamのmasterを自分のmasterにマージします。  </p>
 GUIを使用します。</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>git gui
 </code></pre></div></td></tr></table></div><br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1a9f38cca286d2d43ab0989e02760827.png"><img alt="" src="https://gyazo.com/1a9f38cca286d2d43ab0989e02760827.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1a9f38cca286d2d43ab0989e02760827.png"><img alt="" src="https://gyazo.com/1a9f38cca286d2d43ab0989e02760827.png"/></a></p>
 <p>addするのとかはコマンドでやるのは地味にめんどくさいけど、GUIならわりと楽。<br/>
 UnstagedChangesにファイルがある状態で「Stage Changed」するとコミットできる状態になるので<br/>
 コメントを記入してCommitする。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c4a46c2bba19ca29ebeef0e2f4871ffa.png"><img alt="" src="https://gyazo.com/c4a46c2bba19ca29ebeef0e2f4871ffa.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c4a46c2bba19ca29ebeef0e2f4871ffa.png"><img alt="" src="https://gyazo.com/c4a46c2bba19ca29ebeef0e2f4871ffa.png"/></a></p>
 <p>あとはPushすればおしまい。  </p>
 <h3 id="_9">編集履歴を確認する<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/afdbc1ddbe70c5f7eeb982a5ec680a1d.png"><img alt="" src="https://gyazo.com/afdbc1ddbe70c5f7eeb982a5ec680a1d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/afdbc1ddbe70c5f7eeb982a5ec680a1d.png"><img alt="" src="https://gyazo.com/afdbc1ddbe70c5f7eeb982a5ec680a1d.png"/></a></p>
 <p>VisualizeAllBranchHistoryで、変更を確認できる。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9a7109ed85b938889e6ea94984c74abc.png"><img alt="" src="https://gyazo.com/9a7109ed85b938889e6ea94984c74abc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9a7109ed85b938889e6ea94984c74abc.png"><img alt="" src="https://gyazo.com/9a7109ed85b938889e6ea94984c74abc.png"/></a></p>
 <h2 id="_10">ローカルブランチをマージする<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
 <p>ローカルブランチで、別ブランチを切った状態で作業しているときに<br/>
 ほかのブランチをマージしたい場合は、とりこみ先でチェックアウトをして<br/>
@@ -3108,5 +3123,5 @@ Stashに入れてた内容を元に戻す。<br/>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

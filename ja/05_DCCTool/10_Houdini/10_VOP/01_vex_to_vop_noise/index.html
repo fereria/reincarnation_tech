@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="VEX を VOP に置き換える 01 ノイズ - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/10_VOP/01_vex_to_vop_noise.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/10_VOP/01_vex_to_vop_noise/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="VEX を VOP に置き換える 01 ノイズ - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/10_VOP/01_vex_to_vop_noise.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2773,32 +2788,32 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>@Cd = curlnoise(@P*chv('fancyscale')+@Time);
 </code></pre></div></td></tr></table></div>
 <p>このコード。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/c63bddc184ec97c2cd4dd97804b7cc4c.gif"><img alt="" src="https://i.gyazo.com/c63bddc184ec97c2cd4dd97804b7cc4c.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://i.gyazo.com/c63bddc184ec97c2cd4dd97804b7cc4c.gif"><img alt="" src="https://i.gyazo.com/c63bddc184ec97c2cd4dd97804b7cc4c.gif"/></a></p>
 <p>結果。<br/>
 VEX で作成したときは pointwrangle で作成したので、VOP で作成するときは pointVOP を使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/889b0e6f04c8b1bcdf8956a5032463f7.png"><img alt="" src="https://gyazo.com/889b0e6f04c8b1bcdf8956a5032463f7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/889b0e6f04c8b1bcdf8956a5032463f7.png"><img alt="" src="https://gyazo.com/889b0e6f04c8b1bcdf8956a5032463f7.png"/></a></p>
 <p>fancyscale 以外は単純にノードをつければ OK ですが<br/>
 VOP の場合はどうすればいいのかぱっと見つからずだったので、調べました。</p>
 <h2 id="_1">パラメーターを追加する<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/dd6af9a662e3c843efe9c6eeac7a0ad4.png"><img alt="" src="https://gyazo.com/dd6af9a662e3c843efe9c6eeac7a0ad4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/dd6af9a662e3c843efe9c6eeac7a0ad4.png"><img alt="" src="https://gyazo.com/dd6af9a662e3c843efe9c6eeac7a0ad4.png"/></a></p>
 <p>まず、globalvop と add との間に multiply を追加。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/820436ce2d6a6cdb54cb2428f3a1f852.png"><img alt="" src="https://gyazo.com/820436ce2d6a6cdb54cb2428f3a1f852.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/820436ce2d6a6cdb54cb2428f3a1f852.png"><img alt="" src="https://gyazo.com/820436ce2d6a6cdb54cb2428f3a1f852.png"/></a></p>
 <p>input1 に P をさして、input2 の ○ 部分で中ボタン →Promote Parameter をクリックする。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/16cb99034e9d44d981c18bb571983f4a.png"><img alt="" src="https://gyazo.com/16cb99034e9d44d981c18bb571983f4a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/16cb99034e9d44d981c18bb571983f4a.png"><img alt="" src="https://gyazo.com/16cb99034e9d44d981c18bb571983f4a.png"/></a></p>
 <p>U で上の pointVOP に移動してノードを確認すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/22ef6faf2f1ee0568d4c8aaed1779483.png"><img alt="" src="https://gyazo.com/22ef6faf2f1ee0568d4c8aaed1779483.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/22ef6faf2f1ee0568d4c8aaed1779483.png"><img alt="" src="https://gyazo.com/22ef6faf2f1ee0568d4c8aaed1779483.png"/></a></p>
 <p>inputNumber が増えています。<br/>
 追加されたプロパティはそのままだと Label もわかりにくい上に Vector じゃないので<br/>
 vector になるように変更します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a48233f85ccd67c89ab246bf4838bfcb.png"><img alt="" src="https://gyazo.com/a48233f85ccd67c89ab246bf4838bfcb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a48233f85ccd67c89ab246bf4838bfcb.png"><img alt="" src="https://gyazo.com/a48233f85ccd67c89ab246bf4838bfcb.png"/></a></p>
 <p>右上の歯車マークを右クリック →Edit Parameter Interface... を選択。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2fbfed772b10e51df628bb8ff7ac78f1.png"><img alt="" src="https://gyazo.com/2fbfed772b10e51df628bb8ff7ac78f1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2fbfed772b10e51df628bb8ff7ac78f1.png"><img alt="" src="https://gyazo.com/2fbfed772b10e51df628bb8ff7ac78f1.png"/></a></p>
 <p>新しく追加されている Input Number2 を選択し、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6a4642efb499a202d674198c9060be48.png"><img alt="" src="https://gyazo.com/6a4642efb499a202d674198c9060be48.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6a4642efb499a202d674198c9060be48.png"><img alt="" src="https://gyazo.com/6a4642efb499a202d674198c9060be48.png"/></a></p>
 <p>Name と Label を fancyscale、Type を Vector に変更する。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/028a7f3fb88801f10fc6beda1329ab33.png"><img alt="" src="https://gyazo.com/028a7f3fb88801f10fc6beda1329ab33.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/028a7f3fb88801f10fc6beda1329ab33.png"><img alt="" src="https://gyazo.com/028a7f3fb88801f10fc6beda1329ab33.png"/></a></p>
 <p>これで、pointVOP に Vector のチャンネルが出来る。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2079a53e0c526c3c909f3f08ada73b08.png"><img alt="" src="https://gyazo.com/2079a53e0c526c3c909f3f08ada73b08.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2079a53e0c526c3c909f3f08ada73b08.png"><img alt="" src="https://gyazo.com/2079a53e0c526c3c909f3f08ada73b08.png"/></a></p>
 <p>これで、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>@Cd = curlnoise(@P*chv('fancyscale')+@Time);
 </code></pre></div></td></tr></table></div>
@@ -2882,5 +2897,5 @@ vector になるように変更します。</p>
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="importlopの使い方" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOP/01_importlop/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="SOPにLOPを持ち込もう - Reincarnation+#Tech" property="og:title"/>
+<meta content="importlopの使い方" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOP/01_importlop.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOP/01_importlop/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="SOPにLOPを持ち込もう - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="importlopの使い方" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOP/01_importlop.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2822,28 +2838,28 @@
 <p>SOP から LOP に持ち込む方法は <a href="00_usdexport">PackedPrimitives と USDExport</a> で書いたのですが、逆に LOP の USDGeomMesh などを<br/>
 SOP の世界に持ち込む方法があるので基本的なところを確認していこうと思います。</p>
 <h2 id="lopimport-packedprimitive">lopimport と PackedPrimitive<a class="headerlink" href="#lopimport-packedprimitive" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/94302547f0e17eb6e9a13a707a507a90.png"><img alt="" src="https://gyazo.com/94302547f0e17eb6e9a13a707a507a90.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/94302547f0e17eb6e9a13a707a507a90.png"><img alt="" src="https://gyazo.com/94302547f0e17eb6e9a13a707a507a90.png"/></a></p>
 <p>LOP の情報を持ち込むには、 lopimport ノードを使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e4dd0c6d1a46ffa7e5d4dbf481776e1b.png"><img alt="" src="https://gyazo.com/e4dd0c6d1a46ffa7e5d4dbf481776e1b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e4dd0c6d1a46ffa7e5d4dbf481776e1b.png"><img alt="" src="https://gyazo.com/e4dd0c6d1a46ffa7e5d4dbf481776e1b.png"/></a></p>
 <p>使用方法は簡単で、読み込みたい LOP のノードを LOP Path で指定し、Primitives で読み込むノードを選びます。<br/>
 アスタリスクにすると、すべてのノードを読み込むことができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6f6df783b27973cbba11e63687aab01a.png"><img alt="" src="https://gyazo.com/6f6df783b27973cbba11e63687aab01a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6f6df783b27973cbba11e63687aab01a.png"><img alt="" src="https://gyazo.com/6f6df783b27973cbba11e63687aab01a.png"/></a></p>
 <p>サンプルとして Cube や Light、Xform などを作っておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8b7943475078154b2eb93b131628267e.png"><img alt="" src="https://gyazo.com/8b7943475078154b2eb93b131628267e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8b7943475078154b2eb93b131628267e.png"><img alt="" src="https://gyazo.com/8b7943475078154b2eb93b131628267e.png"/></a></p>
 <p>読み込んだ状態を GeometrySpreadSheet を参照するとこうなります。</p>
 <p>LOP import のオプションで「Path Attribute」と「Name Attribute」をオンにしていると<br/>
 USD の SdfPath や NodeName を読み込むことができます。</p>
 <p>読み込んだ Prim は PackedPrimitive になっている状態で</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d0d2955ad06e4fefed755498e8d7b595.png"><img alt="" src="https://gyazo.com/d0d2955ad06e4fefed755498e8d7b595.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d0d2955ad06e4fefed755498e8d7b595.png"><img alt="" src="https://gyazo.com/d0d2955ad06e4fefed755498e8d7b595.png"/></a></p>
 <p>Points は USD の Prim の Translate が入っています。</p>
 <p>例にしている Stage のうち Cube Sphere は Geometry として読み込むことができますが<br/>
 それ以外は Xform の位置情報のみが持ち込みされるようです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4a5cedf407c22144cb79296c96c4f126.png"><img alt="" src="https://gyazo.com/4a5cedf407c22144cb79296c96c4f126.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4a5cedf407c22144cb79296c96c4f126.png"><img alt="" src="https://gyazo.com/4a5cedf407c22144cb79296c96c4f126.png"/></a></p>
 <p>USD の UsdGeomMesh を SOP 側で扱いたい場合は、<br/>
 unpackusd ノードを使用して unpack します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ac25b520f83fdb9f0f97ba454c074969.png"><img alt="" src="https://gyazo.com/ac25b520f83fdb9f0f97ba454c074969.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ac25b520f83fdb9f0f97ba454c074969.png"><img alt="" src="https://gyazo.com/ac25b520f83fdb9f0f97ba454c074969.png"/></a></p>
 <p>Unpack の Output を Polygons にします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4ec43f505605be6939d89ffdebe3c75a.png"><img alt="" src="https://gyazo.com/4ec43f505605be6939d89ffdebe3c75a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4ec43f505605be6939d89ffdebe3c75a.png"><img alt="" src="https://gyazo.com/4ec43f505605be6939d89ffdebe3c75a.png"/></a></p>
 <p>これで SOP 側で UsdGeomMesh を編集できるようになります。</p>
 <h2 id="mesh">Mesh 以外<a class="headerlink" href="#mesh" title="Permanent link">¶</a></h2>
 <p>（今のところわかる範囲でいうと）SOP に持ち込めるのは Mesh と Points のみのようです。<br/>
@@ -2860,7 +2876,7 @@ SOP の Wrangle で LOP 側のノードを使用する場合は op:/～～～ �
 lopimport で USD の SdfPath は path アトリビュートに入っているのがわかっているので<br/>
 usd_typename 関数に LOP のノードのパスを指定して、SdfPath を指定すれば PrimType がとれるので<br/>
 これを type Attribute に入れてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/86466edec93716116dc7db2e1575f7ed.png"><img alt="" src="https://gyazo.com/86466edec93716116dc7db2e1575f7ed.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/86466edec93716116dc7db2e1575f7ed.png"><img alt="" src="https://gyazo.com/86466edec93716116dc7db2e1575f7ed.png"/></a></p>
 <p>取得できました。</p>
 <p>もう少し頑張って Attribute の値を取得します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2886,7 +2902,7 @@ VEX つよつよな人、だれか助けてください。お願いします。<
 <h3 id="python">python でやる<a class="headerlink" href="#python" title="Permanent link">¶</a></h3>
 <p>気を取り直して Python でやっていきましょう。</p>
 <p>Geometry に対して Attribute を入れる都合、PrimType をそろえてから Attribute を取得します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/68e0366052f95161f5e1ab52a5c8b53c.png"><img alt="" src="https://gyazo.com/68e0366052f95161f5e1ab52a5c8b53c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/68e0366052f95161f5e1ab52a5c8b53c.png"><img alt="" src="https://gyazo.com/68e0366052f95161f5e1ab52a5c8b53c.png"/></a></p>
 <p>LOP Import の Primitives で <a href="https://www.sidefx.com/ja/docs/houdini/solaris/pattern.html">プリミティブパターン</a> を使用して、読み込みたい PrimType を制限します。<br/>
 今回は SphereLight のみを取得します。</p>
 <h4 id="stage">stage 取得<a class="headerlink" href="#stage" title="Permanent link">¶</a></h4>
@@ -2950,7 +2966,7 @@ LopNode の stage() を使用すれば、取得したい LOP の Node の Stage 
             <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">():</span>
                 <span class="n">i</span><span class="o">.</span><span class="n">setAttribValue</span><span class="p">(</span><span class="n">attribName</span><span class="p">,</span><span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/40e083ad0fd8501a8a42e4c5a8f87b53.png"><img alt="" src="https://gyazo.com/40e083ad0fd8501a8a42e4c5a8f87b53.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/40e083ad0fd8501a8a42e4c5a8f87b53.png"><img alt="" src="https://gyazo.com/40e083ad0fd8501a8a42e4c5a8f87b53.png"/></a></p>
 <p>とりあえず何とかそれっぽいことができました。</p>
 <p>Usd の Namespace は : を使用して指定するのですが、Attribute 名に:が使えないので__にリネームします。<br/>
 そして Attribute を追加するのですが、追加するときの AttributeType によっていろいろやらないといけなかったので<br/>
@@ -2970,7 +2986,7 @@ ValueTypeName で Array 型かどうかとれるので、Array の場合は addA
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-05 14:48:49</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -3042,5 +3058,5 @@ ValueTypeName で Array 型かどうかとれるので、Array の場合は addA
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

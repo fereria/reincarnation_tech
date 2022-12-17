@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="USDのPointInstancerの構造について" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/32_point_instancer/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="USDのPointInstancer - Reincarnation+#Tech" property="og:title"/>
+<meta content="USDのPointInstancerの構造について" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/32_point_instancer.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/32_point_instancer/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="USDのPointInstancer - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="USDのPointInstancerの構造について" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/32_point_instancer.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2831,7 +2847,7 @@ PointInstancer の場合は、 <strong>位置 方向 スケール</strong> に�
 <p>もう 1 つの特徴として、PointInstancer は GPrim ではありません。<br/>
 GPrim とは、Primitive の基底クラスで「DoubleSide」や「Orientation（法線を右手・左手系どちらで計算するか）」などのグラフィックの特性を扱い、「DisplayColor」などと合わせて<br/>
 シェーダーで使用される primvar を提供するものです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1d6a7d5e2b3e00d757a07c038fe646a5.png"><img alt="" src="https://gyazo.com/1d6a7d5e2b3e00d757a07c038fe646a5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1d6a7d5e2b3e00d757a07c038fe646a5.png"><img alt="" src="https://gyazo.com/1d6a7d5e2b3e00d757a07c038fe646a5.png"/></a></p>
 <p>そのため、Cube や Sphere のような基本的なプリミティブにしても、Mesh にしても、この UsdGeomGPrim を継承しています。<br/>
 しかし、PointInstancer は Gprim ではありません。<br/>
 Grpim ではありませんが、Boundable になります。<br/>
@@ -2848,28 +2864,28 @@ PointInstancer のアニメーションは、上記に挙げた 位置・方向�
 これらを管理するためには、各 Point に対して識別可能な ID を割り振る必要があります。</p>
 <p>PointInstancer は、これらの仕様を含めた上で、大量のオブジェクトを票 j するための機能を提供しています。</p>
 <h2 id="_2">基本構造<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/14adbc0f2fb651eaa6a61c6712498288.png"><img alt="" src="https://gyazo.com/14adbc0f2fb651eaa6a61c6712498288.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/14adbc0f2fb651eaa6a61c6712498288.png"><img alt="" src="https://gyazo.com/14adbc0f2fb651eaa6a61c6712498288.png"/></a></p>
 <p>PointInstancer は、Point に対して表示するモデルを Prototypes として持ちます。<br/>
 上の例だと、Cube と Sphere モデルが PointInstancer として表示されます。<br/>
 この Prototypes オブジェクトには、それぞれ Index がつけられており<br/>
 protoIndices アトリビュートによって、どの Point にたいしてどのモデルを<br/>
 表示するかをコントロールしています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/acd7f0a22d0d98b2898304df7e14d206.png"><img alt="" src="https://gyazo.com/acd7f0a22d0d98b2898304df7e14d206.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/acd7f0a22d0d98b2898304df7e14d206.png"><img alt="" src="https://gyazo.com/acd7f0a22d0d98b2898304df7e14d206.png"/></a></p>
 <p>最初に開設した通り、PointInstancer の配置対象の Point には ID が割り振られています。<br/>
 各アトリビュート（protoIndices や orientations 等）は、Point の数だけの配列になっていて、Point の ID に対応します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8171342682e7cc3cfdced655de87cbdf.png"><img alt="" src="https://gyazo.com/8171342682e7cc3cfdced655de87cbdf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8171342682e7cc3cfdced655de87cbdf.png"><img alt="" src="https://gyazo.com/8171342682e7cc3cfdced655de87cbdf.png"/></a></p>
 <p>最初に説明した通り、Point の位置情報もマトリクスではなく point3f で表されています。</p>
 <h2 id="_3">データを確認する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>まずは実際に PointInstancer を使用したシーンを作成して、中身を確認してみます。<br/>
 作り方は <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/05_point_instancer">SOLARISでInstancerを使う(1) 配置編</a> にまとめてありますのでざっくりとですが、SOP 上で Grid &gt; Scatter で Point を作り、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/78b39b1c8650d8216eebf2c450dee9af.png"><img alt="" src="https://gyazo.com/78b39b1c8650d8216eebf2c450dee9af.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/78b39b1c8650d8216eebf2c450dee9af.png"><img alt="" src="https://gyazo.com/78b39b1c8650d8216eebf2c450dee9af.png"/></a></p>
 <p>Instancer ノードに Cube をつなぎ、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e2ab04fe39ec1094800d17f23e34f98c.png"><img alt="" src="https://gyazo.com/e2ab04fe39ec1094800d17f23e34f98c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e2ab04fe39ec1094800d17f23e34f98c.png"><img alt="" src="https://gyazo.com/e2ab04fe39ec1094800d17f23e34f98c.png"/></a></p>
 <p>こんな感じの 3 つだけ表示された状態にします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9808a42d62bb9e4b6f92535e6e22384d.png"><img alt="" src="https://gyazo.com/9808a42d62bb9e4b6f92535e6e22384d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9808a42d62bb9e4b6f92535e6e22384d.png"><img alt="" src="https://gyazo.com/9808a42d62bb9e4b6f92535e6e22384d.png"/></a></p>
 <p>PointInstancer ノードは、Instancer ノードと、UsdGeomPoints(位置情報)と、Prototypes（Point に対して表示させるオブジェクト）<br/>
 で構成されています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2d1cab55bad06cdf53dc7b1209bee1a4.png"><img alt="" src="https://gyazo.com/2d1cab55bad06cdf53dc7b1209bee1a4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2d1cab55bad06cdf53dc7b1209bee1a4.png"><img alt="" src="https://gyazo.com/2d1cab55bad06cdf53dc7b1209bee1a4.png"/></a></p>
 <p>アスキーファイルを確認するとこのようになっています。<br/>
 最初の概要に書かれている通り、位置情報などは行列ではなく 位置・方向・スケール・バウンディングボックス<br/>
 それぞれが別のパラメーターとして扱われています。</p>
@@ -2883,9 +2899,9 @@ PointInstancer のオブジェクトもアニメーションをすることが�
 @P.y = @Time * rand(@P);
 </code></pre></div></td></tr></table></div>
 <p>まずはシンプルな VEX を SOP 側の Point に対して指定します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/30c9f29fa893be6d0d1ac82c77fd2fee.gif"><img alt="" src="https://gyazo.com/30c9f29fa893be6d0d1ac82c77fd2fee.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/30c9f29fa893be6d0d1ac82c77fd2fee.gif"><img alt="" src="https://gyazo.com/30c9f29fa893be6d0d1ac82c77fd2fee.gif"/></a></p>
 <p>このように、PointInstancer のオブジェクトを動かすことができました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/717929511494b4a087356406d9b7fafe.png"><img alt="" src="https://gyazo.com/717929511494b4a087356406d9b7fafe.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/717929511494b4a087356406d9b7fafe.png"><img alt="" src="https://gyazo.com/717929511494b4a087356406d9b7fafe.png"/></a></p>
 <p>アニメーションデータは、各アトリビュートに対して timeSamples という形で指定されます。<br/>
 USD のアニメーションは、基本リニア補完のみで全フレームにベイクされた状態で保持されています。</p>
 <h2 id="_5">まとめ<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
@@ -2908,7 +2924,7 @@ SOP 上の Point を利用して LOP 側でのレイアウトを効率的に行�
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-13 15:32:30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -2980,5 +2996,5 @@ SOP 上の Point を利用して LOP 側でのレイアウトを効率的に行�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

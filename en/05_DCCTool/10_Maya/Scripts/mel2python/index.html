@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="melをpythonに書き換えるテクニック - Reincarnation+#Tech" property="og:title"/>
+<meta content="melをみてpythonに翻訳するコツとか" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Maya/Scripts/mel2python.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/05_DCCTool/10_Maya/Scripts/mel2python/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="melをpythonに書き換えるテクニック - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="melをみてpythonに翻訳するコツとか" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Maya/Scripts/mel2python.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2882,14 +2897,14 @@ Maya のスクリプトを書く場合、それをヒントにコードを書く
 <h2 id="mel">mel コマンドを確認する<a class="headerlink" href="#mel" title="Permanent link">¶</a></h2>
 <p>まずは Maya の操作をしたときの実行結果を確認するため<br/>
 ScriptEditor を開きます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ef7353acddb38626a7f6ffbe8d3c50ca.png"><img alt="" src="https://gyazo.com/ef7353acddb38626a7f6ffbe8d3c50ca.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ef7353acddb38626a7f6ffbe8d3c50ca.png"><img alt="" src="https://gyazo.com/ef7353acddb38626a7f6ffbe8d3c50ca.png"/></a></p>
 <p>右下あたりにある アイコンをクリックして、スクリプトエディタを開きます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e6f30a024159b568f075e06d6e81056d.png"><img alt="" src="https://gyazo.com/e6f30a024159b568f075e06d6e81056d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e6f30a024159b568f075e06d6e81056d.png"><img alt="" src="https://gyazo.com/e6f30a024159b568f075e06d6e81056d.png"/></a></p>
 <p>開いたら、わかりやすいように Edit &gt; Clear History で<br/>
 ログをクリアしておきましょう。<br/>
 クリアしたら、何かしら実行をします。</p>
 <p>今回は、Sphere を作り、作成した Sphere の TranslateY を 5 にします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/86f50302373eb43cb5075951890622dc.png"><img alt="" src="https://gyazo.com/86f50302373eb43cb5075951890622dc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/86f50302373eb43cb5075951890622dc.png"><img alt="" src="https://gyazo.com/86f50302373eb43cb5075951890622dc.png"/></a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2900,8 +2915,8 @@ setAttr "pSphere1.translateY" 5;
 </code></pre></div></td></tr></table></div>
 <p>実行結果はこのように表示されました。<br/>
 作成した Sphere を一度削除して</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ea6a0e6189590848b75f81d43ca089a6.png"><img alt="" src="https://gyazo.com/ea6a0e6189590848b75f81d43ca089a6.png"/></a></p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e625bcec81c70cb5b61f5c6f7814ed65.gif"><img alt="" src="https://gyazo.com/e625bcec81c70cb5b61f5c6f7814ed65.gif"/></a><br/>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ea6a0e6189590848b75f81d43ca089a6.png"><img alt="" src="https://gyazo.com/ea6a0e6189590848b75f81d43ca089a6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e625bcec81c70cb5b61f5c6f7814ed65.gif"><img alt="" src="https://gyazo.com/e625bcec81c70cb5b61f5c6f7814ed65.gif"/></a><br/>
 ScriptEditor の MEL タブにペーストして、全選択して Ctrl+Enter を押してみます。</p>
 <p>実行すると、Sphere が２つできてしまいました。<br/>
 これは、 CreatePolygonSphere と polySphere が同じようなコマンド<br/>
@@ -3031,7 +3046,7 @@ sets -name "set1";<br/>
 と思うかもしれません。<br/>
 ですが、この場合エラーになってしまいます。</p>
 <p>うまくいかない場合はドキュメントを確認します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3a7b49c2f6b849c4f45af51507d4235f.png"><img alt="" src="https://gyazo.com/3a7b49c2f6b849c4f45af51507d4235f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3a7b49c2f6b849c4f45af51507d4235f.png"><img alt="" src="https://gyazo.com/3a7b49c2f6b849c4f45af51507d4235f.png"/></a></p>
 <p>forceElement の項目を見てみると、引数タイプが「name」になっています。<br/>
 これはつまり、 -forceElement nodeName のように Bool ではなく何かしらの文字列が<br/>
 来ることを表しています。</p>
@@ -3043,7 +3058,7 @@ sets -name "set1";<br/>
 <p>多くの場合はログを確認することで、どのようなコマンドで実行されているのか<br/>
 探すことができます。<br/>
 しかし、場合によってはログに何も表示されないケースがあります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/11cb2bff895f0aa7ba7fc287ee435266.png"><img alt="" src="https://gyazo.com/11cb2bff895f0aa7ba7fc287ee435266.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/11cb2bff895f0aa7ba7fc287ee435266.png"><img alt="" src="https://gyazo.com/11cb2bff895f0aa7ba7fc287ee435266.png"/></a></p>
 <p>その場合は、この History の「Echo All Commands」をオンにします。<br/>
 このチェックをオンにすると、普段は OFF になっているすべてのログが表示されます。</p>
 <p>不要な行もかなり表示されるので、必要な行を探す必要がでてきますが<br/>
@@ -3131,5 +3146,5 @@ Echo All Commands をオンにして、mel スクリプトの実行方法を調�
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

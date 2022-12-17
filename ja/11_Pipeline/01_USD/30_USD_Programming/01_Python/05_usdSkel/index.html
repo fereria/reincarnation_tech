@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="UsdSkelについて - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/05_usdSkel.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/30_USD_Programming/01_Python/05_usdSkel/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="UsdSkelについて - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/05_usdSkel.png" name="twitter:image"/>
 <link href="../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2914,7 +2929,7 @@ USD における Joint のデータ構造を見ていこうと思います。</p
 <li>UsdSKelAnimation</li>
 </ol>
 <p>この３つの構造を利用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fc344acb67317ebd62d9ff3b09e4e588.png"><img alt="" src="https://gyazo.com/fc344acb67317ebd62d9ff3b09e4e588.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fc344acb67317ebd62d9ff3b09e4e588.png"><img alt="" src="https://gyazo.com/fc344acb67317ebd62d9ff3b09e4e588.png"/></a></p>
 <p>基本はこのような構造になります。<br/>
 （Animation に関してはこことは限らない）</p>
 <h3 id="usdskelroot">UsdSkelRoot<a class="headerlink" href="#usdskelroot" title="Permanent link">¶</a></h3>
@@ -2928,7 +2943,7 @@ Prim があると識別するための Prim です。<br/>
 この Skeleton は、Joint のトポロジを定義し、BindPose を保持します。<br/>
 UsdSkel は、Maya のように Joint ごとに Prim があるわけではなく<br/>
 この SkeletonPrim 以下に Joint の構造を持ちます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f7dad2bc1c75d7fbf79c8778815db426.png"><img alt="" src="https://gyazo.com/f7dad2bc1c75d7fbf79c8778815db426.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f7dad2bc1c75d7fbf79c8778815db426.png"><img alt="" src="https://gyazo.com/f7dad2bc1c75d7fbf79c8778815db426.png"/></a></p>
 <p>Skeleton には、このように jointsJoint を持ちます。<br/>
 Joint1 つごとに Index が割り振られ、親子構造は / で表されます。</p>
 <h3 id="usdskelanimation">UsdSkelAnimation<a class="headerlink" href="#usdskelanimation" title="Permanent link">¶</a></h3>
@@ -2938,7 +2953,7 @@ UsdSkel の Animation は、この AnimationPrim という形で別途定義さ�
 <h3 id="_1">それをふまえて<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p>以上のような Root Skeleton Animation の 3 つで構成された UsdSkel で<br/>
 シーンを構成する場合は、このようになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9b444a9a78bf063ee6d12545d3004233.png"><img alt="" src="https://gyazo.com/9b444a9a78bf063ee6d12545d3004233.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9b444a9a78bf063ee6d12545d3004233.png"><img alt="" src="https://gyazo.com/9b444a9a78bf063ee6d12545d3004233.png"/></a></p>
 <p>多くの場合は、キャラクターモデルの usd と各 Shot ごとのキャラアニメーションの usd<br/>
 という構成になります。</p>
 <p>上で説明したとおり、UsdSkel は Maya の Joint とは違い、<br/>
@@ -2959,13 +2974,13 @@ Skeleton に対して Relationship で Prim を指定すれば<br/>
 <p>まず Joint について。</p>
 <p>上の Skeleton で書いたとおり、Skeleton は、joints アトリビュートに<br/>
 この Skeleton が持つ Joint のリストを持ちます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e0e6841dcb7768ea7f4ccae88e6a1fb3.png"><img alt="" src="https://gyazo.com/e0e6841dcb7768ea7f4ccae88e6a1fb3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e0e6841dcb7768ea7f4ccae88e6a1fb3.png"><img alt="" src="https://gyazo.com/e0e6841dcb7768ea7f4ccae88e6a1fb3.png"/></a></p>
 <p>たとえば、このようなキャラクターの Skeleton があった場合。<br/>
 この Skeleton は１つの SkeletonPrim になっていて、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e4e76c60ef470025cc52bddbda61c557.png"><img alt="" src="https://gyazo.com/e4e76c60ef470025cc52bddbda61c557.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e4e76c60ef470025cc52bddbda61c557.png"><img alt="" src="https://gyazo.com/e4e76c60ef470025cc52bddbda61c557.png"/></a></p>
 <p>このように、Skelton の階層構造のフルパスのリストを持ちます。<br/>
 この各 Joint がどの位置にあるかは、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ce3bea8767e1443a63b5b7061979eb86.png"><img alt="" src="https://gyazo.com/ce3bea8767e1443a63b5b7061979eb86.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ce3bea8767e1443a63b5b7061979eb86.png"><img alt="" src="https://gyazo.com/ce3bea8767e1443a63b5b7061979eb86.png"/></a></p>
 <p>BindTransforms アトリビュートに保存されています。<br/>
 この Transforms は Matrix の配列になっていて、<br/>
 joints の Index（0:Hips とある場合は :より前の数字が Index）にそれぞれ対応しています。<br/>
@@ -3040,7 +3055,7 @@ Vertex と Vertex の間は primvar によって補完されることになり�
 <p>jointIndeces と jointWeights は、 Skeleton の Joint 数 × 頂点数分持ちます。<br/>
 並び順は、Mesh の Vertex の Index 順になっているようで</p>
 <p>jointIndices は、Skeleton の Index jointWeights はその頂点の SkeletonIndex の Weight 値を 0-1 で持ちます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/43f5faa59188bd1205718bb32beba74e.png"><img alt="" src="https://gyazo.com/43f5faa59188bd1205718bb32beba74e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/43f5faa59188bd1205718bb32beba74e.png"><img alt="" src="https://gyazo.com/43f5faa59188bd1205718bb32beba74e.png"/></a></p>
 <p>たとえば、ある Mesh に Joint が２つある Skeleton を Bind したとすると<br/>
 構造的にはこのように Mesh の Vertex 順に Skeleton の数だけ並び、、、というふうになります。<br/>
 Joint の Index は順不同で、かならず 0 1 2 ... と増えていくわけではありません。<br/>
@@ -3174,5 +3189,5 @@ Skeleton の animationSource に接続すれば<br/>
 <script src="../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

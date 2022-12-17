@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="UPythonUSDチートシート - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/02_usd_py_cheatsheets.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/30_USD_Programming/02_usd_py_cheatsheets/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="UPythonUSDチートシート - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/02_usd_py_cheatsheets.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -3430,9 +3445,9 @@ ExportToStringをすると、げんざいのUSDをプリントすることがで
 <span class="k">for</span> <span class="n">prim</span> <span class="ow">in</span> <span class="n">compStage</span><span class="o">.</span><span class="n">Traverse</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2468b325e58decbcf91ac72958e2f594.png"><img alt="" src="https://gyazo.com/2468b325e58decbcf91ac72958e2f594.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2468b325e58decbcf91ac72958e2f594.png"><img alt="" src="https://gyazo.com/2468b325e58decbcf91ac72958e2f594.png"/></a></p>
 <p>実行すると、このようなシーングラフなら</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/771700cca1cad4e759e13a20ff4ee16a.png"><img alt="" src="https://gyazo.com/771700cca1cad4e759e13a20ff4ee16a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/771700cca1cad4e759e13a20ff4ee16a.png"><img alt="" src="https://gyazo.com/771700cca1cad4e759e13a20ff4ee16a.png"/></a></p>
 <p>このように全Primを深さ優先で取得することができる。</p>
 <h3 id="payloadtraverse">PayloadがロードされていないノードもTraverseする<a class="headerlink" href="#payloadtraverse" title="Permanent link">¶</a></h3>
 <p>Primの状態をチェックしつつ検索するには GetFilteredChildrenを使用する。<br/>
@@ -3455,7 +3470,7 @@ ExportToStringをすると、げんざいのUSDをプリントすることがで
 → ミュートした状態でFlattenすると、ミュート状態のレイヤーは無効化される。</p>
 <h2 id="layer_1">Layer関係<a class="headerlink" href="#layer_1" title="Permanent link">¶</a></h2>
 <h3 id="rootlayer">RootLayerを取得<a class="headerlink" href="#rootlayer" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0082ca726d91f41458870e24dc0ea818.png"><img alt="" src="https://gyazo.com/0082ca726d91f41458870e24dc0ea818.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0082ca726d91f41458870e24dc0ea818.png"><img alt="" src="https://gyazo.com/0082ca726d91f41458870e24dc0ea818.png"/></a></p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">openUsd</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">USD_PATH</span> <span class="o">+</span> <span class="s2">"/baseUSD.usda"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">openUsd</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">())</span>
@@ -3474,7 +3489,7 @@ CompositionのRootのLayer(.usda)を取得する。<br/>
 <span class="n">stage</span><span class="o">.</span><span class="n">OverridePrim</span><span class="p">(</span><span class="s2">"/over"</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">CreateClassPrim</span><span class="p">(</span><span class="s2">"/class"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div><br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/722a355c20219131879a48102413e1c4.png"><img alt="" src="https://gyazo.com/722a355c20219131879a48102413e1c4.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/722a355c20219131879a48102413e1c4.png"><img alt="" src="https://gyazo.com/722a355c20219131879a48102413e1c4.png"/></a></p>
 <p>スキーマなしのPrimが作成される。  </p>
 <h3 id="stageprim">StageからPrimを取得する<a class="headerlink" href="#stageprim" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -3601,7 +3616,7 @@ SdfPathからPrimまたはAttributeを取得したい場合は、StageのGetObje
 Objectで取得したばあい、Primの場合はPrimオブジェクトが帰ってくるし<br/>
 AttributeだったらAttributeオブジェクトが帰ってくる。</p>
 <h2 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/84e24a33184e60510b56236622ad5508.png"><img alt="" src="https://gyazo.com/84e24a33184e60510b56236622ad5508.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/84e24a33184e60510b56236622ad5508.png"><img alt="" src="https://gyazo.com/84e24a33184e60510b56236622ad5508.png"/></a></p>
 <p>MetadataはPrimやAttributeなどに対して設定できる付加情報。  </p>
 <h3 id="metadata_1">Metadataの取得<a class="headerlink" href="#metadata_1" title="Permanent link">¶</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -3624,7 +3639,7 @@ AttributeだったらAttributeオブジェクトが帰ってくる。</p>
 <span class="c1"># namespaceを指定した場合</span>
 <span class="n">prim</span><span class="o">.</span><span class="n">SetCustomDataByKey</span><span class="p">(</span><span class="s1">'test:userCustomMeta'</span><span class="p">,</span> <span class="s1">'fuga'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div><br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/23450b78037332d4b4022583c2efdb0b.png"><img alt="" src="https://gyazo.com/23450b78037332d4b4022583c2efdb0b.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/23450b78037332d4b4022583c2efdb0b.png"><img alt="" src="https://gyazo.com/23450b78037332d4b4022583c2efdb0b.png"/></a><br/>
 CustomDataでNamespaceをつけると、Dict型をネストできる。<br/>
 val['test']['userCustomData']<br/>
 アクセスするときはこんな感じにできる。  </p>
@@ -3944,5 +3959,5 @@ GetInherits().AddInherit(path)<br/>
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

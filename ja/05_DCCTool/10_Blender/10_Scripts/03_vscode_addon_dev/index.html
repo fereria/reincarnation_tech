@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="VSCodeでAddon開発 - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Blender/10_Scripts/03_vscode_addon_dev.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Blender/10_Scripts/03_vscode_addon_dev/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="VSCodeでAddon開発 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Blender/10_Scripts/03_vscode_addon_dev.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2779,17 +2794,17 @@
 <h1>VSCodeでAddon開発</h1>
 <p>まず、事前に <a href="../00_vscode_settings/">VSCode の事前準備</a>をしておきます。<br/>
 そして、VSCode のワークスペースを作ります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b166d25f88ebee60d973d9c14e160727.png"><img alt="" src="https://gyazo.com/b166d25f88ebee60d973d9c14e160727.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b166d25f88ebee60d973d9c14e160727.png"><img alt="" src="https://gyazo.com/b166d25f88ebee60d973d9c14e160727.png"/></a></p>
 <p>コマンドパレットから Blender: New Addon を選びます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/695da395f575b9b3d88dadcc84f81d43.png"><img alt="" src="https://gyazo.com/695da395f575b9b3d88dadcc84f81d43.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/695da395f575b9b3d88dadcc84f81d43.png"><img alt="" src="https://gyazo.com/695da395f575b9b3d88dadcc84f81d43.png"/></a></p>
 <p>Template は、With Auto Load を選びます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f721acc56876b5e14e87ce550853a855.png"><img alt="" src="https://gyazo.com/f721acc56876b5e14e87ce550853a855.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f721acc56876b5e14e87ce550853a855.png"><img alt="" src="https://gyazo.com/f721acc56876b5e14e87ce550853a855.png"/></a></p>
 <p>Addon の名前と</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c0dbb117c127358c705a7f36e41325ca.png"><img alt="" src="https://gyazo.com/c0dbb117c127358c705a7f36e41325ca.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c0dbb117c127358c705a7f36e41325ca.png"><img alt="" src="https://gyazo.com/c0dbb117c127358c705a7f36e41325ca.png"/></a></p>
 <p>名前を入れて、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cb1ac1563b77fe47531d3353a7d7675c.png"><img alt="" src="https://gyazo.com/cb1ac1563b77fe47531d3353a7d7675c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cb1ac1563b77fe47531d3353a7d7675c.png"><img alt="" src="https://gyazo.com/cb1ac1563b77fe47531d3353a7d7675c.png"/></a></p>
 <p>どこに Addon を作るか聞かれるので、現在のワークスペース以下を指定します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1c8cc72894009e1882e09b6df5afd277.png"><img alt="" src="https://gyazo.com/1c8cc72894009e1882e09b6df5afd277.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1c8cc72894009e1882e09b6df5afd277.png"><img alt="" src="https://gyazo.com/1c8cc72894009e1882e09b6df5afd277.png"/></a></p>
 <p>OpenFile は、 __init__.py を選びます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2860,23 +2875,23 @@
         <span class="n">layout</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">"Hello World!!!!"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>中身をこのようにして保存します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3d22729f5c1bb1de63fcce033d2625ee.png"><img alt="" src="https://gyazo.com/3d22729f5c1bb1de63fcce033d2625ee.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3d22729f5c1bb1de63fcce033d2625ee.png"><img alt="" src="https://gyazo.com/3d22729f5c1bb1de63fcce033d2625ee.png"/></a></p>
 <p>保存したら、Blender:Start で Blender を起動します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/114b537d4de97d4aa86ccf36bb147c47.png"><img alt="" src="https://gyazo.com/114b537d4de97d4aa86ccf36bb147c47.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/114b537d4de97d4aa86ccf36bb147c47.png"><img alt="" src="https://gyazo.com/114b537d4de97d4aa86ccf36bb147c47.png"/></a></p>
 <p>Blender を起動すると、先ほどの Addon は自動で AppData 以下にコピーされ<br/>
 ロードされた状態になります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1118781771c2e6d7af01d7aa2c6b1c20.png"><img alt="" src="https://gyazo.com/1118781771c2e6d7af01d7aa2c6b1c20.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1118781771c2e6d7af01d7aa2c6b1c20.png"><img alt="" src="https://gyazo.com/1118781771c2e6d7af01d7aa2c6b1c20.png"/></a></p>
 <p>無事 Addon がロードされ、先ほどの sampleUI にある SamplePanel が追加されました。</p>
 <h2 id="_1">自動ロード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>無事追加できましたが、編集するたびに Blender を再起動するのはめんどくさいです。<br/>
 ので、ファイルを保存したら自動で Addon をリロードするようにしておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7b5e07b46be8e55a0012fe63109c665a.png"><img alt="" src="https://gyazo.com/7b5e07b46be8e55a0012fe63109c665a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7b5e07b46be8e55a0012fe63109c665a.png"><img alt="" src="https://gyazo.com/7b5e07b46be8e55a0012fe63109c665a.png"/></a></p>
 <p>VSCode の設定から、 Blender&gt;Addon: Reload On Save をオンにしておきます。<br/>
 ON にすると、ファイルが変更されるたびに Addon がリロードされ<br/>
 Blender 側で確認をすることができます。</p>
 <h2 id="_2">デバッグ<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>VSCode から Start した場合、VSCode のデバッグ機能を使うことができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/44f6fbc967e0eb7baa463ec78480b9fe.png"><img alt="" src="https://gyazo.com/44f6fbc967e0eb7baa463ec78480b9fe.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/44f6fbc967e0eb7baa463ec78480b9fe.png"><img alt="" src="https://gyazo.com/44f6fbc967e0eb7baa463ec78480b9fe.png"/></a></p>
 <p>たとえば、ブレークポイントをセットした状態で適当に編集 → 保存します。<br/>
 すると、ブレークポイント部分で止めることができました。<br/>
 <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/10_Programming/50_VSCode/vscode_debug">VSCodeでPythonデバッグ</a></p>
@@ -2961,5 +2976,5 @@ Blender 側で確認をすることができます。</p>
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="USDをPythonで操作するチュートリアル_Primを作る" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/03_create_prim/" rel="canonical"/>
 <link href="../../../../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="0から始めるUSDPython(3) Primを作る - Reincarnation+#Tech" property="og:title"/>
+<meta content="USDをPythonで操作するチュートリアル_Primを作る" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/03_create_prim.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/03_create_prim/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="0から始めるUSDPython(3) Primを作る - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="USDをPythonで操作するチュートリアル_Primを作る" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/03_create_prim.png" name="twitter:image"/>
 <link href="../../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2817,10 +2833,10 @@ Prim を作っていきます。</p>
 </code></pre></div></td></tr></table></div>
 <p>Prim とは、データを入れるためのコンテナ（入れ物）です。<br/>
 DefinePrim をすると、引数で指定したパスに指定の名前で Prim を作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/444c60a56fd5d7ffede53f09ac320de6.png"><img alt="" src="https://gyazo.com/444c60a56fd5d7ffede53f09ac320de6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/444c60a56fd5d7ffede53f09ac320de6.png"><img alt="" src="https://gyazo.com/444c60a56fd5d7ffede53f09ac320de6.png"/></a></p>
 <p>作成した Prim を usdview で開くと Prim が作成できているのがわかります。<br/>
 しかし、Type を見ても何も入っていませんし、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a92337042b8914a10148a9badee60dff.png"><img alt="" src="https://gyazo.com/a92337042b8914a10148a9badee60dff.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a92337042b8914a10148a9badee60dff.png"><img alt="" src="https://gyazo.com/a92337042b8914a10148a9badee60dff.png"/></a></p>
 <p>Property を見ても、BoundingBox や LocalToWorldXform 等はあるものの<br/>
 情報がありません。</p>
 <p>これは Prim とは「あくまでも入れ物」でしかなく、それがどういったものなのかとか<br/>
@@ -2834,9 +2850,9 @@ USD では、このデータの型を定義するための構造を「<i class="
 </code></pre></div></td></tr></table></div>
 <p>スキーマを定義した Prim を作成する場合は、 UsdGeom(UsdGeometrySchema)や<br/>
 UsdLux(UsdLightSchema)のようなスキーマクラスの Define 関数を使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b66ed18caa3d044205946bed7e3ec60e.png"><img alt="" src="https://gyazo.com/b66ed18caa3d044205946bed7e3ec60e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b66ed18caa3d044205946bed7e3ec60e.png"><img alt="" src="https://gyazo.com/b66ed18caa3d044205946bed7e3ec60e.png"/></a></p>
 <p>スキーマで定義すると、先ほどとは違い Type が指定されているのがわかります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/57e18eb4e2e58bcb90f1cebe438f2d65.png"><img alt="" src="https://gyazo.com/57e18eb4e2e58bcb90f1cebe438f2d65.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/57e18eb4e2e58bcb90f1cebe438f2d65.png"><img alt="" src="https://gyazo.com/57e18eb4e2e58bcb90f1cebe438f2d65.png"/></a></p>
 <p>Property も、Cube を定義するのに必要な size のようなアトリビュートが<br/>
 指定されています。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># &gt;&gt; UsdGeom.Cube(Usd.Prim(&lt;/sampleCube&gt;))</span>
@@ -2877,7 +2893,7 @@ UsdGeom.Cube のような、スキーマのオブジェクトが帰ってきま�
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-06 14:45:01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -2949,5 +2965,5 @@ UsdGeom.Cube のような、スキーマのオブジェクトが帰ってきま�
 <script src="../../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

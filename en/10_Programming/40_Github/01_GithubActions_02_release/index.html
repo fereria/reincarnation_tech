@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="GithubActionsで自動化(2) リリース - Reincarnation+#Tech" property="og:title"/>
+<meta content="GithubActionsでコードをリリースする" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/40_Github/01_GithubActions_02_release.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/10_Programming/40_Github/01_GithubActions_02_release/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="GithubActionsで自動化(2) リリース - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="GithubActionsでコードをリリースする" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/40_Github/01_GithubActions_02_release.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2843,16 +2858,16 @@
 <h1>GithubActionsで自動化(2) リリース</h1>
 <h2 id="github">Githubのリリースとは<a class="headerlink" href="#github" title="Permanent link">¶</a></h2>
 <p>基本は <a href="../00_GithubActions_01/">前回</a>まとめたので、今回はビルド結果をリリースする方法について。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/69c35b9f5cba3fb76706fb762877349f.png"><img alt="" src="https://gyazo.com/69c35b9f5cba3fb76706fb762877349f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/69c35b9f5cba3fb76706fb762877349f.png"><img alt="" src="https://gyazo.com/69c35b9f5cba3fb76706fb762877349f.png"/></a></p>
 <p>Githubには、リポジトリのコードをビルドした結果を「Release」という形で<br/>
 配布用に公開することができる。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bba50b92bdb214d85c88dce1d8a1bdff.png"><img alt="" src="https://gyazo.com/bba50b92bdb214d85c88dce1d8a1bdff.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bba50b92bdb214d85c88dce1d8a1bdff.png"><img alt="" src="https://gyazo.com/bba50b92bdb214d85c88dce1d8a1bdff.png"/></a></p>
 <p>リリースは、タグ単位で作成することができて、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b893b2c04628bfd428f7c7ac12872c29.png"><img alt="" src="https://gyazo.com/b893b2c04628bfd428f7c7ac12872c29.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b893b2c04628bfd428f7c7ac12872c29.png"><img alt="" src="https://gyazo.com/b893b2c04628bfd428f7c7ac12872c29.png"/></a></p>
 <p>タグページの Draft a new release から、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/33c4b6990f4c820956ca16a1a92563e5.png"><img alt="" src="https://gyazo.com/33c4b6990f4c820956ca16a1a92563e5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/33c4b6990f4c820956ca16a1a92563e5.png"><img alt="" src="https://gyazo.com/33c4b6990f4c820956ca16a1a92563e5.png"/></a></p>
 <p>タグを指定して、作成できる。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/81a0b53a3061358c61ecb51ff9a903fd.png"><img alt="" src="https://gyazo.com/81a0b53a3061358c61ecb51ff9a903fd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/81a0b53a3061358c61ecb51ff9a903fd.png"><img alt="" src="https://gyazo.com/81a0b53a3061358c61ecb51ff9a903fd.png"/></a></p>
 <p>作成すると、タグを指定した段階のリポジトリのソースコードと<br/>
 GithubActionsを使用してビルドした結果などを<br/>
 ダウンロードできるようにできる。</p>
@@ -2923,7 +2938,7 @@ GithubActionsを使用してビルドした結果などを<br/>
           path: ./src/usd/HelloWorld.usda
 </code></pre></div></td></tr></table></div>
 <p>例えば、スクリプトを実行したときにできたファイルを、指定すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d6ee14e3906249d3a51927bdee32b1cc.png"><img alt="" src="https://gyazo.com/d6ee14e3906249d3a51927bdee32b1cc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d6ee14e3906249d3a51927bdee32b1cc.png"><img alt="" src="https://gyazo.com/d6ee14e3906249d3a51927bdee32b1cc.png"/></a></p>
 <p>Actionsのページからダウンロードできるようになる。</p>
 <h2 id="_3">タグ名を取得する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>リリースでダウンロードできるようにするzipに、Gitのタグを使いたい場合。</p>
@@ -3034,5 +3049,5 @@ GithubActionsを使用してビルドした結果などを<br/>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

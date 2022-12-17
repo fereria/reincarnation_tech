@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="SOLARISでInstancerを使う(2) 編集編 - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/06_point_instancer.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOLARIS/06_point_instancer/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="SOLARISでInstancerを使う(2) 編集編 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/06_point_instancer.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2787,22 +2802,22 @@
 <h2 id="_1">入れ替える<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>前回のままだと、オブジェクトはランダムに配置されている状態で<br/>
 個別の編集はできません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7c8308a876405c1709ed42535be6b0bc.png"><img alt="" src="https://gyazo.com/7c8308a876405c1709ed42535be6b0bc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7c8308a876405c1709ed42535be6b0bc.png"><img alt="" src="https://gyazo.com/7c8308a876405c1709ed42535be6b0bc.png"/></a></p>
 <p>そのオブジェクトを、個別に切り替えたい場合は、 editprototypeノードを使用します。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1e371724c17c7a796d86b959c443925f.png"><img alt="" src="https://gyazo.com/1e371724c17c7a796d86b959c443925f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1e371724c17c7a796d86b959c443925f.png"><img alt="" src="https://gyazo.com/1e371724c17c7a796d86b959c443925f.png"/></a></p>
 <p>使い方はかんたんで、Instances に、モデルを入れ替えたいInstanceのパスを入れます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/629d70cc383c5bca2e27ef00949026d3.png"><img alt="" src="https://gyazo.com/629d70cc383c5bca2e27ef00949026d3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/629d70cc383c5bca2e27ef00949026d3.png"><img alt="" src="https://gyazo.com/629d70cc383c5bca2e27ef00949026d3.png"/></a></p>
 <p>インスタンスのIDは、Instancesの右のこれでを押すことで<br/>
 インスタンスオブジェクトをビューポートで選択できるようになるので</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/11b77c96e2e227afea88122ab41c31fa.png"><img alt="" src="https://gyazo.com/11b77c96e2e227afea88122ab41c31fa.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/11b77c96e2e227afea88122ab41c31fa.png"><img alt="" src="https://gyazo.com/11b77c96e2e227afea88122ab41c31fa.png"/></a></p>
 <p>右クリックでCopy Pathsを押せばPathを取得することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/db8a29dd8bb9759f9f641974f4b3ec60.gif"><img alt="" src="https://i.gyazo.com/db8a29dd8bb9759f9f641974f4b3ec60.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://i.gyazo.com/db8a29dd8bb9759f9f641974f4b3ec60.gif"><img alt="" src="https://i.gyazo.com/db8a29dd8bb9759f9f641974f4b3ec60.gif"/></a></p>
 <p>あとはReplaceWithのPrototype Index を切り替えると、指定のオブジェクトに<br/>
 切り替えることができます。</p>
 <h2 id="_2">移動・拡大縮小・回転をしたい<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c891d4af604a23d717655bbb47ea7452.png"><img alt="" src="https://gyazo.com/c891d4af604a23d717655bbb47ea7452.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c891d4af604a23d717655bbb47ea7452.png"><img alt="" src="https://gyazo.com/c891d4af604a23d717655bbb47ea7452.png"/></a></p>
 <p>個別のInstanceの位置を調整したい場合は、 modifypointinstancesノードを使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f4740a2c801eb26015316e25564853e5.png"><img alt="" src="https://gyazo.com/f4740a2c801eb26015316e25564853e5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f4740a2c801eb26015316e25564853e5.png"><img alt="" src="https://gyazo.com/f4740a2c801eb26015316e25564853e5.png"/></a></p>
 <p>このノードも edit prototypes と同様に、Point Instances で編集したいInstance<br/>
 を選択します。<br/>
 あとは、普通のオブジェクトと同様に移動などができるようになります。<br/>
@@ -2810,19 +2825,19 @@
 なので一工夫が必要そうです。</p>
 <h2 id="prim">Primとして切り出す<a class="headerlink" href="#prim" title="Permanent link">¶</a></h2>
 <p>Instanceではなく、通常のPrimとしてPointInstancerのオブジェクトを使いたい場合は</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7677b28f91eceaf63d08e36be364d7ae.png"><img alt="" src="https://gyazo.com/7677b28f91eceaf63d08e36be364d7ae.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7677b28f91eceaf63d08e36be364d7ae.png"><img alt="" src="https://gyazo.com/7677b28f91eceaf63d08e36be364d7ae.png"/></a></p>
 <p>extractinstancesノードを使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b8929697ea96e726835b58667509cdee.png"><img alt="" src="https://gyazo.com/b8929697ea96e726835b58667509cdee.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b8929697ea96e726835b58667509cdee.png"><img alt="" src="https://gyazo.com/b8929697ea96e726835b58667509cdee.png"/></a></p>
 <p>Instancesで切り出したいInstanceを選択することで、 Primitive Path に<br/>
 オブジェクトを切り出すことができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/daf73a0ef169a8cee2242e64f6340e0f.png"><img alt="" src="https://gyazo.com/daf73a0ef169a8cee2242e64f6340e0f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/daf73a0ef169a8cee2242e64f6340e0f.png"><img alt="" src="https://gyazo.com/daf73a0ef169a8cee2242e64f6340e0f.png"/></a></p>
 <p>結果、こんな感じになります。</p>
 <p>Extractinstancesを使うと、実体のPrimになるので、<br/>
 後は普通に色々変更を事ができます。</p>
 <p><a href="https://www.youtube.com/watch?v=Y3QEK6fV8W4&amp;t=15577s">https://www.youtube.com/watch?v=Y3QEK6fV8W4&amp;t=15577s</a></p>
 <p>少し前に公開されていたHoudiniHive SOLARIS では、<br/>
 配置されているInstanceをこのノードで切り出して、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e92509be9afbf1e0d84d8c59d48ddf96.png"><img alt="" src="https://gyazo.com/e92509be9afbf1e0d84d8c59d48ddf96.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e92509be9afbf1e0d84d8c59d48ddf96.png"><img alt="" src="https://gyazo.com/e92509be9afbf1e0d84d8c59d48ddf96.png"/></a></p>
 <p>Pruneで自分以外のノードを消して、SOPModifyにわたすことで、<br/>
 破壊やSIMをつけて、SOLARISに戻す...といったことを実現していました。</p>
 <p>Instanceで大量にばらまきつつ<br/>
@@ -2912,5 +2927,5 @@ SOP側で編集してSOLARISに戻してレンダリング...</p>
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

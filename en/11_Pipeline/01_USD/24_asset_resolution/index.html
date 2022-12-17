@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="AssetResolution(1) - usdResolverExample - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/24_asset_resolution.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/24_asset_resolution/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="AssetResolution(1) - usdResolverExample - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/24_asset_resolution.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2866,7 +2881,7 @@ USD の Asset Resolution (アセットパスの解決)についてです。</p>
 <p><i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/21_stage_layer_spec">Stage/Layer/Spec</a> の記事に書いた通り、USD は１つのファイルではなくて複数の（それは多くの）レイヤーによって<br/>
 １つのステージが構成されています。<br/>
 つまり、あるレイヤーの中には別のレイヤーへのパスが記述されているはずです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/adc274495504010c793b68eea80f263a.png"><img alt="" src="https://gyazo.com/adc274495504010c793b68eea80f263a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/adc274495504010c793b68eea80f263a.png"><img alt="" src="https://gyazo.com/adc274495504010c793b68eea80f263a.png"/></a></p>
 <p>例えば、Kitchen_set.usd を見ると、中で Reference されているモデルは ./assets/～ といった<br/>
 現在開いているファイルからの相対パスで記述されていて、<br/>
 子の相対パスで記述されたアセットのパスを「現在のファイルから見た相対パス」として<br/>
@@ -2874,7 +2889,7 @@ USD の Asset Resolution (アセットパスの解決)についてです。</p>
 あるいは、 <strong>PXR_AR_DEFAULT_SEARCH_PATH</strong> という環境変数が指定されている場合は<br/>
 Windows の PATH と同じように、DEFAULT_SEARCH_PATH で指定されたパス以下を検索して<br/>
 見つかった場合は、そのフォルダ以下にあるファイルを使用するようになっています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6d69fa63bd8dff7b570ac14d3d196cdf.png"><img alt="" src="https://gyazo.com/6d69fa63bd8dff7b570ac14d3d196cdf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6d69fa63bd8dff7b570ac14d3d196cdf.png"><img alt="" src="https://gyazo.com/6d69fa63bd8dff7b570ac14d3d196cdf.png"/></a></p>
 <p>図に表すと、このようになります。</p>
 <p>デフォルトの場合はその名の通り「ArDefaultResolver」と呼ばれるアセットのパス解決のための<br/>
 機能が実装されています。<br/>
@@ -2897,11 +2912,11 @@ Windows の PATH と同じように、DEFAULT_SEARCH_PATH で指定されたパ�
 </code></pre></div></td></tr></table></div>
 <p>どこか適当なフォルダにクローンしておきます。<br/>
 そして、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5aa98a788f70b6364b384a9e252c1d72.png"><img alt="" src="https://gyazo.com/5aa98a788f70b6364b384a9e252c1d72.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5aa98a788f70b6364b384a9e252c1d72.png"><img alt="" src="https://gyazo.com/5aa98a788f70b6364b384a9e252c1d72.png"/></a></p>
 <p>環境変数の PATH に、Python の Path を通しておきます。<br/>
 <a href="https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09#%E7%92%B0%E5%A2%83%E3%81%AE%E6%BA%96%E5%82%99">Python のバージョンは、3.7.9</a>あたりを入れておきます。<br/>
 なお私は、3.7.7 ですが多分それでも大丈夫でしょう。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fe39fb957b103f73bf6ba96d601e53aa.png"><img alt="" src="https://gyazo.com/fe39fb957b103f73bf6ba96d601e53aa.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fe39fb957b103f73bf6ba96d601e53aa.png"><img alt="" src="https://gyazo.com/fe39fb957b103f73bf6ba96d601e53aa.png"/></a></p>
 <p>VisualStudio2017 を事前にインストールしておいて、開発者コマンドプロンプト for VS 2017 をクリックします。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install PyOpenGL PySide2
 </code></pre></div></td></tr></table></div>
@@ -2911,9 +2926,9 @@ Windows の PATH と同じように、DEFAULT_SEARCH_PATH で指定されたパ�
 <p>あとは、これを実行して３０分ほど待ちます。<br/>
 Python は、環境変数で指定されている PATH の Python でビルドされるので<br/>
 今回なら 3.7.7 で使用できる USD ができあがります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/84b5d587edf9cc07bf312956e8a1b464.png"><img alt="" src="https://gyazo.com/84b5d587edf9cc07bf312956e8a1b464.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/84b5d587edf9cc07bf312956e8a1b464.png"><img alt="" src="https://gyazo.com/84b5d587edf9cc07bf312956e8a1b464.png"/></a></p>
 <p>はじまって</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/06c06cf00fefccb657ecc935ff5f922a.png"><img alt="" src="https://gyazo.com/06c06cf00fefccb657ecc935ff5f922a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/06c06cf00fefccb657ecc935ff5f922a.png"><img alt="" src="https://gyazo.com/06c06cf00fefccb657ecc935ff5f922a.png"/></a></p>
 <p>無事終わると、このような表示になります。</p>
 <p>ビルドが完了したら、インストール先のパスを環境変数に指定します。<br/>
 しかし困ったことに、この環境変数を指定してしまうと Houdini がいろいろおかしなことになってしまうので</p>
@@ -2929,7 +2944,7 @@ cmd /k
 <p>ビルドができたら、usdResolverExample を plugin にコピーします。<br/>
 ビルドで指定したフォルダ（サンプルの場合 C:/USD）以下 share/usd/examples/plugin<br/>
 にある</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/782f7f65ac64a3007910a620fda88769.png"><img alt="" src="https://gyazo.com/782f7f65ac64a3007910a620fda88769.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/782f7f65ac64a3007910a620fda88769.png"><img alt="" src="https://gyazo.com/782f7f65ac64a3007910a620fda88769.png"/></a></p>
 <p>この３つのファイルを、 plugin/usd 以下にコピーします。</p>
 <p>コピーができたら準備完了です。</p>
 <h2 id="_4">サンプルを開く<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
@@ -2942,7 +2957,7 @@ Resolver のサンプル usd ファイルを見ながらどのようなものか
 <p>まずは何も考えず、サンプルの<br/>
 shot_1/shot_1.usda<br/>
 を開いて見ます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c4d872b57cf2cbe8aec3d9e573f330c1.png"><img alt="" src="https://gyazo.com/c4d872b57cf2cbe8aec3d9e573f330c1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c4d872b57cf2cbe8aec3d9e573f330c1.png"><img alt="" src="https://gyazo.com/c4d872b57cf2cbe8aec3d9e573f330c1.png"/></a></p>
 <p>すると、盛大にエラーが出ていて表示できません。</p>
 <p>shot_1.usda をエディタで開いてみると</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>references = @asset:Buzz/Buzz.usd@
@@ -3009,16 +3024,16 @@ Include します。<br/>
 <p>サンプルの Resolver は、アセット置き場を別途指定してあげる必要があるので<br/>
 上のように USD_RESOLVER_EXAMPLE_ASSET_DIR を指定して<br/>
 もう一度 shot_1/shot_1.usda を開いてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/00a841c3b6bcd43bed7ce9c837bdbfe3.png"><img alt="" src="https://gyazo.com/00a841c3b6bcd43bed7ce9c837bdbfe3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/00a841c3b6bcd43bed7ce9c837bdbfe3.png"><img alt="" src="https://gyazo.com/00a841c3b6bcd43bed7ce9c837bdbfe3.png"/></a></p>
 <p>今度は開くことができました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2e95bf543fe44fb5b0ff4e14fa25400f.png"><img alt="" src="https://gyazo.com/2e95bf543fe44fb5b0ff4e14fa25400f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2e95bf543fe44fb5b0ff4e14fa25400f.png"><img alt="" src="https://gyazo.com/2e95bf543fe44fb5b0ff4e14fa25400f.png"/></a></p>
 <p>usdview で Buzz Prim のコンポジションをみると、 assets 以下の Buzz がリファレンスされているのがわかります。<br/>
 usdResolverExample プラグインは、<br/>
 asset:Buzz の Buzz 部分が AssetName として解釈して、USD_RESOLVER_EXAMPLE_ASSET_DIR 以下の AssetName の AssetName.usd<br/>
 にアセットパスが解決されました。</p>
 <h3 id="asset">Asset のフォルダ構成<a class="headerlink" href="#asset" title="Permanent link">¶</a></h3>
 <p>ではこの呼び出されている Buzz アセットフォルダ以下はどのような構成になっているでしょうか。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/73011b50e7d064f71e363ad8d51f911b.png"><img alt="" src="https://gyazo.com/73011b50e7d064f71e363ad8d51f911b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/73011b50e7d064f71e363ad8d51f911b.png"><img alt="" src="https://gyazo.com/73011b50e7d064f71e363ad8d51f911b.png"/></a></p>
 <p>Buzz 以下に Buzz.usd があり、<br/>
 サブフォルダでバージョンごとのフォルダがあるのがわかります。</p>
 <p>Buzz 以下にある Buzz.usd を usdcat してみると</p>
@@ -3038,7 +3053,7 @@ Buzz 以下 のバージョンフォルダをペイロードしています。</
 </code></pre></div></td></tr></table></div>
 <p>shot_1 以下にある versions.json というファイルの中身を参照し、<br/>
 このファイルに書かれているバージョンのアセットを使用するようになっています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b5c1cf3c26219bf2e28328bb3fd45607.png"><img alt="" src="https://gyazo.com/b5c1cf3c26219bf2e28328bb3fd45607.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b5c1cf3c26219bf2e28328bb3fd45607.png"><img alt="" src="https://gyazo.com/b5c1cf3c26219bf2e28328bb3fd45607.png"/></a></p>
 <p>つまりまとめると、アセットのパスが asset:\&lt;AssetName&gt;/\&lt;AssetName&gt;.usd のように指定されていた場合、</p>
 <ol>
 <li>shot 以下の versions.json を見て、環境変数 VESION に AssetName のバージョンを指定</li>
@@ -3057,13 +3072,13 @@ Buzz 以下 のバージョンフォルダをペイロードしています。</
 }
 </code></pre></div></td></tr></table></div>
 <p>このようにかきかえてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/75b8060c6081d22490339b31cca7a1bf.png"><img alt="" src="https://gyazo.com/75b8060c6081d22490339b31cca7a1bf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/75b8060c6081d22490339b31cca7a1bf.png"><img alt="" src="https://gyazo.com/75b8060c6081d22490339b31cca7a1bf.png"/></a></p>
 <p>すると、AssetInfo は latest ではなく 2 になっています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e6f6b88674f88c5707d33b03ef534a6d.png"><img alt="" src="https://gyazo.com/e6f6b88674f88c5707d33b03ef534a6d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e6f6b88674f88c5707d33b03ef534a6d.png"><img alt="" src="https://gyazo.com/e6f6b88674f88c5707d33b03ef534a6d.png"/></a></p>
 <p>次は バージョンフォルダを増やしてみます。</p>
 <p>latest をコピーして 2 にします。<br/>
 latest 以下の Buff_sublayer.usd の AssetInfo を書き換えて version:3 にしておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c8f4950c1c833752b9833ddd63f92ceb.png"><img alt="" src="https://gyazo.com/c8f4950c1c833752b9833ddd63f92ceb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c8f4950c1c833752b9833ddd63f92ceb.png"><img alt="" src="https://gyazo.com/c8f4950c1c833752b9833ddd63f92ceb.png"/></a></p>
 <p>すると、latest 以下の Buzz.usd が読まれているのがわかります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -3194,5 +3209,5 @@ USD ツールのうちのひとつ usdresolve と、Python でのパス解決に
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

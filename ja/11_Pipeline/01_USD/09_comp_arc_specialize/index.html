@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="CompArc(5) 特殊化（Specialize） - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/09_comp_arc_specialize.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/09_comp_arc_specialize/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="CompArc(5) 特殊化（Specialize） - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/09_comp_arc_specialize.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2793,10 +2808,10 @@ Specialize を紹介しようと思います。</p>
 USD Glossary の Specialize にかかれているサンプルを使用して<br/>
 図で説明してみようと思います。</p>
 <h2 id="specialize">Specialize<a class="headerlink" href="#specialize" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0929bd6be687af78762b20911fbf22e9.png"><img alt="" src="https://gyazo.com/0929bd6be687af78762b20911fbf22e9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0929bd6be687af78762b20911fbf22e9.png"><img alt="" src="https://gyazo.com/0929bd6be687af78762b20911fbf22e9.png"/></a></p>
 <p>Robot.usd と RobotScene.usd の２つのレイヤー内のコンポジションは<br/>
 このようになっています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6cbd36de900b63e8030620da6484f76e.png"><img alt="" src="https://gyazo.com/6cbd36de900b63e8030620da6484f76e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6cbd36de900b63e8030620da6484f76e.png"><img alt="" src="https://gyazo.com/6cbd36de900b63e8030620da6484f76e.png"/></a></p>
 <p>まず、サンプルを usdview で表示するとこのようになります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>            # specialize roughness...
@@ -2804,26 +2819,26 @@ USD Glossary の Specialize にかかれているサンプルを使用して<br/
 </code></pre></div></td></tr></table></div>
 <p>Robot.usd の CorrdedMetal の specularRoughness に、 0.2 とある通り<br/>
 最終的な結果を見ても 0.2 になっています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3e1854cc497c91cadf44f563ad6aab86.png"><img alt="" src="https://gyazo.com/3e1854cc497c91cadf44f563ad6aab86.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3e1854cc497c91cadf44f563ad6aab86.png"><img alt="" src="https://gyazo.com/3e1854cc497c91cadf44f563ad6aab86.png"/></a></p>
 <p>Specialize は Reference よりも弱いオピニオンなので、<br/>
 Composition を確認すると、Robot.usd でまず Specialize で合成され<br/>
 その合成されたあとに Reference されていることがわかります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a1a62d7f8e46c2a629a4c4a1d46e4eb9.png"><img alt="" src="https://gyazo.com/a1a62d7f8e46c2a629a4c4a1d46e4eb9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a1a62d7f8e46c2a629a4c4a1d46e4eb9.png"><img alt="" src="https://gyazo.com/a1a62d7f8e46c2a629a4c4a1d46e4eb9.png"/></a></p>
 <p>コンポジションの順番を追記すると、このようになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1a31e11a753fa0cfe381f4ef22a47752.png"><img alt="" src="https://gyazo.com/1a31e11a753fa0cfe381f4ef22a47752.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1a31e11a753fa0cfe381f4ef22a47752.png"><img alt="" src="https://gyazo.com/1a31e11a753fa0cfe381f4ef22a47752.png"/></a></p>
 <p>ここで注目なのが、Robot.usd の CorrodedMetal.specularRoughness です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e5a6133b3ebdf21ee9793f2beffa0392.png"><img alt="" src="https://gyazo.com/e5a6133b3ebdf21ee9793f2beffa0392.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e5a6133b3ebdf21ee9793f2beffa0392.png"><img alt="" src="https://gyazo.com/e5a6133b3ebdf21ee9793f2beffa0392.png"/></a></p>
 <p>diffuseGain は、Specialize のおかげで Metal.diffuseGain の値が合成されていますが<br/>
 specularRoughness は、CorrodedMetal にオピニオンがあるため、その値が優先され 0.2 になります。</p>
 <h2 id="inherits">Inherits との比較<a class="headerlink" href="#inherits" title="Permanent link">¶</a></h2>
 <p>比較のために Inherits に変更するとどうなるか確認してみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/db15a41b4a4e67e53d46a858a966df36.png"><img alt="" src="https://gyazo.com/db15a41b4a4e67e53d46a858a966df36.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/db15a41b4a4e67e53d46a858a966df36.png"><img alt="" src="https://gyazo.com/db15a41b4a4e67e53d46a858a966df36.png"/></a></p>
 <p>Inherits の場合は、最終的な合成結果が変わっているのがわかると思います。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1992a9c4e6d3d2ba6e9ae9530b593b29.png"><img alt="" src="https://gyazo.com/1992a9c4e6d3d2ba6e9ae9530b593b29.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1992a9c4e6d3d2ba6e9ae9530b593b29.png"><img alt="" src="https://gyazo.com/1992a9c4e6d3d2ba6e9ae9530b593b29.png"/></a></p>
 <p>Composition を比較してみると、一目瞭然で<br/>
 Reference を基準にしてみると Inherits は Reference より強く<br/>
 Specialize は Reference より弱いことがわかります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/576c961311e8adc5a0aac3b59de59506.png"><img alt="" src="https://gyazo.com/576c961311e8adc5a0aac3b59de59506.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/576c961311e8adc5a0aac3b59de59506.png"><img alt="" src="https://gyazo.com/576c961311e8adc5a0aac3b59de59506.png"/></a></p>
 <p>Inherits の場合は、まず先に Reference が合成されます。<br/>
 Robot が Rosie にリファレンスされ、その Local の 0.1 が Metal に合成されます。<br/>
 Inherits はその Prim を合成するので、 Metal と CorrodedMetal の値が同じになります。</p>
@@ -2922,5 +2937,5 @@ Reference よりも強いオピニオンであることを利用して、<br/>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

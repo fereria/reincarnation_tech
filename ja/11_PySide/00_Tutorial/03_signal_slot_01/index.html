@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="SignalとSlotについて(1) - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/00_Tutorial/03_signal_slot_01.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_PySide/00_Tutorial/03_signal_slot_01/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="SignalとSlotについて(1) - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/00_Tutorial/03_signal_slot_01.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2783,7 +2798,7 @@
 それをPySideで作成する場合は「Signal-Slot」の機能を使用します。  </p>
 <p>SignalとSlotとは、その名の通り <strong>「なにかアクションがあった」</strong> 時にSignalを発して<br/>
 <strong>「それに対応した動作を実行」</strong> するための機能です。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/81cfadb19f08e3b4237bf525b50275a6.gif"><img alt="" src="https://gyazo.com/81cfadb19f08e3b4237bf525b50275a6.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/81cfadb19f08e3b4237bf525b50275a6.gif"><img alt="" src="https://gyazo.com/81cfadb19f08e3b4237bf525b50275a6.gif"/></a></p>
 <p>例として前回の「ボタンを押す」をみてみます。<br/>
 この場合「ボタンを押す」というのがSignal<br/>
 push!!をプリントするのがSlotになります。  </p>
@@ -2823,7 +2838,7 @@ Widgetのオブジェクト.<signal>.connect(Slotの関数)<br/>
 <p>この<signal>部分は、Widgetごとに固有のものがあります。<br/>
 （自分で作成もできます）<br/>
 WidgetにどのようなSignalがあるかはHelpを確認するとわかります。  </signal></p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d461329897a67cd0bd34fedc024f8b06.png"><img alt="" src="https://gyazo.com/d461329897a67cd0bd34fedc024f8b06.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d461329897a67cd0bd34fedc024f8b06.png"><img alt="" src="https://gyazo.com/d461329897a67cd0bd34fedc024f8b06.png"/></a></p>
 <p>まずは、QtDesignerの「オブジェクトインスペクタ」のクラスを確認してみます。<br/>
 これが配置したWidgetのクラス名になります。  </p>
 <p><a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/index.html">https://doc.qt.io/qtforpython/PySide2/QtWidgets/index.html</a></p>
@@ -2837,7 +2852,7 @@ WidgetにどのようなSignalがあるかはHelpを確認するとわかりま�
 <p><a href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QPushButton.html">https://doc.qt.io/qtforpython/PySide2/QtWidgets/QPushButton.html</a></p>
 <p>その中からPushButtonを開いてみます。<br/>
 この下を開いてみても、それっぽい関数はありません。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d23f18972755a2d1acc95ee9a8d7f435.png"><img alt="" src="https://gyazo.com/d23f18972755a2d1acc95ee9a8d7f435.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d23f18972755a2d1acc95ee9a8d7f435.png"><img alt="" src="https://gyazo.com/d23f18972755a2d1acc95ee9a8d7f435.png"/></a></p>
 <p>こういう場合は、ページの上にあるこの図を確認してみます。<br/>
 この図は、いわゆるクラスの継承図で<br/>
 左に行くほど親クラスになります。<br/>
@@ -2854,14 +2869,14 @@ Helpを見て、調べているWidgetのページにそれっぽいものがな�
 この「AbstractButton」の場合、「ボタン」に関係する<br/>
 Widgetを作成する場合はこのAbstractButtonを継承しています。</p>
 </div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3f376e7af0db7bd8bdf036d20e12fc34.png"><img alt="" src="https://gyazo.com/3f376e7af0db7bd8bdf036d20e12fc34.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3f376e7af0db7bd8bdf036d20e12fc34.png"><img alt="" src="https://gyazo.com/3f376e7af0db7bd8bdf036d20e12fc34.png"/></a></p>
 <p>このページ下を確認すると「Signals」というカテゴリがあります。<br/>
 ここが <signal> 部分に入れる関数名です。<br/>
 Signalは、その後ろには .connect() を入れて使用します。  </signal></p>
 <h2 id="signal_1">引数付きのSignal<a class="headerlink" href="#signal_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6296441ef24bca7fdeea06576808ae6b.png"><img alt="" src="https://gyazo.com/6296441ef24bca7fdeea06576808ae6b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6296441ef24bca7fdeea06576808ae6b.png"><img alt="" src="https://gyazo.com/6296441ef24bca7fdeea06576808ae6b.png"/></a></p>
 <p>Signalを実行したときに、一緒に引数を送ることができる機能があります。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5052ac9c7136206c09b4bcd36f7bf60e.png"><img alt="" src="https://gyazo.com/5052ac9c7136206c09b4bcd36f7bf60e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5052ac9c7136206c09b4bcd36f7bf60e.png"><img alt="" src="https://gyazo.com/5052ac9c7136206c09b4bcd36f7bf60e.png"/></a></p>
 <p>引数を送ることができる場合、Helpには arg__1 のような引数が記入してあります。<br/>
 例として、LineEditを使用してみます。</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2888,7 +2903,7 @@ Signalは、その後ろには .connect() を入れて使用します。  </sign
         <span class="c1"># 押したときの動作</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div><br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8a4e8b99afaa63e6c4262c366265ba35.gif"><img alt="" src="https://gyazo.com/8a4e8b99afaa63e6c4262c366265ba35.gif"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8a4e8b99afaa63e6c4262c366265ba35.gif"><img alt="" src="https://gyazo.com/8a4e8b99afaa63e6c4262c366265ba35.gif"/></a></p>
 <p>LineEditには「テキストが変更された」ときに実行する textChanged があります。<br/>
 このSignalは、引数として現在の入力されているテキストを受け取ることが出来るので<br/>
 Slotの関数に受け取り用の引数を指定しておきます。  </p>
@@ -2976,5 +2991,5 @@ GUIを操作したときに動作を作成するための基本になります�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

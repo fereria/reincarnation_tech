@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Propertyを追加する - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Blender/10_Scripts/05_add_props.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Blender/10_Scripts/05_add_props/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Propertyを追加する - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Blender/10_Scripts/05_add_props.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2811,12 +2826,12 @@
 <h1>Propertyを追加する</h1>
 <p>Blender では、Mesh や Camera、Material 等プロジェクトを構成するデータは Data Block と呼ばれる単位で<br/>
 扱われます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c596e05e454798da8f0235c9f1717182.png"><img alt="" src="https://gyazo.com/c596e05e454798da8f0235c9f1717182.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c596e05e454798da8f0235c9f1717182.png"><img alt="" src="https://gyazo.com/c596e05e454798da8f0235c9f1717182.png"/></a></p>
 <p>そのデータは、 Data API で確認することができて、各 Type 以下に Data-Block があります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/248a76bb844e0de867ad3535a9304c27.png"><img alt="" src="https://gyazo.com/248a76bb844e0de867ad3535a9304c27.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/248a76bb844e0de867ad3535a9304c27.png"><img alt="" src="https://gyazo.com/248a76bb844e0de867ad3535a9304c27.png"/></a></p>
 <p>たとえば、Objects の場合。<br/>
 Objects 以下にはプロジェクトに含まれる Objects の Data-Block があります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/62adceeb8aa4db2e00e3b41b814efe05.png"><img alt="" src="https://gyazo.com/62adceeb8aa4db2e00e3b41b814efe05.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/62adceeb8aa4db2e00e3b41b814efe05.png"><img alt="" src="https://gyazo.com/62adceeb8aa4db2e00e3b41b814efe05.png"/></a></p>
 <p>この Data-block に、この DataType を構成するための Property があります。</p>
 <p>Blender ではこの Data-block を Add-on で拡張することができて<br/>
 何かしら処理を実行したい場、Property を指定し<br/>
@@ -2830,7 +2845,7 @@ GUI から変更するできるようにパネルを用意することで、様�
 <p><i class="fa fa-external-link"></i> <a href="https://docs.blender.org/api/current/bpy.types.html">Types(bpy.types)</a>を確認すると、types の中に ID を継承した型があるのがわかります。<br/>
 これらが、Data-Block の元になるタイプなので、<br/>
 拡張する場合は、この bpy.types に指定の名前の property を用意し、作成したい型の <i class="fa fa-external-link"></i> <a href="https://docs.blender.org/api/current/bpy.props.html">Property Definitions (bpy.props)</a> を代入します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/723d784055e4a83edb06a3b3acae3ea9.png"><img alt="" src="https://gyazo.com/723d784055e4a83edb06a3b3acae3ea9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/723d784055e4a83edb06a3b3acae3ea9.png"><img alt="" src="https://gyazo.com/723d784055e4a83edb06a3b3acae3ea9.png"/></a></p>
 <p>ObjectType に対して hoge の IntProperty を追加しました。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2849,14 +2864,14 @@ GUI から変更するできるようにパネルを用意することで、様�
 </code></pre></div></td></tr></table></div>
 <p>PointerProperty は、指定の Type を指定すると<br/>
 その Type の Data-Block を指定できるようになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2a97ca84a54dbe4d41ed057e9bc0e52d.png"><img alt="" src="https://gyazo.com/2a97ca84a54dbe4d41ed057e9bc0e52d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2a97ca84a54dbe4d41ed057e9bc0e52d.png"><img alt="" src="https://gyazo.com/2a97ca84a54dbe4d41ed057e9bc0e52d.png"/></a></p>
 <p>PointerProperty を定義すると、このように特定の Type への接続口が作成されます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
 <p>その作成した PointerProperty に、指定の Type の Data-Block を代入すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f654a92d1056a6401e39d3d3900f7eef.png"><img alt="" src="https://gyazo.com/f654a92d1056a6401e39d3d3900f7eef.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f654a92d1056a6401e39d3d3900f7eef.png"><img alt="" src="https://gyazo.com/f654a92d1056a6401e39d3d3900f7eef.png"/></a></p>
 <p>リンクが作成できました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b19b93325fc40974ae113a606d00f161.png"><img alt="" src="https://gyazo.com/b19b93325fc40974ae113a606d00f161.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b19b93325fc40974ae113a606d00f161.png"><img alt="" src="https://gyazo.com/b19b93325fc40974ae113a606d00f161.png"/></a></p>
 <p>Property から、指定の Data-Block を取得できました。</p>
 <h2 id="propertygroup">PropertyGroup<a class="headerlink" href="#propertygroup" title="Permanent link">¶</a></h2>
 <p>最後に、PropertyGroup を使用すると、Property を１つの構造体として定義することができます。</p>
@@ -2876,7 +2891,7 @@ GUI から変更するできるようにパネルを用意することで、様�
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">my_settings</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">PointerProperty</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">PropGroup</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>そして、追加したい Type に対して POinterProperty で PropertyGroup を追加します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/19e6ba3fd10950117e477b6228157f8f.png"><img alt="" src="https://gyazo.com/19e6ba3fd10950117e477b6228157f8f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/19e6ba3fd10950117e477b6228157f8f.png"><img alt="" src="https://gyazo.com/19e6ba3fd10950117e477b6228157f8f.png"/></a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">my_settings</span><span class="o">.</span><span class="n">my_int</span> <span class="o">=</span> <span class="mi">10</span>
 </code></pre></div></td></tr></table></div>
 <p>PropertyGroup を作成すると、このように groupName.prop のような<br/>
@@ -2890,7 +2905,7 @@ GUI から変更するできるようにパネルを用意することで、様�
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-07-12 01:36:00</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:07:28</span>
 </small>
 </div>
 </article>
@@ -2962,5 +2977,5 @@ GUI から変更するできるようにパネルを用意することで、様�
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

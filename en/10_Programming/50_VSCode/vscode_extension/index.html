@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="VSCode の拡張機能を作る - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/50_VSCode/vscode_extension.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/10_Programming/50_VSCode/vscode_extension/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="VSCode の拡張機能を作る - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/50_VSCode/vscode_extension.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2776,11 +2791,11 @@ yo code
 </code></pre></div></td></tr></table></div>
 <p>npm を使用して、コマンドをインストール。<br/>
 yo code で、実行できる。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/903242df85f1120f102a6537653d53b8.png"><img alt="" src="https://gyazo.com/903242df85f1120f102a6537653d53b8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/903242df85f1120f102a6537653d53b8.png"><img alt="" src="https://gyazo.com/903242df85f1120f102a6537653d53b8.png"/></a></p>
 <p>プロジェクトを作成するルートフォルダに移動し、<br/>
 移動先で <strong>yo code</strong> を実行すると、選択する Extension タイプがきかれるので、<br/>
 <strong>「New Extension（TypeScript）」</strong>を選択する。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4de97e4a9463b1e70dbf5aacca431747.png"><img alt="" src="https://gyazo.com/4de97e4a9463b1e70dbf5aacca431747.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4de97e4a9463b1e70dbf5aacca431747.png"><img alt="" src="https://gyazo.com/4de97e4a9463b1e70dbf5aacca431747.png"/></a></p>
 <p>その後、プロジェクト名、フォルダ名、説明などなどきかれるので<br/>
 Y を押していく。（基本は名前のみ決めれば OK）</p>
 <p>実行が完了すると、カレントフォルダ下に指定の名前で<br/>
@@ -2791,9 +2806,9 @@ code .
 </code></pre></div></td></tr></table></div>
 <p>最後に、作成したパッケージ内にコマンドプロンプトで移動したのち、<br/>
 code .　で VisualStudioCode を起動する。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b79ac8fd1b3d0ce712058da2ebb3ac14.png"><img alt="" src="https://gyazo.com/b79ac8fd1b3d0ce712058da2ebb3ac14.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b79ac8fd1b3d0ce712058da2ebb3ac14.png"><img alt="" src="https://gyazo.com/b79ac8fd1b3d0ce712058da2ebb3ac14.png"/></a></p>
 <p>追加すると、このようになる。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b4a537803fd2db5263a3195e831c03f8.png"><img alt="" src="https://gyazo.com/b4a537803fd2db5263a3195e831c03f8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b4a537803fd2db5263a3195e831c03f8.png"><img alt="" src="https://gyazo.com/b4a537803fd2db5263a3195e831c03f8.png"/></a></p>
 <p>起動後、 <strong>F5</strong> を押すことで、作成したコードが反映された VSCode が起動される。<br/>
 ただし、自分の環境（1.30.0）状態だとなぜか ↑ のようなエラーが出てしまう。<br/>
 どうやら、この画面は無視して「このままデバッグを続ける」を押しても<br/>
@@ -2805,9 +2820,9 @@ code .　で VisualStudioCode を起動する。</p>
 <blockquote>
 <p>原因がわかり次第、元に戻す</p>
 </blockquote>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e0a5b88c48ff1a7c277af5d392b36fd2.png"><img alt="" src="https://gyazo.com/e0a5b88c48ff1a7c277af5d392b36fd2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e0a5b88c48ff1a7c277af5d392b36fd2.png"><img alt="" src="https://gyazo.com/e0a5b88c48ff1a7c277af5d392b36fd2.png"/></a></p>
 <p>F5 を押して表示される VSCode では、作成したコマンドがコマンドパレットに追加され</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/70d436d0382b21ccc1e2c5aef36eca1f.png"><img alt="" src="https://gyazo.com/70d436d0382b21ccc1e2c5aef36eca1f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/70d436d0382b21ccc1e2c5aef36eca1f.png"><img alt="" src="https://gyazo.com/70d436d0382b21ccc1e2c5aef36eca1f.png"/></a></p>
 <p>このように、コマンドに実行される。</p>
 <p>中のプラグインの本体は src/extension.ts<br/>
 本体と、VSCode をつないでいるのが package.json にあたる。<br/>
@@ -2894,5 +2909,5 @@ code .　で VisualStudioCode を起動する。</p>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

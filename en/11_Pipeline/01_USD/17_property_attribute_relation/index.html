@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Property/Attribute/Relationship - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/17_property_attribute_relation.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/17_property_attribute_relation/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Property/Attribute/Relationship - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/17_property_attribute_relation.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2976,13 +2991,13 @@ Held の場合は、Maya でいうところの StepTangent で、次の TimeCode
 その名の通りその Attribute が Schema によって定義されたものかユーザーによって定義されたものかどうか区別するためのものです。</p>
 <p>まず、Schema によって定義されたものとはどういうものかというと、<br/>
 以下の Kitchen_set にある Ball.usd で見てみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/786954f7a9dfca11223458c9759c3413.png"><img alt="" src="https://gyazo.com/786954f7a9dfca11223458c9759c3413.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/786954f7a9dfca11223458c9759c3413.png"><img alt="" src="https://gyazo.com/786954f7a9dfca11223458c9759c3413.png"/></a></p>
 <p>Ball にある MeshPrim は、UsdGeomMesh スキーマが指定された Prim です。<br/>
 USD のソースコード以下 USD/pxr/usd/usdGeom/generatedSchema.usda を読み進めると、Mesh スキーマの class があり<br/>
 その中に、Mesh スキーマに定義された Attribute があります。<br/>
 これが、スキーマによって定義されている Attribute で たとえレイヤーに Attribute の記述がなかったとしても<br/>
 スキーマで定義された値がフォールバック値として設定されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2c3347b7c11c5c69fa8499f34513a294.png"><img alt="" src="https://gyazo.com/2c3347b7c11c5c69fa8499f34513a294.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2c3347b7c11c5c69fa8499f34513a294.png"><img alt="" src="https://gyazo.com/2c3347b7c11c5c69fa8499f34513a294.png"/></a></p>
 <p>例として、 doubleSided。<br/>
 Ball.usd 内には doubleSided Attribute に値をセットする記述はありませんが、usdview を見ると<br/>
 セットされていることがわかります。</p>
@@ -3174,14 +3189,14 @@ USD の Property 名には Namespace:PropName = Value のように、 : を使�
 これを利用して、Property をグループとして扱うなどができます。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まとめると、Property とは Prim に指定された実データを含む値のことで</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/183b5cd7bbf695a0eda49a9ef22bb3a2.png"><img alt="" src="https://gyazo.com/183b5cd7bbf695a0eda49a9ef22bb3a2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/183b5cd7bbf695a0eda49a9ef22bb3a2.png"><img alt="" src="https://gyazo.com/183b5cd7bbf695a0eda49a9ef22bb3a2.png"/></a></p>
 <p>Attribute と Relationship の２種類が存在しています。</p>
 <p>Attribute は、型をもった値(実データ)で、任意の TimeCode を与えることで TimeSampling（アニメーション）することができます。<br/>
 TimeSampling がある場合、Stage で指定された Interpolation（補間）で TimeCode と TimeCode の間が補間されます。<br/>
 そして、Attribute は、Schema によって定義されたものと、ユーザーによって定義されたもの２種類が存在し、<br/>
 Schema によって定義されたものはレイヤーに値が設定されていない場合でもデフォルトが指定されます。</p>
 <p>Relationship は、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2dd700fff71f07fc4ef050e00b360006.png"><img alt="" src="https://gyazo.com/2dd700fff71f07fc4ef050e00b360006.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2dd700fff71f07fc4ef050e00b360006.png"><img alt="" src="https://gyazo.com/2dd700fff71f07fc4ef050e00b360006.png"/></a></p>
 <p>ある Prim へのリレーションを作ることができます。<br/>
 これを利用して、MaterialAssign や Collection といったような他 Prim とのコネクションを<br/>
 表現することができます。</p>
@@ -3264,5 +3279,5 @@ Schema によって定義されたものはレイヤーに値が設定されて�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

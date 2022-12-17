@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="UsdPreviewSurfaceを使う - Reincarnation+#Tech" property="og:title"/>
+<meta content="Pythonを使用してUsdPreviewSurfaceを構築する" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/06_shader.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/30_USD_Programming/01_Python/06_shader/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="UsdPreviewSurfaceを使う - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="Pythonを使用してUsdPreviewSurfaceを構築する" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/06_shader.png" name="twitter:image"/>
 <link href="../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2846,9 +2861,9 @@
 <p><i class="fa fa-external-link"></i> <a href="/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/12_usd_preview_surface">UsdPreviewSurfaceでマテリアルを設定する</a> の記事を書いたのですが<br/>
 今回は Python をベースに PreviewSurface をまとめてみようと思います。</p>
 <h2 id="_1">基本構造<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d9576c9061fcdeb24117c432243b3964.png"><img alt="" src="https://gyazo.com/d9576c9061fcdeb24117c432243b3964.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d9576c9061fcdeb24117c432243b3964.png"><img alt="" src="https://gyazo.com/d9576c9061fcdeb24117c432243b3964.png"/></a></p>
 <p>UsdPreviewSurface を使用する場合は、 Material と Shader の２つの Prim を使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../shader.drawio#0"><img alt="" src="../shader.drawio-0.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../shader.drawio#0"><img alt="" src="../shader.drawio-0.svg"/></a></p>
 <p>ルート以下の構造はこのようにします。</p>
 <p>必要に応じて変えても良いですが、</p>
 <ul>
@@ -2857,7 +2872,7 @@
 <li>レンダーセッティングは Render</li>
 </ul>
 <p>が、比較的スタンダードな構造かとおもうので今回はこれで説明します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../shader.drawio#1"><img alt="" src="../shader.drawio-1.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../shader.drawio#1"><img alt="" src="../shader.drawio-1.svg"/></a></p>
 <p>Mesh、Material、Shader の関係性はこのようになります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2890,13 +2905,13 @@
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>それを、Python で書くとこのようになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png"><img alt="" src="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png"><img alt="" src="https://gyazo.com/a1951837651322ab11c24e445a06e0b1.png"/></a></p>
 <p>結果できあがった usda を usdview でひらくと、このように赤い Sphere ができあがります。</p>
 <p>次は、Material と Shader をもう少し詳しく見ていきます。</p>
 <h2 id="usdshadematerial">UsdShadeMaterial<a class="headerlink" href="#usdshadematerial" title="Permanent link">¶</a></h2>
 <p>UsdShadeMaterial は、Maya でいうところの ShadingGroup のような役割を持つ Prim です。<br/>
 レンダーターゲットとなる Prim（Mesh 等）とシェーダーとをつなぐ働きをします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0140601734293f7728cdd922a04198d5.png"><img alt="" src="https://gyazo.com/0140601734293f7728cdd922a04198d5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0140601734293f7728cdd922a04198d5.png"><img alt="" src="https://gyazo.com/0140601734293f7728cdd922a04198d5.png"/></a></p>
 <p>Material と Mesh とはリレーションで接続されています。</p>
 <p>Mesh に対して Material を Bind するには、UsdShadeMaterialBindingAPI を使用します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">sphere</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
@@ -2936,7 +2951,7 @@ CreateIdAttr というのが、この Shader がどう振る舞うものかを�
 </blockquote>
 <p>CreateInput(～)でアトリビュートを作り（id を指定したからといってアトリビュートがデフォルトで用意されているわけではない）<br/>
 その作成したアトリビュートに対して、色をセットします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../shader.drawio#4"><img alt="" src="../shader.drawio-4.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../shader.drawio#4"><img alt="" src="../shader.drawio-4.svg"/></a></p>
 <p>そして、シェーダーとマテリアルを接続します。<br/>
 ConnectToSource は<br/>
 接続先.ConnectToSource(接続元.ConnectableAPI(),'接続するアトリビュート')<br/>
@@ -2990,7 +3005,7 @@ UV 座標を取得して来る必要があります。</p>
 <h3 id="usdgeommesh-uv">UsdGeomMesh の UV<a class="headerlink" href="#usdgeommesh-uv" title="Permanent link">¶</a></h3>
 <p>USD の UV は「Primvar」と呼ばれるアトリビュートで指定することができます。<br/>
 Primvar とは、レンダラーに渡すための特別なアトリビュートです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../shader.drawio#5"><img alt="" src="../shader.drawio-5.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../shader.drawio#5"><img alt="" src="../shader.drawio-5.svg"/></a></p>
 <p>例えば UV の場合。<br/>
 st Primvar はいわゆるある Vertex に対応する UV 座標を保持しています。<br/>
 これは各 Vertex ごとに指定されていますが<br/>
@@ -3000,7 +3015,7 @@ st Primvar はいわゆるある Vertex に対応する UV 座標を保持して
 <p>デフォルトだと Primvar の Index は Direct（Vertex と UV の Index が同じ）モードですが<br/>
 １頂点に対して複数 UV 指定がある場合は UsdGeom.Tokens.faceVarying にします。</p>
 </div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../shader.drawio#3"><img alt="" src="../shader.drawio-3.svg"/></a><br/>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../shader.drawio#3"><img alt="" src="../shader.drawio-3.svg"/></a><br/>
 その場合は、primvars の indices に Mesh の points と同じ並びのアトリビュートを追加し<br/>
 そのアトリビュートには、対応する UV（primvar:st）の Index を指定します。</p>
 <p>で。<br/>
@@ -3054,7 +3069,7 @@ st Primvar はいわゆるある Vertex に対応する UV 座標を保持して
 
 <span class="n">stReader</span><span class="o">.</span><span class="n">CreateInput</span><span class="p">(</span><span class="s1">'varname'</span><span class="p">,</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Token</span><span class="p">)</span><span class="o">.</span><span class="n">ConnectToSource</span><span class="p">(</span><span class="n">stInput</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../shader.drawio#6"><img alt="" src="../shader.drawio-6.svg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../shader.drawio#6"><img alt="" src="../shader.drawio-6.svg"/></a></p>
 <p>この構造を図に表すとこのようになります。<br/>
 まず、テクスチャを指定するには UsdUVTexture を使用します。<br/>
 そしてファイルパスや UV 座標を Input で受け取り、その結果を rgb で Output で渡します。<br/>
@@ -3149,14 +3164,14 @@ Subset を使用して Bind します。</p>
 <span class="n">UsdShade</span><span class="o">.</span><span class="n">MaterialBindingAPI</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">())</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 <span class="n">stage</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="s2">"subset.usd"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png"><img alt="" src="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png"><img alt="" src="https://gyazo.com/347532f558abdb61a651aaa2a9e4cb9b.png"/></a></p>
 <p>実行すると、Mesh の子 Prim として UsdGeomSubsetPrim が作成されます。<br/>
 UsdGeomSubset は、その名の通り UsdGeom のサブセットで<br/>
 メッシュのインデックスを保持します。<br/>
 これを利用することで、あるメッシュのうちの指定の Face にマテリアルをアサインすることができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f5de0e93f09774bbac22339c5c1ba70a.png"><img alt="" src="https://gyazo.com/f5de0e93f09774bbac22339c5c1ba70a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f5de0e93f09774bbac22339c5c1ba70a.png"><img alt="" src="https://gyazo.com/f5de0e93f09774bbac22339c5c1ba70a.png"/></a></p>
 <p>アサインした結果、インデックスが 0 の Face にのみマテリアルがアサインできました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png"><img alt="" src="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png"><img alt="" src="https://gyazo.com/a1ce09026d42f97e2e186ff98cf1e967.png"/></a></p>
 <p>GeomSubset のアトリビュートをみると、インデックスと アサインされているマテリアルが material:binding のリレーション<br/>
 が含まれていることがわかります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">subset</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span><span class="o">.</span><span class="n">GetRelationship</span><span class="p">(</span><span class="s2">"material:binding"</span><span class="p">)</span><span class="o">.</span><span class="n">GetTargets</span><span class="p">()</span>
@@ -3246,5 +3261,5 @@ PrimvarReader や、File ノードなどの構造は USD の構造をベース�
 <script src="../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

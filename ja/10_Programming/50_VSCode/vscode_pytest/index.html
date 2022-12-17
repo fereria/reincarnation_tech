@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="VSCodeでPyTest - Reincarnation+#Tech" property="og:title"/>
+<meta content="VSCodeのテスト機能で pytestする方法" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/50_VSCode/vscode_pytest.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/10_Programming/50_VSCode/vscode_pytest/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="VSCodeでPyTest - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="VSCodeのテスト機能で pytestする方法" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/50_VSCode/vscode_pytest.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2776,7 +2791,7 @@
 機能があるので<br/>
 これを利用して、Python のテスト環境を作っていきます。</p>
 <h2 id="_1">設定する<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e3633649c159d38085f6f80bf09e5f9d.png"><img alt="" src="https://gyazo.com/e3633649c159d38085f6f80bf09e5f9d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e3633649c159d38085f6f80bf09e5f9d.png"><img alt="" src="https://gyazo.com/e3633649c159d38085f6f80bf09e5f9d.png"/></a></p>
 <p>まず、プロジェクト下にフォルダを作り、その下にテストファイルを指定の名前で起きます。<br/>
 ルールは「test_」から始まること、なのでその名前で指定しつつ<br/>
 その中にテストコードを書きます。</p>
@@ -2790,18 +2805,18 @@
 </code></pre></div></td></tr></table></div>
 <p>テスト用の関数は、 test_### とすることで自動で認識してくれるので<br/>
 このようにしておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4d829d58e2d3569dbfab98b7d0c97512.png"><img alt="" src="https://gyazo.com/4d829d58e2d3569dbfab98b7d0c97512.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4d829d58e2d3569dbfab98b7d0c97512.png"><img alt="" src="https://gyazo.com/4d829d58e2d3569dbfab98b7d0c97512.png"/></a></p>
 <p>VSCode の「テスト」アイコンをクリックし、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/dff9e86236ea217d984b1abb1efb0226.png"><img alt="" src="https://gyazo.com/dff9e86236ea217d984b1abb1efb0226.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/dff9e86236ea217d984b1abb1efb0226.png"><img alt="" src="https://gyazo.com/dff9e86236ea217d984b1abb1efb0226.png"/></a></p>
 <p>Configure Python Tests をクリックします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2265cd1e3bfbef06bd65d43ce84c74ed.png"><img alt="" src="https://gyazo.com/2265cd1e3bfbef06bd65d43ce84c74ed.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2265cd1e3bfbef06bd65d43ce84c74ed.png"><img alt="" src="https://gyazo.com/2265cd1e3bfbef06bd65d43ce84c74ed.png"/></a></p>
 <p>そして、どのテストフレームワークを使うかを指定します。<br/>
 今回は pytest を使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8914ffbaf9d4d2bcb9372691f65faa3f.png"><img alt="" src="https://gyazo.com/8914ffbaf9d4d2bcb9372691f65faa3f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8914ffbaf9d4d2bcb9372691f65faa3f.png"><img alt="" src="https://gyazo.com/8914ffbaf9d4d2bcb9372691f65faa3f.png"/></a></p>
 <p>テストファイルを含むフォルダを指定する画面が出るので「tests」フォルダを指定します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/45d3b8a40e58d365a38231ca671d2de0.png"><img alt="" src="https://gyazo.com/45d3b8a40e58d365a38231ca671d2de0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/45d3b8a40e58d365a38231ca671d2de0.png"><img alt="" src="https://gyazo.com/45d3b8a40e58d365a38231ca671d2de0.png"/></a></p>
 <p>準備ができたら、このボタンでスタートします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/384094d2b690275cb9fe58576ad7985f.png"><img alt="" src="https://gyazo.com/384094d2b690275cb9fe58576ad7985f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/384094d2b690275cb9fe58576ad7985f.png"><img alt="" src="https://gyazo.com/384094d2b690275cb9fe58576ad7985f.png"/></a></p>
 <p>テストが無事通ると、このようにグリーンの ✅ になります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2812,11 +2827,11 @@
     <span class="k">assert</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">4</span>
 </code></pre></div></td></tr></table></div>
 <p>例えば、わざとエラーになる関数を追加すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/93242dfa4dca747a5f498255899f3fe7.png"><img alt="" src="https://gyazo.com/93242dfa4dca747a5f498255899f3fe7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/93242dfa4dca747a5f498255899f3fe7.png"><img alt="" src="https://gyazo.com/93242dfa4dca747a5f498255899f3fe7.png"/></a></p>
 <p>エラーがあるテストは ✖ 表示になり、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0a9db3b223c14e50b0a040bfb9f78cd7.png"><img alt="" src="https://gyazo.com/0a9db3b223c14e50b0a040bfb9f78cd7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0a9db3b223c14e50b0a040bfb9f78cd7.png"><img alt="" src="https://gyazo.com/0a9db3b223c14e50b0a040bfb9f78cd7.png"/></a></p>
 <p>エラー箇所がわかりやすく表示されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a60cb53c678a5ad1cdc9624ed2383cba.png"><img alt="" src="https://gyazo.com/a60cb53c678a5ad1cdc9624ed2383cba.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a60cb53c678a5ad1cdc9624ed2383cba.png"><img alt="" src="https://gyazo.com/a60cb53c678a5ad1cdc9624ed2383cba.png"/></a></p>
 <p>test_###.py ファイルを開くと、関数の左側に実行ボタンがでているので<br/>
 このボタンを押せば、単独でテストも可能です。</p>
 <p>コマンドラインに比べるとわかりやすいので、<br/>
@@ -2902,5 +2917,5 @@
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

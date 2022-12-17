@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="グラデーションピッカーを作る - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/02_Tips/05_gradation_picker.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/05_gradation_picker/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="グラデーションピッカーを作る - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/02_Tips/05_gradation_picker.png" name="twitter:image"/>
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -134,7 +149,7 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../..">
+<a class="md-tabs__link" href="../../../">
       Introduction
     </a>
 </li>
@@ -215,7 +230,7 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../..">
+<a class="md-nav__link" href="../../../">
         Introduction
       </a>
 </li>
@@ -2929,7 +2944,7 @@
 PySide で作ってみました。</p>
 <h2 id="_2">挙動<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>まずは SD を起動してどういう結果がほしいのかを確認してみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/17466eae3e54e262c52f21d56b619878.gif"><img alt="" src="https://i.gyazo.com/17466eae3e54e262c52f21d56b619878.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://i.gyazo.com/17466eae3e54e262c52f21d56b619878.gif"><img alt="" src="https://i.gyazo.com/17466eae3e54e262c52f21d56b619878.gif"/></a></p>
 <p>まず、グラデーションを選択する　を実行するとピックモードになり<br/>
 ドラッグ中の色を取得して、移動距離に応じて Color が 0-1 位置に配置されるようになります。</p>
 <p>どの程度のしきい値でコントロールポイントを配置するかがグラデーションスポイトの制度という形で<br/>
@@ -3141,7 +3156,7 @@ SD のグラデーション的な挙動をつくることができるようで�
 </code></pre></div></td></tr></table></div>
 <p>こんな感じの配列を、Signal で取得できるようになりました。</p>
 <h3 id="_7">現在のピクセル色をマウス位置に表示する<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8dc4ccdef266e61a3c0640d05d07a158.png"><img alt="" src="https://gyazo.com/8dc4ccdef266e61a3c0640d05d07a158.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8dc4ccdef266e61a3c0640d05d07a158.png"><img alt="" src="https://gyazo.com/8dc4ccdef266e61a3c0640d05d07a158.png"/></a></p>
 <p>メインの処理はできましたが、ピック中の色がわかるように<br/>
 マウス位置に色を表示できるようにします。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3444,5 +3459,5 @@ QWidget は一応全画面化できるものの、parent で親 Widget をして
 <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

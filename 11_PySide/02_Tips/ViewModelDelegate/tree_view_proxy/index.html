@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="TreeViewの中身を正規表現で検索する - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/02_Tips/ViewModelDelegate/tree_view_proxy.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/ViewModelDelegate/tree_view_proxy/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="TreeViewの中身を正規表現で検索する - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/02_Tips/ViewModelDelegate/tree_view_proxy.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -134,7 +149,7 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../..">
+<a class="md-tabs__link" href="../../../../">
       Introduction
     </a>
 </li>
@@ -215,7 +230,7 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../..">
+<a class="md-nav__link" href="../../../../">
         Introduction
       </a>
 </li>
@@ -2785,7 +2800,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="treeview">TreeViewの中身を正規表現で検索する<a class="headerlink" href="#treeview" title="Permanent link">¶</a></h1>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/fc6e532b3432ea0e6117821e0c539856.gif"><img alt="" src="https://i.gyazo.com/fc6e532b3432ea0e6117821e0c539856.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://i.gyazo.com/fc6e532b3432ea0e6117821e0c539856.gif"><img alt="" src="https://i.gyazo.com/fc6e532b3432ea0e6117821e0c539856.gif"/></a></p>
 <p>PySideの各種Viewは、ProxyModelを使用することでリスト内の絞り込み検索を<br/>
 追加することができます。  </p>
 <p>ただ、TreeViewの場合などとくに顕著ですが<br/>
@@ -2797,7 +2812,7 @@
 <script src="https://embed.cacher.io/d05431800560fe16f8fc16c7022f13f22a0caf47.js?a=f3a85e8a924aa2ce28a5cce93944af1a"></script>
 <h2 id="_2">解説<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>まずはQAbstractItemModelを使用してTreeViewとModelを作成します。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/84c550cf2f3c2c8d24f1405bdbfd8712.png"><img alt="" src="https://gyazo.com/84c550cf2f3c2c8d24f1405bdbfd8712.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/84c550cf2f3c2c8d24f1405bdbfd8712.png"><img alt="" src="https://gyazo.com/84c550cf2f3c2c8d24f1405bdbfd8712.png"/></a></p>
 <p>実行するとこんな感じのUIが表示されます。  </p>
 <p>まず、このTreeViewの場合<br/>
 特になにもしない場合 GroupA GroupBも検索で引っかかってしまい<br/>
@@ -2831,7 +2846,7 @@
 </code></pre></div></td></tr></table></div>
 <p>filterAcceptsRow関数は、表示するかどうかを各Itemごとに判定して<br/>
 表示するかどうかを bool で返します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c25434f14ff0abdcb10efdc47ae39b17.png"><img alt="" src="https://gyazo.com/c25434f14ff0abdcb10efdc47ae39b17.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c25434f14ff0abdcb10efdc47ae39b17.png"><img alt="" src="https://gyazo.com/c25434f14ff0abdcb10efdc47ae39b17.png"/></a></p>
 <p>parentとrowを引数として受け取ります。<br/>
 これは、表示するかどうか判定したいItemからみた「親」アイテムと、その親から見た「何番目のItemか」<br/>
 という情報になります。  </p>
@@ -2973,5 +2988,5 @@ Roleは、 UserRole を使用しても良いし、すでに使っている場合
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

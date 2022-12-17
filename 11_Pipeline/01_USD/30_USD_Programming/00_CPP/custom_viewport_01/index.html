@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="C++とimguiでビューポートを作る_カメラ実装" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/00_CPP/custom_viewport_01/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="C++でUSDのViewportを作ろう(1) カメラを作る - Reincarnation+#Tech" property="og:title"/>
+<meta content="C++とimguiでビューポートを作る_カメラ実装" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/00_CPP/custom_viewport_01.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/00_CPP/custom_viewport_01/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="C++でUSDのViewportを作ろう(1) カメラを作る - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="C++とimguiでビューポートを作る_カメラ実装" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/00_CPP/custom_viewport_01.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -134,7 +150,7 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../../..">
+<a class="md-tabs__link" href="../../../../../">
       Introduction
     </a>
 </li>
@@ -215,7 +231,7 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../../..">
+<a class="md-nav__link" href="../../../../../">
         Introduction
       </a>
 </li>
@@ -2860,7 +2876,7 @@
 </a>
 <h1>C++でUSDのViewportを作ろう(1) カメラを作る</h1>
 <p><a href="https://qiita.com/advent-calendar/2022/usd">USD AdventCalendar2022</a> 10 日目は C++と imgui で USD のビューポートを作ろう です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c8a3e25d0fb8c6df9558cd966603891a.gif"><img alt="" src="https://gyazo.com/c8a3e25d0fb8c6df9558cd966603891a.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c8a3e25d0fb8c6df9558cd966603891a.gif"><img alt="" src="https://gyazo.com/c8a3e25d0fb8c6df9558cd966603891a.gif"/></a></p>
 <p>今回は、こんな感じで OpenGL で USD を表示して、マウスでぐりぐり回せるようにしてみます。<br/>
 そして GUI には imgui を使用して、必要な情報を表示したり編集できるようにしてみます。</p>
 <p>なお、あらかじめ予防線を張っておくと私自身 C++はほぼ初心者です。<br/>
@@ -2882,7 +2898,7 @@
 実際、私自身も 1 から作れと言われるととてもじゃないですが実装はできません。</p>
 <p>ですが、USD と Hydra を活用することで簡単にモデルを描画させたり<br/>
 カメラ操作を実装したりできます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="../../../../../img/hydra_01.png"><img alt="hydra_01.png" src="../../../../../img/hydra_01.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../../../../img/hydra_01.png"><img alt="hydra_01.png" src="../../../../../img/hydra_01.png"/></a></p>
 <p>USD のシーングラフは <a href="https://graphics.pixar.com/usd/dev/api/class_usd_imaging_g_l_engine.html#details">UsdImagingGLEngine</a> と呼ばれる、USD のシーンをレンダリングするためのエントリーポイントを経由して Hydra に渡されます。<br/>
 そしてレンダラにデータを渡しますが、<br/>
 それ以外にも、データを OpenGL のビューポートに対して描画するという機能が用意されています。</p>
@@ -2909,12 +2925,12 @@ pxr/usdImaging/usdviewq/stageView.py<br/>
 <p>長いのでコードは ↑<br/>
 Imgui の samples/example_glfw_opengl2/main.cpp をベースに、必要な部分だけをピックアップして<br/>
 小さな Window が一つと、ビューポートを用意します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2d4c0c14d19ef1b4e45d66a286ffeede.png"><img alt="" src="https://gyazo.com/2d4c0c14d19ef1b4e45d66a286ffeede.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2d4c0c14d19ef1b4e45d66a286ffeede.png"><img alt="" src="https://gyazo.com/2d4c0c14d19ef1b4e45d66a286ffeede.png"/></a></p>
 <p>実行するとこのようになります。</p>
 <p>Imgui は、メインループの都度舞フレーム実行することになります。<br/>
 この場合 while の中がこれにあたり、このメインループの中でカメラの位置計算や実際の描画処理を<br/>
 書いていく必要があります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8c0fcf8b1d366bf573090c89de96bf7c.png"><img src="https://gyazo.com/8c0fcf8b1d366bf573090c89de96bf7c.png" width="150"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8c0fcf8b1d366bf573090c89de96bf7c.png"><img src="https://gyazo.com/8c0fcf8b1d366bf573090c89de96bf7c.png" width="150"/></a></p>
 <p>stageView.py の処理を参考にして全体の流れを書き出すと、こんな感じになります。<br/>
 カメラの作成は、シーンに含まれるカメラというより<br/>
 persp カメラのようなビューポートで自由に操作できるフリーカメラです。</p>
@@ -2955,7 +2971,7 @@ persp カメラのようなビューポートで自由に操作できるフリ�
 今回は Zup です。</p>
 <p>freeCamera.py の内容を C++に移植しています</p>
 <h3 id="zoom">Zoom<a class="headerlink" href="#zoom" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0c672ca905f0178419fe4f6ed94b379d.png"><img alt="" src="https://gyazo.com/0c672ca905f0178419fe4f6ed94b379d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0c672ca905f0178419fe4f6ed94b379d.png"><img alt="" src="https://gyazo.com/0c672ca905f0178419fe4f6ed94b379d.png"/></a></p>
 <p>Zoom は、カメラとターゲットとなるポジションの値を変更することで実装します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">camMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CameraMode</span><span class="o">::</span><span class="n">ZOOM</span><span class="p">)</span><span class="w"></span>
@@ -2975,7 +2991,7 @@ persp カメラのようなビューポートで自由に操作できるフリ�
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">cameraTransformDirty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0442a5e952fad612c6fa83329ca91c02.gif"><img alt="" src="https://gyazo.com/0442a5e952fad612c6fa83329ca91c02.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0442a5e952fad612c6fa83329ca91c02.gif"><img alt="" src="https://gyazo.com/0442a5e952fad612c6fa83329ca91c02.gif"/></a></p>
 <p>結果こんな感じになります。</p>
 <h3 id="tumble">Tumble<a class="headerlink" href="#tumble" title="Permanent link">¶</a></h3>
 <p>Tumble は、指定のターゲットポジションを中心にカメラを回転させます。</p>
@@ -2993,9 +3009,9 @@ persp カメラのようなビューポートで自由に操作できるフリ�
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">cameraTransformDirty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a370dd358f818a7835d86fc36eb74356.png"><img alt="" src="https://gyazo.com/a370dd358f818a7835d86fc36eb74356.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a370dd358f818a7835d86fc36eb74356.png"><img alt="" src="https://gyazo.com/a370dd358f818a7835d86fc36eb74356.png"/></a></p>
 <p>Tumble で値を足してるのは、カメラの移動の ↑ 部分の移動値を指定していて</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/682e8b8faaccd1145724dd52f69658bd.gif"><img alt="" src="https://gyazo.com/682e8b8faaccd1145724dd52f69658bd.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/682e8b8faaccd1145724dd52f69658bd.gif"><img alt="" src="https://gyazo.com/682e8b8faaccd1145724dd52f69658bd.gif"/></a></p>
 <h3 id="track">Track<a class="headerlink" href="#track" title="Permanent link">¶</a></h3>
 <p>Track は現在のカメラを縦横に移動します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3024,7 +3040,7 @@ persp カメラのようなビューポートで自由に操作できるフリ�
 RightVecotr を取得します。<br/>
 そしてその 2 つのベクトルに対して、移動値(deltaRight DeltaUp)を追加して<br/>
 カメラのセンターを移動します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/03b12cb87f4f75bb8f83856d3a237aef.gif"><img alt="" src="https://gyazo.com/03b12cb87f4f75bb8f83856d3a237aef.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/03b12cb87f4f75bb8f83856d3a237aef.gif"><img alt="" src="https://gyazo.com/03b12cb87f4f75bb8f83856d3a237aef.gif"/></a></p>
 <h3 id="pushcamera">PushCamera<a class="headerlink" href="#pushcamera" title="Permanent link">¶</a></h3>
 <p>ターゲットとの距離、ターゲットを中心に回転させ、カメラのセンター位置をずらした<br/>
 カメラの ViewMatrix を作成します。</p>
@@ -3142,7 +3158,7 @@ PushCamera で作成したカメラ位置から X 軸と Y 軸で回転し、</p
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-10 07:55:48</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -3214,5 +3230,5 @@ PushCamera で作成したカメラ位置から X 軸と Y 軸で回転し、</p
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

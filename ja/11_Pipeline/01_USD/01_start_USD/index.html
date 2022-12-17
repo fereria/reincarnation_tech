@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="USDをPythonから色々操作するための環境を作る - Reincarnation+#Tech" property="og:title"/>
+<meta content="JupyterNotebookを活用する方法" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/01_start_USD.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/01_start_USD/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="USDをPythonから色々操作するための環境を作る - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="JupyterNotebookを活用する方法" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/01_start_USD.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2826,7 +2841,7 @@ USD ファイルをそのまま直書きするのではなく、Python 側から
 <p>まず、準備。<br/>
 モデルをチェックできる usdview ですが、これはあくまでもビューワーなので<br/>
 AttributeEditor で数値をいれてコントール...のようなことはできません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c9db8ccab23266051d25085db95c77bd.png"><img alt="" src="https://gyazo.com/c9db8ccab23266051d25085db95c77bd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c9db8ccab23266051d25085db95c77bd.png"><img alt="" src="https://gyazo.com/c9db8ccab23266051d25085db95c77bd.png"/></a></p>
 <p>が、数値を弄りたければ PythonInterpreter がついているので<br/>
 そちらからコントロールすることはできます。</p>
 <p>が...このインタープリタで頑張るのは無理があるので<br/>
@@ -2842,10 +2857,10 @@ jupyter notebook
 <p>とりあえず、こんな感じで固定の場所で Jupyter を起動できる Batch を作り<br/>
 裏で notebook を起動しておきます。<br/>
 しかし、この notebook をブラウザから使用すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b3a8bf3a0e527f61b217b5cab8d82e9d.png"><img alt="" src="https://gyazo.com/b3a8bf3a0e527f61b217b5cab8d82e9d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b3a8bf3a0e527f61b217b5cab8d82e9d.png"><img alt="" src="https://gyazo.com/b3a8bf3a0e527f61b217b5cab8d82e9d.png"/></a></p>
 <p>一応使えますが、この場合 AutoComplete がきかないのと<br/>
 ショートカットが使いにくいので、korewoVSCode 側からたたくようにします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/de2de82522cab139a46da49981bae9cc.png"><img alt="" src="https://gyazo.com/de2de82522cab139a46da49981bae9cc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/de2de82522cab139a46da49981bae9cc.png"><img alt="" src="https://gyazo.com/de2de82522cab139a46da49981bae9cc.png"/></a></p>
 <p>Python の Jupyter Server URI の設定を開き、<br/>
 裏で起動している Notebook の URL を入力します。</p>
 <p>が、Token を入れたりするのが面倒だったので</p>
@@ -2867,7 +2882,7 @@ jupyter notebook
 <p>で。</p>
 <p>ここまで準備ができたら、あとは VSCode 側でいろいろ検証していきます。</p>
 <h2 id="vscode">VSCode でいろいろやる<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/833bf64be619f449b049a72ce03c982b.png"><img alt="" src="https://gyazo.com/833bf64be619f449b049a72ce03c982b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/833bf64be619f449b049a72ce03c982b.png"><img alt="" src="https://gyazo.com/833bf64be619f449b049a72ce03c982b.png"/></a></p>
 <p>現在のバージョンの VSCode は、 .ipynb (JupyterNotebook のフォーマット)を開くと<br/>
 VSCode 上で Notebook の編集をすることができます。<br/>
 （ショートカットなども VSCode のものが使用できる）</p>
@@ -2877,7 +2892,7 @@ VSCode 上で Notebook の編集をすることができます。<br/>
 </code></pre></div></td></tr></table></div>
 <p>たびたび確認をしたくなるので、ここだけをセルで分けておいて<br/>
 必要に応じてプリントしてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png"><img alt="" src="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png"><img alt="" src="https://gyazo.com/67708aa3b9cd65a747f03ca9084c6a11.png"/></a></p>
 <p>こんな感じで、現在の USD ファイル（正確にはレイヤー）を<br/>
 プリントすることができます。</p>
 <p>注意点として、プリントする場合は「 print(～～～)」のように<br/>
@@ -2910,7 +2925,7 @@ VSCode 上で Notebook の編集をすることができます。<br/>
 また、このツール起動が尋常じゃなく遅いので<br/>
 初回のみ適当なファイルで開いておいて<br/>
 ツール上のメニューからファイルを NewOpen したり Reload したりするのがオススメです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/052b4430de2622643f14ae59322af78d.png"><img alt="" src="https://gyazo.com/052b4430de2622643f14ae59322af78d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/052b4430de2622643f14ae59322af78d.png"><img alt="" src="https://gyazo.com/052b4430de2622643f14ae59322af78d.png"/></a></p>
 <p>とりあえずファイルが開けました。</p>
 <p>ここまで準備ができたら、あとは VSCode 側でコードを書きつつ<br/>
 保存したら usdview で Ctrl+R でシーンをリロードしてプロパティやら Prim やら見た目やらが<br/>
@@ -2918,7 +2933,7 @@ VSCode 上で Notebook の編集をすることができます。<br/>
 <p><a href="https://snippets.cacher.io/snippet/e4a461c3093c7ce7929f">https://snippets.cacher.io/snippet/e4a461c3093c7ce7929f</a></p>
 <p>あとは、テストした結果は Cacher にメモとして UP するようにしています。</p>
 <h2 id="_4">小ネタ<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5878a971ba83dcf4312eb3e6d1afcaae.png"><img alt="" src="https://gyazo.com/5878a971ba83dcf4312eb3e6d1afcaae.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5878a971ba83dcf4312eb3e6d1afcaae.png"><img alt="" src="https://gyazo.com/5878a971ba83dcf4312eb3e6d1afcaae.png"/></a></p>
 <p>VSCode の PythonInteractive の実行結果表示ですが<br/>
 どんどんたまっていきます。<br/>
 が、Interactive の右上にある × ボタンを押せばリセットできます。</p>
@@ -3009,5 +3024,5 @@ VSCode 上で Notebook の編集をすることができます。<br/>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="HDA の作り方 - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/00_Basic/04_HDA.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/00_Basic/04_HDA/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="HDA の作り方 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/00_Basic/04_HDA.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2842,11 +2857,11 @@ Export して、Tab キーのショートカットから呼び出せるように
 どちらかというとプログラミングの関数化に近い気がします。</p>
 <h2 id="subset">Subset の作成<a class="headerlink" href="#subset" title="Permanent link">¶</a></h2>
 <p>HDA を作成するには、まず Subnet を作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5753221616601561c2c52449453f47dd.png"><img alt="" src="https://gyazo.com/5753221616601561c2c52449453f47dd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5753221616601561c2c52449453f47dd.png"><img alt="" src="https://gyazo.com/5753221616601561c2c52449453f47dd.png"/></a></p>
 <p>Subnet は、ノードネットワークを再利用することができるようにするための機能。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1f93ef3703bafc71a7e4f521edfd0d03.png"><img alt="" src="https://gyazo.com/1f93ef3703bafc71a7e4f521edfd0d03.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1f93ef3703bafc71a7e4f521edfd0d03.png"><img alt="" src="https://gyazo.com/1f93ef3703bafc71a7e4f521edfd0d03.png"/></a></p>
 <p>たとえば、こんな感じのノードがあった場合、Subnet 化すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/149be445878e79771fe510a9a6230fa1.png"><img alt="" src="https://gyazo.com/149be445878e79771fe510a9a6230fa1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/149be445878e79771fe510a9a6230fa1.png"><img alt="" src="https://gyazo.com/149be445878e79771fe510a9a6230fa1.png"/></a></p>
 <p>１つのノードにまとめることができる。</p>
 <p>イメージとしては、これはローカル関数に近い。<br/>
 Houdini のシーン内のみで使いまわしができるのがこの Subnet なのかな？</p>
@@ -2855,43 +2870,43 @@ Houdini のシーン内のみで使いまわしができるのがこの Subnet �
 １つの機能を１つのノードとしてまとめることで、中の処理を見えなくすることができる。<br/>
 ただ、それだとパラメーターの調整がいちいち Subnet 内に入らないとできないので<br/>
 Subnet 側にパラメーターを表示するようにする。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/92c2b911a6e90e5206887c7b82ff3797.png"><img alt="" src="https://gyazo.com/92c2b911a6e90e5206887c7b82ff3797.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/92c2b911a6e90e5206887c7b82ff3797.png"><img alt="" src="https://gyazo.com/92c2b911a6e90e5206887c7b82ff3797.png"/></a></p>
 <p>Subnet のノードを選択して、歯車マーク →Edit Parameter Interface...<br/>
 をクリックする。</p>
 <p>そのあと表に出したいパラメーターのノードを Subnet 内で選択し、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9e9e468408ff0054364482da007c1934.png"><img alt="" src="https://gyazo.com/9e9e468408ff0054364482da007c1934.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9e9e468408ff0054364482da007c1934.png"><img alt="" src="https://gyazo.com/9e9e468408ff0054364482da007c1934.png"/></a></p>
 <p>外に出したいアトリビュートを、EditParameterInterface の Existing Parameters の枠の中に D&amp;D する。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5ef9b5a0b30cb40381f74a1bbc4b40ea.png"><img alt="" src="https://gyazo.com/5ef9b5a0b30cb40381f74a1bbc4b40ea.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5ef9b5a0b30cb40381f74a1bbc4b40ea.png"><img alt="" src="https://gyazo.com/5ef9b5a0b30cb40381f74a1bbc4b40ea.png"/></a></p>
 <p>D&amp;D すると、Subnet にパラメーターが追加される。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/aa9b222fd8822ac7c69c952a45fac03c.png"><img alt="" src="https://gyazo.com/aa9b222fd8822ac7c69c952a45fac03c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/aa9b222fd8822ac7c69c952a45fac03c.png"><img alt="" src="https://gyazo.com/aa9b222fd8822ac7c69c952a45fac03c.png"/></a></p>
 <p>すると、グリーンマークになり、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/44cfda4cc29af3dc0b11810efcdde025.png"><img alt="" src="https://gyazo.com/44cfda4cc29af3dc0b11810efcdde025.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/44cfda4cc29af3dc0b11810efcdde025.png"><img alt="" src="https://gyazo.com/44cfda4cc29af3dc0b11810efcdde025.png"/></a></p>
 <p>Subnet にパラメーターが表示される。</p>
 <h2 id="export">Export<a class="headerlink" href="#export" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b5cb78864b0c7ca9743f7d731420510a.png"><img alt="" src="https://gyazo.com/b5cb78864b0c7ca9743f7d731420510a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b5cb78864b0c7ca9743f7d731420510a.png"><img alt="" src="https://gyazo.com/b5cb78864b0c7ca9743f7d731420510a.png"/></a></p>
 <p>準備ができたら、HDA を出力をする。<br/>
 HDA にしたい Subnet を選択 → 右クリックで　 Create Digital Asset...を選択する。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/28deb0aea86fa82661673741b76e98c5.png"><img alt="" src="https://gyazo.com/28deb0aea86fa82661673741b76e98c5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/28deb0aea86fa82661673741b76e98c5.png"><img alt="" src="https://gyazo.com/28deb0aea86fa82661673741b76e98c5.png"/></a></p>
 <p>Operator Name を指定して、HDA ファイルの出力パスを指定する。<br/>
 とりあえずはデフォルトで。</p>
 <p>最後に、出力する HDA の詳細情報を指定する。<br/>
 今回はスキップ。<br/>
 いわゆる配布物である HDA の使い方の Docs やら、アイコンなどの情報をここで指定する。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5de8d72f17805901513406c53af1a89a.png"><img alt="" src="https://gyazo.com/5de8d72f17805901513406c53af1a89a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5de8d72f17805901513406c53af1a89a.png"><img alt="" src="https://gyazo.com/5de8d72f17805901513406c53af1a89a.png"/></a></p>
 <p>いろいろありますが、とりあえずはデフォルトにしておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6ce359ffa4c444bc55dd523f182db946.png"><img alt="" src="https://gyazo.com/6ce359ffa4c444bc55dd523f182db946.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6ce359ffa4c444bc55dd523f182db946.png"><img alt="" src="https://gyazo.com/6ce359ffa4c444bc55dd523f182db946.png"/></a></p>
 <p>出力が完了すると、Tab→Labem 名を入れると、作成した HDA のノードを作成することができます。</p>
 <h2 id="hda_1">HDA の管理<a class="headerlink" href="#hda_1" title="Permanent link">¶</a></h2>
 <p>HDA のノードを右クリック →Show in Asset Manager...を選択すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cb703f64ddb254d03829ca009ef096b9.png"><img alt="" src="https://gyazo.com/cb703f64ddb254d03829ca009ef096b9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cb703f64ddb254d03829ca009ef096b9.png"><img alt="" src="https://gyazo.com/cb703f64ddb254d03829ca009ef096b9.png"/></a></p>
 <p>作成した HAD を確認することができる。</p>
 <h3 id="_2">設定の編集<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c9b9584384017dd3160c75155faecab4.png"><img alt="" src="https://gyazo.com/c9b9584384017dd3160c75155faecab4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c9b9584384017dd3160c75155faecab4.png"><img alt="" src="https://gyazo.com/c9b9584384017dd3160c75155faecab4.png"/></a></p>
 <p>HDA 出力時の設定は、Asset Manager の　 Type Properties から編集することができる。</p>
 <h3 id="hda_2">HDA の中のノードを隠蔽する<a class="headerlink" href="#hda_2" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/eee83b4505a322df55fca2ad35e0cff4.png"><img alt="" src="https://gyazo.com/eee83b4505a322df55fca2ad35e0cff4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/eee83b4505a322df55fca2ad35e0cff4.png"><img alt="" src="https://gyazo.com/eee83b4505a322df55fca2ad35e0cff4.png"/></a></p>
 <p>ノードの中身を開かせたくない場合は「Create Black box assets...」を作成する。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/532c38fbc9a73227e211a1df29302edb.png"><img alt="" src="https://gyazo.com/532c38fbc9a73227e211a1df29302edb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/532c38fbc9a73227e211a1df29302edb.png"><img alt="" src="https://gyazo.com/532c38fbc9a73227e211a1df29302edb.png"/></a></p>
 <p>ブラックボックス化されたノードの場合、ノードの中を見ようとすると PermissionDenied が表示され、<br/>
 中をみることができない。</p>
 <h2 id="_3">参考<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
@@ -2975,5 +2990,5 @@ HDA にしたい Subnet を選択 → 右クリックで　 Create Digital Asset
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

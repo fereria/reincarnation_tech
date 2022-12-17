@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Docker で Runner を使用する\_セットアップ編 - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/20_GitLab/docker_gitlab_ci.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/10_Programming/20_GitLab/docker_gitlab_ci/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Docker で Runner を使用する\_セットアップ編 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/20_GitLab/docker_gitlab_ci.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2778,7 +2793,7 @@
 </a>
 <h1 id="docker-runner-_">Docker で Runner を使用する_セットアップ編<a class="headerlink" href="#docker-runner-_" title="Permanent link">¶</a></h1>
 <p>まず、Windows の PC に、Docker をインストールする。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9542ce3548d18892f7cc393f0f276e10.png"><img alt="" src="https://gyazo.com/9542ce3548d18892f7cc393f0f276e10.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9542ce3548d18892f7cc393f0f276e10.png"><img alt="" src="https://gyazo.com/9542ce3548d18892f7cc393f0f276e10.png"/></a></p>
 <p>インストールしたのに、何故かエラーになって起動できなかったのですが<br/>
 原因は、BIOS 側の Intel-VT が ON になっていないせいだった。</p>
 <p>次に、GitLab-Runner をインストールする。</p>
@@ -2792,19 +2807,19 @@
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>gitlab-runner install
 gitlab-runner start
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2b77af47149d63c1960cabdafc68445c.png"><img alt="" src="https://gyazo.com/2b77af47149d63c1960cabdafc68445c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2b77af47149d63c1960cabdafc68445c.png"><img alt="" src="https://gyazo.com/2b77af47149d63c1960cabdafc68445c.png"/></a></p>
 <p>GitLabRunner をサービスに登録する。<br/>
 サービス登録が終わったら、GitLab への登録をする。</p>
 <p>GitLab のプロジェクト →Settings→CI/CD を開き、Runners Settings を開く。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/67e413b0a1f7938d1100515561c46a83.png"><img alt="" src="https://gyazo.com/67e413b0a1f7938d1100515561c46a83.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/67e413b0a1f7938d1100515561c46a83.png"><img alt="" src="https://gyazo.com/67e413b0a1f7938d1100515561c46a83.png"/></a></p>
 <p>Setup a specific Runner manually ないにある URL と Token を確認しつつ、<br/>
 コマンドプロンプトに、</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>gitlab-runner register
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bc932ba1d7252a7df04fb08d63cced8d.png"><img alt="" src="https://gyazo.com/bc932ba1d7252a7df04fb08d63cced8d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bc932ba1d7252a7df04fb08d63cced8d.png"><img alt="" src="https://gyazo.com/bc932ba1d7252a7df04fb08d63cced8d.png"/></a></p>
 <p>と入力し、GitLab の URL→Token→ 登録名 →Tag 　を入力する。<br/>
 入力すると、どのモードで実行するかを聞かれるので「docker」を選択する。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d3c498aeb73210cbaba80c7f26223600.png"><img alt="" src="https://gyazo.com/d3c498aeb73210cbaba80c7f26223600.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d3c498aeb73210cbaba80c7f26223600.png"><img alt="" src="https://gyazo.com/d3c498aeb73210cbaba80c7f26223600.png"/></a></p>
 <p>登録が完了すると、GitLab 側に Runner が登録される。<br/>
 Project 側で Runner を登録すると、その Runner はプロジェクト専用になる。<br/>
 SharedRunner に登録すると、複数プロジェクトでの共通になるらしいが<br/>
@@ -2865,11 +2880,11 @@ build_job1:
 <p>メインの処理内容は、こんな形が基本になっていて<br/>
 ここの stage で書いた内容を stage:に記載する。</p>
 <p>.gitlab-ci.yml を、Git にコミットするとジョブが実行される。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/35e55f1d83e999824e9b3831c48d1d56.png"><img alt="" src="https://gyazo.com/35e55f1d83e999824e9b3831c48d1d56.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/35e55f1d83e999824e9b3831c48d1d56.png"><img alt="" src="https://gyazo.com/35e55f1d83e999824e9b3831c48d1d56.png"/></a></p>
 <p>プロジェクトの CI/CD の Jobs を見ると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/73bb6792d1d63079851f917b56395200.png"><img alt="" src="https://gyazo.com/73bb6792d1d63079851f917b56395200.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/73bb6792d1d63079851f917b56395200.png"><img alt="" src="https://gyazo.com/73bb6792d1d63079851f917b56395200.png"/></a></p>
 <p>JOB が追加される。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c7a483e2ecf67f37bbe125a1adf67380.png"><img alt="" src="https://gyazo.com/c7a483e2ecf67f37bbe125a1adf67380.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c7a483e2ecf67f37bbe125a1adf67380.png"><img alt="" src="https://gyazo.com/c7a483e2ecf67f37bbe125a1adf67380.png"/></a></p>
 <p>正しく Runner が登録されていると、JOB が開始されて、<br/>
 Docker で、image で指定したコンテナが作成されて<br/>
 stage で登録した JOB が実行される。<br/>
@@ -2879,7 +2894,7 @@ Docker で毎回環境が構築されるので、JOB のスクリプトなどで
 <p>Windows 環境で CI を動かしたい場合は docker ではなく shell を使用するが、<br/>
 ステータスはグリーンになっているにもかかわらず JOB がスタックしてしまい<br/>
 処理が始まらない現象が発生した。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f69eb02c5f0a6253d88198ec7aa61fed.png"><img alt="" src="https://gyazo.com/f69eb02c5f0a6253d88198ec7aa61fed.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f69eb02c5f0a6253d88198ec7aa61fed.png"><img alt="" src="https://gyazo.com/f69eb02c5f0a6253d88198ec7aa61fed.png"/></a></p>
 <p>原因は、JOB にタグがない場合は走らないのチェックが Off の場合<br/>
 Shell の処理が開始しないせいだった。<br/>
 （Docker の場合は、OFF でも JOB が走った）</p>
@@ -2971,5 +2986,5 @@ Maya 等を自動で動かしたい場合は、Docker ではなく Shell にす�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

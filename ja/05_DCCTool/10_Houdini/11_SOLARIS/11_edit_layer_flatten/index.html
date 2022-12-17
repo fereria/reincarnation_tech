@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Flattenでレイヤーをコントロールしよう - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/11_edit_layer_flatten.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOLARIS/11_edit_layer_flatten/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Flattenでレイヤーをコントロールしよう - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/11_edit_layer_flatten.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2792,14 +2807,14 @@ usdaファイルをコントールできることがわかりました。<br/>
 Flatttnをすると、コンポジションアークで別のレイヤーを読み込んでいたりする場所も<br/>
 １つのレイヤーにまとめることができます。</p>
 <p>このFlattenがSOLARIS上でどう扱われているかというと、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/190b91f4d6dc0aba8b3126ff2731b82d.png"><img alt="" src="https://gyazo.com/190b91f4d6dc0aba8b3126ff2731b82d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/190b91f4d6dc0aba8b3126ff2731b82d.png"><img alt="" src="https://gyazo.com/190b91f4d6dc0aba8b3126ff2731b82d.png"/></a></p>
 <p>たとえばマージノードには Merge Styleという項目があり</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3135b473882799e361a90aadaf3ba68c.png"><img alt="" src="https://gyazo.com/3135b473882799e361a90aadaf3ba68c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3135b473882799e361a90aadaf3ba68c.png"><img alt="" src="https://gyazo.com/3135b473882799e361a90aadaf3ba68c.png"/></a></p>
 <p>このように、２つのレイヤーをマージした場合、<br/>
 デフォルトの Separate Layers であれば、マージ結果は 2Layersになります。<br/>
 つまり、2つのレイヤーが合成されている状態（レイヤーの状態は保持されたまま）<br/>
 というわけです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/eaa21c4482354aa0acd64ef2c323c366.png"><img alt="" src="https://gyazo.com/eaa21c4482354aa0acd64ef2c323c366.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/eaa21c4482354aa0acd64ef2c323c366.png"><img alt="" src="https://gyazo.com/eaa21c4482354aa0acd64ef2c323c366.png"/></a></p>
 <p>これを Flatten Layers にすると、 2 Layers という表示がなくなりました。<br/>
 どうなったかというと、<br/>
 今までは 2つのレイヤーがそれぞれ保持されていて、それをコンポジションしていたのが<br/>
@@ -2815,9 +2830,9 @@ SavePathをしていない場合は、１つの USDファイルではなく<br/>
 結果が意図しないことになる場合があります。<br/>
 それがPruneノードを使用して１つのUSDを複数に切り分けるような処理をした場合です。</p>
 <p>実際にやってみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cdd0fdf1ec2415a0c937ab1e3b59afe5.png"><img alt="" src="https://gyazo.com/cdd0fdf1ec2415a0c937ab1e3b59afe5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cdd0fdf1ec2415a0c937ab1e3b59afe5.png"><img alt="" src="https://gyazo.com/cdd0fdf1ec2415a0c937ab1e3b59afe5.png"/></a></p>
 <p>こういうサンプルを用意します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/aa9e2ee1be6c29447e84f738a6e11702.png"><img alt="" src="https://gyazo.com/aa9e2ee1be6c29447e84f738a6e11702.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/aa9e2ee1be6c29447e84f738a6e11702.png"><img alt="" src="https://gyazo.com/aa9e2ee1be6c29447e84f738a6e11702.png"/></a></p>
 <p>Pruneで切り出す前のシーングラフはこんな感じ。<br/>
 CubeとSphereがそれぞれあるような状態。<br/>
 これを、 Cubeだけ Sphere だけで切り出してそれぞれ別レイヤーとして<br/>
@@ -2825,7 +2840,7 @@ CubeとSphereがそれぞれあるような状態。<br/>
 そして最後に１つにコンポジションをしたいとします。<br/>
 なので、最終的にはCubeとSphereは両方見えていてほしいです。</p>
 <p>が、この結果がどうなるかというと</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/45df41da5e10d7c6bd942de46b5ce438.png"><img alt="" src="https://gyazo.com/45df41da5e10d7c6bd942de46b5ce438.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/45df41da5e10d7c6bd942de46b5ce438.png"><img alt="" src="https://gyazo.com/45df41da5e10d7c6bd942de46b5ce438.png"/></a></p>
 <p>こうなります。<br/>
 両方消えてしまいました。</p>
 <p>これは、USDのレイヤーそれぞれは非破壊でオーサリングした情報を持っています。<br/>
@@ -2876,14 +2891,14 @@ over "sphere1"
 結果両方のノードがきえてしまうというわけです。</p>
 <p>じゃあこれはどうすりゃいいんだ？っていうときに使用するのが<br/>
 前回も使用したConfigureLayerノードです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/40d1819f4f64d1a1f1841bd530dfe992.png"><img alt="" src="https://gyazo.com/40d1819f4f64d1a1f1841bd530dfe992.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/40d1819f4f64d1a1f1841bd530dfe992.png"><img alt="" src="https://gyazo.com/40d1819f4f64d1a1f1841bd530dfe992.png"/></a></p>
 <p>まず、Pruneノードの Methodを Deactive にします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0a84665d50bc25c45487e6d305e723be.png"><img alt="" src="https://gyazo.com/0a84665d50bc25c45487e6d305e723be.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0a84665d50bc25c45487e6d305e723be.png"><img alt="" src="https://gyazo.com/0a84665d50bc25c45487e6d305e723be.png"/></a></p>
 <p>Pruneノードの次にConfigureLayerを追加します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/43bca3b477249a0b330452c81c4a94fc.png"><img alt="" src="https://gyazo.com/43bca3b477249a0b330452c81c4a94fc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/43bca3b477249a0b330452c81c4a94fc.png"><img alt="" src="https://gyazo.com/43bca3b477249a0b330452c81c4a94fc.png"/></a></p>
 <p>そして Configure Layer の Flatten Input を Flatten Input Stage します。</p>
 <p>結果のシーングラフを見ると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/538ee55ce1390d42b4633db63c0f1291.png"><img alt="" src="https://gyazo.com/538ee55ce1390d42b4633db63c0f1291.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/538ee55ce1390d42b4633db63c0f1291.png"><img alt="" src="https://gyazo.com/538ee55ce1390d42b4633db63c0f1291.png"/></a></p>
 <p>先ほどとは違い、PrimがHideではなく削除されて<br/>
 切り出されたモデルのみになっています。</p>
 <p>何が起きたかというと、 Pruneノードで切り出されてモデル以外は<br/>
@@ -2894,7 +2909,7 @@ Activeが False 状態になります。<br/>
 <p>これを、Flatten Input Stageすると、Photoshopのレイヤー統合を実行したのと<br/>
 同じ状態になり、いままで非表示にしていただけのPrimは<br/>
 なくなってしまいます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/741ba4c8f78a0ee948daa0a91b409714.png"><img alt="" src="https://gyazo.com/741ba4c8f78a0ee948daa0a91b409714.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/741ba4c8f78a0ee948daa0a91b409714.png"><img alt="" src="https://gyazo.com/741ba4c8f78a0ee948daa0a91b409714.png"/></a></p>
 <p>結果。<br/>
 それぞれ切り出されてFlattenした状態のレイヤーを合成したら<br/>
 そもそも visibility や active の情報はすでになく<br/>
@@ -2907,14 +2922,14 @@ Activeが False 状態になります。<br/>
 <p>というわけで、場合によってはFlattenしてレイヤーをまとめたりする必要が<br/>
 あることはわかりましたが<br/>
 このFlattenを入れたせいで意図しないことが起きる場合があります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/312dd0513e4ff777254f81a3bf392bf5.png"><img alt="" src="https://gyazo.com/312dd0513e4ff777254f81a3bf392bf5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/312dd0513e4ff777254f81a3bf392bf5.png"><img alt="" src="https://gyazo.com/312dd0513e4ff777254f81a3bf392bf5.png"/></a></p>
 <p>例として、こういうシンプルなバリアントセットを用意します。<br/>
 これで複数のモデルをきりかえできるようになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7b3cb0db1b641858278d86b06a924c98.png"><img alt="" src="https://gyazo.com/7b3cb0db1b641858278d86b06a924c98.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7b3cb0db1b641858278d86b06a924c98.png"><img alt="" src="https://gyazo.com/7b3cb0db1b641858278d86b06a924c98.png"/></a></p>
 <p>これに、ConfigureLayerを追加して</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d3b9fee15401b10c8be0b84eb0fae24a.png"><img alt="" src="https://gyazo.com/d3b9fee15401b10c8be0b84eb0fae24a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d3b9fee15401b10c8be0b84eb0fae24a.png"><img alt="" src="https://gyazo.com/d3b9fee15401b10c8be0b84eb0fae24a.png"/></a></p>
 <p>Flatten Input Stage してみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4b960d9d5a1f3544d1cfbc6f86724ca4.png"><img alt="" src="https://gyazo.com/4b960d9d5a1f3544d1cfbc6f86724ca4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4b960d9d5a1f3544d1cfbc6f86724ca4.png"><img alt="" src="https://gyazo.com/4b960d9d5a1f3544d1cfbc6f86724ca4.png"/></a></p>
 <p>結果、追加したはずのバリアントセットが消滅しました。</p>
 <p>なぜかというと、Flatten（Flatten Input Stage) は<br/>
 USDのコンポジションなどを１つのレイヤーにまとめる処理だからです。<br/>
@@ -2929,7 +2944,7 @@ Flatten Input Stage してコンポジション（とくにバリアントが）
 Flatten Input Layers というのがありますが<br/>
 こちらは複数に分かれたレイヤーを１つにまとめるもので<br/>
 MergeノードのFlatten Layersと同じ挙動になります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c2fb6189095b543429237968e8ff070d.png"><img alt="" src="https://gyazo.com/c2fb6189095b543429237968e8ff070d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c2fb6189095b543429237968e8ff070d.png"><img alt="" src="https://gyazo.com/c2fb6189095b543429237968e8ff070d.png"/></a></p>
 <p>この場合は、「2 Layers」という表記がなくなり、１つのレイヤーに統合されただけで<br/>
 コンポジションの合成などの情報は非破壊で保持されます。</p>
 <h2 id="_1">まとめ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
@@ -3021,5 +3036,5 @@ FlattenとConfigureLayerのExportPath指定などを活用して<br/>
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

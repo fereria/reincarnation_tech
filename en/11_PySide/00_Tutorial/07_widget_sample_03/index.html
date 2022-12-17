@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="基本Widgetを使ってみる(3):ComboBox_基本編 - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/00_Tutorial/07_widget_sample_03.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_PySide/00_Tutorial/07_widget_sample_03/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="基本Widgetを使ってみる(3):ComboBox_基本編 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/00_Tutorial/07_widget_sample_03.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2828,7 +2843,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="widget-3combobox_">基本 Widget を使ってみる(3):ComboBox_基本編<a class="headerlink" href="#widget-3combobox_" title="Permanent link">¶</a></h1>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/46ed1187e4b03d1fc1390b851ea50157.png"><img alt="" src="https://gyazo.com/46ed1187e4b03d1fc1390b851ea50157.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/46ed1187e4b03d1fc1390b851ea50157.png"><img alt="" src="https://gyazo.com/46ed1187e4b03d1fc1390b851ea50157.png"/></a></p>
 <p>複数の項目から 1 つを選びたい時などに使用する<br/>
 「POPUP を表示 → 選択する」ができるのが ComboBox。<br/>
 今回はその基本的な使い方を説明します。</p>
@@ -2839,7 +2854,7 @@
 <h2 id="_1">サンプルコード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <script src="https://embed.cacher.io/865138d20d30a842faab429b0c2a49a67a5aff48.js?a=a0dda4a847058f1775f1abbc859c6be7"></script>
 <p>実行すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bf1e8e55b528cfd27a350b110850c2f1.PNG"><img alt="" src="https://gyazo.com/bf1e8e55b528cfd27a350b110850c2f1.PNG"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bf1e8e55b528cfd27a350b110850c2f1.PNG"><img alt="" src="https://gyazo.com/bf1e8e55b528cfd27a350b110850c2f1.PNG"/></a></p>
 <p>このような UI が表示されます。</p>
 <h2 id="_2">基本的な使い方<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <h3 id="_3">新規追加<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
@@ -2854,7 +2869,7 @@ addItem('hogehoge')ならば、複数ではなく 1 つだけ追加すること�
 </code></pre></div></td></tr></table></div>
 <p>Editable を True にすることで、新しい項目をユーザーが追加できるようになります。</p>
 <h3 id="_5">現在の選択項目を取得する<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/034e8ac96ba26fcf741ef42a4d721f17.png"><img alt="" src="https://gyazo.com/034e8ac96ba26fcf741ef42a4d721f17.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/034e8ac96ba26fcf741ef42a4d721f17.png"><img alt="" src="https://gyazo.com/034e8ac96ba26fcf741ef42a4d721f17.png"/></a></p>
 <p>現在の項目を選択するには「Current＃＃＃＃」を使用します。<br/>
 ComboBox のリストは「Index」を使用してアクセスすることができます。<br/>
 その場合は、0 番目からスタートし、下にいくにつれて+1 された Index で<br/>
@@ -2863,7 +2878,7 @@ ComboBox のリストは「Index」を使用してアクセスすることがで
 <p>Index を使用してなにかする例としては<br/>
 「現在選択している項目を削除したい」場合など。<br/>
 この場合は、removeItem の引数が</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d1cf903ffee46e606864896dabcc41b0.png"><img alt="" src="https://gyazo.com/d1cf903ffee46e606864896dabcc41b0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d1cf903ffee46e606864896dabcc41b0.png"><img alt="" src="https://gyazo.com/d1cf903ffee46e606864896dabcc41b0.png"/></a></p>
 <p>index になっているので、currentIndex で Index を取得し<br/>
 その Index を使用して removeItem を実行することで<br/>
 現在の選択状態を削除することができます。</p>
@@ -2958,5 +2973,5 @@ findText を使用します。<br/>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

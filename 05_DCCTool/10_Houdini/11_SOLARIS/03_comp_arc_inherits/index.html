@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="SOLARISでInherits(継承)/Reference(継承)を扱う - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/03_comp_arc_inherits.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/05_DCCTool/10_Houdini/11_SOLARIS/03_comp_arc_inherits/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="SOLARISでInherits(継承)/Reference(継承)を扱う - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/03_comp_arc_inherits.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -134,7 +149,7 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../..">
+<a class="md-tabs__link" href="../../../../">
       Introduction
     </a>
 </li>
@@ -215,7 +230,7 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../..">
+<a class="md-nav__link" href="../../../../">
         Introduction
       </a>
 </li>
@@ -2816,7 +2831,7 @@
 <h2 id="_1">継承のノード<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まず、SOLARIS 上で継承を使いたい場合は<br/>
 独自ノードではなく Reference ノード内の ReferenceType を使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3ed522a786d457a1acfdf98c96b8f36d.png"><img alt="" src="https://gyazo.com/3ed522a786d457a1acfdf98c96b8f36d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3ed522a786d457a1acfdf98c96b8f36d.png"><img alt="" src="https://gyazo.com/3ed522a786d457a1acfdf98c96b8f36d.png"/></a></p>
 <p>ReferenceType の Inherits From First Input を選択すると<br/>
 Input1 のノードを継承して新しく Primitive を作成します。</p>
 <h2 id="class-def">Class と Def の違い<a class="headerlink" href="#class-def" title="Permanent link">¶</a></h2>
@@ -2824,7 +2839,7 @@ Input1 のノードを継承して新しく Primitive を作成します。</p>
 「def」という Specifier(指定子)を使用しますが<br/>
 def 意外にも「class」という指定子が存在します。<br/>
 コレが一体どう違いが出るかというと、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png"><img alt="" src="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png"><img alt="" src="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png"/></a></p>
 <p>このように、定義するとシーングラフ上に表示されるものの<br/>
 名前の左側にかがみもちみたいなアイコンが表示され、ビューポートにはなにも表示されません。<br/>
 class の場合は、あくまでも定義だけで実体を作らず<br/>
@@ -2837,7 +2852,7 @@ class で定義している Primitive を作成することが出来ます。</p
 <p>まず、Reference。<br/>
 Reference は完全なカプセル化された別のレイヤーを、指定の Primitive に対してロードします。<br/>
 「カプセル化」がなにかというと、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/abe1f03c14eb9860d18acba61564c6a2.png"><img alt="" src="https://gyazo.com/abe1f03c14eb9860d18acba61564c6a2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/abe1f03c14eb9860d18acba61564c6a2.png"><img alt="" src="https://gyazo.com/abe1f03c14eb9860d18acba61564c6a2.png"/></a></p>
 <p>まず、こんなサンプルを用意します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2864,13 +2879,13 @@ def "Obj"(references=&lt;/ObjBase&gt;){}
 <p>こうします。<br/>
 この 2 つをサブレイヤーで合成してみます。<br/>
 「Reference」の場合、<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/95b84ecd4714255fea7597bcc58666d0.png"><img alt="" src="https://gyazo.com/95b84ecd4714255fea7597bcc58666d0.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/95b84ecd4714255fea7597bcc58666d0.png"><img alt="" src="https://gyazo.com/95b84ecd4714255fea7597bcc58666d0.png"/></a><br/>
 結果は Cube になります。<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a93988890062bf95905bff56ce47593d.png"><img alt="" src="https://gyazo.com/a93988890062bf95905bff56ce47593d.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a93988890062bf95905bff56ce47593d.png"><img alt="" src="https://gyazo.com/a93988890062bf95905bff56ce47593d.png"/></a><br/>
 シーングラフをみても、Class 定義はなくロードされた Primitive のみが表示されます。</p>
 <p>Reference で読み込まれてるレイヤー内の構造がカプセル化されているので<br/>
 あとからサブレイヤーでファイルをロードしたとしても、<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b149ebd89d2c87713455b6c313035363.png"><img alt="" src="https://gyazo.com/b149ebd89d2c87713455b6c313035363.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b149ebd89d2c87713455b6c313035363.png"><img alt="" src="https://gyazo.com/b149ebd89d2c87713455b6c313035363.png"/></a><br/>
 合成はされるものの、リファレンス内の構造には影響を与えません。</p>
 <p>これを</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2888,7 +2903,7 @@ class Cube "ObjBase"{}
 def "Obj"(inherits=&lt;/ObjBase&gt;){}
 </code></pre></div></td></tr></table></div>
 <p>このように「継承」にしてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ddffc80dc903d4d7bbd76db180e3fb28.png"><img alt="" src="https://gyazo.com/ddffc80dc903d4d7bbd76db180e3fb28.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ddffc80dc903d4d7bbd76db180e3fb28.png"><img alt="" src="https://gyazo.com/ddffc80dc903d4d7bbd76db180e3fb28.png"/></a></p>
 <p>すると、サブレイヤーの結果は Sphere に変わりました。<br/>
 つまりは、Merge ノードを使用して合成した class Sphere "BaseObj" {} が<br/>
 Reference ノードを使用して読み込んだレイヤー内の class を上書きしている...ということがわかります。<br/>
@@ -2896,12 +2911,12 @@ Reference ノードを使用して読み込んだレイヤー内の class を上
 <h2 id="solaris">SOLARIS 内での扱い方<a class="headerlink" href="#solaris" title="Permanent link">¶</a></h2>
 <p>ここまでが USD 的な挙動でしたが<br/>
 では実際に SOLARIS 上での挙動を調べてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e31a8ff3a7fe359848543aa128581d24.png"><img alt="" src="https://gyazo.com/e31a8ff3a7fe359848543aa128581d24.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e31a8ff3a7fe359848543aa128581d24.png"><img alt="" src="https://gyazo.com/e31a8ff3a7fe359848543aa128581d24.png"/></a></p>
 <p>まずはこんな感じで class 指定子で Class を定義します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a7b53ffc68a27085e9614eb449785bb3.png"><img alt="" src="https://gyazo.com/a7b53ffc68a27085e9614eb449785bb3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a7b53ffc68a27085e9614eb449785bb3.png"><img alt="" src="https://gyazo.com/a7b53ffc68a27085e9614eb449785bb3.png"/></a></p>
 <p>Primitive ノードを使用すると、指定の Type で def または class を作成できます。<br/>
 ので、今回は Cube を Class で作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3b08a8faa09279b3acaa7e01d7e5c7ad.png"><img alt="" src="https://gyazo.com/3b08a8faa09279b3acaa7e01d7e5c7ad.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3b08a8faa09279b3acaa7e01d7e5c7ad.png"><img alt="" src="https://gyazo.com/3b08a8faa09279b3acaa7e01d7e5c7ad.png"/></a></p>
 <p>Inherits は単独のノードではなく Reference ノードのオプションで切り替えできます。<br/>
 切り替えたら、継承元の Primitive を指定します。</p>
 <p>なお、Reference と Inherits の違いとして、Reference は別のレイヤー（別の usd）を指定して<br/>
@@ -2930,12 +2945,12 @@ def "Inherits" (
 }
 </code></pre></div></td></tr></table></div>
 <p>こんな感じの usda が作成されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/950e06b355b39a04cc3f51ad37023b0e.png"><img alt="" src="https://gyazo.com/950e06b355b39a04cc3f51ad37023b0e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/950e06b355b39a04cc3f51ad37023b0e.png"><img alt="" src="https://gyazo.com/950e06b355b39a04cc3f51ad37023b0e.png"/></a></p>
 <p>結果のシーングラフ。<br/>
 Inherits という名前の Cube が作成されました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5f3dbf0b535e9a4e164732c0169c368e.png"><img alt="" src="https://gyazo.com/5f3dbf0b535e9a4e164732c0169c368e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5f3dbf0b535e9a4e164732c0169c368e.png"><img alt="" src="https://gyazo.com/5f3dbf0b535e9a4e164732c0169c368e.png"/></a></p>
 <p>この継承したレイヤーを USD ROP で出力します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fe31288229a60c9f434557f69eefe10b.png"><img alt="" src="https://gyazo.com/fe31288229a60c9f434557f69eefe10b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fe31288229a60c9f434557f69eefe10b.png"><img alt="" src="https://gyazo.com/fe31288229a60c9f434557f69eefe10b.png"/></a></p>
 <p>そのファイルをRefernceノードでロードすると、<br/>
 このようにClass定義はなくなり、ファイル内の指定のPrimitive（通常はDefaultPrim）のみが<br/>
 表示されます。<br/>
@@ -2947,27 +2962,27 @@ Inherits という名前の Cube が作成されました。</p>
 }
 </code></pre></div></td></tr></table></div><br/>
 このようなファイルをサブレイヤー合成すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/40d836b0c63eb4969d1639f136f694ee.png"><img alt="" src="https://gyazo.com/40d836b0c63eb4969d1639f136f694ee.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/40d836b0c63eb4969d1639f136f694ee.png"><img alt="" src="https://gyazo.com/40d836b0c63eb4969d1639f136f694ee.png"/></a></p>
 <p>こんな感じで合成され</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/906b3fc84f75c9a91320c9cb1595ec9f.png"><img alt="" src="https://gyazo.com/906b3fc84f75c9a91320c9cb1595ec9f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/906b3fc84f75c9a91320c9cb1595ec9f.png"><img alt="" src="https://gyazo.com/906b3fc84f75c9a91320c9cb1595ec9f.png"/></a></p>
 <p>結果はSphereに変わります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/76cdcad45e0256c13183dc15ff170314.png"><img alt="" src="https://gyazo.com/76cdcad45e0256c13183dc15ff170314.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/76cdcad45e0256c13183dc15ff170314.png"><img alt="" src="https://gyazo.com/76cdcad45e0256c13183dc15ff170314.png"/></a></p>
 <p>しかし、これを Reference From First Input にしてから再度出力して、<br/>
 同じノードを確認すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3883cd57f7e755a63e633749ef1434ba.png"><img alt="" src="https://gyazo.com/3883cd57f7e755a63e633749ef1434ba.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3883cd57f7e755a63e633749ef1434ba.png"><img alt="" src="https://gyazo.com/3883cd57f7e755a63e633749ef1434ba.png"/></a></p>
 <p>同じ構成であっても、オーバーライドされずにreference4はCubeのまま</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6bcc7060d30110560ba73c1c6c79fcef.png"><img alt="" src="https://gyazo.com/6bcc7060d30110560ba73c1c6c79fcef.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6bcc7060d30110560ba73c1c6c79fcef.png"><img alt="" src="https://gyazo.com/6bcc7060d30110560ba73c1c6c79fcef.png"/></a></p>
 <p>Reference内のClassは隠蔽された状態になります。</p>
 <p>これが、ReferenceとInheritsの挙動の差のようです。</p>
 <h3 id="loadlayer">loadLayerでの読み込み<a class="headerlink" href="#loadlayer" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/79ae7a0058c30649d105bb2e1dd7d63b.png"><img alt="" src="https://gyazo.com/79ae7a0058c30649d105bb2e1dd7d63b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/79ae7a0058c30649d105bb2e1dd7d63b.png"><img alt="" src="https://gyazo.com/79ae7a0058c30649d105bb2e1dd7d63b.png"/></a></p>
 <p>レイヤーを読み込む場合、Referenceノードの場合は<br/>
 Classは隠蔽され、シーングラフには表示されず、継承したクラスをオーバーライドする等は<br/>
 出来ません。</p>
 <p>loadLayer＋Referenceノードを使用してリファレンス化した場合</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b1618979ee926c0bd1c22258e355af88.png"><img alt="" src="https://gyazo.com/b1618979ee926c0bd1c22258e355af88.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b1618979ee926c0bd1c22258e355af88.png"><img alt="" src="https://gyazo.com/b1618979ee926c0bd1c22258e355af88.png"/></a></p>
 <p>こうすると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/44f3c51dc5bf107a8b511d26861cdf88.png"><img alt="" src="https://gyazo.com/44f3c51dc5bf107a8b511d26861cdf88.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/44f3c51dc5bf107a8b511d26861cdf88.png"><img alt="" src="https://gyazo.com/44f3c51dc5bf107a8b511d26861cdf88.png"/></a></p>
 <p>こうなります。<br/>
 ファイルでReferenceを読み込むのではなく<br/>
 LoadLayerでReferenceノードにつなぐと<br/>
@@ -3067,5 +3082,5 @@ Referenceノードを使用してロードするのが正解でした。<br/>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

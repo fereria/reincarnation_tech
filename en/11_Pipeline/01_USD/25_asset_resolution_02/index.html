@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="AssetResolution(2) ResolveとContext - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/25_asset_resolution_02.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/25_asset_resolution_02/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="AssetResolution(2) ResolveとContext - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/25_asset_resolution_02.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2894,10 +2909,10 @@ createContextFromStringに渡すことで、パスの解決をすることがで
 </code></pre></div></td></tr></table></div>
 <p>実際のところ、どうAssetResolutionが行われていて<br/>
 結果どのようなパスになっているのかがわかりにくいので Debugメッセージをいれてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8b4bc57da574b657738e834f8561f79d.png"><img alt="" src="https://gyazo.com/8b4bc57da574b657738e834f8561f79d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8b4bc57da574b657738e834f8561f79d.png"><img alt="" src="https://gyazo.com/8b4bc57da574b657738e834f8561f79d.png"/></a></p>
 <p>たとえば、asset URI ではないファイルを実行してみたばあいも、UsdResolverExampleResolver が呼ばれているものの<br/>
 Contextが見つからないため、DefaultResolverが呼ばれていることがわかりますし、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/24141e1099ccb3854bfd7630f2f39890.png"><img alt="" src="https://gyazo.com/24141e1099ccb3854bfd7630f2f39890.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/24141e1099ccb3854bfd7630f2f39890.png"><img alt="" src="https://gyazo.com/24141e1099ccb3854bfd7630f2f39890.png"/></a></p>
 <p>Assetが見つかった場合は、このようにFileSystem上に見つかっていることがわかります。</p>
 <h2 id="python">Pythonで実行する<a class="headerlink" href="#python" title="Permanent link">¶</a></h2>
 <p>コマンドラインを使用するのなら以上で終了なのですが、<br/>
@@ -2926,7 +2941,7 @@ CreateIdentifierは、この解決済のArResolvedPathからのパスを取得�
 <p>AssetResolverは、大きく分けると ArResolver ArResolverContextBinder ArResolverContext の３つに分かれています。<br/>
 <strong>ArResolverContextとは、AssetResolutionを行うためにResolverに追加情報を与えるための機能</strong> です。<br/>
 そしてそのContextをResolver で使用できるようにするのに ArResolverContextBinderを使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/284ef1cf10c3ff8b9592c3ed1a1c117b.png"><img alt="" src="https://gyazo.com/284ef1cf10c3ff8b9592c3ed1a1c117b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/284ef1cf10c3ff8b9592c3ed1a1c117b.png"><img alt="" src="https://gyazo.com/284ef1cf10c3ff8b9592c3ed1a1c117b.png"/></a></p>
 <p>ArResolverContextとは、<br/>
 usdResolverExample の場合でいうと、バージョンが書かれているjsonファイルのPathです。<br/>
 usdResolverExample本体側で、このContextからjsonを受け取り、AssetResolutionを行います。</p>
@@ -3090,5 +3105,5 @@ C++の実装と合わせてテストコードをみると、より分かりや�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

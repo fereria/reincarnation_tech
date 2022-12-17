@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="SOLARISでInstancerを使う(1) 配置編 - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/05_point_instancer.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/05_DCCTool/10_Houdini/11_SOLARIS/05_point_instancer/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="SOLARISでInstancerを使う(1) 配置編 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/05_point_instancer.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2831,7 +2846,7 @@
 </a>
 <h1>SOLARISでInstancerを使う(1) 配置編</h1>
 <p>SOLARISのメニューには、<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bec22aba78ff3f49b3a60ac54e3cefbc.png"><img alt="" src="https://gyazo.com/bec22aba78ff3f49b3a60ac54e3cefbc.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bec22aba78ff3f49b3a60ac54e3cefbc.png"><img alt="" src="https://gyazo.com/bec22aba78ff3f49b3a60ac54e3cefbc.png"/></a><br/>
 Insatncingというカテゴリが存在している通り、SOLARISでのレイアウトでの<br/>
 Instanceというのはかなり重要な要素になってきます。</p>
 <p>というわけで、今回はInstancer周りの構造の使い方とかが<br/>
@@ -2848,24 +2863,24 @@ UsdStage上で同じ表現(合成したPrim)を共有することができる機
 することができます。</p>
 <h2 id="_1">基本構造<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>まずは基本的な構造から。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/39ad6d46f48153389f27e61b690955ad.png"><img alt="" src="https://gyazo.com/39ad6d46f48153389f27e61b690955ad.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/39ad6d46f48153389f27e61b690955ad.png"><img alt="" src="https://gyazo.com/39ad6d46f48153389f27e61b690955ad.png"/></a></p>
 <p>まずはPointsに配置したいPrimを用意します。<br/>
 そして、AddPointInstancerノードを作ります。  </p>
 <p>今回のサンプルの場合だと Sphere と Cubeの２つを用意します。<br/>
 そしてそれをMergeして<br/>
 AddPointInstancerのInput2に接続します。</p>
 <p>次にSOPネットワークで、オブジェクトを配置したいPointsを作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/07089c4b932168789b4e8441be87f04b.png"><img alt="" src="https://gyazo.com/07089c4b932168789b4e8441be87f04b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/07089c4b932168789b4e8441be87f04b.png"><img alt="" src="https://gyazo.com/07089c4b932168789b4e8441be87f04b.png"/></a></p>
 <p>今回は、 Primitive TypeをPointsにしたGridを用意しておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f094c4fea202579377382e54b9938cd6.png"><img alt="" src="https://gyazo.com/f094c4fea202579377382e54b9938cd6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f094c4fea202579377382e54b9938cd6.png"><img alt="" src="https://gyazo.com/f094c4fea202579377382e54b9938cd6.png"/></a></p>
 <p>最後に、AddPointInstancerノードの Target Points の SOP Path に<br/>
 先程作った配置用Pointsを指定して、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/60526128426e37509c88ad943b9a3b55.png"><img alt="" src="https://gyazo.com/60526128426e37509c88ad943b9a3b55.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/60526128426e37509c88ad943b9a3b55.png"><img alt="" src="https://gyazo.com/60526128426e37509c88ad943b9a3b55.png"/></a></p>
 <p>配置したいPrim(Prototypesと呼ぶ）を指定するために<br/>
 Prototype Source を Second Input にして、 Use Entire Stageをはずします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5480a55f656634d47d29b47fbfd36bf4.png"><img alt="" src="https://gyazo.com/5480a55f656634d47d29b47fbfd36bf4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5480a55f656634d47d29b47fbfd36bf4.png"><img alt="" src="https://gyazo.com/5480a55f656634d47d29b47fbfd36bf4.png"/></a></p>
 <p>そうすると、GridのPointsに対してオブジェクトがランダムに配置されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/78a480da0eed77f3cff738b5fd868e0b.png"><img alt="" src="https://gyazo.com/78a480da0eed77f3cff738b5fd868e0b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/78a480da0eed77f3cff738b5fd868e0b.png"><img alt="" src="https://gyazo.com/78a480da0eed77f3cff738b5fd868e0b.png"/></a></p>
 <p>できあがったシーングラフがこちら。<br/>
 Second Inputsに入力したオブジェクトは Prototypes スコープ下に配置され<br/>
 PointInstancerPrimが作成されます。</p>
@@ -2990,15 +3005,15 @@ PrototypesへのIndexが保持されたじょうたいになっています。</
 <p>このPointInstancerと似た機能というかほぼ同じような結果になるノードが「CopyToPoint」ノードです。<br/>
 CopyToPointノードの指定方法やノードネットワークのつなぎ方はAddPointInstancerとほぼ共通<br/>
 になりますが、結果できあがるシーングラフは大きく異なります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b70214e134e5e01b28b555d107a692cb.png"><img alt="" src="https://gyazo.com/b70214e134e5e01b28b555d107a692cb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b70214e134e5e01b28b555d107a692cb.png"><img alt="" src="https://gyazo.com/b70214e134e5e01b28b555d107a692cb.png"/></a></p>
 <p>上の例だと、PointInstancerノードが出来上がっただけでしたが<br/>
 CopyToPointの場合は、実際のPrimが生成されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/dc1a73a154dd20229f5d6dfa5b512ee6.png"><img alt="" src="https://gyazo.com/dc1a73a154dd20229f5d6dfa5b512ee6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/dc1a73a154dd20229f5d6dfa5b512ee6.png"><img alt="" src="https://gyazo.com/dc1a73a154dd20229f5d6dfa5b512ee6.png"/></a></p>
 <p>Use Entire Stageがオンの場合は PrototypesのPrimがInstanceとして各Pointに生成され</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/543562d3a787551b21092371b9e0d4d1.png"><img alt="" src="https://gyazo.com/543562d3a787551b21092371b9e0d4d1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/543562d3a787551b21092371b9e0d4d1.png"><img alt="" src="https://gyazo.com/543562d3a787551b21092371b9e0d4d1.png"/></a></p>
 <p>こんな感じですべてのPrimが配置されるし、</p>
 <p>Use Entire Stage がオフの場合は</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e47e2bcce78f42e193a63914bb022838.png"><img alt="" src="https://gyazo.com/e47e2bcce78f42e193a63914bb022838.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e47e2bcce78f42e193a63914bb022838.png"><img alt="" src="https://gyazo.com/e47e2bcce78f42e193a63914bb022838.png"/></a></p>
 <p>PointInstancerと同じように、ランダムでPrimが配置されますが<br/>
 Prototypes以下にあるPrimをリファレンスで配置した状態になります。</p>
 <p>PointInstancerと違い、実際にPrimが作られるので表示は遅いものの<br/>
@@ -3012,14 +3027,14 @@ AddPointInstancerで配置して、街灯とか信号とかのような<br/>
 <p>これでもまぁ良さそうですが、他のやり方も確認してみます。</p>
 <h3 id="input1input2">Input1でわたすかInput2で渡すか<a class="headerlink" href="#input1input2" title="Permanent link">¶</a></h3>
 <p>そもそも、上で「Input2につないでわたす」と書いたのですが<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c4e43ab58672abf2bfed55e747326286.png"><img alt="" src="https://gyazo.com/c4e43ab58672abf2bfed55e747326286.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c4e43ab58672abf2bfed55e747326286.png"><img alt="" src="https://gyazo.com/c4e43ab58672abf2bfed55e747326286.png"/></a><br/>
 何故に2つ方法があるのでしょうか。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d9a7935e87bf8ac857325f87e2f1ce62.png"><img alt="" src="https://gyazo.com/d9a7935e87bf8ac857325f87e2f1ce62.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d9a7935e87bf8ac857325f87e2f1ce62.png"><img alt="" src="https://gyazo.com/d9a7935e87bf8ac857325f87e2f1ce62.png"/></a></p>
 <p>単純にInput1にしてみても「No prototype primitives found.」になってしまい<br/>
 エラーになってしまいます。</p>
 <p>と、エラーを見ればそのとおりですが<br/>
 Input1につないだ場合は、Prototypesへのノードの移動は行われず  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2ec0f29d8499b34e029cd992374663b8.png"><img alt="" src="https://gyazo.com/2ec0f29d8499b34e029cd992374663b8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2ec0f29d8499b34e029cd992374663b8.png"><img alt="" src="https://gyazo.com/2ec0f29d8499b34e029cd992374663b8.png"/></a></p>
 <p>Prototype Primitives での指定が lopinputprims ではNGになってしまう模様。</p>
 <p>つまりは、Input1で渡す場合は、入力で与えられたPrimではなく<br/>
 別の手段で明示的に（Stageの「どれか」）を指定する必要がありました。</p>
@@ -3031,15 +3046,15 @@ Input1はStageを受け取るものとして動作しているからっぽいで
 <p>つーわけで、明示的に指定してみます。<br/>
 書き方は公式のHelp内の <a href="http://www.sidefx.com/ja/docs/houdini/solaris/pattern.html">プリミティブマッチングパターン</a>に記載されています。</p>
 <h3 id="_2">名前で入れる<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/df8f854c39980b234a5bf0d09f01ee12.png"><img alt="" src="https://gyazo.com/df8f854c39980b234a5bf0d09f01ee12.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/df8f854c39980b234a5bf0d09f01ee12.png"><img alt="" src="https://gyazo.com/df8f854c39980b234a5bf0d09f01ee12.png"/></a></p>
 <p>まずは単純な例として。<br/>
 こんな感じで特定の名前でPrimを作り、graftノードでまとめておきます。<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8c71b57ee13f27220886ad2c4b909c08.png"><img alt="" src="https://gyazo.com/8c71b57ee13f27220886ad2c4b909c08.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8c71b57ee13f27220886ad2c4b909c08.png"><img alt="" src="https://gyazo.com/8c71b57ee13f27220886ad2c4b909c08.png"/></a><br/>
 こんな感じ。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/053e791472343579fe4b984bb1d5486f.png"><img alt="" src="https://gyazo.com/053e791472343579fe4b984bb1d5486f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/053e791472343579fe4b984bb1d5486f.png"><img alt="" src="https://gyazo.com/053e791472343579fe4b984bb1d5486f.png"/></a></p>
 <p>そして、名前でマッチするように Prototype Primitivesを指定します。<br/>
 インスタンスはこれで作ることができますが</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f89f9ae44198be49be0a343b5945988a.png"><img alt="" src="https://gyazo.com/f89f9ae44198be49be0a343b5945988a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f89f9ae44198be49be0a343b5945988a.png"><img alt="" src="https://gyazo.com/f89f9ae44198be49be0a343b5945988a.png"/></a></p>
 <p>こんな感じで指定したPrimは移動されずその場にのこり、<br/>
 AddPointInstancerの下のPrimは、元になったPrimをリファレンスで読み込む構造になります。</p>
 <p>なので、元のPrimを編集すればInstanceしたオブジェクトも自動で更新されるようになります。</p>
@@ -3048,25 +3063,25 @@ AddPointInstancerの下のPrimは、元になったPrimをリファレンスで�
 複雑なネットワークなどで、特定のPrimを入れたい場合や<br/>
 他のLayerから読み込んできた（SdfPathが不定な）Primを追加したい場合などでは<br/>
 このやり方が良さそうです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/07d2bf62d3f10793f6f2d7ce40cc648f.png"><img alt="" src="https://gyazo.com/07d2bf62d3f10793f6f2d7ce40cc648f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/07d2bf62d3f10793f6f2d7ce40cc648f.png"><img alt="" src="https://gyazo.com/07d2bf62d3f10793f6f2d7ce40cc648f.png"/></a></p>
 <p>Collectionを使う場合は、 collectionノードを使用して、CollectionにPrimを追加します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/aa0566d6f16e545fc927537b1686f6be.png"><img alt="" src="https://gyazo.com/aa0566d6f16e545fc927537b1686f6be.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/aa0566d6f16e545fc927537b1686f6be.png"><img alt="" src="https://gyazo.com/aa0566d6f16e545fc927537b1686f6be.png"/></a></p>
 <p>そして、作成したCollectionノードで Collection Nameを指定して</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/801d8a4ce60f343e960efafcacd6c176.png"><img alt="" src="https://gyazo.com/801d8a4ce60f343e960efafcacd6c176.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/801d8a4ce60f343e960efafcacd6c176.png"><img alt="" src="https://gyazo.com/801d8a4ce60f343e960efafcacd6c176.png"/></a></p>
 <p>こんな感じでCollectionNameを指定します。<br/>
 書き方は、</p>
 <p>/PrimitivePath.collection:CollectionName</p>
 <p>で、「collection」はお約束でかならず入れます。<br/>
 公式Docsでは collections となってるのですが、こちらだと正しく動かないので注意が必要です。<br/>
 あるいは、<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3e37de1efd89daa022098136225eea11.png"><img alt="" src="https://gyazo.com/3e37de1efd89daa022098136225eea11.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3e37de1efd89daa022098136225eea11.png"><img alt="" src="https://gyazo.com/3e37de1efd89daa022098136225eea11.png"/></a><br/>
 ％/PrimitivePath/CollectionName でもOKのようです。</p>
 <p>こんな感じで、<br/>
 1. 元Primを残す or 残さない でInput 1 or 2 を選び<br/>
 2. Prototype Primitives で配置するPrimを制御して<br/>
 3. Primを PointInstancerで作るか ReferenceのInstance（実際にPrimを作る）でCopyToPoint AddPointInstancerを使う</p>
 <p>ことで、自分のやりたい作業のための大量のオブジェクト配置ができるようになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/be27c5211ca850e4983a14aa4340973c.png"><img alt="" src="https://gyazo.com/be27c5211ca850e4983a14aa4340973c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/be27c5211ca850e4983a14aa4340973c.png"><img alt="" src="https://gyazo.com/be27c5211ca850e4983a14aa4340973c.png"/></a></p>
 <p>配置するPrim側メインで書いてますが、<br/>
 配置するPoint側もコントロールできて、Point GroupをSOP側で指定すると<br/>
 配置に使用するPointをコントロールすることができます。</p>
@@ -3152,5 +3167,5 @@ LOP側はそのGroupでInstancerの制御をする（PointInstancerかReference�
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

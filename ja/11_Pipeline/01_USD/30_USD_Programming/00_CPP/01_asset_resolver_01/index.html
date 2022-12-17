@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Custom AssetResolver を作ろう - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/00_CPP/01_asset_resolver_01.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/30_USD_Programming/00_CPP/01_asset_resolver_01/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Custom AssetResolver を作ろう - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/00_CPP/01_asset_resolver_01.png" name="twitter:image"/>
 <link href="../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2862,7 +2877,7 @@
 C++のみで作れる USD の AssetResolver プラグインを作ってみました。</p>
 <h2 id="assetresolver">AssetResolver とは？<a class="headerlink" href="#assetresolver" title="Permanent link">¶</a></h2>
 <p>AssetResolver とは、USD 内のファイルパスの参照先の解決部分を拡張することができる機能です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d306a707c3d9aab0752ce0372c869012.png"><img alt="" src="https://gyazo.com/d306a707c3d9aab0752ce0372c869012.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d306a707c3d9aab0752ce0372c869012.png"><img alt="" src="https://gyazo.com/d306a707c3d9aab0752ce0372c869012.png"/></a></p>
 <p>たとえば、ある usd ファイルが Char.usda というファイルをリファレンスで参照している場合。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2886,7 +2901,7 @@ SQL に usd ファイルの Path を問い合わせして、その DB の結果�
 <p><a href="https://github.com/westerndigitalcorporation/usd-s3-resolver">https://github.com/westerndigitalcorporation/usd-s3-resolver</a></p>
 <p>westerndigitalcorporation が公開している S3-Resolver のように<br/>
 Amazon AWS に usda のファイルを問い合わせをして、PATH を解決するといったように</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/576300414f58de8c16a559e41494b033.png"><img alt="" src="https://gyazo.com/576300414f58de8c16a559e41494b033.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/576300414f58de8c16a559e41494b033.png"><img alt="" src="https://gyazo.com/576300414f58de8c16a559e41494b033.png"/></a></p>
 <p>単純に USD ファイルに記載された Windows などのファイルパスで USD の PATH を解決するのではなく<br/>
 PATH解決に対して何かしらの処理をプラグイン内で行って<br/>
 その結果でPATHを解決させられるのが AssetResolver という機能になります。</p>
@@ -2898,7 +2913,7 @@ PATH解決に対して何かしらの処理をプラグイン内で行って<br/
 <h3 id="_2">ビルド環境を作る<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>今回は独自環境をつくるのではなUSDのリポジトリ以下にある ビルドスクリプトを利用して<br/>
 本体と一緒にビルドする形で作ってみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/672302d498c96f38989c32ff8461c90e.png"><img alt="" src="https://gyazo.com/672302d498c96f38989c32ff8461c90e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/672302d498c96f38989c32ff8461c90e.png"><img alt="" src="https://gyazo.com/672302d498c96f38989c32ff8461c90e.png"/></a></p>
 <p>extras 下に plugins を作り、その下に testResolver を作ります。<br/>
 そしてその下に CMakerLists.txt と plugInfo.json あとはResolverのcppとヘッダーを作ります。</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2988,7 +3003,7 @@ Types の部分が、AssetResolverを使用するときのお約束部分で Sam
 <p>LibraryPath は、 plugins 以下での resource フォルダと plugInfo.json のPATH<br/>
 そしてプラグインの本体になる dll のPATHの指定になります。<br/>
 このPATHは、plugInfo.jsonから見た場合のパスになっていて、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/75817ea61347a8cb29de9fcd3fa041a2.png"><img alt="" src="https://gyazo.com/75817ea61347a8cb29de9fcd3fa041a2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/75817ea61347a8cb29de9fcd3fa041a2.png"><img alt="" src="https://gyazo.com/75817ea61347a8cb29de9fcd3fa041a2.png"/></a></p>
 <p>USD/plugin/usd フォルダに dll がリリースされ、<br/>
 plugInfo.jsonは \&lt;pluginName&gt;/resources/plugInfo.json にリリースされます。<br/>
 ので、 このRootは、 resources フォルダを指し、そのRootから見ての LibraryPathは ../sampleResolver.dll<br/>
@@ -3151,7 +3166,7 @@ VisualStudioのコマンドプロンプトで<br/>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python build_scripts\build_usd.py D:/USD
 </code></pre></div></td></tr></table></div><br/>
 ビルドスクリプトを実行すれば、本体のビルドと一緒に作成したプラグインもビルドしてくれます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4be4b274fe480b2bb53e3bc31c48a555.png"><img alt="" src="https://gyazo.com/4be4b274fe480b2bb53e3bc31c48a555.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4be4b274fe480b2bb53e3bc31c48a555.png"><img alt="" src="https://gyazo.com/4be4b274fe480b2bb53e3bc31c48a555.png"/></a></p>
 <p>dllは、plugin/usd 直下に作成され<br/>
 plugInfo.json は sampleResolver/resources 下にコピーされます。</p>
 <h3 id="pathutils">PathUtils<a class="headerlink" href="#pathutils" title="Permanent link">¶</a></h3>
@@ -3248,9 +3263,9 @@ def Cube "sphere1"
 </code></pre></div></td></tr></table></div>
 <p>あえて sphere.usda は作らず cube.usda を作っておきます。</p>
 <p>普通の場合は、ファイルが見つからずにエラーになってしまいますが、<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d2cdbe142faa269510125c58ae2a32d5.png"><img alt="" src="https://gyazo.com/d2cdbe142faa269510125c58ae2a32d5.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d2cdbe142faa269510125c58ae2a32d5.png"><img alt="" src="https://gyazo.com/d2cdbe142faa269510125c58ae2a32d5.png"/></a><br/>
 AssetResolverを作ったおかげで、ファイルは参照された状態になりますが<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fc981d77fe0e5c4cfeaff1b73e0cf13a.png"><img alt="" src="https://gyazo.com/fc981d77fe0e5c4cfeaff1b73e0cf13a.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fc981d77fe0e5c4cfeaff1b73e0cf13a.png"><img alt="" src="https://gyazo.com/fc981d77fe0e5c4cfeaff1b73e0cf13a.png"/></a><br/>
 Copy Layer Path などで、実際にロードされているファイルを確認すると<br/>
 sphere.usda ではなく cube.usda がロードされていることがわかります。</p>
 <p>あとは、自分の実際にやりたい処理に応じて Resolve または ResolveWithAssetInfo を<br/>
@@ -3336,5 +3351,5 @@ sphere.usda ではなく cube.usda がロードされていることがわかり
 <script src="../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

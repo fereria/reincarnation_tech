@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="USDの機能の多くはKitchen_setが教えてくれる - Reincarnation+#Tech" property="og:title"/>
+<meta content="公式サンプルをくわしくみてみる" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/28_kitchen_set.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/28_kitchen_set/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="USDの機能の多くはKitchen_setが教えてくれる - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="公式サンプルをくわしくみてみる" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/28_kitchen_set.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2911,7 +2926,7 @@ USD をどのように構築していけばいいのか、どのように考え�
 <p>Kitchen_set は、「複数のファイルによって１つの Stage 構成される」という USD の特徴を表したサンプルです。<br/>
 そのため、「Kitchen_set」という１つのシーンですが<br/>
 多数の USD によって構成されています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1657f3b3d13923c9800246de49e3dfb7.png"><img alt="" src="https://gyazo.com/1657f3b3d13923c9800246de49e3dfb7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1657f3b3d13923c9800246de49e3dfb7.png"><img alt="" src="https://gyazo.com/1657f3b3d13923c9800246de49e3dfb7.png"/></a></p>
 <p>その構造はざっくり分けると２つで構成されています。</p>
 <p>assets 以下には AssetName のサブフォルダがあり、<br/>
 その下には各個別のレイアウトするためのアセットデータが置かれています。<br/>
@@ -2921,7 +2936,7 @@ USD をどのように構築していけばいいのか、どのように考え�
 指定のコンポジションやレイヤーでセットアップされた USD のアセットです。</p>
 <p>Kitchen_set で配置しているアセットは、すべて決められた構造でセットアップされています。</p>
 <h4 id="_2">レイヤーと役割分担<a class="headerlink" href="#_2" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/25c4a2f97551b079b7f5611ab2ac3ed0.png"><img alt="" src="https://gyazo.com/25c4a2f97551b079b7f5611ab2ac3ed0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/25c4a2f97551b079b7f5611ab2ac3ed0.png"><img alt="" src="https://gyazo.com/25c4a2f97551b079b7f5611ab2ac3ed0.png"/></a></p>
 <p>「Payload の仕組みを追加する」のように、USD では役割に応じてレイヤーを分けることができます。<br/>
 assets の各レイヤーと、そのレイヤー内の Prim を図に表すとこのようになります。<br/>
 どのようにレイヤーを分けるかは難しい問題ですが、<br/>
@@ -2930,7 +2945,7 @@ assets の各レイヤーと、そのレイヤー内の Prim を図に表すと�
 <h4 id="assetpath">AssetPath<a class="headerlink" href="#assetpath" title="Permanent link">¶</a></h4>
 <p>Kitchen_set のアセットは、すべて Kitchen_set.usd からの相対パスで記述されています。<br/>
 ためしに、 <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/20_USDTools/01_usdtools_usdcat">USDの便利なツールたち (2) usdcat</a> で確認すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/adc274495504010c793b68eea80f263a.png"><img alt="" src="https://gyazo.com/adc274495504010c793b68eea80f263a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/adc274495504010c793b68eea80f263a.png"><img alt="" src="https://gyazo.com/adc274495504010c793b68eea80f263a.png"/></a></p>
 <p>このように、現在のファイルパスからのパス(AnchorPath) で指定されています。<br/>
 このアセットまでのパスは、 AssetResolution という機能を使用して、<br/>
 実際のリソースまでの解決を行います。</p>
@@ -2940,7 +2955,7 @@ assets をどこに配置してどのようにパスを解決するかはとて�
 <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/25_asset_resolution_02">AssetResolution(2) ResolveとContext</a></p>
 <h3 id="payload-unlaod">コンポジションアーク(Payload と Unlaod)<a class="headerlink" href="#payload-unlaod" title="Permanent link">¶</a></h3>
 <p>アセットは１つのレイヤーで構成されているわけではなく、複数レイヤーによって作成されています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bffe46076eb0dc6b7abc0394589c7bf5.png"><img alt="" src="https://gyazo.com/bffe46076eb0dc6b7abc0394589c7bf5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bffe46076eb0dc6b7abc0394589c7bf5.png"><img alt="" src="https://gyazo.com/bffe46076eb0dc6b7abc0394589c7bf5.png"/></a></p>
 <p>例えば Ball アセット(assets/Ball/Ball.usd) を開いて確認してみると、このように Payload と Reference が含まれています。<br/>
 Geom や Material などをどのように分けるかは構成次第ですが<br/>
 最終的に「Payload」をコンポジションに挟むことには大きな意味があります。</p>
@@ -2961,11 +2976,11 @@ Geom や Material などをどのように分けるかは構成次第ですが<b
 実際には、その指定したレイヤー内にある Prim 以下を接ぎ木します。<br/>
 この時に「どの Prim 以下を接ぎ木したいか」を、レイヤー側に指定していないと<br/>
 どの Prim を使用していいのかわからないのでリファレンスができません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0e8c9badfdf5c24e83171bdb9b01764b.png"><img alt="" src="https://gyazo.com/0e8c9badfdf5c24e83171bdb9b01764b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0e8c9badfdf5c24e83171bdb9b01764b.png"><img alt="" src="https://gyazo.com/0e8c9badfdf5c24e83171bdb9b01764b.png"/></a></p>
 <p>USD のアセットを見ると、すべて「DefaultPrim」が /AssetName の Prim に対して指定されています。<br/>
 また、アセットのデータは<strong>class</strong> のように継承するための Prim を除き<br/>
 こｎ DefaultPrim 以下に配置するようになっています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/11d2e16024fec4212df582c6c99cc554.png"><img alt="" src="https://gyazo.com/11d2e16024fec4212df582c6c99cc554.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/11d2e16024fec4212df582c6c99cc554.png"><img alt="" src="https://gyazo.com/11d2e16024fec4212df582c6c99cc554.png"/></a></p>
 <p>図に表すとこのようになります。<br/>
 AssetName 以下には Geom Looks(material) Render といった大分類の Prim があります。<br/>
 それ以下に関しては、Reference することでかならずユニークになるので<br/>
@@ -2974,7 +2989,7 @@ AssetName 以下には Geom Looks(material) Render といった大分類の Prim
 <p>参考: <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/09_comp_arc_reference">CompArc(4) リファレンス・ペイロード</a></p>
 </blockquote>
 <h3 id="variantset">VariantSet<a class="headerlink" href="#variantset" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9cc32a861669ddb1d4dae8000fdc7ff0.png"><img alt="" src="https://gyazo.com/9cc32a861669ddb1d4dae8000fdc7ff0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9cc32a861669ddb1d4dae8000fdc7ff0.png"><img alt="" src="https://gyazo.com/9cc32a861669ddb1d4dae8000fdc7ff0.png"/></a></p>
 <p>Kitchen_set でレイアウトされているモデルには、VariantSet が含まれているものがあります。<br/>
 例えばスクリーンショットの Cube は、同じ Cup.usd をリファレンスしていますが<br/>
 ShadingVariant と modelingVariant という２つの VariantSet によって<br/>
@@ -2984,7 +2999,7 @@ ShadingVariant と modelingVariant という２つの VariantSet によって<br
 <p>参考: <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/08_comp_arc_Variant">CompArc(3) バリアントセット</a></p>
 </blockquote>
 <h3 id="assetinfo">AssetInfo<a class="headerlink" href="#assetinfo" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/96c38d0a20208dda36fb9cb3371627ed.png"><img alt="" src="https://gyazo.com/96c38d0a20208dda36fb9cb3371627ed.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/96c38d0a20208dda36fb9cb3371627ed.png"><img alt="" src="https://gyazo.com/96c38d0a20208dda36fb9cb3371627ed.png"/></a></p>
 <p>AssetInfo とは、USD で作成されたアセットを管理・識別するために、<br/>
 Prim や Property に対して指定することができる辞書型のメタデータ です。</p>
 <p>詳細は、<i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_Pipeline/01_USD/23_assetInfo">AssetInfoについて</a> こちらのアドカレにて解説していますが<br/>
@@ -2999,7 +3014,7 @@ Kitchen_set のアセットにも、この AssetInfo が含まれていて<br/>
 そちらを参考にしてもらえればですが、<br/>
 Kitchen_set はこの ModelHierarchy のルールにのっとって<br/>
 作成されています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"><img alt="" src="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"><img alt="" src="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"/></a></p>
 <p>Kind は、ルートの DefaultPrim を assembly それ以下の Asset をグループ化する Prim は group そして<br/>
 リファレンスをしている Prim（リファレンスしたモデルの Transform の値を持つ Prim）には component とつけます。<br/>
 この component は「leaf model」と呼ばれていて、ModelHierarchy の概念では末端の構成要素になります。<br/>
@@ -3013,14 +3028,14 @@ Kitchen_set はこの ModelHierarchy のルールにのっとって<br/>
 あまり推奨されません。</p>
 </div>
 <p>Kitchen_set のアセットは、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a6867a41b587b2c7b0f7c65929d790a8.png"><img alt="" src="https://gyazo.com/a6867a41b587b2c7b0f7c65929d790a8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a6867a41b587b2c7b0f7c65929d790a8.png"><img alt="" src="https://gyazo.com/a6867a41b587b2c7b0f7c65929d790a8.png"/></a></p>
 <p>各アセットの RootPrim に対して、component が指定されています。<br/>
 つまり、アセットを配置すれば、そのアセットは Model として扱われ<br/>
 PickMode でリファレンスした Prim を掴むようになるわけです。</p>
 <h3 id="kind_1">Kind 指定によるモデルのピックアップ<a class="headerlink" href="#kind_1" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/11ad36f99609e442f12011717654cf62.gif"><img alt="" src="https://gyazo.com/11ad36f99609e442f12011717654cf62.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/11ad36f99609e442f12011717654cf62.gif"><img alt="" src="https://gyazo.com/11ad36f99609e442f12011717654cf62.gif"/></a></p>
 <p>上記に書いた通り、各アセットに対して適切に Component を指定している場合</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f9176be3880a7ea53c446cff341b3b31.png"><img alt="" src="https://gyazo.com/f9176be3880a7ea53c446cff341b3b31.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f9176be3880a7ea53c446cff341b3b31.png"><img alt="" src="https://gyazo.com/f9176be3880a7ea53c446cff341b3b31.png"/></a></p>
 <p>レイアウトする場合は、TreeView などではなくビューポート上で選択して移動したいということは<br/>
 よくあると思いますが、<br/>
 usdview の Pick mode を Models にすることで、<br/>
@@ -3031,7 +3046,7 @@ USD の Instance は、「同じ」オブジェクトのインスタンスが、
 <blockquote>
 <p>参考: <a href="https://graphics.pixar.com/usd/release/glossary.html#usdglossary-instancing">https://graphics.pixar.com/usd/release/glossary.html#usdglossary-instancing</a></p>
 </blockquote>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/60254c6894422d5ffc123ad3f07d01cf.png"><img alt="" src="https://gyazo.com/60254c6894422d5ffc123ad3f07d01cf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/60254c6894422d5ffc123ad3f07d01cf.png"><img alt="" src="https://gyazo.com/60254c6894422d5ffc123ad3f07d01cf.png"/></a></p>
 <p>instanced.usd の場合は、各アセットが Payload で呼ばれているのは共通ですが<br/>
 それに加えて「instanceable」が True に指定されています。<br/>
 instanceable とは</p>
@@ -3129,5 +3144,5 @@ USD を導入する上で、あるいは勉強する上で、大きな助けに�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

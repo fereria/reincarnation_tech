@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="QtCore.QAbstractItemModelを使用したカスタムモデルの作成 - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/02_Tips/ViewModelDelegate/custom_model.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_PySide/02_Tips/ViewModelDelegate/custom_model/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="QtCore.QAbstractItemModelを使用したカスタムモデルの作成 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/02_Tips/ViewModelDelegate/custom_model.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2845,18 +2860,18 @@
 <h1 id="qtcoreqabstractitemmodel">QtCore.QAbstractItemModelを使用したカスタムモデルの作成<a class="headerlink" href="#qtcoreqabstractitemmodel" title="Permanent link">¶</a></h1>
 <p>今回は、AbstractItemModelを使用してカスタムModelを作成してから<br/>
 TreeViewを構成するやり方について。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/33fdd7b440fb299b98e3ae5a0b76e47c.png"><img alt="" src="https://gyazo.com/33fdd7b440fb299b98e3ae5a0b76e47c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/33fdd7b440fb299b98e3ae5a0b76e47c.png"><img alt="" src="https://gyazo.com/33fdd7b440fb299b98e3ae5a0b76e47c.png"/></a></p>
 <p>とりあえず長いですが全コードから。</p>
 <script src="https://embed.cacher.io/82506ad40b3bab11aaaf14c50e2512af7808ad42.js?a=2e2f3f1356257796d155cc6470d98cac"></script>
 <p>長いですか、いくつか要点をまとめ。</p>
 <h2 id="_1">データ構造を作る<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bf70ae4a3631451ab1d10df1253bf060.png"><img alt="" src="https://gyazo.com/bf70ae4a3631451ab1d10df1253bf060.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bf70ae4a3631451ab1d10df1253bf060.png"><img alt="" src="https://gyazo.com/bf70ae4a3631451ab1d10df1253bf060.png"/></a></p>
 <p>まず、Modelを作成する場合は、指定の構造になるようにItemのツリーを<br/>
 クラスオブジェクトで構成します。<br/>
 指定の構造は↑の図の通り。<br/>
   今回はTreeModelで説明しますが、ListでもModelでも基本は同じです。<br/>
 （むしろTreeが一番面倒くさい）  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b43ef8a27e027aab5d23748db0839d45.png"><img alt="" src="https://gyazo.com/b43ef8a27e027aab5d23748db0839d45.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b43ef8a27e027aab5d23748db0839d45.png"><img alt="" src="https://gyazo.com/b43ef8a27e027aab5d23748db0839d45.png"/></a></p>
 <p>TreeViewの場合はこうなります。<br/>
 今回のサンプルTreeItemですが、オブジェクトに <strong>childItems</strong> と <strong>parentItem</strong><br/>
 変数を持ちます。  </p>
@@ -2910,7 +2925,7 @@ Itemを作成するときに親ノードにあたるItemを指定し、<br/>
 </ol>
 <p>この4つになります。  </p>
 <h4 id="columnrowcount">column/rowCountについて<a class="headerlink" href="#columnrowcount" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a5fa8b50a0596785ff1c7f1a8ee41f3a.png"><img alt="" src="https://gyazo.com/a5fa8b50a0596785ff1c7f1a8ee41f3a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a5fa8b50a0596785ff1c7f1a8ee41f3a.png"><img alt="" src="https://gyazo.com/a5fa8b50a0596785ff1c7f1a8ee41f3a.png"/></a></p>
 <p>まず、Countについて。<br/>
 これは名前の通り現在の親Index(引数で受け取る)の子がいくつあるかをreturnするようにします。<br/>
 TreeViewの場合は、TreeごとにこのCountが呼ばれ<br/>
@@ -2935,7 +2950,7 @@ TreeViewの場合は、TreeごとにこのCountが呼ばれ<br/>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">createIndex</span><span class="p">(</span><span class="n">parentItem</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">parentItem</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>parent関数は、引数のindexの親にあたるModelIndexをreturnするようにします。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/58169ce2a6467ef4351a007c9f0ce1e1.png"><img alt="" src="https://gyazo.com/58169ce2a6467ef4351a007c9f0ce1e1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/58169ce2a6467ef4351a007c9f0ce1e1.png"><img alt="" src="https://gyazo.com/58169ce2a6467ef4351a007c9f0ce1e1.png"/></a></p>
 <p>ここで重要になるのがModelIndexについて。<br/>
 PySideのModelは実体を持たずに、あくまでもIndexで親子関係を持ちます。<br/>
 実際に表示するItemは「ModelIndex.internalPointer()」に書いてある通り<br/>
@@ -2954,7 +2969,7 @@ createIndex(row,column,実体のオブジェクト) を渡すことでModelIndex
 <p>こうしている部分は index.isValud() の判定で無効扱いになります。  </p>
 <h4 id="index">indexについて<a class="headerlink" href="#index" title="Permanent link">¶</a></h4>
 <p>基本はparentと同様ですが、こちらは parent から指定のrow/columnのModelIndexを取得します。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c5cd5041f0a3e63f005c558d852f1941.png"><img alt="" src="https://gyazo.com/c5cd5041f0a3e63f005c558d852f1941.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c5cd5041f0a3e63f005c558d852f1941.png"><img alt="" src="https://gyazo.com/c5cd5041f0a3e63f005c558d852f1941.png"/></a></p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3096,5 +3111,5 @@ dataで最終的な出力形式を指定する...<br/>
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="コンテキストメニューを作る - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/00_Tutorial/10_context_menu.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_PySide/00_Tutorial/10_context_menu/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="コンテキストメニューを作る - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_PySide/00_Tutorial/10_context_menu.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2815,7 +2830,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="_1">コンテキストメニューを作る<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/57752f510dcdc43ade6dd71e3108e232.png"><img alt="" src="https://gyazo.com/57752f510dcdc43ade6dd71e3108e232.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/57752f510dcdc43ade6dd71e3108e232.png"><img alt="" src="https://gyazo.com/57752f510dcdc43ade6dd71e3108e232.png"/></a></p>
 <p>いろいろな Widgets を作っていくと、右クリックメニューを作りたくなるかと思います。<br/>
 今回は、PySide で右クリックメニューを作る方法を説明したいと思います。</p>
 <h2 id="_2">コード<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -2944,7 +2959,7 @@
     <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/68b029442fd304786e4d08bc2d338b52.png"><img alt="" src="https://gyazo.com/68b029442fd304786e4d08bc2d338b52.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/68b029442fd304786e4d08bc2d338b52.png"><img alt="" src="https://gyazo.com/68b029442fd304786e4d08bc2d338b52.png"/></a></p>
 <p>実行すると、こんな感じのUIが表示されます。<br/>
 以下、詳しい解説。</p>
 <h2 id="signal-slot">Signal-Slotを作る<a class="headerlink" href="#signal-slot" title="Permanent link">¶</a></h2>
@@ -3001,7 +3016,7 @@ Signal-Slotとは別に、setContexdtMenuPolicy でCustomContextMenuの設定を
 追加すると、QActionオブジェクトが帰ってくるので<br/>
 このメニューをクリックしたときに実行される関数（Slot）を<br/>
 .triggered.connect(###) で、指定します。  </p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8292b35cdb63bbaeeae7ad35d013b859.png"><img alt="" src="https://gyazo.com/8292b35cdb63bbaeeae7ad35d013b859.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8292b35cdb63bbaeeae7ad35d013b859.png"><img alt="" src="https://gyazo.com/8292b35cdb63bbaeeae7ad35d013b859.png"/></a></p>
 <p>このQActionというのは、各種メニュー、ツールボタン、キーボードのショートカット<br/>
 等を介していろんなコマンドを呼び出すのに使用するものです。  </p>
 <h3 id="_3">セパレーターを追加する<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
@@ -3119,5 +3134,5 @@ Globalに変換してくれます。<br/>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

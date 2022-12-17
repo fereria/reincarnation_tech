@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Houdini用のOmniversePluginをテストしてみる" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/02_Omniverse/02_houdini_omniverse/" rel="canonical"/>
 <link href="../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="HoudiniのOmniverseをまずは触ってみる - Reincarnation+#Tech" property="og:title"/>
+<meta content="Houdini用のOmniversePluginをテストしてみる" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/02_Omniverse/02_houdini_omniverse.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/02_Omniverse/02_houdini_omniverse/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="HoudiniのOmniverseをまずは触ってみる - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="Houdini用のOmniversePluginをテストしてみる" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/02_Omniverse/02_houdini_omniverse.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2828,11 +2844,11 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>HoudiniのOmniverseをまずは触ってみる</h1>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d24c26a02ac8477e641dfb61c136ca79.png"><img alt="" src="https://gyazo.com/d24c26a02ac8477e641dfb61c136ca79.png"/></a></p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/58273455bcb4f4d387fbf8a7193af9fb.png"><img alt="" src="https://gyazo.com/58273455bcb4f4d387fbf8a7193af9fb.png"/></a></p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/573964ddd30ac6b40fcb9eee82de570c.png"><img alt="" src="https://gyazo.com/573964ddd30ac6b40fcb9eee82de570c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d24c26a02ac8477e641dfb61c136ca79.png"><img alt="" src="https://gyazo.com/d24c26a02ac8477e641dfb61c136ca79.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/58273455bcb4f4d387fbf8a7193af9fb.png"><img alt="" src="https://gyazo.com/58273455bcb4f4d387fbf8a7193af9fb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/573964ddd30ac6b40fcb9eee82de570c.png"><img alt="" src="https://gyazo.com/573964ddd30ac6b40fcb9eee82de570c.png"/></a></p>
 <p>SideFX Houdini Omniverse Connector をインストールします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d0b707d478b1f5986d8c44f8778b1a41.png"><img alt="" src="https://gyazo.com/d0b707d478b1f5986d8c44f8778b1a41.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d0b707d478b1f5986d8c44f8778b1a41.png"><img alt="" src="https://gyazo.com/d0b707d478b1f5986d8c44f8778b1a41.png"/></a></p>
 <p>追加すると、コネクタに SideFX Houdini が追加されますので<br/>
 これで準備が完了です。</p>
 <h2 id="omniverse">Omniverse の環境を作る<a class="headerlink" href="#omniverse" title="Permanent link">¶</a></h2>
@@ -2845,12 +2861,12 @@
 共同作業をする USD を置くためのサーバーを設定する必要があります。<br/>
 別 PC にサーバーを立てる方法もありますが、まずは自分の PC にローカルのサーバーを<br/>
 立てるのが良いです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e228fee933c5177aa5c9cde766ff1a31.png"><img alt="" src="https://gyazo.com/e228fee933c5177aa5c9cde766ff1a31.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e228fee933c5177aa5c9cde766ff1a31.png"><img alt="" src="https://gyazo.com/e228fee933c5177aa5c9cde766ff1a31.png"/></a></p>
 <p>Omniverse の「NUCLEUS」タブを選び、<br/>
 ローカル Nucleus サービスを追加する　を選びます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/799a4684b3520d087d42c9fffb43ff04.png"><img alt="" src="https://gyazo.com/799a4684b3520d087d42c9fffb43ff04.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/799a4684b3520d087d42c9fffb43ff04.png"><img alt="" src="https://gyazo.com/799a4684b3520d087d42c9fffb43ff04.png"/></a></p>
 <p>サービスの追加でデータ置き場の指定をして次へを押し、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7a20b9e91de61754022aca19b486a528.png"><img alt="" src="https://gyazo.com/7a20b9e91de61754022aca19b486a528.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7a20b9e91de61754022aca19b486a528.png"><img alt="" src="https://gyazo.com/7a20b9e91de61754022aca19b486a528.png"/></a></p>
 <p>管理用アカウントを作成します。<br/>
 これは、あくまで自分のローカルサーバーの管理アカウントなので<br/>
 ログイン情報とは別です。<br/>
@@ -2860,54 +2876,54 @@
 サーバーの準備は完了です。</p>
 <h2 id="houdini">Houdini で使用する<a class="headerlink" href="#houdini" title="Permanent link">¶</a></h2>
 <p>準備ができたので、Omniverse に登録されているサンプルデータを呼び出します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/280be5f449cf691fdb5ab6be86b0f9dd.png"><img alt="" src="https://gyazo.com/280be5f449cf691fdb5ab6be86b0f9dd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/280be5f449cf691fdb5ab6be86b0f9dd.png"><img alt="" src="https://gyazo.com/280be5f449cf691fdb5ab6be86b0f9dd.png"/></a></p>
 <p>Omniverse Loader ノードを作成し、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3ab3fe2126121ff80e07258abed6c5c9.png"><img alt="" src="https://gyazo.com/3ab3fe2126121ff80e07258abed6c5c9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3ab3fe2126121ff80e07258abed6c5c9.png"><img alt="" src="https://gyazo.com/3ab3fe2126121ff80e07258abed6c5c9.png"/></a></p>
 <p>Add Server を押します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f602bd97528f34d3d7f5d4d77004c3db.png"><img alt="" src="https://gyazo.com/f602bd97528f34d3d7f5d4d77004c3db.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f602bd97528f34d3d7f5d4d77004c3db.png"><img alt="" src="https://gyazo.com/f602bd97528f34d3d7f5d4d77004c3db.png"/></a></p>
 <p>そして、Server を指定（上に書いたローカルのサーバーの場合は localhost を入れる）し、「Connect」を押します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/acb81b8071ab498e457e08f9c15900be.png"><img alt="" src="https://gyazo.com/acb81b8071ab498e457e08f9c15900be.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/acb81b8071ab498e457e08f9c15900be.png"><img alt="" src="https://gyazo.com/acb81b8071ab498e457e08f9c15900be.png"/></a></p>
 <p>すると、先ほどの Set Server のタブに「localhost」があるのでこれを選びます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5256392f541ca8399f484ae9340b48b6.png"><img alt="" src="https://gyazo.com/5256392f541ca8399f484ae9340b48b6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5256392f541ca8399f484ae9340b48b6.png"><img alt="" src="https://gyazo.com/5256392f541ca8399f484ae9340b48b6.png"/></a></p>
 <p>最後に、このアイコンを選び、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1b2856cded10d0bfabcbbb2d87db8db2.png"><img alt="" src="https://gyazo.com/1b2856cded10d0bfabcbbb2d87db8db2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1b2856cded10d0bfabcbbb2d87db8db2.png"><img alt="" src="https://gyazo.com/1b2856cded10d0bfabcbbb2d87db8db2.png"/></a></p>
 <p>ファイルダイアログで、開くファイルを選択します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/14b8d2bc6fd5b428e76a563db748fc98.png"><img alt="" src="https://gyazo.com/14b8d2bc6fd5b428e76a563db748fc98.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/14b8d2bc6fd5b428e76a563db748fc98.png"><img alt="" src="https://gyazo.com/14b8d2bc6fd5b428e76a563db748fc98.png"/></a></p>
 <p>インストールされていると、<br/>
 このように omniverse://localhost という URI がついかされています。<br/>
 この下が Omniverse のサーバー上に置かれているデータになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/550e33e19748fd8865cf472e55ba282d.png"><img alt="" src="https://gyazo.com/550e33e19748fd8865cf472e55ba282d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/550e33e19748fd8865cf472e55ba282d.png"><img alt="" src="https://gyazo.com/550e33e19748fd8865cf472e55ba282d.png"/></a></p>
 <p>今回は、NVIDIA/Samples/OldAttic を選び Attic_NVIDIA.usd を開きます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/395cdeafb25948d62035c7414f3dbfa0.png"><img alt="" src="https://gyazo.com/395cdeafb25948d62035c7414f3dbfa0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/395cdeafb25948d62035c7414f3dbfa0.png"><img alt="" src="https://gyazo.com/395cdeafb25948d62035c7414f3dbfa0.png"/></a></p>
 <p>これで開くことができました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/82118cc2d40369bddd8e92a87b3ef41f.jpg"><img alt="" src="https://i.gyazo.com/82118cc2d40369bddd8e92a87b3ef41f.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://i.gyazo.com/82118cc2d40369bddd8e92a87b3ef41f.jpg"><img alt="" src="https://i.gyazo.com/82118cc2d40369bddd8e92a87b3ef41f.jpg"/></a></p>
 <h2 id="_1">現状できること<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>最後に、<a href="https://docs.omniverse.nvidia.com/con_connect/con_connect/houdini.html">現状のドキュメント</a>をざっくり読んで、できることをメモしておこうと思います。</p>
 <h3 id="_2">読み込み<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>Nucleus のファイルパス（omniverse://localhost/～）から直接 USD を Houdini ロードできるというのがあります。<br/>
 これは上に書いたように USD を LOP 上に読むだけではなく、bgeo などでも利用することができ、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/34451484fc745ef950354b618d483673.png"><img alt="" src="https://gyazo.com/34451484fc745ef950354b618d483673.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/34451484fc745ef950354b618d483673.png"><img alt="" src="https://gyazo.com/34451484fc745ef950354b618d483673.png"/></a></p>
 <p>SOP などで、 bgeo を Omniverse のサーバー上に保存し、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7955cab787fceeb5353e48e0f31cd424.png"><img alt="" src="https://gyazo.com/7955cab787fceeb5353e48e0f31cd424.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7955cab787fceeb5353e48e0f31cd424.png"><img alt="" src="https://gyazo.com/7955cab787fceeb5353e48e0f31cd424.png"/></a></p>
 <p>保存したファイルを、 File ノードでロードするときにも<br/>
 Geometry File を Omniverse のサーバーのパスで記述できます。</p>
 <h3 id="_3">保存<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/92883a1de09a8994c5b6bf7c4e1174f8.png"><img alt="" src="https://gyazo.com/92883a1de09a8994c5b6bf7c4e1174f8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/92883a1de09a8994c5b6bf7c4e1174f8.png"><img alt="" src="https://gyazo.com/92883a1de09a8994c5b6bf7c4e1174f8.png"/></a></p>
 <p>HoudiniSOLARIS 上で作成したモデルを、Omniverse 上に保存ができます。<br/>
 Export 時はは、Omniverse USD ROP 　という、専用の USD ROP を使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6eb194191e03485acad091f97f5075dd.png"><img alt="" src="https://gyazo.com/6eb194191e03485acad091f97f5075dd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6eb194191e03485acad091f97f5075dd.png"><img alt="" src="https://gyazo.com/6eb194191e03485acad091f97f5075dd.png"/></a></p>
 <p>material は、 MDL の material が追加されているので、 MaterialNetwork 上で material を作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c953d67c054219a6f812950d73dd8390.png"><img alt="" src="https://gyazo.com/c953d67c054219a6f812950d73dd8390.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c953d67c054219a6f812950d73dd8390.png"><img alt="" src="https://gyazo.com/c953d67c054219a6f812950d73dd8390.png"/></a></p>
 <p>試しに PigHead のテクスチャを貼り付けておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fdfa24e10a500a405101007ed0cff2d1.png"><img alt="" src="https://gyazo.com/fdfa24e10a500a405101007ed0cff2d1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fdfa24e10a500a405101007ed0cff2d1.png"><img alt="" src="https://gyazo.com/fdfa24e10a500a405101007ed0cff2d1.png"/></a></p>
 <p>MaterialLibrary ノードでアサインします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/97b383fdc513ff74a893f9d9c8d1c670.png"><img alt="" src="https://gyazo.com/97b383fdc513ff74a893f9d9c8d1c670.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/97b383fdc513ff74a893f9d9c8d1c670.png"><img alt="" src="https://gyazo.com/97b383fdc513ff74a893f9d9c8d1c670.png"/></a></p>
 <p>USD ROP で Output FIle を、Omniverse のサーバー上に保存します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1e934069b375788ff0478a433b781c79.png"><img alt="" src="https://gyazo.com/1e934069b375788ff0478a433b781c79.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1e934069b375788ff0478a433b781c79.png"><img alt="" src="https://gyazo.com/1e934069b375788ff0478a433b781c79.png"/></a></p>
 <p>しかし、このままだと opdef:/sop という Houdini 上でのみ使用できる URI のパスが<br/>
 使用されているので、テクスチャがロードできないので<br/>
 Omniverse Texture Export を ON にしておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6a2762794a741c6ba2a430060695e91a.png"><img alt="" src="https://gyazo.com/6a2762794a741c6ba2a430060695e91a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6a2762794a741c6ba2a430060695e91a.png"><img alt="" src="https://gyazo.com/6a2762794a741c6ba2a430060695e91a.png"/></a></p>
 <p>Create 上で表示した例。<br/>
 テクスチャもちゃんと Export され、表示されました。</p>
 <p>いわゆる LiveLink 的なことはまだできませんが、Omniverse 上にあるアセットを<br/>
@@ -2923,7 +2939,7 @@ Omniverse と連携といったことも簡単にできそうです。</p>
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-07 15:35:28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -2995,5 +3011,5 @@ Omniverse と連携といったことも簡単にできそうです。</p>
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

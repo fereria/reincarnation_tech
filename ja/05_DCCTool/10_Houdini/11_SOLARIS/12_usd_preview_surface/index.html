@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="UsdPreviewSurfaceでマテリアルを設定する - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/12_usd_preview_surface.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOLARIS/12_usd_preview_surface/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="UsdPreviewSurfaceでマテリアルを設定する - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/12_usd_preview_surface.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2804,28 +2819,28 @@
 <h1>UsdPreviewSurfaceでマテリアルを設定する</h1>
 <p>Houdini での UsdPreviewSurface を使用したマテリアルの指定方法について<br/>
 まとめてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4740ab62509e647eb6231622e997d251.png"><img alt="" src="https://gyazo.com/4740ab62509e647eb6231622e997d251.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4740ab62509e647eb6231622e997d251.png"><img alt="" src="https://gyazo.com/4740ab62509e647eb6231622e997d251.png"/></a></p>
 <p>まずは、MaterialNet を作成。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4b98de76ff12a97b337943654cd2504e.png"><img alt="" src="https://gyazo.com/4b98de76ff12a97b337943654cd2504e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4b98de76ff12a97b337943654cd2504e.png"><img alt="" src="https://gyazo.com/4b98de76ff12a97b337943654cd2504e.png"/></a></p>
 <p>そして、UsdPreviewSurface を作ります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c5bb57de760d03a352058d1c7cad9a0b.png"><img alt="" src="https://gyazo.com/c5bb57de760d03a352058d1c7cad9a0b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c5bb57de760d03a352058d1c7cad9a0b.png"><img alt="" src="https://gyazo.com/c5bb57de760d03a352058d1c7cad9a0b.png"/></a></p>
 <p>まずはわかりやすい色をつけておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d3b42e47c0e8d758401363c7a742a2da.png"><img alt="" src="https://gyazo.com/d3b42e47c0e8d758401363c7a742a2da.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d3b42e47c0e8d758401363c7a742a2da.png"><img alt="" src="https://gyazo.com/d3b42e47c0e8d758401363c7a742a2da.png"/></a></p>
 <p>Stage に戻って、MaterialLibrary を作り、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1d6f5afa50c0c68209a0f7f887174e7c.png"><img alt="" src="https://gyazo.com/1d6f5afa50c0c68209a0f7f887174e7c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1d6f5afa50c0c68209a0f7f887174e7c.png"><img alt="" src="https://gyazo.com/1d6f5afa50c0c68209a0f7f887174e7c.png"/></a></p>
 <p>Material VOP で</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5886fc12a5f8b75aa0cf194a43eac509.png"><img alt="" src="https://gyazo.com/5886fc12a5f8b75aa0cf194a43eac509.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5886fc12a5f8b75aa0cf194a43eac509.png"><img alt="" src="https://gyazo.com/5886fc12a5f8b75aa0cf194a43eac509.png"/></a></p>
 <p>先ほど作成した PreviewSurface を選び、MaterialPath を適当な名前にします。</p>
 <p>あとは MaterialPathPrefix を Looks としておきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e5406cff2767da36878cdf6cc4f1a348.png"><img alt="" src="https://gyazo.com/e5406cff2767da36878cdf6cc4f1a348.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e5406cff2767da36878cdf6cc4f1a348.png"><img alt="" src="https://gyazo.com/e5406cff2767da36878cdf6cc4f1a348.png"/></a></p>
 <p>結果。<br/>
 Looks 下に Material が作られました。<br/>
 ここの Scope は何でも良いですが、今回は Maya の Export ツール準拠で Looks にしました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cedffd55327e22b6c7b7ffc6c9decada.png"><img alt="" src="https://gyazo.com/cedffd55327e22b6c7b7ffc6c9decada.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cedffd55327e22b6c7b7ffc6c9decada.png"><img alt="" src="https://gyazo.com/cedffd55327e22b6c7b7ffc6c9decada.png"/></a></p>
 <p>あとはアサインするには、 Assign to Geomtery にチェックを入れて<br/>
 アサインしたいノードを選択すれば OK です。</p>
 <h2 id="_1">基本構造<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9e9a36cc5c617802928cac7e9b41f9b4.png"><img alt="" src="https://gyazo.com/9e9a36cc5c617802928cac7e9b41f9b4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9e9a36cc5c617802928cac7e9b41f9b4.png"><img alt="" src="https://gyazo.com/9e9a36cc5c617802928cac7e9b41f9b4.png"/></a></p>
 <p>USD の場合のマテリアル関係の基本構造は、ざっくりこうなっています。<br/>
 ジオメトリに対してアサインするのは MaterialPrim。<br/>
 これは Maya でいうところの ShadingEngine に近い感じです。<br/>
@@ -2833,7 +2848,7 @@ Looks 下に Material が作られました。<br/>
 <p>USD のシェーダー関連の特徴として、シェーダー関連の Prim は Shader でひとくくりに<br/>
 されていて、その区別は ID によって行われます。<br/>
 どういうことかというと、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/52704d8598417cb8d1a605c687cb6073.png"><img alt="" src="https://gyazo.com/52704d8598417cb8d1a605c687cb6073.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/52704d8598417cb8d1a605c687cb6073.png"><img alt="" src="https://gyazo.com/52704d8598417cb8d1a605c687cb6073.png"/></a></p>
 <p>ShaderPrim のアトリビュートを見ると、 id という項目があって<br/>
 そこに「UsdPreviewSurface」が指定されています。<br/>
 なので、同じ ShaderPrim であっても役割が異なることがあります。</p>
@@ -2849,19 +2864,19 @@ Looks 下に Material が作られました。<br/>
 <p>それを踏まえて、テクスチャのアサイン方法で<br/>
 UsdPreviewSurface 以外をみてみます。</p>
 <h2 id="_2">テクスチャを使用する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/252dea7e68b8b7ac4938812636dd7b24.png"><img alt="" src="https://gyazo.com/252dea7e68b8b7ac4938812636dd7b24.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/252dea7e68b8b7ac4938812636dd7b24.png"><img alt="" src="https://gyazo.com/252dea7e68b8b7ac4938812636dd7b24.png"/></a></p>
 <p>さきほどの PreviewSurface に UVTexture と PrimVarReader を作成します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5ff25022d094721dbffab2f49ee1fe12.png"><img alt="" src="https://gyazo.com/5ff25022d094721dbffab2f49ee1fe12.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5ff25022d094721dbffab2f49ee1fe12.png"><img alt="" src="https://gyazo.com/5ff25022d094721dbffab2f49ee1fe12.png"/></a></p>
 <p>PrimVarReader は、Signature を Float2、VarName を <strong>st</strong> にします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cf663121c44b4897a7cc44ed69a8d5dd.jpg"><img alt="" src="https://gyazo.com/cf663121c44b4897a7cc44ed69a8d5dd.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cf663121c44b4897a7cc44ed69a8d5dd.jpg"><img alt="" src="https://gyazo.com/cf663121c44b4897a7cc44ed69a8d5dd.jpg"/></a></p>
 <p>こんなかんじです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/66f5f54d082e014cdaf6652ddda6f497.png"><img alt="" src="https://gyazo.com/66f5f54d082e014cdaf6652ddda6f497.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/66f5f54d082e014cdaf6652ddda6f497.png"><img alt="" src="https://gyazo.com/66f5f54d082e014cdaf6652ddda6f497.png"/></a></p>
 <p>シーングラフはこちら。</p>
 <p>テクスチャは <a href="https://texturehaven.com/tex/?t=castle_brick_07">こちら</a>を使用しました。</p>
 <p>ここで使用するのが Texture Reader と Primvar Reader です。<br/>
 シーングラフを見て分かる通り、すべて Shader ですが、それぞれが id によって役割が<br/>
 指定されています。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/825b54993db4ad3f5e5bacbb9220daa5.png"><img alt="" src="https://gyazo.com/825b54993db4ad3f5e5bacbb9220daa5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/825b54993db4ad3f5e5bacbb9220daa5.png"><img alt="" src="https://gyazo.com/825b54993db4ad3f5e5bacbb9220daa5.png"/></a></p>
 <p>例えばテクスチャは、id は「UsdUVTexture」になっています。</p>
 <h3 id="primvar-reader">Primvar Reader とは<a class="headerlink" href="#primvar-reader" title="Permanent link">¶</a></h3>
 <p>UVTexture に関しては、TextureColor を Shader に対して接続しているのでなんとなく<br/>
@@ -2876,16 +2891,16 @@ UsdPreviewSurface 以外をみてみます。</p>
 <p>です。<br/>
 つまり、テクスチャのマッピングに使用する UV であったり頂点カラーであったり<br/>
 ジオメトリ上で定義された各種値を供給する機能を持つのが Primvar Reader です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a5d453dce7eef8eb203f471faf6103a5.png"><img alt="" src="https://gyazo.com/a5d453dce7eef8eb203f471faf6103a5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a5d453dce7eef8eb203f471faf6103a5.png"><img alt="" src="https://gyazo.com/a5d453dce7eef8eb203f471faf6103a5.png"/></a></p>
 <p>UV の座標を取得するための PrimvarReader をみてみると<br/>
 「varname」を「st」としています。<br/>
 USD の記述側で、MeshPrim ではどういうアトリビュートになっているかというと</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/33521f349604af8fc3370763abac1d53.png"><img alt="" src="https://gyazo.com/33521f349604af8fc3370763abac1d53.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/33521f349604af8fc3370763abac1d53.png"><img alt="" src="https://gyazo.com/33521f349604af8fc3370763abac1d53.png"/></a></p>
 <p>Mesh には「 primvars:st というアトリビュートがあり、そこには Mesh の UV 座標が<br/>
 記述されています。</p>
 <p>Primvar Reader とは、このジオメトリ側の Primvers の値を<br/>
 Shader 側で使えるようにしているというのがわかりました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/af46853c6fe1102496f0fd72d0819fa5.png"><img alt="" src="https://gyazo.com/af46853c6fe1102496f0fd72d0819fa5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/af46853c6fe1102496f0fd72d0819fa5.png"><img alt="" src="https://gyazo.com/af46853c6fe1102496f0fd72d0819fa5.png"/></a></p>
 <p>作成したテクスチャつきの USD は当然のように usdview などでも確認ができます。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>primvarReader と USD 側に定義された primvars:st ～といった記述が<br/>
@@ -2971,5 +2986,5 @@ Shader 側で使えるようにしているというのがわかりました。<
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

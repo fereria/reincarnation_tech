@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="AssetInfoについて - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/23_assetInfo.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/23_assetInfo/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="AssetInfoについて - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/23_assetInfo.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2858,9 +2873,9 @@ AssetInfo についてとその使い方です。</p>
 <h2 id="kitchen_set">Kitchen_set みてみる<a class="headerlink" href="#kitchen_set" title="Permanent link">¶</a></h2>
 <p>説明を見てもピンとこないので、具体的な例をまず見てみます。</p>
 <p>Kitchen_set にある Ball.usd を usdview で開いてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1d050ae2719eeeba4d00f5e46976a4d8.png"><img alt="" src="https://gyazo.com/1d050ae2719eeeba4d00f5e46976a4d8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1d050ae2719eeeba4d00f5e46976a4d8.png"><img alt="" src="https://gyazo.com/1d050ae2719eeeba4d00f5e46976a4d8.png"/></a></p>
 <p>MetaData タブを確認すると assetInfo に identifier と name が指定されていることがわかります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/599388099f37306efc11461c98119b78.png"><img alt="" src="https://gyazo.com/599388099f37306efc11461c98119b78.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/599388099f37306efc11461c98119b78.png"><img alt="" src="https://gyazo.com/599388099f37306efc11461c98119b78.png"/></a></p>
 <p>Kitchen_set.usd を開き、Ball.usd をペイロードしている Prim をみると<br/>
 Meta Data に、 Ball.usd に指定された AssetInfo が確認できます。</p>
 <h2 id="_1">指定できる情報<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
@@ -2925,13 +2940,13 @@ API 側でもその４つがデフォルトで用意されています。</p>
 <p>USD には、現在の Stage を「Flatten」することで、すべてのコンポジションアークを実行した結果の<br/>
 シーングラフを出力する機能があります。<br/>
 Flatten してしまうと、コンポジションの情報もすべて解決された状態になるため、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/82d53c910005559e69c338d092d3b0b4.png"><img alt="" src="https://gyazo.com/82d53c910005559e69c338d092d3b0b4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/82d53c910005559e69c338d092d3b0b4.png"><img alt="" src="https://gyazo.com/82d53c910005559e69c338d092d3b0b4.png"/></a></p>
 <p>Composition をみても、Layer は存在しません。<br/>
 つまり、Flatten する前、どのような Layer によって構成されていたのかは<br/>
 Composition から追うことはできません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8a37db52b438ecc1f7bd00e780f63249.png"><img alt="" src="https://gyazo.com/8a37db52b438ecc1f7bd00e780f63249.png"/></a><br/>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8a37db52b438ecc1f7bd00e780f63249.png"><img alt="" src="https://gyazo.com/8a37db52b438ecc1f7bd00e780f63249.png"/></a><br/>
 Flatten 前</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5c2847686be38266b7376602140ff26b.png"><img alt="" src="https://gyazo.com/5c2847686be38266b7376602140ff26b.png"/></a><br/>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5c2847686be38266b7376602140ff26b.png"><img alt="" src="https://gyazo.com/5c2847686be38266b7376602140ff26b.png"/></a><br/>
 Flatten 後</p>
 <p>ですが、AssetInfo をみてみると<br/>
 どの Asset がどこに置いてあるなんのアセットなのか、Flatten した後でもわかります。</p>
@@ -3093,5 +3108,5 @@ ShotGrid でアセットを管理するときにアセット側にも情報を�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

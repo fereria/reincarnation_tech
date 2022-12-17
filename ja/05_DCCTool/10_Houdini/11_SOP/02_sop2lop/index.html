@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="普通だと持ってこれないSOPのパラメーターをLOPに持ち込む方法" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOP/02_sop2lop/" rel="canonical"/>
 <link href="../../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="SOPから無理やりデータを持ってくる - Reincarnation+#Tech" property="og:title"/>
+<meta content="普通だと持ってこれないSOPのパラメーターをLOPに持ち込む方法" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOP/02_sop2lop.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOP/02_sop2lop/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="SOPから無理やりデータを持ってくる - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="普通だと持ってこれないSOPのパラメーターをLOPに持ち込む方法" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOP/02_sop2lop.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2775,30 +2791,30 @@
 <p><a href="https://qiita.com/advent-calendar/2022/usd">USD AdventCalendar2022</a> 9 日目は<br/>
 <i class="fa fa-external-link"></i> <a href="/reincarnation_tech/05_DCCTool/10_Houdini/11_SOP/01_importlop">SOPにLOPを持ち込もう</a> で無理やり LOP から持ち込んだデータを<br/>
 SOP で編集してから LOP 側に戻してみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/83384553e0fc63c5079fe9fa30ff638c.png"><img alt="" src="https://gyazo.com/83384553e0fc63c5079fe9fa30ff638c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/83384553e0fc63c5079fe9fa30ff638c.png"><img alt="" src="https://gyazo.com/83384553e0fc63c5079fe9fa30ff638c.png"/></a></p>
 <p>前回は、Python を使用して USD のアトリビュートを、Prims の Attrib として<br/>
 持ち込みをしてきました。<br/>
 その時に、 : は __ に置換しているので、そのあたりもカバーしつつ<br/>
 返さなければいけません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c33e4cd9aa030276e6d00f71759a7b4e.png"><img alt="" src="https://gyazo.com/c33e4cd9aa030276e6d00f71759a7b4e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c33e4cd9aa030276e6d00f71759a7b4e.png"><img alt="" src="https://gyazo.com/c33e4cd9aa030276e6d00f71759a7b4e.png"/></a></p>
 <p>さらに、特殊な PrimitiveType だとそのまま戻すことはできないようなので<br/>
 それを踏まえて対策をする必要があります。</p>
 <p>ので、今回は Python を使用して SOP のデータを持ち込みつつ<br/>
 USD の Prim として扱えるようにします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/74011fb07504fb0f5be013c11ae4295b.png"><img alt="" src="https://gyazo.com/74011fb07504fb0f5be013c11ae4295b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/74011fb07504fb0f5be013c11ae4295b.png"><img alt="" src="https://gyazo.com/74011fb07504fb0f5be013c11ae4295b.png"/></a></p>
 <p>まずは、このように LayerBreak ノードを作成し、その次に PythonScript ノードを作ります。</p>
 <p>この「LayerBreak」ノードは、<br/>
 このノード以前のノードの Define をせずに<br/>
 LayerBreak ノード以降の変更点のみを「Over」で出力します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7b891a806981807673edd700b0ea5ce9.png"><img alt="" src="https://gyazo.com/7b891a806981807673edd700b0ea5ce9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7b891a806981807673edd700b0ea5ce9.png"><img alt="" src="https://gyazo.com/7b891a806981807673edd700b0ea5ce9.png"/></a></p>
 <p>通常、LayerBreak がない場合は、Prim は「def」で定義されています。<br/>
 def の場合は、現在のノードの上流に定義がなかった場合は作成するし<br/>
 すでにある場合は上書きします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/60ef9582d19d5a2499772438d7fd5b81.png"><img alt="" src="https://gyazo.com/60ef9582d19d5a2499772438d7fd5b81.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/60ef9582d19d5a2499772438d7fd5b81.png"><img alt="" src="https://gyazo.com/60ef9582d19d5a2499772438d7fd5b81.png"/></a></p>
 <p>対して LayerBreak がある場合は「Over」で出力されます。<br/>
 この Over の場合、上流のノードに Prim がない場合は<br/>
 合成されても Prim は作成されなくなります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f79b8a580b8ccce4ec4b370e66eff553.png"><img alt="" src="https://gyazo.com/f79b8a580b8ccce4ec4b370e66eff553.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f79b8a580b8ccce4ec4b370e66eff553.png"><img alt="" src="https://gyazo.com/f79b8a580b8ccce4ec4b370e66eff553.png"/></a></p>
 <p>つまりは、この SOP からデータを持ってくる差分だけの結果のレイヤーが作成されます。<br/>
 こうすると、LOP 側の処理で Prim の Namespace が変化したり、削除したあとに<br/>
 SOP での編集結果を合成した場合にも<br/>
@@ -2840,26 +2856,26 @@ SOP の output ノードのジオメトリを取得し<br/>
 <p>アトリビュート名は __ を : に置換して、USD 側の Prim に Attribute がある場合は<br/>
 その Attribute に SOP の Geometry の Attrib の値をセットすることで<br/>
 SOP のデータを持ち込みできます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5e61e9367e103483da2513b1340cc8fe.png"><img alt="" src="https://gyazo.com/5e61e9367e103483da2513b1340cc8fe.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5e61e9367e103483da2513b1340cc8fe.png"><img alt="" src="https://gyazo.com/5e61e9367e103483da2513b1340cc8fe.png"/></a></p>
 <p>試しに SOP 側の intensity を編集してみます。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>@inputs__intensity = 100;
 </code></pre></div></td></tr></table></div>
 <p>SOP の wrangle で値を変更してみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cdf04a69ad937c5aa7fa6bfa794b657f.png"><img alt="" src="https://gyazo.com/cdf04a69ad937c5aa7fa6bfa794b657f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cdf04a69ad937c5aa7fa6bfa794b657f.png"><img alt="" src="https://gyazo.com/cdf04a69ad937c5aa7fa6bfa794b657f.png"/></a></p>
 <p>LOP の Python ノードの結果をみてみると、 intensity = 100 に書き換えできました。</p>
 <h2 id="_1">メモ<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>データの行き来を Python を経由していて初めて知ったこととして</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5ba1c5e32ce2fe83aa1c458bb1657c20.png"><img alt="" src="https://gyazo.com/5ba1c5e32ce2fe83aa1c458bb1657c20.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5ba1c5e32ce2fe83aa1c458bb1657c20.png"><img alt="" src="https://gyazo.com/5ba1c5e32ce2fe83aa1c458bb1657c20.png"/></a></p>
 <p>LOP 側の Python で SOP のジオメトリノードを取得した場合は、 read-only になります。<br/>
 逆に、SOP 側で LOP の Stage を読む場合も read-only になります。<br/>
 よく考えてみたら、たしかに別の世界からアクセスできてしまうと<br/>
 大変面倒なことになりそうなので、それぞれ独立しているのは<br/>
 まぁ当然だよな…と思いました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/879b1bc452605b51813f2aaa02272e99.png"><img alt="" src="https://gyazo.com/879b1bc452605b51813f2aaa02272e99.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/879b1bc452605b51813f2aaa02272e99.png"><img alt="" src="https://gyazo.com/879b1bc452605b51813f2aaa02272e99.png"/></a></p>
 <p>今回は、特殊な方法で SOP がわの Geometry の attrib に持ち込んでしまったので<br/>
 トリッキーな手段を取りましたが、<br/>
 USD の Mesh を SOP 側に持って行って、その結果を取得したいのなら<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/879b1bc452605b51813f2aaa02272e99.png"><img alt="" src="https://gyazo.com/879b1bc452605b51813f2aaa02272e99.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/879b1bc452605b51813f2aaa02272e99.png"><img alt="" src="https://gyazo.com/879b1bc452605b51813f2aaa02272e99.png"/></a><br/>
 SOPImport ノードという有能ノードがありますので、これを使えば問題ありません。<br/>
 アトリビュート名の置換のようなことをしなければ SOPImport で事足ります。</p>
 <p>これ以外に、去年のアドカレで<br/>
@@ -2878,7 +2894,7 @@ Scene Import LOP object translator plugin という手段もありましたの�
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-08 14:50:10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -2950,5 +2966,5 @@ Scene Import LOP object translator plugin という手段もありましたの�
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Kind と Model と ModelHierarchy - Reincarnation+#Tech" property="og:title"/>
+<meta content="USDでのシーンアッセンブリ時のルールについて" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/11_kind_modelhierarchy.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/11_kind_modelhierarchy/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Kind と Model と ModelHierarchy - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="USDでのシーンアッセンブリ時のルールについて" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/11_kind_modelhierarchy.png" name="twitter:image"/>
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -135,7 +150,7 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../..">
+<a class="md-tabs__link" href="../../../">
       Introduction
     </a>
 </li>
@@ -216,7 +231,7 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../..">
+<a class="md-nav__link" href="../../../">
         Introduction
       </a>
 </li>
@@ -2934,7 +2949,7 @@ Kind は他のメタデータと同じように Prim に対して指定するこ
 <p>まず、すべての基本となるのがこの「 <strong>Model</strong> 」です。<br/>
 モデルとは、 Assembly Group Component などの各種類の基本となるもので<br/>
 これらの要素を抽象化したものが Model になります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f733b4db896dffc799cda986c51d83b5.png"><img alt="" src="https://gyazo.com/f733b4db896dffc799cda986c51d83b5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f733b4db896dffc799cda986c51d83b5.png"><img alt="" src="https://gyazo.com/f733b4db896dffc799cda986c51d83b5.png"/></a></p>
 <p>関係図を表すとこのようになっています。<br/>
 Model とは、Hierarchy を構成する上での抽象化された概念<br/>
 （すべての Kind は Model に属する）<br/>
@@ -2951,7 +2966,7 @@ IsModel() を実行すると、True になります。</p>
 一般的に言われる「 <strong>使用可能な状態になっている（リリース済）アセット</strong> 」のことで<br/>
 BG だったり、小物類だったりと、アーティストが Shot ワーク時に扱うモデルを<br/>
 指すのかと思います。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/9728de9268c4e4a9a00962c0ab4c7b2a.png"><img alt="" src="https://gyazo.com/9728de9268c4e4a9a00962c0ab4c7b2a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9728de9268c4e4a9a00962c0ab4c7b2a.png"><img alt="" src="https://gyazo.com/9728de9268c4e4a9a00962c0ab4c7b2a.png"/></a></p>
 <p>キッチンセットをみてみると、RootPrim 以下にあるアセット名の Prim<br/>
 （DefaultPrim）がこの assembly が指定された Prim になります。</p>
 <h3 id="group">Group<a class="headerlink" href="#group" title="Permanent link">¶</a></h3>
@@ -2960,36 +2975,36 @@ BG だったり、小物類だったりと、アーティストが Shot ワー�
 上の Assembly も Group の一種ですが、Assembly は Publish 用のアセットのルートを定義<br/>
 するものなのに対して、こちらはシンプルに Model Hierarchy の階層化するために<br/>
 存在するシンプルなものです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/987075c47963fc1f3dbfb47cd39d848a.png"><img alt="" src="https://gyazo.com/987075c47963fc1f3dbfb47cd39d848a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/987075c47963fc1f3dbfb47cd39d848a.png"><img alt="" src="https://gyazo.com/987075c47963fc1f3dbfb47cd39d848a.png"/></a></p>
 <p>キッチンセットの ####_grp となっている Prim が</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c86374d6a3bb5424cd928436d905299c.png"><img alt="" src="https://gyazo.com/c86374d6a3bb5424cd928436d905299c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c86374d6a3bb5424cd928436d905299c.png"><img alt="" src="https://gyazo.com/c86374d6a3bb5424cd928436d905299c.png"/></a></p>
 <p>この group にあたります。</p>
 <h3 id="component">Component<a class="headerlink" href="#component" title="Permanent link">¶</a></h3>
 <p>次に Component。<br/>
 これは、このアセットを構成する最小要素のアセットにあたります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c7ff9afc7f22901a4fdcf3b8ad724657.png"><img alt="" src="https://gyazo.com/c7ff9afc7f22901a4fdcf3b8ad724657.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c7ff9afc7f22901a4fdcf3b8ad724657.png"><img alt="" src="https://gyazo.com/c7ff9afc7f22901a4fdcf3b8ad724657.png"/></a></p>
 <p>キッチンセット上にリファレンスでロードされている小物アセットが</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b0258f68034165b310ef0f4cab2757ad.png"><img alt="" src="https://gyazo.com/b0258f68034165b310ef0f4cab2757ad.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b0258f68034165b310ef0f4cab2757ad.png"><img alt="" src="https://gyazo.com/b0258f68034165b310ef0f4cab2757ad.png"/></a></p>
 <p>component になっています。<br/>
 この component は「leaf model」と呼ばれていて、<br/>
 Model Hierarchy の概念では末端の構成要素になります。</p>
 <p>この Component 以下には別の Model は存在しません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/103a5fc6d8ee97eacfdfabcc91472994.png"><img alt="" src="https://gyazo.com/103a5fc6d8ee97eacfdfabcc91472994.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/103a5fc6d8ee97eacfdfabcc91472994.png"><img alt="" src="https://gyazo.com/103a5fc6d8ee97eacfdfabcc91472994.png"/></a></p>
 <p>なので、Component 以下（リファレンスでロードされている各アセット以下）の Xform プリムは<br/>
 Mesh をまとめるためのグループの階層として利用されていても</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/95c3f1c8a1a18adc70fccf235696d636.png"><img alt="" src="https://gyazo.com/95c3f1c8a1a18adc70fccf235696d636.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/95c3f1c8a1a18adc70fccf235696d636.png"><img alt="" src="https://gyazo.com/95c3f1c8a1a18adc70fccf235696d636.png"/></a></p>
 <p>子のプリムには Kind は指定されていません。</p>
 <p>Component の指定はどこで行うと良いのか？というと、<br/>
 この /Kitchen_set 以下の Prim に対して行うのではなく</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/01772bcfc0d2ed26bb40bac180e4a214.png"><img alt="" src="https://gyazo.com/01772bcfc0d2ed26bb40bac180e4a214.png"/></a><br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/636805213c366a1b7ed315f77fc44ba7.png"><img alt="" src="https://gyazo.com/636805213c366a1b7ed315f77fc44ba7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/01772bcfc0d2ed26bb40bac180e4a214.png"><img alt="" src="https://gyazo.com/01772bcfc0d2ed26bb40bac180e4a214.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/636805213c366a1b7ed315f77fc44ba7.png"><img alt="" src="https://gyazo.com/636805213c366a1b7ed315f77fc44ba7.png"/></a></p>
 <p>リファレンス元のレイヤーの defaultPrim に対して指定します。<br/>
 このようにすると、リファレンスでロードするレイヤーが「leaf model」<br/>
 ある Model Hierarchy を構成する末端の要素として機能するようになります。</p>
 <h3 id="model-hierarchy_1">Model Hierarchy のまとめ<a class="headerlink" href="#model-hierarchy_1" title="Permanent link">¶</a></h3>
 <p>まとめると、 Model Hierarchy の概念で、アセット内のシーングラフを<br/>
 書き表すとこうなります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"><img alt="" src="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"><img alt="" src="https://gyazo.com/a9f8631c65db94a9368d1be69e4e3e6b.png"/></a></p>
 <p>末端にあたる Component Prim には、アセットを構成する細かいアセットが<br/>
 リファレンスでロードされています。</p>
 <p>USD で複数の細かなアセット（Component、リファレンスでロードされるレイヤー）を<br/>
@@ -3000,10 +3015,10 @@ TopNode に Assembly(Publish されて、利用される１つの背景アセッ
 実際に配置するモデル（Component）をロードする...<br/>
 それが、シーンを構築する上での　基本構造になります。</p>
 <h3 id="_1">活用方法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f562caa3aaf7c2a43fbd6751f1bb771d.png"><img alt="" src="https://gyazo.com/f562caa3aaf7c2a43fbd6751f1bb771d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f562caa3aaf7c2a43fbd6751f1bb771d.png"><img alt="" src="https://gyazo.com/f562caa3aaf7c2a43fbd6751f1bb771d.png"/></a></p>
 <p>この Kind を利用することでどのようなことが可能になるかというと、<br/>
 例えば「USDView」の PickModel で「Models」に変更すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://i.gyazo.com/2d2cb6209886ec9ebc67abf1ae70e75f.gif"><img alt="" src="https://i.gyazo.com/2d2cb6209886ec9ebc67abf1ae70e75f.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://i.gyazo.com/2d2cb6209886ec9ebc67abf1ae70e75f.gif"><img alt="" src="https://i.gyazo.com/2d2cb6209886ec9ebc67abf1ae70e75f.gif"/></a></p>
 <p>モデルをピックするときに Shape の Prim ではなく、Kind が指定された Prim を選択する...<br/>
 といったことが可能になります。<br/>
 この選択している Prim は「Component」が指定されている つまりはレイアウトで配置する<br/>
@@ -3079,7 +3094,7 @@ kind を追加しています。</p>
 <span class="n">api</span><span class="o">.</span><span class="n">SetKind</span><span class="p">(</span><span class="s1">'chargroup'</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>試しに usdview で開いたモデルに、作成した Kind をセットします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/341b1b7995beea7768286c64b517cd12.png"><img alt="" src="https://gyazo.com/341b1b7995beea7768286c64b517cd12.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/341b1b7995beea7768286c64b517cd12.png"><img alt="" src="https://gyazo.com/341b1b7995beea7768286c64b517cd12.png"/></a></p>
 <p>セットできました。<br/>
 ただし、このセットは Plugin で追加していなくても追加が可能です。</p>
 <p>ですが、</p>
@@ -3177,5 +3192,5 @@ USD のシーングラフをどのように体系化させ、定義し、実際�
 <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

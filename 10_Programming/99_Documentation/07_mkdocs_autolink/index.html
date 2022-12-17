@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="ページ内のリンクを作るときに、ファイル名を入れれば自動でリンクを作る" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/07_mkdocs_autolink/" rel="canonical"/>
 <link href="../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="ファイル名を入れるだけで自動でリンクを作りたい - Reincarnation+#Tech" property="og:title"/>
+<meta content="ページ内のリンクを作るときに、ファイル名を入れれば自動でリンクを作る" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/99_Documentation/07_mkdocs_autolink.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/07_mkdocs_autolink/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="ファイル名を入れるだけで自動でリンクを作りたい - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="ページ内のリンクを作るときに、ファイル名を入れれば自動でリンクを作る" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/99_Documentation/07_mkdocs_autolink.png" name="twitter:image"/>
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -131,7 +147,7 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../..">
+<a class="md-tabs__link" href="../../../">
       Introduction
     </a>
 </li>
@@ -212,7 +228,7 @@
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../..">
+<a class="md-nav__link" href="../../../">
         Introduction
       </a>
 </li>
@@ -2829,12 +2845,12 @@ macro を書いて自動化することにしました。</p>
 </code></pre></div></td></tr></table></div>
 <p>macro 用の main.py に markdown_link を追加して、ファイル名（名前だけ）とリンク用の文字列を<br/>
 引数を受け取る関数を定義します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e662d743810975fe7f975a64c8a7191e.png"><img alt="" src="https://gyazo.com/e662d743810975fe7f975a64c8a7191e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e662d743810975fe7f975a64c8a7191e.png"><img alt="" src="https://gyazo.com/e662d743810975fe7f975a64c8a7191e.png"/></a></p>
 <p>Markdown 上では、このように記述します。</p>
 <p><i class="fa fa-external-link"></i> <a href="/reincarnation_tech/10_Programming/99_Documentation/99_mkdocs_sample">mkdocsでのMarkdown記載サンプル</a></p>
 <p>その結果がこの通り。</p>
 <p>やっていること自体は非常にシンプルで、<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href=""><img alt="" src=""/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href=""><img alt="" src=""/></a><br/>
 docs 以下にある md ファイルをさがし、引数で指定した名前にマッチした markdown のファイルに<br/>
 アクセスするためのリンクを生成します。</p>
 <p>md ファイル名が重複してしまうと成立しないのですが<br/>
@@ -2848,7 +2864,7 @@ docs 以下にある md ファイルをさがし、引数で指定した名前�
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-01 14:22:19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -2920,5 +2936,5 @@ docs 以下にある md ファイルをさがし、引数で指定した名前�
 <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

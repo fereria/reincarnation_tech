@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="EditTargetでLayerを操作する - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/01_editTarget.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/11_Pipeline/01_USD/30_USD_Programming/01_Python/01_editTarget/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="EditTargetでLayerを操作する - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/01_editTarget.png" name="twitter:image"/>
 <link href="../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2858,7 +2873,7 @@
 <p><a href="/11_Pipeline/01_USD/21_stage_layer_spec.md">LayerStage について</a>の説明にもあるとおり<br/>
 USD は１つの usd ファイルだけではなく、複数の usd ファイルが「コンポジションアーク」と呼ばれる<br/>
 合成機能によって１つのファイルとして構築されている...と説明をしました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a3e2e76893dcdc9304cce43ed48ef32c.png"><img alt="" src="https://gyazo.com/a3e2e76893dcdc9304cce43ed48ef32c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a3e2e76893dcdc9304cce43ed48ef32c.png"><img alt="" src="https://gyazo.com/a3e2e76893dcdc9304cce43ed48ef32c.png"/></a></p>
 <p>つまりは、なにかの USD ファイルを Open してできあがった Stage は<br/>
 複数の Usd ファイル（レイヤー）によって構成されていて<br/>
 その個別のファイル単位で Prim の元になっている「Spec（主張）」をもった<br/>
@@ -2947,7 +2962,7 @@ USD は１つの usd ファイルだけではなく、複数の usd ファイル
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>layerB.usda</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a48c5f5153ea9df1022e7125f66b595c.png"><img alt="" src="https://gyazo.com/a48c5f5153ea9df1022e7125f66b595c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a48c5f5153ea9df1022e7125f66b595c.png"><img alt="" src="https://gyazo.com/a48c5f5153ea9df1022e7125f66b595c.png"/></a></p>
 <p>構造はこんなかんじのシンプルな構造を用意します。</p>
 <h2 id="_2">開く<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2955,7 +2970,7 @@ USD は１つの usd ファイルだけではなく、複数の usd ファイル
 <span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="sa">r</span><span class="s2">"D:\work\usd_py36\usd\rootLayer.usda"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>まずは、上の USD ファイルを開きます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5f66e9f4fe98f81081560b245eb45c1b.png"><img alt="" src="https://gyazo.com/5f66e9f4fe98f81081560b245eb45c1b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5f66e9f4fe98f81081560b245eb45c1b.png"><img alt="" src="https://gyazo.com/5f66e9f4fe98f81081560b245eb45c1b.png"/></a></p>
 <p>構造はこんなかんじで、</p>
 <p>testPrim のアトリビュートは、</p>
 <p>hoge = "Root"<br/>
@@ -2973,11 +2988,11 @@ val = 20</p>
 これは今のステージに /hoge Prim を作る操作をしています。<br/>
 そして保存時は「GetRootLayer」でレイヤーを取得して保存します。</p>
 <p>この場合の「レイヤー」とは、usda ファイルのことになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c3aca6dc695414b1be879752776705ca.png"><img alt="" src="https://gyazo.com/c3aca6dc695414b1be879752776705ca.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c3aca6dc695414b1be879752776705ca.png"><img alt="" src="https://gyazo.com/c3aca6dc695414b1be879752776705ca.png"/></a></p>
 <p>図に表すとこういう状態です。<br/>
 GetRootLayer は現在の Stage 上の RootLayer(開いた usda)を取得することができます。</p>
 <h3 id="_5">指定のレイヤーを編集する<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8609e16fec4bd6d6b8d4365afde9bf1c.png"><img alt="" src="https://gyazo.com/8609e16fec4bd6d6b8d4365afde9bf1c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8609e16fec4bd6d6b8d4365afde9bf1c.png"><img alt="" src="https://gyazo.com/8609e16fec4bd6d6b8d4365afde9bf1c.png"/></a></p>
 <p>では、RootLayer ではないレイヤーを編集したい場合はどうすればいいでしょうか。<br/>
 このあたりを理解するには「EditTarget」を理解する必要があります。</p>
 <p>EditTarget は、現在の Stage 内の「編集対象のレイヤー」へのアクセスをできるようにするための<br/>
@@ -3020,7 +3035,7 @@ SetEditTarget で編集したい Layer を指定してあげれば OK です。<
 <span class="c1"># 20</span>
 </code></pre></div></td></tr></table></div>
 <p>こうすると、指定のレイヤーのアトリビュートを書き換えることができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a9bb18ca571cc7fd9a18769b4586c4a2.png"><img alt="" src="https://gyazo.com/a9bb18ca571cc7fd9a18769b4586c4a2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a9bb18ca571cc7fd9a18769b4586c4a2.png"><img alt="" src="https://gyazo.com/a9bb18ca571cc7fd9a18769b4586c4a2.png"/></a></p>
 <p>ざっくりと書くとこんな感じで<br/>
 stage の EditTarget を経由して、編集したい Layer を取得して<br/>
 Layer オブジェクトを利用して編集を行います。</p>
@@ -3035,11 +3050,11 @@ Layer オブジェクトを利用して編集を行います。</p>
 </code></pre></div></td></tr></table></div>
 <p>EditTarget の GetLayer を使用した場合、<br/>
 通常の stage.GetRootLayer() とは違い GetPrimAtPath で Prim を取得すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2df47f719f8dda18e0a699556ed5c80d.png"><img alt="" src="https://gyazo.com/2df47f719f8dda18e0a699556ed5c80d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2df47f719f8dda18e0a699556ed5c80d.png"><img alt="" src="https://gyazo.com/2df47f719f8dda18e0a699556ed5c80d.png"/></a></p>
 <p>PrimSpec というオブジェクトになります。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s2">"/testPrim"</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/af3e54f1385994c4b0a992a40198ebfa.png"><img alt="" src="https://gyazo.com/af3e54f1385994c4b0a992a40198ebfa.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/af3e54f1385994c4b0a992a40198ebfa.png"><img alt="" src="https://gyazo.com/af3e54f1385994c4b0a992a40198ebfa.png"/></a></p>
 <p>stage 経由の場合は、 Prim オブジェクトになります。</p>
 <p>ここでいうところの Spec というのがなにかというと、<br/>
 各レイヤーに記述された「合成される前の主張」です。</p>
@@ -3055,17 +3070,17 @@ print(dir(Sdf.Find(～～)))のようにしても、ものによって使える�
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">Find</span><span class="p">(</span><span class="s1">'d:/work/usd_py36/usd/layerB.usda'</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <p>試しに Help 関数を使用して Sdf.Find の Help を見てみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e3ca0b5d2a6e388f94590a2cb40abbb8.png"><img alt="" src="https://gyazo.com/e3ca0b5d2a6e388f94590a2cb40abbb8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e3ca0b5d2a6e388f94590a2cb40abbb8.png"><img alt="" src="https://gyazo.com/e3ca0b5d2a6e388f94590a2cb40abbb8.png"/></a></p>
 <p>Sdf.Find 表示になっているものの実態はなにかというと、Layer だったり</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>print(targetB.GetLayer().GetPrimAtPath('/testPrim'))
 </code></pre></div></td></tr></table></div>
 <p>こうしたときの<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5852f350fb8d60bc6d509d3a5f3b547a.png"><img alt="" src="https://gyazo.com/5852f350fb8d60bc6d509d3a5f3b547a.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5852f350fb8d60bc6d509d3a5f3b547a.png"><img alt="" src="https://gyazo.com/5852f350fb8d60bc6d509d3a5f3b547a.png"/></a><br/>
 このばあいは</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>help(targetB.GetLayer().GetPrimAtPath('/testPrim'))
 </code></pre></div></td></tr></table></div>
 <p>こうすると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e64d952293197949e1bd3d0f03c9bcc0.png"><img alt="" src="https://gyazo.com/e64d952293197949e1bd3d0f03c9bcc0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e64d952293197949e1bd3d0f03c9bcc0.png"><img alt="" src="https://gyazo.com/e64d952293197949e1bd3d0f03c9bcc0.png"/></a></p>
 <p>こうなったりと、オブジェクトの実体は別のものになっているようです。<br/>
 <del>わかりにくすぎるよ Pythonnnnnn!!!!!</del></p>
 <p>なので、GetEditTargetForLocalLayer の引数として渡している</p>
@@ -3099,10 +3114,10 @@ print(dir(Sdf.Find(～～)))のようにしても、ものによって使える�
 </code></pre></div></td></tr></table></div>
 <p>指定のプロパティがどのような主張を持っていて結果どうなったかを<br/>
 見たい場合はｐ GetPropertyStack を確認します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c74967e595daa075bddcfef8e9b1bb2f.png"><img alt="" src="https://gyazo.com/c74967e595daa075bddcfef8e9b1bb2f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c74967e595daa075bddcfef8e9b1bb2f.png"><img alt="" src="https://gyazo.com/c74967e595daa075bddcfef8e9b1bb2f.png"/></a></p>
 <p>stack は、こんなかんじに Sdf.Find の配列になっていて<br/>
 この場合の Sdf.Find の中身は</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/602aebc46d2cfd4313256e5c6a38f3df.png"><img alt="" src="https://gyazo.com/602aebc46d2cfd4313256e5c6a38f3df.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/602aebc46d2cfd4313256e5c6a38f3df.png"><img alt="" src="https://gyazo.com/602aebc46d2cfd4313256e5c6a38f3df.png"/></a></p>
 <p>AttributeSpec になります。<br/>
 Spec なので、ここのアトリビュートは「主張」になります。</p>
 <p>これを見ると、 rootLayer layerA layerB の３つに主張があり<br/>
@@ -3241,5 +3256,5 @@ help(hogehoge)すればちょっとだけまともな Help を見れるという
 <script src="../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

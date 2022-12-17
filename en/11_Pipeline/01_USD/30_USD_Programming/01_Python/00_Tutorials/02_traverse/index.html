@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="USDをPythonで操作するチュートリアル_検索する" name="description"/>
 <meta content="Megumi Ando@Remiria" name="author"/>
 <link href="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/02_traverse/" rel="canonical"/>
 <link href="../../../../../../../favicon.ico" rel="icon"/>
@@ -22,14 +23,29 @@
 <script>__md_scope=new URL("../../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="0から始めるUSDPython(2) ステージを検索しよう - Reincarnation+#Tech" property="og:title"/>
+<meta content="USDをPythonで操作するチュートリアル_検索する" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/02_traverse.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/02_traverse/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="0から始めるUSDPython(2) ステージを検索しよう - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="USDをPythonで操作するチュートリアル_検索する" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/11_Pipeline/01_USD/30_USD_Programming/01_Python/00_Tutorials/02_traverse.png" name="twitter:image"/>
 <link href="../../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2825,7 +2841,7 @@
 <span class="k">for</span> <span class="n">prim</span> <span class="ow">in</span> <span class="n">stage</span><span class="o">.</span><span class="n">TraverseAll</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bb1e117e09a3d2afbe81d9b7f59277c6.png"><img alt="" src="https://gyazo.com/bb1e117e09a3d2afbe81d9b7f59277c6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bb1e117e09a3d2afbe81d9b7f59277c6.png"><img alt="" src="https://gyazo.com/bb1e117e09a3d2afbe81d9b7f59277c6.png"/></a></p>
 <p>実行すると、このようにシーンに含まれる Prim が大量にプリントされるかと思います。</p>
 <h3 id="attribute">Attribute の値が条件に合致している場合に何かしたい<a class="headerlink" href="#attribute" title="Permanent link">¶</a></h3>
 <p>これだと、ただ全 Prim を for で繰り返ししているだけでなにもしていないので<br/>
@@ -2869,14 +2885,14 @@ Get() すると、Attribute の値を取得できます。<br/>
 <p>条件は、これ以外にもいろいろと作ることができます。<br/>
 ので、別の例で「指定の Prim のタイプ（スキーマ）のみ処理をする」というのを<br/>
 書いてみます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5ec584cdd6c95b1b78c66fde75edcdd0.png"><img alt="" src="https://gyazo.com/5ec584cdd6c95b1b78c66fde75edcdd0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5ec584cdd6c95b1b78c66fde75edcdd0.png"><img alt="" src="https://gyazo.com/5ec584cdd6c95b1b78c66fde75edcdd0.png"/></a></p>
 <p>USD の Prim には、「スキーマ」と呼ばれる型が定義されています。<br/>
 これは、いわゆる Maya のノードタイプ（Mesh や Transform 等）のように<br/>
 この Prim がどのようにふるまうのかを定義するものです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b46318a1ecdd6a1d97850154beb53b29.png"><img alt="" src="https://gyazo.com/b46318a1ecdd6a1d97850154beb53b29.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b46318a1ecdd6a1d97850154beb53b29.png"><img alt="" src="https://gyazo.com/b46318a1ecdd6a1d97850154beb53b29.png"/></a></p>
 <p>サンプルの Kitchen_set のカップのモデルは、Mesh だったり<br/>
 移動をするための Group は Xform だったり、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cd27ed63643acc747eb793b66bbfee2e.png"><img alt="" src="https://gyazo.com/cd27ed63643acc747eb793b66bbfee2e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cd27ed63643acc747eb793b66bbfee2e.png"><img alt="" src="https://gyazo.com/cd27ed63643acc747eb793b66bbfee2e.png"/></a></p>
 <p>ライトだと、 DistantLight SphereLight DiskLight のように<br/>
 3DCG で使用する各種データごとにこの Prim が指定されています。</p>
 <p>なので、たとえば「シーンにある SphereLight に対して何かをしたい、値を取得したい」<br/>
@@ -2910,7 +2926,7 @@ UsdPrim のドキュメントをを見ると、ほかの条件でも検索を書
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-06 14:45:01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -2982,5 +2998,5 @@ UsdPrim のドキュメントをを見ると、ほかの条件でも検索を書
 <script src="../../../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

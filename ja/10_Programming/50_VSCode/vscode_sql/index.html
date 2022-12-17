@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="VSCodeでSQL - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/50_VSCode/vscode_sql.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/10_Programming/50_VSCode/vscode_sql/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="VSCodeでSQL - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/50_VSCode/vscode_sql.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2809,59 +2824,59 @@
 <h1>VSCodeでSQL</h1>
 <h2 id="mssql">mssql の設定<a class="headerlink" href="#mssql" title="Permanent link">¶</a></h2>
 <p>まずは、MSSQL 側の設定をチェックします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7457c87e7a0b53d1774e209863b42403.png"><img alt="" src="https://gyazo.com/7457c87e7a0b53d1774e209863b42403.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7457c87e7a0b53d1774e209863b42403.png"><img alt="" src="https://gyazo.com/7457c87e7a0b53d1774e209863b42403.png"/></a></p>
 <p>サーバープロパティのセキュリティで「SQLServer 認証モードと Windows 認証モード」を ON にします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6625e7dad27254758379227a096c7416.png"><img alt="" src="https://gyazo.com/6625e7dad27254758379227a096c7416.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6625e7dad27254758379227a096c7416.png"><img alt="" src="https://gyazo.com/6625e7dad27254758379227a096c7416.png"/></a></p>
 <p>そしてセキュリティから、ユーザーを追加し、ログイン用のアカウントを追加します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b222406034d6c0e2bae5321c6992a994.png"><img alt="" src="https://gyazo.com/b222406034d6c0e2bae5321c6992a994.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b222406034d6c0e2bae5321c6992a994.png"><img alt="" src="https://gyazo.com/b222406034d6c0e2bae5321c6992a994.png"/></a></p>
 <p>SQLServer 認証で、ログイン名とパスワードを指定します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e9ff10c37f0240f7770026602ca7133d.png"><img alt="" src="https://gyazo.com/e9ff10c37f0240f7770026602ca7133d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e9ff10c37f0240f7770026602ca7133d.png"><img alt="" src="https://gyazo.com/e9ff10c37f0240f7770026602ca7133d.png"/></a></p>
 <p>次に、SQLServer の構成マネージャーを開き、 SQLServer ネットワーク構成の<br/>
 MSSQLSERVER のプロトコルを開き TCP/IP を有効化し、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ae35767a76690cbf430719fa2d900a91.png"><img alt="" src="https://gyazo.com/ae35767a76690cbf430719fa2d900a91.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ae35767a76690cbf430719fa2d900a91.png"><img alt="" src="https://gyazo.com/ae35767a76690cbf430719fa2d900a91.png"/></a></p>
 <p>プロパティで TCP ポートをチェックします。<br/>
 チェックしたら PC を再起動しておきます。</p>
 <h2 id="vscode">VSCode の指定<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
 <p>準備ができたら、VSCode 側の設定をします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6a8c57d6a8b0c6eb15bc20c518a033a1.png"><img alt="" src="https://gyazo.com/6a8c57d6a8b0c6eb15bc20c518a033a1.png"/></a></p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/808716438f1a1a1e8026efdbadbc9ffb.png"><img alt="" src="https://gyazo.com/808716438f1a1a1e8026efdbadbc9ffb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6a8c57d6a8b0c6eb15bc20c518a033a1.png"><img alt="" src="https://gyazo.com/6a8c57d6a8b0c6eb15bc20c518a033a1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/808716438f1a1a1e8026efdbadbc9ffb.png"><img alt="" src="https://gyazo.com/808716438f1a1a1e8026efdbadbc9ffb.png"/></a></p>
 <p>インストールするのは SQLServer(msssql) と SQLNotebook の２つ。<br/>
 SQLServer をインストールすると、一緒に必要な別のアドオンも追加されます。</p>
 <p>接続の右にある　＋　を押して、mssql のサーバーを指定します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d26680787976f3646fce54b0364987c4.png"><img alt="" src="https://gyazo.com/d26680787976f3646fce54b0364987c4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d26680787976f3646fce54b0364987c4.png"><img alt="" src="https://gyazo.com/d26680787976f3646fce54b0364987c4.png"/></a></p>
 <p>指定すると、接続したデーターベースのテーブルなどが VSCode 側で確認することができます。<br/>
 hogehoge.sql のようにファイルを作成して、<br/>
 クエリの実行を実行すると、開いているファイルのクエリを実行することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/123ae9884c8dc0822ed77e324ccd99f4.png"><img alt="" src="https://gyazo.com/123ae9884c8dc0822ed77e324ccd99f4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/123ae9884c8dc0822ed77e324ccd99f4.png"><img alt="" src="https://gyazo.com/123ae9884c8dc0822ed77e324ccd99f4.png"/></a></p>
 <p>デフォルトのショートカットは使いにくかったので Ctrl+Q Ctrl+Q で実行できるようにしました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3a9bdd6851d66ec0494d189d1304a15b.png"><img alt="" src="https://gyazo.com/3a9bdd6851d66ec0494d189d1304a15b.png"/></a></p>
-<p>実行すると、接続先を聞かれるのでEnter</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/405246aa779b4d7df575eff840134562.png"><img alt="" src="https://gyazo.com/405246aa779b4d7df575eff840134562.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3a9bdd6851d66ec0494d189d1304a15b.png"><img alt="" src="https://gyazo.com/3a9bdd6851d66ec0494d189d1304a15b.png"/></a></p>
+<p>実行すると、接続先を聞かれるので Enter</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/405246aa779b4d7df575eff840134562.png"><img alt="" src="https://gyazo.com/405246aa779b4d7df575eff840134562.png"/></a></p>
 <p>実行すると、別ウィンドウで結果が表示されます。</p>
 <h3 id="notebook">Notebook<a class="headerlink" href="#notebook" title="Permanent link">¶</a></h3>
-<p>mssqlアドオンでもだいぶ便利なのですが、勉強中はNotebookみたいに実行できたらいいなー<br/>
+<p>mssql アドオンでもだいぶ便利なのですが、勉強中は Notebook みたいに実行できたらいいなー<br/>
 と思って調べてみたらありました。<br/>
-それがSQLNotebook</p>
+それが SQLNotebook</p>
 <h4 id="_1">設定する<a class="headerlink" href="#_1" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4a4a3bcb9e0f3f7739cd214398eafe2a.png"><img alt="" src="https://gyazo.com/4a4a3bcb9e0f3f7739cd214398eafe2a.png"/></a></p>
-<p>SQLのアイコンから NEW SQL CONNECTION で、接続先のデータベースを指定します。<br/>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4a4a3bcb9e0f3f7739cd214398eafe2a.png"><img alt="" src="https://gyazo.com/4a4a3bcb9e0f3f7739cd214398eafe2a.png"/></a></p>
+<p>SQL のアイコンから NEW SQL CONNECTION で、接続先のデータベースを指定します。<br/>
 ポートは、<br/>
-MSSQLSERVER のプロトコルの TCP/IPのプロパティに書かれていたTCPポートです。<br/>
-（TCP/IPが無効だと接続できなかった）</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a09a0eaa48d5bf8be03bdfbe52f4d8cb.png"><img alt="" src="https://gyazo.com/a09a0eaa48d5bf8be03bdfbe52f4d8cb.png"/></a></p>
-<p>エクスプローラーで sqlファイルを右クリックし、ファイルを開くアプリケーションの選択...<br/>
+MSSQLSERVER のプロトコルの TCP/IP のプロパティに書かれていた TCP ポートです。<br/>
+（TCP/IP が無効だと接続できなかった）</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a09a0eaa48d5bf8be03bdfbe52f4d8cb.png"><img alt="" src="https://gyazo.com/a09a0eaa48d5bf8be03bdfbe52f4d8cb.png"/></a></p>
+<p>エクスプローラーで sql ファイルを右クリックし、ファイルを開くアプリケーションの選択...<br/>
 を選び、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/23dc7d773210b17badf4b855555790e8.png"><img alt="" src="https://gyazo.com/23dc7d773210b17badf4b855555790e8.png"/></a></p>
-<p>SQLNotebookを選びます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/30036a2b96ce5ea1705a35e464fe0e4d.png"><img alt="" src="https://gyazo.com/30036a2b96ce5ea1705a35e464fe0e4d.png"/></a></p>
-<p>開くと、Notebook形式で開けるので、あとは<br/>
-セルにSQLを書いてShift+Enterで実行できます。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/23dc7d773210b17badf4b855555790e8.png"><img alt="" src="https://gyazo.com/23dc7d773210b17badf4b855555790e8.png"/></a></p>
+<p>SQLNotebook を選びます。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/30036a2b96ce5ea1705a35e464fe0e4d.png"><img alt="" src="https://gyazo.com/30036a2b96ce5ea1705a35e464fe0e4d.png"/></a></p>
+<p>開くと、Notebook 形式で開けるので、あとは<br/>
+セルに SQL を書いて Shift+Enter で実行できます。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-06-06 16:37:42</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2022-12-17 18:18:51</span>
 </small>
 </div>
 </article>
@@ -2933,5 +2948,5 @@ MSSQLSERVER のプロトコルの TCP/IPのプロパティに書かれていたT
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

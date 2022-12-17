@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="Houdini18で追加されたLOPノードを調べてみた - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/90_solaris_lop_node.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Houdini/11_SOLARIS/90_solaris_lop_node/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Houdini18で追加されたLOPノードを調べてみた - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Houdini/11_SOLARIS/90_solaris_lop_node.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -3102,7 +3117,7 @@ Houdini18 から追加された SOLARIS の Stage ネットワーク内で使用
 各種オプションの補足などをしていきます。<br/>
 詳しく見ていく前に、この確認する 3 つについて軽く説明していきます。</p>
 <h3 id="lop-actions">LOP Actions<a class="headerlink" href="#lop-actions" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/361923aff93434d24f3ad36ed9387976.png"><img alt="" src="https://gyazo.com/361923aff93434d24f3ad36ed9387976.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/361923aff93434d24f3ad36ed9387976.png"><img alt="" src="https://gyazo.com/361923aff93434d24f3ad36ed9387976.png"/></a></p>
 <p>LOP Actions は、そのノードを実行したことで生成される USD のアスキーファイルを<br/>
 見ることが出来る機能です。<br/>
 SOLARIS では、カレントノードは現在の最新のアクティブレイヤーを編集している事になります。<br/>
@@ -3111,14 +3126,14 @@ SOLARIS では、カレントノードは現在の最新のアクティブレイ
 なので、この LOP Actions を確認することで「どういう編集が追加されたか」を<br/>
 アスキーファイルとして見ることが出来ます。</p>
 <h3 id="scene-grapth-path">Scene Grapth Path<a class="headerlink" href="#scene-grapth-path" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/858b398e70a69c2bf981e43d50ca496e.png"><img alt="" src="https://gyazo.com/858b398e70a69c2bf981e43d50ca496e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/858b398e70a69c2bf981e43d50ca496e.png"><img alt="" src="https://gyazo.com/858b398e70a69c2bf981e43d50ca496e.png"/></a></p>
 <p>Scene Graph Path は前回触れましたが、これは現在選択されている段階の「合成結果のシーングラフ」<br/>
 を確認出来る画面です。<br/>
 つまり、ノードを使用してどのような Primitive が作られたのか、シーングラフのツリーが<br/>
 どう編集されたのかを<br/>
 この画面を見ることで確認できます。</p>
 <h3 id="scene-graph-detail">Scene Graph Detail<a class="headerlink" href="#scene-graph-detail" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a7c0da511ad7b84205f0896951bf204b.png"><img alt="" src="https://gyazo.com/a7c0da511ad7b84205f0896951bf204b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a7c0da511ad7b84205f0896951bf204b.png"><img alt="" src="https://gyazo.com/a7c0da511ad7b84205f0896951bf204b.png"/></a></p>
 <p>最後の Detail は、Scene Graph Path で選択中の Primitive の詳細を確認することが出来ます。<br/>
 確認出来るのは、Primitive の</p>
 <ul>
@@ -3139,73 +3154,73 @@ SOLARIS では、カレントノードは現在の最新のアクティブレイ
 <h3 id="sop-lop">SOP-&gt;LOP 関係<a class="headerlink" href="#sop-lop" title="Permanent link">¶</a></h3>
 <p>SOLARIS 空間に SOP のジオメトリを持ち込む方法はいくつかあります。</p>
 <h4 id="sop-import">SOP import<a class="headerlink" href="#sop-import" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/23523170781cf45294c0d689b1f11f16.png"><img alt="" src="https://gyazo.com/23523170781cf45294c0d689b1f11f16.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/23523170781cf45294c0d689b1f11f16.png"><img alt="" src="https://gyazo.com/23523170781cf45294c0d689b1f11f16.png"/></a></p>
 <p>まず sopimport<br/>
 その名の通り、SOP 世界からジオメトリを LOP 内に持ち込むことが出来ます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/02ad7d59ddc060ce8aeb28d813673f8f.png"><img alt="" src="https://gyazo.com/02ad7d59ddc060ce8aeb28d813673f8f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/02ad7d59ddc060ce8aeb28d813673f8f.png"><img alt="" src="https://gyazo.com/02ad7d59ddc060ce8aeb28d813673f8f.png"/></a></p>
 <p>sopimport では、ノードを指定して<br/>
 その段階のジオメトリを読み込むことが出来ます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/16a8214da3b97a01f6a9d18f6930208a.png"><img alt="" src="https://gyazo.com/16a8214da3b97a01f6a9d18f6930208a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/16a8214da3b97a01f6a9d18f6930208a.png"><img alt="" src="https://gyazo.com/16a8214da3b97a01f6a9d18f6930208a.png"/></a></p>
 <p>読み込むジオメトリは、 Import Path Prefix で指定した Path に対してロードされます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bdf15ffeac3cbc996d5c9063f8437157.png"><img alt="" src="https://gyazo.com/bdf15ffeac3cbc996d5c9063f8437157.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bdf15ffeac3cbc996d5c9063f8437157.png"><img alt="" src="https://gyazo.com/bdf15ffeac3cbc996d5c9063f8437157.png"/></a></p>
 <p>シーングラフはこうなります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ef147d7273c2ea40fe7b2be9d7d610d0.png"><img alt="" src="https://gyazo.com/ef147d7273c2ea40fe7b2be9d7d610d0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ef147d7273c2ea40fe7b2be9d7d610d0.png"><img alt="" src="https://gyazo.com/ef147d7273c2ea40fe7b2be9d7d610d0.png"/></a></p>
 <p>SOP import を使用する場合、Reference ノードを使用することなく Load As Reference のチェック<br/>
 を ON にすることで、リファレンスで読み込みができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/869cc0cd5ed58ba141f8a178fa19cfd8.png"><img alt="" src="https://gyazo.com/869cc0cd5ed58ba141f8a178fa19cfd8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/869cc0cd5ed58ba141f8a178fa19cfd8.png"><img alt="" src="https://gyazo.com/869cc0cd5ed58ba141f8a178fa19cfd8.png"/></a></p>
 <p>リファレンス ON の場合、SOP のモデルは自動で usd ファイルとしてエクスポートされ<br/>
 SOP path の下に usd ファイルで保存されます。</p>
 <h4 id="sop-create">SOP Create<a class="headerlink" href="#sop-create" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c1cd6fc15a67cf2e4f53893606f95e9a.png"><img alt="" src="https://gyazo.com/c1cd6fc15a67cf2e4f53893606f95e9a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c1cd6fc15a67cf2e4f53893606f95e9a.png"><img alt="" src="https://gyazo.com/c1cd6fc15a67cf2e4f53893606f95e9a.png"/></a></p>
 <p>SOP Create は import と違いこのノード内で SOP ネットワークを作り、<br/>
 その OUTPUT を SOLARIS 上で使用することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d43ccb2cd59e8525c4b3106d8f3dbe39.png"><img alt="" src="https://gyazo.com/d43ccb2cd59e8525c4b3106d8f3dbe39.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d43ccb2cd59e8525c4b3106d8f3dbe39.png"><img alt="" src="https://gyazo.com/d43ccb2cd59e8525c4b3106d8f3dbe39.png"/></a></p>
 <p>例として、このように SOP Create のサブネットワーク内でノードを作ると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7b35b415b468cc384ecf116de89c2088.png"><img alt="" src="https://gyazo.com/7b35b415b468cc384ecf116de89c2088.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7b35b415b468cc384ecf116de89c2088.png"><img alt="" src="https://gyazo.com/7b35b415b468cc384ecf116de89c2088.png"/></a></p>
 <p>このように、Output の結果が SOLARIS 上に持ち込まれます。</p>
 <p>この画像を見てもらうと分かりますが、デフォルトだとマテリアルアサインがされません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2a02faf39796491776f642bc68a1c6c5.png"><img alt="" src="https://gyazo.com/2a02faf39796491776f642bc68a1c6c5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2a02faf39796491776f642bc68a1c6c5.png"><img alt="" src="https://gyazo.com/2a02faf39796491776f642bc68a1c6c5.png"/></a></p>
 <p>マテリアルは、SOP Create ノードの Materials タブをクリックし、「Auto-fill Materials」をクリック<br/>
 すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/89620a098d279492da5437f44ce9104d.png"><img alt="" src="https://gyazo.com/89620a098d279492da5437f44ce9104d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/89620a098d279492da5437f44ce9104d.png"><img alt="" src="https://gyazo.com/89620a098d279492da5437f44ce9104d.png"/></a></p>
 <p>マテリアルも一緒に持ち込めるようになります。</p>
 <p>細かいところは、 SOP import と設定部分は同じです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/31c39831d7d8e44e7a60813f2b275581.png"><img alt="" src="https://gyazo.com/31c39831d7d8e44e7a60813f2b275581.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/31c39831d7d8e44e7a60813f2b275581.png"><img alt="" src="https://gyazo.com/31c39831d7d8e44e7a60813f2b275581.png"/></a></p>
 <p>SOLARIS 上でも、SOP と同じように Test ジオメトリをロードできますが、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/da6d34788395a29da0e97714f3ea4184.png"><img alt="" src="https://gyazo.com/da6d34788395a29da0e97714f3ea4184.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/da6d34788395a29da0e97714f3ea4184.png"><img alt="" src="https://gyazo.com/da6d34788395a29da0e97714f3ea4184.png"/></a></p>
 <p>Test ジオメトリは、この SOP Create で持ち込んだものになります。</p>
 <h4 id="scene-import">scene import<a class="headerlink" href="#scene-import" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/da1dd698dfdb5c56a1c9a5e29dbcf438.png"><img alt="" src="https://gyazo.com/da1dd698dfdb5c56a1c9a5e29dbcf438.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/da1dd698dfdb5c56a1c9a5e29dbcf438.png"><img alt="" src="https://gyazo.com/da1dd698dfdb5c56a1c9a5e29dbcf438.png"/></a></p>
 <p>scene improt は、 sopimport とは違い、Houdini の SOP ネットワーク内の全ジオメトリを<br/>
 まとめて LOP 内に持ち込むことが出来ます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a5cbf5f0a6ee2aca806cadea995673fd.png"><img alt="" src="https://gyazo.com/a5cbf5f0a6ee2aca806cadea995673fd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a5cbf5f0a6ee2aca806cadea995673fd.png"><img alt="" src="https://gyazo.com/a5cbf5f0a6ee2aca806cadea995673fd.png"/></a></p>
 <p>指定するのは、 SOP の読み込みたいノードの RootPath。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a1acc8ceb6c66b8b23d9c9d48f5d7a84.png"><img alt="" src="https://gyazo.com/a1acc8ceb6c66b8b23d9c9d48f5d7a84.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a1acc8ceb6c66b8b23d9c9d48f5d7a84.png"><img alt="" src="https://gyazo.com/a1acc8ceb6c66b8b23d9c9d48f5d7a84.png"/></a></p>
 <p>その SOP のジオメトリを、Destination Path 下にリファレンスでロードします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a981778b5eaa8418fe909c35ad6729b4.png"><img alt="" src="https://gyazo.com/a981778b5eaa8418fe909c35ad6729b4.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a981778b5eaa8418fe909c35ad6729b4.png"><img alt="" src="https://gyazo.com/a981778b5eaa8418fe909c35ad6729b4.png"/></a></p>
 <p>sopimport の Reference と同様に、USD ROP で Export すると<br/>
 SOP Path 下に usd ファイルが出力されます。</p>
 <p>SOP 内でシーンを構築して、まとめて ROP に持ち込んでライティングをしたい場合は<br/>
 import(All)を使用するのが良さそうです。</p>
 <h3 id="_2">作成関係<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <h4 id="primitive">Primitive<a class="headerlink" href="#primitive" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a9abb5f181021e5bb7541c73494dc232.png"><img alt="" src="https://gyazo.com/a9abb5f181021e5bb7541c73494dc232.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a9abb5f181021e5bb7541c73494dc232.png"><img alt="" src="https://gyazo.com/a9abb5f181021e5bb7541c73494dc232.png"/></a></p>
 <p>Primitive ノードは、USD のシーングラフ Prim を作成するノードです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7932e69a5e6ba143acd5e46deb492a84.png"><img alt="" src="https://gyazo.com/7932e69a5e6ba143acd5e46deb492a84.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7932e69a5e6ba143acd5e46deb492a84.png"><img alt="" src="https://gyazo.com/7932e69a5e6ba143acd5e46deb492a84.png"/></a></p>
 <p>Prim とは、 Scene Graph Path に表示されるこれの事。<br/>
 このノードを使用すれば、指定のタイプの Prim を指定の階層でつくることができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/20e9cb9130061238a41dd17a312ab971.png"><img alt="" src="https://gyazo.com/20e9cb9130061238a41dd17a312ab971.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/20e9cb9130061238a41dd17a312ab971.png"><img alt="" src="https://gyazo.com/20e9cb9130061238a41dd17a312ab971.png"/></a></p>
 <p>たとえば、このような Primitive Paths で作成すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/59fbeff1e1a1c5cbf1e887d7da2c70a3.png"><img alt="" src="https://gyazo.com/59fbeff1e1a1c5cbf1e887d7da2c70a3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/59fbeff1e1a1c5cbf1e887d7da2c70a3.png"><img alt="" src="https://gyazo.com/59fbeff1e1a1c5cbf1e887d7da2c70a3.png"/></a></p>
 <p>シーングラフ上ではこのようになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2f07fc46089bf8c62b945bb8640c82aa.png"><img alt="" src="https://gyazo.com/2f07fc46089bf8c62b945bb8640c82aa.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2f07fc46089bf8c62b945bb8640c82aa.png"><img alt="" src="https://gyazo.com/2f07fc46089bf8c62b945bb8640c82aa.png"/></a></p>
 <p>途中の Path の PrimitiveType は、 Parent Primitive Type で指定することが出来ます。<br/>
 違いは Transform 出来るかどうか（だとおもう）<br/>
 単純にまとめるためとして使用するなら Scope で良いのかなと思います。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/18d8cfa67ed0864e1fcd26e17201b1f8.png"><img alt="" src="https://gyazo.com/18d8cfa67ed0864e1fcd26e17201b1f8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/18d8cfa67ed0864e1fcd26e17201b1f8.png"><img alt="" src="https://gyazo.com/18d8cfa67ed0864e1fcd26e17201b1f8.png"/></a></p>
 <p>このノードの特徴は、Primitive Type を自分の指定した Type で作成できます。<br/>
 なので、Cube にすれば Cube がつくれるし Material にすれば Material ノードを作成することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/40e4361ffa41d445fbdf812fcf36d124.png"><img alt="" src="https://gyazo.com/40e4361ffa41d445fbdf812fcf36d124.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/40e4361ffa41d445fbdf812fcf36d124.png"><img alt="" src="https://gyazo.com/40e4361ffa41d445fbdf812fcf36d124.png"/></a></p>
 <p>もう 1 つ、このノードの特徴として<br/>
 作成する Primitive の Specifier(指定子)を変更することが出来ます。</p>
 <p>指定子とは</p>
@@ -3236,14 +3251,14 @@ import(All)を使用するのが良さそうです。</p>
 def [PrimitiveType] [name] とすると、定義した Type の Primitive を作る事が出来ます。</p>
 <p>class とは、まさにプログラムのクラスと同様に継承するための「定義」になります。<br/>
 この場合、シーングラフ上には<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png"><img alt="" src="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png"><img alt="" src="https://gyazo.com/6d454b690b4b78c015d03b7e13c653f3.png"/></a><br/>
 このようなマークの Primitive が表示されますが<br/>
 ビューポートにノード等は表示されません。<br/>
 これらは、いわゆる定義なのでコンポジションアークの「継承」をするための<br/>
 継承元（共通定義）のような扱いになります。</p>
 <p>このあたりは、コンポジションアーク解説として別途詳しく書こうと思います。</p>
 <h4 id="pointinstancer">PointInstancer<a class="headerlink" href="#pointinstancer" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/34d236cd32aac5132a2a64626e8172a6.png"><img alt="" src="https://gyazo.com/34d236cd32aac5132a2a64626e8172a6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/34d236cd32aac5132a2a64626e8172a6.png"><img alt="" src="https://gyazo.com/34d236cd32aac5132a2a64626e8172a6.png"/></a></p>
 <p>PointInstancer は、Point に対して指定のオブジェクトをインスタンスで配置する機能です。<br/>
 例えば、草だったり石ころだったり<br/>
 背景などに無数にばらまかれているようなオブジェクトを<br/>
@@ -3251,50 +3266,50 @@ def [PrimitiveType] [name] とすると、定義した Type の Primitive を作
 <p>作り方は色々あるっぽいですが、比較的ベーシックっぽいやりかたのみ。</p>
 <p>まず、Instancer で配置するための Point を SOP ネットワーク内で作成します。<br/>
 今回は Grid を Point にしたのみ。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ba7675af37b0f6f9580ed6e7541a7e35.png"><img alt="" src="https://gyazo.com/ba7675af37b0f6f9580ed6e7541a7e35.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ba7675af37b0f6f9580ed6e7541a7e35.png"><img alt="" src="https://gyazo.com/ba7675af37b0f6f9580ed6e7541a7e35.png"/></a></p>
 <p>作成した Point は、 External SOP の SOP Path で指定をします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/7890a5ce51bde4f2d686621e357fcfef.png"><img alt="" src="https://gyazo.com/7890a5ce51bde4f2d686621e357fcfef.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/7890a5ce51bde4f2d686621e357fcfef.png"><img alt="" src="https://gyazo.com/7890a5ce51bde4f2d686621e357fcfef.png"/></a></p>
 <p>次に実際に配置したいインスタンスオブジェクトを指定します。<br/>
 今回は Second Input に入力した Primitive をランダムで配置するようにします。<br/>
 なので Prototype Source を Second Input に変更し<br/>
 Use Entire Stage 　のチェックを OFF にします。</p>
 <p>これが ON の場合、入力のステージを 1 つのインスタンスオブジェクトとして認識するようになります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1bc794c15b6135f65bc87f25b7c112d3.png"><img alt="" src="https://gyazo.com/1bc794c15b6135f65bc87f25b7c112d3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1bc794c15b6135f65bc87f25b7c112d3.png"><img alt="" src="https://gyazo.com/1bc794c15b6135f65bc87f25b7c112d3.png"/></a></p>
 <p>あとは、Merge ノードでオブジェクトをマージして、Second Input にさします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3dd2925d21969002d6c2f015fe5d6928.png"><img alt="" src="https://gyazo.com/3dd2925d21969002d6c2f015fe5d6928.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3dd2925d21969002d6c2f015fe5d6928.png"><img alt="" src="https://gyazo.com/3dd2925d21969002d6c2f015fe5d6928.png"/></a></p>
 <p>結果はこちら。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b9e280a58ca75667a83fb8399524feb8.png"><img alt="" src="https://gyazo.com/b9e280a58ca75667a83fb8399524feb8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b9e280a58ca75667a83fb8399524feb8.png"><img alt="" src="https://gyazo.com/b9e280a58ca75667a83fb8399524feb8.png"/></a></p>
 <p>ポイントに対してオブジェクトがインスタンスで配置されました。</p>
 <p>このあたりも、近いうちにもうちょっと深く掘り下げて検証してみようと思います。</p>
 <h4 id="collections">Collections<a class="headerlink" href="#collections" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ef55f762bbc0b1836078195702d7cfc0.png"><img alt="" src="https://gyazo.com/ef55f762bbc0b1836078195702d7cfc0.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ef55f762bbc0b1836078195702d7cfc0.png"><img alt="" src="https://gyazo.com/ef55f762bbc0b1836078195702d7cfc0.png"/></a></p>
 <p>Collection とは、USD のオブジェクトの識別用のグループのようなもの（北口(@kit2cuz)さんの <a href="https://usd.prisms.xyz/intro/USD-Glossary.html#collection">USD 日本語訳説明はこちら</a>）<br/>
 この Collection は、指定のパターンマッチングを使用して動的にグループを作ることが出来て<br/>
 コレを利用することで、大量のオブジェクトをコンパクトに管理できるようになるらしい。<br/>
 パターンマッチングのルールはこちら。<br/>
 <a href="https://www.sidefx.com/docs/houdini/solaris/pattern.html">https://www.sidefx.com/docs/houdini/solaris/pattern.html</a></p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0bda759b24222e89e7f8341f20980f85.png"><img alt="" src="https://gyazo.com/0bda759b24222e89e7f8341f20980f85.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0bda759b24222e89e7f8341f20980f85.png"><img alt="" src="https://gyazo.com/0bda759b24222e89e7f8341f20980f85.png"/></a></p>
 <p>このような構造があったとして、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e7de8f673aaa4903a3cb10e8102406e2.png"><img alt="" src="https://gyazo.com/e7de8f673aaa4903a3cb10e8102406e2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e7de8f673aaa4903a3cb10e8102406e2.png"><img alt="" src="https://gyazo.com/e7de8f673aaa4903a3cb10e8102406e2.png"/></a></p>
 <p>シーングラフはこうなります。</p>
 <p>例えば、この中から「Cube」という名前がつくオブジェクトのみ選べる Collection をつくってみたいとします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/39fd88416227ca07d9ffd386816e8d8b.png"><img alt="" src="https://gyazo.com/39fd88416227ca07d9ffd386816e8d8b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/39fd88416227ca07d9ffd386816e8d8b.png"><img alt="" src="https://gyazo.com/39fd88416227ca07d9ffd386816e8d8b.png"/></a></p>
 <p>その場合はこのようにします。<br/>
 Target Rule に、この Collection に含めるための条件を追加します。<br/>
 今回は Cube という名前がついているオブジェクトをコレクションにいれたいので<br/>
 /cube* のようにしました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/de48f202bbbbd64143f8753dc44fa8bf.png"><img alt="" src="https://gyazo.com/de48f202bbbbd64143f8753dc44fa8bf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/de48f202bbbbd64143f8753dc44fa8bf.png"><img alt="" src="https://gyazo.com/de48f202bbbbd64143f8753dc44fa8bf.png"/></a></p>
 <p>名前だと Cube じゃないものも含まれたりしますので、Type でまとめたい場合は<br/>
 Primitive Type を条件にすることもできます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fc2be11ae9eb6bda82e6ed4e9e5132f2.png"><img alt="" src="https://gyazo.com/fc2be11ae9eb6bda82e6ed4e9e5132f2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fc2be11ae9eb6bda82e6ed4e9e5132f2.png"><img alt="" src="https://gyazo.com/fc2be11ae9eb6bda82e6ed4e9e5132f2.png"/></a></p>
 <p>正しくコレクションができているか確認したい場合は、<br/>
 SceneGraphPath で作成した CollectionPrimitive を選択して、SceneGraphDetail の Tree View で「collection:selected:includes」 をみてみます。<br/>
 見ると、無事 Cube のみがコレクションにはいったことがわかります。</p>
 <p>この「collection:～～～:includes」 の　～～～　部分は、Collection Name と呼ばれる部分で<br/>
 自分で指定することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6a11add1f7fbf02a06e18339a05035d9.png"><img alt="" src="https://gyazo.com/6a11add1f7fbf02a06e18339a05035d9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6a11add1f7fbf02a06e18339a05035d9.png"><img alt="" src="https://gyazo.com/6a11add1f7fbf02a06e18339a05035d9.png"/></a></p>
 <p>たとえば、Collection Name を hogehoge にしてみると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/956c237b2249a9ce82ffac0903c61ec8.png"><img alt="" src="https://gyazo.com/956c237b2249a9ce82ffac0903c61ec8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/956c237b2249a9ce82ffac0903c61ec8.png"><img alt="" src="https://gyazo.com/956c237b2249a9ce82ffac0903c61ec8.png"/></a></p>
 <p>このように変化します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -3324,35 +3339,35 @@ Python 等からアクセスする場合も色々とやりやすそうです。<
 <p>このあたりも、いずれ別途詳しくリサーチしようと思います。</p>
 <h3 id="_3">編集関係<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <h4 id="edit">Edit<a class="headerlink" href="#edit" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/695248a329110373a96ad0a059a9d5ed.png"><img alt="" src="https://gyazo.com/695248a329110373a96ad0a059a9d5ed.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/695248a329110373a96ad0a059a9d5ed.png"><img alt="" src="https://gyazo.com/695248a329110373a96ad0a059a9d5ed.png"/></a></p>
 <p>Edit ノードは、SOLARIS 上で Primitive の Rotate/Transalte/Scale を編集したときに<br/>
 作成されるノードです。<br/>
 自分で作ると言うより、選択したノードを動かしたときに自動で作られることの方が多いかもしれません。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8e8aab5abc65c4b7ab1c9b7c27a81bc2.png"><img alt="" src="https://gyazo.com/8e8aab5abc65c4b7ab1c9b7c27a81bc2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8e8aab5abc65c4b7ab1c9b7c27a81bc2.png"><img alt="" src="https://gyazo.com/8e8aab5abc65c4b7ab1c9b7c27a81bc2.png"/></a></p>
 <p>操作対象の Primitive は、手で動かした場合は Primitives に自動で PrimitivePath が設定されますが<br/>
 手動で作った場合は空の状態になるため<br/>
 値をいれてもなにも動かなくなったりします。<br/>
 固定の名前ではなく、Input の Primitive を動かしたい場合は、 `lopinputprims('.', 0)` にすると<br/>
 最後に編集された Primitive をセットすることができます。</p>
 <h4 id="duplicate">Duplicate<a class="headerlink" href="#duplicate" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6acabd0b54bbe8a4c524d51a069a971e.png"><img alt="" src="https://gyazo.com/6acabd0b54bbe8a4c524d51a069a971e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6acabd0b54bbe8a4c524d51a069a971e.png"><img alt="" src="https://gyazo.com/6acabd0b54bbe8a4c524d51a069a971e.png"/></a></p>
 <p>Duplicate は、その名の通り<br/>
 指定の Primitive を複製します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/efa18904ad21131a71a3b4a416e9586a.png"><img alt="" src="https://gyazo.com/efa18904ad21131a71a3b4a416e9586a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/efa18904ad21131a71a3b4a416e9586a.png"><img alt="" src="https://gyazo.com/efa18904ad21131a71a3b4a416e9586a.png"/></a></p>
 <p>作ったノードをグループにまとめたい場合は、 Destination Primitives を指定すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0a9f8d5e339f5403572897e068afae11.png"><img alt="" src="https://gyazo.com/0a9f8d5e339f5403572897e068afae11.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0a9f8d5e339f5403572897e068afae11.png"><img alt="" src="https://gyazo.com/0a9f8d5e339f5403572897e068afae11.png"/></a></p>
 <p>その下にノードをまとめてくれます。<br/>
 まとめるノードは Xform か Scope かも指定することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/fc40e776a033d3889b7c35c2ff0ad859.PNG"><img alt="" src="https://gyazo.com/fc40e776a033d3889b7c35c2ff0ad859.PNG"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fc40e776a033d3889b7c35c2ff0ad859.PNG"><img alt="" src="https://gyazo.com/fc40e776a033d3889b7c35c2ff0ad859.PNG"/></a></p>
 <p>入力のノードの Primitive（あるいは指定の Primitive）を指定の数指定の名前で<br/>
 複製してくれます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a8035aac536bd655b9372df2f57f7d16.png"><img alt="" src="https://gyazo.com/a8035aac536bd655b9372df2f57f7d16.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a8035aac536bd655b9372df2f57f7d16.png"><img alt="" src="https://gyazo.com/a8035aac536bd655b9372df2f57f7d16.png"/></a></p>
 <p>どの形式で読み込むかは変更することが出来て<br/>
 デフォルトだと Reference として複製されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cfeef89ab29835e1747afb26b040a4c1.png"><img alt="" src="https://gyazo.com/cfeef89ab29835e1747afb26b040a4c1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cfeef89ab29835e1747afb26b040a4c1.png"><img alt="" src="https://gyazo.com/cfeef89ab29835e1747afb26b040a4c1.png"/></a></p>
 <p>また、複製した Primitive を Collection に入れることが出来ます。<br/>
 Collection Primitive は、Path を入れるとその場所に Primitive も自動で作ってくれます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a61dc9519179c9b43e20227d3c76070e.png"><img alt="" src="https://gyazo.com/a61dc9519179c9b43e20227d3c76070e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a61dc9519179c9b43e20227d3c76070e.png"><img alt="" src="https://gyazo.com/a61dc9519179c9b43e20227d3c76070e.png"/></a></p>
 <p>作成した Primitive をまとめて処理したい時などは Collection 化しておくと便利かもしれません。</p>
 <h3 id="_4">ツリー操作<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>ツリー操作系のノードは、 Merge は Sublayer Graft は Reference Switch は Variant<br/>
@@ -3361,14 +3376,14 @@ Collection Primitive は、Path を入れるとその場所に Primitive も自�
 <p>このあたりは書き始めると、コレ単体で 1 つの記事になりそうなので<br/>
 別途記事にまとめようと思います。</p>
 <h4 id="merge">Merge<a class="headerlink" href="#merge" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/49ae3084a8d4b0ac52314fe6692f5cb9.png"><img alt="" src="https://gyazo.com/49ae3084a8d4b0ac52314fe6692f5cb9.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/49ae3084a8d4b0ac52314fe6692f5cb9.png"><img alt="" src="https://gyazo.com/49ae3084a8d4b0ac52314fe6692f5cb9.png"/></a></p>
 <p>Merge ノードは、SOP にある Merge とほぼ同じ挙動で<br/>
 入力の Primitive やその他もろもろをすべて結合し、<br/>
 その <strong>結合した結果の Primitive すべて</strong> を返します。</p>
 <p>例えば上の画像の例だと、Cube と Cone の Primitive を結合し<br/>
 その 2 つの結果を Output に出力します。</p>
 <p>「すべて」というのがミソで、これがどのようなときに関係するかというと、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a3e26fcf09f8cf3e112d864684d71030.png"><img alt="" src="https://gyazo.com/a3e26fcf09f8cf3e112d864684d71030.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a3e26fcf09f8cf3e112d864684d71030.png"><img alt="" src="https://gyazo.com/a3e26fcf09f8cf3e112d864684d71030.png"/></a></p>
 <p>instancetopoints で Point に対してインスタンス配置をしたい場合。<br/>
 Prototypes は指定の入力のノードを Inputs として受け取りますが</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>`lopinputprims('.', 1)`
@@ -3379,20 +3394,20 @@ Prototypes は指定の入力のノードを Inputs として受け取ります�
 この編集結果が「複数」でないと、正しい挙動になりません。</p>
 <p>このあたりが、Sublayer ノードと挙動が異なるので<br/>
 注意が必要です。（私は当初バグか何かだと思った）</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/5a91ad529823a8bda84fca7a5f8a5e11.png"><img alt="" src="https://gyazo.com/5a91ad529823a8bda84fca7a5f8a5e11.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5a91ad529823a8bda84fca7a5f8a5e11.png"><img alt="" src="https://gyazo.com/5a91ad529823a8bda84fca7a5f8a5e11.png"/></a></p>
 <p>もう 1 つ Merge ノードで注意が必要なのが、 Merge Style です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bd9cb215a71b39d578289a5b387573ce.png"><img alt="" src="https://gyazo.com/bd9cb215a71b39d578289a5b387573ce.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bd9cb215a71b39d578289a5b387573ce.png"><img alt="" src="https://gyazo.com/bd9cb215a71b39d578289a5b387573ce.png"/></a></p>
 <p>これは USD のコンポジションの解決順序にかかわることですが<br/>
 Merge をするときに、同じ Primitive が会った場合<br/>
 どちらを優先するのか　というのが決められています。<br/>
 入力が 0 側が弱く、右に行くにつれてつよくなっていきます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/efed7fdf0c3330001f789d940902972d.png"><img alt="" src="https://gyazo.com/efed7fdf0c3330001f789d940902972d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/efed7fdf0c3330001f789d940902972d.png"><img alt="" src="https://gyazo.com/efed7fdf0c3330001f789d940902972d.png"/></a></p>
 <p>その編集順序は「レイヤースタック」というかたちで保持されます。<br/>
 このレイヤースタックでレイヤーの順序が保持されている状態が「Separate Layers」です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b5c8a5c899ff6c5d1fb0232ca5d6a248.png"><img alt="" src="https://gyazo.com/b5c8a5c899ff6c5d1fb0232ca5d6a248.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b5c8a5c899ff6c5d1fb0232ca5d6a248.png"><img alt="" src="https://gyazo.com/b5c8a5c899ff6c5d1fb0232ca5d6a248.png"/></a></p>
 <p>このように、ノードの右下に～～ Layers と表示されているのが<br/>
 現在のレイヤースタック（サブレイヤーで重ねたレイヤーをあつめたもの）</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4c8b73a48ddc3676cd7c53d5f502e315.png"><img alt="" src="https://gyazo.com/4c8b73a48ddc3676cd7c53d5f502e315.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4c8b73a48ddc3676cd7c53d5f502e315.png"><img alt="" src="https://gyazo.com/4c8b73a48ddc3676cd7c53d5f502e315.png"/></a></p>
 <p>これを Flatten Layers に変更するとどうなるかというと<br/>
 レイヤースタックが「つよい」レイヤーにまとめられていることが分かります。<br/>
 つまりはそれまで維持していたレイヤースタックを結合することで<br/>
@@ -3402,37 +3417,37 @@ Merge をするときに、同じ Primitive が会った場合<br/>
 と思います。<br/>
 どのような順序で編集を適応するか、処理を確定するようなイメージ？</p>
 <h4 id="graft">Graft<a class="headerlink" href="#graft" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/26b8989ba884c093840e2c756a6b8aba.png"><img alt="" src="https://gyazo.com/26b8989ba884c093840e2c756a6b8aba.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/26b8989ba884c093840e2c756a6b8aba.png"><img alt="" src="https://gyazo.com/26b8989ba884c093840e2c756a6b8aba.png"/></a></p>
 <p>Graft ノードは、挙動としては Reference のように「1 つめの Inputs（あるいは指定の Path）」に対して<br/>
 MultiImputs に入力された Primitive を「接ぎ木」するようにマージします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/625be0116191aa39a50a027031b9cabf.png"><img alt="" src="https://gyazo.com/625be0116191aa39a50a027031b9cabf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/625be0116191aa39a50a027031b9cabf.png"><img alt="" src="https://gyazo.com/625be0116191aa39a50a027031b9cabf.png"/></a></p>
 <p>デフォルトの状態で 2 つのノードをセットすると、このようになります。<br/>
 ParentPrimitiveType が「Xform」の場合、<br/>
 自動で Xform ノードを作ってくれます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/1a9699420a75633f04c53bccd3d68f01.png"><img alt="" src="https://gyazo.com/1a9699420a75633f04c53bccd3d68f01.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/1a9699420a75633f04c53bccd3d68f01.png"><img alt="" src="https://gyazo.com/1a9699420a75633f04c53bccd3d68f01.png"/></a></p>
 <p>接ぎ木先の Primitive は Destination Path Defaults で指定することができて<br/>
 通常は opinput 下に接ぎ木されますが、自分で指定もできて<br/>
 サンプルのようにすると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8d1522d2e256b5854ca0b93ae024d960.png"><img alt="" src="https://gyazo.com/8d1522d2e256b5854ca0b93ae024d960.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8d1522d2e256b5854ca0b93ae024d960.png"><img alt="" src="https://gyazo.com/8d1522d2e256b5854ca0b93ae024d960.png"/></a></p>
 <p>このように、個別の Primitive を指定のルールで接ぎ木できます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e43b31d3fc832932e5733e9eb5547af7.png"><img alt="" src="https://gyazo.com/e43b31d3fc832932e5733e9eb5547af7.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e43b31d3fc832932e5733e9eb5547af7.png"><img alt="" src="https://gyazo.com/e43b31d3fc832932e5733e9eb5547af7.png"/></a></p>
 <p>接ぎ木先は、個別の入力単位でも指定できて</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/925f8adf5f8309cf3cc79aa34e7d9b70.png"><img alt="" src="https://gyazo.com/925f8adf5f8309cf3cc79aa34e7d9b70.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/925f8adf5f8309cf3cc79aa34e7d9b70.png"><img alt="" src="https://gyazo.com/925f8adf5f8309cf3cc79aa34e7d9b70.png"/></a></p>
 <p>このようにすると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/430c5fb70d4e4f87c088ab0d8951270e.png"><img alt="" src="https://gyazo.com/430c5fb70d4e4f87c088ab0d8951270e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/430c5fb70d4e4f87c088ab0d8951270e.png"><img alt="" src="https://gyazo.com/430c5fb70d4e4f87c088ab0d8951270e.png"/></a></p>
 <p>個別に接ぎ木先の Path を設定できます。</p>
 <p>挙動はほぼ Reference ですが、Reference とは違い、<br/>
 すべて実体のノードとしてシーングラフが構築されます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4556d47c3ee1b20548f695e5de3787b5.png"><img alt="" src="https://gyazo.com/4556d47c3ee1b20548f695e5de3787b5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4556d47c3ee1b20548f695e5de3787b5.png"><img alt="" src="https://gyazo.com/4556d47c3ee1b20548f695e5de3787b5.png"/></a></p>
 <p>もちろん、入力が Reference の場合は</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f2925b9f6a6f500af2ef8579597b6056.png"><img alt="" src="https://gyazo.com/f2925b9f6a6f500af2ef8579597b6056.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f2925b9f6a6f500af2ef8579597b6056.png"><img alt="" src="https://gyazo.com/f2925b9f6a6f500af2ef8579597b6056.png"/></a></p>
 <p>Reference のまま接ぎ木処理になります。</p>
 <p>シーンをノードで構築する場合は、この Graft ノードを使用することで<br/>
 かんたんにツリー構造を構築することが出来ます。</p>
 <h4 id="switch">Switch<a class="headerlink" href="#switch" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/42354b7c361fe0752d56a9ab9e8955ad.gif"><img alt="" src="https://gyazo.com/42354b7c361fe0752d56a9ab9e8955ad.gif"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/42354b7c361fe0752d56a9ab9e8955ad.gif"><img alt="" src="https://gyazo.com/42354b7c361fe0752d56a9ab9e8955ad.gif"/></a></p>
 <p>Switch ノードは、Varitnt Set のように複数の入力から 1 つの入力に「スイッチ」することができるノードです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/668381c22357f75a8da0a218bcbaa4b6.png"><img alt="" src="https://gyazo.com/668381c22357f75a8da0a218bcbaa4b6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/668381c22357f75a8da0a218bcbaa4b6.png"><img alt="" src="https://gyazo.com/668381c22357f75a8da0a218bcbaa4b6.png"/></a></p>
 <p>Variant Set に比べると構造はシンプルで、入力に対して<br/>
 どの Input を使用するかのスイッチがあるだけです。</p>
 <p>ですが、Variant Set となにが違うかというと<br/>
@@ -3463,13 +3478,13 @@ USD の構造としての Variant Set は持ちません。</p>
 <p>あくまでも、SOLARIS 内で入力を切り替えたい・スイッチしたい場合にのみ使うのが<br/>
 この Switch ノードということかとおもいます。</p>
 <h4 id="prune">prune<a class="headerlink" href="#prune" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/28f423dff229866a96f21589800ea281.png"><img alt="" src="https://gyazo.com/28f423dff229866a96f21589800ea281.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/28f423dff229866a96f21589800ea281.png"><img alt="" src="https://gyazo.com/28f423dff229866a96f21589800ea281.png"/></a></p>
 <p>prune は、入力の Primitive のうち <strong>「条件に当てはまる」</strong> Primitive を無効 or 非表示にします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c6cfba365d4d3dde8a4bc4ef1f1fd533.png"><img alt="" src="https://gyazo.com/c6cfba365d4d3dde8a4bc4ef1f1fd533.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c6cfba365d4d3dde8a4bc4ef1f1fd533.png"><img alt="" src="https://gyazo.com/c6cfba365d4d3dde8a4bc4ef1f1fd533.png"/></a></p>
 <p>Prune ノードの条件を指定すると</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4667a9b6bbb63a549a7a66e12cdabeb1.png"><img alt="" src="https://gyazo.com/4667a9b6bbb63a549a7a66e12cdabeb1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4667a9b6bbb63a549a7a66e12cdabeb1.png"><img alt="" src="https://gyazo.com/4667a9b6bbb63a549a7a66e12cdabeb1.png"/></a></p>
 <p>条件に当てはまるノードが非表示になります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png"><img alt="" src="https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png"><img alt="" src="https://gyazo.com/ef0b0e5de945cd5915defccab24a3965.png"/></a></p>
 <p>デフォルトだと Make Invisible の場合は「非表示」になるし Deactivate だと「無効」になります。</p>
 <p>出力される USD ファイルは、非表示なら</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -3494,40 +3509,40 @@ USD の構造としての Variant Set は持ちません。</p>
 <p>こうなります。</p>
 <h3 id="material">Material 関係<a class="headerlink" href="#material" title="Permanent link">¶</a></h3>
 <h4 id="materiallibrary">materiallibrary<a class="headerlink" href="#materiallibrary" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/4779def23714d785095ca81b09f89c8b.png"><img alt="" src="https://gyazo.com/4779def23714d785095ca81b09f89c8b.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/4779def23714d785095ca81b09f89c8b.png"><img alt="" src="https://gyazo.com/4779def23714d785095ca81b09f89c8b.png"/></a></p>
 <p>materiallibrary は、VOP ネットワークで作られた（/mat 下)マテリアルを<br/>
 SOLARIS の世界に Import するためのノードです。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b76a03ede976b08ebf40b35485351b79.png"><img alt="" src="https://gyazo.com/b76a03ede976b08ebf40b35485351b79.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b76a03ede976b08ebf40b35485351b79.png"><img alt="" src="https://gyazo.com/b76a03ede976b08ebf40b35485351b79.png"/></a></p>
 <p>例として、<br/>
 このようなシンプルなシェーダーを /mat 下でつくったとします。</p>
 <p>しかし、作っただけでは SOLARIS 上では使用することが出来ません。<br/>
 ので、 materiallibrary で読み込みます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f314352cd6487ccf5be798166e10e017.png"><img alt="" src="https://gyazo.com/f314352cd6487ccf5be798166e10e017.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f314352cd6487ccf5be798166e10e017.png"><img alt="" src="https://gyazo.com/f314352cd6487ccf5be798166e10e017.png"/></a></p>
 <p>Container Path は</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/548d2a23f1c1753593d5c4df191c158c.png"><img alt="" src="https://gyazo.com/548d2a23f1c1753593d5c4df191c158c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/548d2a23f1c1753593d5c4df191c158c.png"><img alt="" src="https://gyazo.com/548d2a23f1c1753593d5c4df191c158c.png"/></a></p>
 <p>Scene Graph Path 内のどの空間に Import するかの設定です。<br/>
 USD では、マテリアル関係も同じシーングラフ上に構築されますが<br/>
 どこにおくかは指定されていないので、自分で決めることが出来ます。</p>
 <p>あとは、 Material VOP に、先ほど /mat 内でつくったシェーダーを指定すれば<br/>
 USD の Material/Shader として Import することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b2ee0911cd843eeed0a331ac437a0dc5.png"><img alt="" src="https://gyazo.com/b2ee0911cd843eeed0a331ac437a0dc5.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b2ee0911cd843eeed0a331ac437a0dc5.png"><img alt="" src="https://gyazo.com/b2ee0911cd843eeed0a331ac437a0dc5.png"/></a></p>
 <p>Geometry Path にアサインしたい Primitive を指定すると<br/>
 自動でアサインまでしてくれます。</p>
 <h4 id="assignmaterial">assignmaterial<a class="headerlink" href="#assignmaterial" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/668c7cd8899883f83821daec8df54b20.png"><img alt="" src="https://gyazo.com/668c7cd8899883f83821daec8df54b20.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/668c7cd8899883f83821daec8df54b20.png"><img alt="" src="https://gyazo.com/668c7cd8899883f83821daec8df54b20.png"/></a></p>
 <p>assignmaterial は、現在の SceneGraphPath 内にある Material を、指定の Primitive に対して<br/>
 アサインします。</p>
 <p>注意点は、VOP などで作成したマテリアルは、 materiallibrary の説明にもある通り<br/>
 自動では import されません。<br/>
 ので、使用する場合は事前に materiallibrary でマテリアルを import する必要があります。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/2ca886211f0082c4291586acd0327cdd.png"><img alt="" src="https://gyazo.com/2ca886211f0082c4291586acd0327cdd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/2ca886211f0082c4291586acd0327cdd.png"><img alt="" src="https://gyazo.com/2ca886211f0082c4291586acd0327cdd.png"/></a></p>
 <p>アサインするには、 Primitives に、対象の Primtive 名を設定し<br/>
 アサインしたい対象の Material Path をセットします。</p>
 <p>なお、 Scene Graph Path の Material をターゲットに対して Drag&amp;Drop することでも<br/>
 この assignmaterial ノードを自動作成＆アサインをすることができます。</p>
 <h3 id="_5">そのほか<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <h4 id="python">python<a class="headerlink" href="#python" title="Permanent link">¶</a></h4>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bf60ffd43b76ea320763ae433838aaf6.png"><img alt="" src="https://gyazo.com/bf60ffd43b76ea320763ae433838aaf6.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bf60ffd43b76ea320763ae433838aaf6.png"><img alt="" src="https://gyazo.com/bf60ffd43b76ea320763ae433838aaf6.png"/></a></p>
 <p>最後に紹介するのは Python Script。<br/>
 このノードは、これまで構築したシーングラフのステージを Python の pxr モジュールの Stage で受け取り、<br/>
 直接編集することが出来ます。</p>
@@ -3673,5 +3688,5 @@ PointInstancer で、Point に対して大量のモデルを配置してみる�
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

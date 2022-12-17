@@ -22,14 +22,29 @@
 <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="BlenderPythonの基本(1) dataアクセス - Reincarnation+#Tech" property="og:title"/>
+<meta content="None" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Blender/10_Scripts/01_dataacess.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/05_DCCTool/10_Blender/10_Scripts/01_dataacess/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="BlenderPythonの基本(1) dataアクセス - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="None" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/05_DCCTool/10_Blender/10_Scripts/01_dataacess.png" name="twitter:image"/>
 <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2792,7 +2807,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="c1"># BlendData</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="blenderpython">BlenderPythonの全体図<a class="headerlink" href="#blenderpython" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/bd3479e79b9fda475ba0668dc86c3a85.png"><img alt="" src="https://gyazo.com/bd3479e79b9fda475ba0668dc86c3a85.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/bd3479e79b9fda475ba0668dc86c3a85.png"><img alt="" src="https://gyazo.com/bd3479e79b9fda475ba0668dc86c3a85.png"/></a></p>
 <p>BlenderのAPIは、ざっくりと書き出すとこのようになっています。<br/>
 まず、すべての親クラスとして bpy_struct があります。<br/>
 これは、直接このクラスを使うことはなく、継承したクラスを介して使用します。</p>
@@ -2816,7 +2831,7 @@ userの指定、ノード名、といったDataBlockに関連する関数やプ�
 <span class="p">&lt;</span>bpy_struct, Object(<span class="s2">"Light"</span>) at 0x0000013851AF4108&gt;
 </code></pre></div></td></tr></table></div>
 <h3 id="dataapi">dataAPI<a class="headerlink" href="#dataapi" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/964809b6cd36115714390c743401604a.png"><img alt="" src="https://gyazo.com/964809b6cd36115714390c743401604a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/964809b6cd36115714390c743401604a.png"><img alt="" src="https://gyazo.com/964809b6cd36115714390c743401604a.png"/></a></p>
 <p>bpy.dataで取得できる値は、Blend-File Dataをみると構造がわかりやすいです。</p>
 <p>例えば、 versionであれば</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
@@ -2833,7 +2848,7 @@ Mesh等は、bpy_collection という型になっていて、indexまたはNodeN
 <h3 id="bpydataobjects">bpy.data.objectsから関係オブジェクトを探す<a class="headerlink" href="#bpydataobjects" title="Permanent link">¶</a></h3>
 <p>例えば、コンストレインのようにオブジェクトに対して指定されるような<br/>
 設定を取得したい場合。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/aa2af9f49561659553dbe2e12e9b20f1.png"><img alt="" src="https://gyazo.com/aa2af9f49561659553dbe2e12e9b20f1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/aa2af9f49561659553dbe2e12e9b20f1.png"><img alt="" src="https://gyazo.com/aa2af9f49561659553dbe2e12e9b20f1.png"/></a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2927,5 +2942,5 @@ Mesh等は、bpy_collection という型になっていて、indexまたはNodeN
 <script src="../../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

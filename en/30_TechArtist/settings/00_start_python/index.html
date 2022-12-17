@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="0から始めるTA環境作り - エディタの設定 - Reincarnation+#Tech" property="og:title"/>
+<meta content="VSCodeでPythonを書くための設定をする" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/30_TechArtist/settings/00_start_python.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/en/30_TechArtist/settings/00_start_python/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="0から始めるTA環境作り - エディタの設定 - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="VSCodeでPythonを書くための設定をする" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/30_TechArtist/settings/00_start_python.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2837,9 +2852,9 @@ Python にはいろいろなバージョンが存在していて、バージョ�
 インストールするのが良いでしょう。</p>
 <p><a href="https://www.python.org/downloads/release/python-379/">https://www.python.org/downloads/release/python-379/</a></p>
 <p>今回は 3.7.#、# の部分はバージョンをあげても OK なマイクロバージョンなのでその中で一番新しい 3.7.9 を使用します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8a2ae16e0e87b11b5ff7b16ce387852a.png"><img alt="" src="https://gyazo.com/8a2ae16e0e87b11b5ff7b16ce387852a.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8a2ae16e0e87b11b5ff7b16ce387852a.png"><img alt="" src="https://gyazo.com/8a2ae16e0e87b11b5ff7b16ce387852a.png"/></a></p>
 <p>Windows x86-64 executable Installer をクリックして、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3ff6c3a301b898ea5be3b026ec382d6d.png"><img alt="" src="https://gyazo.com/3ff6c3a301b898ea5be3b026ec382d6d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3ff6c3a301b898ea5be3b026ec382d6d.png"><img alt="" src="https://gyazo.com/3ff6c3a301b898ea5be3b026ec382d6d.png"/></a></p>
 <p>インストーラーをダウンロードします。<br/>
 ダウンロードできたら、実行してインストールをします。</p>
 <h2 id="_1">環境変数を指定する<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
@@ -2851,11 +2866,11 @@ PATH を通すとは、</p>
 </blockquote>
 <p>です。<br/>
 たとえば、Python の場合</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/33e2afa490444d85e06f2288d42ac181.png"><img alt="" src="https://gyazo.com/33e2afa490444d85e06f2288d42ac181.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/33e2afa490444d85e06f2288d42ac181.png"><img alt="" src="https://gyazo.com/33e2afa490444d85e06f2288d42ac181.png"/></a></p>
 <p>このように実行しようとした場合、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0e0de5d1467f33084d4b2739726fc972.png"><img alt="" src="https://gyazo.com/0e0de5d1467f33084d4b2739726fc972.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0e0de5d1467f33084d4b2739726fc972.png"><img alt="" src="https://gyazo.com/0e0de5d1467f33084d4b2739726fc972.png"/></a></p>
 <p>検索から、環境変数　と検索して「システム環境変数の編集」を選び、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/e5ebef5a6876b2d264fc4567012ad51d.png"><img alt="" src="https://gyazo.com/e5ebef5a6876b2d264fc4567012ad51d.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e5ebef5a6876b2d264fc4567012ad51d.png"><img alt="" src="https://gyazo.com/e5ebef5a6876b2d264fc4567012ad51d.png"/></a></p>
 <p>システム環境変数のなかから「Path」を探し、そこに Python のインストールディレクトリを指定します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>C:\Users\&lt;USERNAME&gt;\AppData\Local\Programs\Python\Python37
@@ -2884,10 +2899,10 @@ C:\Users\&lt;USERNAME&gt;\AppData\Local\Programs\Python\Python37\Scripts
 <h3 id="_2">必用な拡張機能を入れる<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>インストールができたら、Python をはじめるのに必用な拡張機能を入れていきます。<br/>
 拡張を入れることで、様々な機能を追加することができます。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/3644b8b76f7ace6db593ec051bfdfbff.png"><img alt="" src="https://gyazo.com/3644b8b76f7ace6db593ec051bfdfbff.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3644b8b76f7ace6db593ec051bfdfbff.png"><img alt="" src="https://gyazo.com/3644b8b76f7ace6db593ec051bfdfbff.png"/></a></p>
 <p>左下の歯車マークをえらび、「拡張機能」をクリックします。<br/>
 すると、左側に<br/>
-<a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/d561549a7ad586ca25993f46bf34f12b.png"><img alt="" src="https://gyazo.com/d561549a7ad586ca25993f46bf34f12b.png"/></a><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d561549a7ad586ca25993f46bf34f12b.png"><img alt="" src="https://gyazo.com/d561549a7ad586ca25993f46bf34f12b.png"/></a><br/>
 拡張機能が表示されるので、以下のものを入れます。</p>
 <p>（おそらく）必須なもの</p>
 <table>
@@ -2951,9 +2966,9 @@ C:\Users\&lt;USERNAME&gt;\AppData\Local\Programs\Python\Python37\Scripts
 </tr>
 </tbody>
 </table>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/cf5ccb5267b91329ef0f8e1815e2a192.png"><img alt="" src="https://gyazo.com/cf5ccb5267b91329ef0f8e1815e2a192.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/cf5ccb5267b91329ef0f8e1815e2a192.png"><img alt="" src="https://gyazo.com/cf5ccb5267b91329ef0f8e1815e2a192.png"/></a></p>
 <p>検索窓に、↑ の文字で検索を入れると、拡張が出てくるので、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/6894de80d6a820252ec49bd837de7363.png"><img alt="" src="https://gyazo.com/6894de80d6a820252ec49bd837de7363.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/6894de80d6a820252ec49bd837de7363.png"><img alt="" src="https://gyazo.com/6894de80d6a820252ec49bd837de7363.png"/></a></p>
 <p>インストールボタンを押してインストールします。</p>
 <h3 id="workspace">WorkSpace を作る<a class="headerlink" href="#workspace" title="Permanent link">¶</a></h3>
 <p>拡張の準備ができたら、Workspace を作ります。<br/>
@@ -2961,42 +2976,42 @@ Workspace とは、その名の通り作業場所（プロジェクトフォル�
 VSCode では、プロジェクトを作らなくても使用することができますが、<br/>
 作業フォルダを指定して、設定をするほうが後々のためにも便利なので<br/>
 いずれかのフォルダ以下に作業場所を指定してから、作業を開始します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/67b3eba2d03e5f28192033636e0477dc.png"><img alt="" src="https://gyazo.com/67b3eba2d03e5f28192033636e0477dc.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/67b3eba2d03e5f28192033636e0477dc.png"><img alt="" src="https://gyazo.com/67b3eba2d03e5f28192033636e0477dc.png"/></a></p>
 <p>まずは、「フォルダーを開く」を押して、作業ディレクトリを指定します。<br/>
 今回は D:/workDir に作業場所を指定します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/f6d859ff3f5f12c8a49dbb22a076bb39.png"><img alt="" src="https://gyazo.com/f6d859ff3f5f12c8a49dbb22a076bb39.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/f6d859ff3f5f12c8a49dbb22a076bb39.png"><img alt="" src="https://gyazo.com/f6d859ff3f5f12c8a49dbb22a076bb39.png"/></a></p>
 <p>指定すると、本当に問題ない？と聞かれるので、はい、制作者を信頼します　を押します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/804d36ff3c638e3a2e5b0adcd7030fcf.png"><img alt="" src="https://gyazo.com/804d36ff3c638e3a2e5b0adcd7030fcf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/804d36ff3c638e3a2e5b0adcd7030fcf.png"><img alt="" src="https://gyazo.com/804d36ff3c638e3a2e5b0adcd7030fcf.png"/></a></p>
 <p>つぎに、ファイルから名前をつけてワークスペースを保存...を押し、workspace.code_workspace(そのまま)<br/>
 で保存します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a7e5d12f9bd1374a0e8a37c91562bcd8.png"><img alt="" src="https://gyazo.com/a7e5d12f9bd1374a0e8a37c91562bcd8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a7e5d12f9bd1374a0e8a37c91562bcd8.png"><img alt="" src="https://gyazo.com/a7e5d12f9bd1374a0e8a37c91562bcd8.png"/></a></p>
 <p>できました。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b62c059c49142f02b40da64ae4d1f9cf.png"><img alt="" src="https://gyazo.com/b62c059c49142f02b40da64ae4d1f9cf.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b62c059c49142f02b40da64ae4d1f9cf.png"><img alt="" src="https://gyazo.com/b62c059c49142f02b40da64ae4d1f9cf.png"/></a></p>
 <p>できたら、このアイコンをおして新規ファイルを作ります。<br/>
 最初なので hello_world.py にしてみます。</p>
 <h2 id="python_1">Python の設定<a class="headerlink" href="#python_1" title="Permanent link">¶</a></h2>
 <p>Python を実行するための設定をしていきます。<br/>
 この設定は、WorkSpace を作成したときにやれば OK です。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/a611ef48512f893f5a6dce8e93000b7f.png"><img alt="" src="https://gyazo.com/a611ef48512f893f5a6dce8e93000b7f.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/a611ef48512f893f5a6dce8e93000b7f.png"><img alt="" src="https://gyazo.com/a611ef48512f893f5a6dce8e93000b7f.png"/></a></p>
 <p>左下に Python のインタープリタの指定があるので、（最初はなにもない）<br/>
 クリックしてバージョンを指定します。</p>
 <p>次に、デバッグ設定をします。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/629cf5754241611f38ac81ec809c8cbb.png"><img alt="" src="https://gyazo.com/629cf5754241611f38ac81ec809c8cbb.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/629cf5754241611f38ac81ec809c8cbb.png"><img alt="" src="https://gyazo.com/629cf5754241611f38ac81ec809c8cbb.png"/></a></p>
 <p>左から ▶ 虫アイコンをえらんで、 launch.json ファイルを作詞します。を押します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/abb02959da777812a3ae99a46b5a49cd.png"><img alt="" src="https://gyazo.com/abb02959da777812a3ae99a46b5a49cd.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/abb02959da777812a3ae99a46b5a49cd.png"><img alt="" src="https://gyazo.com/abb02959da777812a3ae99a46b5a49cd.png"/></a></p>
 <p>ワークスペースを選び、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/b0c58b0588f787ddb6863a7223bb845c.png"><img alt="" src="https://gyazo.com/b0c58b0588f787ddb6863a7223bb845c.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/b0c58b0588f787ddb6863a7223bb845c.png"><img alt="" src="https://gyazo.com/b0c58b0588f787ddb6863a7223bb845c.png"/></a></p>
 <p>Python を選んで</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/c827a10ad403d1406f20a5af08a98034.png"><img alt="" src="https://gyazo.com/c827a10ad403d1406f20a5af08a98034.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/c827a10ad403d1406f20a5af08a98034.png"><img alt="" src="https://gyazo.com/c827a10ad403d1406f20a5af08a98034.png"/></a></p>
 <p>Python File を選んで</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/572b6eba7d2cc421bace13a4704b3ad1.png"><img alt="" src="https://gyazo.com/572b6eba7d2cc421bace13a4704b3ad1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/572b6eba7d2cc421bace13a4704b3ad1.png"><img alt="" src="https://gyazo.com/572b6eba7d2cc421bace13a4704b3ad1.png"/></a></p>
 <p>準備完了。<br/>
 ここまでできたら、</p>
 <p>hello_world.py に</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>を入れて「F5」を押します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/8a3cd23015a0847d0fd7dd647291317e.png"><img alt="" src="https://gyazo.com/8a3cd23015a0847d0fd7dd647291317e.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/8a3cd23015a0847d0fd7dd647291317e.png"><img alt="" src="https://gyazo.com/8a3cd23015a0847d0fd7dd647291317e.png"/></a></p>
 <p>実行できるようになりました。</p>
 <p>ここまで準備ができたら、あとはこの VSCode のプロジェクト下に Python ファイルを作り<br/>
 コードを書く →F5 を押して動くか確認をする...を繰り返し手コードを書いていきます。</p>
@@ -3077,5 +3092,5 @@ VSCode では、プロジェクトを作らなくても使用することがで�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

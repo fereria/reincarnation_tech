@@ -23,14 +23,29 @@
 <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-0Z0ZWECHNT"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-0Z0ZWECHNT",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-0Z0ZWECHNT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<meta content="website" property="og:type"/>
+<meta content="DockerComposeを使ってVolumeを指定してコンテナを起動する - Reincarnation+#Tech" property="og:title"/>
+<meta content="DockerComposeからコンテナ起動してVolume指定するあたり" property="og:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/30_Docker/01_docker_compose.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://fereria.github.io/reincarnation_tech/ja/10_Programming/30_Docker/01_docker_compose/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="DockerComposeを使ってVolumeを指定してコンテナを起動する - Reincarnation+#Tech" name="twitter:title"/>
+<meta content="DockerComposeからコンテナ起動してVolume指定するあたり" name="twitter:description"/>
+<meta content="https://fereria.github.io/reincarnation_tech/assets/images/social/10_Programming/30_Docker/01_docker_compose.png" name="twitter:image"/>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
-            .gdesc-inner { font-size: 0.75rem; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
             
                 .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
                 </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="green" data-md-color-primary="green" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -2778,7 +2793,7 @@
 非常にめんどくさいので Docker Compose という機能を利用して<br/>
 指定のイメージを起動できるようにします。</p>
 <h2 id="docker-composeyml">docker-compose.yml を準備する<a class="headerlink" href="#docker-composeyml" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/0f4c0a6d94de74022aee959580c32caa.png"><img alt="" src="https://gyazo.com/0f4c0a6d94de74022aee959580c32caa.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/0f4c0a6d94de74022aee959580c32caa.png"><img alt="" src="https://gyazo.com/0f4c0a6d94de74022aee959580c32caa.png"/></a></p>
 <p>まず、フォルダ構成。</p>
 <p>Dockerのイメージを構築するのに必要なファイル（Dockerfile）と<br/>
 コンテナ起動の設定ファイルとも言える docker-compose.yml をまとめたフォルダと<br/>
@@ -2826,16 +2841,16 @@ Dockerfileからイメージをビルドして、そのイメージからコン�
 <p>stdin_open: true は、コマンドラインからコンテナを起動した場合、<br/>
 エラーになってしまうのの対策です。</p>
 <p>準備ができたら、VSCodeから起動します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/13df3b72eb41d0b7135af6327730cfa8.png"><img alt="" src="https://gyazo.com/13df3b72eb41d0b7135af6327730cfa8.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/13df3b72eb41d0b7135af6327730cfa8.png"><img alt="" src="https://gyazo.com/13df3b72eb41d0b7135af6327730cfa8.png"/></a></p>
 <p>Docker Compose Up を実行すると、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/054070476d8e34ccffa06523137d09d3.png"><img alt="" src="https://gyazo.com/054070476d8e34ccffa06523137d09d3.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/054070476d8e34ccffa06523137d09d3.png"><img alt="" src="https://gyazo.com/054070476d8e34ccffa06523137d09d3.png"/></a></p>
 <p>イメージのビルドが走り、コンテナを起動することができます。</p>
 <p>起動できたら、Dockerの CONTAINERSからAttach Visual Studio Code<br/>
 をクリックして、コンテナのにアタッチします。<br/>
 アタッチしたら、フォルダーをワークスペースに追加を選び、</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/ad524548521c35a8c4cc413eddb58e66.png"><img alt="" src="https://gyazo.com/ad524548521c35a8c4cc413eddb58e66.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/ad524548521c35a8c4cc413eddb58e66.png"><img alt="" src="https://gyazo.com/ad524548521c35a8c4cc413eddb58e66.png"/></a></p>
 <p>/work_dir を選択します。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-description="" data-height="auto" data-title="" data-width="100%" href="https://gyazo.com/85367ed2bdde44fe187f2864663ea085.png"><img alt="" src="https://gyazo.com/85367ed2bdde44fe187f2864663ea085.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/85367ed2bdde44fe187f2864663ea085.png"><img alt="" src="https://gyazo.com/85367ed2bdde44fe187f2864663ea085.png"/></a></p>
 <p>コンテナにアタッチした状態でも、Volumeで指定したローカルPCの<br/>
 ディレクトリがマウントできているのがわかります。</p>
 <p>これで、コンテナを削除→起動し直した場合も<br/>
@@ -2917,5 +2932,5 @@ Dockerfileからイメージをビルドして、そのイメージからコン�
 <script src="../../../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="../../../../javascripts/extra.js"></script>
 <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
