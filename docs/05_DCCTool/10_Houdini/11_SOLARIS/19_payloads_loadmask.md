@@ -4,7 +4,7 @@ tags:
     - Houdini
     - USD
     - SOLARIS
-description:
+description: SolarisでPayloadを使う方法
 ---
 
 USD のペイロードは、ロードをしないことを選択できるリファレンスです。

@@ -4,7 +4,7 @@ tags:
     - USD
     - USDPythonTutorial
     - AdventCalendar2022
-description:
+description: USDをPythonで操作するチュートリアル_開いて閉じる
 ---
 
 [Universal Scene Description AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 4 日目は、0 から始める USDPython ということで

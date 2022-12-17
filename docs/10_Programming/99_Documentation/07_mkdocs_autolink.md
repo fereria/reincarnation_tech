@@ -4,7 +4,7 @@ tags:
     - macro
     - mkdocs
     - python
-description:
+description: ページ内のリンクを作るときに、ファイル名を入れれば自動でリンクを作る
 ---
 
 表題の通りですが、mkdocs で記事を書くときに

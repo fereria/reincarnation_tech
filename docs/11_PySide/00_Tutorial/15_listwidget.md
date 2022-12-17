@@ -3,7 +3,7 @@ title: List/Tree Widgetを使おう(1) 基本編
 tags:
     - PySide
     - Python
-description:
+description: PySideのTreeWidgetの基本的な使い方
 ---
 
 PySide には Model を自分で実装して使用する TreeView / ListView がありますが

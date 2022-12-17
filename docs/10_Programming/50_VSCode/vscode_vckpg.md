@@ -4,7 +4,7 @@ tags:
     - CPP
     - vcpkg
     - VSCode
-description:
+description: vcpkgを使用してC++のプロジェクトを0から構築する方法
 ---
 
 C++で必要なライブラリを取得して、 CMakeLists.txt を使用して

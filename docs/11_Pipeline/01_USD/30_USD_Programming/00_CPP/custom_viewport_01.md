@@ -3,7 +3,7 @@ title: C++でUSDのViewportを作ろう(1) カメラを作る
 tags:
     - USD
     - AdventCalendar2022
-description:
+description: C++とimguiでビューポートを作る_カメラ実装
 ---
 
 [USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 10 日目は C++と imgui で USD のビューポートを作ろう です。

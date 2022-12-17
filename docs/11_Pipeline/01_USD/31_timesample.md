@@ -2,7 +2,7 @@
 title: USDのTimeSampling（Animation）
 tags:
     - USD
-description:
+description: USDのアニメーションの構造
 ---
 
 [USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd)13 日目は、USD の TimeSampling です。

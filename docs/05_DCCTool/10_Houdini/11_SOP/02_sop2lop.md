@@ -4,7 +4,7 @@ tags:
     - USD
     - AdventCalendar2022
     - SOP
-description:
+description: 普通だと持ってこれないSOPのパラメーターをLOPに持ち込む方法
 ---
 
 [USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 9 日目は

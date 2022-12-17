@@ -3,7 +3,6 @@ title: VSCodeでSQL
 tags:
     - SQL
     - VSCode
-description:
 ---
 
 ## mssql の設定
@@ -57,7 +56,7 @@ hogehoge.sql のようにファイルを作成して、
 
 ![](https://gyazo.com/3a9bdd6851d66ec0494d189d1304a15b.png)
 
-実行すると、接続先を聞かれるのでEnter
+実行すると、接続先を聞かれるので Enter
 
 ![](https://gyazo.com/405246aa779b4d7df575eff840134562.png)
 
@@ -65,29 +64,29 @@ hogehoge.sql のようにファイルを作成して、
 
 ### Notebook
 
-mssqlアドオンでもだいぶ便利なのですが、勉強中はNotebookみたいに実行できたらいいなー
+mssql アドオンでもだいぶ便利なのですが、勉強中は Notebook みたいに実行できたらいいなー
 と思って調べてみたらありました。
-それがSQLNotebook
+それが SQLNotebook
 
 #### 設定する
 
 ![](https://gyazo.com/4a4a3bcb9e0f3f7739cd214398eafe2a.png)
 
-SQLのアイコンから NEW SQL CONNECTION で、接続先のデータベースを指定します。
+SQL のアイコンから NEW SQL CONNECTION で、接続先のデータベースを指定します。
 ポートは、
-MSSQLSERVER のプロトコルの TCP/IPのプロパティに書かれていたTCPポートです。
-（TCP/IPが無効だと接続できなかった）
+MSSQLSERVER のプロトコルの TCP/IP のプロパティに書かれていた TCP ポートです。
+（TCP/IP が無効だと接続できなかった）
 
 ![](https://gyazo.com/a09a0eaa48d5bf8be03bdfbe52f4d8cb.png)
 
-エクスプローラーで sqlファイルを右クリックし、ファイルを開くアプリケーションの選択...
+エクスプローラーで sql ファイルを右クリックし、ファイルを開くアプリケーションの選択...
 を選び、
 
 ![](https://gyazo.com/23dc7d773210b17badf4b855555790e8.png)
 
-SQLNotebookを選びます。
+SQLNotebook を選びます。
 
 ![](https://gyazo.com/30036a2b96ce5ea1705a35e464fe0e4d.png)
 
-開くと、Notebook形式で開けるので、あとは
-セルにSQLを書いてShift+Enterで実行できます。
+開くと、Notebook 形式で開けるので、あとは
+セルに SQL を書いて Shift+Enter で実行できます。

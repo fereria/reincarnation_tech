@@ -4,7 +4,7 @@ tags:
     - USD
     - Omniverse
     - AdventCalendar2022
-description:
+description: Houdini用のOmniversePluginをテストしてみる
 ---
 
 ![](https://gyazo.com/d24c26a02ac8477e641dfb61c136ca79.png)

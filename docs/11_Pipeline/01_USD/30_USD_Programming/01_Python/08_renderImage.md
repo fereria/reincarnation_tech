@@ -2,7 +2,9 @@
 title: RenderImageでUSDをレンダリングしよう
 tags:
     - USD
-description:
+    - Python
+    - AdventCalendar2022
+description: UsdAppUtilsを使用してUSDのシーンをレンダリングしてみる
 ---
 
 USD には、 UsdAppUtils と呼ばれる
@@ -89,15 +91,15 @@ frameRecorder.Record(stage, usdCamera, 0, "./sample.jpg")
 結果はこちら。
 無事画像を出力できました。
 
-今回はデフォルトのStormでレンダリングしていますが、
-RenderDelegateに対応したレンダラーであれば、同様の方法でレンダリングが可能（なはず）です。
-pxr/usdImaging/bin/usdrecord/usdrecord.py 
-サンプルとして、USDのリポジトリ以下の usdrecord.py のソースコードを見ると
+今回はデフォルトの Storm でレンダリングしていますが、
+RenderDelegate に対応したレンダラーであれば、同様の方法でレンダリングが可能（なはず）です。
+pxr/usdImaging/bin/usdrecord/usdrecord.py
+サンプルとして、USD のリポジトリ以下の usdrecord.py のソースコードを見ると
 どのように実装されているか詳しく理解することができます。
 
 ## JupyterNotebook での応用
 
-画像が出力できたので、これを利用してJupyterNotebookでレンダリング結果を
+画像が出力できたので、これを利用して JupyterNotebook でレンダリング結果を
 表示したくなります。
 
 やり方は簡単で、
@@ -107,11 +109,11 @@ from IPython.display import Image
 Image("./sample.jpg")
 ```
 
-IPython.display にあるImageで、Recordで保存しておいた画像を指定すればOKです。
+IPython.display にある Image で、Record で保存しておいた画像を指定すれば OK です。
 
 ![](https://gyazo.com/dda2a138570b51b4d7fd3a5140991826.png)
 
 結果。
 
-これを利用すれば、Pythonでいろいろ操作して、その結果を簡単にNotebookで
+これを利用すれば、Python でいろいろ操作して、その結果を簡単に Notebook で
 確認するといったことも可能になります。

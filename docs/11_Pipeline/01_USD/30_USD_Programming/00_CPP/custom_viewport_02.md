@@ -3,7 +3,7 @@ title: C++でUSDのViewportを作ろう(2) メイン部分を作る
 tags:
     - USD
     - AdventCalendar2022
-description:
+description: C++とimguiでビューポートを作る_本体の実装
 ---
 
 {{markdown_link('custom_viewport_01')}} では、UsdImagingGLEngine を使用した

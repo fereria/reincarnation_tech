@@ -3,7 +3,7 @@ title: USDファイルの依存関係図を作る
 tags:
     - USD
     - AdventCalendar2022
-description:
+description: AssetInfoを使用してUSDのファイルの依存関係図を作る話
 ---
 
 USD は、大量の usd ファイルをコンポジションすることによって、１つの巨大なシーングラフを構築します。

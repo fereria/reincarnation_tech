@@ -4,7 +4,7 @@ tags:
     - USD
     - AdventCalendar2022
     - SOP
-description:
+description: importlopの使い方
 ---
 
 [USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 6 日目は LOP から SOP に情報を持ち込んでみようです。

@@ -4,7 +4,7 @@ tags:
     - mkdocs
     - python
     - ドキュメント作成
-description:
+description: 1つのドキュメントから、自動で言語別ファイルを生成する方法
 ---
 
 基本日本語で書いているドキュメントですが、

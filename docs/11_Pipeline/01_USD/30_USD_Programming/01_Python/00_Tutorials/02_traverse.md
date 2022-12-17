@@ -4,7 +4,7 @@ tags:
     - USD
     - USDPythonTutorial
     - AdventCalendar2022
-description:
+description: USDをPythonで操作するチュートリアル_検索する
 ---
 
 [前回](01_start_usdpython) で USD を Python で開いて、指定の Prim の Attribute を編集して

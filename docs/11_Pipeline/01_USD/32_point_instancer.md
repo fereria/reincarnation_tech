@@ -3,7 +3,7 @@ title: USDのPointInstancer
 tags:
     - USD
     - AdventCalendar2022
-description:
+description: USDのPointInstancerの構造について
 ---
 
 USD には、Reference で読み込む Prim に対して instanceable をつけることで

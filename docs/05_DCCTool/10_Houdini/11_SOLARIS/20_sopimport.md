@@ -3,8 +3,8 @@ title: SOLARISの sopimportを攻略する
 tags:
     - SOLARIS
     - Houdini
-    - AdventCalendar2021
-description:
+    - AdventCalendar2022
+description: sopimportを使ってSOPのGeometryをLOPに持ち込む方法
 ---
 
 ![](https://gyazo.com/d09240a437e3e7c0926a2c6a2ed405d5.png)

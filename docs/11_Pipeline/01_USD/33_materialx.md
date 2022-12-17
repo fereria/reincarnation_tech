@@ -4,7 +4,7 @@ tags:
     - USD
     - AdventCalendar2022
     - MaterialX
-description:
+description: USDでMaterialXを使用した場合の話
 ---
 
 [Universal Scene Description AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 日目は、 USD の MaterialX です。

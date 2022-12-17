@@ -3,7 +3,7 @@ title: 「プロシージャルシーングラフ」とは
 tags:
     - USD
     - AdventCalendar2022
-description:
+description: USDの特徴であるプロシージャルなシーングラフの構築について
 ---
 
 [USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 2 日目は、USD のプロシージャルシーングラフとはなにか？についてです。

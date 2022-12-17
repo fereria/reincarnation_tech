@@ -4,7 +4,7 @@ tags:
     - USD
     - USDPythonTutorial
     - AdventCalendar2022
-description:
+description: USDをPythonで操作するチュートリアル_Primを作る
 ---
 
 {{markdown_link('01_start_usdpython')}} と {{markdown_link('02_traverse')}} ではすでに作成されている USD ファイルの読み方と変更方法をやっていきましたが
