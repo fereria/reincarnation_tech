@@ -4,7 +4,7 @@ tags:
     - USD
     - USDPythonTutorial
     - AdventCalendar2022
-description:
+description: Pythonでサブレイヤーの編集レイヤーを作る
 ---
 
 これまでに、{{markdown_link('01_start_usdpython')}} では、
