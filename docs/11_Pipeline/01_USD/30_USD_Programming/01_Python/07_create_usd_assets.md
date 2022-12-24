@@ -7,7 +7,7 @@ description: PythonでUSDアセットのセットアップをする方法
 ---
 
 [Universal Scene Description AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 20 日目は、
-以前紹介した [Houdini SOLARIS の ComponentBuilder](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/16_component_builder/) に近い内容を Python でやりながら
+以前紹介した {{markdown_link('16_component_builder')}} に近い内容を Python でやりながら
 Python を使用した USD のコンポジションの作り方を説明していきます。
 
 ## 最終的な構成
