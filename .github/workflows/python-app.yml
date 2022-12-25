@@ -47,10 +47,7 @@ jobs:
               run: docker-compose -f docker/docker-compose.yml up --build -d
 
             - name: Create NotionPages
-              env:
-                  NOTION_TOKEN: ${{ secrets.NOTION_TOKEN}}
-                  NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID}}
-              run: docker exec mkdocs python scripts/create_notion_page.py
+              run: docker exec mkdocs python scripts/create_notion_page.py ${{ secrets.NOTION_TOKEN}} ${{ secrets.NOTION_DATABASE_ID}}
 
             - name: nbConvert
               run: docker exec mkdocs python scripts/create_jupyter_markdown.py

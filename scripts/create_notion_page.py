@@ -3,6 +3,7 @@
 import os
 import shutil
 import codecs
+import sys
 
 from notion2md.exporter.block import MarkdownExporter
 from notion_client import Client
@@ -64,5 +65,8 @@ def createNotionPages():
 
 
 if __name__ == '__main__':
+
+    os.environ['NOTION_TOKEN'] = sys.argv[1]
+    os.environ['NOTION_DATABASE_ID'] = sys.argv[2]
 
     createNotionPages()
