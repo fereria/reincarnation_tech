@@ -40,6 +40,13 @@ jobs:
             - name: Update Submodule Python
               run: cd docs/65_SampleCode/python_samplecode && git fetch && git reset --hard origin/master
 
+            - name: Create NotionPages
+              env:
+                  NOTION_TOKEN: ${{ secrets.NOTION_TOKEN}}
+                  NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID}}
+
+              run: docker exec mkdocs python sripts/create_notion_page.py
+
             - uses: satackey/action-docker-layer-caching@v0.0.11
               continue-on-error: true
 
