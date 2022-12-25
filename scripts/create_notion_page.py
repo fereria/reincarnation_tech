@@ -31,6 +31,7 @@ def createNotionPages():
         title = i['properties']['Name']['title'][0]['plain_text']
         tags = [x['name'] for x in i['properties']['Tags']['multi_select']]
         subdir = i['properties']['dir']['rich_text']
+        description = i['properties']['description']['rich_text']
 
         if not i['properties']['publish']['checkbox']:
             # publishがFalseのものはファイルを作らない
@@ -42,6 +43,8 @@ def createNotionPages():
             header.append('tags:')
         for tag in tags:
             header.append(f"    - {tag}")
+        if len(description):
+            header.append(f"description: {description[0]['plain_text']}")
         header.append('---')
 
         outputPath = md_root
