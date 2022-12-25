@@ -10,6 +10,8 @@ on:
     repository_dispatch:
         types:
             - submodule_update
+    schedule:
+        - cron: "0 9 * * *"
 
 jobs:
     build:
