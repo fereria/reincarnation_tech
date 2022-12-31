@@ -11,7 +11,7 @@ on:
         types:
             - submodule_update
     schedule:
-        - cron: "0 9 * * *"
+        - cron: "0 16 * * *"
 
 jobs:
     build:
@@ -27,7 +27,7 @@ jobs:
               run: |
                   git config --global core.symlinks true
                   git config --global user.name "Megumi Ando"
-                  git config --global user.email "remiria@flame-daybreak.net"
+                  git config --global user.email "${{ secrets.EMAIL }}"
 
             - name: Checkout
               uses: actions/checkout@v2
