@@ -1,15 +1,15 @@
 ---
 title: PySideでタグクラウドっぽいWidgetを作る
 tags:
-  - PySide
-  - Python
+    - PySide
+    - Python
 ---
 
-[前回](11_custom_layout.md) 作ったFlowLayoutを利用して、今度は実践として
-ウェブページなどでよく見かけるタグクラウドっぽいWidgetを作ってみようかと思います。
+[前回](11_custom_layout.md) 作った FlowLayout を利用して、今度は実践として
+ウェブページなどでよく見かけるタグクラウドっぽい Widget を作ってみようかと思います。
 
 [全コードはこちら](/65_SampleCode/PySide/tagCrowd)
-FlowLayout部分は前回と同じなので、説明は省きます。
+FlowLayout 部分は前回と同じなので、説明は省きます。
 
 ## 基本機能
 
@@ -22,7 +22,7 @@ FlowLayout部分は前回と同じなので、説明は省きます。
 一覧のタグを追加・削除することができる機能、
 そして現在のタグの一覧を取得できるようにします。
 
-## Tag部分
+## Tag 部分
 
 ```python
 class Tag(QFrame):
@@ -62,18 +62,18 @@ class Tag(QFrame):
 ![](https://gyazo.com/77bb6bef1469f25d8f1041c39fa67488.png)
 
 最初はタグ部分。
-ベースはQFrameを使用します。
-背景色や、エッジを少し丸くするのは、QSSをFrameに対して指定することで作成しています。
-そして、このFrameに対してHBoxLayoutでLabelとボタンを配置するようにします。
+ベースは QFrame を使用します。
+背景色や、エッジを少し丸くするのは、QSS を Frame に対して指定することで作成しています。
+そして、この Frame に対して HBoxLayout で Label とボタンを配置するようにします。
 
-タグのマージンは、LayoutHBoxLayoutとQFrame自体に存在しているのですが
-両方入っているとコントロールしにくいので、レイアウト自体のマージンは0にしたうえで
-QFrameのマージンでいい感じになるように調整しています。
+タグのマージンは、LayoutHBoxLayout と QFrame 自体に存在しているのですが
+両方入っているとコントロールしにくいので、レイアウト自体のマージンは 0 にしたうえで
+QFrame のマージンでいい感じになるように調整しています。
 
-そして、タグを削除するとき用にDeleteのシグナルを追加します。
+そして、タグを削除するとき用に Delete のシグナルを追加します。
 シグナルでは、削除するタグ（自分自身）を渡すようにします。
-これは、このTag側で削除してしまうと、レイアウトの更新的によろしくないので
-このシグナルを受け取ったTagCrowd側で削除します。
+これは、この Tag 側で削除してしまうと、レイアウトの更新的によろしくないので
+このシグナルを受け取った TagCrowd 側で削除します。
 
 タグの色は引数で変えられるようにしておきます。
 
@@ -134,19 +134,19 @@ class TagCrowd(QWidget):
 ```
 
 続いてタグクラウド本体。
-構造はシンプルで、先ほどのTagウィジェットをFlowLayoutを利用して配置します。
-FlowLayout側で配置しているオブジェクトの管理や増減をするか迷ったのですが
-現在のタグ一覧を取得したり、削除したり追加したいする挙動はTagCrowd側でやりたかったので
-addTag時にレイアウトへの追加は毎回クリア→追加するようにします。
+構造はシンプルで、先ほどの Tag ウィジェットを FlowLayout を利用して配置します。
+FlowLayout 側で配置しているオブジェクトの管理や増減をするか迷ったのですが
+現在のタグ一覧を取得したり、削除したり追加したいする挙動は TagCrowd 側でやりたかったので
+addTag 時にレイアウトへの追加は毎回クリア → 追加するようにします。
 
 ![](https://gyazo.com/fc08defecc01e20dd0308f031b57fb1c.png)
 
-タグ追加ボタンは、FlowLayoutの最後尾に追加するようにしたいので、
-addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに対してaddWidgetしています。
+タグ追加ボタンは、FlowLayout の最後尾に追加するようにしたいので、
+addTag でクリア →Tag オブジェクトを追加した最後に FlowLayout に対して addWidget しています。
 
-削除は、Tagのシグナルで削除されたときにdeleteTagを呼ぶようにします。
+削除は、Tag のシグナルで削除されたときに deleteTag を呼ぶようにします。
 そして該当タグを tags から削除して、自分自身を deleteLater で削除します。
-（deleteLaterしてから Tagオブジェクトを削除するとレイアウトがぶっ壊れるので注意）
+（deleteLater してから Tag オブジェクトを削除するとレイアウトがぶっ壊れるので注意）
 
 ```python
 class PopupEdit(QDialog):
@@ -182,7 +182,7 @@ class PopupEdit(QDialog):
         self.close()
 ```
 
-addTagするときのDialogは、[QCompleterでLineEditに予測変換を入れる](https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/02_completer/)の時のコードを流用して、Popupで表示＋閉じるときにEmitする簡単な入力を作りました。
+addTag するときの Dialog は、{{markdown_link('02_completer')}}の時のコードを流用して、Popup で表示＋閉じるときに Emit する簡単な入力を作りました。
 
 ## 使ってみる
 
@@ -211,10 +211,11 @@ class SampleUI(QDialog):
         print(self.crowd.getTagNames())
 
 ```
+
 [sroll.ui](https://gist.github.com/fereria/036b2ee82789c33a204dfa3308ee2d59)は前に使ったものにボタンを追加しています。
 
 ## まとめ
 
-FlowLayoutと合わせてよく使いそうなタグクラウドウィジェットができました。
+FlowLayout と合わせてよく使いそうなタグクラウドウィジェットができました。
 あとは、これにタグ追加シグナルやタグ削除シグナルを追加したり
 個別にタグの色を変更できるようにするといったことを追加すると、さらに便利になるのでは？と思います。

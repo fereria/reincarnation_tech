@@ -100,7 +100,7 @@ Kitchen_set だと複雑なので、もっとシンプルな usd ファイルで
 
 書き表すとこのようになります。
 
-Stage は、コンポジションアークによって（この場合[サブレイヤー](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/06_comp_arc_subLayer/)によって合成された結果出来上がったものです。
+Stage は、コンポジションアークによって（この場合 {{markdown_link('06_comp_arc_subLayer')}} によって合成された結果出来上がったものです。
 今回のサンプルならば、 subLayer.usda と root.usda が合成された結果出来上がったシーングラフが
 Stage です。
 

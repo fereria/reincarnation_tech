@@ -90,7 +90,7 @@ FileFormatPlugin は、上の AlembicFileFormatPlugin のように「ある別�
 
 ### DancingCubeExample を試してみる
 
-まずは、[こちらの方法](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/24_asset_resolution/#_1)で USD をビルドしておきます。
+まずは、{{markdown_link('24_asset_resolution')}} で USD をビルドしておきます。
 
 ![](https://gyazo.com/bd3e094b341951524a1eb3b301676f81.png)
 

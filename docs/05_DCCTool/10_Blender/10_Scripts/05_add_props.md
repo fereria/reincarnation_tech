@@ -119,5 +119,5 @@ PropertyGroup を作成すると、このように groupName.prop のような
 
 Blender の Addon で追加する場合は
 
-:fa-external-link: [サンプルコードの addProps](https://fereria.github.io/reincarnation_tech/65_SampleCode/blender_samplecode/SampleAddon/addProps/) のように、 クラス定義と Property への登録処理をする構造を
+{{markdown_link('addProps')}} のように、 クラス定義と Property への登録処理をする構造を
 作成すれば OK です。

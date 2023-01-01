@@ -73,7 +73,7 @@ Snippet Generator というアドオンを入れると
 それが自分の資産になっていくので、
 作業しながら、うまく活用して効率化していくといいのかなーと思います。
 
-https://fereria.github.io/reincarnation_tech/10_Programming/50_VSCode/vscode_snippet_sc/
+{{markdown_link('vscode_snippet_sc')}}
 さらに、以前書いた記事ですが
 登録したスニペットはショートカット登録も可能なので
 よく使うものはショートカット化するのも便利だったりします。

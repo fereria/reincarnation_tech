@@ -6,7 +6,7 @@ tags:
 description: ThreadPoolとQRunnableを使用した並列処理の書き方
 ---
 
-以前 :fa-external-link: [QThread で増地スレッドを使う](https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/06_qthread_01/)という記事で、 QThread を継承して Thread を使用するサンプルを紹介しましたが、
+以前 {{markdown_link('06_qthread_01')}} という記事で、 QThread を継承して Thread を使用するサンプルを紹介しましたが、
 これとは別にもう１つ「QThreadPool」を使用してスレッドを作成する処理のやり方があるので
 紹介します。
 

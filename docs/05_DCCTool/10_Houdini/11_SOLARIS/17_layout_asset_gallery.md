@@ -10,7 +10,7 @@ Houdini19 では、作ったアセットを配置する（レイアウトする�
 
 18.5 では、USD アセットのレイアウトを使用とした場合
 Stage に対してオブジェクトを 1 つずつ読み込んで配置するしかありませんでした。
-PointInstancer なども[以前こちらに書きました](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/05_point_instancer/)が、SOP で Point を作成してから SOLARIS 上で
+PointInstancer なども {{markdown_link('05_point_instancer')}}が、SOP で Point を作成してから SOLARIS 上で
 ノードを作るなど、なかなか直感的ではありませんでした。
 
 ですが、Houdini19 で新しく追加された Layout ノードと、LayoutAssetGallery を使用すると
