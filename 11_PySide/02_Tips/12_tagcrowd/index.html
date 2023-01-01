@@ -1945,7 +1945,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#tag">
-    Tag部分
+    Tag 部分
   </a>
 </li>
 <li class="md-nav__item">
@@ -2838,7 +2838,7 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#tag">
-    Tag部分
+    Tag 部分
   </a>
 </li>
 <li class="md-nav__item">
@@ -2871,17 +2871,17 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1>PySideでタグクラウドっぽいWidgetを作る</h1>
-<p><a href="../11_custom_layout/">前回</a> 作ったFlowLayoutを利用して、今度は実践として<br/>
-ウェブページなどでよく見かけるタグクラウドっぽいWidgetを作ってみようかと思います。</p>
+<p><a href="../11_custom_layout/">前回</a> 作った FlowLayout を利用して、今度は実践として<br/>
+ウェブページなどでよく見かけるタグクラウドっぽい Widget を作ってみようかと思います。</p>
 <p><a href="/65_SampleCode/PySide/tagCrowd">全コードはこちら</a><br/>
-FlowLayout部分は前回と同じなので、説明は省きます。</p>
+FlowLayout 部分は前回と同じなので、説明は省きます。</p>
 <h2 id="_1">基本機能<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3409ed47c2ec59da71ab656e4befeb43.png"><img alt="" src="https://gyazo.com/3409ed47c2ec59da71ab656e4befeb43.png"/></a></p>
 <p>今回作るタグクラウドでは、まずこのようなシンプルな表示のみをする機能と、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/5e2e751dbf782fc6d46f4368290c264b.gif"><img alt="" src="https://gyazo.com/5e2e751dbf782fc6d46f4368290c264b.gif"/></a></p>
 <p>一覧のタグを追加・削除することができる機能、<br/>
 そして現在のタグの一覧を取得できるようにします。</p>
-<h2 id="tag">Tag部分<a class="headerlink" href="#tag" title="Permanent link">¶</a></h2>
+<h2 id="tag">Tag 部分<a class="headerlink" href="#tag" title="Permanent link">¶</a></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2948,16 +2948,16 @@ FlowLayout部分は前回と同じなので、説明は省きます。</p>
 </code></pre></div></td></tr></table></div>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/77bb6bef1469f25d8f1041c39fa67488.png"><img alt="" src="https://gyazo.com/77bb6bef1469f25d8f1041c39fa67488.png"/></a></p>
 <p>最初はタグ部分。<br/>
-ベースはQFrameを使用します。<br/>
-背景色や、エッジを少し丸くするのは、QSSをFrameに対して指定することで作成しています。<br/>
-そして、このFrameに対してHBoxLayoutでLabelとボタンを配置するようにします。</p>
-<p>タグのマージンは、LayoutHBoxLayoutとQFrame自体に存在しているのですが<br/>
-両方入っているとコントロールしにくいので、レイアウト自体のマージンは0にしたうえで<br/>
-QFrameのマージンでいい感じになるように調整しています。</p>
-<p>そして、タグを削除するとき用にDeleteのシグナルを追加します。<br/>
+ベースは QFrame を使用します。<br/>
+背景色や、エッジを少し丸くするのは、QSS を Frame に対して指定することで作成しています。<br/>
+そして、この Frame に対して HBoxLayout で Label とボタンを配置するようにします。</p>
+<p>タグのマージンは、LayoutHBoxLayout と QFrame 自体に存在しているのですが<br/>
+両方入っているとコントロールしにくいので、レイアウト自体のマージンは 0 にしたうえで<br/>
+QFrame のマージンでいい感じになるように調整しています。</p>
+<p>そして、タグを削除するとき用に Delete のシグナルを追加します。<br/>
 シグナルでは、削除するタグ（自分自身）を渡すようにします。<br/>
-これは、このTag側で削除してしまうと、レイアウトの更新的によろしくないので<br/>
-このシグナルを受け取ったTagCrowd側で削除します。</p>
+これは、この Tag 側で削除してしまうと、レイアウトの更新的によろしくないので<br/>
+このシグナルを受け取った TagCrowd 側で削除します。</p>
 <p>タグの色は引数で変えられるようにしておきます。</p>
 <h2 id="tagcrowd">TagCrowd<a class="headerlink" href="#tagcrowd" title="Permanent link">¶</a></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3063,16 +3063,16 @@ QFrameのマージンでいい感じになるように調整しています。</
             <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>続いてタグクラウド本体。<br/>
-構造はシンプルで、先ほどのTagウィジェットをFlowLayoutを利用して配置します。<br/>
-FlowLayout側で配置しているオブジェクトの管理や増減をするか迷ったのですが<br/>
-現在のタグ一覧を取得したり、削除したり追加したいする挙動はTagCrowd側でやりたかったので<br/>
-addTag時にレイアウトへの追加は毎回クリア→追加するようにします。</p>
+構造はシンプルで、先ほどの Tag ウィジェットを FlowLayout を利用して配置します。<br/>
+FlowLayout 側で配置しているオブジェクトの管理や増減をするか迷ったのですが<br/>
+現在のタグ一覧を取得したり、削除したり追加したいする挙動は TagCrowd 側でやりたかったので<br/>
+addTag 時にレイアウトへの追加は毎回クリア → 追加するようにします。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fc08defecc01e20dd0308f031b57fb1c.png"><img alt="" src="https://gyazo.com/fc08defecc01e20dd0308f031b57fb1c.png"/></a></p>
-<p>タグ追加ボタンは、FlowLayoutの最後尾に追加するようにしたいので、<br/>
-addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに対してaddWidgetしています。</p>
-<p>削除は、Tagのシグナルで削除されたときにdeleteTagを呼ぶようにします。<br/>
+<p>タグ追加ボタンは、FlowLayout の最後尾に追加するようにしたいので、<br/>
+addTag でクリア →Tag オブジェクトを追加した最後に FlowLayout に対して addWidget しています。</p>
+<p>削除は、Tag のシグナルで削除されたときに deleteTag を呼ぶようにします。<br/>
 そして該当タグを tags から削除して、自分自身を deleteLater で削除します。<br/>
-（deleteLaterしてから Tagオブジェクトを削除するとレイアウトがぶっ壊れるので注意）</p>
+（deleteLater してから Tag オブジェクトを削除するとレイアウトがぶっ壊れるので注意）</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3135,9 +3135,9 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
         <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>addTagするときのDialogは、<a href="https://fereria.github.io/reincarnation_tech/11_PySide/02_Tips/02_completer/">QCompleterでLineEditに予測変換を入れる</a>の時のコードを流用して、Popupで表示＋閉じるときにEmitする簡単な入力を作りました。</p>
+<p>addTag するときの Dialog は、<i class="fa fa-external-link"></i> <a href="/reincarnation_tech/11_PySide/02_Tips/02_completer">QCompleterでLineEditに予測変換を入れる</a>の時のコードを流用して、Popup で表示＋閉じるときに Emit する簡単な入力を作りました。</p>
 <h2 id="_2">使ってみる<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -3180,10 +3180,10 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
 
     <span class="k">def</span> <span class="nf">showTags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">crowd</span><span class="o">.</span><span class="n">getTagNames</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div><br/>
-<a href="https://gist.github.com/fereria/036b2ee82789c33a204dfa3308ee2d59">sroll.ui</a>は前に使ったものにボタンを追加しています。</p>
+</code></pre></div></td></tr></table></div>
+<p><a href="https://gist.github.com/fereria/036b2ee82789c33a204dfa3308ee2d59">sroll.ui</a>は前に使ったものにボタンを追加しています。</p>
 <h2 id="_3">まとめ<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>FlowLayoutと合わせてよく使いそうなタグクラウドウィジェットができました。<br/>
+<p>FlowLayout と合わせてよく使いそうなタグクラウドウィジェットができました。<br/>
 あとは、これにタグ追加シグナルやタグ削除シグナルを追加したり<br/>
 個別にタグの色を変更できるようにするといったことを追加すると、さらに便利になるのでは？と思います。</p>
 <hr/>
@@ -3191,7 +3191,7 @@ addTagでクリア→Tagオブジェクトを追加した最後にFlowLayoutに�
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2021-08-10 17:19:27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-01 06:33:25</span>
 </small>
 </div>
 </article>
