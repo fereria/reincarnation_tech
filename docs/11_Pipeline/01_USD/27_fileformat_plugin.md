@@ -126,7 +126,7 @@ USD のレイヤーは存在していません。
 しかし、実際には Cube が動く Stage が生成されています。
 
 この DancingCubeExample は、Prim や Schema、Attribute がすでに USD ファイルに保存されているのではなく、
-pluginfo.json で追加した Metadata (Plugin で CustomMetaData を追加する方法については[こちら](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/15_CustomMetadata/))の情報を介して、USD のシーングラフを動的に、プロシージャルに生成しています。
+pluginfo.json で追加した Metadata (Plugin で CustomMetaData を追加する方法については {{markdown_link('15_CustomMetadata','こちら')}} の情報を介して、USD のシーングラフを動的に、プロシージャルに生成しています。
 
 動的に生成しているので、
 例えば、 dancingCubes.usda の Usd_DCE_Params の perSide を 5 にしてみます。
