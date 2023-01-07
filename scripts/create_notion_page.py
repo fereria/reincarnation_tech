@@ -39,8 +39,8 @@ def createNotionPages():
 
         header = ["---"]
         header.append(f'title: {title}')
-        if len(tags):
-            header.append('tags:')
+        header.append('tags:')
+        header.append(f"    - NotionMemo")
         for tag in tags:
             header.append(f"    - {tag}")
         if len(description):
