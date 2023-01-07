@@ -52,7 +52,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#macro-rendering-error">
+<a class="md-skip" href="#notion">
           Skip to content
         </a>
 </div>
@@ -1286,9 +1286,46 @@
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Notionの記事をMkdocsに投稿する
+          <span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href="./">
         Notionの記事をMkdocsに投稿する
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#notion">
+    Notion のページを用意する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    記事の一覧を取得する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#markdown">
+    markdown のダウンロード
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    ヘッダー部分を追加する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#actions">
+    Actions で実行
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../99_mkdocs_sample/">
@@ -2795,6 +2832,37 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#notion">
+    Notion のページを用意する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    記事の一覧を取得する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#markdown">
+    markdown のダウンロード
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    ヘッダー部分を追加する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#actions">
+    Actions で実行
+  </a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -2809,8 +2877,84 @@
 <a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/10_Programming/99_Documentation/08_notion_mkdocs.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="macro-rendering-error"><em>Macro Rendering Error</em><a class="headerlink" href="#macro-rendering-error" title="Permanent link">¶</a></h1>
-<p><strong>UndefinedError</strong>: 'secrets' is undefined</p>
+<h1>Notionの記事をMkdocsに投稿する</h1>
+<p>基本は markdown+VSCode で記事を書いている当 Blog ですが、<br/>
+自宅の環境で記事を書くのではなく、ちょっとしたメモとかを自宅外で書いておきたいということがままあります。</p>
+<p>そういったときは、Notion であったり Cacher だったりといったサービスを活用しているのですが<br/>
+そういった記事を検索するときに、個別に検索するのは面倒なので<br/>
+Notion の記事を mkdocs で記事として公開できるものは自分のサイトに公開できるようにしました。</p>
+<h2 id="notion">Notion のページを用意する<a class="headerlink" href="#notion" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e4a2450ba24f827a507395766a4c977d.png"><img alt="" src="https://gyazo.com/e4a2450ba24f827a507395766a4c977d.png"/></a></p>
+<p>まずは、公開用のデータベースを作っておきます。<br/>
+Blog のヘッダーに入れておきたいタイトルやタグ、説明、ページ化した時の階層構造等を<br/>
+カスタムプロパティとして追加しておきます。</p>
+<p><a href="https://developers.notion.com">https://developers.notion.com</a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/643555eaa97e351d6d9e60ce3b9fb8b6.png"><img alt="" src="https://gyazo.com/643555eaa97e351d6d9e60ce3b9fb8b6.png"/></a></p>
+<p>事前に Developers から NotionAPI へアクセスするための　 Integration を作っておきます。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/840e2975fae0eb4a38d055884b239507.png"><img alt="" src="https://gyazo.com/840e2975fae0eb4a38d055884b239507.png"/></a></p>
+<p>Integration の Secrets の Token を今後のためにメモっておきます。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/3e3c2ee739cab1ba08d8fea3060713ad.png"><img alt="" src="https://gyazo.com/3e3c2ee739cab1ba08d8fea3060713ad.png"/></a></p>
+<p>作ったら、コネクトの追加で作っておいた Integration を選びます。</p>
+<p>これで準備完了です。</p>
+<h2 id="_1">記事の一覧を取得する<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>アクセスする準備ができたら、記事の一覧を取得してから<br/>
+指定の記事を markdown としてダウンロードしていきます。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">notion_client</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">notion</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="s2">"&lt;TOKEN&gt;"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>データベースから、記事の一覧を取得するために、notion_client から Client を作ります。<br/>
+この TOKEN は、Integration の TOKEN を入れます。</p>
+<p>記事を取得するには、Client からデータベースに対してクエリを実行します。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">db</span> <span class="o">=</span> <span class="n">notion</span><span class="o">.</span><span class="n">databases</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+    <span class="o">**</span><span class="p">{</span>
+        <span class="s1">'database_id'</span> <span class="p">:</span> <span class="s1">'b7deece2ae104498ac2a932f39ffcfc7'</span>  <span class="c1"># データベースID</span>
+       <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/d549c40fc873bdeb81d7be0d975f7d86.png"><img alt="" src="https://gyazo.com/d549c40fc873bdeb81d7be0d975f7d86.png"/></a></p>
+<p>今回の場合は、データベースにある記事の一覧を取得したいので、<br/>
+database_id を使用して一覧を取得します。</p>
+<p>クエリ結果は、json 形式で帰ってきます。<br/>
+結果は、 results に配列で取得できます。</p>
+<h2 id="markdown">markdown のダウンロード<a class="headerlink" href="#markdown" title="Permanent link">¶</a></h2>
+<p>一覧が取れたので、そこから markdown をダウンロードしてきます。</p>
+<p><a href="https://github.com/echo724/notion2md">https://github.com/echo724/notion2md</a></p>
+<p>使うのは notion2md。<br/>
+コマンドラインとしても使用できますが、Python のモジュールとしても使えるので<br/>
+今回はモジュールとして使います。</p>
+<p>記事を markdown でダウンロードするのに必要なのはページ ID と<br/>
+ヘッダーに記述するのに必要なプロパティです。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'NOTION_TOKEN'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'&lt;TOKEN&gt;'</span>
+
+<span class="kn">from</span> <span class="nn">notion2md.exporter.block</span> <span class="kn">import</span> <span class="n">MarkdownExporter</span>
+<span class="n">MarkdownExporter</span><span class="p">(</span><span class="n">block_id</span><span class="o">=</span><span class="s1">'03ce4d5f-f0f7-417a-a068-b46d1bd5eae8'</span><span class="p">,</span><span class="n">output_path</span><span class="o">=</span><span class="s2">"./sample"</span><span class="p">,</span><span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">unzipped</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>notion2md は、 MarkdownExporter が用意されているので、これを利用してダウンロードします。<br/>
+notion2md 用の TOKEN 指定は、指定の環境変数を指定しておく必要があるので、<br/>
+environ で指定するか、Windows の環境変数で指定しておきます。<br/>
+block_id は、データベース内の各記事に対して割り振られた ID を指定します。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/e76b30192afd5390599c2f0a2d4e342b.png"><img alt="" src="https://gyazo.com/e76b30192afd5390599c2f0a2d4e342b.png"/></a></p>
+<p>これは、クエリの結果の id で指定できるので、<br/>
+実際に扱う際はこの id を指定します。</p>
+<h2 id="_2">ヘッダー部分を追加する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>あとは、プロパティを取得してヘッダー部分をダウンロードした markdown に追加します。<br/>
+NotionAPI で取得したプロパティは、 properties['Name'] （Name は Notion の Property 名）で取得できます。<br/>
+各プロパティ以下は、Notion のプロパティ形式によって形式が変わりますが、<br/>
+<a href="https://developers.notion.com/reference/page-property-values">https://developers.notion.com/reference/page-property-values</a><br/>
+API ドキュメントに構造がまとめられています。<br/>
+これをもとにして、必要に応じて加工します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2821,24 +2965,111 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/mkdocs_macros/plugin.py", line 480, in render
-    return md_template.render(**page_variables)
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "&lt;template&gt;", line 172, in top-level template code
-  File "/usr/local/lib/python3.9/site-packages/jinja2/environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'secrets' is undefined
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">db</span><span class="p">[</span><span class="s1">'results'</span><span class="p">]:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s1">'properties'</span><span class="p">][</span><span class="s1">'Name'</span><span class="p">][</span><span class="s1">'title'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'plain_text'</span><span class="p">]</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">i</span><span class="p">[</span><span class="s1">'properties'</span><span class="p">][</span><span class="s1">'Tags'</span><span class="p">][</span><span class="s1">'multi_select'</span><span class="p">]]</span>
+    <span class="n">subdir</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s1">'properties'</span><span class="p">][</span><span class="s1">'dir'</span><span class="p">][</span><span class="s1">'rich_text'</span><span class="p">]</span>
+
+    <span class="c1"># Publishオフの場合はなにもしない</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="p">[</span><span class="s1">'properties'</span><span class="p">][</span><span class="s1">'publish'</span><span class="p">][</span><span class="s1">'checkbox'</span><span class="p">]:</span>
+        <span class="k">continue</span>
+
+    <span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"---"</span><span class="p">]</span>
+    <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">'title: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+        <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'tags:'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+        <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    - </span><span class="si">{</span><span class="n">tag</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">header</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'---'</span><span class="p">)</span>
+
+    <span class="n">outputPath</span> <span class="o">=</span> <span class="s2">"./sample"</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">subdir</span><span class="p">):</span>
+        <span class="n">outputPath</span> <span class="o">+=</span> <span class="s2">"/"</span> <span class="o">+</span> <span class="n">subdir</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'plain_text'</span><span class="p">]</span>
+
+    <span class="n">MarkdownExporter</span><span class="p">(</span><span class="n">block_id</span><span class="o">=</span><span class="n">i</span><span class="p">[</span><span class="s1">'id'</span><span class="p">],</span><span class="n">output_path</span><span class="o">=</span><span class="n">outputPath</span><span class="p">,</span><span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">unzipped</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+
+    <span class="n">markdownName</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">outputPath</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">i</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="si">}</span><span class="s2">.md"</span>
+
+    <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">markdownName</span><span class="p">,</span><span class="s1">'r'</span><span class="p">,</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">header</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">markdownName</span><span class="p">,</span><span class="s1">'w'</span><span class="p">,</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
+
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s1">'properties'</span><span class="p">][</span><span class="s1">'filename'</span><span class="p">][</span><span class="s1">'rich_text'</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">markdownName</span><span class="p">,</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">outputPath</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">fname</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'plain_text'</span><span class="p">]</span><span class="si">}</span><span class="s2">.md"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<p>ダウンロードしたファイルに対して、ヘッダーを書き足して<br/>
+ファイル名が指定されていたら、そのファイル名にリネームして完了です。</p>
+<p><a href="https://github.com/fereria/reincarnation_tech/blob/master/scripts/create_notion_page.py">https://github.com/fereria/reincarnation_tech/blob/master/scripts/create_notion_page.py</a></p>
+<p>いろいろ形を整えて、mkdocs のリポジトリに入れておきます。</p>
+<h2 id="actions">Actions で実行<a class="headerlink" href="#actions" title="Permanent link">¶</a></h2>
+<p>準備ができたら GithubActions に仕込みを追加します。<br/>
+従来の記事の更新は、markdown をプッシュしたタイミングでビルドが実行されるようになっていますが<br/>
+Notion の場合はそうもいきません。<br/>
+ただ、そこまでリアルタイムである必要もないので、毎日夜に記事をビルドするようにしておきます。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">on</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span>
+<span class="w">    </span><span class="nt">repository_dispatch</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">types</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">submodule_update</span><span class="w"></span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">16</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>定期実行するには schedule を指定します。<br/>
+上の場合夜の 1 時頃に処理が走るようにしました。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>- name: Create NotionPages
+  run: docker exec mkdocs python scripts/create_notion_page.py TOKEN DATABASEID
+</code></pre></div></td></tr></table></div>
+<p>さらに、作成した Python を実行するようにステップを足します。<br/>
+env で環境変数を足せば OK だとおもってたのですが、それだとうまくいかなかったので<br/>
+Github で TOKEN を保存しておいて、引数で Python 側で environ を入れるようにしておきました。</p>
+<p><a href="https://fereria.github.io/reincarnation_tech/70_Memo/samplepage/">https://fereria.github.io/reincarnation_tech/70_Memo/samplepage/</a></p>
+<p>できあがったのがこちら。</p>
+<p><a href="https://zenn.dev/dashboard/scraps">https://zenn.dev/dashboard/scraps</a></p>
+<p>今まで似たようなことは Zenn のスクラップを使っていたのですが<br/>
+今後は Notion ＋ mkdocs 側にまとめていこうと思います。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-06 16:11:58</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-07 05:51:45</span>
 </small>
 </div>
 </article>
