@@ -178,7 +178,7 @@ on:
 
 ```yml
 - name: Create NotionPages
-  run: docker exec mkdocs python scripts/create_notion_page.py ${{ secrets.NOTION_TOKEN}} ${{ secrets.NOTION_DATABASE_ID}}
+  run: docker exec mkdocs python scripts/create_notion_page.py TOKEN DATABASEID
 ```
 
 さらに、作成した Python を実行するようにステップを足します。
