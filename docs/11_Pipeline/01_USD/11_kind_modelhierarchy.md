@@ -3,7 +3,7 @@ title: Kind と Model と ModelHierarchy
 description: USDでのシーンアッセンブリ時のルールについて
 ---
 
-今回は、[SOLARIS で USD アセットを作ろう](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/)記事内でほんの少し触れた **「Kind」** についてを見ていきます。
+今回は、 {{markdown_link('13_create_usdAssets_01')}} 記事内でほんの少し触れた **「Kind」** についてを見ていきます。
 
 ## Kind とは
 
