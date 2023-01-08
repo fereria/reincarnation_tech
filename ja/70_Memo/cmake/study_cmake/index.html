@@ -2804,6 +2804,21 @@
     PythonLibs
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    デバッグする
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    環境変数を指定する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    ビルド実行
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2866,6 +2881,21 @@
     PythonLibs
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    デバッグする
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    環境変数を指定する
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    ビルド実行
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2901,13 +2931,27 @@
 <span class="nx">set</span><span class="p">(</span><span class="nx">PYTHON_INCLUDE</span><span class="w"> </span><span class="s2">"C:/Users/remir/AppData/Local/Programs/Python/Python39/include"</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>ので、PYTHON_LIBRARY と PYTHON_INCLUDEを指定しておく</p>
+<h3 id="_1">デバッグする<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
+<p><a href="https://qiita.com/Hiroya_W/items/049bfb4c6ad3dfe6ff0c#cmake%E3%81%8C%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E5%A4%89%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B">https://qiita.com/Hiroya_W/items/049bfb4c6ad3dfe6ff0c#cmake%E3%81%8C%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E5%A4%89%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B</a></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">cmake</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="o">--</span><span class="nx">trace</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h3 id="_2">環境変数を指定する<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">環境変数を指定する</span><span class="w"></span>
+<span class="nx">set</span><span class="p">(</span><span class="nx">$ENV</span><span class="p">{</span><span class="nx">USD_INSTALL_ROOT</span><span class="p">}</span><span class="w"> </span><span class="s2">"C:/USD"</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h3 id="_3">ビルド実行<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">cmake</span><span class="w"> </span><span class="p">..</span><span class="w"></span>
+<span class="nx">cmake</span><span class="w"> </span><span class="o">--</span><span class="nx">build</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="o">--</span><span class="nx">config</span><span class="w"> </span><span class="nx">Release</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p><br/></p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-07 16:25:55</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-08 16:24:14</span>
 </small>
 </div>
 </article>
