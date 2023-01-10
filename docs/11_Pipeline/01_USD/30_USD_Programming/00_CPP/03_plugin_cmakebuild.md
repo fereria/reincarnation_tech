@@ -67,9 +67,7 @@ CMAKE_MODULE_PATH で指定したフォルダ以下にある Find###.cmake を�
 
 今回の場合、プロジェクト以下に cmake フォルダがあり、その中に Find###.cmake をいれるようにしたので
 
-```
-list(INSERT CMAKE_MODULE_PATH 0 "${CMAKE_SOURCE_DIR}/cmake")
-```
+{{'790a8819beff51c46c8e841521bb5ba3'|gist}}
 
 CMAKE_MODULE_PATH を追加してから find_package しています。
 
@@ -96,7 +94,7 @@ PYTHON_LIBRARY と PYTHON_INCLUDE を指定しておくと見つけられるら�
 
 参考: https://qiita.com/peisuke/items/179094c9d1387788256e#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%82%B1%E3%83%BC%E3%82%B9
 
-## set(CMAKE_CXX_FLAGS "/Zc:inline- ${CMAKE_CXX_FLAGS}")
+## /Zc:inline-
 
 :fa-external-link: [HdGp プラグイン作成～準備～](https://qiita.com/takahito-tejima/items/01ab2abe2f4c0d12eeed#hdgp-%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E4%BD%9C%E6%88%90%E6%BA%96%E5%82%99)にも言及されていますが、Windows の場合このままだとプラグインのロードができないので
 /Zc:inline- をフラグに追加しておきます。
@@ -131,28 +129,7 @@ set TF_DEBUG=PLUG_*
 add_library は、プラグインのコード(cpp) を入れておきます。
 そして target_link_libraries で、使用する lib を指定します。
 
-```
-add_library(${PLUGIN_NAME}
-    SHARED
-      gp_fur.cpp
-      gp_mesh.cpp
-      plugin.cpp
-)
-
-target_link_libraries(${PLUGIN_NAME}
-    PUBLIC
-      osdGPU.lib
-      osdCPU.lib
-      usd_hd.lib
-      usd_hf.lib
-      usd_hdGp.lib
-      usd_tf.lib
-      usd_vt.lib
-      usd_sdf.lib
-      usd_gf.lib
-      usd_arch.lib
-)
-```
+{{'629ee8538bb2f20eee808fc09f28f6a6'|gist}}
 
 なお、hdGp に HD_API を足すのをやらないと
 target_link_libraries に usd_hdGp.lib を入れていてもリンクエラーになるので要注意です。
@@ -162,21 +139,7 @@ target_link_libraries に usd_hdGp.lib を入れていてもリンクエラー�
 ビルドは以上ですが、ビルドが終わった後に特定のフォルダーに
 成果物をコピーできるように install を書いておきます。
 
-```
-install(
-    TARGETS
-        ${PLUGIN_NAME}
-	DESTINATION
-		.
-)
-
-install(
-    FILES
-		  plugInfo.json
-    DESTINATION
-      ./${PLUGIN_NAME}/resources
-)
-```
+{{'cd1360bc56ed860c8a1cdfe159179f31'|gist}}
 
 USD のプラグインは、特定のフォルダ以下に PluginName/resources/plugInfo.json を置くようなルールになっています。
 ので、今回はインストール先直下に dll を、 myGp/resources 下に pluginInfo.json を配置できるようにします。
