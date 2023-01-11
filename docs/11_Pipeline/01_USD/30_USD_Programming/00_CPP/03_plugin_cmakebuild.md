@@ -91,6 +91,8 @@ PYTHON_LIBRARY と PYTHON_INCLUDE を指定しておくと見つけられるら�
 
 ## /Zc:inline-
 
+{{'08e9f095026c2f53452dea3c8a160a5c'|gist}}
+
 :fa-external-link: [HdGp プラグイン作成～準備～](https://qiita.com/takahito-tejima/items/01ab2abe2f4c0d12eeed#hdgp-%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E4%BD%9C%E6%88%90%E6%BA%96%E5%82%99)にも言及されていますが、Windows の場合このままだとプラグインのロードができないので
 /Zc:inline- をフラグに追加しておきます。
 
