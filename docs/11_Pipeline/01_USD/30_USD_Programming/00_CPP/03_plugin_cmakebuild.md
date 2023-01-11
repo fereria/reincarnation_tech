@@ -20,6 +20,13 @@ https://github.com/takahito-tejima/UsdSandbox/tree/main/myGp
 
 こちらのサンプルコードを cmake を使用してビルドしていきます。
 
+> 必要な USD ライブラリ（tf, gf, plug, hd, arch, sdf など）をライブラリに指定して、DLL を作ります。
+> ファイル名は myGp.dll としてみました。
+> boost とか tbb とか python のリンクあたりは各自の環境ごとに違いますので、
+> ここでは説明しませんが頑張ってください。
+
+がんばっていきましょう。
+
 ## USD をビルドする
 
 まずは下準備。
@@ -29,18 +36,6 @@ https://qiita.com/takahito-tejima/items/01ab2abe2f4c0d12eeed#hdgp-%E3%83%97%E3%8
 
 詳細はこちらの記事を参照ですが、書かれている通りそのままだと Windows 環境で正しく DLL を作成できません。
 ので、記事を参考に該当箇所に HD_API を追加します。
-
-!!! info
-
-    hdGp/generativeProceduralPlugin.h は、
-    ~HdGpGenerativeProceduralPlugin() override; の前にも HD_APIが必要かもしれない
-
-    protected:
-    HD_API // ＜これを追加
-    HdGpGenerativeProceduralPlugin();
-
-    HD_API // < こっちも必要かも？
-    ~HdGpGenerativeProceduralPlugin() override;
 
 ＋ ビルドするときの VisualStudio のバージョンは 2022 だと boost のビルドでエラーになってしまったので
 今回は VisualStudio2019 を使用します。
@@ -117,6 +112,10 @@ set TF_DEBUG=PLUG_*
 
 このようなエラーになり、プラグインロードに失敗していることがわかります。
 
+なお、今回は VisualStudio2019 でテストしましたが
+2022 の場合は /Zc:inline- ではなく /OPT:NOREF を指定して回避するようです。
+バージョンによって対応が異なるので注意が必要です。
+
 ## link_directories
 
 次に地味にはまったのが link_directories
@@ -160,7 +159,7 @@ cmake --install . --prefix C:/USD/plugin/usd
 
 はまったところとしては、ビルドするときには Debug ではなく Release にしておかないと
 
-{{'https://twitter.com/fereria/status/1612079917038186497'|twitter}}
+{{'https://twitter.com/anamorphobia/status/1612099101147160576'|twitter}}
 
 boost_python の lib が -gd つきのデバッグ用の lib になってしまうので
 対象のライブラリが見つからずにエラーになります。
