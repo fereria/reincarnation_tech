@@ -2979,22 +2979,19 @@ Linux であることを前提にしているためそのままだと素直に�
 ので、今回は去年の年末に行われた USD アドカレの技師長師匠が書いた記事の</p>
 <p><a href="https://github.com/takahito-tejima/UsdSandbox/tree/main/myGp">https://github.com/takahito-tejima/UsdSandbox/tree/main/myGp</a></p>
 <p>こちらのサンプルコードを cmake を使用してビルドしていきます。</p>
+<blockquote>
+<p>必要な USD ライブラリ（tf, gf, plug, hd, arch, sdf など）をライブラリに指定して、DLL を作ります。<br/>
+ファイル名は myGp.dll としてみました。<br/>
+boost とか tbb とか python のリンクあたりは各自の環境ごとに違いますので、<br/>
+ここでは説明しませんが頑張ってください。</p>
+</blockquote>
+<p>がんばっていきましょう。</p>
 <h2 id="usd">USD をビルドする<a class="headerlink" href="#usd" title="Permanent link">¶</a></h2>
 <p>まずは下準備。<br/>
 プラグインをビルドする前に USD 本体の準備をします。</p>
 <p><a href="https://qiita.com/takahito-tejima/items/01ab2abe2f4c0d12eeed#hdgp-%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E4%BD%9C%E6%88%90%E6%BA%96%E5%82%99">https://qiita.com/takahito-tejima/items/01ab2abe2f4c0d12eeed#hdgp-%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E4%BD%9C%E6%88%90%E6%BA%96%E5%82%99</a></p>
 <p>詳細はこちらの記事を参照ですが、書かれている通りそのままだと Windows 環境で正しく DLL を作成できません。<br/>
 ので、記事を参考に該当箇所に HD_API を追加します。</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>hdGp/generativeProceduralPlugin.h は、<br/>
-~HdGpGenerativeProceduralPlugin() override; の前にも HD_APIが必要かもしれない</p>
-<p>protected:<br/>
-HD_API // ＜これを追加<br/>
-HdGpGenerativeProceduralPlugin();</p>
-<p>HD_API // &lt; こっちも必要かも？<br/>
-~HdGpGenerativeProceduralPlugin() override;</p>
-</div>
 <p>＋ ビルドするときの VisualStudio のバージョンは 2022 だと boost のビルドでエラーになってしまったので<br/>
 今回は VisualStudio2019 を使用します。</p>
 <h2 id="cmakeliststxt">CMakeLists.txt を用意する<a class="headerlink" href="#cmakeliststxt" title="Permanent link">¶</a></h2>
@@ -3040,6 +3037,9 @@ set(PYTHON_INCLUDE "C:/Users/remir/AppData/Local/Programs/Python/Python39/includ
 <p>デバッグフラグを入れて確認してみると、</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/23c96a38d02fb0d0b9b44b525575a1e6.png"><img alt="" src="https://gyazo.com/23c96a38d02fb0d0b9b44b525575a1e6.png"/></a></p>
 <p>このようなエラーになり、プラグインロードに失敗していることがわかります。</p>
+<p>なお、今回は VisualStudio2019 でテストしましたが<br/>
+2022 の場合は /Zc:inline- ではなく /OPT:NOREF を指定して回避するようです。<br/>
+バージョンによって対応が異なるので注意が必要です。</p>
 <h2 id="link_directories">link_directories<a class="headerlink" href="#link_directories" title="Permanent link">¶</a></h2>
 <p>次に地味にはまったのが link_directories<br/>
 ライブラリの位置を指定して、 target_link_libraries で相対パスで記述できるようにするのですが<br/>
@@ -3068,7 +3068,7 @@ cmake --build . --config Release
 cmake --install . --prefix C:/USD/plugin/usd
 </code></pre></div></td></tr></table></div>
 <p>はまったところとしては、ビルドするときには Debug ではなく Release にしておかないと</p>
-<blockquote class="twitter-tweet"><a href="https://twitter.com/fereria/status/1612079917038186497"></a></blockquote>
+<blockquote class="twitter-tweet"><a href="https://twitter.com/anamorphobia/status/1612099101147160576"></a></blockquote>
 <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
 <p>boost_python の lib が -gd つきのデバッグ用の lib になってしまうので<br/>
 対象のライブラリが見つからずにエラーになります。</p>
@@ -3099,7 +3099,7 @@ Windows でビルドするの難し過ぎます。<br/>
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-10 16:46:21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-11 11:29:11</span>
 </small>
 </div>
 </article>
