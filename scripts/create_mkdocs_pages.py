@@ -41,7 +41,12 @@ def create_pages(root_path):
             nav = []
             md = []
 
+            if os.path.exists(f"{path}/index.md"):
+                nav.append("    - index.md")
+
             for f in files:
+                if f == "index.md":
+                    continue
                 i = f"{path}/{f}"
                 if os.path.isdir(i):
                     if len(glob.glob(i + "/*.md")) > 0:
