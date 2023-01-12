@@ -3,6 +3,7 @@ title: AssetInfoについて
 tags:
     - USD
     - AdventCalendar2021
+order: 5
 ---
 
 [Universal Scene Description AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 13 日目は、

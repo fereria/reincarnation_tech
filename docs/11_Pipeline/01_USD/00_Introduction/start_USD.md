@@ -1,6 +1,7 @@
 ---
 title: USDをPythonから色々操作するための環境を作る
 description: JupyterNotebookを活用する方法
+order: 2
 ---
 
 # USD を Python から色々操作するための環境を作る

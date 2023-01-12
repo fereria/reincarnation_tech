@@ -10,6 +10,7 @@ import re
 import codecs
 import glob
 import sys
+
 import utils
 
 # 無視するフォルダ
@@ -34,15 +35,47 @@ def create_pages(root_path):
     def recursive_file_check(path):
 
         if os.path.isdir(path):
+
+            files = os.listdir(path)
+
+            nav = []
+            md = []
+
+            for f in files:
+                i = f"{path}/{f}"
+                if os.path.isdir(i):
+                    if len(glob.glob(i + "/*.md")) > 0:
+                        nav.append(f"    - {f}")
+                    elif len([x for x in os.listdir(i) if os.path.isdir(os.path.join(i, x))]):
+                        nav.append(f"    - {f}")
+                elif os.path.splitext(f)[1] == ".md":
+                    md.append(f)
+
+            # ソートする
+            md_dict = {}
+            for i in md:
+                header = utils.getHeaderYaml(os.path.join(path, i))
+                if header and 'order' in header:
+                    md_dict[i] = header['order']
+                else:
+                    md_dict[i] = 9999
+
+            if len(nav + md) > 0:
+                nav.insert(0, 'nav:')
+
+            for i in sorted(list(md_dict.keys()), key=lambda x: md_dict[x]):
+                nav.append(f"    - {i}")
+
             # Folderのとき
             if root_path != path:
                 dirname = path.split("/")[-1]
                 if dirname not in EXCLUSION:
                     title = replace_title_folder_name(dirname)
+                    nav.insert(0, f"title: {title}")
                     print(f"create .pages {path}/{dirname}")
                     with codecs.open(path + "/.pages", 'w', 'utf-8') as f:
-                        f.write(f"title: {title}")
-            files = os.listdir(path)
+                        f.write("\n".join(nav))
+
             for file in files:
                 recursive_file_check(path + "/" + file)
 

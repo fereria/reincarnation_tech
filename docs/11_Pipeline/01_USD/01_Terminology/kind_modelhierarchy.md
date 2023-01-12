@@ -1,6 +1,7 @@
 ---
 title: Kind と Model と ModelHierarchy
 description: USDでのシーンアッセンブリ時のルールについて
+order: 6
 ---
 
 今回は、 {{markdown_link('13_create_usdAssets_01')}} 記事内でほんの少し触れた **「Kind」** についてを見ていきます。

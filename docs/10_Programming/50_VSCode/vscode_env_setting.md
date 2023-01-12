@@ -1,7 +1,7 @@
 ---
 title: VSCodeのターミナルを設定する
 tags:
-	- VSCode
+    - VSCode
 ---
 
 VSCode のターミナルは、最近のバージョンではいろいろ機能が追加されて

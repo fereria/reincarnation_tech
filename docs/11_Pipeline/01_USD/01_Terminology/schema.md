@@ -4,6 +4,7 @@ tags:
     - USD
     - AdventCalendar2021
     - CEDEC2022
+order: 3
 ---
 
 [Universal Scene Description](https://qiita.com/advent-calendar/2021/usd) 7 日目は、Schema(スキーマ)についてです。

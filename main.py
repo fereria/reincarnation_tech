@@ -52,7 +52,8 @@ def searchMarkdownFile(fileName, word=""):
     for root, dirs, files in os.walk(os.path.join(os.getcwd(), 'docs')):
         for f in files:
             bn, ext = os.path.splitext(f)
-            if ext == ".md" and bn == fileName:
+
+            if ext == ".md" and bn == fileName or re.sub("^[0-9]+_", "", bn) == fileName:
                 path = os.path.join(root, f)
                 header = getHeaderYaml(path)
                 buff = root.replace("\\", "/").split("/docs/")
@@ -60,6 +61,7 @@ def searchMarkdownFile(fileName, word=""):
                 linkText = word if word != "" else header['title']
                 return f":fa-external-link: [{linkText}]({linkPath})"
     return ""
+
 
 FUKIDASHI_HTML = """<div class="balloon5">
   <div class="faceicon">

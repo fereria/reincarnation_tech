@@ -44,10 +44,11 @@ def getHeaderYaml(path):
             # 最初の ---
             flg = True
         else:
-            retVal.append(i)
+            retVal.append(i.replace("\t", "    "))
 
     if len(retVal):
-        return yaml.safe_load("".join(retVal))
+        if flg:
+            return yaml.safe_load("".join(retVal))
     return None
 
 
