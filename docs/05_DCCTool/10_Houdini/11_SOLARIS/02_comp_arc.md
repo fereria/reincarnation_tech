@@ -35,7 +35,7 @@ USD は、複数のファイルを合成して結果シーングラフを作り�
 
 詳しくは、
 
-{{markdown_link('05_comp_arc')}}
+{{markdown_link('comp_arc')}}
 
 こちらで解説しています。
 
@@ -170,7 +170,7 @@ Flatten Input Layers に切り替えると、
 
 USD を SOLARIS ではなくそのまま使っていると問題になってくるのが、レイヤーのコンポジションの解決順序です。
 
-{{markdown_link('05_comp_arc')}}
+{{markdown_link('comp_arc')}}
 
 USD の解決順序は上のページの通りですが  
  SOLARIS では要所要所のノードで Flatten、あるいはノードの接続順によるプロシージャルな解決制御  

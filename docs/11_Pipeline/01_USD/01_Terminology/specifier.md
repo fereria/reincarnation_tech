@@ -14,7 +14,7 @@ USD の Specifier についてです。
 Specifier とは、PrimSpec に対して指定されるメタデータで
 PrimSpec がどのようにコンポジションされて、どのように解釈されるのか指定するものです。
 
-{{markdown_link('21_stage_layer_spec')}}
+{{markdown_link('stage_layer_spec')}}
 
 USD は、レイヤーに書かれている「Spec」と呼ばれる主張をコンポジションすることで
 最終的案ステージを構築します。
@@ -158,7 +158,7 @@ prim.GetInherits().AddInherit(cls.GetPath())
 
 しかし、この class Prim は Inherits することで、別の Prim に継承することができます。
 
-継承については別途 {{markdown_link('07_comp_arc_inherits','こちらで解説')}} していますので、そちらを参照してください。
+継承については別途 {{markdown_link('comp_arc_inherits','こちらで解説')}} していますので、そちらを参照してください。
 
 def を Inherits することも可能ですが、
 class として定義するのはあくまで「共通定義」であることが多く（例：共通のライト、マテリアル等）

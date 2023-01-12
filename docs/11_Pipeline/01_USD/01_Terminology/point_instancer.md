@@ -7,7 +7,7 @@ description: USDのPointInstancerの構造について
 ---
 
 USD には、Reference で読み込む Prim に対して instanceable をつけることで
-インスタンス化できる[インスタンス](29_instance) 機能がありますが、
+インスタンス化できる {{markdown_link('instance')}} 機能がありますが、
 それ以外にも、数十億個のインスタンスを配置することを想定して設計されている「PointInstancer」スキーマが存在しています。
 
 通常のインスタンスとの違いは、通常のインスタンスは 4x4 の行列で変換されているのに対し
@@ -115,7 +115,7 @@ USD のアニメーションは、基本リニア補完のみで全フレーム�
 Houdini での PointInstancer の作成方法はまとめていましたが
 PointInstancer 自体はこれまできちんと調べられていませんでした。
 
-通常のインスタンス ( {{markdown_link('29_instance')}} ) で USD の Instance について触れましたが
+通常のインスタンス ( {{markdown_link('instance')}} ) で USD の Instance について触れましたが
 こちらの PointInstancer はより大量のオブジェクト（植生、岩や破片、森林、シミュレーション結果など）数億にもなるような巨大なデータを扱うことができるものというのがわかりました。
 
 この PointInstancer は、Houdini とも非常に相性が良くて

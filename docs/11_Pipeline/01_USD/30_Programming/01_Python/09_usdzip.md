@@ -54,7 +54,7 @@ Apple の [AR Quick Look](https://developer.apple.com/jp/augmented-reality/quick
 
 ## 作る
 
-usdzip を使った作り方等は {{markdown_link('02_usdzip')}} にまとめてありますので
+usdzip を使った作り方等は {{markdown_link('usdtools_usdzip')}} にまとめてありますので
 そちらを参照してください。
 
 ```python

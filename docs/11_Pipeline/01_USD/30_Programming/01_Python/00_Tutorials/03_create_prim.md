@@ -67,7 +67,7 @@ Property を見ても、BoundingBox や LocalToWorldXform 等はあるものの
 あくまでも階層構造をもった入れ物です。
 
 なので、実際は「こういうデータ構造が入っているよ」という型指定をする必要があります。
-USD では、このデータの型を定義するための構造を「{{markdown_link('18_schema','スキーマ')}}」と呼びます。
+USD では、このデータの型を定義するための構造を「{{markdown_link('schema','スキーマ')}}」と呼びます。
 
 ```python
 from pxr import UsdGeom

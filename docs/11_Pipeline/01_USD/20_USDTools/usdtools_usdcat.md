@@ -4,6 +4,7 @@ tags:
     - USD
     - AdventCalendar2021
 description: usda <-> usdc 変換をする方法
+order: 1
 ---
 
 [USD AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 6 日目は USD に付属する便利ツール usdcat について
@@ -85,7 +86,7 @@ print(stage.ExportToString())
 
 ### mask
 
-mask は、 {{markdown_link('19_population_mask')}} で説明した OpenMask で指定した Path 以下だけをロード・表示する機能です。
+mask は、 {{markdown_link('population_mask')}} で説明した OpenMask で指定した Path 以下だけをロード・表示する機能です。
 
 {{'8bad7d6f561150fc1ee197be85d11c85'|gist}}
 

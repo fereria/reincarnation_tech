@@ -71,7 +71,7 @@ Kitchen_set の Kitchen.usd を見ると、defaultPrim に対して assetInfo ki
 ![](https://gyazo.com/6ad13a4591a37b8bba626bf2139b9242.png)
 
 Kitchen_set.usd をみてみると、ペイロードで読んでいる Prim に assetInfo kind documentation が指定されています。
-{{markdown_link('23_assetInfo')}} や {{markdown_link('01_payloadAssetDependencies')}} 等、
+{{markdown_link('assetinfo')}} や {{markdown_link('payload_asset_dependencies')}} 等、
 アセット情報を defaultPrim に追加しているのは
 リファレンス・ペイロードをすることを前提に、シーンの構造を構成しているからになります。
 
@@ -132,7 +132,7 @@ Assembly とは、個別に作成されたアセットを 1 つにまとめた�
 構造が変わったら破綻してしまったりする可能性もあります。
 
 そうならないように、ある程度のルールは必要です。
-このルールが {{markdown_link('11_kind_modelhierarchy')}} で説明している kind による component 指定です。
+このルールが {{markdown_link('kind_modelhierarchy')}} で説明している kind による component 指定です。
 
 ### component とは
 
@@ -158,7 +158,7 @@ Reference するアセットのルートが Component 扱いになるので、
 ## コンポジション（レイヤー）構成
 
 最終的にどのような階層が出来上がっていればよいかが決まったら、それを適切な単位にレイヤーを分離します。
-USD は {{markdown_link('05_comp_arc')}} にあるとおり、複数のレイヤーを合成して 1 つのシーングラフを構築できます。
+USD は {{markdown_link('comp_arc')}} にあるとおり、複数のレイヤーを合成して 1 つのシーングラフを構築できます。
 アセットは 1 つのレイヤーにまとめても良いですが、決められた構造をセットアップすることで
 USD の機能を生かしたアセットにすることができます。
 
@@ -245,7 +245,7 @@ IslandScene では、多くの部分が usda によって構成されていま�
 
 頂点データやカーブのデータ、キャッシュデータなどのような巨大なデータは極力バイナリーで扱いたいです。
 それこそ、1 フレーム単位で分離しつつバイナリーで扱うくらいでしょう。
-ですが、それに対してのメタデータや ValueClip ( {{markdown_link('12_ValueClip_01')}} )を使用するレイヤー
+ですが、それに対してのメタデータや ValueClip ( {{markdown_link('value_clip_01')}} )を使用するレイヤー
 マテリアルデータ、レンダーセッティング等はシーンの頂点データなどをわざわざ読まずに
 編集して書き換えたりしたいはずです。
 
@@ -283,7 +283,7 @@ USD のアセットは、コンポジションで使用する場合 assetPath �
 この assetPath は、AssetResolver と呼ばれれる仕組みを使用して
 USD のプラグイン内でパス解決を行うことができます。
 
-{{markdown_link('24_asset_resolution')}}
+{{markdown_link('asset_resolution')}}
 
 詳細はこのあたりの記事にまとめられていますので、こちらを参照してください。
 
@@ -343,11 +343,11 @@ USD を扱ううえで非常に参考になる内容が書かれていますの�
 
 ### 関連記事
 
--   {{markdown_link('05_comp_arc')}}
--   {{markdown_link('11_kind_modelhierarchy')}}
--   {{markdown_link('24_asset_resolution')}}
+-   {{markdown_link('comp_arc')}}
+-   {{markdown_link('kind_modelhierarchy')}}
+-   {{markdown_link('asset_resolution')}}
 -   {{markdown_link('07_create_usd_assets')}}
 -   {{markdown_link('16_component_builder')}}
--   {{markdown_link('23_assetInfo')}}
--   {{markdown_link('01_payloadAssetDependencies')}}
--   {{markdown_link('28_kitchen_set')}}
+-   {{markdown_link('assetinfo')}}
+-   {{markdown_link('payload_asset_dependencies')}}
+-   {{markdown_link('kitchen_set')}}

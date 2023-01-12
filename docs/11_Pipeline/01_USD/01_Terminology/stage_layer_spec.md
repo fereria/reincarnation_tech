@@ -54,7 +54,7 @@ usdview D:\Kitchen_set\Kitchen_set.usd
 このファイルを、 usdview で開くとこのように Kitchen_set が表示されます。
 開くと、モデルが配置されていて１つの完成されたシーンになっています。
 
-ですが、この Kitchen_set.usd を、{{markdown_link('01_usdtools_usdcat')}} を使用してアスキーファイルでどうなっているかを見てみます。
+ですが、この Kitchen_set.usd を、{{markdown_link('usdtools_usdcat')}} を使用してアスキーファイルでどうなっているかを見てみます。
 
 ```
 usdcat D:\Kitchen_set\Kitchen_set.usd
@@ -101,7 +101,7 @@ Kitchen_set だと複雑なので、もっとシンプルな usd ファイルで
 
 書き表すとこのようになります。
 
-Stage は、コンポジションアークによって（この場合 {{markdown_link('06_comp_arc_subLayer')}} によって合成された結果出来上がったものです。
+Stage は、コンポジションアークによって（この場合 {{markdown_link('comp_arc_sublayer')}} によって合成された結果出来上がったものです。
 今回のサンプルならば、 subLayer.usda と root.usda が合成された結果出来上がったシーングラフが
 Stage です。
 

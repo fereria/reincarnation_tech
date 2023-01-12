@@ -6,7 +6,7 @@ tags:
     - Payloads
 ---
 
-USD のコンポジションの１つに「 {{markdown_link('09_comp_arc_reference','ペイロード')}} 」があります。
+USD のコンポジションの１つに「 {{markdown_link('comp_arc_reference','ペイロード')}} 」があります。
 この、現状のステージのうち、どの SdfPath の Prim がロードされているのか？
 今回は、このペイロードのロード状況の取得方法についてまとめていきます。
 

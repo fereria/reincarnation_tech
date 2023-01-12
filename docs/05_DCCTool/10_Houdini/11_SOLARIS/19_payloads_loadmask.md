@@ -83,8 +83,8 @@ Load all payloads in viewport を ON にした上で、
 ConfigureStage ノードを追加します。
 Configure ノードを使用すると、
 
--   {{markdown_link('19_population_mask')}}
--   {{markdown_link('16_UsdStageLoadRules')}}
+-   {{markdown_link('population_mask')}}
+-   {{markdown_link('usd_stage_load_rules')}}
 
 を、SOLARIS 上で設定・使用できます。
 

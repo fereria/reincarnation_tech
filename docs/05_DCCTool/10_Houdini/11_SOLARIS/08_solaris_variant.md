@@ -10,7 +10,7 @@ HoudiniSOLARIS で VariantSet を作りたい場合の方法について、
 作り方がわかりにくかったのでメモ。
 
 まず、VariantSet は USD のコンポジションアークの１つで、
-USD の説明詳細は[ここ](11_Pipeline\01_USD\08_comp_arc_Variant.md)にまとめてあります。
+USD の説明詳細は {{markdown_link('comp_arc_variant')}} にまとめてあります。
 かんたんに説明すると、ある Prim に対してスイッチを作る事ができる機能です。
 
 ![](https://gyazo.com/bb23a224f991cad38ad858df64f25869.png)

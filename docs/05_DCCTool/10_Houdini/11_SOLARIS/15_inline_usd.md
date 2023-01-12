@@ -140,7 +140,7 @@ OFF の場合は、サブレイヤーは作成されず、入力のレイヤー�
 ## usda のフォーマットわからん！！
 
 という方向けに
-{{markdown_link('03_usd_format_cheatsheets')}}
+{{markdown_link('usd_format_cheatsheets')}}
 よく使う記述のまとめ記事を過去書いたので参考にしてください。
 
 ## まとめ

@@ -9,7 +9,7 @@ tags:
 [Universal Scene Description AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 17 日目は、
 USD の Asset Resolution (アセットパスの解決) 第二回目。
 
-前回の {{markdown_link('24_asset_resolution')}} に続いて、USD のツールセットの１つ usdresolve についてと Python を使用したパス解決方法です。
+前回の {{markdown_link('asset_resolution')}} に続いて、USD のツールセットの１つ usdresolve についてと Python を使用したパス解決方法です。
 
 !!! note
 USDTool 下に記事を書くか迷いましたが、

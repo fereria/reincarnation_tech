@@ -53,7 +53,7 @@ assets の各レイヤーと、そのレイヤー内の Prim を図に表すと�
 #### AssetPath
 
 Kitchen_set のアセットは、すべて Kitchen_set.usd からの相対パスで記述されています。
-ためしに、 {{markdown_link('01_usdtools_usdcat')}} で確認すると
+ためしに、 {{markdown_link('usdtools_usdcat')}} で確認すると
 
 ![](https://gyazo.com/adc274495504010c793b68eea80f263a.png)
 
@@ -64,8 +64,8 @@ Kitchen_set のアセットは、すべて Kitchen_set.usd からの相対パス
 詳細は、以下のアドカレの記事にて紹介していますが、
 assets をどこに配置してどのようにパスを解決するかはとても重要です。
 
-{{markdown_link('24_asset_resolution')}}
-{{markdown_link('25_asset_resolution_02')}}
+{{markdown_link('asset_resolution')}}
+{{markdown_link('asset_resolution_02')}}
 
 ### コンポジションアーク(Payload と Unlaod)
 
@@ -115,7 +115,7 @@ AssetName 以下には Geom Looks(material) Render といった大分類の Prim
 それ以下に関しては、Reference することでかならずユニークになるので
 いわゆるカプセル化された、この Asset 内で完結したデータになります。
 
-> 参考: {{markdown_link('09_comp_arc_reference')}}
+> 参考: {{markdown_link('comp_arc_reference')}}
 
 ### VariantSet
 
@@ -128,7 +128,7 @@ ShadingVariant と modelingVariant という２つの VariantSet によって
 
 このように、VariantSet を使用することで、配置したあとにマテリアルやモデルを調整するといったことが可能になります。
 
-> 参考: {{markdown_link('08_comp_arc_Variant')}}
+> 参考: {{markdown_link('comp_arc_variant')}}
 
 ### AssetInfo
 
@@ -137,7 +137,7 @@ ShadingVariant と modelingVariant という２つの VariantSet によって
 AssetInfo とは、USD で作成されたアセットを管理・識別するために、
 Prim や Property に対して指定することができる辞書型のメタデータ です。
 
-詳細は、{{markdown_link('23_assetInfo')}} こちらのアドカレにて解説していますが
+詳細は、{{markdown_link('assetinfo')}} こちらのアドカレにて解説していますが
 Kitchen_set のアセットにも、この AssetInfo が含まれていて
 アンロードしている状態であっても、どのファイルが依存しているのかを確認できるようになっています。
 
@@ -148,7 +148,7 @@ Kind とは、Prim 単位で指定することができるメタデータの一�
 どのようなルールで階層構造を作り、どのようにリファレンスをするかの指針で
 使用される情報です。
 
-Kind や ModelHierarchy だ一体どういうものかというのは {{markdown_link('11_kind_modelhierarchy')}}ので
+Kind や ModelHierarchy だ一体どういうものかというのは {{markdown_link('kind_modelhierarchy')}}ので
 そちらを参考にしてもらえればですが、
 Kitchen_set はこの ModelHierarchy のルールにのっとって
 作成されています。

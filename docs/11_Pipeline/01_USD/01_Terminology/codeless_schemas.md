@@ -46,7 +46,7 @@ Houdini の usd_plugin はインストールフォルダの houdini/dso/usd_plug
 
 ## Schema と CodelessSchema の違い
 
-Schema とは {{markdown_link('18_schema')}} ここに書かれている通り
+Schema とは {{markdown_link('schema')}} ここに書かれている通り
 ある UsdObject（UsdPrim）に対して共通の機能・特性を指定するものです。
 USD は、Prim と呼ばれる Maya でいうところのノードのような「入れ物」が用意されていますが
 通常だと、この入れ物が「どのようなものを入れられるか」は指定されていません。

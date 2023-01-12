@@ -693,7 +693,7 @@ for prim in colAPI.GetIncludesRel().GetTargets():
 あとは、USD のデータ構造はある程度把握しておく必要があるので  
 若干敷居は高いかもしれません。（Collection は Relation で扱われてる...等）
 
-{{markdown_link('02_usd_py_cheatsheets')}}
+{{markdown_link('usd_py_cheatsheets')}}
 
 よく使う Pyton コマンド集は別途ページを作成してあります。
 

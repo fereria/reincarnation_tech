@@ -12,7 +12,7 @@ tags:
 ## Layer とは
 
 まず、Layer とはなにか。
-詳しくは {{markdown_link('04_layer_stage')}} にまとめてありますが、  
+詳しくは {{markdown_link('stage_layer_spec')}} にまとめてありますが、  
 ざっくりいうと 1 つの usd ファイルのことを Layer と呼びます。
 
 そして、この Layer をコンポジションアークと呼ばれる合成ルールにそって

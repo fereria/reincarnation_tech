@@ -64,7 +64,7 @@ husk などを使用して実行したいケースのが多いでしょう。
 バッチファイルや USDView などからも再生できるようにします。
 
 USD には LOP に ValueClip ノードというノードが存在していて、
-以前書いた {{markdown_link('12_ValueClip_01')}} で説明している時間方向（TimeSampling）の
+以前書いた {{markdown_link('value_clip_01')}} で説明している時間方向（TimeSampling）の
 レイヤー分割をする機能を使用できます。
 しかし、このノードの場合は、
 指定の PrimitivePath に対して個別に ValueClip を指定する必要があるので

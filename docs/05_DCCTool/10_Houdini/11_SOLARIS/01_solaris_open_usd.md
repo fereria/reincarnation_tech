@@ -104,7 +104,7 @@ SOLARIS でシーングラフを構築された結果がこの２つに表示さ
 USD では USD ファイルのことをレイヤーと呼ぶからです。
 
 このあたりの詳細は、  
-{{markdown_link('04_layer_stage')}}
+{{markdown_link('stage_layer_spec')}}
 以前の記事を参照をば。
 
 ![](https://gyazo.com/87d8b7fcbb7e911938c72c9112a23d0d.png)
@@ -149,7 +149,7 @@ USD ファイルをロードできます。
 
 この場合、レイヤーはカプセル化されず、指定のレイヤー内の別 Prim もロードされるので
 継承処理と同じように、リファレンス元の Prim をオーバーライドできるようになります。
-詳しくは [こちら](03_comp_arc_inherits.md)にて検証をまとめているので
+詳しくは {{markdown_link('comp_arc_inherits','こちら')}} にて検証をまとめているので
 参考にしてください。
 
 ### SubLayer で開く

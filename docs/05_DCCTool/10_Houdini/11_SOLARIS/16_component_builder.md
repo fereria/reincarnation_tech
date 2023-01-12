@@ -63,7 +63,7 @@ USD アセットを出力することができました。
 すごい。
 
 > Kind とはなんぞ？という人は
-> {{markdown_link('11_kind_modelhierarchy')}}
+> {{markdown_link('kind_modelhierarchy')}}
 > こちらの記事を参照。
 > AssetInfo は近いうちに USD アドカレに書きます。
 
@@ -334,7 +334,7 @@ Component Output の VariantLayers を ON にすると、バリアントを別�
 ![](https://gyazo.com/f89e3e7f8acdd00ce6bb0db0981ae1f1.png)
 
 Component Output では、USD の各種メタデータも指定が可能です。
-Kind については最初にも書いた通り[こちらの記事](https://fereria.github.io/reincarnation_tech/11_Pipeline/01_USD/11_kind_modelhierarchy/)で、どう使うのかを書いたのですが、AssetInfo についてはそこまでふれてないはず
+Kind については最初にも書いた通り {{markdown_link('kind_modelhierarchy','こちらの記事')}} で、どう使うのかを書いたのですが、AssetInfo についてはそこまでふれてないはず
 個別に USD アドカレにて記事を投稿予定です。
 （[去年のあどかれのこのあたり](https://fereria.github.io/reincarnation_tech/10_Houdini/11_SOLARIS/13_create_usdAssets_01/#assetinfo)で言及してた）
 

@@ -23,7 +23,7 @@ USD ではコンポジションと呼ばれるファイルを合成する仕組�
 
 サブレイヤーとは、USD のコンポジション（複数のファイルを合成するしくみ）の１つで
 複数のファイルを階層を維持した状態で 1 つにマージするような合成方法です。
-{{markdown_link('06_comp_arc_subLayer')}}
+{{markdown_link('comp_arc_sublayer')}}
 
 ![](https://gyazo.com/76645304065930109d3b22a64b46ac43.png)
 

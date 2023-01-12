@@ -21,7 +21,7 @@ USD の画像を表示したり記録するためのユーティリティを持�
 UsdAppUtils は pip install でインストール可能な usd-core には含まれていないため
 この機能を使用したい場合は自前でビルドして置く必要があります。
 
-ので、 {{markdown_link('00_install_USD')}} このあたりを参考に、USD をビルドしておいたうえで
+ので、 {{markdown_link('install_USD')}} このあたりを参考に、USD をビルドしておいたうえで
 Path を通しておきます。
 
 ### サンプルシーンを作る

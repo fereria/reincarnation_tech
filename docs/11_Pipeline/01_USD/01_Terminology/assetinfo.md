@@ -14,7 +14,7 @@ AssetInfo についてとその使い方です。
 [AssetInfo](https://graphics.pixar.com/usd/release/glossary.html#usdglossary-assetinfo)とは、USD で作成されたアセットを管理・識別するために、
 **Prim や Property に対して指定することができる辞書型のメタデータ** です。
 
-USD は、 {{markdown_link('21_stage_layer_spec')}}の回で説明した通り、１つのファイルから構成されているわけではなく
+USD は、 {{markdown_link('stage_layer_spec')}}の回で説明した通り、１つのファイルから構成されているわけではなく
 １つのステージに対して複数のファイルによって構成されています。
 その大量のファイルの依存関係がどのようになっているのかを API を使用して把握することはできますが
 かなり深いところを触る必要があり（たとえば、データをサブミットしたりビルドしたりするときに

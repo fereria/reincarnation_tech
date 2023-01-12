@@ -4,6 +4,7 @@ tags:
     - USD
     - AdventCalendar2021
 description: usdzipの作り方
+order: 2
 ---
 
 [USD AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 18 日目は USD に付属する便利ツール usdzip について

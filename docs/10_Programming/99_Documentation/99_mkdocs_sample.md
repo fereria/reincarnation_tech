@@ -169,10 +169,9 @@ roamlinks プラグインを使用することで、サイト内の md はフル
 大丈夫
 
 ```
-[テスト](01_usd_py_docs)
+[テスト](usd_py_docs)
 ```
 
 [テスト](/reincarnation_tech/11_Pipeline/01_USD/30_USD_Programming/01_Python/01_editTarget)
-[[01_usd_py_docs]]
 
-{{markdown_link('01_usd_py_docs')}}
+{{markdown_link('usd_py_docs')}}

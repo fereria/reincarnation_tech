@@ -4,15 +4,16 @@ tags:
     - USD
 ---
 
-# USDフォーマットチートシート
+# USD フォーマットチートシート
 
-[PythonUSDチートシート](02_usd_py_cheatsheets.md) では、Pythonコマンドのチートシートをまとめましたが  
-こちらはUSDフォーマットの内部構造の記述についてのAsciiファイルとして記述した場合のチートシートです。  
+{{markdown_link('usd_py_cheatsheets')}} では、Python コマンドのチートシートをまとめましたが  
+こちらは USD フォーマットの内部構造の記述についての Ascii ファイルとして記述した場合のチートシートです。
 
-## Usdファイル内でのPathの記述方法
+## Usd ファイル内での Path の記述方法
 
-USD内で外部ファイルを読んでいる場合は @@ で囲う。  
-例）Reference等
+USD 内で外部ファイルを読んでいる場合は @@ で囲う。  
+例）Reference 等
+
 ```
 #usda 1.0
 
@@ -22,7 +23,8 @@ def "sphereA" (
 {
 }
 ```
-USD内のSdfPathを指定する場合は
+
+USD 内の SdfPath を指定する場合は
 
 ```
 def "hoge" (
@@ -31,8 +33,9 @@ def "hoge" (
 {
 }
 ```
+
 <>で囲う。  
-/ から始まる場合はRootからの絶対パス、なにもない場合は現在のPrimからの相対パスになる。  
+/ から始まる場合は Root からの絶対パス、なにもない場合は現在の Prim からの相対パスになる。
 
 ## 最低限の構造
 
@@ -40,12 +43,12 @@ def "hoge" (
 #usda 1.0
 ```
 
-USDファイルを記述する場合は、一番頭に #usda 1.0 と書きます。  
-コレがあれば、すべてUSDファイルとしてロードできます。  
+USD ファイルを記述する場合は、一番頭に #usda 1.0 と書きます。  
+コレがあれば、すべて USD ファイルとしてロードできます。
 
-## Primを定義する
+## Prim を定義する
 
-### スキーマなしでPrimを定義
+### スキーマなしで Prim を定義
 
 ```
 #usda 1.0
@@ -54,7 +57,8 @@ def "sphereA"
 {
 }
 ```
-Primと呼ばれるタグを作成する
+
+Prim と呼ばれるタグを作成する
 
 ```
 def "sphereA"
@@ -64,10 +68,10 @@ def "sphereA"
     }
 }
 ```
-Primは、このように {} の中に def を記述することでネストできる。  
 
-  
-### スキーマ（Type指定）付きでPrimを定義する
+Prim は、このように {} の中に def を記述することでネストできる。
+
+### スキーマ（Type 指定）付きで Prim を定義する
 
 ```
 def Xform "hoge"
@@ -82,20 +86,22 @@ class "className"
 {
 }
 ```
-クラスで定義されているものは、usdview等でシーンを読んでもシーングラフには表示されない。  
-  
-## Overを定義する
+
+クラスで定義されているものは、usdview 等でシーンを読んでもシーングラフには表示されない。
+
+## Over を定義する
 
 ```
 over "name"
 {
 }
 ```
-Overの場合は、Primと違い  
-すでにPrimがある場合のみ値を上書きする。  
-定義されているPrimがない場合はなにもしない。
 
-## DefaultPrimを指定する
+Over の場合は、Prim と違い  
+すでに Prim がある場合のみ値を上書きする。  
+定義されている Prim がない場合はなにもしない。
+
+## DefaultPrim を指定する
 
 ```
 #usda 1.0
@@ -108,7 +114,7 @@ def "sphereA"
 }
 ```
 
-DefaultPrimとは、リファレンスでusdを読み込んだ場合の起点になるPrimの事。  
+DefaultPrim とは、リファレンスで usd を読み込んだ場合の起点になる Prim の事。
 
 ## アトリビュートに値をセットする
 
@@ -120,10 +126,11 @@ def Xform "base"
     bool test = false
 }
 ```
-アトリビュートを追加する場合、Primの{}の中に 型 名前 = 値  
-のように指定する。  
 
-## Metadataを追加する
+アトリビュートを追加する場合、Prim の{}の中に 型 名前 = 値  
+のように指定する。
+
+## Metadata を追加する
 
 ```
 #usda 1.0
@@ -142,11 +149,11 @@ def "sphereA" (
 }
 ```
 
-Metadataはレイヤー、プリム、アトリビュートそれぞれに付加情報として設定できる。  
+Metadata はレイヤー、プリム、アトリビュートそれぞれに付加情報として設定できる。  
 指定したい場合は それぞれの定義の後に () を入れて、その中にアトリビュートを追加するように  
-記述する。  
+記述する。
 
-## CustomDataを追加する
+## CustomData を追加する
 
 ```
 #usda 1.0
@@ -159,12 +166,13 @@ def "defPrim" (
 {
 }
 ```
-customData = {} を使うと、好きに自分の入れたいMeta情報をレイヤー、プリム、アトリビュートに対して  
-追加できる。  
+
+customData = {} を使うと、好きに自分の入れたい Meta 情報をレイヤー、プリム、アトリビュートに対して  
+追加できる。
 
 ## リファレンスでモデルを読み込む
 
-### DefaultPrimが指定されている場合
+### DefaultPrim が指定されている場合
 
 ```
 #usda 1.0
@@ -175,12 +183,13 @@ def "sphereA" (
 {
 }
 ```
-リファレンスで読み込む場合は、読み込む先のPrimのMetadataに prepend references = ### で  
+
+リファレンスで読み込む場合は、読み込む先の Prim の Metadata に prepend references = ### で  
 ファイルを指定する。  
 ファイルパスは @@でかこって表現する。  
-ファイルパスは、現在の usd ファイルからの相対または絶対パスで指定する。  
-  
-### references時にPrimを指定する場合
+ファイルパスは、現在の usd ファイルからの相対または絶対パスで指定する。
+
+### references 時に Prim を指定する場合
 
 ```
 #usda 1.0
@@ -191,10 +200,11 @@ def "sphereA" (
 {
 }
 ```
-DefaultPrimの指定がない、あるいはそれ以外のPrimを狙ってリファレンスしたい場合は  
-ファイル指定の後に <>で囲ってSdfPathを指定する。  
 
-## SubLayerで読み込む
+DefaultPrim の指定がない、あるいはそれ以外の Prim を狙ってリファレンスしたい場合は  
+ファイル指定の後に <>で囲って SdfPath を指定する。
+
+## SubLayer で読み込む
 
 ```
 #usda 1.0
@@ -205,9 +215,9 @@ DefaultPrimの指定がない、あるいはそれ以外のPrimを狙ってリ�
 )
 ```
 
-サブレイヤーで読み込むときは、レイヤーのMetadataに対して subLayers = []  
+サブレイヤーで読み込むときは、レイヤーの Metadata に対して subLayers = []  
 を追加して、配列で読み込みたいファイルパスを指定する。  
-ファイルパスは @@ で囲う。  
+ファイルパスは @@ で囲う。
 
 ## リレーションを追加する
 
@@ -233,7 +243,7 @@ def "rel"
 ```
 
 リレーションを追加したい場合は、 アトリビュートを rel で宣言して、  
-リレーション先のSdfPathを配列で指定する。  
+リレーション先の SdfPath を配列で指定する。
 
 ## 継承(Inherits)する
 
@@ -245,8 +255,8 @@ def "hoge" (
 }
 ```
 
-継承の場合は、継承したいPrimのMetadataに対して prepend inherits = SdfPath を追加する。  
-  
+継承の場合は、継承したい Prim の Metadata に対して prepend inherits = SdfPath を追加する。
+
 ```
 #usda 1.0
 (
@@ -262,11 +272,11 @@ def "hoge" (
 }
 ```
 
-継承は、SdfPathで指定する。  
-ので、例えば別ファイルに定義されているclass や defを継承したい場合は  
-subLayerで読み込んでから inheritsで指定をする。  
+継承は、SdfPath で指定する。  
+ので、例えば別ファイルに定義されている class や def を継承したい場合は  
+subLayer で読み込んでから inherits で指定をする。
 
-## VariantSetを定義する
+## VariantSet を定義する
 
 ```
 #usda 1.0
@@ -300,11 +310,12 @@ def Xform "World"
     }
 }
 ```
-variantSetは、 variantSet で定義する。  
-定義したvariantSetをPrimで使う場合は、Metadata内に prepend variantSets = "名前"  
+
+variantSet は、 variantSet で定義する。  
+定義した variantSet を Prim で使う場合は、Metadata 内に prepend variantSets = "名前"  
 を追加する。  
-そのvariantSetのうち、選択されているセットは variants で、選択中の値を指定する。  
-  
+その variantSet のうち、選択されているセットは variants で、選択中の値を指定する。
+
 ## アニメーションの定義
 
 ```
@@ -326,12 +337,12 @@ def Xform "World"
     }
 }
 ```
+
 コレを手で書くことはないと思うけど念のため。  
-スタートフレームとエンドフレームは、レイヤーのMetadataに記載。  
-Key情報は、timeSamplesにDict型で記載。  
-  
-xformOpOrderは、どういう順序でTransformを行うのかを指定する。  
-  
+スタートフレームとエンドフレームは、レイヤーの Metadata に記載。  
+Key 情報は、timeSamples に Dict 型で記載。
+
+xformOpOrder は、どういう順序で Transform を行うのかを指定する。
 
 ## マテリアルのアサイン
 
@@ -366,9 +377,9 @@ def "Model"
     }
 }
 ```
-これもまぁ手では書かないけど念のため。  
-  
-Materialアサインはリレーションによって定義されている。  
-MeshデータはリレーションでBind先のMaterial情報を保持し、  
-Materialは、ShaderとのConnectionで値を受け取る。  
-  
+
+これもまぁ手では書かないけど念のため。
+
+Material アサインはリレーションによって定義されている。  
+Mesh データはリレーションで Bind 先の Material 情報を保持し、  
+Material は、Shader との Connection で値を受け取る。

@@ -54,7 +54,7 @@ def "samplePrim"
 CreateAttribute で指定した型で Attribute が追加されていることがわかります。
 
 > 余談ですが、この Attribute の型指定は、Python から指定する場合公式の DataTypes ページのどこにも書かれていないという罠があります。
-> {{markdown_link('01_usd_py_docs')}}
+> {{markdown_link('usd_py_docs')}}
 > そんなトラップを回避するために、過去頑張って調べた一覧がこちら。
 > Python と C++（Help 記載の内容）だと違うという罠がごくまれにあるのが USD の悲しいところ。
 

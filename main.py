@@ -53,13 +53,16 @@ def searchMarkdownFile(fileName, word=""):
         for f in files:
             bn, ext = os.path.splitext(f)
 
-            if ext == ".md" and bn == fileName or re.sub("^[0-9]+_", "", bn) == fileName:
+            if ext == ".md" and bn == fileName:
                 path = os.path.join(root, f)
                 header = getHeaderYaml(path)
                 buff = root.replace("\\", "/").split("/docs/")
                 linkPath = f"/reincarnation_tech/{buff[-1]}/{bn}"
                 linkText = word if word != "" else header['title']
                 return f":fa-external-link: [{linkText}]({linkPath})"
+
+    print(fileName)
+
     return ""
 
 

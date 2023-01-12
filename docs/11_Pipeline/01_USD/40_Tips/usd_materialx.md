@@ -44,7 +44,7 @@ USD にも Material や Shader を表現するための構造は存在してい�
 
 UsdShadeShader の id によって、MaterialX のノードを表現する方法です。
 
-以前にも {{markdown_link('27_fileformat_plugin')}} という記事を書いたのですが、
+以前にも {{markdown_link('fileformat_plugin')}} という記事を書いたのですが、
 1 つ目の例の場合、mtlx ファイルを USD の FileFormatPlugin が USD のシーングラフとして解釈し
 USD で扱える形にインポートしています。
 
