@@ -1742,12 +1742,22 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#plugins">
-    plugins フォルダに移動する
+<a class="md-nav__link" href="#pluginfojson">
+    plugInfo.json
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cmakeliststxt">
+    CMakeLists.txt を作る
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_2">
+    テストする
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
     ほかの代用方法
   </a>
 </li>
@@ -2928,12 +2938,22 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#plugins">
-    plugins フォルダに移動する
+<a class="md-nav__link" href="#pluginfojson">
+    plugInfo.json
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cmakeliststxt">
+    CMakeLists.txt を作る
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_2">
+    テストする
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
     ほかの代用方法
   </a>
 </li>
@@ -3104,16 +3124,10 @@ GLOBAL に <strong>bool skipCodeGeneration = 1</strong> を追加しています
 <p>コマンドプロンプトで schema.usda があるフォルダに移動して、 usdGenSchema を実行します。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/15628a673131664dfcb067cc846fc8c7.png"><img alt="" src="https://gyazo.com/15628a673131664dfcb067cc846fc8c7.png"/></a></p>
 <p>これで無事必要なファイルが生成できました。</p>
-<h2 id="plugins">plugins フォルダに移動する<a class="headerlink" href="#plugins" title="Permanent link">¶</a></h2>
-<p>USD リポジトリでは</p>
-<p>USD/third_party/renderman-24/plugin/usdRiPxr</p>
-<p>の CmakeLists.txt のようにして USD ビルドと一緒にビルドしていますが<br/>
-全部ビルドするのも面倒なので、今回は手動でコピーします。<br/>
-（単体で cmake を実行する方法が知りたい）</p>
-<p>まずは、USD のインストール先の plugin フォルダ下に<br/>
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/fe047ff0476e883ef4b4e7b98c70c6ba.png"><img alt="" src="https://gyazo.com/fe047ff0476e883ef4b4e7b98c70c6ba.png"/></a></p>
-<p>sampleSchema/resources フォルダを作り<br/>
-generatedSchema.usda と plugInfo.json の２つをコピーします。</p>
+<h2 id="pluginfojson">plugInfo.json<a class="headerlink" href="#pluginfojson" title="Permanent link">¶</a></h2>
+<p>generatedSchema.usda ができたら、plugInfo.json をつくります。<br/>
+plugInfo.json は、USD のプラグインを定義するためのファイルで、今回のスキーマも<br/>
+どのような名前で、どのフォルダにファイルがあるのかなどを、この json で定義します。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3161,17 +3175,71 @@ generatedSchema.usda と plugInfo.json の２つをコピーします。</p>
                     }
                 }
             },
-            "LibraryPath": "",
+            "LibraryPath": "@PLUG_INFO_LIBRARY_PATH@",
             "Name": "usdSchemaExamples",
-            "ResourcePath": "resources",
-            "Root": "..",
+            "ResourcePath": "@PLUG_INFO_RESOURCE_PATH@",
+            "Root": "@PLUG_INFO_ROOT@",
             "Type": "resource"
         }
     ]
 }
 </code></pre></div></td></tr></table></div>
-<p>そして、 plugInfo.json を開き、 LibraryPath から Type までの項目を<br/>
-上のように書き換えます。</p>
+<p>サンプルからコピーして、UsdSchemaBase などを作成するプラグイン名に変更します。</p>
+<h2 id="cmakeliststxt">CMakeLists.txt を作る<a class="headerlink" href="#cmakeliststxt" title="Permanent link">¶</a></h2>
+<p>プラグインに必要なファイル「generatedSchema.usda」と「plugInfo.json」ができたら<br/>
+この 2 つのファイルを USD のプラグインフォルダにリリースします。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code>set(PROJECT_NAME sampleSchema)
+
+project(${PROJECT_NAME})
+
+set(PLUG_INFO_LIBRARY_PATH "")
+set(PLUG_INFO_RESOURCE_PATH "resources")
+set(PLUG_INFO_ROOT "..")
+
+configure_file(${PROJECT_SOURCE_DIR}/plugInfo.json
+               ${PROJECT_BINARY_DIR}/plugInfo.json
+               @ONLY)
+
+
+install(FILES
+            generatedSchema.usda
+            ${PROJECT_BINARY_DIR}/plugInfo.json
+        DESTINATION
+            ./${PROJECT_NAME}/resources
+        )
+</code></pre></div></td></tr></table></div>
+<p>plugInfo.json の @～@となっていた部分は、Cmake側で定義し、 configure_file を使用して置換します。<br/>
+そしてリリース先は、 pluginNanme/resources 下に usda と json がコピーされるように指定します。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>mkdir build
+cd build
+cmake ..
+cmake --build .
+cmake --isntall --prefix C:/USD/plugin/usd
+</code></pre></div></td></tr></table></div>
+<p>あとは cmake を実行すれば完了です。</p>
+<h2 id="_2">テストする<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>#usda 1.0
@@ -3182,7 +3250,7 @@ def SimplePrim "Sample"{}
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="https://gyazo.com/9f32bf6342d9bd850997b9cef451a72b.png"><img alt="" src="https://gyazo.com/9f32bf6342d9bd850997b9cef451a72b.png"/></a></p>
 <p>無事 CodelssSchemas プラグインがロードされ、 SimplePrim Schema が適応されて<br/>
 intAttr と target のプロパティが定義されました。</p>
-<h2 id="_2">ほかの代用方法<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h2 id="_3">ほかの代用方法<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>最初に説明した通り、通常の Schema とは違い codelessSchemas はコンパイルを実行しない<br/>
 代わりに動的に、構造体的なスキーマ定義が可能です。</p>
 <p>この方法に似た手段として、<br/>
@@ -3203,7 +3271,7 @@ Custom Attribute の定義を使用することで、ベースの構造とそれ
 <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-12 14:03:02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-01-15 11:52:59</span>
 </small>
 </div>
 </article>
