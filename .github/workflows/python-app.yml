@@ -28,6 +28,7 @@ jobs:
                   git config --global core.symlinks true
                   git config --global user.name "Megumi Ando"
                   git config --global user.email "${{ secrets.EMAIL }}"
+                  git config --global --add safe.directory /work_dir
 
             - name: Checkout
               uses: actions/checkout@v2
