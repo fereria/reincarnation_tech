@@ -114,8 +114,6 @@ def createNotionPages():
 
 if __name__ == '__main__':
 
-    debug = True
-
     os.environ['NOTION_TOKEN'] = sys.argv[1]
     os.environ['NOTION_DATABASE_ID'] = sys.argv[2]
 

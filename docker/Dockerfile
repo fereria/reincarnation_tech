@@ -27,4 +27,7 @@ ADD requirements.txt /work_dir/
 WORKDIR /work_dir
 RUN pip install -r requirements.txt
 
+RUN git config --system --add safe.directory /work_dir
+
+
 EXPOSE 8888

@@ -61,8 +61,6 @@ def searchMarkdownFile(fileName, word=""):
                 linkText = word if word != "" else header['title']
                 return f":fa-external-link: [{linkText}]({linkPath})"
 
-    print(fileName)
-
     return ""
 
 
