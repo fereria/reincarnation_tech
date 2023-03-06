@@ -2830,23 +2830,28 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#workitem">
-    WorkItem
-  </a>
-<nav aria-label="WorkItem" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
 <a class="md-nav__link" href="#workitem_1">
     WorkItemとは
   </a>
 </li>
-</ul>
-</nav>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#out-of-process">
+    Out-Of-Process
+  </a>
+<nav aria-label="Out-Of-Process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pdgjson">
+    pdgjson
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#attribute">
-    Attribute
+<a class="md-nav__link" href="#pdgcmd">
+    pdgcmd
   </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -2962,23 +2967,28 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#workitem">
-    WorkItem
-  </a>
-<nav aria-label="WorkItem" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
 <a class="md-nav__link" href="#workitem_1">
     WorkItemとは
   </a>
 </li>
-</ul>
-</nav>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#out-of-process">
+    Out-Of-Process
+  </a>
+<nav aria-label="Out-Of-Process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pdgjson">
+    pdgjson
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#attribute">
-    Attribute
+<a class="md-nav__link" href="#pdgcmd">
+    pdgcmd
   </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -2996,8 +3006,7 @@
 <a class="md-content__button md-icon" href="https://github.com/fereria/reincarnation_tech/edit/master/docs/70_Memo/houdini/pdg.md" title="編集">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1>PDG</h1>
-<h2 id="workitem">WorkItem<a class="headerlink" href="#workitem" title="Permanent link">¶</a></h2>
+<h1 id="workitem">WorkItem<a class="headerlink" href="#workitem" title="Permanent link">¶</a></h1>
 <h3 id="workitem_1">WorkItemとは<a class="headerlink" href="#workitem_1" title="Permanent link">¶</a></h3>
 <p>PDGの基本的な処理単位であるWorkItemは、ジョブまたはタスクのようなものです。WorkItemは、ジョブまたはタスクを実行するために必要な情報を保持し、依存関係を表現するために使用されます。WorkItemは、Houdiniで作成されたプロシージャルコンテンツや、外部のプログラムやスクリプトによって生成されるコンテンツを表すことができます。</p>
 <p>WorkItemは、トップネットワーク内のノードから生成されます。ワークアイテムは入力と出力を持ち、この入出力によって依存関係が表現されます。ワークアイテムは、トップネットワーク内のノード間を流れるデータのコンテナであり、トップネットワークの最上位のWorkItemが完了すると、そのWorkItemの出力がトップレベルの出力として保存されます。</p>
@@ -3005,8 +3014,52 @@
 <p>参考: <a href="https://www.sidefx.com/ja/docs/houdini/tops/pdg/WorkItem.html">https://www.sidefx.com/ja/docs/houdini/tops/pdg/WorkItem.html</a></p>
 <p>PythonのAPI</p>
 <p><a href="https://www.sidefx.com/ja/docs/houdini/tops/pdg/WorkItem.html">https://www.sidefx.com/ja/docs/houdini/tops/pdg/WorkItem.html</a></p>
+<h2 id="out-of-process">Out-Of-Process<a class="headerlink" href="#out-of-process" title="Permanent link">¶</a></h2>
+<p>起動中のHoudiniではなく、別プロセスで実行する場合OutofProcessの指定をする。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../bc2dfcd7_Untitled.png"><img alt="Untitled" src="../bc2dfcd7_Untitled.png"/></a></p>
+<p>Evaluate Script During を Cook Out-of-Process にすることで、別プロセスで実行できる。<br/>
+このときどのPythonで実行するかは指定する。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../93c9b58d_Untitled.png"><img alt="Untitled" src="../93c9b58d_Untitled.png"/></a></p>
+<p>カスタム指定はこうする。</p>
 <p><br/></p>
-<h2 id="attribute">Attribute<a class="headerlink" href="#attribute" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../8b55b3f3_Untitled.png"><img alt="Untitled" src="../8b55b3f3_Untitled.png"/></a></p>
+<p>Out-of-processの場合、workItemの情報を受け渡すときは、DIspatchされるタイミングで json にDumpされ、<br/>
+pdgjson を経由して各プロセスに受け渡しされる。</p>
+<p><a href="https://www.sidefx.com/ja/docs/houdini/tops/jobapi.html">https://www.sidefx.com/ja/docs/houdini/tops/jobapi.html</a></p>
+<p>Out-Of-Processの場合、set####Attrib した場合ネットワークを介してPDGワークアイテムに送り返す。</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../83d05a8f_Untitled.png"><img alt="Untitled" src="../83d05a8f_Untitled.png"/></a></p>
+<p>ログを見るとこんな感じになってる。</p>
+<hr/>
+<p>JobAPI（ジョブスクリプト）として扱われる。</p>
+<p>JobAPIは pdgjson と pdgcmd がある。</p>
+<h3 id="pdgjson">pdgjson<a class="headerlink" href="#pdgjson" title="Permanent link">¶</a></h3>
+<p>PDGのOut-of-ProcessでWorkItemの情報を受け渡す方法は、DispatchされるタイミングでjsonにDumpされ、pdgjsonを経由して各プロセスに受け渡されます。<br/>
+このpdgjsonは、PDG APIの一部であり、JobAPIとしても使用されます。pdgjsonファイルは、WorkItemの属性を格納するために使用され、WorkItemの生成時に自動的に作成されます。</p>
+<p>pdgjsonは、WorkItemを生成するときに自動的に作成され、WorkItemの属性を格納するために使用されます。pdgjsonファイルには、WorkItemの属性の情報が含まれます。これは、ワークアイテムを処理するために必要な情報を含みます。pdgjsonファイルは、ジョブスクリプトで使用することもできます。</p>
+<p>pdgjsonは、JSON形式で保存されています。pdgjsonファイルを作成するには、WorkItemごとにファイルを作成する必要があります。PDGは、これを自動的に行います。pdgjsonファイルは、WorkItemの属性を保持するために使用されます。WorkItemには、ジョブの状態を表す属性、ジョブの進捗を表すパラメータ、ジョブの出力を表すファイルなど、様々な種類の情報を保持することができます。</p>
+<p>pdgjsonファイルは、ワークフローの状態を監視するために使用されます。pdgjsonファイルを使用することで、ワークフローの状態を監視したり、ワークフローの状態を変更したりすることができます。pdgjsonファイルを使用することで、ワークフローの状態をプログラムで制御することができます。</p>
+<h3 id="pdgcmd">pdgcmd<a class="headerlink" href="#pdgcmd" title="Permanent link">¶</a></h3>
+<p>pdgcmdとは、PDGのジョブスクリプトを実行するためのコマンドラインツールです。pdgcmdを使用することで、ジョブスクリプトを作成、編集、実行することができます。また、pdgcmdを使用して、PDGジョブを手動で実行したり、ジョブの状態を監視したりすることができます。</p>
+<p>pdgcmdには、次のようなコマンドがあります。</p>
+<ul>
+<li>
+<p>cook: 指定されたWorkItemを実行します。</p>
+</li>
+<li>
+<p>generate: 指定されたWorkItemの出力ファイルを生成します。</p>
+</li>
+<li>
+<p>status: 指定されたWorkItemの現在のステータスを表示します。</p>
+</li>
+<li>
+<p>log: 指定されたWorkItemのログを表示します。</p>
+</li>
+<li>
+<p>kill: 指定されたWorkItemを強制終了します。</p>
+</li>
+</ul>
+<p>参考: <a href="https://www.sidefx.com/ja/docs/houdini/tops/pdg/pdgcmd.html">https://www.sidefx.com/ja/docs/houdini/tops/pdg/pdgcmd.html</a></p>
+<h1 id="attribute">Attribute<a class="headerlink" href="#attribute" title="Permanent link">¶</a></h1>
 <p>自動処理で使用するアトリビュートは、Pythonや各種ノードで作成できる。</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../1cfd8009_Untitled.png"><img alt="Untitled" src="../1cfd8009_Untitled.png"/></a></p>
 <p>AttributeCreate</p>
@@ -3018,7 +3071,16 @@ Out of Process の場合、PyObjectはJsonにDumpした状態で受け渡しさ�
 そのため、Dict以外のオブジェクトだと正しく持って行けない。InProcessなら大丈夫。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">work_item</span><span class="p">.</span><span class="n">setIntAttrib</span><span class="p">(</span><span class="err">'</span><span class="n">addPythonB</span><span class="err">'</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Pythonでの追加は、set###Attrib(AttributeName,value) でつ</p>
+<p>Pythonでの追加は、set###Attrib(AttributeName,value) で追加できる。<br/>
+なければ自動で作るので、 createAttribしなくても大丈夫。</p>
+<h2 id="graph">Graph<a class="headerlink" href="#graph" title="Permanent link">¶</a></h2>
+<p>PDGグラフは、トップネットワーク内のノードを可視化する方法を提供します。グラフは、トップネットワーク内の依存関係を視覚的に表現し、ノードの出力と入力を簡単に追跡できます。</p>
+<p>PDGグラフには、ネットワーク内のWorkItemとジョブの状態を表すオブジェクトが表示されます。これにより、ワークフロー全体を把握することができます。グラフ上でWorkItemをドラッグすることで、依存関係を変更することができます。また、WorkItemの属性を編集したり、ジョブの状態を確認したりすることもできます。</p>
+<p>PDGグラフには、様々なビューアーやフィルターが用意されています。ビューアーには、グラフをより詳細に表示するためのノード情報やジョブ情報が含まれます。フィルターには、ジョブステータスや進捗状況に基づいてWorkItemをフィルタリングするものがあります。</p>
+<p>参考: <a href="https://www.sidefx.com/ja/docs/houdini/tops/pdg/Graph.html">https://www.sidefx.com/ja/docs/houdini/tops/pdg/Graph.html</a></p>
+<p><br/></p>
+<h2 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p><a href="https://qiita.com/takavfx/items/1c724490591b8f94ff56">https://qiita.com/takavfx/items/1c724490591b8f94ff56</a></p>
 </article>
 </div>
 </div>
