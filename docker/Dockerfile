@@ -27,19 +27,4 @@ ADD requirements.txt /work_dir/
 WORKDIR /work_dir
 RUN pip install -r requirements.txt
 
-# drawioのインストール
-ENV DRAWIO_VERSION 19.0.3
-
-RUN wget https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-amd64-${DRAWIO_VERSION}.deb
-RUN dpkg --install drawio-amd64-${DRAWIO_VERSION}.deb
-RUN rm drawio-amd64-${DRAWIO_VERSION}.deb
-
-RUN sudo /etc/init.d/dbus start
-
-RUN pip install xvfbwrapper
-
-# https://github.com/jgraph/drawio-desktop/issues/127 これでいけた
-RUN echo "#!/bin/sh\nxvfb-run /usr/bin/drawio \"\${@}\"" > /usr/local/bin/drawio && chmod +x /usr/local/bin/drawio
-
-
 EXPOSE 8888
