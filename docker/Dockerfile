@@ -28,6 +28,7 @@ WORKDIR /work_dir
 RUN pip install -r requirements.txt
 
 RUN git config --system --add safe.directory /work_dir
+RUN git config --global http.postBuffer 524288000 
 
 
 EXPOSE 8888
