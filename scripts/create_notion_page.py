@@ -16,20 +16,17 @@ def getParentItem(parentId):
     return notion.pages.retrieve(parentId)
 
 
-def createGroupPages(data, rootDir):
+def createGroupPages(dirs, titles, rootDir):
 
-    dirName = data['properties']['dir']['rich_text']
+    createDir = f"{rootDir}"
+    for d in dirs:
+        createDir += f"/{d}"
+        path = f"{createDir}/.pages"
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, 'w') as f:
+            f.write(f'title: {titles[d]}')
 
-    if len(dirName) == 0:
-        # ルートの場合はなにもしない
-        return
-
-    title = data['properties']['Name']['title'][0]['plain_text']
-
-    path = f"{rootDir}/{dirName[0]['text']['content']}/.pages"
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, 'w') as f:
-        f.write(f'title: {title}')
+    return createDir
 
 
 def createPage(data, outputPath):
@@ -52,19 +49,6 @@ def createPage(data, outputPath):
     header.append('---')
 
     savePath = copy.deepcopy(outputPath)
-
-    p = data['properties']['parentItem']['relation']
-
-    if len(p) > 0:
-        parentData = getParentItem(p[0]['id'])
-        dirName = parentData['properties']['dir']['rich_text']
-        if len(dirName) > 0:
-            savePath = savePath + "/" + dirName[0]['text']['content']
-
-    print(savePath)
-
-    if len(subdir) > 0:
-        savePath = savePath + "/" + subdir[0]['text']['content']
 
     MarkdownExporter(block_id=data['id'], output_path=savePath, download=True, unzipped=True).export()
 
@@ -99,22 +83,37 @@ def createNotionPages():
         }
     )
 
+    items = {}
     for i in db['results']:
+        items[i['id']] = i
 
-        if len(i['properties']['subItem']['relation']):
-            # 子を持つGroupの場合、サブフォルダと .pages を作る
-            createGroupPages(i, md_root)
+    # ディレクトリ階層を作る
+    for i in db['results']:
+        # ページItemを探す
+        if len(i['properties']['subItem']['relation']) == 0 and i['properties']['publish']['checkbox']:
+            dirs = []
+            titles = {}
+            parent = i['properties']['parentItem']['relation']
+            while True:
+                if len(parent) == 0:
+                    break
+                item = items[parent[0]['id']]
+                dirname = item['properties']['dir']['rich_text'][0]['plain_text']
+                dirs.insert(0, dirname)
+                parent = item['properties']['parentItem']['relation']
+                title = item['properties']['Name']['title'][0]['plain_text']
+                titles[dirname] = title
 
-        if not i['properties']['publish']['checkbox']:
-            # publishがFalseのものはファイルを作らない
-            continue
-
-        createPage(i, md_root)
+            # # 子を持つGroupの場合、サブフォルダと .pages を作る
+            mdSaveDir = createGroupPages(dirs, titles, md_root)
+            createPage(i, mdSaveDir)
 
 
 if __name__ == '__main__':
 
     os.environ['NOTION_TOKEN'] = sys.argv[1]
     os.environ['NOTION_DATABASE_ID'] = sys.argv[2]
+
+    print('a')
 
     createNotionPages()
