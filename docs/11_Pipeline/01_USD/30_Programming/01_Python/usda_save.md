@@ -1,0 +1,45 @@
+---
+title: USDをアスキーで保存する
+tags:
+    - USD
+---
+
+USD には、 USDA(アスキー) USDC(バイナリー) USDZ(ジップ)という大きく分けて 3 つの
+形式が用意されています。
+
+USDA USDC の場合は、
+
+```python
+stage = Usd.Stage.CreateInMemory()
+layer = stage.GetRootLayer()
+# アスキーで保存
+layer.Export("sample.usda")
+# バイナリーで保存
+layer.Export("sample.usd")
+```
+
+このように、保存するときの拡張子で usda とつければ自動的にアスキーになるし
+usd にすれば、バイナリー扱いになります。
+拡張子でアスキーとバイナリーを区別することもできますが、
+USD は、 アスキーであっても、 usd 　という拡張子で扱うことが可能です。
+
+多くの場合、途中でアスキーからバイナリに変えたり、その逆のパターンも起こりえるので
+USD 的には **アスキーであっても usd として扱うことが推奨** されています。
+
+https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09
+
+USD の拡張子とその特徴については、技師長師匠が USD アドカレ 2021 に書いてくれているので
+合わせてこちらも参照してください。
+
+ただし、Python から 拡張子を usd としたまま、アスキーで保存する手段が
+ドキュメントのどこにも存在しない（涙）ですが、ボスに教えてもらったので
+いずれ困るであろう（？）人のためにやり方を書いておきます。
+
+```python
+layer = Sdf.Layer.CreateNew("test.usd", args={'format': 'usda'})
+stage = Usd.Stage.Open(layer)
+```
+
+usda を usd という拡張子で保存する場合、Stage.Open には引数は用意されていません。
+そのため、Sdf.Layer.CreateNew 関数の args で format を usda のように指定します。
+そんなのわかるかい！！！
