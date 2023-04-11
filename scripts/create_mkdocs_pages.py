@@ -79,6 +79,7 @@ def create_pages(root_path):
                     nav.insert(0, f"title: {title}")
                     print(f"create .pages {path}/{dirname}")
                     with codecs.open(path + "/.pages", 'w', 'utf-8') as f:
+                        print("\n".join(nav))
                         f.write("\n".join(nav))
 
             for file in files:
