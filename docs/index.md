@@ -3,6 +3,17 @@ slug: /
 sidebar_position: 0
 ---
 
+:::info
+
+このサイトは、mkdocs を使用して作成していたものから Docusaurus を使用したものに以降中です。
+記事の移植は随時対応中です。
+以前のページは
+https://fereria.github.io/reincarnation_tech_bk/
+こちらに移動しました。
+
+ある程度移行が終わったら上記ページは消します。
+:::
+
 # Introduction
 
 Blender、Maya、Python 等の 3DCG 関係のテクニカル系の諸々
@@ -59,4 +70,5 @@ https://github.com/fereria/blender_samplecode
 | Twitter      | https://twitter.com/fereria                                                                            |
 | 日記         | https://fereria.github.io/blog/                                                                        |
 | 写真         | https://500px.com/megumiando                                                                           |
+
 o
