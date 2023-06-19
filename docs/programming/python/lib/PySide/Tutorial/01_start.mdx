@@ -1,0 +1,63 @@
+---
+title: PySideで単独アプリケーションを作る
+tags:
+    - Python
+    - PySide
+    - PySideTutorial
+slug: tutorial_01
+sidebar_position: 0
+---
+
+# PySide で単独アプリケーションを作る
+
+まずは、Maya ではなく単独の PySide の GUI ツールを表示します。
+
+## インストールする
+
+まず、PySide をインストールします。  
+今回は PySide2、Python は 3.6 を使用します。
+
+```bat
+pip install pyside2
+```
+
+インストールするには、pip を使用します。  
+（Anaconda や pipenv でも同様に「pyside2」をインストールすれば OK）
+
+!!! info
+PySide には、1 と 2 がありますが  
+ 説明は PySide2 準拠で説明します。  
+ （Maya 用に両方対応した書き方もありますが、それは別途解説します）
+
+## 基本的な構造
+
+![](https://gyazo.com/90d2467621845bcf23ca552174b0ed68.png)
+
+<script src="https://embed.cacher.io/81523b875d61f812a8fe469b5f2413f32b0ef812.js?a=261ec51543734b7edb4beef13abbfb8f"></script>
+
+まず、PySide で UI を作成するには、  
+このサンプルのような基本構造を作成します。
+
+### Application の作成
+
+まず、PySide で UI を作る場合は「[QApplication](https://doc.qt.io/qtforpython/PySide2/QtWidgets/QApplication.html)」を作成します。
+
+![](https://gyazo.com/d0ad62876373374abd8f3eaafd35676d.png)
+
+PySide は、ざっくりと分けると Application とウィンドウ部分（QtWidgets）の 2 つで  
+構成されていて、  
+PySide でアプリを作る場合は、まず Application を作成し  
+そのアプリ上で表示したいウィンドウを作成します。
+
+今回のサンプルは、Application を作成し  
+QDialog というシンプルなウィンドウを継承したクラスを作成し、  
+表示をしています。
+
+この構造が、PySide の最も基本的な形で  
+この構造に対していろいろなパーツ（Widget）を乗せていくことで  
+UI を作成していきます。
+
+!!! info
+解説的にはクラス継承しないで作成しているものもありますが  
+ 継承してから作った方が後々わかりやすいので  
+ 今回は、継承して使う前提で解説します。

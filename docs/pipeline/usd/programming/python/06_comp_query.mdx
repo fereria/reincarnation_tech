@@ -1,0 +1,98 @@
+---
+slug: /usd/composition_query
+title: PrimCompositionQueryの使い方
+tags:
+    - USD
+    - Python
+    - CompositionArc
+description: PrimCompositionQueryを使用してPrimのコンポジション情報を取得する
+sidebar_position: 6
+---
+
+USD の Stage で表示される Prim は、いくつかの Layer を合成した結果組み立てられたものです。
+たとえば、Kitchen_set を見てみると、
+
+![](https://gyazo.com/d0b564e4094db20d733ed4afc6ef13ad.png)
+
+ある Prim を選択し、Composition を見ると
+
+![](https://gyazo.com/c23dc4c953eb148d7bf4754da12c2306.png)
+
+このように、この Prim がどの Layer から作られたのか確認することができます。
+
+この情報を Python で取得しようとすると、PCP などを使用してシーンをトラバースしなければいけなくて
+それなりに手間です。
+その手間を簡単にできるようにしたのが、[PrimCompositionQuery](https://openusd.org/release/api/class_usd_prim_composition_query.html)です。
+このクラスは、その名の通り、指定した Prim の Composition の構造を取得することができます。
+
+## つかってみる
+
+まずは基本的な使い方から。
+CompositionQuery で Kitchen_1 の Prim の Composition を確認してみます。
+
+```python
+from pxr import Usd
+
+stage = Usd.Stage.Open(r"D:\Kitchen_set\Kitchen_set\Kitchen_set.usd")
+prim = stage.GetPrimAtPath("/Kitchen_set/Arch_grp/Kitchen_1")
+# CompositionQueryを使用する
+compQuery = Usd.PrimCompositionQuery(prim)
+
+for comp in compQuery.GetCompositionArcs():
+    print(comp.GetArcType())
+    print(comp.GetTargetLayer())
+```
+
+実行結果は
+
+![](https://gyazo.com/c19eb75f3f6d6f00eb00069bfd7fa4f3.png)
+
+このようになります。
+見ての通り、Composition タブに表示されていた内容と同じものが確認できます。
+
+GetCompositionArcs を使用すると、Layer を強い順に並んだリストで取得します。
+リストは、[UsdPrimCompositionQueryArc](https://openusd.org/release/api/class_usd_prim_composition_query_arc.html)型のリストになっているので、具体的な内容は UsdPrimCompositionQueryArc クラスを確認して、必要な情報を取得します。
+
+サンプルの場合、[ArcType](https://openusd.org/release/api/usd_2pcp_2types_8h_source.html) は Enum 型で、指定の Layer がどのように合成されているのかが確認できます。
+
+## 特定の Composition のみ取得する
+
+### filter を使う
+
+最初の例だと、すべての Composition が取得されます。
+しかし、そうではなく「特定の Composition のみ取得したい」場合もあるでしょう。
+その場合は、PrimCompositionQuery に Filter を指定することで実現できます。
+
+```python
+filter = Usd.PrimCompositionQuery.Filter()
+filter.arcTypeFilter = Usd.PrimCompositionQuery.ArcTypeFilter.Reference
+
+compQuery = Usd.PrimCompositionQuery(prim, filter)
+for comp in compQuery.GetCompositionArcs():
+    print(comp.GetArcType())
+    print(comp.GetTargetLayer())
+```
+
+最初の例に、Filter を追加しました。
+
+![](https://gyazo.com/52a28a4b25aff69e27d4c978f80f48c0.png)
+
+これが実行結果です。
+
+### 関数を使う
+
+それ以外に、専用の関数も用意されているので、それでも取得できます。
+
+```python
+query = Usd.PrimCompositionQuery.GetDirectReferences(prim)
+
+for comp in query.GetCompositionArcs():
+    print(comp.GetTargetLayer())
+```
+
+## まとめ
+
+PrimCompositionQuery を使用すれば、コンポジションの情報を簡単に取得できることがわかりました。
+ある程度 [PCP](/usd/comp_pcp) への理解は必要ですが
+再帰を書いたりといった手間が減るので、基本的に Composition の情報を取得したい場合は
+PrimCompositionQuery を使用するのが良いと思います。

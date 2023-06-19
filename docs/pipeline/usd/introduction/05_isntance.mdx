@@ -1,0 +1,179 @@
+---
+slug: /usd/instance
+title: USDのInstanceについて
+tags:
+    - USD
+description: USDでインスタンスを使用する方法とその構造
+sidebar_position: 5
+---
+
+USD のインスタンス化は、「同じ」オブジェクトの多数のインスタンスが UsdStage 上で同じ Prim を共有することができる機能です。
+
+> Instancing in USD is a feature that allows many instances of “the same” object to share the same representation (composed prims) on a UsdStage.
+> 参考: https://graphics.pixar.com/usd/release/glossary.html#usdglossary-instancing
+
+インスタンスを使用すると、インスタンス以下の Prim をオーバーライドすることができなくなる代わりに
+UsdStage を処理する時に、（同じモデルを参照することで）ロードの高速化やメモリの省略を
+することができます。
+
+## Instance を作る
+
+```
+#usda 1.0
+(
+    defaultPrim = "geom"
+)
+
+def Xform "geom"{
+    def Cube "cube" ()
+    {
+    }
+}
+```
+
+このような Cube.usd を用意します。
+インスタンス用のアセットは、Root に XformPrim を作成し、
+その子に Mesh を置きます。
+（RootPrim が Mesh ではいけない）
+
+今回は、DefaultPrim の子供にシンプルな Cube １つを置いた構造になっています。
+
+```
+#usda 1.0
+
+def "sampleA" (
+    instanceable = true
+    prepend references = @./cube.usd@
+)
+{
+}
+
+def "sampleB" (
+    instanceable = true
+    prepend references = @./cube.usd@
+)
+{
+}
+
+def "sampleC" (
+    prepend references = @./cube.usd@
+)
+{
+}
+```
+
+このようにリファレンスで読み込みます。
+そして sampleA sampleB には instanceable を入れて、sampleC には instancealbe を入れません。
+
+![](https://gyazo.com/debd2ec17a78eada6d2cfef4af0ce4b8.png)
+
+usdview で表示すると、このようになります。
+
+![](https://gyazo.com/c836078377da7d0f0a002fdea421ffef.png)
+
+図に表すとこのようになります。
+
+Prim に対して instanceable を入れると、同じインスタンスオブジェクトごとに「Prototype」と呼ばれるインスタンスの
+ベースになる Prim を１つだけ生成し、インスタンスする Prim との関係性を記録します。
+usdview では Prototype は表示されていませんが、
+
+```python
+stage.GetPrototypes()
+```
+
+> [Usd.Prim(</__Prototype_1>)]
+
+このように、Stage の GetPrototypes 関数を使用すると
+instanceable の Prim の PrototypePrim を確認することができます。
+
+![](https://gyazo.com/8bba1f6699966311aaad08bd4b8ee7f7.png)
+
+prototypePrim はこのようになります。
+インスタンスを使用しない場合、リファレンス先の Prim はリファレンスしている Prim 以下に展開されますが
+インスタンスの場合は、このようにルート以下に見えない Prim として展開されます。
+
+```python
+# Instanceの場合はChildはみつからない
+print(primB.GetChildren())
+# > []
+# 普通なら見つかる
+print(primC.GetChildren())
+# > [Usd.Prim(</sampleC/cube>)]
+```
+
+そのため、 instanbeable な Prim に GetChildren() してみると
+Instance の時は個 Prim が見つからず（本体は Prototype 以下なので）
+通常の場合は GetChildren で個 Prim を取得できるようになります。
+
+!!! info
+
+    __Prototype_## の数字は固定ではなく動的に決まります。
+    なので、この数字を当てにして処理を書くことはできません。
+
+### Prototype からインスタンスを取得する
+
+```python
+prototype = primA.GetPrototype()
+
+for instance in prototype.GetInstances():
+    print(instance)
+```
+
+instanceable なオブジェクトを Prototype として展開すると
+配置されたオブジェクトは１つの Prototype を共有します。
+\__Prototype_## の Prim 名は毎回変わりますが、この Prototype がどの Instance のオブジェクトなのかは
+Prim から GetInstances で取得することができます。
+
+これを利用すれば、実際にどのオブジェクトとして配置したのかを把握することができます。
+
+## Instance と コンポジション と Proxy
+
+Instance したモデルのルート以下は、コンポジション等によって値を編集することができません。
+たとえば、インスタンスで配置しているオブジェクトのうち
+どれか１つの色を変えたいといったことはできません。
+ですが、instanceable のメタデータをコンポジションによって False にして
+通常の配置に変更すること(Instance を壊す）ことは可能です。
+
+### Proxy
+
+![](https://gyazo.com/58c9335d44fa20aa7fc76eaab6ef7266.png)
+
+Instance の場合、通常とは違いリファレンス Prim 以下には展開されないと書きましたが
+GetPrimAtPath 等で Prim を取得した場合「InstanceProxy」と呼ばれる Prim によって
+実体と同じようにアクセスすることができます。
+しかし、この場合は編集することができません。
+
+```python
+# InstanceのPrimも GetPrimAtPathで取得が可能
+proxy = stage.GetPrimAtPath("/sampleA/cube")
+# InstanceProxyかどうかを確認できる
+print(proxy.IsInstanceProxy())
+# Proxyの場合、値の追加や変更を使用するとエラーになる
+proxy.CreateAttribute('sample',Sdf.ValueTypeNames.String).Set('hoge')
+```
+
+```
+---------------------------------------------------------------------------
+ErrorException                            Traceback (most recent call last)
+<ipython-input-61-5acb423d72e7> in <module>
+      2 proxy = stage.GetPrimAtPath("/sampleA/cube")
+      3 # Proxyの場合、値の追加や変更を使用するとエラーになる
+----> 4 proxy.CreateAttribute('sample',Sdf.ValueTypeNames.String).Set('hoge')
+
+ErrorException:
+	Error in 'pxrInternal_v0_21__pxrReserved__::UsdStage::_ValidateEditPrim' at line 1297 in file D:\work\GithubRepo\USD\pxr\usd\usd\stage.cpp : 'Cannot create property spec at path </sampleA/cube>; authoring to an instance proxy is not allowed.'
+```
+
+このようにやろうとしてもエラーになります。
+
+```python
+# ProxyからPrototype側でのPathを取得
+print(proxy.GetPrimInPrototype())
+```
+
+## まとめ
+
+以上がインスタンスの基本でした。
+これに＋して Instance がネストされていた時や、ValueClip・LoadRules・PopulationMask 等と
+組み合わさった場合等いろいろありますが
+今回はまずはここまで。

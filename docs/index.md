@@ -1,3 +1,8 @@
+---
+slug: /
+sidebar_position: 0
+---
+
 # Introduction
 
 Blender、Maya、Python 等の 3DCG 関係のテクニカル系の諸々
@@ -13,17 +18,17 @@ Blog などにコードの引用する事なども、基本 OK ですが、
 は禁止です。
 また、引用する際は、URL またはトップページの URL を記載するようよろしくお願いします。
 
-!!! info
+:::caution
+このページの URL・階層は定期的に変わりますので
+リンクを保存する際はご注意ください。
+:::
 
-    このページのURL・階層は定期的に変わりますので
-    リンクを保存する際はご注意ください。
-
-!!! info
-
-    色んな要素（ツール・サービス）を使った検証記事は
-    https://zenn.dev/remiria
-    こちらにまとめます。
-    mkdocsは、調べた内容を自分のノート代わりに公開します。
+:::info
+色んな要素（ツール・サービス）を使った検証記事は
+https://zenn.dev/remiria
+こちらにまとめます。
+mkdocs は、調べた内容を自分のノート代わりに公開します。
+:::
 
 ## サンプルコード
 
@@ -43,18 +48,15 @@ https://github.com/fereria/blender_samplecode
 
 ## 中の人
 
-|              |                                                                                                    |
-| ------------ | -------------------------------------------------------------------------------------------------- |
-| なまえ＠HN   | あんどうめぐみ＠れみりあ                                                                           |
-| 職業         | 元 TA、現在ゲーム会社のツールパイプラインエンジニア                                                |
-| 得意         | DCC ツールのテクニカルサポート<br>パイプライン構築<br>セットアップ<br>その他色々なんでも屋         |
-| よく使うもの | Maya(maya.cmds pymel openmaya)<br>Houdini(SOLARIS)<br>AfterEffects<br>Shotgun<br>PySide,USD ななど |
-| 言語         | Python(メイン) C#(Excel Unity) JavaScript(AE)                                                      |
-| 趣味とか     | 旅行、カメラ                                                                                       |
-| Twitter      | https://twitter.com/fereria                                                                        |
-| 日記         | https://fereria.github.io/blog/                                                                    |
-| 写真         | https://500px.com/megumiando                                                                       |
-
-## 最近の更新
-
-{{update_info(5,'###')}}
+|              |                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------ |
+| なまえ＠HN   | あんどうめぐみ＠れみりあ                                                                               |
+| 職業         | 元 TA、現在ゲーム会社のツールパイプラインエンジニア                                                    |
+| 得意         | DCC ツールのテクニカルサポート<br/>パイプライン構築<br/>セットアップ<br/>その他色々なんでも屋          |
+| よく使うもの | Maya(maya.cmds pymel openmaya)<br/>Houdini(SOLARIS)<br/>AfterEffects<br/>Shotgun<br/>PySide,USD ななど |
+| 言語         | Python(メイン) C#(Excel Unity) JavaScript(AE)                                                          |
+| 趣味とか     | 旅行、カメラ                                                                                           |
+| Twitter      | https://twitter.com/fereria                                                                            |
+| 日記         | https://fereria.github.io/blog/                                                                        |
+| 写真         | https://500px.com/megumiando                                                                           |
+o

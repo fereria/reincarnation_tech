@@ -1,0 +1,174 @@
+---
+title: AssetInfoについて
+tags:
+    - USD
+    - AdventCalendar2021
+sidebar_position: 25
+---
+
+[Universal Scene Description AdventCalendar2021](https://qiita.com/advent-calendar/2021/usd) 13 日目は、
+AssetInfo についてとその使い方です。
+
+## AssetInfo とは
+
+[AssetInfo](https://graphics.pixar.com/usd/release/glossary.html#usdglossary-assetinfo)とは、USD で作成されたアセットを管理・識別するために、
+**Prim や Property に対して指定することができる辞書型のメタデータ** です。
+
+USD は、 [Stage/Layer/Spec](/usd/stage_layer_spec) の回で説明した通り、１つのファイルから構成されているわけではなく
+１つのステージに対して複数のファイルによって構成されています。
+その大量のファイルの依存関係がどのようになっているのかを API を使用して把握することはできますが
+かなり深いところを触る必要があり（たとえば、データをサブミットしたりビルドしたりするときに
+あるステージの構造を検索しようとすると、かなり大変なことになります。
+（いわゆる「できないわけではない」）
+
+AssetInfo をアセットに対して指定しておくと、
+レイアウトしているシーン等から
+「今のステージがどのようなアセットで構成されているのか」
+「今のステージがどういう意図になっているのか」
+を、特定すことができるようになります。
+
+## Kitchen_set みてみる
+
+説明を見てもピンとこないので、具体的な例をまず見てみます。
+
+Kitchen_set にある Ball.usd を usdview で開いてみます。
+
+![](https://gyazo.com/1d050ae2719eeeba4d00f5e46976a4d8.png)
+
+MetaData タブを確認すると assetInfo に identifier と name が指定されていることがわかります。
+
+![](https://gyazo.com/599388099f37306efc11461c98119b78.png)
+
+Kitchen_set.usd を開き、Ball.usd をペイロードしている Prim をみると
+Meta Data に、 Ball.usd に指定された AssetInfo が確認できます。
+
+## 指定できる情報
+
+AssetInfo には、そのアセットを管理するための情報が Dict 型で入っています。
+
+```python
+stage = Usd.Stage.CreateInMemory()
+prim = stage.DefinePrim('/sample')
+prim.SetAssetInfoByKey('hoge','fuga')
+print(stage.ExportToString())
+```
+
+<Gist id="5611248ba747a0ddc29e649b42b8bd66" file="assetinfo.usda" />
+
+Dict 型なので、こんな感じでどんな情報でも入れることができますが、
+デフォルトでは以下の４つを推奨していて
+API 側でもその４つがデフォルトで用意されています。
+
+|                          | 型     |                                                                                                                                                                                                |
+| ------------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| identifier               | asset  | コンポジションアークでターゲットにする時のファイルパス<br/>いわゆるこの AssetInfo が指定されている（自分自身の）ファイルパス                                                                   |
+| name                     | string | アセット名。<br/>データベースへのクエリなどに使用                                                                                                                                              |
+| payloadAssetDependencies | asset  | 動的に依存関係を検索するときに使用するアセットがペイロードしているアセットを指定する。、<br/>事前にペイロードの依存を計算しておくことで、全部をロードしなくてもアセットの依存関係を把握できる。 |
+| version                  | string | アセットのバージョンを設定する。<br/>ShotGrid などでアセットを管理している場合などに、追跡するのに使える                                                                                        |
+
+以上４つです。
+アセットのバージョン管理などは、ShotGrid などといったデータベースを使用することが多いとおもいます。
+ですが、そういったデータベースとは別に、アセット自体にも管理用の情報（name や version)は持たせたいはずです。
+デフォルトで推奨されている AssetInfo は、まさにそういった用途で使用するものになっています。
+
+> asset 型は、アセット（USD ファイル、テクスチャを含む）を指すためのパスを表す
+> 参考：[USD は手書きするもののアトリビュート](https://qiita.com/takahito-tejima/items/ee0332bfb5c9baed3b09#%E3%82%A2%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%83%88)
+
+## AssetInfo を活用する
+
+どのような情報が保存されているかはわかりました。
+これを実際にどう活用していけばいいのか、
+
+「今のステージがどのようなアセットで構成されているのか」
+
+を、AssetInfo を使用して調べてみます。
+
+### Flatten した場合の AssetInfo
+
+USD には、現在の Stage を「Flatten」することで、すべてのコンポジションアークを実行した結果の
+シーングラフを出力する機能があります。
+Flatten してしまうと、コンポジションの情報もすべて解決された状態になるため、
+
+![](https://gyazo.com/82d53c910005559e69c338d092d3b0b4.png)
+
+Composition をみても、Layer は存在しません。
+つまり、Flatten する前、どのような Layer によって構成されていたのかは
+Composition から追うことはできません。
+
+![](https://gyazo.com/8a37db52b438ecc1f7bd00e780f63249.png)
+Flatten 前
+
+![](https://gyazo.com/5c2847686be38266b7376602140ff26b.png)
+Flatten 後
+
+ですが、AssetInfo をみてみると
+どの Asset がどこに置いてあるなんのアセットなのか、Flatten した後でもわかります。
+
+> Kitchen_set には version ははいっていないが、
+> 入っていれば Flatten した段階でどのバージョンのアセットかもわかる...ということになる
+
+### 依存解決のための AssetInfo
+
+もう１つが、アセットの依存解決です。
+最初に説明した通り、現在の Stage がどのようなコンポジションによって構成されているかは
+PCP 等を使用すれば検索することは可能ですが、
+複雑な Stage を PCP を使用して依存を調べるとすると、かなり大変です。
+さらに、「あるレイアウト済のシーンに配置しているアセットを収集したい」ということがあった時
+使用するアセットを調べるためだけに巨大なシーンを開くのは効率的ではありません。
+
+そういったときに、Payload をアンロードにして Stage を開いて（アセットをロードしていないので、配置情報だけのロードで済む）
+使用しているアセット情報だけを取得したい、、、ということはよくあると思います。
+そういう場合に、AssetInfo は使用することができます。
+
+```python
+from pxr import Usd,Sdf,Ar
+
+loadFile = "D:/Kitchen_set/Kitchen_set.usd"
+stage = Usd.Stage.Open(loadFile,Usd.Stage.LoadNone)
+
+# DefaultResolverを取得
+resolver = Ar.GetResolver()
+
+def traverse(prim):
+    if prim.HasAssetInfo():
+        # Kitchen_set.usdのPathから、アセットのフルパスを取得
+        info = prim.GetAssetInfo()
+        path = info['identifier'].path
+        resolvedPath = Ar.ResolvedPath(loadFile)
+        print(resolver.CreateIdentifierForNewAsset(path,resolvedPath))
+
+    for child in prim.GetFilteredChildren(Usd.PrimIsActive & Usd.PrimIsDefined & ~Usd.PrimIsAbstract):
+        # LoadNoneの時は、Traverse関数を使用するとPayloadsのPrimは取得できないので
+        # 再帰で子Primを探す
+        traverse(child)
+
+traverse(stage.GetDefaultPrim())
+```
+
+例として Kitchen_set で使用しているアセットの一覧を取得した場合。
+Stage は LodNone（アンロード状態）で開きます。
+この状態だと、アセットの依存を取得できません。
+ですが Prim の AssetInfo を見て identifier や name が指定されていれば、そこからデータを収集することができます。
+
+上の例だと、アセットの中に別のアセットへのコンポジションがあると検索できませんが、
+あらかじめ使用しているアセットを payloadAssetDependencies にセットしておけば
+すべてのレイヤーをアンロードにした状態でも、その Stage を構成するアセットの一覧を取得することができます。
+
+> 備考
+> Resolver は別の記事にてまとめ予定です。
+
+## TF_DEBUG での AssetInfo の確認
+
+[USD・Hydra の環境変数と仲良くなる](https://qiita.com/takahito-tejima/items/c065c7cd5c3a7abe14f1#tf_debugsdf_asset) の記事にて、アセットの解決時に
+どのように変化していくかを確認するための Debug 設定が紹介されていましたので
+合わせて確認してみると、USD コンポジションの解決がどようにされているか確認できるので
+試してみると面白そうです。
+
+## まとめ
+
+以上 AssetInfo についてとその使い方でした。
+アセットを管理するのに AssetInfo はとても有効です。
+Houdini19 に新しく追加された ComponentBuilder では、この AssetInfo を自動で追加してくれますので
+レンダリングを実行する前に依存を解決してデータチェックをしたい時、
+ShotGrid でアセットを管理するときにアセット側にも情報を持たせたい時など
+ぜひとも活用してください。

@@ -1,0 +1,30 @@
+---
+slug: out_of_process
+title: Python の Out Of Process
+description: OutOfProcessでPythonを実行するときのメモ
+sidebar_position: 10
+---
+
+OutOfProcess で実行するときは、 workitem は直接受け取れないので、
+Json を介して pdgjson モジュールを使用して取得する。
+
+```python
+from pdgjson import WorkItem
+import os
+
+# WorkItemを取得する
+work_item = WorkItem.fromJobEnvironment()
+
+# WorkItemのアトリビュートを取得する
+val = work_item.attribValue('myintattrib')
+# WorkItemにアトリビュートを追加する
+work_item.setStringAttrib('runtime_attrib', val, 0)
+
+# 生成物を追加する
+result_file = os.environ['PDG_DIR'] + f'/myoutput_{work_item.name}.txt'
+
+with open(result_file,'w') as f:
+    f.write('test')
+
+work_item.addResultData(result_file)
+```
