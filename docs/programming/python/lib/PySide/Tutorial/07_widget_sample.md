@@ -3,6 +3,7 @@ slug: widget_sample_03
 title: 基本Widgetを使ってみる(3):ComboBox_基本編
 tags:
     - PySide
+sidebar_position: 7
 ---
 
 # 基本 Widget を使ってみる(3):ComboBox\_基本編

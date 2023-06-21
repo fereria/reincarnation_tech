@@ -3,6 +3,7 @@ slug: widget_sample_02
 title: 基本Widgetを使ってみる(2):RadioButton
 tags:
     - PySide
+sidebar_position: 6
 ---
 
 # 基本 Widget を使ってみる(2):RadioButton

@@ -3,6 +3,7 @@ slug: widget_sample_01
 title: 基本Widgetを使ってみる(1):LineEdit
 tags:
     - PySide
+sidebar_position: 5
 ---
 
 # 基本 Widget を使ってみる(1):LineEdit

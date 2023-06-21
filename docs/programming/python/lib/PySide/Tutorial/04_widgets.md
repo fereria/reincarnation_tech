@@ -4,6 +4,7 @@ title: Widgetとカスタムウィジェットを作成する
 tags:
     - PySide
     - Python
+sidebar_position: 4
 ---
 
 # Widget とカスタムウィジェットを作成する
