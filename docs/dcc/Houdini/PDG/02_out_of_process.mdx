@@ -3,10 +3,14 @@ slug: out_of_process
 title: Python の Out Of Process
 description: OutOfProcessでPythonを実行するときのメモ
 sidebar_position: 10
+tags:
+    - Houdini
+    - PDG
+    - TOPs
 ---
 
 OutOfProcess で実行するときは、 workitem は直接受け取れないので、
-Json を介して pdgjson モジュールを使用して取得する。
+Json を介して pdgjson モジュールを使用して取得します。
 
 ```python
 from pdgjson import WorkItem
@@ -28,3 +32,40 @@ with open(result_file,'w') as f:
 
 work_item.addResultData(result_file)
 ```
+
+WorkItem は、TempDir に json 形式で出力されて OutOfProcess の外部プロセスに
+必要な情報を受け渡します。
+そのため、受け取るときは pdgjson の WorkItem から WorkItem を取得します。
+
+上のサンプルは、OutOfProcess で実行したジョブで
+PDG_DIR(作業用のディレクトリ)に生成物を出力して、その成果物の Path を
+output_path として戻します。
+
+![](https://gyazo.com/d294c4b8582364ecaf223643e20bdffe.png)
+
+サンプルとして、GenericGenerator で 3 つ WorkItem を作成し
+
+![](https://gyazo.com/3ad7f7bae506c4ae8dc7aa498ad5f5bd.png)
+
+PythonScript を Cook(Out-of-Process)します。
+
+![](https://gyazo.com/db7fce330375b34081ca8ab480065e89.png)
+
+結果、PythonScript の WorkItem の Output に、addResultData で指定した生成物が
+指定されているのがわかります。
+
+![](https://gyazo.com/7c55750b668776e1821bf68ec038f026.png)
+
+```python
+from pdgjson import WorkItem
+import os
+
+# WorkItemを取得する
+work_item = WorkItem.fromJobEnvironment()
+
+print(work_item.inputFiles)
+```
+
+次の工程で、Out-of-Process の PythonScript で、
+work_item.inputFiles を使用すると、前工程の成果物を inputFiles として
+取得することができます。
