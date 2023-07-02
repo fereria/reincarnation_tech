@@ -219,7 +219,7 @@ Buzz 以下に Buzz.usd があり、
 
 Buzz 以下にある Buzz.usd を usdcat してみると
 
-{{'86a90963fe7a3daa5912d7b06b59389b'|gist}}
+<Gist id="86a90963fe7a3daa5912d7b06b59389b" file="Buzz.usd" />
 
 Buzz/Buzz.usd は、
 Buzz 以下 のバージョンフォルダをペイロードしています。
@@ -242,12 +242,12 @@ shot_1 以下にある versions.json というファイルの中身を参照し�
 
 ![](https://gyazo.com/b5c1cf3c26219bf2e28328bb3fd45607.png)
 
-つまりまとめると、アセットのパスが asset:\<AssetName\>/\<AssetName\>.usd のように指定されていた場合、
+つまりまとめると、アセットのパスが asset:AssetName/AssetName.usd のように指定されていた場合、
 
 1. shot 以下の versions.json を見て、環境変数 VESION に AssetName のバージョンを指定
 2. USD_RESOLVER_EXAMPLE_ASSET_DIR で指定したアセットフォルダ以下から
-3. \<AssetName\> 以下の AssetName.usd をリファレンスして
-4. その本体は、\<AssetName\> : version で指定されているバージョン以下のものをペイロードする
+3. AssetName 以下の AssetName.usd をリファレンスして
+4. その本体は、AssetName : version で指定されているバージョン以下のものをペイロードする
 
 ということが、 usdResolverExample で行われています。
 

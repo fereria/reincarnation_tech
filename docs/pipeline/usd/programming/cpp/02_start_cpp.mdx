@@ -1,0 +1,192 @@
+---
+sidebar_position: 2
+slug: /usd/start_usdcpp
+title: C++でUSDのコードを書こう(準備編)
+tags:
+    - C++
+    - USD
+---
+
+C++はやらなきゃと思いながらもよくわからん！！と放置してきたところがあるのですが
+そもそも始めることすら出来なくて放置してました。  
+が、、、せっかく USD をはじめたので、Python だけではなく C++でもコードが書けるように
+色々とビルドできるようにするまでの環境を、調べながらつくってみました。
+
+## コードを書く
+
+とりあえずこんなコードを動くようにしてみます。
+
+```cpp
+#define NOMINMAX
+
+#include "pxr/usd/usd/stage.h"
+#include "pxr/usd/sdf/path.h"
+#include "pxr/usd/usdGeom/sphere.h"
+
+void main()
+{
+  auto stage = pxr::UsdStage::CreateInMemory();
+  auto sphere = pxr::UsdGeomSphere::Define(stage, pxr::SdfPath("/TestSphere"));
+  stage->GetRootLayer()->Export("D:/test_sphere.usda");
+}
+```
+
+同じコードを Python で書くと、こうなります。
+
+```python
+from pxr import UsdGeom,Usd
+
+stage = Usd.Stage.CreateInMemory()
+sphere = UsdGeom.Sphere(stage,"/TestSphere")
+stage.GetRootLayer().Export("D:/test_sphere.usda")
+```
+
+Python の場合は、書いたらそのまま実行すれば OK なのですが
+C++だとそう簡単ではなく、ビルドをする必要があります。
+なので、このコードをビルドするための cmake を書いていきます。
+
+## cmake を書く
+
+https://cmake.org/
+
+まずは、cmake をダウンロードしてインストールします。
+
+```
+cmake_minimum_required(VERSION 3.1)
+project(testProj)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(USD_INSTALL_ROOT D:/python_lib/usd_py27)
+set(PYTHON_ROOT_DIR C:/Python27)
+
+set(USD_LIBRARY_DIRECTORY ${USD_INSTALL_ROOT}/lib)
+set(USD_INCLUDE_DIRECTORY ${USD_INSTALL_ROOT}/include)
+set(BOOST_INCLUDE_DIRECTORY ${USD_INSTALL_ROOT}/include/boost-1_65_1)
+
+# ライブラリのPath取得
+find_library(USD_SDF sdf HINTS ${USD_LIBRARY_DIRECTORY})
+find_library(USD_TF tf HINTS ${USD_LIBRARY_DIRECTORY})
+find_library(USD_USD usd HINTS ${USD_LIBRARY_DIRECTORY})
+find_library(USD_GEOM usdGeom HINTS ${USD_LIBRARY_DIRECTORY})
+find_library(TBB_LIB tbb HINTS ${USD_LIBRARY_DIRECTORY})
+find_package(PythonLibs 2.7)
+
+add_executable(main_app main.cpp)
+target_compile_options(main_app PRIVATE /DWIN32_LEAN_AND_MEAN)
+target_include_directories(
+    main_app
+    PUBLIC
+    ${PYTHON_INCLUDE_PATH}
+    ${USD_INCLUDE_DIRECTORY}
+    ${BOOST_INCLUDE_DIRECTORY}
+    ${PYTHON_ROOT_DIR}/include
+)
+target_link_libraries(
+    main_app
+    ${USD_LIBRARY_DIRECTORY}/boost_python-vc141-mt-1_65_1.lib
+    ${PYTHON_LIBRARY}
+    ${TBB_LIB}
+    ${USD_SDF}
+    ${USD_TF}
+    ${USD_USD}
+    ${USD_GEOM}
+)
+```
+
+cpp と同じフォルダに、 CMakeLists.txt を作り
+中身を ↑ のようにします。
+
+まずは、cpp をビルドするためのプロジェクトを作ります。
+いわゆる VisualStudio の sln ファイル（ソリューション）がこれにあたります。
+
+そしてその中に追加するプロジェクトを add_executable で追加します。
+この第一引数が、プロジェクト名になり、
+
+![](https://gyazo.com/56ebe3e8aa739a3943df57699105cc5b.png)
+
+こんな感じで追加されます。
+さらに、そのプロジェクトに対して、使用するライブラリと Include フォルダを指定します。
+この link ライブラリのパスは、find_library で検索することができますが
+boost_python はみつけたサンプルのとおりにやるとエラーになったので
+自分のビルドした USD フォルダにある boost_python の lib を書いてあります。
+
+もう 1 つトラップだったのが、
+サンプルだと PythonLib も find_library で書かれていたのですが、
+find_package(PythonLibs REQUIRED)
+コレで書くと、python3.7 のライブラリが引っかかってしまったので
+とりあえずフルパスで追加するようにしました。
+
+...とおもったら色々勘違いしていただけで、REQUIRED ではなく指定のバージョンにすれば
+そのバージョンの pythonlib をみつけてくれるので、2.7 にしておきました。(※追記)
+
+find_package 自体は、.cmake で検索コードを書いたりも出来るみたいなので
+色々やってみたいです。
+
+で。
+サンプルに必要な Sdf UsdGeom Stage の lib を追加して準備完了。
+
+おなじフォルダに build フォルダを作り、コマンドラインで build フォルダに移動します。
+
+```
+cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release --build ..
+```
+
+そしてコマンド実行。
+今回は VisualStudio 2017 Win64 でビルドしたいので、 -G でバージョンを指定します。
+さらに、Debug 版だと tbb で盛大にビルドエラーになるので今回は Release にします。
+
+実行すると、build フォルダ下にソリューションファイルができあがるので、
+VisualStudio で開き、あとは ソリューションエクスプローラーから main_app を右クリック
+そしてビルドすれば完了です。
+
+## はまりポイント
+
+C++初心者な自分が盛大にはまったポイントがいくつかあります。
+
+### window.h マクロ定義問題
+
+https://yohhoy.hatenadiary.jp/entry/20120115/p1
+
+まず 1 つめが、window.h の定義マクロ問題。
+window.h が「min/max」という超被りそうな名前のマクロを定義してしまうため
+盛大にエラーを吐いてビルド出来ませんでした。
+というわけで、回避策として #define NOMINMAX を定義。
+
+### DWIN32_LEAN_AND_MEAN
+
+もう 1 つ、window.h が「small」という名のマクロを定義してしまうことで発生する
+ビルドエラーを回避するために、DWIN32_LEAN_AND_MEAN を追加。
+
+### Debug モードでのエラー
+
+最後に Debug モード時に、tbb 周りのマクロ定義で盛大にエラーになってしまう問題。
+なので、cmake コマンドでソリューションを作る時に -DCMAKE_BUILD_TYPE=Release
+フラグを追加して回避しました。
+
+### lib 入れ忘れ
+
+これも超基本ですが、途中で Sphere を作る UsdGeomSphere を追加した場合、 sphere.h を
+インクルードしたらエラーになってしまいはじめはかなり困りました。
+が、よく考えてみると target_link_libraries で usdGeom.lib をリンクしないと
+だめじゃん！ってことに気がついて追加したらいけました。
+
+## というわけで...
+
+とりあえず色々と分からないことがあるものの、書き始められるだけの環境はできました。
+なんだかんだで理解するだけで 1 ヶ月以上かかりました。。。C++難しい。
+
+ビルドが通るようになって以降は、ドキュメント自体は C++で書かれていることもあって
+（一応文法もわかるので）Python で書いたサンプルを C++に移植するとかは出来るようになりました。
+一番難しいのはビルドだったのではないかと思います。
+
+とにもかくにも動くようにはなったので、
+しばらくは C++の基本を勉強しつつ C++で USD のデータを作って見るのを試してみようと思います。
+
+## 参考
+
+-   https://qiita.com/janus_wel/items/a673793d448c72cbc95e
+-   https://qiita.com/shohirose/items/45fb49c6b429e8b204ac
+-   https://github.com/ColinKennedy/USD-Cookbook/tree/master/concepts/mesh_with_materials/cpp
+-   https://www.wagavulin.jp/entry/2017/02/20/082608
