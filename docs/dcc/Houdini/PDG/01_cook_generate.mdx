@@ -1,0 +1,70 @@
+---
+slug: cook_generate
+title: PDGの基本(2) - CookとGenerateとDirty
+description:
+sidebar_position: 1
+---
+
+[前回](start_pdg) PDG で処理を実行する基本を書きましたが、  
+Processor を使用して WorkItem を作り、実行するのは「Generate」と「Cook」という 2 段階が存在しています。
+
+## Generate
+
+PDG では、Processor が WorkItem を作ることを「Generate」と呼びます。
+
+![](https://gyazo.com/f27885fb6d447055e56af0b01cff2426.png)
+
+ノードを作成した段階では、ノードはこのように〇が表示されていません。
+
+![](https://gyazo.com/2ad584c954773debae19e36a41972fa1.png)
+
+このノードを右クリックすると「Generate Node」があるので実行します。
+
+![](https://gyazo.com/1336b65a2e522ad146581c90a28452b9.png)
+
+実行すると、このように灰色の〇が ItemCount で指定した数だけ作成されます。
+
+![](https://gyazo.com/6347f9b65822993e8875960201fb4234.png)
+
+これは WorkItem が作成されて実行待ち状態になっていて、  
+TaskGraphTable の State を見ると「Uncooked」になっています。
+
+TOPs の中では各所で「Generate」というキーワードが出てきますが（Generate When 等）  
+WorkItem を生成することを指しています。
+
+## Cook
+
+WorkItem を生成するのを「Generate」と呼ぶのに対して、作成した WorkItem を実行することを Cook と呼びます。
+
+![](https://gyazo.com/71628bba2e6eb31ee72da6fff0a9d015.png)
+
+ノードを右クリックすると、その中に「Cook Node」があります。  
+これを実行すると、
+
+![](https://gyazo.com/ef8055d517788730baa621af6b343460.png)
+
+実際に処理が実行されます。  
+Cook され、問題なく完了すると WorkItem はグリーン（Cooked）になります。
+
+## Dirty
+
+もう一度 Cook をしようとしても、すでに実行済の場合はすでに実行済なので再実行されません。  
+再実行したい場合は、パラメーターを変更して実行するか、  
+再実行したいノードに「Dirty フラグ」を入れる必要があります。
+
+![](https://gyazo.com/dbd60418acdf44ea8150b94555881ebd.png)
+
+Dirty This Node を実行すると、
+
+![](https://gyazo.com/d261dcdeef38719f5826a7e431eae624.png)
+
+Generate 前の状態に戻ります。  
+この状態に戻ると、再度 Generate、Cook を実行することができます。
+
+Generate をしないでも、Task を実行するときに Generate は自動で実行されます。  
+しかし、Generate と Cook が別の処理であるというのを理解してい置くのは
+今後様々な処理をするときに重要になってきます。
+
+## 参考
+
+-   https://www.sidefx.com/tutorials/intro-to-pdg/
