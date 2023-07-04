@@ -33,6 +33,7 @@ const config = {
 	// metadata like html lang. For example, if your site is Chinese, you may want
 	// to replace "en" with "zh-Hans".
 
+	plugins: ["plugin-image-zoom"],
 	presets: [
 		[
 			"classic",
@@ -57,86 +58,83 @@ const config = {
 			}),
 		],
 	],
-
-	themeConfig:
-		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-		({
-			// Replace with your project's social card
-			image: "img/docusaurus-social-card.jpg",
-			metadata: [{ name: "twitter:card", content: "summary" }],
-			navbar: {
-				title: "Reincarnation+#Tech",
-				logo: {
-					alt: "My Site Logo",
-					src: "img/logo.svg",
+	themeConfig: {
+		// Replace with your project's social card
+		image: "img/docusaurus-social-card.jpg",
+		metadata: [{ name: "twitter:card", content: "summary" }],
+		navbar: {
+			title: "Reincarnation+#Tech",
+			logo: {
+				alt: "My Site Logo",
+				src: "img/logo.svg",
+			},
+			// Tab を追加する場合はここに追加
+			items: [
+				{ to: "/blog", label: "Blog", position: "left" },
+				{
+					to: "/dcc",
+					sidebarId: "dccSidebar",
+					position: "left",
+					label: "DCCTool",
 				},
-				// Tab を追加する場合はここに追加
-				items: [
-					{ to: "/blog", label: "Blog", position: "left" },
-					{
-						to: "/dcc",
-						sidebarId: "dccSidebar",
-						position: "left",
-						label: "DCCTool",
-					},
-					{
-						to: "/pipeline",
-						label: "Pipeline",
-						sidebarId: "pipelineSidebar",
-						position: "left",
-					},
-					{
-						to: "/pg",
-						sidebarId: "programmingSidebar",
-						position: "left",
-						label: "Programming",
-					},
-					{
-						to: "/ta",
-						sidebarId: "taSidebar",
-						position: "left",
-						label: "TechArtist",
-					},
-					{
-						to: "/tags",
-						label: "Tags",
-						position: "left",
-					},
-					{
-						href: "https://github.com/fereria/reincarnation_tech",
-						label: "GitHub",
-						position: "right",
-					},
-				],
-			},
-			footer: {
-				style: "dark",
-				links: [
-					{
-						title: "SocialMedia",
-						items: [
-							{
-								label: "Twitter",
-								href: "https://twitter.com/fereria",
-							},
-							{
-								label: "Reincarnation+#Tech",
-								href: "https://fereria.github.io/reincarnation_tech/",
-							},
-							{
-								label: "GitHub",
-								href: "https://github.com/fereria/reincarnation_tech",
-							},
-						],
-					},
-				],
-				copyright: `Copyright © ${new Date().getFullYear()} Reincarnation#Tech, Built with Megumi Ando.`,
-			},
-			prism: {
-				theme: lightCodeTheme,
-				darkTheme: darkCodeTheme,
-			},
-		}),
+				{
+					to: "/pipeline",
+					label: "Pipeline",
+					sidebarId: "pipelineSidebar",
+					position: "left",
+				},
+				{
+					to: "/pg",
+					sidebarId: "programmingSidebar",
+					position: "left",
+					label: "Programming",
+				},
+				{
+					to: "/ta",
+					sidebarId: "taSidebar",
+					position: "left",
+					label: "TechArtist",
+				},
+				{
+					to: "/tags",
+					label: "Tags",
+					position: "left",
+				},
+				{
+					href: "https://github.com/fereria/reincarnation_tech",
+					label: "GitHub",
+					position: "right",
+				},
+			],
+		},
+		footer: {
+			style: "dark",
+			links: [
+				{
+					title: "SocialMedia",
+					items: [
+						{
+							label: "Twitter",
+							href: "https://twitter.com/fereria",
+						},
+						{
+							label: "Reincarnation+#Tech",
+							href: "https://fereria.github.io/reincarnation_tech/",
+						},
+						{
+							label: "GitHub",
+							href: "https://github.com/fereria/reincarnation_tech",
+						},
+					],
+				},
+			],
+			copyright: `Copyright © ${new Date().getFullYear()} Reincarnation#Tech, Built with Megumi Ando.`,
+		},
+		prism: {
+			theme: lightCodeTheme,
+			darkTheme: darkCodeTheme,
+		},
+	},
 };
 
 module.exports = config;

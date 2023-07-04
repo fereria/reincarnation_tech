@@ -7,11 +7,11 @@ sidebar_position: 0
 
 このサイトは、mkdocs を使用して作成していたものから Docusaurus を使用したものに以降中です。  
 記事の移植は随時対応中です。  
-以前のページは  
-  
-https://fereria.github.io/reincarnation_tech_bk/  
-  
-こちらに移動しました。  
+以前のページは
+
+https://fereria.github.io/reincarnation_tech_bk/
+
+こちらに移動しました。
 
 ある程度移行が終わったら上記ページは消します。
 :::
@@ -72,5 +72,3 @@ https://github.com/fereria/blender_samplecode
 | Twitter      | https://twitter.com/fereria                                                                            |
 | 日記         | https://fereria.github.io/blog/                                                                        |
 | 写真         | https://500px.com/megumiando                                                                           |
-
-o
