@@ -6,7 +6,8 @@ sidebar_position: 0
 :::caution
 
 このサイトは、mkdocs を使用して作成していたものから Docusaurus を使用したものに以降中です。  
-記事の移植は随時対応中です。  
+記事の移植は随時対応中です。
+
 以前のページは
 
 https://fereria.github.io/reincarnation_tech_bk/

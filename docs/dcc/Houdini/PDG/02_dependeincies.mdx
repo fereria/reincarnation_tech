@@ -1,9 +1,101 @@
 ---
 slug: dependency
-title: PDGの基本(2) - 複数のノードを実行する
-description: 複数のノードを実行する
-sidebar_position: 2
+title: PDGの基本(3) - 複数のノードを組み合わせて実行する
+description: 複数のノードを組み合わせてWorkItemを作り、処理を実行する
+sidebar_position: 3
 tags:
     - Houdini
     - PDG
+    - Pipeline
 ---
+
+[PDG の基本(1) - 0 から始める PDG はじめる](start_pdg) では単独のノードで単純な処理を実行しましたが、多くの場合  
+単独の処理を実行するだけではなく連続した処理を実行させたいはずです。  
+PDG では、ノードとノードを接続することで、複数の処理を連続して実行することができます。
+
+![](https://gyazo.com/6c736f2446bdb0d6546f0011296087f9.png)
+
+前回作成した GenericGenerator に PythonScript を追加します。  
+GenericGenerator は ItemCount で指定した数の WorkItem を生成しています。
+
+![](https://gyazo.com/e06d6d974a1db8f6dd35730da0984c6b.png)
+
+追加した PythonScript で WorkItem を Generate します。  
+すると、上流の WorkItem の個数に対応した WorkItem が生成されました。
+
+![](https://gyazo.com/70f8137e91cd07754512dbe73ad533dd.png)
+
+作成された WorkItem は上流の WorkItem と依存関係を持ちます。
+WorkItem の〇をクリックすると、依存する WorkItem と WorkItem が接続されているのがわかります。
+
+### 複数の WorkItem に分割する
+
+1 つの WorkItem ごとに次の別の処理を実行する、というだけでも便利ですが  
+それだけではなく、1 つのジョブから救数の WorkItem にさらに分割したいようなケースもあるはずです。
+
+![](https://gyazo.com/5c902b18911bfef6cdece1082e2946d6.png)
+
+もちろんそういった処理も可能で、この場合はこのように WorkItem の依存関係が 1 つの WorkItem から複数に分割します。  
+代表的なノードが Wedge ノードで、このノードを使用すると入力の WorkItem を指定の条件に分割し、別のパラメーターで実行することなどが  
+可能になります。
+
+![](https://gyazo.com/71fa592fa76ef422b678e7c40bd4309d.png)
+
+WedgeCount を 3 にして、上流の WorkItem1 つに対して、WedgeCount だけ WorkItem を生成します。  
+生成しただけではあまり意味がありません。
+
+PDG では、WorkItem に対してアトリビュートを指定して、ノードで指定されたひな形の処理をベースにバリエーションを  
+持たせた処理を実行します。  
+Wedge も、WorkItem に対してアトリビュートを追加してそのバリエーション分の WorkItem を生成します。
+
+試しに int 型の sampleCountAtribute を追加し、それを 0 から 2 までの範囲で生成します。
+
+![](https://gyazo.com/b5d9059d97edacb055603cc37486f240.png)
+
+TaskGraphTable で確認すると、sampleCount が 0 ～ 2 の WorkItem が生成されているのがわかります。
+
+![](https://gyazo.com/dd7ee86b13a24f1fdcc1dc79cb9fa164.png)
+
+Wedge ノードをさらに追加すると、さらにアトリビュートを追加します。
+
+![](https://gyazo.com/4123ed421c84d0272fa492680c8b7c22.png)
+
+![](https://i.gyazo.com/a0cbf2e3e6e720a3b6606a56532db69d.gif)
+
+WorkItem のアトリビュートは、Wedge で指定した数だけ作成されました。
+
+Wedge ノードでバリエーションを作成しましたが、これだけだとあまり意味がありません。  
+ですが、いわゆるこの Wedge で作成した WorkItem とそのアトリビュートは、実行したい処理のバリエーション、プログラミング的にいうと  
+引数で渡したいパラメーターを、n×n で生成してくれます。
+
+![](https://gyazo.com/16af93e76cd67d2578c6310d1b888db6.png)
+
+Wedge の後に、Wedge で作成したバリエーションだけ実行したい処理を追加します。  
+処理は PythonScript を使用してみます。
+
+```python
+sampleCount = work_item.attrib("sampleCount").value()
+paramB      = work_item.attrib("paramB").value()
+
+def add(a,b):
+    return a+b
+
+val = add(sampleCount,paramB)
+work_item.addAttrib("result",pdg.attribType.Float).setValue(val)
+```
+
+若干冗長ですが、足し算をする処理を Python で書いてみます。  
+上流の WorkItem は、足し算するときの a と b に入るバリエーションだけ作成されています。  
+この値はアトリビュートで指定されているので、work_item.attrib を使用して、使用するアトリビュートを取得します。
+
+実行した結果の数値は、実行しただけでは意味がありません。  
+この値を、さらに下流でも使いたくなるはずです。
+
+そのため、addAttrib を使用して新しくアトリビュートを追加し、下流のノードでも利用できるようにしておきます。
+
+```python
+print(work_item.attrib("result").value())
+```
+
+あたしく PythonScript ノードを作り、アトリビュートを確認します。  
+無事結果を受け取れているのがわかります。
