@@ -1,0 +1,138 @@
+---
+slug: /houdini/pdg/basic/05
+title: 成果物を扱う
+description: Output/Inputの使い方
+sidebar_position: 5
+---
+
+ここまでで、ノードとアトリビュートを組み合わせて WorkItem を作成・実行することができるのがわかりましたが  
+現状はただ print したりしているだけで、何も生成していません
+
+PDG で処理を実行する場合は、何かしらのリストを受け取り、レンダリングやシミュレーションを実行し  
+その実行した結果できあがるキャッシュや画像を次の工程に渡してさらに処理を...という形で  
+処理を進めていきたいはずです。
+
+そうした処理を実行できるように、PDG の WorkItem には Input と Output を指定することができます。
+
+## Output を指定する
+
+まず、Python ノードを使用してファイルを生成し、それを成果物として登録していきます。
+
+![](https://gyazo.com/1f8e1065cc756a063f35c940bb0f592f.png)
+
+GenericGenerator ノードで適当に WorkItem を生成し、それを PythonScript につなぎます。  
+この Python ノードでは、WorkItem の数だけ Index の数字が書かれているテキストを生成します。
+
+### WorkingDirectory
+
+ファイルを生成することになるので、作業場所を用意する必要があります。  
+Python の tempfile などで一時的なフォルダを作るのでもよいかもですが、その場合処理が終わった時に消えるし  
+Houdini の流儀に乗っておいたほうが良いでしょう。
+
+PDG では「スケジューラー」ノードが実行環境の構築を担当しています。
+
+![](https://gyazo.com/6eafc02c2c8f800f9828ca577634a368.png)
+
+デフォルトでは localscheduler と呼ばれる、自分のローカル PC で実行するためのスケジューラーが指定されています。
+
+![](https://gyazo.com/0469ecd85d4edb7bd003e6ce4a568aa7.png)
+
+ローカルスケジューラーには「WorkingDirectory」を指定するアトリビュートが用意されているので  
+Python 側ではこの WorkingDirectory 以下に生成物を出力するようにします。
+
+```python
+import os
+
+workingDir = self.scheduler.workingDir(True)
+
+os.makedirs(workingDir,exist_ok=True)
+
+savePath = os.path.join(workingDir,f'samplefile_{work_item.index}.txt')
+
+
+with open(savePath,'w') as f:
+    f.write(str(work_item.index))
+
+work_item.addResultData(savePath)
+```
+
+WorkingDirectory はスケジューラーで指定されています。
+
+![](https://gyazo.com/640fcac850d43493edd22ddc08377199.png)
+
+スケジューラーはノードごとに指定されています。  
+ので、Python から取得する場合は self(PythonScript の self はノード自身)から scheduler でスケジューラー  
+オブジェクトを取得できます。  
+そして workingDir を使用すると取得できます。
+
+そしてそのフォルダ以下にファイルを保存し、work_item.addResultData(FilePath)で  
+成果物の Path を WorkItem に対して登録します。
+
+![](https://gyazo.com/4a233ac40926729c5a440454bf892fa6.png)
+
+実行結果はこちら。  
+Output に指定したファイルが登録されているのがわかります。
+
+## Output を受け取る
+
+このように、WorkItem を実行した結果の成果物は OutputFile という形で出力されますが  
+これを使いたい場合はどうなるかというと
+
+![](https://gyazo.com/a20ec675fed6fc0cd206926480da5c93.png)
+
+前の Output は自動的に Input として受け取ることができます。  
+（Null の場合なにもしていないので、Input をそのまま Output に流している）
+
+PythonScript ならば
+
+```python
+for f in work_item.inputFiles:
+    print(f)
+```
+
+inputFiles で、Input のファイルを取得して処理を実行することができます。
+
+PythonScript 以外のノードも、多くのノードでは Input をどのように扱うか（WorkItem か、アトリビュートかなど）  
+の部分に OutputFiles を受け取るという選択肢が用意されています。
+
+例として FileCopy ノードをみてみます。
+
+テキストファイルを生成する段階では、一時的な場所にファイルを出力しますが、  
+例えば「すべて完了して揃ったあとに、決まった場所にコピーしたい」というケースはよくあります。
+
+そういうケースでは、
+
+![](https://gyazo.com/3914f73de2d83982e5ee8851ccb35a4a.png)
+
+WaitForAll ですべて待ってから、Expand でコピーする数だけ WorkItem を展開して、コピーします。
+
+![](https://gyazo.com/0a021e2da2213f1e6375d2005e57c883.png)
+
+CopyFile ノードの Source は「UpstreamOutputFile」にすることで、Input で受け取ったファイルに対して  
+処理を実行することが可能になります。
+
+## まとめるケース
+
+Expand で展開すれば個別に処理をすることも可能ですが、WaitForAll を使用して 1 つのパーティションに  
+すべての Output をまとめることで、
+
+![](https://gyazo.com/735d9d97cb55f4a1445483ce54dd9a0a.png)
+
+WaitForAll のあとにノードを接続すると、
+
+![](https://gyazo.com/9b15a6fae8ecdf8eaa3aa67bbc9b9941.png)
+
+1 つの WorkItem に Input をまとめることができます。
+
+```python
+result = 0
+
+for f in work_item.inputFiles:
+    with open(f.path ,'r') as f:
+        data = f.read()
+        result += int(data)
+
+work_item.addAttrib('result',pdg.attribType.Int).setValue(result)
+```
+
+成果物ファイルをすべて読み込み、中の数字を加算した結果を result アトリビュートに追加します。
