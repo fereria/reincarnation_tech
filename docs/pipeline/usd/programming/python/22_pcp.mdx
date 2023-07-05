@@ -1,5 +1,5 @@
 ---
-slug: /usd/comp_pcp
+slug: /usd/python/comp_pcp
 title: PCPでコンポジションアークの構造を解析・編集対象を取得する
 description: USDのコンポジションアークを深堀する
 tags:
@@ -41,7 +41,7 @@ for spec in prim.GetPrimStack():
 ```
 
 指定の Prim の PrimStack を取得して、その Prim を構築するための Spec を取得する方法つかったり、
-編集対象を取得して切り替える場合は、以前に説明を書いた[EditTarget で Layer を操作する](/usd/edit_target)を利用して
+編集対象を取得して切り替える場合は、以前に説明を書いた[EditTarget で Layer を操作する](/usd/python/edit_target)を利用して
 編集レイヤーを取得して Target を切り替えて編集する...という手を使うことができます。
 
 しかし、サブレイヤー以外のコンポジションの場合はこの手段を使うことができません。
@@ -263,7 +263,7 @@ Sdf.Find('s:/fav/work/programming/python/JupyterUSD/pyDev/usd/subLayerB.usda')
 
 では、この Pcp を使用してある Prim を構成するレイヤーの１つを取得して
 変更できるようにしてみます。
-基本的には[EditTarget を使用する](/usd/edit_target)と同じように、UsdEditTarget を作れればよい
+基本的には[EditTarget を使用する](/usd/python/edit_target)と同じように、UsdEditTarget を作れればよい
 ので、PcpPrimIndex と PcpNodeRef を使用して EditTarget を取得します。
 
 ```python

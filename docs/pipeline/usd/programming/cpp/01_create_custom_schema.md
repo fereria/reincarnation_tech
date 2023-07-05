@@ -4,7 +4,7 @@ tags:
     - USD
     - C++
 sidebar_position: 0
-slug: /usd/custom_schema
+slug: /usd/cpp/custom_schema
 ---
 
 # オリジナルの New Schema Class を作る

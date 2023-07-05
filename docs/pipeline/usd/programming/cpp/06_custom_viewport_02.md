@@ -4,11 +4,11 @@ tags:
     - USD
     - AdventCalendar2022
 description: C++とimguiでビューポートを作る_本体の実装
-slug: /usd/viewport_02
+slug: /usd/cpp/viewport_02
 sidebar_position: 5
 ---
 
-[C++で USD の Viewport を作ろう(1) カメラを作る](/usd/viewport_01) では、UsdImagingGLEngine を使用した
+[C++で USD の Viewport を作ろう(1) カメラを作る](/usd/cpp/viewport_01) では、UsdImagingGLEngine を使用した
 カスタムビューポートのうち、GfCamera を使用したカメラの実装をしました。
 
 ので、今度はメイン部分を実装します。

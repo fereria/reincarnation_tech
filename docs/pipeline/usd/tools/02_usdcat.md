@@ -1,5 +1,5 @@
 ---
-slug: /usd/usdcat
+slug: /usd/tools/usdcat
 title: USDの便利なツールたち (2) usdcat
 tags:
     - USD

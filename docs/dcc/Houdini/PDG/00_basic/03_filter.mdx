@@ -1,0 +1,84 @@
+---
+slug: /houdini/pdg/basic/04
+title: 処理を分岐する
+description: FilterとPartitionを使って処理を分岐する
+sidebar_position: 4
+tags:
+    - Houdini
+    - PDG
+---
+
+[前回](/houdini/pdg/basic/03) は、Wedge ノードを使用して WorkItem を作成し  
+アトリビュートを使用して処理のバリエーションを作成しました。
+
+これで、1 つの処理（サンプルの場合 Python の関数）に対して n × n のバリエーションを生成し  
+実行できるようになりました。  
+しかし、これだけだと、処理が直列につながって同一の処理を実行しただけになります。  
+そうではなく、例えば特定の条件によって特定の処理を分岐したい といったこともやりたくなります。
+
+そういった場合は、Filter や Partition、Expand などを駆使することで  
+条件に応じた処理を作ることができます。
+
+## Filter
+
+![](https://gyazo.com/d3cef5c583584b2f3b6b15bfecd0af54.png)
+
+前回、PythonScript ノードを使用して、足し算した結果を result アトリビュートに追加しました。  
+この WorkItem を 1.5 以下の場合かそれ以外かで処理をわけたいとします。
+
+![](https://gyazo.com/95ef41fc3469b807e8bc839ee11262c2.png)
+
+このような、「条件にマッチした or マッチしない WorkItem だけを抽出する」のが FilterExpression です。
+FilterExpression は、その名の通り Expression の結果にマッチした WorkItem のみフィルタリングします。
+
+![](https://gyazo.com/e4d6ebf2465d5aca20b6272fb618d6d6.png)
+
+Operation はデフォルトでは RemoveMatchingItem(条件にマッチしたものをブロックする)になっています。  
+今回はマッチする内容のみ取得したいので Keep Matching Items にして、Expression を書きます。
+
+@アトリビュート名 で、アトリビュート名を取得できるので、式を記述します。
+
+![](https://gyazo.com/828cafc578dfeb4261a98eb48e80699e.png)
+
+実行すると、マッチした WorkItem だけになっているのがわかります。
+
+![](https://gyazo.com/137905648861986e1530b78f03f3371e.png)
+
+TaskGraphTable を見ると、条件にマッチした WorkItem になっているのがわかります。
+
+![](https://gyazo.com/5a65276caac85f9148cc026435404009.png)
+
+同様に 1.5 以下の WorkItem だけを取得するように FilterExpression を作成すると  
+1.5 以下の WorkItem と、それ以外の WorkItem にまとまりました。
+
+それぞれで何かしらの処理を実行した後に、まとめて再度処理をしたいとかもあるはずです。
+
+![](https://gyazo.com/08a6fa834996356dec4e6a3e351fda58.png)
+
+その場合は、いくつか手段はありますが、特に条件がない場合は Merge ノードを使用すればそれぞれの処理を統合することができます。
+
+## Partition
+
+複数の処理を並行して実行させて、最終的にすべてのWorkItemが終わるまで待機したいというケースもあるはずです。  
+そういった場合は「パーティション」と呼ばれるノードを使用します。  
+  
+![](https://gyazo.com/39594f432b2b0942c54f12f18c7144df.png)
+
+WaitForAllノードは、すべての入力WorkItemを単一のパーティションに追加します。  
+パーティションは「そのパーティションに属するWorkItemがすべて完了するまで待つ」ので  
+結果的に、WaitForAllノードを使用すると、入力した処理を待機するのに使用します。  
+また、すべての処理を待ってから１つのWorkItemに統合することから  
+最後にメールを送信する　といったことをやりたい場合にも使用できます。  
+  
+## Expand
+
+終了するのではなく、再開したい場合は Expandノードを使用します。  
+  
+![](https://gyazo.com/8db22ad057859c23250129ed3a1dc9d7.png)
+
+WaitForAllノードの次に、PartitionExpandを接続します。  
+
+![](https://gyazo.com/e8f5b67a1f71272fcd2dde6bb9389da1.png)
+
+Apply Expansion To を Items in Upstream Partition にすると、パーティションですべてのWorkItemが完了するのを待ってから  
+再開することができます。  

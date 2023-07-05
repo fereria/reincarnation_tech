@@ -4,7 +4,7 @@ tags:
     - USD
     - AdventCalendar2022
 description: C++とimguiでビューポートを作る_カメラ実装
-slug: /usd/viewport_01
+slug: /usd/cpp/viewport_01
 sidebar_position: 4
 ---
 

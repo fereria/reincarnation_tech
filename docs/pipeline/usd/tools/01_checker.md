@@ -1,5 +1,5 @@
 ---
-slug: /usd/checker
+slug: /usd/tools/checker
 title: USDの便利なツールたち (1) checker
 tags:
     - USD

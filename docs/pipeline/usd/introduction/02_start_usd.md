@@ -2,6 +2,7 @@
 title: USDをPythonから色々操作するための環境を作る
 description: JupyterNotebookを活用する方法
 sidebar_position: 2
+slug: /usd/start_usd
 ---
 
 # USD を Python から色々操作するための環境を作る
