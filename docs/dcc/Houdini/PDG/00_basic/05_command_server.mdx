@@ -1,0 +1,67 @@
+---
+slug: /houdini/pdg/basic/06
+title: CommandServerの使い方
+description: 1つのプロセスに対してWorkItem分だけ連続して処理を実行する
+sidebar_position: 6
+---
+
+WorkItem、Attribute、Input/Output を使用してコマンドの実行やファイルの生成を  
+連続的に行えることがわかりました。
+WorkItem に対して個別に処理を実行するだけでも多くのことが行えますが  
+そうではなく、1 つの処理に対して WorkItem 分だけ繰り返し処理をしたいというケースもあるでしょう。
+
+![](https://gyazo.com/a45138c59b1306fb8594e84bf8af7534.png)
+そういった場合は Command Chain と呼ばれる機能を使用して実現することができます。
+
+## Command Chain とは
+
+CommandChain とは、指定したプロセスに対して、WorkItem の数だけループで処理を実行させたい場合に使用します。  
+実行するプロセスは Houdini 自体もそうですが、それ以外にもたとえば「Maya で WorkItem の Item 数だけ繰り返し処理」だったり  
+「ShotGrid に対して」のように、Houdini 以外のアプリケーションに対して
+繰り返し実行する　といったことが実現できます。
+
+今回は Python Command Chain を使用して動作を確認してみます。
+
+## PythonServer を作る
+
+まず、処理をするプロセスを用意します。
+
+![](https://gyazo.com/2f97f1ec8709b464a8db3d2c262d5020.png)
+
+PythonCommandChain で、
+
+![](https://gyazo.com/4fcbf4457f7931247ffa2b28d5ccbd53.png)
+
+pythonserver ノードを作ります。
+
+![](https://gyazo.com/e2ca95f4721db3c81082868654f9b2b0.png)
+
+UtilityのCommand Server End を作り、pythonserverにつなげます。
+
+![](https://gyazo.com/7c366242c7a16191ddab2354c50cd3e1.png)
+
+CommandServerEndのServerPathに、上で作ったpythonserverノードを指定します。
+
+![](https://gyazo.com/ffe8e37a632c48e3e1fa684a9bde6954.png)
+
+指定すると、このようにノードが箱？のようなものでグルーピングされます。
+
+![](https://gyazo.com/53ff350ba6ce4891f33fa2ab33576221.png)
+
+実行するとこのようになります。
+
+これだけだと、サーバーを起動しただけでなにもしていません。
+実際の処理は、このServerとEndの間に、SendCommandノードを追加することで実現します。
+
+![](https://gyazo.com/bd4a86bafbe6a56fade7fb35212e83db.png)
+
+SendCommandはPythonを書くことができるのですが、この場合PythonのプロセスはSendCommandごとに作らるのではなく
+PythonServerに対して1つだけ作成されます。
+つまりは、PythonのプロセスはWorkItemのの処理中ずっと継続されます。  
+そして、ServerとEndの間にあるノードの処理を、WorkItem分だけ繰り返します。  
+つまりは、InputのWorkItemをforで繰り返せるのがこのCommandChainです。
+
+![](https://gyazo.com/bac2ac8b61542d700cfec50e479e11fb.png)
+
+Serverノードを見ると、 Loop Attribute Names が用意されていて、
+現在何個目の処理かをアトリビュートで取得することもできます。
