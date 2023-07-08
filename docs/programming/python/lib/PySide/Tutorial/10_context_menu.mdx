@@ -1,0 +1,201 @@
+---
+title: コンテキストメニューを作る
+slug: /python/pyside/tutorial/10
+sidebar_position: 10
+tags:
+    - PySide
+    - Python
+    - GUI
+---
+
+# コンテキストメニューを作る
+
+![](https://gyazo.com/57752f510dcdc43ade6dd71e3108e232.png)
+
+いろいろな Widgets を作っていくと、右クリックメニューを作りたくなるかと思います。  
+今回は、PySide で右クリックメニューを作る方法を説明したいと思います。
+
+## コード
+
+まずはコード。
+
+```python
+# -*- coding: utf-8 -*-
+
+import sys
+
+from PySide2 import QtCore, QtGui, QtWidgets
+
+class UISample(QtWidgets.QDialog):
+
+    def __init__(self, parent=None):
+        super(UISample, self).__init__(parent)
+
+        layout = QtWidgets.QVBoxLayout()
+        # カスタムUIを作成
+        self.list = QtWidgets.QTreeView()
+        layout.addWidget(self.list)
+        self.list2 = QtWidgets.QTreeView()
+        # List1で表示するContextMenuを設定
+        self.list.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.list.customContextMenuRequested.connect(self.listContext)
+        # List2で表示するContextMenuを指定
+        self.list2.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.list2.customContextMenuRequested.connect(self.list2Context)
+        layout.addWidget(self.list2)
+        # ここまでUI作成
+
+        self.setLayout(layout)
+
+    def listContext(self, pos):
+
+        menu = QtWidgets.QMenu(self.list)
+        action_01 = menu.addAction('ほげほげ')
+        action_01.triggered.connect(lambda: self.action('A'))
+        action_02 = menu.addAction('ふがふが')
+        action_02.triggered.connect(lambda: self.action('B'))
+        menu.addSeparator()
+        subMenu = menu.addMenu('SubMenu')
+        action_03 = subMenu.addAction('さぶめにゅー1')
+        action_03.triggered.connect(self.subMenu)
+
+        menu.exec_(self.list.mapToGlobal(pos))
+
+    def action(self, actionText):
+        print(actionText)
+
+    def subMenu(self):
+        print("SUBMENU")
+
+    def list2Context(self, pos):
+
+        menu = QtWidgets.QMenu(self.list2)
+        menu.addAction('list2_Menu')
+        menu.addAction('list2_Menu2')
+        menu.addAction('list2_Menu2')
+
+        menu.exec_(self.list2.mapToGlobal(pos))
+
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    a = UISample()
+    a.show()
+    sys.exit(app.exec_())
+```
+
+![](https://gyazo.com/68b029442fd304786e4d08bc2d338b52.png)
+
+実行すると、こんな感じの UI が表示されます。  
+以下、詳しい解説。
+
+## Signal-Slot を作る
+
+まず、メニューを表示したい場合は、PySide のお約束の [「Signal-Slot」](03_signal_slot_01.md) を作成します。
+
+```python
+        self.list.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.list.customContextMenuRequested.connect(self.listContext)
+```
+
+それがこの部分になります。  
+PySide では、右クリックで表示されるメニューのことを「コンテキストメニュー」と呼びます。  
+今回のように、自分でこのコンテキストメニューを作りたい場合は  
+Signal-Slot とは別に、setContexdtMenuPolicy で CustomContextMenu の設定をしておきます。  
+このフラグを ON にしたら、次にメニューを呼び出すためのシグナルを作成します。
+
+このコンテキストメニューは、Widgets 単位で作成することができます。  
+ので、例えば今回のサンプルのように  
+2 つの ListView があった場合に、それぞれ別のメニューを表示出来るようにしたい場合  
+それぞれの Widgets ごとにこの ContextMenu の設定を行います。
+
+```python
+    def listContext(self, pos):
+
+        menu = QtWidgets.QMenu(self.list)
+        action_01 = menu.addAction('ほげほげ')
+        action_01.triggered.connect(lambda: self.action('A'))
+        action_02 = menu.addAction('ふがふが')
+        action_02.triggered.connect(lambda: self.action('B'))
+        menu.addSeparator()
+        subMenu = menu.addMenu('SubMenu')
+        action_03 = subMenu.addAction('さぶめにゅー1')
+        action_03.triggered.connect(self.subMenu)
+
+        menu.exec_(self.list.mapToGlobal(pos))
+```
+
+そんでもって、右クリックを押したときに呼ばれる関数を作成します。  
+単純に右クリックに割り当てただけだと、もちろんメニューは表示されません。  
+メニュー部分は QWidgets.QMneu クラスを使用します。
+
+### Menu を追加する
+
+```python
+action_01 = menu.addAction('ほげほげ')
+action_01.triggered.connect(lambda: self.action('A'))
+```
+
+まず、実行させたい Widget を親にした Menu を作成します。  
+そして、メニューに追加するには addAction(メニュー名) を追加します。  
+追加すると、QAction オブジェクトが帰ってくるので  
+このメニューをクリックしたときに実行される関数（Slot）を  
+.triggered.connect(###) で、指定します。
+
+![](https://gyazo.com/8292b35cdb63bbaeeae7ad35d013b859.png)
+
+この QAction というのは、各種メニュー、ツールボタン、キーボードのショートカット  
+等を介していろんなコマンドを呼び出すのに使用するものです。
+
+### セパレーターを追加する
+
+```python
+menu.addSeparator()
+```
+
+Menu の途中に線を入れたい場合は、入れたいところでこの Separator を追加します。
+
+### サブメニューを追加する
+
+```python
+        subMenu = menu.addMenu('SubMenu')
+        action_03 = subMenu.addAction('さぶめにゅー1')
+        action_03.triggered.connect(self.subMenu)
+```
+
+サブメニューを作りたい場合は addMenu コマンドを使用します。  
+このコマンドを使用すると、QMenu オブジェクトが返ってきます。  
+ので、あとは上と同じくその Menu オブジェクトに対して addAction でアクションを追加すると  
+サブメニューを作成できます。  
+サブメニューにさらにサブメニューを追加したい場合も同様に  
+addMenu を追加すれば OK です。
+
+### 表示する
+
+最後に、設定ができたら表示します。
+
+```python
+    menu.exec_(self.list.mapToGlobal(pos))
+```
+
+表示するには exec\_(Menu を表示する Point) を使用します。
+
+customContextMenuRequested の Signal は、現在のマウスポジションを引数で受け取るのですが  
+この Point は現在の Widgets のローカル座標が返ってきてしまいます。  
+しかしながら、ContextMenu の表示位置はグローバル座標である必要があります。
+
+ので、Local→Global の座標返還を行うために mapToGLobal 関数を使用します。  
+これは、この関数のオブジェクト（この例だと self.list ）の座標系を  
+Global に変換してくれます。  
+ので、この関数を使用すればローカル座標だった pos を グローバルに変換して  
+正しい位置にメニューを表示することができます。
+
+一応、
+
+```python
+# QCursorでカーソルのグローバルポジションを取得する
+cursor = QtGui.QCursor()
+menu.exec_(cursor.pos())
+```
+
+でも、同じ効果となります。

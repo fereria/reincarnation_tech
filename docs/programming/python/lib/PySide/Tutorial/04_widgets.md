@@ -1,5 +1,5 @@
 ---
-slug: widgets
+slug: /python/pyside/tutorial/04
 title: Widgetとカスタムウィジェットを作成する
 tags:
     - PySide

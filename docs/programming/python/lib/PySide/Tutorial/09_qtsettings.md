@@ -1,5 +1,5 @@
 ---
-slug: qtsettings
+slug: /python/pyside/tutorial/09
 title: QSettingsを使用してUIの情報を保存する
 tags:
     - PySide

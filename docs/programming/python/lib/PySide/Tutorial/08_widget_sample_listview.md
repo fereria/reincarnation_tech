@@ -1,5 +1,5 @@
 ---
-slug: widget_sample_04
+slug: /python/pyside/tutorial/08
 title: 基本Widgetを使ってみる(4):ListView
 tags:
     - PySide

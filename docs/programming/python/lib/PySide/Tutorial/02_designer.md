@@ -1,10 +1,10 @@
 ---
-slug: qt_designer
+slug: /python/pyside/tutorial/02
 title: QtDesignerでUIを作る
 tags:
     - PySide
 sidebar_position: 1
----
+---a
 
 # QtDesigner で UI を作る
 

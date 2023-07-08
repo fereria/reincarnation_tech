@@ -1,5 +1,5 @@
 ---
-slug: widget_sample_03
+slug: /python/pyside/tutorial/07
 title: 基本Widgetを使ってみる(3):ComboBox_基本編
 tags:
     - PySide

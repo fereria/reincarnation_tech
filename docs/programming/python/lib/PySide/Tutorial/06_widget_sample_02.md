@@ -1,5 +1,5 @@
 ---
-slug: widget_sample_02
+slug: /python/pyside/tutorial/06
 title: 基本Widgetを使ってみる(2):RadioButton
 tags:
     - PySide

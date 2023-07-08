@@ -1,5 +1,5 @@
 ---
-slug: widget_sample_01
+slug: /python/pyside/tutorial/05
 title: 基本Widgetを使ってみる(1):LineEdit
 tags:
     - PySide

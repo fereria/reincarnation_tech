@@ -1,5 +1,5 @@
 ---
-slug: signal_slot
+slug: /python/pyside/tutorial/03
 title: SignalとSlotについて(1)
 tags:
     - PySide
