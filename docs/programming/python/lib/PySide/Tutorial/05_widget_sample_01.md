@@ -99,7 +99,7 @@ LineEdit の場合は、Enter を押したらなにかを実行したいケー�
 ```
 
 returnPressed のシグナルを追加します。  
-シグナルについては [Signal-Slot について](signal_slot)を参照。  
+シグナルについては [Signal-Slot について](/python/pyside/tutorial/03)を参照。  
 これ以外に LineEdit では textChanged 等を良く使います。
 
 ### Widget の Slot を使う

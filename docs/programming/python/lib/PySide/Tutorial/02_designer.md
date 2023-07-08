@@ -1,14 +1,14 @@
 ---
 slug: /python/pyside/tutorial/02
-title: QtDesignerでUIを作る
+title: QtDesigner で UI を作る
 tags:
     - PySide
 sidebar_position: 1
----a
+---
 
 # QtDesigner で UI を作る
 
-次は、[PySide で単独アプリケーションを作る](tutorial_01) で作成した Application に、QtDesigner で作成した GUI を  
+次は、[PySide で単独アプリケーションを作る](/python/pyside/tutorial/02) で作成した Application に、QtDesigner で作成した GUI を  
 追加していきます。
 
 QtDesigner とは、PySide のレイアウトツールです。  
