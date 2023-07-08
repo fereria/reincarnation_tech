@@ -62,6 +62,11 @@ const config = {
 		// Replace with your project's social card
 		image: "img/docusaurus-social-card.jpg",
 		metadata: [{ name: "twitter:card", content: "summary" }],
+		algolia: {
+			apiKey: "a348c5e70a7f17978dd23130e9d1483c",
+			indexName: "reincarnation-tech",
+			appId: "88RL2KSSCA",
+		},
 		navbar: {
 			title: "Reincarnation+#Tech",
 			logo: {
