@@ -1,0 +1,185 @@
+---
+title: GraphicsViewの基本(Sceneをスケールする)
+tags:
+    - PySide
+    - Python
+    - GUI
+slug: /python/pyside/graphics_view/02
+sidebar_position: 2
+---
+
+GraphicsView を使用して、色々オブジェクトを配置したり移動したりする方法を  
+わりとちゃんと調べることにしました。  
+特に Matrix 周りとか、View、Scene、Item 周りは今まであやふやに使ってたので  
+その当たり特に重点的にやっていきたいと思います。
+
+## 基本的な構成
+
+![](https://gyazo.com/6d6bee54ab9c8d0fa4243438b5fb4352.png)
+
+まず、GraphicsView を使用するときは  
+大きく分けて「View」「Scene」「Item」の 3 つの構造になります。  
+PhotoShop に例えると、View は新規　とかで作成できるウィンドウ。  
+Scene はレイヤー、 Item はシェイプで、基本的には Scene に対して Item を配置し  
+それを View に表示する...という形になります。  
+とりあえず、その 3 つ＋ Dialog クラスを作成したサンプルを元にざっくりまとめ。
+
+```python
+import sys
+import os
+import os.path
+
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtUiTools import QUiLoader
+
+
+def clamp(value, minValue, maxValue):
+    return max(minValue, min(value, maxValue))
+
+
+class UISample(QtWidgets.QDialog):
+
+    def __init__(self, parent=None):
+
+        super(UISample, self).__init__((parent))
+
+        self.view = NodeView()
+        layout  = QtWidgets.QVBoxLayout()
+        self.setLayout(layout)
+        layout.addWidget(self.view)
+
+        self.scene = NodeScene()
+        self.view.setScene(self.scene)
+
+        item = self.scene.addEllipse(150, 150, 200, 100)
+        item.setBrush(QtGui.QBrush(QtGui.QColor('pink')))
+
+
+class NodeView(QtWidgets.QGraphicsView):
+
+    def __init__(self, parent=None):
+        super(NodeView, self).__init__(parent)
+
+        self.zoom = 1
+
+    def wheelEvent(self, e):
+        delta = e.delta()
+        adjust = (delta / 120) * 0.1
+        self.set_zoom(adjust)
+
+    def set_zoom(self, value):
+
+        ZOOM_MIN = 0.1
+        ZOOM_MAX = 2
+
+        # 今のズーム率 指定外にはならないようにする
+        self.zoom = clamp(self.zoom + value, ZOOM_MIN, ZOOM_MAX)
+        # リセットしてから
+        self.resetTransform()
+        # Transformを入れる
+        self.scale(self.zoom, self.zoom)
+
+
+class NodeScene(QtWidgets.QGraphicsScene):
+
+    sel_item = None
+
+    def __init__(self, parent=None):
+        super(NodeScene, self).__init__(parent)
+
+    def mousePressEvent(self, e):
+        if e.button() == QtCore.Qt.LeftButton:
+            self.sel_item = self.itemAt(e.scenePos(), QtGui.QTransform())
+            self.mouse_pos = e.scenePos()
+
+    def mouseMoveEvent(self, e):
+        if self.sel_item is not None:
+            cur = e.scenePos()
+            val = cur - self.mouse_pos
+            self.sel_item.moveBy(val.x(), val.y())
+            self.mouse_pos = cur
+
+    def viewer(self):
+        return self.views()[0] if self.views() else None
+
+    def mouseReleaseEvent(self, e):
+        self.mouse_pos = None
+        self.sel_item = None
+
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    a = UISample()
+    a.show()
+    sys.exit(app.exec_())
+```
+
+実行すると、
+
+![](https://gyazo.com/467b0327752953f929ebc3e0ebfd707d.gif)
+
+ホイールで拡大・縮小、○ をドラッグすることで動かせます。
+
+## QTransform を使用して拡大縮小
+
+今回のポイントは、「QTransform」を使用して変換を行うところ。  
+今まではなんとなく移動したりするのに Transform を使う、、、程度の認識だったのですが  
+View と Scene の役割考えて使わないと意図しないことになるな...という感じで調べ直しました。
+
+まず、今回の場合はマウスホイールで Scene に置いてあるオブジェクト全部をスケールしたいです。  
+そのような処理をしたい場合は、個別の Item をそれぞれポジション弄って大きさ変えて...とか面倒くさいです。  
+ので、transform の scale に数値を入れることで変換を行います。
+
+Item の Position 　 → 　 Transform の Matrix で変換　 → 　表示
+
+こんな感じで、PySide の GraphicsItem や View、Scene には transform を取得・設定できるようになっていて  
+その中には「今描画する時の変換用 Matrix」が保存されています。
+
+今回の「拡大・縮小」をしたい場合の行列は
+
+![](https://gyazo.com/e6815d68f718d155c3b864041baa7205.png)
+
+この行列で求められます。  
+Sx、Sy というのが、ベクトル（X,Y,1)を拡大縮小するためのスケール値。  
+元のベクトル（X,Y,1）に対して行列をかけ算することで、スケールした結果を取得できます。
+
+## いろいろと勘違いしてたので...
+
+Transform 周りを調べつつもどうも腑に落ちてないというか理由がよくわからずうーん...  
+になってたのですが  
+いろいろと教えてもらって（たぶん）理解したので書き直し...orz
+
+GraphicsView のデフォルトの Transform は 3 ｘ 3 の単位行列になっています。  
+いわゆる「なにもしない」行列です。  
+その行列に対して、 self.scale(x,y) を実行すると  
+現在の Transform に対してかけ算された数値がセットされます。
+
+今回のように、単純なスケールのみなら OK なのですが  
+これに回転が入ってくると、
+
+![](https://gyazo.com/50a8f3fe59c00c82d7cb725a035d9ec6.png)
+
+10 度まわした結果、数値が綺麗な数字ではなくなり、
+
+スケールの今のスケール値を
+
+```
+    transform = self.transform()
+    cur_scale = (transform.m11(), transform.m22())
+```
+
+このように取得使用とすると
+
+![](https://gyazo.com/6196a8bad55610bcf832b2ccf5a27b51.png)
+
+意図しない数値が返ってきてしまうのであまり望ましくありません。
+
+ということで、  
+修正版では Scale の値は GraphicsView に保持しておいて  
+Zoom 処理で一度 Transform をリセットしてから scale に数値を入れるようにしました。
+
+View にスケールを持つことで、最大・最小値で Clamp するところかも大分シンプルになりました。
+
+指摘してもらえるのが超貴い...orz
+
+コレを機に、GraphicsView ベースに行列の勉強します(´･ω･`)
