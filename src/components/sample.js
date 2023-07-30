@@ -1,40 +1,23 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
-const LinkCard = ({ url }) => {
-	console.log(url);
-	const [metadata, setMetadata] = useState(null);
+const ExpandLink = ({ url }) => {
+	const [posts, setPosts] = useState([]);
+
+	var rootURL = "https://fereria.github.io/reincarnation_tech";
 
 	useEffect(() => {
-		const fetchMetadata = async () => {
-			try {
-				const response = await fetch("/_dev" + url);
-				console.log(response.text());
-				setMetadata(response.data);
-			} catch (error) {
-				console.error("Error fetching metadata:", error);
-			}
-		};
+		fetchData(url);
+	}, []);
 
-		fetchMetadata();
-	}, [url]);
+	const fetchData = async (url) => {
+		fetch(rootURL + url, { method: "GET" })
+			.then((res) => res.text())
+			.then((data) => {
+				setPosts(data.match(/<header><h1>(.*?)\<\/h1><\/header>/i)[1]);
+			});
+	};
 
-	if (!metadata) {
-		return null; // メタデータが読み込まれるまで何も表示しない
-	}
-
-	return (
-		<div className="link-card">
-			<div className="thumbnail">
-				<img src={metadata.thumbnailUrl} alt="Thumbnail" />
-			</div>
-			<div className="details">
-				<h2>{metadata.title}</h2>
-				<p>{metadata.description}</p>
-				{/* その他のメタデータを表示する */}
-			</div>
-		</div>
-	);
+	return <a href={rootURL + url}>{posts}</a>;
 };
 
-export default LinkCard;
+export default ExpandLink;
