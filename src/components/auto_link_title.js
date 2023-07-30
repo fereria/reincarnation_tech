@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ExpandLink = ({ url }) => {
+const AutoLinkTitle = ({ url }) => {
 	const [posts, setPosts] = useState([]);
 
 	var rootURL = "https://fereria.github.io/reincarnation_tech";
@@ -14,10 +14,14 @@ const ExpandLink = ({ url }) => {
 			.then((res) => res.text())
 			.then((data) => {
 				setPosts(data.match(/<header><h1>(.*?)\<\/h1><\/header>/i)[1]);
+			})
+			.catch((error) => {
+				// Errorだった場合、URLを文字列にする
+				setPosts(rootURL + url);
 			});
 	};
 
 	return <a href={rootURL + url}>{posts}</a>;
 };
 
-export default ExpandLink;
+export default AutoLinkTitle;
