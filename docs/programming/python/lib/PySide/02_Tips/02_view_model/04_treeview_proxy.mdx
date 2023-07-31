@@ -1,0 +1,351 @@
+---
+title: TreeViewの中身を正規表現で検索する
+tags:
+    - PySide
+slug: /python/pyside/vmd/04
+sidebar_position: 4
+---
+
+![](https://i.gyazo.com/fc6e532b3432ea0e6117821e0c539856.gif)
+
+PySide の各種 View は、ProxyModel を使用することでリスト内の絞り込み検索を  
+追加することができます。
+
+ただ、TreeView の場合などとくに顕著ですが  
+文字列で「絞り込んでほしくない Item」、例として Group 用の階層などがある場合は  
+あえて検索文字で絞り込みたくない場合などもあります。
+
+ので、その辺踏まえて TreeView で検索をするための構造を作ってみます。
+
+## コード
+
+まずはコード。
+
+```python
+import sys
+import os.path
+
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtUiTools import QUiLoader
+
+PROXY_FILTER_ROLE = QtCore.Qt.UserRole + 1
+
+
+class BaseItem(object):
+    def __init__(self, data=None, parent=None):
+
+        self.parentItem = parent
+        self.itemData = data
+        self.childItems = []
+
+    def appendChild(self, item):
+        self.childItems.append(item)
+
+    def child(self, row):
+        return self.childItems[row]
+
+    def childCount(self):
+        return len(self.childItems)
+
+    def columnCount(self):
+        return 1
+
+    def data(self, column):
+        if self.itemData is None:
+            return ""
+        return self.itemData['key']
+
+    def parent(self):
+        return self.parentItem
+
+    def row(self):
+        if self.parentItem:
+            return self.parentItem.childItems.index(self)
+        return 0
+
+    def clear(self):
+        self.childItems = []
+
+
+class TreeItem(BaseItem):
+
+    def __init__(self, data, parent=None):
+        super(TreeItem, self).__init__(data=data, parent=parent)
+
+
+class GroupItem(BaseItem):
+
+    def __init__(self, groupName, parent=None):
+        super(GroupItem, self).__init__(data=[], parent=parent)
+
+        self.groupName = groupName
+
+    def data(self, column):
+
+        return self.groupName
+
+
+class TreeModel(QtCore.QAbstractItemModel):
+    def __init__(self, items=[], parent=None):
+        super(TreeModel, self).__init__(parent)
+
+        self.__items = items
+        self.rootItem = BaseItem()
+
+        self.setItems(items)
+
+    def setItems(self, items):
+
+        self.__items = items
+        self.setupModelData()
+
+    def addItem(self, item):
+
+        self.__items.append(item)
+        self.setupModelData()
+
+    def columnCount(self, parent):
+
+        if parent.isValid():
+            return parent.internalPointer().columnCount()
+        else:
+            return self.rootItem.columnCount()
+
+    def data(self, index, role=QtCore.Qt.DisplayRole):
+
+        if not index.isValid():
+            return None
+
+        item = index.internalPointer()
+
+        if role == QtCore.Qt.DisplayRole:
+            return item.data(index.column())
+        # ProxyModelを使用した検索時の検索対象文字列を返す
+        if role == PROXY_FILTER_ROLE:
+            # とりあえず同じものを返す
+            return item.data(index.column())
+        return None
+
+    def flags(self, index):
+
+        if not index.isValid():
+            return QtCore.Qt.NoItemFlags
+        return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable
+
+    def headerData(self, section, orientation, role):
+        if orientation == QtCore.Qt.Horizontal and role == QtCore.Qt.DisplayRole:
+            return self.rootItem.data(section)
+        return None
+
+    def index(self, row, column, parent):
+
+        if not parent.isValid():
+            parentItem = self.rootItem
+        else:
+            parentItem = parent.internalPointer()
+        childItem = parentItem.child(row)
+        if childItem:
+            return self.createIndex(row, column, childItem)
+        else:
+            return QtCore.QModelIndex()
+
+    def parent(self, index):
+
+        if not index.isValid():
+            return QtCore.QModelIndex()
+        childItem = index.internalPointer()
+        parentItem = childItem.parent()
+        if parentItem == self.rootItem:
+            return QtCore.QModelIndex()
+        return self.createIndex(parentItem.row(), 0, parentItem)
+
+    def rowCount(self, parent):
+
+        if parent.column() > 0:
+            return 0
+        if not parent.isValid():
+            parentItem = self.rootItem
+        else:
+            parentItem = parent.internalPointer()
+        return parentItem.childCount()
+
+    def setupModelData(self):
+        """
+        表示用のItemを再構築する
+        """
+        self.rootItem.clear()
+        parents = {}
+        for item in self.__items:
+            if item['parent'] in parents:
+                p = parents[item['parent']]
+            else:
+                p = GroupItem(item['parent'], self.rootItem)
+                self.rootItem.appendChild(p)
+                parents[item['parent']] = p
+            treeItem = TreeItem(item, p)
+            p.appendChild(treeItem)
+        self.layoutChanged.emit()
+
+
+class UISample(QtWidgets.QDialog):
+
+    def __init__(self, parent=None):
+        super(UISample, self).__init__(parent)
+
+        layout = QtWidgets.QVBoxLayout()
+        # カスタムUIを作成
+        self.list = QtWidgets.QTreeView()
+        layout.addWidget(self.list)
+
+        self.search = QtWidgets.QLineEdit(self)
+        layout.addWidget(self.search)
+
+        # てきとうにListに表示するItemの配列を作る
+        data = []
+        data.append({'parent': 'GroupA', 'key': 'hogehogeItem'})
+        data.append({'parent': 'GroupA', 'key': 'テスト'})
+        data.append({'parent': 'GroupA', 'key': 'GroupAのアイテム'})
+        data.append({'parent': 'GroupB', 'key': 'GroupBのアイテム'})
+        data.append({'parent': 'GroupB', 'key': 'GroupBのほげほげ'})
+        data.append({'parent': 'GroupB', 'key': 'GroupBのテスト'})
+
+        self.model = TreeModel(data)
+        self.proxymodel = TestProxyFilter()
+        self.proxymodel.setSourceModel((self.model))
+        self.proxymodel.setFilterRole(PROXY_FILTER_ROLE)
+        self.list.setModel(self.proxymodel)
+        self.search.textChanged.connect(self.filterChanged)
+        # 全部開いておく
+        self.list.expandAll()
+
+        self.setLayout(layout)
+
+    def filterChanged(self, regText):
+
+        regExp = QtCore.QRegExp(
+            regText,
+            QtCore.Qt.CaseSensitive,
+            QtCore.QRegExp.Wildcard
+        )
+        self.proxymodel.setFilterRegExp(regExp)
+
+
+class TestProxyFilter(QtCore.QSortFilterProxyModel):
+
+    def __init__(self, parent=None):
+        super(TestProxyFilter, self).__init__(parent)
+
+    def filterAcceptsRow(self, row, parent):
+        item = parent.internalPointer()
+        # 親ItemがGroupItemは、ProxyModelの検索対象にする
+        if isinstance(item, GroupItem):
+            return super(TestProxyFilter, self).filterAcceptsRow(row, parent)
+        # それ以外は検索で消えてほしくないのでTrueにする
+        return True
+
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    a = UISample()
+    a.show()
+    sys.exit(app.exec_())
+```
+
+## 解説
+
+まずは QAbstractItemModel を使用して TreeView と Model を作成します。
+
+![](https://gyazo.com/84c550cf2f3c2c8d24f1405bdbfd8712.png)
+
+実行するとこんな感じの UI が表示されます。
+
+まず、この TreeView の場合  
+特になにもしない場合 GroupA GroupB も検索で引っかかってしまい  
+「テスト」などで検索をしてもなにも表示されなくなってしまいます。  
+（親が検索にひっかからないと子は表示されないため）
+
+ので、より細かく検索条件を分岐させる必要があります。
+
+その分岐をするのが、 QSortFilterProxyModel の Virtual 関数、「filterAcceptRow」 です。
+
+```python
+class TestProxyFilter(QtCore.QSortFilterProxyModel):
+
+    def __init__(self, parent=None):
+        super(TestProxyFilter, self).__init__(parent)
+
+    def filterAcceptsRow(self, row, parent):
+        item = parent.internalPointer()
+        # 親ItemがGroupItemは、ProxyModelの検索対象にする
+        if isinstance(item, GroupItem):
+            return super(TestProxyFilter, self).filterAcceptsRow(row, parent)
+        # それ以外は検索で消えてほしくないのでTrueにする
+        return True
+```
+
+filterAcceptsRow 関数は、表示するかどうかを各 Item ごとに判定して  
+表示するかどうかを bool で返します。
+
+![](https://gyazo.com/c25434f14ff0abdcb10efdc47ae39b17.png)
+
+parent と row を引数として受け取ります。  
+これは、表示するかどうか判定したい Item からみた「親」アイテムと、その親から見た「何番目の Item か」  
+という情報になります。
+
+この parent は ModelIndex になるので internalPointer を使用して実体の Item を取得してしています。  
+internalPointer については以前の <AutoLinkTitle url="/python/pyside/vmd/02" /> を  
+参考にしてください。
+
+で。  
+今回の場合は、「親が GroupItem」オブジェクトだった場合は検索対象の Item（TreeItem）なので  
+正規表現によるチェックをするために、オーバーライドする前の filterAcceptsRow を実行するようにします。  
+それ以外の場合、この場合でいうと GroupItem の場合は  
+かならず表示するようにしたいので True を返すようにします。
+
+このようにすると、 GroupItem の場合は  
+ProxyModel でどのような条件がきたとしても「絶対表示する」ようになるので  
+今回の TreeView のように特定の Item は判定外にする...といった事が可能になります。
+
+余談ですが、filterAcceptsRow 意外にも filterAcceptsColumn 関数もあるので  
+条件を Row ではなく Column 単位で指定したい場合は  
+同じような形で filterAcceptsColumn で実装すれば OK です。
+
+### 検索文字列を指定のものにしたい場合
+
+今回のサンプルの場合は列が 1 つなので問題ないのですが  
+例えば列が複数あって、すべてを検索対象にしたい...というケースも発生します。
+
+その場合は、ProxyModel の self.proxymodel.setFilterRole(PROXY_FILTER_ROLE) を使用することで  
+検索対象にする文字列を Model 側で指定することが出来ます。
+
+まずは、Proxy 側で setFilterRole に対して Role を指定します。  
+Role は、 UserRole を使用しても良いし、すでに使っている場合は ↓ のように + 1 したものを  
+別途定義するとかでも OK です。
+
+```python
+# Proxyで使用するRoleを定義しておく。
+PROXY_FILTER_ROLE = QtCore.Qt.UserRole + 1
+# どのRoleをProxyの対象にするのかをセットしておく
+self.proxymodel.setFilterRole(PROXY_FILTER_ROLE)
+```
+
+```python
+    def data(self, index, role=QtCore.Qt.DisplayRole):
+
+        if not index.isValid():
+            return None
+
+        item = index.internalPointer()
+
+        if role == QtCore.Qt.DisplayRole:
+            return item.data(index.column())
+        # ProxyModelを使用した検索時の検索対象文字列を返す
+        if role == PROXY_FILTER_ROLE:
+            # とりあえず同じものを返す
+            return item.data(index.column())
+        return None
+```
+
+そして、Model の data で、PROXY_FILTER_ROLE だった場合は、検索対象にしたい  
+文字列を返すようにしておくと、ProxyModel での絞り込み対象の文字列を  
+カスタマイズすることができます。
