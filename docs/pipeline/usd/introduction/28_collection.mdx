@@ -1,0 +1,235 @@
+---
+title: UsdCollectionを使おう
+tags:
+    - USD
+    - Collection
+slug: /usd/collection
+sidebar_position: 28
+---
+
+USD の「Collection」とは、Maya の Sets と似た機能で
+USD シーン内のオブジェクトを識別するためのリレーションシップ機能を提供します。
+つまりは、これをつかうと Prim をグループでまとめるだけではなく
+Namespace に関係なくオブジェクトをコントロールできるようになります。
+
+## やってみる
+
+まずはサンプルを用意します。
+
+![](https://gyazo.com/3448d8a4f77c8f03839fbc65ba82abd6.png)
+
+![](https://gyazo.com/14ee2d0a9604441a41f8292c981fb119.png)
+
+このようなシンプルなレイヤーを用意します。
+
+```python
+# Collectionを作る
+collection = stage.DefinePrim("/collectionSample")
+collectionName = "sampleCollection"
+api = Usd.CollectionAPI.Apply(collection,collectionName)
+```
+
+そして、Collection を作成したい Prim に
+UsdCollectionAPI を利用して Collection を適応します。
+
+```
+#usda 1.0
+
+def "collectionSample" (
+    prepend apiSchemas = ["CollectionAPI:sampleCollection"]
+)
+{
+}
+```
+
+適応できました。
+ですが、これだけだとまだからの Set を用意したにすぎないので
+Prim を指定してみます。
+
+```
+api.IncludePath(Sdf.Path("/World/SamplePrims/Cube"))
+```
+
+```
+#usda 1.0
+
+def "collectionSample" (
+    prepend apiSchemas = ["CollectionAPI:sampleCollection"]
+)
+{
+    prepend rel collection:sampleCollection:includes = </World/SamplePrims/Cube>
+}
+```
+
+追加されました。
+指定した Prim へのリレーションに、IncludePath が追加されたのがわかります。
+
+Collection を追加すると、追加した Prim に対して「collection」の Namespace 以下に
+プロパティが作成されます。
+そして、このプロパティ名には Collection 名（上の例なら sampleCollection ）が付き
+そのコレクションごとのプロパティを追加するための Namespace が提供されます。
+プロパティ以下に Collection 名が入ることで、
+１つの Prim に対して複数の Collection が追加できるようになるわけですね。
+
+## Prim の取得
+
+### Collection に入れた Prim の取得方法
+
+```python
+print(api.GetIncludesRel().GetTargets())
+```
+
+IncludePath の指定は、リレーションで定義されているので、
+CollectionAPI の GetIncludesRel でリレーションを取得すると
+かんたんに Collection に含まれている Prim を取得することができます。
+
+### ExcludePath と ExpansionRule
+
+上の例だと、IncludePath を指定することで Collection に Prim を入れることができました。
+ですが、IncludePath として指定した Prim だけではなく
+その子 Prim も含めて取得したい場合もありますし、
+その子 Prim のうち「除外したい Prim」も指定したいことがあるかとおもいます。
+
+そうした時は ExcludePath（除外指定）と、ExpansionRule（どのように展開するか）
+を指定した上で、ComputeMembershipQuery を使うことで
+Collection に含まれる Prim を取得することができます。
+
+```python
+api.ExcludePath(Sdf.Path("/World/SamplePrims/Cube/ExcludeCube"))
+```
+
+まずは、サンプルのレイヤーのうち、Cube/ExcludeCube 以下を除外するようにします。
+
+```python
+expansionRule = api.CreateExpansionRuleAttr()
+expansionRule.Set("expandPrims")
+```
+
+そして ExpansionRule を指定します。
+これが、指定 Prim 以下の子すべてなのかだったり、その Prim のみ指定だったりといった
+選択をどのように展開するかを指定するアトリビュートになります。
+
+| name                     |                                                    |
+| ------------------------ | -------------------------------------------------- |
+| explicitOnly             | IncludePath のみで子 Prim は含めない               |
+| expandPrims              | IncludePath 以下の子 Prim も含める                 |
+| expandPrimsAndProperties | Includepath 以下の子 Prim とアトリビュートも含める |
+
+選択肢はこの３つです。
+
+次に、この Collection を利用して Prim を取得します。
+
+```python
+query = api.ComputeMembershipQuery()
+# expandPrimsで指定されてるので、IncludePath以下にありExcludeに含まれないPrimがリストされる
+print(Usd.CollectionAPI.ComputeIncludedObjects(query,stage))
+```
+
+api から ComputeMembershipQuery で、検査くるための Query を取得します。
+そして、それを利用して ComputeIncludeObjects を実行すると
+引数で指定した stage 内のうち、Collection に該当する Prim を取得できます。
+
+```
+[Usd.Prim(</World/SamplePrims/Cube>), Usd.Prim(</World/SamplePrims/Cube/pCube1>), Usd.Prim(</World/SamplePrims/Cube/pCube3>)]
+```
+
+![](https://gyazo.com/fe048cc982d07021c48b918b820adb89.png)
+
+結果、ExcludePath で指定した ExcludeCube と pCube2 の Prim は除外され
+それ以外の結果が取得できました。
+
+```python
+expansionRule.Set("explicitOnly")
+```
+
+これを explicitOnly に変えると、
+
+```
+[Usd.Prim(</World/SamplePrims/Cube>)]
+```
+
+子以下は含まれなくなりました。
+
+```python
+expansionRule.Set("expandPrimsAndProperties")
+```
+
+最後に、Properties まで展開するとどうなるかというと
+![](https://gyazo.com/3fa9e7e8a4be40f01fd55ed5c0ef2b76.png)
+Attribute までふくめてすべて取得することができました。
+
+この ExpansionRule は、MembershipQuery の
+
+```python
+print(query.GetAsPathExpansionRuleMap())
+```
+
+ExpansionRuleMap で確認することができて、この RuleMap に従って
+ステージ内の Prim を「コレクション」することができます。
+
+## Path が Collection に含まれるかどうか調べる
+
+以上のやりかたで Collection に含む Prim を取得することができましたが
+ある SdfPath が Collection に含まれているかを知りたい...といったケースも
+発生するかとおもいます。
+
+その時は、ComputeMembershipQuery を利用して
+
+```
+# 引数で指定したSdfPathがCollectionに含まれるか
+print(query.IsPathIncluded("/World/SamplePrims/Cube/pCube1"))
+# 除外されたPrimの場合
+print(query.IsPathIncluded("/World/SamplePrims/Cube/ExcludeCube/pCube2"))
+```
+
+このように Path が含まれるかをチェックすることができます。
+
+## Houdini
+
+コードと usda だけだとわかりにくいので、同様のことを HoudiniSOLARIS で試してみます。
+
+![](https://gyazo.com/ea449364d77085c342e3ae1b56705b17.png)
+
+LOP には Collection ノードが存在しているので、ノードを作成します。
+
+![](https://gyazo.com/934b59f8405d7ed22e736fc8fe5a3fae.png)
+
+DefaultPrimitivePath は、Collection を追加したい Path を指定します。
+そしてその下に Collection に入れる条件を指定します。
+
+![](https://gyazo.com/9c3eb94e8a0ba589601b3aa97f37b55e.png)
+
+上の例だと、青枠を Collection に入れて、そのうち赤枠部分は除外
+ExpansionRule は Cube 以下の子 Prim 全てを入れるようにしました。
+
+Collection が作れているかを Prune ノードを使用して確認してみます。
+Prune は、 PrimitivePattern で指定した Prim を非表示状態にします。
+
+![](https://gyazo.com/8fb21f9fbae89638f9149ae92d170ee9.png)
+
+PrimitivePattern には Collection を指定することもできるので、
+カーソルボタンを押して Collection を指定すると
+
+![](https://gyazo.com/b7044d9587b5d23aee303157589f5062.png)
+
+結果。
+Collection に含まれている pCube2 以外の Prim が非表示になりました。
+
+最初に説明したとおり、IncludePath と ExcludePath、そして ExpansionRule によって
+Collection に含まれる Prim が計算され
+その結果によって Prune ノードが実行されました。
+Prune にも同じような TargetPrimitives の指定がある（Collection を作る機能もある）のですが
+挙動・指定方法は、USD の Collection と同様になります。
+
+## まとめ
+
+Collection を使用すれば、IncludePath/ExcludePath/ExpansionRule を組み合わせることで
+単純なリレーションよりも、より手軽にステージ内の Prim にアクセスできるように
+なることがわかりました。
+
+これを使って、指定の Prim に自動で処理をさせたり
+自分のやりたいシーングラフを表現できるようになるので、よりいっそう USD で
+できることの幅が広がりそうです。
+
+https://fereria.github.io/reincarnation_tech/60_JupyterNotebook/USD/USDCollectoinSample2
+Python での操作方法は ↑ の Notebook で色々試してるので参考にしてください。

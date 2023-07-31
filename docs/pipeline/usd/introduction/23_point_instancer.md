@@ -4,12 +4,12 @@ tags:
     - USD
     - AdventCalendar2022
 description: USDのPointInstancerの構造について
-slug: /usd/instance
+slug: /usd/point_instancer
 sidebar_position: 23
 ---
 
 USD には、Reference で読み込む Prim に対して instanceable をつけることで
-インスタンス化できる [ USD の Instance について](/usd/instance) 機能がありますが、
+インスタンス化できる <AutoLinkTitle url="/usd/instance" /> 機能がありますが、
 それ以外にも、数十億個のインスタンスを配置することを想定して設計されている「PointInstancer」スキーマが存在しています。
 
 通常のインスタンスとの違いは、通常のインスタンスは 4x4 の行列で変換されているのに対し

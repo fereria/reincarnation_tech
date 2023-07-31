@@ -1,0 +1,113 @@
+---
+title: Plugin Metadataを使おう
+tags:
+    - CEDEC2022
+slug: /usd/plugin_metadata
+sidebar_position: 27
+---
+
+Plugin Metadata とは、Prim や Layer、Attribute などに対して Metadata を
+指定できるようにする機能です。
+
+Plugin で特に指定がない場合、
+
+```python
+prim.SetMetadata('metadata_name',100)
+```
+
+このように Metadata を指定しようとしても、エラーになります。
+(自由に指定をしたい場合は、CustomData を使う)
+
+Plugin Metadata を使用すれば、指定の名前・型の Metadata を定義して
+使用できるようになります。
+
+## plugInfo.json
+
+Plugin Metadata は、 plugInfo.json で定義します。
+
+```json
+{
+	"Plugins": [
+		{
+			"Name": "MetadataPlugin",
+			"Type": "resource",
+			"Info": {
+				"SdfMetadata": {
+					"sample_metadata": {
+						"type": "string",
+						"appliesTo": "prims",
+						"default": "hello world!!"
+					},
+					"layer_metadata": {
+						"type": "string",
+						"appliesTo": "layers",
+						"default": "layer sample!!"
+					},
+					"attr_metadata": {
+						"type": "int",
+						"appliesTo": ["properties", "attributes"],
+						"default": 100
+					}
+				}
+			}
+		}
+	]
+}
+```
+
+基本構造はこんな感じになります。
+
+https://graphics.pixar.com/usd/docs/api/sdf_page_front.html#sdf_metadata_types
+使える型一覧はこのページにまとめてあります。
+"type" value で型を指定して、appliesTo で、適応する対象を指定します。
+
+### plugInfo.json を保存する
+
+![](https://gyazo.com/7ac46193c9de0e9a480d8bdb4098ce2c.png)
+
+作成した plugInfo.json は、PXR_PLUGINPATH_NAME で指定したフォルダ以下の
+pluginDirName/resources/plugInfo.json
+に保存します。
+
+### Metadata を使用する
+
+```python
+from pxr import Usd,Sdf
+stage = Usd.Stage.CreateInMemory()
+prim = stage.DefinePrim('/samplePrim')
+# Metadataを指定する
+prim.SetMetadata('sample_metadata','hogehoge')
+print(stage.GetRootLayer().ExportToString())
+```
+
+まずは Prim を指定する場合。
+appliesTo で、 prims を指定することで Prim に Metadata を追加できます。
+
+```python
+stage = Usd.Stage.CreateInMemory()
+layer = stage.GetRootLayer()
+# Layerに対してMetadataを追加する
+pseudoRoot = stage.GetPseudoRoot()
+pseudoRoot.SetMetadata('layer_metadata','hoge')
+print(layer.ExportToString())
+```
+
+次に Layer の場合。
+SdfLayer には SetMetadata はありません。
+Layer に対して Layer を指定したい場合は、GetPseudoRoot で RootPrim を取得して
+その Prim に対して Metadata を指定すると、Layer に対して Metadata を指定できます。
+
+```python
+from pxr import Usd,Sdf
+stage = Usd.Stage.CreateInMemory()
+prim = stage.DefinePrim('/samplePrim')
+attr = prim.CreateAttribute('sampleAttr',Sdf.ValueTypeNames.Int)
+attr.Set(100)
+attr.SetMetadata('attr_metadata',123)
+# Metadataを指定する
+prim.SetMetadata('sample_metadata','hogehoge')
+print(stage.GetRootLayer().ExportToString())
+```
+
+Attribute/Propertis に対しての場合。
+appliesTo は複数指定することができて、複数の場合は配列で渡せば OK です。
