@@ -1,4 +1,221 @@
 ---
 title: Edit Layer
-slug: /houdini/solarlis/edit_layer
+slug: /houdini/solaris/edit_layer
+tags:
+    - USD
+    - SOLARIS
+    - Houdini
 ---
+
+SOLARIS で USD の構造を作るときに、「どこをどのように分けて構築するか」
+というのはとても重要なことです。
+なのですが、ぱっと見てどのように制御するのかがとてもわかりにくかったので
+手順とかをまとめてみようと思います。
+
+## SOLARIS でのレイヤー表示
+
+![](https://gyazo.com/dc651ee92c221b0a7f21e61f6be7f477.png)
+
+SOLARIS 上でのレイヤーがどのように切り分けられているかというと、
+ノードの縁の色単位で表示がわかるようになっています。
+上の画像の場合は、 assetName と payload1 が同じレイヤー
+cube2 が別のレイヤーとして作成されます。
+
+## レイヤーを編集する
+
+ここでいうところの「レイヤー」というのは、いわゆる USD のファイルのことです。
+つまり現状だと assetName Prim と cube2 Prim それぞれが存在する USD ファイルが
+あることになります。
+
+ただし、とくに何もしていない場合このレイヤーは「Anonymous レイヤー」という
+オンメモリー上にのみ存在するレイヤー扱いになり、
+
+![](https://gyazo.com/a00b2a9ce07abe64073f06dbcaf05a83.png)
+
+途中コンポジションされている Cube2 の Prim レイヤーがオンメモリー上にしか存在しない
+レイヤーになってしまうので、 USDROP ノードで Export すると
+エラーアイコンが表示されてしまいます。
+
+!!! info
+このあたりの問題は、
+http://ikatnek.blogspot.com/2020/06/usd-rop.html
+こちらに詳細が書かれています
+
+なので、各レイヤーの構造を維持したまま（Flatten しないで）
+レイヤーワケした状態で Export したい場合は、 **ConfigureLayer** ノードを
+利用して、レイヤー設定を追加します。
+
+![](https://gyazo.com/133158975ece65dce7009829abe258e8.png)
+
+結果がこちら。
+Cube は cube.usda メイン部分は payload.usda という形で出力され、
+
+```usda
+#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "assetName"
+{
+    def Xform "model" (
+        prepend payload = @./cube.usda@
+    )
+    {
+    }
+}
+```
+
+cube をペイロードした usda が出力されます。
+
+つまり、 ConfigureLayer ノードは
+接続されたレイヤーに対して設定を変更する事ができるノードというわけですね。
+
+![](https://gyazo.com/59f4bdadd3fdbb13b60a357b18f50bc5.png)
+
+例えば Cube 側の ConfigureLayer をみてみます。
+SavePath はそのレイヤーをどこに保存するのか、DefaultPrimitive はレイヤーの
+デフォルト Prim をなににするかの設定です。
+
+```usda
+#usda 1.0
+(
+    defaultPrim = "cube2"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Cube "cube2"
+{
+    float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+    double size = 2
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+}
+```
+
+その結果出力されるレイヤー。
+defaultPrim として cube2 が指定されていることがわかります。
+
+![](https://gyazo.com/f4b53179ff274c7c575b990cb93df9f5.png)
+
+Configure Layer で DefaultPrim が指定されているので、
+Payload ノードの Reference Primitive で「 Reference Dfault Primitive 」を指定して
+ペイロードすることができます。
+
+![](https://gyazo.com/a5f58dcd2c544a14b22d99622acd630e.png)
+
+他の設定も色々いれてみると
+
+```
+#usda 1.0
+(
+    "Hello World"
+    customLayerData = {
+        string testCustomData = "Test Test!!"
+    }
+    defaultPrim = "cube2"
+    endTimeCode = 240
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+```
+
+色々仕込むことができました。
+
+## 編集部分だけ別レイヤー出力
+
+ConfigureLayer を使用すると、指定の部分のレイヤーの出力パスを編集し
+レイヤーに対してメタデータを仕込んだりできることができました。
+次は、編集した部分のみを別ファイルとして切り出してコンポジションしてみます。
+
+![](https://gyazo.com/fb9e94f346414d2a26fe4e145c0b8229.png)
+
+全体図がこんな感じになります。
+Cube を動かして、動かした部分だけを別レイヤー化して
+そのファイルをペイロードでロードします。
+
+なので、
+
+1. モデル部分（cube1）
+2. Edit 部分
+   それぞれをレイヤーとして保存するために、ConfigureLayer ノードで
+   出力先などのレイヤー設定を追加します。
+
+そしてそのレイヤーをペイロードに入れて USD_ROP で Export します。
+
+ここでの注目ポイントは「layerBreak」ノードです。
+
+この layerBreak ノードは、Input から入力された Stage を USDROP などで Export するときのみ
+Export しないようにするノードです。
+
+なので
+
+![](https://gyazo.com/c1faa54fab8f2701ed25d451b368a0ae.png)
+
+こんなかんじにモデルを Input して編集するときに、layerBreak を使用すると
+Input の Mesh 情報はレイヤーには保存されず、編集情報のみが
+
+```usda
+over "cube1"
+{
+    matrix4d xformOp:transform:edit1 = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 5, 0, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform", "xformOp:transform:edit1"]
+}
+```
+
+over でレイヤーに保存されます。
+
+![](https://gyazo.com/8960a7f8948b3c80d762391fd891c28f.png)
+
+この layerBreak がないと、編集対象が Edit ノードにないためすべてエラーになってしまいます。
+
+### Variant Block の場合
+
+更に別のコンポジションを追加してみます。
+Houdini の Variant には VariantBlock という、すでにある Prim に対して over で
+Varinat を作れる機能があります。
+
+詳細は <AutoLinkTitle url="/houdini/solaris/variant" /> に書いてあります。
+
+これを SOLARIS 上でコンポジションしつつ、サブレイヤーでも合成してみます。
+
+![](https://gyazo.com/76fd012882c2808c6467975319770fc0.png)
+
+といっても、基本的な方針は同じです。
+BaseModel（モデルの実体部分）のレイヤー、Variant 部分のレイヤー、その後に最後に
+別途編集したい場合。
+Variant 側は Variant Block 自体が layerBreak を使用したのと同じ状態になっています。
+なので、そちらは layerBreak なしでレイヤーを構築して Configure します。
+それだけだと、BaseModel に Variant が合成されないので、Merge（サブレイヤー）で
+合成します。
+
+そのあとに別レイヤーで指定のマテリアルを編集したい場合は、layerBreak して編集して
+configureLayer してレイヤーを出力
+その結果をサブレイヤー合成して出力します。
+
+上２つのみで基本モデル、別途バージョン違いだったりカットごとの微調整なんかの
+パターンの場合は EditMaterial 部分のような構造にしておくと
+1 レイヤーあたりのファイルサイズが少なく（差分のみ保持）されます。
+
+サンプルは :fa-download:[こちら](https://1drv.ms/u/s!AlUBmJYsMwMhhOZo1uxWpX05TZZQsA?e=thiZbi)
+
+## まとめ
+
+Houdini のノードと USD のシーングラフ構築がいまいち結びつかなくて
+なかなか意図した構造を作ることができませんでしたが、レイヤーの構造と
+Configure 系ノードの使い方を理解したおかげで
+狙った構造が組めるようになりました。
+
+ので、組み方ははわかったので実際のところどうやると良さそうなのかを
+次は考えてみようと思います（2020 年アドカレネタ）
