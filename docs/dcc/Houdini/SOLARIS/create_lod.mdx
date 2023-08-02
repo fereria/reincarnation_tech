@@ -9,11 +9,11 @@ slug: /houdini/solaris/lod
 
 [USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 21 日目は、Houdini SOLARIS を使用して、お手軽に LOD 付きアセットを作る　です。
 
-SOLARIS には、デフォルトで Create LOD ノードが用意されていて
+SOLARIS には、デフォルトで Create LOD ノードが用意されていて  
 簡単に LOD 付きアセットを生成できます。
 
-今回は、このノードを使用して LOD の設定をしつつ、 AutoSelect でカメラ距離で
-切り替えながら、どんな構造になっているのかを
+今回は、このノードを使用して LOD の設定をしつつ、 AutoSelect でカメラ距離で  
+切り替えながら、どんな構造になっているのかを  
 見ていきたいと思います。
 
 ## Create LOD
@@ -22,16 +22,16 @@ SOLARIS には、デフォルトで Create LOD ノードが用意されていて
 
 ![](https://gyazo.com/773e6989afad920459a38509ba8cd4d4.png)
 
-Create LOD ノードを作り、LOD を作成したいアセットを接続します。
-この時注意が必要なのは、
-Input で読み込むノードは「Reference で読み込まれたもの」である必要があります。
+Create LOD ノードを作り、LOD を作成したいアセットを接続します。  
+この時注意が必要なのは、  
+Input で読み込むノードは「Reference で読み込まれたもの」である必要があります。  
 （理由は後述）
 
 ![](https://gyazo.com/e6a6287ef93f325d5f698350a5b49016.png)
 
-接続したら、Number of LODs を、作成したい段数にして
-あとは各段ごとの形状を維持する値（リダクション具合）をパーセントで入力します。
-今回の場合は 4 段なので 100 75 50 25 と入れておきます。
+接続したら、Number of LODs を、作成したい段数にして  
+あとは各段ごとの形状を維持する値（リダクション具合）をパーセントで入力します。  
+今回の場合は 4 段なので 100 75 50 25 と入れておきます。  
 レベルごとの VariantName は、特に指定がなければ LOD_1 2 3... のようになっていきます。
 
 ![](https://gyazo.com/4aa4f7855627a16b21ead29768b35547.png)
@@ -50,13 +50,13 @@ polyreduce ノードでリダクションをかけています。
 
 ### 注意点
 
-地味にはまった（なかなか LOD ができなかった）ポイントが「input は Reference にしておく」
-という部分でした。
-これは LOD というより USD のコンポジションの順番に起因するもので
-リファレンスを使用せず、Local のモデルを Input に渡してしまうと
-Local は VariantSet より強いので
-ベースモデルの主張のほうが強くなり、VariantSet に対して作成される
-リダクションの GeomMesh よりも
+地味にはまった（なかなか LOD ができなかった）ポイントが「input は Reference にしておく」  
+という部分でした。  
+これは LOD というより USD のコンポジションの順番に起因するもので  
+リファレンスを使用せず、Local のモデルを Input に渡してしまうと  
+Local は VariantSet より強いので  
+ベースモデルの主張のほうが強くなり、VariantSet に対して作成される  
+リダクションの GeomMesh よりも  
 Local のベースモデルのほうが強くなってしまうからです。
 
 （ただ、USD の仕様だったり ComponentEditor のしくみを考えると問題はないと思う）
@@ -71,12 +71,12 @@ LOD ができたら、自動で切り替えられるように AutoSelectLOD を�
 
 ![](https://gyazo.com/8fa16e3769aca2fd96f5cf2fcc99201a.png)
 
-AutoSelectLOD に、VariantSet を含む PrimitivePath と VariantSet 名（デフォルトだと model）、
+AutoSelectLOD に、VariantSet を含む PrimitivePath と VariantSet 名（デフォルトだと model）、  
 対象カメラを指定し Number of LODs に対して作成済の LOD の段数をいれます。
 
-そして、あとは ThresholdDistance を入れていきます。
-最上段は 0 にします。
-そこから、対象とカメラがどの程度離れたら切り替わるのかという閾値を入れていきます。
+そして、あとは ThresholdDistance を入れていきます。  
+最上段は 0 にします。  
+そこから、対象とカメラがどの程度離れたら切り替わるのかという閾値を入れていきます。  
 サンプルだと 5 刻みにしていますが、この場合はかなりカメラと対象が近い状態で
 切り替わります。
 
@@ -86,16 +86,16 @@ AutoSelectLOD に、VariantSet を含む PrimitivePath と VariantSet 名（デ�
 
 ## まとめ
 
-AutoSelectLOD は、CreateLOD で作成したモデルに限らず
-USD の VariantSet に対して自動切り替えを作ってくれます。
-CreateLOD だと、ある程度はいい感じにリダクションしてくれますが
+AutoSelectLOD は、CreateLOD で作成したモデルに限らず  
+USD の VariantSet に対して自動切り替えを作ってくれます。  
+CreateLOD だと、ある程度はいい感じにリダクションしてくれますが  
 実用に耐えうるものにしようとするとやはり自作したくなります。
 
-ですが、そういった場合も
-決められた名前の USD の VariantSet として LOD を作成しておけば
+ですが、そういった場合も  
+決められた名前の USD の VariantSet として LOD を作成しておけば  
 AutoSelectLOD を使用して、LOD の切り替えをつけることができます。
 
-この場合は、Local には Mesh を置かずに Variant のみに記述するようにすれば
-リファレンスではなくても OK ですし、
-LOD の全段を、別レイヤー化してリファレンスした上で VariantSet にするなど
+この場合は、Local には Mesh を置かずに Variant のみに記述するようにすれば  
+リファレンスではなくても OK ですし、  
+LOD の全段を、別レイヤー化してリファレンスした上で VariantSet にするなど  
 柔軟に構築することも可能です。
