@@ -1,0 +1,178 @@
+---
+title: SOPにLOPを持ち込もう
+tags:
+    - USD
+    - AdventCalendar2022
+    - SOP
+description: importlopの使い方
+---
+
+[USD AdventCalendar2022](https://qiita.com/advent-calendar/2022/usd) 6 日目は LOP から SOP に情報を持ち込んでみようです。
+
+SOP から LOP に持ち込む方法は <AutoLinkTitle url="/houdini/sop/usd_export" /> で書いたのですが、逆に LOP の USDGeomMesh などを
+SOP の世界に持ち込む方法があるので基本的なところを確認していこうと思います。
+
+## lopimport と PackedPrimitive
+
+![](https://gyazo.com/94302547f0e17eb6e9a13a707a507a90.png)
+
+LOP の情報を持ち込むには、 lopimport ノードを使用します。
+
+![](https://gyazo.com/e4dd0c6d1a46ffa7e5d4dbf481776e1b.png)
+
+使用方法は簡単で、読み込みたい LOP のノードを LOP Path で指定し、Primitives で読み込むノードを選びます。
+アスタリスクにすると、すべてのノードを読み込むことができます。
+
+![](https://gyazo.com/6f6df783b27973cbba11e63687aab01a.png)
+
+サンプルとして Cube や Light、Xform などを作っておきます。
+
+![](https://gyazo.com/8b7943475078154b2eb93b131628267e.png)
+
+読み込んだ状態を GeometrySpreadSheet を参照するとこうなります。
+
+LOP import のオプションで「Path Attribute」と「Name Attribute」をオンにしていると
+USD の SdfPath や NodeName を読み込むことができます。
+
+読み込んだ Prim は PackedPrimitive になっている状態で
+
+![](https://gyazo.com/d0d2955ad06e4fefed755498e8d7b595.png)
+
+Points は USD の Prim の Translate が入っています。
+
+例にしている Stage のうち Cube Sphere は Geometry として読み込むことができますが
+それ以外は Xform の位置情報のみが持ち込みされるようです。
+
+![](https://gyazo.com/4a5cedf407c22144cb79296c96c4f126.png)
+
+USD の UsdGeomMesh を SOP 側で扱いたい場合は、
+unpackusd ノードを使用して unpack します。
+
+![](https://gyazo.com/ac25b520f83fdb9f0f97ba454c074969.png)
+
+Unpack の Output を Polygons にします。
+
+![](https://gyazo.com/4ec43f505605be6939d89ffdebe3c75a.png)
+
+これで SOP 側で UsdGeomMesh を編集できるようになります。
+
+## Mesh 以外
+
+（今のところわかる範囲でいうと）SOP に持ち込めるのは Mesh と Points のみのようです。
+ですが、それ以外の各種 Attribute も GeometrySpreadSheet で確認して編集したいみたいなこともやりたくなります。
+ので USD の Attribute を Wrangle か Python を使用して持ち込んでみます。
+
+### wrangle の場合
+
+wrangle の場合は、 AttributeWrangle を使用して usd\_### 系の VEX 関数を使用して持ち込みます。
+が、VEX レベルが低すぎて難しいのでまずは簡単そうなところで試します。
+
+まずは、USD の PrimType を GeometrySpreadSheet に追加します。
+
+```vex
+s@type = usd_typename("op:/obj/geo1/lopnet1/merge1",s@path);
+```
+
+Run Over を「Primitives」にしたうえで、
+SOP の Wrangle で LOP 側のノードを使用する場合は op:/～～～ で、Stage を取得したいノードを指定します。
+lopimport で USD の SdfPath は path アトリビュートに入っているのがわかっているので
+usd_typename 関数に LOP のノードのパスを指定して、SdfPath を指定すれば PrimType がとれるので
+これを type Attribute に入れてみます。
+
+![](https://gyazo.com/86466edec93716116dc7db2e1575f7ed.png)
+
+取得できました。
+
+もう少し頑張って Attribute の値を取得します。
+
+```
+string stage = "op:/obj/geo1/lopnet1/merge1";
+
+foreach(string i;usd_attribnames(stage,s@path))
+{
+    string type = usd_attribtypename(stage, s@path, i);
+    addprimattrib(0,i,0);
+    //printf(usd_attrib(stage,s@path,i));
+}
+```
+
+指定の SdfPath にある Attribute の一覧は usd_attribnames(stage,path)、値は usd_attrib(stage,path,name) で
+取得ができるので、あとりおびゅーとを追加するだけならできたのですが
+Attribute の型がいろいろあるせいですなおに setattrib できなくてここで挫折。
+VEX つよつよな人、だれか助けてください。お願いします。
+
+### python でやる
+
+気を取り直して Python でやっていきましょう。
+
+Geometry に対して Attribute を入れる都合、PrimType をそろえてから Attribute を取得します。
+
+![](https://gyazo.com/68e0366052f95161f5e1ab52a5c8b53c.png)
+
+LOP Import の Primitives で [プリミティブパターン](https://www.sidefx.com/ja/docs/houdini/solaris/pattern.html) を使用して、読み込みたい PrimType を制限します。
+今回は SphereLight のみを取得します。
+
+#### stage 取得
+
+まずは LOP の取得したい UsdStage を取得します。
+
+```python
+node = hou.pwd()
+geo = node.geometry()
+
+lopNode = node.input(0).parm("loppath").evalAsNode()
+stage = lopNode.stage()
+```
+
+いまいちピンとくるやり方が見つからなかったのですが、
+lopimport の loppath アトリビュートから LOP のノードの Path を取得し、
+Parm.evalAsNode() で、loppath の Path から LopNode を取得し、
+LopNode の stage() を使用すれば、取得したい LOP の Node の Stage が取得できました。
+
+あとはがんばって UsdAttribute を取得します。
+
+```python
+attribDefaultValue = {'float':0.0,'token':"",'bool':0,'int':0}
+
+for i in geo.prims():
+    prim = stage.GetPrimAtPath(i.attribValue("path"))
+    for attr in prim.GetAttributes():
+        attribName = attr.GetName().replace(":","__")
+        typename = attr.GetTypeName().aliasesAsStrings
+        if not geo.findPrimAttrib(attr.GetName()):
+            if attr.GetTypeName().isArray:
+                if typename[0] == 'token[]':
+                    geo.addArrayAttrib(hou.attribType.Prim,attribName,hou.attribData.String)
+                else:
+                    geo.addArrayAttrib(hou.attribType.Prim,attribName,hou.attribData.Float)
+            elif 'color' in typename[0]:
+                geo.addArrayAttrib(hou.attribType.Prim,attribName,hou.attribData.Float)
+            elif 'matrix' in typename[0]:
+                continue
+            else:
+                geo.addAttrib(hou.attribType.Prim,attribName,attribDefaultValue[typename[0]])
+        if geo.findPrimAttrib(attribName):
+            if attr.Get():
+                i.setAttribValue(attribName,attr.Get())
+```
+
+![](https://gyazo.com/40e083ad0fd8501a8a42e4c5a8f87b53.png)
+
+とりあえず何とかそれっぽいことができました。
+
+Usd の Namespace は : を使用して指定するのですが、Attribute 名に:が使えないので\_\_にリネームします。
+そして Attribute を追加するのですが、追加するときの AttributeType によっていろいろやらないといけなかったので
+attr.GetTypeName() を使用して Attribute の Type を指定します。
+AttributeType は、SdfValueTypeName 型で取得されます。
+ValueTypeName で Array 型かどうかとれるので、Array の場合は addArrayAttrib そうじゃない場合は…みたいな形で
+条件を分けていきます。
+
+token は String 型で置き換え、color は vec3f と同等なので、Float の配列にしました。
+おおむねそれっぽくなりましたが、Matrix4d とかはどうやって Geometry にいれればいいのかわからなかったので Skip しています。
+
+できたもののこれでいいのか？？？という感はあるので
+もう少しまっとうな HoudiniPython があるぞーという方はぜひとも教えてください。
+
+あとはこの GeometrySpreadsheet の値を LOP にそのまま（:を戻したり）持って帰ってきて
+オーバーライドできれば良いですが
+それはまた別の機会に。

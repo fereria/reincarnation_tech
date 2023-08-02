@@ -1,0 +1,162 @@
+---
+title: PackedPrimitivesとUSDExport
+tags:
+    - USD
+    - SOP
+    - Houdini
+description: SOPからUSDを出力する
+slug: /houdini/sop/usd_export
+---
+
+普段は LOP を使用して USD を扱っていましたが、  
+SOP からも USD の出力ができるというのと、Houdini の PackedPrimitives について教えてもらったので  
+SOP の勉強とデータの構造を理解するのを兼ねて  
+SOP の USDExport を試してみようと思います。
+
+## 基本
+
+![](https://gyazo.com/0ebcfc13f33f77e8d0d4c300c025707f.png)
+
+まず、SOP には「usdexport」ノードがあります。
+ので、このノードに接続すると USD を出力することができます。
+
+![](https://gyazo.com/3094adfd910c7687e7e56b69890f1a8a.png)
+
+シンプルなキューブを OutputFile のみを指定して出力すると、
+
+![](https://gyazo.com/e2afc8c4abcbc12b2bd635ce43ab15d5.png)
+
+この場合、
+![](https://gyazo.com/f58a31947d173d16ede4f675654cb927.png)
+
+Relative Path Prefix の指定（この場合、usdexport のノード名）の Xform ＋ mesh_0 という名前の Mesh  
+が出力されました。
+
+SOP の Geometry 以下は、Maya でいうところ１つの Mesh ノードのような扱いなので  
+出力される USD ファイルは、１つの USD ファイルに対して Xform + Mesh の組み合わせで
+出力されました。
+
+![](https://gyazo.com/e09502d09f9abf093677da7e321b0c1a.png)
+
+![](https://gyazo.com/eee610190469acb60518e69e3c2a3828.png)
+
+確認のため、このように Duplicate を使用してモデルを複製したのち、出力しても  
+1 つの Xform ＋ Mesh にまとめられた形で出力されます。
+
+## PackedPrimitives
+
+次は PackPrimitive があった場合。
+https://www.sidefx.com/ja/docs/houdini/model/packed.html
+PackPrimitive は、
+
+> パックプリミティブをコピーすると、ジオメトリ自身がコピーされるのではなく、
+> 参照 がコピーされます
+
+とある通り、いわゆるインスタンスです。
+
+![](https://gyazo.com/56d4539232dedbb243f91ac08f2afbf1.png)
+
+Box を Pack して GeometrySpreadSheet を見ると、
+
+![](https://gyazo.com/005369573c9a850fa0d3f5bea4a60972.png)
+
+↓
+
+![](https://gyazo.com/ffbc4e84bbec8b11fc659c8c1f5133da.png)
+
+Point 等はパックしたジオメトリの位置情報を Point に持つようになります。
+
+![](https://gyazo.com/c7130d2cd4955580bb62a99b02d7c44d.png)
+
+Pack したジオメトリを Duplicate して、Export をしてみます。
+
+![](https://gyazo.com/6ca9817c55159543010c043dbdca73fb.png)
+
+結果。
+青になっているのは、USD のインスタンスになっているからで  
+そのインスタンスの元 Mesh が、 Prototypes/obj_0 として出力されているのがわかります。
+
+![](https://gyazo.com/a9953ec644235d017120332260d7f9b3.png)
+
+デフォルトではインスタンスになっていますが、USDExport の Packed Primitives を  
+変更することで、実体の Mesh にすることも、Point Instancer にすることも、Unpack することも可能です。
+
+![](https://gyazo.com/3a15feab78819496136833a1e660f010.png)
+
+実体化した場合は、 Relative Path Prefix 以下に obj\_### で出力されます。
+
+![](https://gyazo.com/e6b6cad639740eec9b4e9c05101e5f8b.png)
+
+最後に、Unpack した場合。
+
+![](https://gyazo.com/055a91f62fa1bb8489bacc1eb5a99b1e.png)
+
+Packed Primitives がある状態で、ExportUSD で Unpack すると  
+Xform が作成されずに、Primitives が個別の MeshPrim として出力されます。
+
+## Path/Name の指定
+
+PackedPrimitive を使用して複製したデータを出力した場合でも  
+各 Primitive に名前を付けて出力したい...というケースがあると思いおます。
+その場合は、指定の Attribute をつけることで  
+個別の Path を指定することができます。
+
+![](https://gyazo.com/eb26b5980d0650f7b8f6e4455a31fce3.png)
+
+まずは Attribute Wrangle を追加して
+
+```
+s@path = "/sampleSdfPath/Cube";
+```
+
+path を追加します。
+
+![](https://gyazo.com/6511e2dc1ff0740ac0e98c7ad03aaf77.png)
+
+こうなって
+
+![](https://gyazo.com/5413ffb43e67d5a0700bda7a14ddde54.png)
+
+結果。
+この場合は、path が USD の SdfPath になり、この Path に＋して数字が割り振られます。
+
+```
+s@name = "hogehoge";
+```
+
+あるいは、 name を指定すると、
+
+![](https://gyazo.com/fbe493fb010f735fedd66904d09e46dd.png)
+
+Relative Path Prefix で指定した Path 以下に name の Xform が作成されます。
+
+## Merge した場合
+
+最後に Merge した場合を確認します。
+
+![](https://gyazo.com/97dc9097e7434bbff8d8824ca749baec.png)
+
+ノードはこんな感じで、それぞれの Box に hogehoge と fugafuga という名前を付けます。
+その２つを Merge します。
+
+![](https://gyazo.com/285e783897f2ee5209b3b7cdf98ba3d5.png)
+
+SpreadSheet はこんな感じです。
+
+![](https://gyazo.com/59a2179bfa9d5d6d253f0115826c0880.png)
+
+結果。
+それぞれのジオメトリが、別の Xform ＋ Mesh の構造で出力できました。
+つまりは、SOP 側だけでも  
+path アトリビュートあるいは name アトリビュートを使用して USD のシーングラフを  
+作ることができるのがわかりました。  
+（それが使いやすいかは別問題として）
+
+## まとめ
+
+もともとは SOP で使われている PackedPrimitives とはなんぞ？？？
+追加するとどういう意味があるんだろう？？？という疑問から調べ始めましたが  
+その挙動や、GeometrySpreadSheet を確認したときの変化  
+その意味するところなどが理解できました。
+
+次は Attribute 回り？
