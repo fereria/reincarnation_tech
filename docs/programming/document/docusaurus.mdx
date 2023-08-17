@@ -8,8 +8,6 @@ tags:
     - Document
 ---
 
-import { TwitterTweetEmbed } from "react-twitter-embed";
-
 以前は mkdocs を使用してドキュメントサイト構築していましたが、
 プレビューのホットリロードが遅かったり、ドキュメントのビルドがものすごく遅くて（10 分以上）
 さすがにしんどくなってきたので、新しい静的ドキュメント構築システムを
@@ -28,4 +26,29 @@ MDX を使用して Javasript と組み合わせて柔軟な構築ができた�
 
 以下、基本的なプロジェクトを作成して以降やってみたことをメモしておきます。
 
-##
+## mkdocs からの変更点
+
+### slug と sidebar_position
+
+私が mkdocs を使用してた時の一番の不満が、URL がフォルダ階層とイコールになってしまうことでした。  
+このせいで、階層を変えると URL が変わってしまうし、並び順を作るためにフォルダに数字をいれてしまうと  
+URL がクソダサになってしまいました。
+
+```
+slug: /pg/docusaurus
+title: Docusaurusでドキュメントサイトを作る
+description: ドキュメントサイト再構築
+sidebar_position: 0
+tags:
+    - Docusaurus
+    - Document
+```
+
+このあたりを解消しているのが、ドキュメントのヘッダに指定する slug と sidebar_position です。  
+slug は、 docs 以下の URL を固定することができます。  
+/から始まる場合は絶対パス、ない場合はフォルダ階層を使用した相対パスになります。  
+今回は基本絶対パスで slug を指定するようにしました。
+
+## docusaurus.config.js
+
+docusaurusの設定ファイルは、root以下にある docusaurus.config.js です。  

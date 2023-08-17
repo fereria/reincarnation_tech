@@ -132,6 +132,19 @@ const config = {
 						},
 					],
 				},
+				{
+					title: "Link",
+					items: [
+						{
+							label: "Docusaurus",
+							href: "https://docusaurus.io/",
+						},
+						{
+							label: "React",
+							href: "https://ja.legacy.reactjs.org/",
+						},
+					],
+				},
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} Reincarnation#Tech, Built with Megumi Ando.`,
 		},
