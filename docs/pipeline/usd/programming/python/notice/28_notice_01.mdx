@@ -1,0 +1,141 @@
+---
+slug: /usd/python/notice/01
+title: TfNotice（通知システム）について
+description: イベント通知システムの基本的な使い方
+sidebar_position: 1
+tags:
+    - USD
+    - Python
+---
+
+TfNotice とは、「Stage 上のオブジェクトが変更された」といった  
+指定のイベントに対して通知を行うためのシステムです。
+
+https://openusd.org/dev/api/page_tf__notification.html
+
+まずは最もシンプルなものを試してみます。
+
+```python
+from pxr import Tf, Usd
+
+def objectChanged(notice,sender):
+
+    print("変更されました！")
+
+stage = Usd.Stage.CreateInMemory()
+notice = Tf.Notice.Register(Usd.Notice.ObjectsChanged, objectChanged, stage)
+prim = stage.DefinePrim('/sample')
+
+```
+
+Tf.Notice.Register を使用して、変更があった時に呼び出される関数を登録します。
+
+https://openusd.org/dev/api/class_usd_notice.html
+
+デフォルトで用意されているイベントは、
+
+-   LayerMutingChanged
+-   ObjectsChanged
+-   StageContentsChanged
+-   StageEditTargetChanged
+-   StageNotice
+
+の 5 つです。  
+サンプルで使用した「ObjectsChanged」は、その名の通り UsdObjects に変化があった時に  
+引数で指定した関数を実行します。
+
+PySide 使い的には、Signal-Slot に近いですね。
+
+### 通知情報を取得する
+
+指定のイベントが発生すると、Register で指定した関数が呼び出されます。  
+呼び出された関数は、Notice と Sender 引数を持ち、実行した時の状況を受け取ることができます。
+
+https://openusd.org/dev/api/class_usd_notice_1_1_objects_changed.html
+
+Notice は、ObjectsChanged オブジェクトが渡され  
+実行時の状況を取得したり、対象の SdfPath が実行されたのかチェックをしたりする機能が  
+提供されます。
+
+```python
+from pxr import Tf, Usd,Sdf
+
+def objectChanged(notice,sender):
+
+    print("InfoOnly")
+    print(notice.GetChangedInfoOnlyPaths())
+    print("ReSynced")
+    print(notice.GetResyncedPaths())
+
+stage = Usd.Stage.CreateInMemory()
+notice = Tf.Notice.Register(Usd.Notice.ObjectsChanged, objectChanged, stage)
+print(">>CreatePrim")
+prim = stage.DefinePrim('/sample')
+print(">>CreateAttr")
+attr = prim.CreateAttribute('hoge',Sdf.ValueTypeNames.Bool)
+print(">>SetAttr")
+attr.Set(True)
+```
+
+![](https://gyazo.com/e72aca36d2f8650e4b390039fe63f793.png)
+
+実行結果がこちら。
+
+ObjectsChanged で変更を受けるばあい、大きく分けると 2 種類 InfoOnly と ReSynced があります。  
+InfoOnly とは、Prim の構造に変更がなく、アトリビュートの値が変更されたものの SdfPath を取得できます。  
+対して ReSynced は、Prim を作成したりアトリビュートを追加したりといった  
+構造の変更があったものの Path が取得できます。  
+なので、DefinePrim なら、Prim の SdfPath が表示されるし、Attribute なら PrimPath.AttrName といったアトリビュート  
+が取得できるし、最後の SetAttr はセットした Path が取得されます。
+
+### 実行された Stage を取得する
+
+どこで実行されたのかを取得したい場合は、Sender で受け取ります。
+
+```python
+from pxr import Tf, Usd,Sdf
+
+def objectChanged(notice,sender):
+
+    print(sender)
+
+stage = Usd.Stage.CreateInMemory()
+notice = Tf.Notice.Register(Usd.Notice.ObjectsChanged, objectChanged, stage)
+print(">>CreatePrim")
+prim = stage.DefinePrim('/sample')
+```
+
+Sender は、Register の 3 つ目の引数で指定したオブジェクト(Sender)を取得できます。
+
+![](https://gyazo.com/4b32d37ebce28914f026599ae8cc2ade.png)
+
+そのため、今回だと実行した Stage が取得できます。
+
+## 通知を終了する
+
+最後に、このままだと永久に通知されてしまうので、通知をやめるようにします。
+
+```python
+def objectChanged(notice,sender):
+    print(sender)
+
+stage = Usd.Stage.CreateInMemory()
+notice = Tf.Notice.Register(Usd.Notice.ObjectsChanged, objectChanged, stage)
+print(">>CreatePrim")
+prim = stage.DefinePrim('/sample')
+
+notice.Revoke()
+```
+
+Register 関数を実行すると、登録した通知のハンドルオブジェクトが帰ってきます。  
+（おそらくこれをリスナーと呼ぶっぽい？）  
+終了したいところで Revoke を呼び出すと、通知を終了させることができます。
+
+## まとめ
+
+Notice を使用すると、USD のシーングラフの変更に対して、何かしらの関数を実行できることがわかりました。  
+次回はもう少し詳しい使い方を追ってみようと思います。
+
+## 参考
+
+-   https://github.com/AnimalLogic/SIG23-USD-In-Production
