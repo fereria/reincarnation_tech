@@ -95,6 +95,12 @@ const config = {
 					label: "Programming",
 				},
 				{
+					to: "/game_engine",
+					sidebarId: "gameEngineSidebar",
+					position: "left",
+					label: "GameEngine",
+				},
+				{
 					to: "/ta",
 					sidebarId: "taSidebar",
 					position: "left",
@@ -141,7 +147,7 @@ const config = {
 						},
 						{
 							label: "React",
-							href: "https://ja.legacy.reactjs.org/",
+							href: "https://ja.react.dev/",
 						},
 					],
 				},
