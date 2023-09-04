@@ -1,0 +1,57 @@
+---
+slug: /houdini/pdg/basic/07
+title: hBatchを使用してPDGを実行する
+description: コマンドラインからPDGを実行する方法（hBatch編）
+sidebar_position: 7
+---
+
+PDG の、とくにスケジューラーのテストをしていると  
+Houdini を再起動しないと変更が反映されなかったりして、テストのイテレーションが非常に悪くなります。  
+なのでもう少し効率よく変更をテストするにはどうすればいいか考えた結果
+
+<Marker>「コマンドラインで実行すればよい」</Marker>ということに気が付いたので
+hbatchを使用したやり方を試してみます。
+
+## hbatch を実行する
+
+まずは、  
+https://www.sidefx.com/docs/houdini/tops/cooking.html#cookcommandline  
+公式ドキュメントを参考に hbatch を実行してみます。
+
+hbatch.exe は、インストールディレクトリ以下の bin にあるので  
+そのフォルダを PATH に追加するか、フルパスで指定します。
+
+```
+hbatch ＜開きたいhipファイル＞
+```
+
+コマンドラインで、実行すると、コマンドを入力するモードになるので、hip ファイルにある  
+task を実行してみます。
+
+![](https://gyazo.com/aaa368dbb65e6b7b4d90c00bbc0a2d21.png)
+
+実行すると、対話形式でコマンドを実行できます。  
+コマンドは HScript で、今回のように TOP を実行したい場合は
+
+```
+topcook 実行したいTOPノードのパス
+```
+
+で実行できます。
+
+## HScript を指定して実行する場合
+
+これでも起動が早くてだいぶよさそうですが、  
+都度リロードしたりするのはめんどくさいので、 hbatch に対して実行したい HSCript を指定するようにします。
+
+```
+hbatch.exe D:\houdini\PDG\out_of_process_B.hiplc -c "topcook /tasks/topnet1;quit"
+```
+
+-c HScript で、実行するコマンドをかけるので、 topcook を実行して quit で終了するようにします。  
+これで、コマンドラインから TOP を実行できました。
+
+あとは、Houdini の UI 上で PythonScheduler の Python スクリプトを編集＞保存＞コマンドライン実行  
+とすると、Houdini を再起動することなくスケジューラーのテストができます。
+
+すごい快適になったので、しばらくはスケジューラー周りの書き方などを検証していきます。
