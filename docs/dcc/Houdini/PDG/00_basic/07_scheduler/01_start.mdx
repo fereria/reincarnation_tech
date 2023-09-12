@@ -1,0 +1,102 @@
+---
+slug: /houdini/pdg/basic/08/01
+title: PySchedulerで処理を確認する
+description: どのような構造になっているのか検証してみる
+sidebar_position: 1
+---
+
+<AutoLinkTitle url="/houdini/pdg/basic/07" /> のおかげで、PDGの各種ノードを簡単に検証できるようになって来たので、
+個人的にPDGをやっていて一番全容がわからないスケジューラーを、PySchedulerノードを使用して検証していこうと思います。
+
+## テストシーンを作る
+
+![](https://gyazo.com/034d4bf06e3046587d6bcfab08b1991e.png)
+
+まず、TopNet で、GenericGenerator と PythonScript を作成します。  
+GenericGenerator は ItemCount を 5 として、PythonScript は
+
+![](https://gyazo.com/c55f3e481858b727e59198f3a088d642.png)
+
+```python
+print("exec PythonScript!!")
+import time
+
+for i in range(3):
+    print(i)
+    time.sleep(1)
+```
+
+Out-Of-Process にしたうえで、  
+PythonBin をカスタム、実行するバージョンを 3.9 になるようにしておきます。  
+処理は、実行されたのがわかるように＋一瞬だと何が起きたか把握しにくいので 3 秒ほどプリントするようにしておきます。
+
+![](https://gyazo.com/023145829c5012097c1819830844e11b.png)
+
+そして、スケジューラーを作り、pythonscript1 ノードの
+
+![](https://gyazo.com/2dbaeafdf63d2330c8b59a617feaa583.png)
+
+Schedulers の TOP Scheduler Override を、作成したスケジューラーにして HIP を保存します。  
+保存できたら、 hbatch から実行してみます。
+
+比較として、デフォルトのローカルスケジューラーは
+
+![](https://gyazo.com/0a712183f1c3cf6d109b4f0e83508c3c.png)
+
+![](https://gyazo.com/991b9cdb4a1da21f91a30496bdcdabca.png)
+
+若干わかりにくいのですが、複数の WorkItem を確認すると、開始時刻がほぼ同じだというのがわかると思いますが  
+ローカルスケジューラーがいい感じに並列で処理してくれているのがわかります。
+
+対して、PythonScheduler がどうなっているかというと
+
+![](https://gyazo.com/9333aad7d34c545e3dae20fb4bec3d34.png)
+
+実行結果はこちら。  
+今はスケジューラー側は何もしていないので、このように pythonscript1 の処理が直列で実行されています。  
+つまりは、スケジューラーにまかせたい「各ワークアイテムを割り振って実行してもらう」という部分が  
+基本「実行する以外なにもない」状態が、この PythonScheduler のデフォルトだというのがわかるかと思います。
+
+ということで、この何もない状態から、動作や役割を順番に確認しながら  
+機能を実装していきます。
+
+## Save to Python Script
+
+![](https://gyazo.com/e4915ce0a465d6339ea67ae38e8caf85.png)
+
+まず、PythonScheduler 全体をみてみます。  
+PDG の各ノードはすべて Python で実装可能なのですが、スケジューラーもその例にもれず  
+実際には PythonFile として扱うことも可能です。  
+「Save To Python Script」をおすと、この PythonScheduler ノードの各項目を  
+スケジューラークラスを継承したクラスの関数にして、指定フォルダ以下に保存してくれます。
+
+なので、最終的には作成したスケジューラーは Python ファイルとして共有することになります。
+
+## 処理の流れを確認してみる
+
+色々タブがありますが、関係性がわからないので、全部のコードに、
+
+![](https://gyazo.com/492e32e41de433653518b77bfbfad6d0.png)
+
+このようにタブの名前をプリントするコードを突っ込んでみます。  
+そして ItemCount を 2 にして、実行してみます。
+
+![](https://gyazo.com/610200c6dcb47c0c8dfb12a6577514bb.png)
+
+実行結果。
+整理すると、
+
+![](https://gyazo.com/60779ffbcf9ba9d0e85080cd442b69f6.png)
+
+このようになります。  
+print したけど実際には実行されていない処理もいくつかあるようですが、
+
+topcook で指定の TopNet をクックすると、その段階で「onStartCook」が実行され、  
+すべての処理が完了すると onStopCook が呼ばれる。  
+そのあとに onTick が実行される。
+WorkItem の数だけ、onSchedule が呼ばれ、その中で pythonsript1 の処理が実行される。
+
+現状の関係性はこのようになっています。  
+何となくどこから手を付けていいか見えてきた気がします。
+
+ということで、次回は onSchedule のコードを詳しく見ていきます。
