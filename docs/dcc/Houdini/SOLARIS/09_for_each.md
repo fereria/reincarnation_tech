@@ -2,7 +2,7 @@
 slug: /houdini/solaris/for_each
 title: ForEachの使い方
 description: ForEachの使い方を調べる
-sidebar_position: 30
+sidebar_position: 9
 ---
 
 SOKARIS の ForEach ノードは、特定の Prim に対してや、指定の回数分、バリアントセットにたいして
