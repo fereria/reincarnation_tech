@@ -1,0 +1,184 @@
+---
+title: SOLARISのシーンスケールの話
+description: SOLARISのシーンスケールの話
+sidebar_position: 14
+slug: /houdini/solaris/scene_scale
+---
+
+タイトルの通りですが、HoudiniSOLARIS でのシーンスケールの取り扱いについて  
+初見殺しなところがあったので検証しつつ整理していこうと思います。
+
+## Houdini のシーンスケールと USD のシーンスケール
+
+Houdini の SOP などでは、デフォルトでは 1unit = 1meter で扱われています。
+対して、USD のデフォルトのシーンスケール（metersPerUnit）は、 0.01 つまり、1cm になっています。
+それを前提として、SOLARIS ではどのようになっているかを確認していきます。
+
+### SOP
+
+![](https://gyazo.com/eca1ec85dee88562d43ecd8f8d902977.png)
+
+まず、SOP 側を確認します。
+
+![](https://gyazo.com/1e2440d4cd007c952e280085a9c4bef4.png)
+
+Size = 1 の Cube を作成しておきます。
+
+![](https://gyazo.com/872cc027c4b9b8a006c7b226883ba367.png)
+
+Houdini の Grid は、 Grid Spacing 0.2 なので、
+
+![](https://gyazo.com/1acec8251d2d59c47a7427658bb71a0a.png)
+
+大きさ１の Cube ができています。
+
+![](https://gyazo.com/cab821b1d4dbc5bd0e3621d68cfaaa0a.png)
+
+上のデータを SOP Import で SOLARIS に持ち込み、USDROP で usda 形式で出力します。  
+ファイルを見ると、 metersPerUnit は 1 で出力されているのがわかります。
+
+これは「まぁそうだよね」という結果だと思われます。
+
+## 0 からはじめた場合
+
+では、SOP Import 等を使用せず作業を開始した場合はどうなるのか確認してみます。
+
+![](https://gyazo.com/d8235161a7ec6a3dc306e1986a818590.png)
+
+まずは何もしていない Null ノードを作り、シーンスケールを確認します。
+
+![](https://gyazo.com/bef561ab799699d95a95b13d09789d19.png)
+
+デフォルトの場合も metersPerUnit は「１」なので、  
+SOLARIS も特に何もしていない場合、メートルだというのがわかります。
+
+つまりは、基本 SOLARIS も SOP などと同様に何もしなければ「メートル」で世界が扱われていて  
+メートルでもろもろが扱われているというのがわかりました。
+
+## metersPerUnit が 0.01 (cm) のデータの場合
+
+世の中すべてがメートルであれば、おそらくここまで頭を悩ませることはないでしょう。  
+しかし、不幸なことに Maya は基本 cm で扱います。  
+（厳密にはメートルにもできるが、色々と問題が起きる）
+
+なので、SOLARIS に metersPerUnit = 0.01 のデータを読み込んだ時に  
+どうなるか確認していきます。
+
+![](https://gyazo.com/afe43502b0664fe9433782e77473886e.png)
+
+metersPerUnit が 0.01 のデータを用意し、
+
+![](https://gyazo.com/e1764d14c5435a77dbd463a863bf4d85.png)
+
+それ以外の数値は同じ（1 辺の長さ１の Cube）を作ります。
+
+![](https://gyazo.com/45ea00e7d4bff5cacbaf91e2450d321c.png)
+
+作成した USD を LoadLayerForEditing で読み込み、確認します。
+
+![](https://gyazo.com/3ee6362c5009f13e3c440aa1b4063290.png)
+
+MetersPerUnit は 0.01 で読み込まれました。
+
+![](https://gyazo.com/3027f6c71a3a168fb91346b403e8c2a5.png)
+
+読み込まれたモデルを確認すると、相変わらず 1 unit (1m)のままで、どうやら metersPerUnit は無視されている様子。
+
+![](https://gyazo.com/d971cd03957c958e9025598346963a01.png)
+
+次に、Reference ノードを使用して、 0.01 のシーンをロードします。
+
+![](https://gyazo.com/4475c091ad95f589d6f209ba472be032.png)
+
+この状態でシーンスケールを確認すると、「１」になっているのがわかります。
+
+![](https://gyazo.com/928ba3faac07827e9e8d9acf3968e7a4.png)
+
+読み込まれている Cube をみてもみためは 1 メートルのキューブのままです。
+
+読み込み方によって、現在の metersPerUnit が違うことに気が付くと思います。  
+これはどういうことかというと、  
+Refernce ノードは、Input1 の Stage に対して Reference を「追加」するため  
+追加する Stage の metersPerUnit になっていて  
+対して Load Layer For Editing で開いたシーンは、その名の通り「そのシーンを編集するために開く」  
+Python 的に言えば Usd.Stage.Open() しているような状態なので、  
+指定したレイヤーの metersPerUnit になっているということになります。
+
+![](https://gyazo.com/87b890352257d6f0fb543bddc60cec7b.png)
+
+では、この 2 つのシーンを組み合わせた場合どうなるのか？というと  
+SOPImport(1m) に metersPerUnit の Cube をサブレイヤーで合成した場合。
+
+![](https://gyazo.com/908301850a50998568d247be5d258b94.png)
+
+Cube の大きさは metersPerUnit を無視して同じ数値として扱われます。
+
+![](https://gyazo.com/47be943342d7a71cf2fcd7db85cd7e7e.png)
+
+metersPerUnit = 0.01 をリファレンスした場合も同様で、同一のものとして扱われます。
+
+![](https://gyazo.com/eb8f39953169c9ae7eb06b030e5f206b.png)
+
+念のためサブレイヤーも試してみます。
+
+![](https://gyazo.com/1b5aa43b5f27e70c7b4db4ed0292058b.png)
+
+レイヤー自体は 0.01 ですが、Input1 の Stage 側のほうが強いので、metersPerUnit は「１」になります。
+そして見た目も同じ大きさ（metersPerUnit は無視）になります。
+
+### おまけ
+
+LoadLayerForEditing でロードした場合、開いたレイヤーの metersPerUnit が使用されてていましたが、
+![](https://gyazo.com/c5784ec4e8b9cbfc044f51beb8eb0369.png)
+
+オプションの Copy LayerMetadata to Stage RootLayer を「Auto」から「No」に変更すると
+
+![](https://gyazo.com/4b3bab5c53c7daf87578c5f2a691c08f.png)
+
+レイヤーの情報は無視されて、デフォルトの 1 になっているのがわかります。
+これは、metersPerUnit がレイヤーのメタデータとして保存されているからで、オプションの通り「RootLayer」にコピーしない と、metersPerUnit もコピーされないというわけです。
+
+## ConfigureLayer
+
+ここまででわかったこととしては、
+
+1. metersPerUnit の値は無視される
+2. metersPerUnit の値は、現在の Stage に対して指定された値が使用される
+
+というのがわかりましたが、それはそれとして SOALRIS には「ConfigureLayer」というノードが用意されています。
+
+![](https://gyazo.com/2e910fd56082f537f0f5b2d3e9c9f895.png)
+
+このノードを使用すると、現在のレイヤー（Stage の EditTargetLayer）の metersPerUnit を  
+指定の値に書き換えます。
+
+そもそも、 metersPerUnit はどこに保存されているかというと、  
+各レイヤー（＝ USD ファイル）ごとに保存することができます。  
+複数のレイヤーをサブレイヤーで合成している場合は、最も強いレイヤーの metersPerUnit になります。
+
+この ConfigureLayer では、値を書き換えることはできるのですが  
+あくまでも「そのレイヤーの値を書き換えているだけ」であって、現在の Stage の値を変換しているわけではありません。  
+最終的にどのように扱うかは、扱うツール側にゆだねられているわけです。
+
+## まとめ
+
+ここまでわかってきたことをあらためてまとめていきます。
+
+1. USD のデフォルトの metersPerUnit は 0.01
+2. Houdini の SOP などは 1unit = 1m
+3. SOLARIS も同様に metersPerUnit = 1
+4. SOLARIS 上では metersPerUnit の値は無視される
+5. metersPerUnit は Layer の Metadata として保存されている
+6. ConfigureLayer で変更可能だが、あくまでも Metadata を変更するだけ
+7. ノードの組み合わせ次第では、metersPerUnit の値は（見た目上変化がなくても）変わることがある
+
+嫌な予感しかしないですね。
+
+Houdini 単体であれば、あまり意識しなくてもよいのですが  
+他のアプリケーションでも読み込む場合注意が必要になってきます。
+
+基本、単位は共通化しておくのが正解で、バラバラなものが混在することは避けたほうがいいのは当然ですが  
+場合によっては避けようがないこともあると思います。
+
+その時に困らないように、どのソフトウェアがどのような単位になっていて、  
+出力時にどうするのかなど確認しないと、意図しない挙動になると思います。
