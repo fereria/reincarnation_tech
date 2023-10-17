@@ -1,0 +1,164 @@
+---
+slug: /houdini/pdg/basic/08
+title: WorkItemとAttributeを理解する
+description: 実行するときのパラメーターの扱い方について
+sidebar_position: 8
+---
+
+PDG は Node と WorkItem という構造になっています。  
+Node は、プラグラミングでいうところの関数のようなもので  
+パラメーターを与えることで、決められた処理を実行する、具体的に実行するひな形を定義しています。  
+対して WorkItem は、その処理のひな形に対して与えるパラメーター、引数の塊のようなものです。  
+なので、PDG で処理を作っていく場合は、様々な形でアトリビュートを指定し  
+決められたコマンドラインや Python スクリプトなどにアトリビュートの値を渡して  
+複数の処理を実行していきます。
+
+## 基本
+
+![](https://gyazo.com/030aa73374da88e7b6c34d18d92f0034.png)
+
+まず、アトリビュートを指定するには、AttributeCreate ノードを使用します。
+
+![](https://gyazo.com/6d9f03f1788ab6660500585de41fabd9.png)
+
+アトリビュートには型が用意されていて、追加したいパラメーターの型に＋で追加します。  
+AttributeCreate ノードで複数のアトリビュートを追加することができます。
+
+![](https://gyazo.com/61b4aa73e3cb2eef7db04cbc828adf96.png)
+
+AttributeCreate ノードの次に GenericGenerator ノードを追加し、実行すると
+次のノードで生成される WorkItem にアトリビュートを追加できます。
+
+![](https://gyazo.com/f61a28c01b59169d8d5aa10254141c52.png)
+
+TaskGraphTable を確認すると、SOP の GeometrySpreadSheet と同じように、WorkItem の  
+アトリビュートを確認することができます。  
+上の画像を見ると、AttributeCreate で追加した aaa アトリビュートが増えていることがわかります。
+
+![](https://gyazo.com/96500b14b8ff917a5c620c0e88121720.png)
+
+追加したアトリビュートは、Expression ならば @AttributeName
+
+```python
+print(work_item.attribValue('aaa'))
+```
+
+python ならば、 attribValue などの関数で、値を取得できます。
+
+## PyObject と File
+
+アトリビュートの型には、おなじみの String や Int、Float などのほかに「PyObjects」や「Int」が用意されています。  
+名前からおおむね想像ができますが、この 2 つを使用するとより複雑なパラメーターを  
+アトリビュートとして WorkItem に持つことができます。
+
+### PyObject
+
+まずは PyObject。  
+これはその名の通り Python のオブジェクトを持つことができます。  
+が、実質的にはリストやディクショナリを扱うために使用するのがこの PyObject です。
+
+![](https://gyazo.com/e649d05bc320c5697f5b1b241ca28f56.png)
+
+このように、Int 型のリストを定義します。
+
+```python
+for i in work_item.attribValue('listValue'):
+    print(i)
+```
+
+PythonScript 側で、パラメーターを取得してみると、文字列ではなくリスト型として扱えているのがわかります。
+
+![](https://gyazo.com/4455ef11ed707568b30c2f9b3867cbfc.png)
+
+辞書型も同様で、
+
+```python
+attr = work_item.attribValue('dictValue')
+for key in attr.keys():
+    print(key)
+    print(attr[key])
+```
+
+このように、辞書型の値を保存しておくことができます。
+
+### File
+
+最後に File。  
+これはその名の通り、WorkItem の InputFile や OutputFile 等のような  
+外部ファイルのパスなどを扱う時に使うアトリビュートです。
+
+![](https://gyazo.com/7c6c38536135a3c26aeaed4888312e5e.png)
+
+個のアトリビュートは、Create As で「outputFile」にすると、
+
+![](https://gyazo.com/ea4440a040f2f58a8149dd59137116dd.png)
+
+WorkItem の Output という特殊な項目にファイルを追加することがｄけいます。  
+そして、実行時にファイルがあるかのチェックをしたり、WorkingDirectory にコピーするなど  
+PDG の処理内でファイルを扱う時に、便利な機能を提供します。
+
+![](https://gyazo.com/7ca1ec37136d842c5aba58d3bea5aaa6.png)
+
+Attribute Create で作成したアトリビュートも、次の WorkItem 側で Input で取得できます。
+
+![](https://gyazo.com/3fb7c1f141a19aa306ae62529e48d502.png)
+
+もう１つの特徴が、File アトリビュートは、File Tag を追加できます。  
+これは、
+
+![](https://gyazo.com/45710662d9abfc5c533d38202c333d37.png)
+
+たとえば、Input ファイルが複数あるような場合に「Geometry のファイルに対して何かしたい」  
+といったように、ファイルをフィルタリングするときに使用できます。  
+この FileTag は、上のように file/geo のように / で階層のように指定できます。
+
+```python
+print(work_item.inputFilesForTag('file'))
+```
+
+/で階層化されたタグを指定した場合、 file のように指定すると file/geo も file/text も  
+取得できます。  
+もちろん、このタグは file/geo などの 2 つだけではなく file/geo/usd のように  
+何階層でも指定できます。  
+これを使用して、複数の Input に対して処理をする...といったことが簡単に書けるようになります。
+
+## 配列
+
+![](https://gyazo.com/946a81c863edd48b33cfdc9c0026b350.png)
+
+PyObject を使用すれば配列や辞書型を扱うことができますが、  
+それ以外にも配列のアトリビュートを持つことができます。それが AttributeArray です。
+
+![](https://gyazo.com/ebebcb1e2a0168c32f8e079dceef3182.png)
+
+```python
+print(work_item.attribArray("attrName"))
+```
+
+![](https://gyazo.com/49f47eceb0e5cd0167392b383cac18b8.png)
+
+これで、配列になりました。
+
+## Promote
+
+おおむね AttributeCreate と配列があれば大丈夫そうですが、それ以外に使いそうだなという  
+Promote も確認します。  
+この Promote は、特定の Attribute を別の方に変換することができます。
+
+![](https://gyazo.com/07d434adbdfd9c4e9cb170a83c970f52.png)
+
+まず、String 型でこのような配列を定義します。  
+これはすべて String 型です。
+
+![](https://gyazo.com/26b550f466fd04f29158a0f049d34660.png)
+
+Attribute Promote で、作成した attrName で、OutputFiles に変更します。
+
+![](https://gyazo.com/35753e15294d19072e74d011da3838fd.png)
+
+これで Output に、file タグでアトリビュートを追加できました。
+
+これで、アトリビュート周りは把握できたので  
+あとは実行したい処理の数だけ WorkItem ＋ Attribute を準備していけば良いはず！！！
+
+次回に続く。
