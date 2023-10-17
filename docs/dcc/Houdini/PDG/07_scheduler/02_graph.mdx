@@ -15,7 +15,7 @@ TOP Network は /tasks 以下に TOP Network ノードを作ると使用でき�
 
 ![](https://gyazo.com/aad0b1ca08da67403687858b4a671355.png)
 
-TOP Network 内のノードは、ノードと、WorkItem で構成されています。
+TOP Network 内のノードは、ノードと、WorkItem で構成されています。  
 ノードは、GenericGenerator2 や、PythonScript2 のようなある処理を実行するための構造（処理のテンプレート的なもの）を言います。  
 対して、実際に実行するのは WorkItem と呼ばれる緑の〇ポチです。  
 この WorkItem は、実行するタスクのパラメーター（アトリビュート）の集合体です。
@@ -27,7 +27,8 @@ TOP Network 内のノードは、ノードと、WorkItem で構成されてい�
 
 この WorkItem は、関係性を定義することができます。  
 たとえば、前の工程の成果物を受け取り、次の工程で実行したい...というのはよくあることです。  
-このような、実行したときの結果を受け渡す場合、WorkItem には output / input という特殊なアトリビュートを追加することができます。 （ <AutoLinkTitle url="/houdini/pdg/basic/05" /> このあたり参考）  
+このような、実行したときの結果を受け渡す場合、WorkItem には output / input という特殊なアトリビュートを追加することができます。  
+ （ <AutoLinkTitle url="/houdini/pdg/basic/05" /> このあたり参考）  
 個のアトリビュートは、WorkItem の依存関係を使用して  
 いい感じに受けわたしできるようになっています。
 
