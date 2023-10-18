@@ -1,0 +1,111 @@
+---
+slug: /houdini/pdg/basic/09
+title: HDA Processor を使ってみる
+description: まずはHDA Processorの基本的な使い方
+sidebar_position: 9
+---
+
+PDG には指定した HDA を実行することができる HDA Processor があります。  
+スケジューラーの動き方を調べる前に、まずは基本的な使い方を確認していきます。
+
+## HDA を用意する
+
+まずはサンプルの HDA を用意します。
+
+![](https://gyazo.com/fd92138108888af14f09375b5362e64a.png)
+
+![](https://gyazo.com/f9fb76a6a51d31df19cb95d4ece323b2.png)
+
+Cube 数、保存先、Export ボタンの 3 つのアトリビュートで
+
+![](https://gyazo.com/2e0bad3db56c188b0cf897f1a56bccda.png)
+
+CubeNum の数だけ Cube を複製し、ExportPath に USD で出力するというシンプルな HDA です。
+
+## HDA Processor を使用する
+
+![](https://gyazo.com/a72f45a6d12de4def00d04602602f940.png)
+
+HDA を実行する場合は HDA Processor を使用します。
+
+![](https://gyazo.com/8bcc7d978eb323d547363676daa2d9e2.png)
+
+使い方は、 実行したい HDA を HDA File に指定し、  
+（同じ Hip 内に HDA のもとになる Subnet がある場合は Template Node に入れる）
+
+![](https://gyazo.com/0d9f5db52ca5ac5a3de617de681784e7.png)
+
+Add HDA Parameters の Update HDA Parameters を押します。
+
+![](https://gyazo.com/80275ac04e6366aefe1d2e778c9329f1.png)
+
+HDA Parameters に、指定した HDA のアトリビュートが出てくるので  
+ここに実行時のパラメーターを渡します。
+
+![](https://gyazo.com/04b0d33d5634d43670968aeecefe016c.png)
+
+ここには、WorkItem のどの値を入れるかを指定するので  
+今回は、Index 数＋１の Cube を作るシーンを、WorkItem 数分作るようにしてみます。  
+PushButton の処理を実行する場合は、チェックを入れておきます。
+
+![](https://gyazo.com/4b2539245227b55ef552899174fa7718.png)
+
+GenericGenerator で WorkItem を５個作るようにして、実行してみます。
+
+![](https://gyazo.com/f8239f3dea6a09ec2e2a437d1b7eb5e7.png)
+
+無事ファイルが出力できました。
+
+![](https://gyazo.com/f59a4e12a15f3e81817d00cde8f76a06.png)
+
+WorkItem のパラメーターを確認します。  
+まず、この HDAProcessor はデフォルトでは Out-Of-Process で実行されます。
+
+![](https://gyazo.com/28307253cec1c16604ad66583cb1c713.png)
+
+![](https://gyazo.com/c31a4d7523c62123971bb806bc49b48e.png)
+
+Temp ディレクトリを確認すると、このように実行 PC に HDA がコピーされ
+
+![](https://gyazo.com/c1cebac7213424384bcd37883514d333.png)
+
+必要な Python がコピーされ、hdaprocessor.py 経由で HDA が実行されます。
+
+この辺りは次回あたりに深堀していきます。
+
+## AssetOutput
+
+実行はできたのですが、生成されたファイルは Output 扱いではなく単なるアトリビュートになっています。  
+ですが、生成されたものは次の工程でも使うことがありそうなので  
+OutputFile として出力しておきたい。  
+そんな時にそれっぽい「Asset Outputs」というのがあります。
+
+この AssetOutput とは、指定した HDA の Output 結果を bgeo で出力してくれるという機能です。
+
+![](https://gyazo.com/cf4c9956f16403cd5e6c0b5d8ce555c3.png)
+
+HDA を少し直して Output につなげておきます。
+
+![](https://gyazo.com/4be6b6c8daa108378dea84d2898c9da1.png)
+
+出力したいファイル名を入れます。
+
+![](https://gyazo.com/21188b4c90035845f531a4ec51726d73.png)
+
+実行すると、output のジオメトリが bgeo で出力されます。
+
+ただし、この場合はかならず bgeo になるので、usd を OutputFiles にはできません。
+
+## Attribute Promote
+
+![](https://gyazo.com/81fc2edd0c082cfa944931c077ae2095.png)
+
+そこで使うのが AttributePromote。  
+HDA のアトリビュートは、WorkItem のアトリビュートとして保存されているので  
+exportPath を OutputFiles にしておきます。
+
+![](https://gyazo.com/627e829f38bde69eb17fb65cfbdcfffe.png)
+
+これで Output に HDAProcessor で作成した USD を受け取ることができるようになりました。  
+基本的なことはこれでだいたいできそうなので  
+次はスケジューラーとも絡めてもう少し詳しく調べていこうと思います。
