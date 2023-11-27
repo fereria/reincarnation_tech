@@ -1,0 +1,97 @@
+---
+slug: /houdini/solaris/inspect_layers
+title: SOlARISでUSDアスキーでレイヤー構造を眺める
+sidebar_position: 17
+---
+
+お題の通りなのですが、SOLARIS で各ノードの編集やレイヤー構造をアスキーで眺めたいなー  
+という時に超便利な「Inspect Layers」という機能があるので  
+それを使用して何ができるのか、どう使うのを説明したいと思います。
+
+## 使い方
+
+InspectLayers は、現在選択している LOP のノード段階での「レイヤースタック」と  
+各レイヤーをアスキーで眺めることができます。
+
+それだけ言われても...と思うので、まずは使っていきます。
+
+![](https://gyazo.com/a1597d3e1acb76ae02b9b5903ca62240.png)
+
+開く場合は、確認したいノードを右クリックし、LOP Actions ＞ Inspect Layers します。
+
+あるいは
+
+![](https://gyazo.com/383f320c8d6a8b033792f645b1f49fb1.png)
+
+Panel で SOLARIS ＞ Scene Graph Layers を選びます。
+
+![](https://gyazo.com/e52a214f0cbaa81e41110b39c2fc1ef6.png)
+
+基本的な UI はこのようになっていて、現在選んでいるレイヤースタックと  
+各レイヤーごとのメタデータ（ Up Axis や Meters Per Unit ）を確認できます。
+
+![](https://gyazo.com/87e5787caba53ac5c2f81a17ddc8efb7.png)
+
+例として、このような Pighead を Transform で動かしているようなシーンを表示した場合。
+
+![](https://gyazo.com/1262a44e5f11a1bfc215b75842a6efac.png)
+
+Scene Graph Layers の表示はこのようになります。  
+LOP のノードだけだと、レイヤーの構成がわかりにくいですが、このビューを使用すると  
+今の段階でどういうレイヤー構成になっているのかすぐわかると思います。
+
+![](https://gyazo.com/c553511891ce4839976e5a622b8a6d95.png)
+
+LOP のノードは、現在のステージのうちいずれかのレイヤーに対して変更を行います。  
+Photoshop で表すならアクティブなレイヤーに対して絵を描く...ように、  
+あるレイヤーに対して変更情報を書き込みます。
+
+SceneGraphLayers を見ると、文字がグリーンになっているレイヤーがあるのですが  
+これが「現在編集対象になっているレイヤー」を表しています。
+
+## アスキーを確認する
+
+![](https://gyazo.com/2ce8e37505cee36a9e4cd9d79381da23.png)
+
+各レイヤーの中身は、アスキーで確認できます。  
+SceneGraphLayers のこのアイコンを押すと、選択したレイヤーをアスキーファイルで  
+見ることができます。
+
+![](https://gyazo.com/963f1ffec00eb2b457a3d5dcdb59b6d5.png)
+
+Transform でオブジェクトをうごかしているのですが、  
+xformOp:transform:transform1 に、transform1 ノードで移動した情報が記述されています。
+
+## NewLayer した場合
+
+今度は、NewLayer を作ってみます。
+
+![](https://gyazo.com/cc1cd7d39e14a129c5d93e2ac62324f9.png)
+
+Start New Layer ノードを使用すると、新しいレイヤーを作成し、編集対象にします。
+
+![](https://gyazo.com/36de15e86bcf5a347d3d4751fea798f9.png)
+
+こんな感じで、NewLayer したあとに Cube を追加します。
+
+![](https://gyazo.com/9e933b4401457e84cc24b99579306eae.png)
+
+SceneGraphLayer を見ると、新しくレイヤーが追加され  
+追加されたレイヤーが編集対象になっているのがわかります。
+
+![](https://gyazo.com/4cdb2eba3817d99275644f0ceee96d5d.png)
+
+新しく追加されたレイヤーのアスキーを確認すると、Cube が定義されているのがわかります。
+
+## まとめ
+
+SOLARIS を使用していると、「すごく便利だけど、今どこを編集しているのかわかりにくい」  
+みたいなことがあったのですが  
+Scene Graph Layers を使えば現在の構成や編集がわかりやすく確認できることがわかりました。
+
+アスキーの読み方を覚える必要がありますが、コツがわかれば簡単なので
+活用すると USD や SOlARIS の使い方が理解しやすいのかなとおもいます。
+
+### 参考
+
+-   <AutoLinkTitle url="/usd/python/usda_cheatsheets" />
