@@ -1,0 +1,300 @@
+---
+slug: /houdini/solaris/destructive_processing
+title: Houdini SOLARISの USDの破壊・非破壊 処理の話
+sidebar_position: 16
+---
+
+[Houdini アドベントカレンダー 2023](https://qiita.com/advent-calendar/2023/houdini) 5 日目は、SOLARIS を使用して USD を編集した時の「破壊・非破壊」の話です。
+
+## プロシージャルシーングラフ
+
+去年の USD アドカレで書いた記事 <AutoLinkTitle url="/usd/procedual_scenegraph" /> に詳しく書かれていますが、USD というフォーマットの大きな特徴として  
+複数のシーングラフを「非破壊」で 1 つのシーングラフに「構築」することができます。
+
+しかしながら、SOLARIS を使用していると
+
+<Marker>「Houdini の機能としてのプロシージャルに構築する」</Marker>のと <Marker color="cyan">
+	「USD 的なプロシージャル」
+</Marker>
+という 2 種類の「非破壊」が存在しています。
+
+この 2 つに何の違いがあるかというと、  
+「USD 的なプロシージャル」は、Houdini 以外の他のツールでも「非破壊」に扱えますが  
+「Houdini の機能として」は、<Marker>あくまでも Houdini の機能</Marker>なので、Houdini 内ではプロシージャルですが  
+Export したあとの USD はプロシージャルではなく、USD 的には破壊的処理を行っているケースがあります。
+
+SOLARIS 上では、どちらのケースであっても対応できるし、  
+USD 的には非破壊な処理のほうがスタンダードな（個人の感想です）感すらありますが、
+明確に区別されているわけではないので USD の構造や考え方を持っていないと  
+意図しない編集になってしまうことがあります。
+
+というわけで、今回は SOLARIS 上でなにか処理をするときの  
+非破壊なやり方と破壊的なやり方について合わせて説明していきます。
+
+## 階層を変える
+
+階層を変える処理は、基本的には破壊的処理です。  
+ですが、当然のことながら非破壊な方法で階層変更をすることができます。
+
+### 非破壊な方法
+
+まず、非破壊な方法。  
+どうするかというと「Reference」を使用します。  
+USD の Reference は、ある Prim を別の Prim に対して「接ぎ木」します。  
+ファイルを指定して Reference するイメージがありますが、ファイル指定の場合は  
+Reference するファイルの DefaultPrim を接ぎ木しています。  
+（なので、Root 階層以下に複数ある場合は、指定の Prim の階層以下だけ読み込まれる）
+
+なので、SOLARIS 上でやる場合は Reference ノードを使用します。
+
+![](https://gyazo.com/5b41be36648554c76a046477f3d018bc.png)
+
+このような Reference ノードを使用して、
+
+![](https://gyazo.com/c42c3f3b5c1e1a38b82c31a29601b79c.png)
+
+Cube が 1 つだけあるような USD ファイルを読み込みます。  
+現状、この Cube はルート以下にありますが、ルート以下ではなく GeomPrim 以下にいてほしいとした場合。
+
+![](https://gyazo.com/bae1d0b3e6ba4711204b2c5d24b85f49.png)
+
+リファレンスノードの「Primitive Path」に、GeomPrim を足して読み込むか、
+
+![](https://gyazo.com/2a72a3674c3b679fc05293cfb795b090.png)
+
+GraftStage ノードを使用して移動すると、やりたいことが可能になります。
+
+この場合、元のレイヤーは編集せずに、階層を作ったうえで「リファレンス」で  
+指定の階層に読み込んでいるので非破壊です。  
+Cube のモデルが変更されれば、今回作成したシーンも変更されます。
+
+対して、これを「破壊的に」編集する場合は以下のようになります。
+
+### 破壊的な編集
+
+破壊的な変更をする場合は、Reference を使用しなければ OK です。
+
+![](https://gyazo.com/6a6881f0c788211a732b56eeb8453f61.png)
+
+LoadLayerForEditing ノードを使用して USD ファイルを読み込みます。  
+この場合「Editing」とあるとおり、<Marker color="cyan">リファレンスではなく開いているレイヤー</Marker> が ロードされています。
+この状態で階層構造を編集しようとした場合、
+
+![](https://gyazo.com/9f064e59166b2a238385b3fb38fe7c30.png)
+
+GraftStage 後は、USD のレイヤーが編集されているので元のデータを「破壊的に」変更しています。  
+ただし、SOLARIS 上は「プロシージャル」に組まれているので、Houdini に限れば非破壊で処理が行われます。
+
+この２つの例の何が大きく違うかというと「どのレイヤーを編集しているか」です。  
+USD にはコンポジションと呼ばれる機能があります。  
+これは、レイヤー（USD ファイル）を複数に分割することで、同時に、かつ、非破壊で編集するための仕組みです。
+
+EditLayerForEditing の場合、コンポジションを使用しているのではなく  
+いわゆる「シーンを開いて編集する」ノードです。  
+なので、GraftStage や他の処理を使用する場合も「読み込んだレイヤー」を編集します。  
+対して Reference は、現在のステージ（空のレイヤー）を NewScene して  
+そこに Prim を新しく作り、指定の USD ファイルを参照で読み込みます。  
+なので、読み込みたいファイルには触らず、新しいレイヤーを編集しています。
+
+## Prim の複製
+
+USDPython でやろうとした場合に、地味に難しいのが「Prim の複製」です。  
+複製なので当然のことながら元のシーンを編集しないと行けなそうですし、そうなると破壊的処理に見えます。  
+ [Omniverse の API](https://docs.omniverse.nvidia.com/kit/docs/omni.usd/latest/omni.usd/omni.usd.duplicate_prim.html) には duplicate_prim という関数が用意されていますが、  
+ USD の PythonAPI を見ても、複製に関してはパッとみて方法がわかりません。
+
+あくまでも自分の理解ですが、USD の API は、破壊的な編集というのは非常に見つけにくいです。  
+上で上げた「階層を変える」という処理も、PythonAPI でやる場合 <AutoLinkTitle url="/usd/python/reparent" /> のような Batch 処理を書いて、複数のレイヤーに対して処理をする必要があり  
+わりと初見殺しです。  
+（階層を変えず Reference で指定の階層に接ぎ木するのはわかりやすい）
+
+![](https://gyazo.com/ba208bb7fe141d8cd5560d91fa8706cf.png)
+
+SOLARIS の場合は、「Duplicate」ノードが用意されているので複製も簡単にできますが  
+よく見るとこの Duplicate 処理も、デフォルトの状態だと「非破壊」で行われています。
+
+![](https://gyazo.com/c3197c19574ba72b8915e5c0195d9d6d.png)
+
+入力の CubePrim を Duplicate した場合、ソースの Prim（cube3 )以外は、緑色の文字＝コンポジションがある  
+状態になっています。
+
+![](https://gyazo.com/4ae26fa2156e9ed1e77e0a19a9449ab9.png)
+
+アスキーで確認すると、同じレイヤー以下の Prim を InternalReference (ファイルではなく Prim を指定して Reference) しています。
+
+![](https://gyazo.com/6559af989f8ca25466cb9b5f23256e78.png)
+
+Reference Type を「Copy」にすれば「破壊的に」Prim を複製できます。
+
+これが何を意味するかというと、  
+破壊的処理な思考で考えると、PythonAPI などで対処方法をみつけられないものの  
+非破壊な考え方で別の解法が存在する...というを意味しています。
+
+SOLARIS は、USD 的な解法に比較的寄り添って作られているので  
+一見すると破壊的な処理に見えても非破壊で USD が構築されています。  
+（オプションで破壊的にもできる）
+
+## Extract
+
+![](https://gyazo.com/972e896fd48d6806c7b417444539dfa6.png)
+
+ある USD ファイルの中の「特定の Prim」だけを切り出したいようなことがある場合、  
+Python で書こうとするとそこそこめんどくさいです。  
+これをやる場合も破壊的な方法と非破壊な方法があります。
+
+### 非破壊な Extract
+
+USD のシーンのうち、ある一部分だけを切り出したいケースは  
+部分的に非破壊な対応が可能です。
+
+最初に挙げた親子化の変更にあるように「Reference」を使用すると  
+あるレイヤー（USD ファイル）の Pseudo-Root (/直下)以下の Prim を読み込むことができます。
+
+![](https://gyazo.com/44b860a0024ef84e0ff516fad997e001.png)
+
+サンプルとして、このようなシーンを作成します。
+
+![](https://gyazo.com/990f144d993add30c410f7aafa58c1e6.png)
+
+![](https://gyazo.com/5b9f727aefd14bb038952bdec171afbc.png)
+
+ConfigureLayer で、Merge した結果を別レイヤーに保存し、
+
+![](https://gyazo.com/c8b6e5934d5ca253a3ae8fdaa979303b.png)
+
+そのファイルを Reference ノードで読み込みます。  
+そして ReferencePrimitive を、部分的にロードしたい Prim に変更します。
+
+![](https://gyazo.com/bca1fca720387dca830b5c1dc0de006f.png)
+
+これで、指定の Prim 以下だけを切り取ることができます。  
+ただし、この場合はあくまで指定する Prim は Pseudo-Root 直下にあるもののみです。  
+それ以下を取得しようとした場合は、（もしかしたらほかに方法があるかもですが）  
+指定 Prim 以外を非 Active にします。
+
+![](https://gyazo.com/cce9684f869de1939d15b7152517e6d0.png)
+
+この場合は、Prune ノードを使用して、
+
+![](https://gyazo.com/692b180622fb84ee9644354d28ded42e.png)
+
+ExcludeRules で、切り出したい Prim だけを有効化し、Pruning Options を「Deactivate」  
+にします。
+
+![](https://gyazo.com/f46f6e2826a2b8fa65725d65d072061f.png)
+
+これで特定 Prim だけを有効化できます。
+
+### 非破壊的な Extract
+
+破壊的な Extract はいくつか方法がありますが、  
+SOALRIS の場合は専用のノードが用意されているのでこれを利用するのが一番簡単です。
+
+![](https://gyazo.com/a3034315a63bab5364a1bdb3c03889ec.png)
+
+19.5 から追加されている「SplitScene」は、その名の通り Input の Stage を  
+指定のルールに基づいて 2 つに分割します。
+
+このノードはヘルプにも
+
+> This node performs destructive editing of the scene graph
+
+とある通り、シーングラフを破壊的に編集します。
+
+![](https://gyazo.com/4f52917ecc06a8fbc156045f4e283e44.png)
+
+FirstOutputPrimitives が、Input の Stage のうち部分的に切り出したい Prim の Path を入れます。  
+（パターンマッチングも可能）  
+この FirstOutputPrimitives に該当する Prim が Output1、該当しない部分が Output2 に  
+出力されます。
+
+:::info
+Common Primitives は、Output1/2 両方で出力したい Prim を指定する。  
+これを利用して、破壊的に指定した部分のシーングラフを切り出すことができる。
+:::
+
+## Flatten
+
+ここまで非破壊な処理と破壊的な処理を両方とも見てきましたが、  
+「破壊的な処理」の多くは USD の機能というよりも、Houdini が用意してくれている機能であることが多いです。  
+それらのノードは中を見てみるとこの「Flatten」と呼ばれる処理を呼んでいます。
+
+この Flatten というのが何かというと、USD は 1 つのファイルで構成されているわけではなく  
+複数のファイルを合成することで構成されています。  
+これらの複数のファイルで構成された状態を 1 ファイルに合成する処理を「Flatten」  
+と呼びます。
+
+この場合、Reference や SubLayer は当然のことながら、VariantSet などもすべてなくなります。  
+USD を「破壊的に」扱う場合というのは、つまりはこの Flatten を実行することを指します。
+
+![](https://gyazo.com/41e53937384ecc8b75bda57206d01214.PNG)
+
+これを行うのが、「Configure Layer」ノードの「Flatten Input」です。  
+（これ以外にも USD ROP などの Output 系ノードにもあります）
+
+![](https://gyazo.com/7db3bc68d8621ca314609db53b7b130c.png)
+
+少し話はそれますが、「Flatten」という処理について軽く触れておきます。
+
+Flatten には、「FlattenInputLayers」と「FlattenInputStage」の 2 種類があります。  
+FlattenInputLayers は、いわゆる「サブレイヤー」で合成している部分だけを  
+1 レイヤーに統合します。  
+この場合は、VariantSet や Reference などのコンポジションは残ります。  
+FlattenInputStage の場合は、「Stage」なので、現在の合成結果をコンポジションなしにします。
+
+USD の親子化を変更する処理や、部分的な切り出しを行いたい場合  
+サブレイヤーで複数のレイヤーが残った状態だと、すべてのレイヤー（USD ファイル）  
+に対して処理をかける必要が出るため、最低でも FlattenInputLayers で  
+レイヤーを 1 つに統合する必要があります。  
+統合していない場合は、[こんなかんじ](https://fereria.github.io/reincarnation_tech/usd/python/reparent#%E3%82%B5%E3%83%96%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%A7%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%93%E3%81%A0%E5%85%88%E3%81%AB%E5%AE%9A%E7%BE%A9%E3%81%8C%E3%81%82%E3%82%8B%E5%A0%B4%E5%90%88)に、LayerStack（現在の Prim を構成する USD ファイルのリスト）に対して  
+すべて処理をする必要があります。
+
+<AutoLinkTitle url="/houdini/solaris/layer_flatten" /> Flattenについては こちらでも詳しく使用法を書いていますので、参考にしてみてください。
+
+### Prune + Flatten
+
+![](https://gyazo.com/84bcd5663fd604ee21e5576a14b9d9f9.png)
+
+非破壊に部分的な切り出しをしたい場合は、Prune の Deactivate を使用していましたが、  
+この場合はアセットには不要なデータが残り続けるので、データ量は増えてしまいます。  
+「非表示のものはもういらない、破壊してほしい」という場合は  
+Prune の後に FlattenInputStage を入れると  
+指定した部分だけを得ることができます。
+
+![](https://gyazo.com/f547d4f0a0fa9ab53def4b70aa9a19a1.png)
+
+ある USD ファイルからマテリアルだけ切り出す...みたいなことをしたい場合有効です。
+
+## 破壊的な処理をしなければいけない場合とは
+
+ここまでで、USD の編集をする場合の破壊的・非破壊的な処理について書いてきました。  
+階層を変える、複製する、切り出す　といった、一般的な変更であっても  
+USD 的な「非破壊」な扱いと、SOLARIS の機能としての破壊的な編集があるというのが  
+わかるかと思います。
+
+USD の良い点として、非破壊で扱えることがありますが  
+それと同時にこれが、どうしても複雑になりがち、他の編集が  
+意図せず反映されてしまう、等のデメリットになってしまいます。
+
+どのような場合破壊的な処理が必要になるかというと、  
+あえて関係性を残さなくてよい場合など。  
+プロシージャルな処理は Houdini のノードだけで完結し、USD は独立させたい場合。  
+この場合は、破壊的処理として FlattenInputStage で 1 つに固めつつ  
+VariantSet を後段で行うなどの工夫をすると、シンプルな形で構成できます。
+
+対して、依存を残して起きたい（複数のアセットをレイアウトしてまとめたようなアセット）  
+は、モデルが更新されたら、配置アセットを更新してほしいので、  
+USD 的にも非破壊でいてほしいです。
+
+## まとめ
+
+SOLARIS 上では、USD の非破壊・破壊的処理、どちらの処理も意識せずに行えてしまいますが、
+今自分がどの操作をしたいかによって、使い方を分けないと使いにくい USD データになりがちです。
+
+USD アセットとしてどうなっていてほしいか、SOLARIS 上のノードとしてどうなっていてほしいか  
+それによって作り方が変わってくるのですが  
+今やりたい処理が破壊的なのか非破壊的なのか意識すると  
+目的の構造が作りやすくなるのでは？と思います。
+
+アトリビュート・Mesh の分割（SubsetGeom）などもあるのですが、  
+そのあたりはまたいずれ別の記事にしたいと思います。
