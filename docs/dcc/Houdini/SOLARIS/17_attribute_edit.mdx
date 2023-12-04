@@ -1,0 +1,165 @@
+---
+slug: /houdini/solaris/attribute
+title: SOLARISでのアトリビュート削除
+sidebar_position: 18
+---
+
+SOLARIS 内でのアトリビュート処理でいろいろはまったので  
+SOLARIS でのアトリビュート削除についてメモしておきます。
+
+まず、やりたかったこととしては、SOLARIS で Prim に追加された Attribute を削除したい  
+ということです。
+
+USD のアトリビュートはざっくりと分けると 2 パターン存在しています。  
+1 つ目がスキーマに定義されたアトリビュート。  
+もう一つが、それ以外のカスタムアトリビュートです。
+
+USD は、複数のレイヤーを「合成」して構築するため  
+ある１つの USD ファイルを見ただけでは、最終的にどうなるかは決定しません。
+
+![](https://gyazo.com/83a7144718d9823fe9c9754c1cd7d972.png)
+
+たとえば、「 sample_val = 0 」という定義があるスキーマを適応し、  
+LayerA.usd と main.usd がサブレイヤー合成されていたとします。  
+この時、LayerA にはオピニオンはなく、main.usd に「 sample_val = 20」にするという  
+オピニオンがあります。
+
+このような場合は、そもそもスキーマに対してアトリビュートが定義されているので  
+アトリビュートの定義を削除することはできません。  
+その代わりに用意されているのが「Block」です。
+
+![](https://gyazo.com/df6b8d40ad52bdc9329990d924fefdd1.png)
+
+例として、このようにノードを作ります。  
+inlineUSD では
+
+```
+def "sample"(){
+    int sample_val = 0
+}
+```
+
+sample_val = 0 を持つ Prim を作り、 EditProperties で適当に値を編集します。
+
+![](https://gyazo.com/84e905994a17fb60d0033f0af8ef76ee.png)
+
+そして ConfigureLayer を使用して新しくレイヤーを分け、
+
+```
+usd_blockattrib(0,'/sample','sample_val');
+```
+
+Wrangle ノードの[usd_blockattrib](https://www.sidefx.com/ja/docs/houdini/vex/functions/usd_blockattrib.html)で、指定した Prim のアトリビュートを Block します。
+
+Wrangle ではなく Python で書く場合は
+
+```python
+node = hou.pwd()
+stage = node.editableStage()
+
+prim = stage.GetPrimAtPath("/sample")
+prim.GetAttribute('sample_val').Block()
+```
+
+これでも同等の処理になります。
+
+これで InspectLayers を確認すると、  
+![](https://gyazo.com/434ff1d6f482c76257be5bb71bef1ec9.png)
+
+最初のレイヤーには、sample_val = 10 のように、EditProperties のノードの値が入り、  
+最終的なレイヤーは、
+
+![](https://gyazo.com/4ec656a1d5f1d49ecb2ffdc47fe6f8c6.png)
+
+より強いレイヤー側に「None」の値が追加されています。
+
+![](https://gyazo.com/19fb0777c52f7c88b86c6075a17db0a1.png)
+
+Block というのはなにかというと、このようにあるレイヤー（EditLayer）に対して  
+None を指定することによって、弱いレイヤーで編集した値をその名の通り「Block」  
+する機能です。
+
+これは、Attribute の定義が消えたわけではないですが、  
+結果としてパラメーターが無効化され、使用できなくなります。
+
+## CustomAttribute の場合
+
+スキーマに定義されている場合に関しては、アトリビュートは消すことはできないので  
+Block する...というのは順当な気がしますが  
+CustomAttribute、つまりはスキーマに定義されているわけではなく  
+その都度 Prim に足したようなアトリビュートであっても  
+同様に消す手段は（今のところ）見つかりません。
+
+近しい処理としては、
+
+```python
+node = hou.pwd()
+stage = node.editableStage()
+
+prim = stage.GetPrimAtPath("/sample")
+
+for spec in prim.GetPrimStack():
+    print(spec)
+    if 'sample_val' in spec.attributes:
+        spec.attributes['sample_val'].ClearDefaultValue()
+```
+
+削除したい Prim の Stack をチェックして、記述がある部分を ClearDefaultValue()  
+して回るくらいですが、
+
+![](https://gyazo.com/03dd0d6e72dc07ee495d007ba43669d3.png)
+
+その場合も、Attribute の情報は残ります。  
+このあとに Flatten したとしても消えません。
+
+個人的には Custom の場合は消させてほしい気もしますが  
+できないのは Houdini の都合というよりも USD の都合なのかもしれません。
+
+## 対策
+
+というわけで、基本 Houdini 上では足したものは消せないので  
+消せないのであれば「初めからそもそも入れない」ことを前提にノードを組む必要があります。  
+アトリビュートを追加して、後から消したいケースというのがどういう時にあるかというと  
+途中で処理の都合一時的にパラメーターを保存しておきたかったケースや  
+SOlARIS から SOP にデータをもっていき、SOP で処理をした結果 LOP 側にもってきて  
+その結果をアトリビュートにセットし直したいケースなど、  
+あくまでも一時的なパラメーターとして使い回したいケースが多いはずです。
+
+![](https://gyazo.com/2ffa1c20df05a9e6880f239f14e96e62.png)
+
+その場合は、処理を実行する系統と、反映する系統のノードをわけて  
+最後に実際に出力したい Stage で、アトリビュートのコピーを実行します。
+
+両方に /sample Prim があるものとして、（都合不要なアトリビュートが多くある）  
+片方は、 /sample Prim があるが処理をする前の状態であるとします。
+
+SOLARIS は、SOLARIS 内のノードから、その段階の Stage を取得できます。  
+Stage とは USD の複数レイヤーが合成された結果のシーングラフを扱うためのものです。
+
+```python
+node = hou.pwd()
+stage = node.editableStage()
+
+srcStage = node.node("../OUTPUT").stage()
+
+# 編集しているStageを取得する
+srcPrim = srcStage.GetPrimAtPath("/sample")
+tmpAttr = srcPrim.GetAttribute("__tmp_value")
+
+# 実際に反映させたいStageのPrim
+prim = stage.GetPrimAtPath('/sample')
+prim.GetAttribute('result').Set(tmpAttr.Get())
+```
+
+なので、ある段階（処理が終わった状態）の Stage を、ノードを指定することで取得し  
+編集結果のアトリビュートを取得します。  
+そして、現在の Stage（現在のノードの編集可能な Stage）に対して  
+結果のアトリビュートを追加します。
+
+![](https://gyazo.com/66a401dc23125f70de196c197c38a923.png)
+
+結果、別の SOLARIS のノードのアトリビュートを、現在のノードの Stage に  
+持ち込むことができました。
+
+これだと対応できないケースもありますが、  
+回避できるケースもあるんじゃないかなと思います。
