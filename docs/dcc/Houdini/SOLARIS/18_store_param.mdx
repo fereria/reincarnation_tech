@@ -1,0 +1,81 @@
+---
+slug: /houdini/solaris/store_param
+title: 一時的なパラメーターの扱い方
+description: StoreParameterValues
+sidebar_position: 19
+---
+
+<AutoLinkTitle url="/houdini/solaris/attribute" /> の内容にある通り、一度作成したアトリビュートは削除することができませんが、
+処理の都合で一時的なパラメーターを保持しておきたいということはあります。 そういった場合、どのようにパラメーターを扱えばいいかというと「StoreParameterValues」を
+使用するのがよさそう...というのがわかったので、使い方を調べてみます。 ## StoreParameterValuesとは
+
+StoreParameterValues とは、SOLARIS にあるノードで、
+
+![](https://gyazo.com/3fb5b78f38c5e43f8332746a3fd48494.png)
+
+> USD does not provide for temporary/unsaved data storage.
+> USD is expected to be immutable
+> (you can only make changes by layering new information),
+> and all data in USD is expected to be saved.
+> 参考: [Store Parameter Values](https://www.sidefx.com/docs/houdini/nodes/lop/storeparametervalues.html)
+
+必ず保存しなければいけない USD という思想の中で、一時的なパラメーター（LOP の処理の都合で保存しておきたい値）を扱えるようにするために用意されたノードです。
+
+## 使い方
+
+![](https://gyazo.com/0d4892632069ffa3a06065d4c349d6be.png)
+
+使用方法は、ノードに対して保存しておきたいパラメーターを追加しておきます。
+
+![](https://gyazo.com/c4903a583f07658a5c8aca0630547df0.png)
+
+追加したパラメーターは「HoudiniLayerInfo」Prim に対して保存されます。
+
+```python
+import loputils
+
+this_node = hou.pwd()
+store = this_node.node("../STORE_VALUE")
+value = loputils.fetchParameterValues(store, "__values")
+
+print(value)
+```
+
+ストアしたパラメーターは、loputils の fetchParameterValues を経由して取得します。
+Python 側でストアされている値を取得したい場合は、自分自身の現在のノード「以外」の  
+あるノードを指定して、パラメーターを取得します。  
+（現在のノード内だけのパラメーターであるのならば、いちいちストアしなくてよい）
+
+## Python でストアする
+
+値を一時的に保存したい場合は、StoreParameterValues を使用せず、Python を使用して  
+値を保存することも可能です。
+
+```python
+import loputils
+
+this_node = hou.pwd()
+loputils.storeParameterValues(this_node,'__sample',10,propertytype='int')
+```
+
+ストアしたい場合は、storParameterValues を使用して、自分自身を指定して  
+指定の名前（\_\_sample)とタイプとを指定してセットします。  
+この場合は、現在の TargetLayer の HoudiniLayerInfo にアトリビュートが書き込まれます。
+
+:::info
+LOP のノードは、現在編集中のノードに関しては this_node.editableStage()で  
+編集可能なステージを取得できます。  
+対して、現在のノード以外を node.node("../hogehoge") のように Python から取得した場合、  
+editableStage()は取得できず（当然、自分の上流のノードが編集できてはまずい）  
+stage() という形で ReadOnly なステージを取得できます。
+
+Store された値を「取得」する場合は、ReadOnly で別のノードを参照するし、  
+書き込みたい場合は「現在のノード」に書き込むので、editableStage()なノードを指定します。
+:::
+
+## USD ROP を使用した場合
+
+HoudiniLayerInfo Prim は、USD ROP 等で出力すると、
+![](https://gyazo.com/37ea52b66997dff625a1176f7be34ab3.png)
+出力されません。
+あくまでも、SOLARIS 内だけで有効な値の保存場所になります。
