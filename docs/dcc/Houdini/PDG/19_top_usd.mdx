@@ -1,0 +1,282 @@
+---
+slug: /houdini/pdg/usd
+title: TOPでUSDを扱ってみる
+sidebar_position: 20
+---
+
+[Houdini アドベントカレンダー 2023](https://qiita.com/advent-calendar/2023/happrentice) 16 日目は、普段書いている LOP...ではなく  
+TOP 内で USD を使用した処理を試していこうと思います。
+
+## TOP とは
+
+まず、前提として Houdini の TOP について軽く触れておきます。  
+TOP とは TaskOperator の略で、様々なタスクをプロシージャルに実行を可能にするものです。
+
+たとえば、あるフォルダ以下にある画像ファイルを指定サイズにリサイズし、1 ファイルに結合する...  
+といったように、A が終わった後に B をする、そして最後に C をする　のように  
+連続した処理を実行したい場合があったとします。  
+TOP では、そうした連続した処理を構築して、実行できるようになります。
+
+## TOP と USD
+
+そんな TOP という世界ですが、実は非常に USD(SOLARIS) と相性が良いです。
+
+<AutoLinkTitle url="/houdini/solaris/destructive_processing" /> という記事でも書いたのですが、USDというのは非破壊な処理はおおむねPythonで可能なのですが
+破壊的編集に関してはPythonでは難しいものの、SOLARISではそうした破壊的処理が簡単に構築できます。
+この破壊的な処理をしながらファイルを複数出力しつつ...みたいなことをやろうとすると
+SOLARISだけではできず、TOPを使用したほうが便利なことが多いです。 また、USDという複数のファイルを合成して何か処理をする都合
+バッチ処理的なことをするのに向いています。 そういった処理は、SOLARISだけで頑張るよりもTOP上でやるほうが良いです。
+ので、今回はTOPを利用してUSDを操作する方法を試していこうと思います。
+
+## デフォルトで用意されているノードを確認する
+
+![](https://gyazo.com/08b1120fdccb75168a77f42745ffbd1a.png)
+
+USD に関連するノードは Houdini20 から増えているようですが（ Cat Diff Stitch Zip 等は GenericGenerator）  
+その中で使いそうなのをいくつか試してみます。
+
+### USD Import Data
+
+![](https://gyazo.com/6a972b0a697c8047dd960fff543a9d3c.png)
+
+usdImportData は、ある USD のシーンから WorkItem を生成します。  
+ファイルを指定することも可能ですが（Input のファイルから WorkItem を作るなど）
+
+![](https://gyazo.com/001476189421fe8ebae4f08c44fd80a8.png)
+
+LOP Path で指定したノードのステージを使用して WorkItem を作ることが可能です。
+
+![](https://gyazo.com/a9df7fbafc6686ac32e851c63c0aa42d.png)
+
+例えば、このようなステージを指定した場合、Primitives を \* にしているので、
+
+![](https://gyazo.com/41425ae0edc5c15b42faf7e121133b33.png)
+
+ステージ内に含まれている Prim だけ WorkItem を作ります。
+
+### ROPUSD
+
+![](https://gyazo.com/34f050cb78f1987857fb47a64ec9cb0f.png)
+
+ROPUSD ノードは、その名の通り指定の LOP ノードを USD としてエクスポートできるノードです。  
+指定の LOP ノードを指定して、そのノードを Export します。
+
+使い方としては、複数カメラを Switch で作っていたら  
+そのスイッチした数分だけ出力するとかなどが考えられます。
+
+:::info
+Export する Prim を指定する...みたいなことはできなさそう
+:::
+
+## USDModifyPaths
+
+USDModifyPaths とは、USD 内にあるアセットパスを見つけて、パスを修正するノードです。
+
+アセットパスとは、USD のアトリビュートタイプの 1 つです。  
+文字列とは違い、AssetPath の場合は  
+「AssetResolaver を使用して USD プラグイン内でパス解決を行う」ことができます。
+
+![](https://gyazo.com/f96e1aceb4f63f3e09e3589108440a27.png)
+
+例えば、このようなあるところへのファイルパスをもつアトリビュートがあるとします。
+
+```
+def "C"{
+    asset testPath = @D:/test.usda@
+}
+```
+
+usda だとこのようになります。  
+このパスは、現在フルパスになっていますが、  
+例えばこれらのパスをすべて SEARCH_PATH からの相対扱いにしたいとします。
+
+![](https://gyazo.com/cbdbc537a3fdebbc7a6f457842baed2c.png)
+
+その場合は、PythonCode に条件と置き換える文字列処理（結果を return で返す）  
+するコードを書くか、 Find Prefix と Replace Prefix を使用して文字列置換します。
+
+手元だとすべてローカルディレクトリを見るようにするが  
+リリースするときにはパスを一斉置換したい時などに使えそうです。
+
+## USDAnalyze
+
+![](https://gyazo.com/778fbe7bd1874e19fd4a808b91c38fa8.png)
+
+USDAnalyze ノードは、その名の通り、USDFile あるいは指定の LOP ノードのステージ情報を  
+解析してアトリビュートとして取得します。
+
+![](https://gyazo.com/14f65b8f8ad634a3b306df1095e829a7.png)
+
+![](https://gyazo.com/23661179d0ec124b2ebba871eb39f755.png)
+
+例として、totalPrimCount や、usedLayerCount などのようなシーンにまつわる情報を取得します。
+
+このノード自体で何かをするわけではないですが、この情報をもとに Wedge で複数の WorkItem を生成したり  
+条件分岐に使用する（例として Model を含む場合は次の処理を実行する、など）等が考えられます。
+
+今回紹介した以外だと、レンダリング関係のノードがありますが、  
+専門外なので今回は割愛します。
+
+## 実際に使ってみる
+
+実際に TOP で処理を作っていきます。
+
+TOP 上でやったほうが良いこととしては、繰り返し処理をしつつ Export するようなことをしたい場合。  
+LOP だけで完結しようとすると、USDROP を通す都合 ForEach だけではうまくいきません。  
+ので HDA を作りつつ TOP 側で処理します。
+
+今回は、ある 1 つの USD ファイル
+/PrimA
+/PrimB
+/PrimC
+のような階層を持つ単一の USD を、3 つの USD ファイルにばらして Reference 化する処理を作ります。  
+（意外とこの処理は Python でやるとめんどくさい）
+
+![](https://gyazo.com/111d943dcf74419e7b675047f42af3b0.png)
+
+あらかじめこのような USD シーンを作っておきます。
+
+![](https://gyazo.com/f9647a5d6fcd06ee6d89ab15ff4c5b26.png)
+
+TOP 側は、 USDImport と HDAProcessor を使用します。  
+Null ノードには、
+
+![](https://gyazo.com/09baa1ebfa103f2b330baa55230876de.png)
+
+処理をする USD を指定するアトリビュートだけ入れておきます。
+
+![](https://gyazo.com/f8ffe8fd8214da84157469aa5487ca6d.png)
+
+USDImportData では、処理対象 USD から切り出したい Prim の情報を取得します。  
+対象は Import Primitives の条件にマッチする Prim になり、この数だけ Prim Path Attrib と  
+PrimNameAttrib を持つ WorkItem を生成します。
+
+![](https://gyazo.com/6926e9dc4df530196d3e966fab0c2054.png)
+
+結果生成された WorkItem がこのようになります。
+
+次に、指定した Prim で切り出す HDA を作ります。  
+![](https://gyazo.com/9fcb8cfe80cc21e0555ced4cd904a0d1.png)
+切り出す Prim の Path 指定と元になる USD ファイルを受け取り、
+
+![](https://gyazo.com/6c9049c067998ce3dbcb8a77602261fc.png)
+
+LoadLayerForEditing で UsdPath の USD を開き、  
+SplitScene で分離して Output につないでおきます。  
+この時、このノード以下で USDROP を繋げなくても OK です。
+
+![](https://gyazo.com/78ee6bbe613cef942e7e38c9ec42dd92.png)
+
+作成した HDA を指定し、 OutputFileName に PrimPath を入れます。  
+HDAProcessor は、LOP ノードの HDA を使用すると、HDA の Output から出力される Stage を  
+Processor 側で出力し、OutputFile に指定してくれます。  
+（USD 側で USDROP を使用しないのは、Output にしたいから）
+
+![](https://gyazo.com/a7466bdf6f6c7073380412dcd724ff45.png)
+
+あとは、対象の UsdPath と切り出す Prim の Path を渡して置けば終了です。
+
+![](https://gyazo.com/53c0203a6f39750dd1b6955900bcbd10.png)
+
+実行すると、このような 3 つの USD が作成されます。
+
+![](https://gyazo.com/a7fa282b229e58376b497f968c08e342.png)
+
+一応これだけでも大丈夫ですが、Reference するときは DefaultPrim を作っておいたほうが良いので  
+階層を調整しつつ ConfigureLayer で DefaultPrim を指定します。
+
+![](https://gyazo.com/625d2c9f76126c44160bf17ac961e00e.png)
+
+最終的にはこんな感じになります。
+
+HDAProcessor を使用した場合、USDROP を指定しない場合は、Output で出力した Stage が  
+HDAProcessor 側で出力されます。
+
+![](https://gyazo.com/181bb2b0e3306c77c64bf7c61c1c8257.png)
+
+結果を Output で受け取ることができました。  
+（以前実験した時は bgeo になっていたような気がするけど、LOP の HDA になっていれば大丈夫っぽい）
+
+![](https://gyazo.com/0d72b9f51b51c12074672655b44a2a30.png)
+
+これをまとめて Reference にしたいので、  
+WaitForAll で、Output をまとめます。
+
+![](https://gyazo.com/adc5e28bd4e8d45194caaedebe25979b.png)
+
+おそらく Houdini20 空だと思いますが、 Merge Output Files を All Files にしないと  
+Output の Attribute が取得できないようです。
+
+ここで、あとは Python で処理をしようとしたのですが、  
+何故か work_item.inputFiles で、Input を受け取ろうとしたのですが  
+HDAProcessor > WaitForAll だと 表示上は Output があっても取得できないみたいで  
+Python ではなくマージ処理も HDA で作ることにしました。
+
+![](https://gyazo.com/fb3e86693b5694338b45a8e2bc840386.png)
+
+HDA は、Reference したい USD ファイルを USD Paths で受け取り、 SavePath に保存するようにします。  
+先ほどの分割する HDA とは違い、こちらは USDROP を使用して Export します。  
+HDAProcessor を使用して USD を出力すると、どうやらコンポジションが全部消えて Flatten された  
+状態で出力されてしまうようです（何故...）
+
+![](https://gyazo.com/c86c2c4897d8f382ee81c9cb7658ca93.png)
+
+中の構造はとてもシンプルで、ForEach を使用して、USDPaths の数だけ繰り返します。  
+Reference ノードなどもあるのですが、ファイル名から USD の PrimName とかを決める処理を  
+書くのが面倒だったので、そのあたりは Python で書きます。
+
+```python
+node = hou.pwd()
+stage = node.editableStage()
+
+import os.path
+
+bn = os.path.splitext(os.path.basename(hou.contextOption("ITERATIONVALUE")))[0]
+
+prim = stage.DefinePrim(f"/Root/{bn}")
+prim.GetReferences().AddReference(hou.contextOption("ITERATIONVALUE"))
+```
+
+![](https://gyazo.com/14237ebc78ee0edcfd01d6af84000325.png)
+
+結果、意図した構造ができました。
+
+あとは、Export を実行する Button をつけておきます。
+
+```python
+def Export(kwargs):
+    usdrop = kwargs['node'].node("./usd_rop1")
+    usdrop.parm("execute").pressButton()
+```
+
+![](https://gyazo.com/6dea48a26c248fe056edb0a90285fd6b.png)
+
+作るたびに書き方忘れるのでメモがてら...
+
+あとは PDG 側を調整します。
+
+![](https://gyazo.com/f598d39c6daf0d299c24ab44b9c162ad.png)
+
+HDA Processor で、上流の inputs を受け取り、 Export ボタンを実行します。
+input のファイルは、 @pdg_input だと最初の 1 つしか受け取ることができないので  
+[pdginputvals](https://www.sidefx.com/docs/houdini/expressions/pdginputvals.html) を使用して取得します。  
+そして、Button のチェックボックスを ON にしておきます。
+
+![](https://gyazo.com/e4570e963a3cd9591b1d22dde4804394.png)
+
+無事出力できました。
+
+若干腑に落ちないところ
+HDAProcessor > WaitForAll だと inputs が Python で取得できない  
+HDAProcessor で USD を出力すると Flatten されてしまう  
+はありますが、USD のファイルを意図した形に加工することができました。
+
+## まとめ
+
+もう 1 つのアドカレ記事 <AutoLinkTitle url="/houdini/solaris/destructive_processing" /> でも書いたのですが、USD は破壊的処理を使用すると非常にめんどくさくて  
+どうやってやったらいいかわからないことがあります。  
+ですが、PDG と SOLARIS と Python を組み合わせると何とかなることも多いので  
+アプローチとしては良いなぁと思います。
+
+TOP側は、私もまだ理解できていないことも多いので  
+引き続きいろいろ検証してよい使い方を見つけていければなと思います。
