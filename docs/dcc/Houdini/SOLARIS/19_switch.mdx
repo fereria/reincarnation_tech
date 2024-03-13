@@ -1,0 +1,66 @@
+---
+slug: /houdini/solaris/switch
+title: Primの有無で処理を分岐する
+sidebar_position: 18
+---
+
+表題の通り、SOLARIS で特定の Prim がある場合、処理を分岐したりさせたい場合  
+若干悩んだのでメモがてら書いていきます。
+
+やりたいことは、例えば /Root のような特定の決められた Prim があるときだけ  
+処理をしたい..のように、Prim の有無で Switch を切り替えたいというもの。  
+ただ、PythonExpression 内で現在のノードの Stage をうまく拾えなかったので  
+別の方法を試してみます。
+
+![](https://gyazo.com/a54e959a569b38dfb8fa2263a7b6677e.png)
+
+サンプルでは、CheckPrim がある場合は何もしない（Switch index = 0 )  
+Prim がない場合は PrimA を作ります ( Switch index = 1 )
+
+まず、PythonScript ノードで、その時点でのノードの有無をチェックします。
+
+<AutoLinkTitle url="/houdini/solaris/store_param" />
+
+チェックしたパラメータを、Switch ノードでどう使うかというと、  
+こちらの記事の Store Parameter Values を使用します。
+
+このノードは、USD のレイヤーには値を書きたくないけれども、Houdini 内だけで  
+なにかしらのパラメーターを保持したい場合などに  
+HoudiniLayerInfo Prim に、パラメーターをセットする機能です。
+
+今回のように、条件などを一時的に保存したい...等にちょうど良い機能です。
+
+```python
+import loputils
+
+node = hou.pwd()
+stage = node.editableStage()
+
+prim = stage.GetPrimAtPath('/Check')
+
+check = 0
+if prim.IsValid():
+    check = 1
+
+loputils.storeParameterValues(node,'__check',check,propertytype='int')
+```
+
+Python ノードには、このようにします。  
+prim.IsValid() で、存在する場合 1 しない場合は 0 のように  
+StoreParameterValue に対して Switch ノードの Index 情報を入れます。
+
+```python
+import loputils
+check = hou.pwd().node("../PrimCheck")
+
+return loputils.fetchParameterValues(check, "__check")
+```
+
+次に、Switch ノードの Index に対して PythonExpression を仕込みます。
+StoreParameterValue は、そのノードの下流のノードであれば取得できますが  
+今回の場合は、いわゆる If の分岐地点が Python ノードにあたるので  
+Python ノードを指定して値を取得します。
+
+![](https://i.gyazo.com/68d4db64811b1aa01f5cd2b3b72b8ad1.gif)
+
+結果、このように Prim の有無で分岐するような処理ができました。
