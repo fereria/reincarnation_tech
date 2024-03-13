@@ -140,7 +140,7 @@ USD は、これらの問題を解決するための機能を備えているの�
 ![](https://gyazo.com/94dc8898ed19b8aa9dea848c47ddc46c.png)
 
 インターチェンジとは、ジオメトリやシェーディング、ライティング、物理などのデータを
-「Schema」と呼ばれる共通の機能や特性をしていするものを定義し {{markdown_link('schema')}}
+「Schema」と呼ばれる共通の機能や特性をしていするものを定義し <AutoLinkTitle url="/usd/schema" />
 ツール間で強固な相互運用を実現するための機能です。
 
 ![](https://gyazo.com/0184b7fa1620ed775f8de5e8f01ff18f.png)
@@ -160,7 +160,7 @@ USD を使用できる各種ツールがこの Schema を解釈してツール�
 USD は、ほかのファイルフォーマットに比べても非常に高速で
 導入をする上での大きなメリットになります。
 
-参考: :fa-external-link: [Pixar 社の USD パイプライン](https://indyzone.co.jp/archives/1715)
+参考: [Pixar 社の USD パイプライン](https://indyzone.co.jp/archives/1715)
 
 ### 同時編集
 
@@ -175,7 +175,7 @@ USD の同時編集は、コンポジションの機能を使用して複数の�
 モデリング担当の人が作成したモデルを、アニメーションしたりレイアウトし
 その結果ライティングをして、レンダリングをしますが
 それぞれ別のファイルを編集します。
-これらのファイルは、「{{markdown_link('comp_arc','コンポジションアーク')}}」と呼ばれる決められた合成のルールをもとに、
+これらのファイルは、「<AutoLinkTitle url="/usd/about_comp" />」と呼ばれる決められた合成のルールをもとに、
 プロシージャルに、1 つのシーングラフに構築します。
 「プロシージャル」に合成されるので
 いずれかのファイル、たとえばモデルが更新されればそれをレイアウトしているシーンは自動で更新されるし、
@@ -231,7 +231,7 @@ USD はオープンソースで公開されています。
 パイプラインを構築するのに必要な API が用意されているので、自分たちの環境に合わせて開発をすることが可能です。
 データを定義する Schema も独自に拡張することが可能なので
 たとえば「ゲームエンジン用むけの情報」のように、独自のデータも扱えるようにできます。
-それ以外に、パスを解決する {{markdown_link('asset_resolution')}} や、Metadata
+それ以外に、パスを解決する <AutoLinkTitle url="/usd/asset_resolution_01" /> や、Metadata
 USD をプレビューすることができる usdview なども、プラグインを作成して拡張が可能です。
 
 #### JSON や XML、YAML、TOML のようなファイルフォーマットとして扱える
@@ -279,3 +279,4 @@ USD のライブラリは非常に多機能で巨大なシステムなので、�
 -   [USD(ユニバーサルシーンディスクリプション)](https://qiita.com/takahito-tejima/items/3c2fa4a4a83aa04b9a0e)
 -   [Pixar 社の USD パイプライン](https://indyzone.co.jp/archives/1715)
 -   [『グランツーリスモ７』開発における USD 活用事例](https://www.polyphony.co.jp/publications/)
+
