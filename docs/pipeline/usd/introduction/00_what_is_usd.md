@@ -279,3 +279,4 @@ USD のライブラリは非常に多機能で巨大なシステムなので、�
 -   [USD(ユニバーサルシーンディスクリプション)](https://qiita.com/takahito-tejima/items/3c2fa4a4a83aa04b9a0e)
 -   [Pixar 社の USD パイプライン](https://indyzone.co.jp/archives/1715)
 -   [『グランツーリスモ７』開発における USD 活用事例](https://www.polyphony.co.jp/publications/)
+
