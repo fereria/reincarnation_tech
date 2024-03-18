@@ -56,7 +56,7 @@ usdview D:\Kitchen_set\Kitchen_set.usd
 このファイルを、 usdview で開くとこのように Kitchen_set が表示されます。
 開くと、モデルが配置されていて１つの完成されたシーンになっています。
 
-ですが、この Kitchen_set.usd を、{{markdown_link('usdtools_usdcat')}} を使用してアスキーファイルでどうなっているかを見てみます。
+ですが、この Kitchen_set.usd を、<AutoLinkTitle url="/usd/tools/usdcat" /> を使用してアスキーファイルでどうなっているかを見てみます。
 
 ```
 usdcat D:\Kitchen_set\Kitchen_set.usd

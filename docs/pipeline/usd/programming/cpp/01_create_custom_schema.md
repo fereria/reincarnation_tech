@@ -84,7 +84,7 @@ python build_scripts\build_usd.py "<Build先>"
 
 コマンドを実行します。
 
-"<Build 先>" 部分は、自分の好みのパスにします（例 I:/USD 等）
+"\<Build 先\>" 部分は、自分の好みのパスにします（例 I:/USD 等）
 
 あとは 1 時間ほど待つと
 
@@ -324,7 +324,7 @@ Python 用は、wrap が頭につきます。
 できあがったフォルダがこちら。
 
 ```bat
-python build_scripts\build_usd.py "<Build先>"
+python build_scripts\build_usd.py "\<Build先\>"
 ```
 
 準備ができたら、 build_usd.py を使用してビルドします。

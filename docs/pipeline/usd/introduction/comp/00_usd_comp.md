@@ -6,7 +6,7 @@ title: コンポジションアークとは
 
 # コンポジションアークとは
 
-前回、{{markdown_link('stage_layer_spec')}} を解説しましたが  
+前回、<AutoLinkTitle url="/usd/stage_layer_spec" /> を解説しましたが  
 その中でも度々でてきたのが「USD を合成する」という言葉。
 
 初回 USD の概要でも  

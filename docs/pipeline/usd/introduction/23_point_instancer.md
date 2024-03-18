@@ -66,7 +66,7 @@ protoIndices アトリビュートによって、どの Point にたいしてど
 ## データを確認する
 
 まずは実際に PointInstancer を使用したシーンを作成して、中身を確認してみます。
-作り方は {{markdown_link('05_point_instancer')}} にまとめてありますのでざっくりとですが、SOP 上で Grid > Scatter で Point を作り、
+作り方は <AutoLinkTitle url="/houdini/solaris/instance_01" /> にまとめてありますのでざっくりとですが、SOP 上で Grid > Scatter で Point を作り、
 
 ![](https://gyazo.com/78b39b1c8650d8216eebf2c450dee9af.png)
 

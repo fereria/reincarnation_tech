@@ -61,7 +61,7 @@ jupyter notebook --generate-config
 
 まず、Config を作り、
 
-C:/Users/<ユーザー名>/.jupyter
+C:/Users/\<ユーザー名\>/.jupyter
 
 下にある、 jupyter_notebook_config.py の中の
 

@@ -185,7 +185,7 @@ XformCommonAPI や、UsdShaderMaterial は Single-Apply APISchema です。
 ### non-Applied
 
 non-applied は、プロパティをセットするためなどに存在する API で、PrimType や定義には影響しないもののことを指します。
-例として、 UsdModelAPI 等があり、{{markdown_link('kind_modelhierarchy')}} などで、
+例として、 UsdModelAPI 等があり、<AutoLinkTitle url="/usd/model_hierarchy" /> などで、
 
 ```python
 from pxr import Usd
@@ -201,7 +201,7 @@ APISchema が適応されているわけではありません。
 最後の Multi-Apply は、ある Prim に対して複数適応することができる APISchema です。
 
 MultiApply の APISchema の例としては、 UsdCollectionAPI があげられます。
-詳細は、過去に {{markdown_link('usd_collection')}} にまとめたのでそちらをみればわかるかと思いますが、
+詳細は、過去に <AutoLinkTitle url="/usd/collection" /> にまとめたのでそちらをみればわかるかと思いますが、
 Collection は、１つの Prim に対して複数の Collection を適応することができます。（いわゆる Sets）
 
 ## まとめ

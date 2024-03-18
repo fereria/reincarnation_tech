@@ -56,7 +56,7 @@ rules = stage.GetLoadRules()
 print(rules)
 ```
 
-UsdStageLoadRules([ (/, NoneRule) (</Kitchen_set/Props_grp/North_grp/NorthWall_grp/MeasuringSpoon_1>, AllRule) ])
+UsdStageLoadRules([ (/, NoneRule) (\</Kitchen_set/Props_grp/North_grp/NorthWall_grp/MeasuringSpoon_1\>, AllRule) ])
 
 実行すると、Load した Prim の SdfPath が UsdStageLoadRules に追加されているのがわかります。
 ロード状態のものは「 AllRule」となっています。

@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+// const lightCodeTheme = require("prism-react-renderer/themes/github");
+// const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -20,11 +20,6 @@ const config = {
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: "/reincarnation_tech/",
-
-	// GitHub pages deployment config.
-	// If you aren't using GitHub pages, you don't need these.
-	organizationName: "fereria", // Usually your GitHub org/user name.
-	projectName: "reincarnation_tech", // Usually your repo name.
 
 	onBrokenLinks: "throw",
 	onBrokenMarkdownLinks: "warn",
@@ -154,10 +149,10 @@ const config = {
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} Reincarnation#Tech, Built with Megumi Ando.`,
 		},
-		prism: {
-			theme: lightCodeTheme,
-			darkTheme: darkCodeTheme,
-		},
+		// prism: {
+		// 	theme: lightCodeTheme,
+		// 	darkTheme: darkCodeTheme,
+		// },
 	},
 };
 

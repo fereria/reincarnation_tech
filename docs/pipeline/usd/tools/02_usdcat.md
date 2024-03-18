@@ -87,7 +87,7 @@ print(stage.ExportToString())
 
 ### mask
 
-mask は、 {{markdown_link('population_mask')}} で説明した OpenMask で指定した Path 以下だけをロード・表示する機能です。
+mask は、<AutoLinkTitle url="/usd/population_mask" /> で説明した OpenMask で指定した Path 以下だけをロード・表示する機能です。
 
 <Gist id="8bad7d6f561150fc1ee197be85d11c85" file="root.usda" />
 

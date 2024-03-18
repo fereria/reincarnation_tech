@@ -92,7 +92,6 @@ Inherits であっても Specialize であってもその結果は変わりま�
 
 以上が Specialize(特殊化)の挙動についてのまとめになります。
 思っていたよりもかなり特殊な処理なので、ぱっと使い所が思いつかないですが
-{{markdown_link('13_create_usdAssets_01')}}
 
 以前 Houdini での USD セットアップの継承で説明したように
 Reference よりも強いオピニオンであることを利用して、
