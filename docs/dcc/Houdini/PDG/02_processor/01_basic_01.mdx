@@ -1,0 +1,125 @@
+---
+slug: /houdini/pdg/processor
+title: PDGでカスタムプロセッサを作る(1) - 基本構造
+sidebar_position: 1
+---
+
+PDG のノードには何種類かありますが、その中でも「何かしらの処理を実行する」ことができるノードを
+「Processor」と呼びます。
+
+![](https://gyazo.com/982ee2837872e4b49f3c93dac0f36540.png)
+
+ノードを検索すると出てくる代表的なものが 「HDA Processor」ですが、  
+これはその名の通り WorkItem の情報をもとに指定した HDA を実行する（処理する）PDG のノードです。  
+それ以外にも、指定した Batch 処理を実行する Generic Generator なども Processor の一種といえるのではないかと思います。
+
+このような Processor ノードは、Python を使用して実装することができます。  
+ので、Python での実装方法を確認しつつ、どのような構造になっているか順を追ってみていきたいと思います。
+
+## Generate と Cook
+
+<AutoLinkTitle url="/houdini/pdg/basic/02" />
+
+詳細な内容はこちらの記事で書いていますが、PDG にはざっくり分けて「Generate」と「Cook」という 2 つの工程があります。  
+Generate は、何かしらの情報をもとに、Task のタネとなるパラメーターを扱う構造体「WorkItem」を生成すること。  
+Cook は、WorkItem をもとにして実際に処理を「実行する」工程を指します。
+
+![](https://gyazo.com/8a8aa8bff40eb6d17a75e3f1a2927ffd.png)
+
+Python Processor で、Processor を実装する場合にも「Generate」と「Cook」というそれぞれの工程を  
+個別に実装していく形になります。
+
+まずは、Generate から作っていきます。
+
+### Generate 実装
+
+まず、Generate では実行するのに必要なタネを用意します。  
+プログラミング的に言うと、For でループする前に、配列を用意するようなイメージです。
+
+```python
+for upstream_item in upstream_items:
+    new_item = item_holder.addWorkItem(parent=upstream_item)
+```
+
+デフォルトのコードはこのようになっています。
+
+![](https://gyazo.com/730dd52f52f1581c9da63a7b27b9e314.png)
+
+上流工程の WorkItem の数だけ繰り返して、自身の Processor でも同じ数だけ実行するようになっています。
+
+```python
+for upstream_item in upstream_items:
+    for i in range(3):
+        new_item = item_holder.addWorkItem(parent=upstream_item,name=upstream_item.name + "_" + str(i))
+```
+
+例えば、このように上流工程の 1WorkItem に対して複数処理を実行したいならば、  
+その数だけ addWorkItem を追加します。
+
+![](https://gyazo.com/194f2b1f91063d90c6fc3145014995d7.png)
+
+すると、このように 1 つの WorkItem から 3 つの WorkItem を作成できます。
+
+これだけだと、ただ同じ構造の WorkItem を作っただけで、Cook するときに処理を変えることができません。  
+実際にはこの数字も WorkItem に追加したいです。
+
+このように <Marker>処理を実行するのに必要なパラメーターを準備する</Marker> のも Generate で行えます。
+
+```python
+for upstream_item in upstream_items:
+    for i in range(3):
+        new_item = item_holder.addWorkItem(parent=upstream_item,name=upstream_item.name + "_" + str(i))
+        new_item.addAttrib("sample_param",pdg.attribType.Int).setValue(i)
+```
+
+その場合は、WorkItem に対して addAttrib します。
+
+![](https://gyazo.com/49be7bff4c5d207b7ec804c83ade54d7.png)
+
+結果、WorkItem に対してアトリビュートを追加できました。
+
+## Cook
+
+これで、Processor で実行するのに必要な WorkItem を作成できました。  
+この WorkItem を使用して実際に処理を実行する部分は CookTask 部分に書きます。
+
+しかし、そのままだと Generate だけで Cook が実行されません。
+Cook するには WorkItem を作成するときに Option で InProcess フラグを立てる必要があります。
+
+```python
+for upstream_item in upstream_items:
+    for i in range(3):
+        options =  pdg.WorkItemOptions()
+        options.inProcess = True # ここ
+        options.name = upstream_item.name + "_" + str(i)
+        options.parent = upstream_item
+
+        new_item = item_holder.addWorkItem(options)
+        new_item.addAttrib("sample_param",pdg.attribType.Int).setValue(i)
+```
+
+Option は pdg.WorkItemOptions を使用して渡します。  
+WorkItem の名前や Parent なども、Option を使用してまとめて渡すことができます。
+
+CookTask をこのようにします。
+
+```python
+print(work_item.attrib("sample_param").value())
+```
+
+inProcess を入れないと、CookTask に記述を入れても実行されませんでしたが  
+今度は CookTask の内容が実行されたことがわかります。
+
+## PythonScript 化
+
+これで、基本的な Generate と Cook ができました。
+
+![](https://gyazo.com/f6c4b111020a776daa69579fc6805f42.png)
+
+作成した Processor は Python Script に保存できます。  
+保存すると、 Generate 部分が onGenerate、CookTask が onCookTask として出力されます。  
+出力されたこの Python ファイルを編集することで カスタム Processor できるので  
+Python に慣れていて、エディタを使用してゴリゴリ書きたい場合は Export してから使用するのが良いです。
+
+が、出力すると Houdini をリロードしないと処理を更新できないので  
+しばらくは PythonProcessor ノードを使用して使い方を書いていこうと思います。
