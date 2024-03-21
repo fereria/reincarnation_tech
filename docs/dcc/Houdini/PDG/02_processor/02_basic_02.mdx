@@ -1,0 +1,150 @@
+---
+slug: /houdini/pdg/processor/02
+title: PDGでカスタムプロセッサを作る(2) - プロパティ追加
+sidebar_position: 2
+---
+
+[前回](/houdini/pdg/processor/01) PythonProcessor で基本的な Generate と Cook を実装したので  
+今回はプロパティと WorkItem のアトリビュートを追加して、Cook 側でもう少し具体的な処理を書いていこうと思います。
+
+## Processor のプロパティを追加する
+
+まず、PDG のノード自体の処理 正確に言うと WorkItem を Generate する時に使いたいパラメーターは  
+通常の Houdini と同じく
+
+![](https://gyazo.com/50df6d3785a5b000ba3fc6615c2849ee.png)
+
+EditParameterInterface から追加します。
+
+![](https://gyazo.com/c59f4b06775c8d45004925ce328a1dbe.png)
+
+例として Processor でテキストファイルに書かれている数だけ WorkItem を作る...というのをやりたい場合。  
+パラメーターとして FilePath を追加します。
+
+A
+B
+C
+
+![](https://gyazo.com/5ec2a6fceeaba713319030b71d1970cf.png)
+
+そして、中身が ↑ のようなテキストファイルを作り、 file_path にパスを指定します。
+
+```python
+path = self["file_path"].evaluateString()
+
+with open(path,'r') as f:
+    data = f.readlines()
+
+for i in data:
+    name = i.strip()
+    options =  pdg.WorkItemOptions()
+    options.inProcess = True
+    new_item = item_holder.addWorkItem(options)
+
+    new_item.addAttrib("name",pdg.attribType.String).setValue(name)
+```
+
+テキスト 1 行ごとに WorkItem を生成する場合がこのようになります。  
+Int などの数値であっても、JSON やほかのフォーマットになった場合でも基本は同様です。
+
+### PythonScript の場合
+
+Houdini の PythonProcessor ノードに対して追加する場合は、上記の手順でしたが  
+Python スクリプトに保存した場合は以下のようになります。
+
+```python
+    @classmethod
+    def templateBody(cls):
+        return """{
+            "name": "pythonprocessor1_template",
+            "dataType": "genericdata",
+            "parameters": [
+                {
+                    "name": "file_path",
+                    "label": "File Path",
+                    "type": "String",
+                    "value": "D:/sample.txt",
+                    "tags": "['script_callback_language']"
+                }
+            ]
+        }"""
+```
+
+templateBody の parameters が、プロパティの設定になるので、  
+parameters 内に name label type value tags の辞書型を追加します。
+
+## プロパティと Generate と WorkItem
+
+PythonProcessor ノードを使用して Cook を書いた場合、  
+プロパティを Cook 側でも参照できます。
+
+例として
+
+```python
+print(self["file_path"])
+```
+
+これを Cook に書いたとしても読むことが可能ですが、個人的には Cook 側で使用する値は  
+Generate 側で WorkIem のアトリビュートとしてセットするほうが良いと思っています。
+
+というのも、LocalProcessor で実行している分にはあまり問題にはならないかもですが  
+WorkItem を Out-Of-Process で実行したりする場合、外部プロセスとの値のやり取りは JSON 化した WorkItem  
+の情報を経由して、各実行プロセスに値が渡されます。
+
+TaskGraphTable にも情報が残らないので、極力タスクを実行するのに必要なものは Generate した段階で  
+完結するほうが、個人的に以降の処理がわかりやすくなると思っています。
+
+もし、Cook で扱いたい値をプロパティとして追加したい場合は  
+Generate 時に WorkItem に対して値をセットするようにします。
+
+## WorkItem アトリビュート追加
+
+というわけで、Cook 側で必要とする情報は Generate 側で実装していきます。  
+WorkItem には、Int や String といったプログラミングの一般的に使われる「型」以外にも  
+PyObject という型が用意されています。
+
+```python
+new_item.addAttrib("sample",pdg.attribType.PyObject).setValue({"HOGE":"FUGA"})
+```
+
+この PyObject は、辞書型やリスト型といった構造も持つことができて、
+
+```python
+value = work_item.attrib("sample").values
+print(value["HOGE"])
+```
+
+このように、Cook 側でも辞書型で扱うことができます。
+
+辞書型以外にも、（すごく事故りそうでならないですが）
+
+```python
+path = self["file_path"].evaluateString()
+
+from pxr import Usd
+
+stage = Usd.Stage.Open(path)
+
+for prim in stage.Traverse():
+
+    options =  pdg.WorkItemOptions()
+    options.inProcess = True
+    new_item = item_holder.addWorkItem(options)
+
+    new_item.addAttrib("sample",pdg.attribType.PyObject).setValue(stage)
+    new_item.addAttrib("sdf_path",pdg.attribType.PyObject).setValue(prim)
+```
+
+USD の Stage や Prim のオブジェクトといったものも、WorkItem のアトリビュートとして扱えて、
+
+![](https://gyazo.com/67a972690f2455fdeea4a0f604f33d33.png)
+
+Cook 側でも扱うことができました。  
+（ただし、Prim だけではエラーになり、Stage もアトリビュートとして持たないとエラーになります）
+
+個人的には、辞書やリストにとどめておくほうがよさそうだなとは思いつつも  
+指定のファイルの Prim だけ PDG の処理をする...とか、あるファイルを参照して処理を実行する  
+みたいなことはかなり自由に書けると思うので  
+押さえておきたいポイントかなとおもいます。
+
+次回、Cook と InternalDependenciesなどをもう少し詳しく見ていこうと思います。
