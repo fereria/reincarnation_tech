@@ -1,0 +1,156 @@
+---
+slug: /houdini/pdg/processor/03
+title: PDGでカスタムプロセッサを作る(3) - 実行など
+sidebar_position: 3
+---
+
+前回、 <AutoLinkTitle url="/houdini/pdg/processor/02" /> では、ノードに対してプロパティを追加し、WorkItem にアトリビュートを追加までやりました。  
+WorkItem に対して実行するのに必要なアトリビュートを追加することで、  
+実際にジョブを実行する手前まで準備できたということになりますので、今回は実際に実行したり  
+細かいもろもろの機能を試していきます。
+
+## Cook（In-Process）
+
+Generate 時に options.inProcess = True を追加した場合、Processor ノードの
+CookTask で指定した処理を実行できます。  
+この Python の処理は、「In-Process」で実行されます。
+
+In-Process とは、その名の通り、<Marker>現在実行中の Houdini のプロセス</Marker>で実行されます。  
+なので、このスクリプト内では hou モジュールも使えるし、現在起動中の PDG の Node 情報にもアクセスすることができます。
+
+その代わり、自身の PC でのみ実行するので 重い処理を同時並行で実行するのには向きません。
+
+なので Processor の CookTask で実装するのは小さい処理（FileRename や FileCopy 的なもの）に限るほうがよさそうです。
+
+試しに、すでにある機能ですが FileCopy する処理をかいてみます。
+
+![](https://gyazo.com/fb786f5fa6cd4b49be0b6546a07ec78c.png)
+例として、FileCopy をしてみます。
+
+Processor ノードに SrcDirectory と DstDirectory のパスを指定するプロパティを足します。
+
+![](https://gyazo.com/4d0edc4b6bf1f295a191e2fb508b6b8d.png)
+
+SRC にはこのようなテキストを置いて、これを DstDirectory にコピーします。
+
+```python
+import os
+
+srcDir = self['src_dir'].evaluateString()
+dstDir = self['dst_dir'].evaluateString()
+
+for root,dirs,files in os.walk(srcDir):
+    for f in files:
+        path = os.path.join(root,f)
+
+        options =  pdg.WorkItemOptions()
+        options.inProcess = True
+
+        new_item = item_holder.addWorkItem(options)
+        new_item.addAttrib("src_file",pdg.attribType.String).setValue(path)
+        new_item.addAttrib("src_dir",pdg.attribType.String).setValue(srcDir)
+        new_item.addAttrib("dst_dir",pdg.attribType.String).setValue(dstDir)
+```
+
+まず、Generate で srcDirectory 以下のファイルをリストして、その数だけ WorkItem をつくります。
+コピー対象のファイルは、addAttrib でアトリビュートを WorkItem に追加します。
+
+```python
+import os
+import shutil
+
+srcPath = work_item.attrib("src_file").value()
+
+srcDir = work_item.attrib("src_dir").value()
+dstDir = work_item.attrib("dst_dir").value()
+
+dstPath = srcPath.replace(srcDir,dstDir)
+
+os.makedirs(os.path.dirname(dstPath),exist_ok=True)
+
+shutil.copy(srcPath,dstPath)
+
+work_item.addOutputFile(dstPath)
+```
+
+Cook 側で、そのアトリビュートを取得して、コピーを実行します。  
+今回の場合は In-Process なので、 src_dir dst_dir をアトリビュートに追加しているところはなくして  
+その代わりに CookTask 側で
+
+```python
+srcDir = self['src_dir'].evaluateString()
+dstDir = self['dst_dir'].evaluateString()
+```
+
+を直接読んでも同じです。
+
+![](https://gyazo.com/4317cbbce43c55daf810d8da2bbd80c7.png)
+
+コピーしたファイルは、次のタスクで使用できるように outputFiles に入れておきます。  
+addAttrib した場合、TaskGraphTable や WorkItem の詳細（↑ のスクショのような）で中身を確認できるのと  
+次のタスクでもアトリビュートを使うことができるので、  
+私はアトリビュートに入れておくほうが良いかなーと思います。
+
+PythonProcessor を使用した処理は基本以上でだいたいのことが完結します。  
+Generate で実行したいタスクだけ WorkItem を作り、実行したい場合は CookTask に記述する...  
+これで簡単な処理であれば、使いまわし可能な TOP ノードが完成します。
+
+## Files
+
+以下は、使わなくても OK ですが　調べる過程で理解した PythonProcessor のおまけ機能紹介です。
+
+![](https://gyazo.com/02e46c6f51f36645e8aa298a32dce80a.png)
+
+まず、Files。  
+これは、指定したファイルを PDG を実行するときに TempDir にコピーしてくれる機能です。  
+TempDir は、デフォルトの LocalScheduler の場合  
+C:/Users/remir/AppData/Local/Temp/houdini_temp  
+以下に自動でフォルダが作成され、ファイルがコピーされます。
+
+![](https://gyazo.com/13d196cf39b8f72c2f145b8dc7dc63d8.png)
+
+例えば、このように Files に指定しておくと
+
+```python
+sampleTxt = work_item.tempDir + "/sample.txt"
+print(sampleTxt)
+```
+
+CookTask 側では、このようにしてファイルにアクセスすることができます。
+
+基本的に In-Process 時はそこまで恩恵はないですが  
+上書きされたら困るものだったり、処理の途中で頻繁に書き換わるようなファイルで  
+途中で書き換わってしまうと困るようなものなどは  
+この機能を使用して TempDir に移動してから使用すると便利かなと思います。
+
+TempDir を指定した場所にしたい場合、Inprocess Scheduler を使用します。
+
+![](https://gyazo.com/bd0c30edb7e05c9ab67b9698ac4b7cba.png)
+
+Temp Directory の Location = Custom で、任意のディレクトリを指定可能です。
+
+## Add InternalDependency
+
+こちらも、基本はあまり使わなさそうな機能ですが  
+これを使用すると、Generate された WorkItem 間に対して 依存関係を定義するこができます。  
+parent の場合は、上流のノードの WorkItem を指定しますが  
+このノードの場合は　同じノード内の WorkItem で定義できるのが大きな違いです。
+
+```python
+for i in internal_items[1:]:
+    dependency_holder.addDependency(i,internal_items[0])
+```
+
+internal_items は、Generate した時に生成された WorkItem を持ちます。
+dependency_holder は、依存関係を保持するためのものです。
+
+![](https://gyazo.com/24690b607ff2ed1f922438cf875311fb.png)
+
+上のサンプルは、1 つ目の WorkItem の子供にほかの WorkItem をすべて追加した例です。  
+PythonProcessor を見ると、1 つ目のノードとも依存関係があるのがわかるかと思います。
+
+```python
+print(work_item.dependencies)
+```
+
+依存は、CookTask 側でこのように確認できます。
