@@ -1,0 +1,62 @@
+---
+slug: /pg/vscode/vscode_notebook
+title: VSCodeのJupyterNotebookで環境構築
+sidebar_position: 1
+---
+
+VSCode の JupyterNotebook 環境では、環境変数を VSCode 側で設定することができないので  
+任意のディレクトリを PYTHONPATH に通したり..を、VSCode のワークスペースの設定に入れても効果がありません。
+
+<AutoLinkTitle url="/ta/editor_02" /> （通常のワークスペース設定はこのあたり） それだと困ること（USDとか）も多いので、それを追加モジュールを入れることで対策します。
+## ワークスペース作成＋ venv作成
+
+まず、VSCode のワークスペースを作成してから、そのワークスペースに pipenv を使用して  
+仮想環境を作ります。  
+venv は、ワークスペース以下に作りたいので、環境変数で PIPENV_VENV_IN_PROJECT を指定しておきます。
+
+```batch
+set PIPENV_VENV_IN_PROJECT=true
+```
+
+そのうえで、仮想環境を作ります。
+
+```batch
+pipenv install
+```
+
+![](https://gyazo.com/23958b881b2bce96194cb61a7d827484.png)
+
+これで仮想環境ができました。
+
+次に、仮想環境に dotenv を入れます。
+
+```
+pip install python-dotenv
+```
+
+入れ終わったら、ワークスペースのルートディレクトリに .env ファイルを作り、  
+指定したい環境変数をセットします。
+
+```python
+PYTHONPATH="C:/USD/lib/python;${PYTHONPATH}"
+PATH="C:/USD/lib;C:/USD/bin;${PATH}"
+```
+
+自分の場合は、USD 関係のパスをこれで入れています。
+
+後は、この仮想環境に Notebook を動かすのに必要なモジュールをインストールして準備は完了です。
+
+## Jupyter で実行する
+
+.env を追加したら、後は Notebook で以下のコードを実行してからコードを書きます。
+
+```python
+%load_ext dotenv
+%dotenv .env
+```
+
+これで、.env で指定した環境変数が効いた状態で Notebook を使用できます。
+
+## 参考
+
+-   https://qiita.com/ryotab22/items/3057062cdedeaa48dd1b
