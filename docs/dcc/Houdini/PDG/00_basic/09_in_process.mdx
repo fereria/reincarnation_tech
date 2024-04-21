@@ -1,0 +1,132 @@
+---
+slug: /houdini/pdg/basic/10
+title: In-Processを理解する
+sidebar_position: 10
+---
+
+PDG を使用して処理を作成する場合は、大きく分けて「In-Process」と「Out-of-Process」の 2 種類があり、
+それぞれ特徴があり、できることや得意なことが異なります。
+
+今回は、まずは PDG の基本を理解するために In-Process 処理を順番に見ていきます。
+
+## In-Process とは
+
+In-Process とはなにかというと、その名の通り現在起動している Houdini のプロセス内で  
+処理を実行する方式を指します。  
+PythonScript であれば、現在実行中の Houdini 上の Python になりますし、  
+SOP に対してなにかバッチ処理を実行したい場合であれば、その SOP に直接アクセスして  
+処理を実行できます。
+
+そのため、In-Process を使用する場合は現在開いている HIP ないのネットワークに対して  
+複数のバージョンで何か処理を実行したい場合などに向いています。
+
+デメリットは、自分の PC で起動中の Houdini で実行されるので、  
+処理中はなにもできなかったり、分散処理も自分の PC の処理分以上はできませんので、  
+複数台 PC で実行したい場合は Out-Of-Process（後日記事を書く）を使用する必要があります。
+
+## In-Process な処理を実行する
+
+というわけで、実際にやってみます。
+
+![](https://gyazo.com/7a1f87cc8b1ff76e6c2fc09d5f1762a6.png)
+
+まずは、シンプルなネットワークを作ります。  
+私は SOP は苦手なので LOP でやりますが、SOP であっても基本は同じです。  
+今回は Cube を Duplicate で複製するようにします。
+
+![](https://i.gyazo.com/ba1ffc842e0a19791689b72f3b4c33bd.gif)
+
+Duplicate の TotalNumber でこんな感じにオフセットするようにします。  
+今回はこのキューブの数ごとの USD を出力します。  
+以前は HDAProcessor を使用していましたが、今回は HDA ではなく HIP のノードのままです。
+
+![](https://gyazo.com/73d07afab536ab3f9fbfef1ddaa0d878.png)
+
+PDG 側のネットワークはこのようにします。
+
+![](https://gyazo.com/b72228654287f141880bd657bb6e240a.png)
+
+Wedge ノードは、特定のノードのパラメーターを変更するノードで、  
+今回の例だと Duplicate ノードの TotalNumber に対して WorkItem の Index に＋１した値を  
+セットするようにしています。
+
+![](https://gyazo.com/b21eb68610288a1ea671a8b276df06ae.png)
+
+USD ROP は、LOP 内の指定のノード（今回の場合 OUTPUT）を指定して、OutputFile をいれます。  
+今回は Cube 数をファイル名に入れたいので、 @ncy でをいれるようにします。
+
+### 注意点
+
+通常 SOP や LOP などでは、パラメーター内に別のパラメーターを入れたい場合 ch(～～～)で、特定のノードのプロパティを  
+入れることができますが、TOP のファイル名の出力に ch（～～）指定をすると  
+意図しない形の文字列が入ってしまうことがあります。
+
+![](https://gyazo.com/fd28b380d83b9056d829eda340b5198f.png)
+
+今回の例だと、このように書くことも可能です。
+
+![](https://gyazo.com/b51992cfeb6dac86f1a5654de8017e22.png)
+
+しかし、その場合このように Warning が出てしまいます。  
+これは、Wedge ノードが ncy に値をセットし＞ USDROP がその値で出力する...という風にしたいはずですが
+
+![](https://gyazo.com/31ca2985fe8642652965ee0f43e49aca.png)
+
+Output は、PDG を実行する段階の値で、Output が指定されてしまいます（ファイルはできている）  
+ので、PDG 側で処理を実行したい場合は原則 WorkItem にまとめる必要があります。  
+（Wedge Attributes した場合は、WorkItem のアトリビュートに入ります）
+
+## 実行する
+
+![](https://gyazo.com/388fc68cee656375080ed1b21e9c3622.gif)
+
+準備ができたら実行します。  
+実行すると、現在の PC で処理が始まります。
+
+同時にいくつ実行するかなどは LocalScheduler で指定します。  
+今回のジョブのように、小さい処理であれば複数処理を実行しても問題ないですが、  
+そうではなくどでかい処理をとりあえずまとめて投げたいケースなどは
+
+![](https://gyazo.com/87acbb9d2dd94100d917076cebd949e3.png)
+
+Scheduling で「Single」にすれば 1 ジョブずつ実行されます。  
+それ以外にもメモリ制限や CPU での制限、
+
+![](https://gyazo.com/f748a7301d37ece3f69d39bce4aab12e.png)
+
+あるいは、Total Slots で同時実行数を手動で制御することも可能で
+
+![](https://gyazo.com/885b339d47ffade74169adc48c564f3d.png)
+
+このように、指定した数だけ並列実行されます。
+
+## Python の場合
+
+上記の方法で HIP 内のノードに対して In-Process で何かを実行するというのはできました。  
+が、それ以外に PythonScript などでも In-Process でも実行できます。
+
+![](https://gyazo.com/2db51a1263e5522f1142c284439c6356.png)
+
+PythonScript ノードの「Evaluate Script During」 を Cook(In-Process) に変更します。  
+In-Process なので、この PythonScript は hou モジュールを使用して  
+現在の HIP ファイルのノードに対して直接アクセスすることができます。
+
+これはこれで便利なのですが、この方法での値の取得は上の注意点の項目で書いている内容と同様に  
+意図した値が取れない可能性があります。
+
+```python
+import hou
+
+node = hou.pwd().node("../../duplicate1")
+print(node.parm("ncy").eval())
+```
+
+例として、このように Duplicate の TotalNumber を取得するようなスクリプトを書いた場合、  
+気持的には現在の WorkItem の上流の Wedge で選択している値を取得したいと思います。  
+しかし、これを実行すると
+
+![](https://gyazo.com/331692aac000b25761936ba7dad5217d.png)
+
+このようになります。  
+これを見てわかる通り、基本的に TOP 外にアクセスする場合は注意して操作をしないと  
+意図したものと異なる挙動になるので、WorkItem のアトリビュートとして取りあつかうほうが安全です。
