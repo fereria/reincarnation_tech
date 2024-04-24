@@ -1,0 +1,166 @@
+---
+slug: /houdini/pdg/oop/01
+title: Out-Of-Processの基本を理解する(1)
+sidebar_position: 1
+---
+
+前回、 <AutoLinkTitle url="/houdini/pdg/basic/10" /> で In-Process での使用方法を書きましたが  
+今回は Out-Of-Process を使用した場合についてを調べていきます。  
+Out-Of-Process は、WorkItem や Scheduler などにも大きく関係する＋ Houdini の処理の作り方も  
+In-Process とは違い注意しなければいけないポイントがそこそこそあるので  
+それぞれの要素を順に確認していきます。
+
+## Out-Of-Process とは
+
+そもそも Out-Of-Process はどういうものかというと、  
+その名の通り <Marker>実行する処理を、Houdini のプロセス外で実行すること</Marker>を言います。
+完全に別プロセスになるので、Out-Of-Process で実行した場合は  
+実行している処理から現在開いている HIP のシーンの値は取れないし、実行もできません。
+
+まず、シンプルな例として PythonScript を Out-Of-Process で実行してみます。
+
+![](https://gyazo.com/8850f26c88d44d25b89692f37d17be54.png)
+
+PythonScript ノードを作り、
+
+![](https://gyazo.com/d389a923ece48841b013affdc4463afd.png)
+
+EvaluateScriptDuring を「 Cook (Out-of-Process)」に変更します。  
+そして、Python Executable で、実行する Python の実行ファイルを指定します。  
+今回の例の場合、 py コマンドを使用して指定バージョン（Python310）を実行できるようにします。
+
+Python Code に書いた内容を実行するのですが、この PythonCode は  
+Houdini の世界ではなく、Python310 の世界で実行されるコードです。  
+なので、
+
+```python
+import hou
+print(hou.pwd())
+```
+
+このように、現在のノードを hou.pwd で取得しようとしても
+
+![](https://gyazo.com/ed647fab1f721a0ccd1e3a440849883e.png)
+
+そもそも通常の Python なので、hou モジュールのインポートもできませんので  
+現在の Houdini のノードにアクセスはできません。
+
+## WorkItem
+
+この Python を実行するときには、
+
+![](https://gyazo.com/770ce45476b45354f7cdd24f3aedc856.png)
+
+WorkItem は使用することができますが、よくみると pdgjson.WorkItem となっていることがわかります。
+
+![](https://gyazo.com/a7047ac800d997c8b7a8f91ddb76e887.png)
+
+In-Process の場合は、 pdg.WorkItem となっていて、オブジェクトのモジュールも  
+違っていることがわかります。
+
+https://www.sidefx.com/ja/docs/houdini/tops/jobapi.html
+
+この Out-of-Process で使用できる WorkItem は、JobAPI と呼ばれる、InProcess などで使用する  
+hou モジュールとは独立したライブラリになっています。
+
+このライブラリは、TempDir に保存された、WorkItem の実行に必要な情報をまとめた JSON から  
+WorkItem オブジェクトを作成し、それらにアクセスする機能を提供してくれます。
+
+![](https://gyazo.com/8715c4e868dc31cf9f2347bc6f9e1483.png)
+
+例えば、AttributeCreate で
+
+![](https://gyazo.com/0aa1b1fca95c3afc6383e2b6c80efcd4.png)
+
+![](https://gyazo.com/91251a5f35c47ff54fbccb9a82b82fd3.png)
+
+WorkItem に対してアトリビュートを追加します。
+
+```python
+print(work_item.attrib("sample").value())
+```
+
+Out-of-Process な Python で、WorkItem の値を受け取るにはこのようにします。  
+通常の pdg.WorkItem と同じように扱うことができました。
+
+## TempDir
+
+Out-of-Process は Houdini 外での実行になっているわけですが  
+外部で処理を実行するときに、どのようにして WorkItem の情報や それ以外の必要なデータを  
+実行するプロセスに対して受け渡す必要があります。
+
+この、外部プロセスに対して必要な各種情報やデータなどを一時的に保存しておく場所が  
+この TempDir です。
+
+![](https://gyazo.com/53cde7c77967d46c3d3ff797dd04dcba.png)
+
+この TempDir は、デフォルトの場合は LocalScheduler に設定する項目があります。
+デフォルトは HoudiniTemp になっているので、これを任意のディレクトリに変更しておきます。
+
+![](https://gyazo.com/aa79f63491452da21635984f72deb2f4.png)
+
+TempDirectory を変更した状態で、ジョブを実行すると、以下のように指定ディレクトリに数字フォルダが作られ  
+その下に data logs scripts というサブフォルダが作成されます。  
+これらのディレクトリは、PDG のスケジューラー（次回詳しく説明します）がデフォルトで定義している  
+共通のディレクトリで、それぞれ意味を持っています。
+
+log はその名の通り、各プロセスのログを保存するディレクトリです。
+
+scripts ディレクトリは、
+
+![](https://gyazo.com/c69c34687308abc9abc6ac66d51ecb90.png)
+
+PDG のノード次第で若干構成は変わりますが、WorkItem を実行するのに必要なスクリプトが  
+WorkItem のジョブが実行される前に、このフォルダ以下にすべてコピーされ  
+このフォルダに PATH が通った状態になってから PythonScript を実行します。
+
+data ディレクトリは、
+
+![](https://gyazo.com/5d3046699e9b9453136d69898f61bf3f.png)
+
+WorkItem を JSON にダンプしたファイルが置いてあります。  
+このファイル 1 つが、WorkItem １つと一致していて、WorkItem のアトリビュートや  
+PythonScript で実行するスクリプトなど、ジョブを実行するのに必要な情報が  
+まとめられています。
+
+```python
+import sys
+sys.path.append('D:/pdgtemp/11828/scripts')
+
+from pdgjson import WorkItem
+
+work_item = WorkItem.fromFile("D:/pdgtemp/11828/data/pythonscript1_3.json.gz")
+
+print(work_item.command)
+print(work_item.attribValues())
+```
+
+試しに、Sript に PATH を通し、JSON をロードしてみます。  
+Hython ではなく素の Python であっても、実行できていることがわかります。
+
+![](https://gyazo.com/d62f4e70f814e296838c5baaa11c9dd4.png)
+
+```python
+import base64
+
+script = base64.b64decode(work_item.customData)
+print(script.decode("utf-8"))
+
+# 実行
+exec(script)
+```
+
+PythonScript ノードに書かれたコード本体も、JSON に含まれているので  
+customData からスクリプトを取得することができます。
+
+## まとめ
+
+長くなってきたので、いったんここまでを整理します。
+
+Out-of-Process は、PDG の処理を現在起動している Houdini 外で実行すること。  
+外部プロセスなので、HIP の情報などは参照することができず、WorkItem を経由して  
+必要な情報は受け渡します。  
+それらのジョブを実行するのに必要な WorkItem の情報や、各種ライブラリなどは  
+TempDirectory で指定したフォルダ以下に、指定の構造で保存されます。
+
+この辺りを抑えつつ、次回から各要素をもうすこし深堀しながらまとめていきます。
