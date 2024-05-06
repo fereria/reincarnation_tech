@@ -1,0 +1,143 @@
+---
+slug: /houdini/solaris/cards
+title: Cardsモデルを作る
+description: CardTextureRenderの使い方
+sidebar_position: 19
+---
+
+SOLARIS には「CardTextureRender ノード」という、Cards モデルを生成してくれそうなノードが  
+標準で用意されていますが、初見だと使い方が全く分からなかったので  
+USD の仕様とあわせて使い方を確認していきたいと思います。
+
+## Card Texture Render
+
+![](https://gyazo.com/5482fffd072ea51a49f3372fd3b5a313.png)
+
+まず、該当のノードを確認。  
+Card Texture Render という名前で、
+
+![](https://gyazo.com/22d8ddc84973ab2cdf650b3de7aa1d26.png)
+
+どの向きを、どのレンダラーでレンダリングするか指定し  
+Render toDisk を押すことで、指定フォルダ以下に画像をレンダリングしてくれます。
+
+![](https://gyazo.com/58b2f0df3f26ab64165ea3d606cfcd0e.png)
+
+レンダリングを実行すると、このように、レンダリング結果を張り付けた四角い板ポリを表示できるようになります。  
+これは、いわゆる軽量なガイドモデルとして使用するためのモデルです。
+
+## DrawMode
+
+この Cards モデルは、USD の仕様に含まれていて、[UsdGeomModelAPI](https://openusd.org/dev/api/class_usd_geom_model_a_p_i.html) という API スキーマによって定義されています。  
+この API の詳細はドキュメントをみてもらうとして、  
+ざっくり要約するとジオメトリ全体にかかわる各種拡張機能を含む API で  
+そのなかの１つが DrawMode であり、Cards Geometry です。
+
+DrawMode は
+
+> Draw modes provide optional alternate imaging behavior for USD subtrees with kind model.
+
+現在のツリー以下を描画するときに、シーングラフの走査を停止し、  
+サブツリー以下を、指定のプロキシモデルに置き換える処理を行います。
+
+つまり、大量のオブジェクトを配置した時などに  
+「作業中は軽量なモデルに置き換えたい」  
+という要望があったとすると、DrawMode を default から cards や bounds に変更することで  
+軽量なモデルに置き換えを行います。
+
+![](https://gyazo.com/ee8a6c099ad8971020ab8169ada22cdd.png)
+
+この設定を Houdini で行う場合は「Prim」への設定のため「ConfigurePrimitive」を使用します。
+
+![](https://gyazo.com/4a9319d59220d399804741fb310b54cf.png)
+
+Draw Mode を「BoundingBox」にすれば
+
+![](https://gyazo.com/cec38e900a956f4beba5cbc3be704666.png)
+
+このように表示されますし、
+
+「Origin Axis」にすれば
+
+![](https://gyazo.com/62f5689549e40c1b734ea3ec57b1e894.png)
+
+このように表示されます。
+
+![](https://gyazo.com/d080e0ce902de337b66b3e8b1d7e86a8.png)
+
+今回のお題である「CardsGeometry」の場合、この DrawMode を「Textured Cards」にすると  
+Cards モデルに切り替えることができます。
+
+![](https://gyazo.com/92310efeb8678697b16e106a358f6abd.png)
+
+この時、板に張り付けるテクスチャのパスは  
+UsdGeomModelAPI によってルールが定められています。  
+Houdini の場合は、ConfigurePrimitive ノードにテクスチャパスを指定するプロパティが用意されているので  
+すべてチェックを入れて、保存先を指定します。
+
+ここまでくるとわかりますが、Card Texture Render ノードが一体何かというと
+
+<Marker>
+	このUSDのCardsGeometryの仕様に沿ったテクスチャをレンダリングするノード
+</Marker>
+
+ということになります。  
+実際に使用してみます。
+
+## テクスチャをレンダリングする
+
+![](https://gyazo.com/ba39c124c43fa0372228619140300736.png)
+
+まず、基本的なノードの構成です。
+
+Cards モデルを作成したいアセットの Root（DefaultPrim）ノードに対して Configure Primitive ノードを指定し、  
+CardsGeometry 用のテクスチャパスを指定します。
+
+![](https://gyazo.com/43bda6c9ac6827cd368c8f33124d8e7a.png)
+
+今回はチェックを ON にして、テクスチャパスはデフォルトのままにします。  
+この状態で HIP を保存します。
+
+![](https://gyazo.com/40f22b9d54f4d510d23650a2559a1166.png)
+
+最後に、Card Texture Render ノードの Render to Disk を押します。  
+とりあえずデフォルトの Karma CPU を使用しますが、このあたりはお好みで変えてください。
+
+このノードは、
+
+![](https://gyazo.com/2d928de110f671061393837c2210a2ef.png)
+
+UsdGeomModelAPI の CardsGeometry 関係の設定をみて、カメラを自動生成します。  
+そして、この生成したカメラを使用してモデルをレンダリングします。
+
+![](https://gyazo.com/e1e8a304679dea6de9c013f22412d47a.png)
+
+しばらく待つと、このようにレンダリング結果が作成されます。
+
+![](https://gyazo.com/71df74736f14a47d0be0d53dd883442e.png)
+
+テクスチャがレンダリングされた状態で、DrawMode を cards に変更すると、  
+このようにレンダリング結果のテクスチャを使用して CardsGeometry を表示できるようになります。
+
+![](https://gyazo.com/ef5b817e8e5e20808f59a9ad124c3f70.png)
+
+この CardsGeometry は、表示方法を切り替えることもできて  
+デフォルトでは cross になっていますが、それを box に変更するとこのようになります。
+
+## まとめ
+
+以上が、Card Texture Render の使用方法と  
+それに関係する USD の DrawMode に関する解説でした。
+
+このあたりの USD アセットの標準仕様にかかわる部分は  
+https://github.com/usd-wg/assets/blob/main/docs/asset-structure-guidelines.md#draw-mode
+USD-WG リポジトリにある Asset Structure Guidlines に詳しく記載されています。
+
+USD を使用したアセットを作成するとときに、今回の CardsGeometry のようなよく使用する構造を  
+USD で扱う場合どうすればいいかなど、サンプルデータも含めてたくさん置てあるので、  
+今回の件以外にも非常に参考になる情報が多いので合わせてみることをお勧めします。
+
+## 参考
+
+-   https://openusd.org/dev/api/class_usd_geom_model_a_p_i.html#UsdGeomModelAPI_drawMode
+-   https://github.com/usd-wg/assets/blob/main/docs/asset-structure-guidelines.md#draw-mode
