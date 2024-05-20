@@ -1,0 +1,209 @@
+---
+slug: /houdini/solaris/cards
+title: USDのMeshを編集する
+description: SOP Modifyの使い方
+sidebar_position: 20
+---
+
+SOLARIS で USD を扱っていると、USD のメッシュを編集したいことがあります。
+
+しかし、SOLARIS 側では編集することができません。  
+なので、編集したい場合は SOLARIS から SOP に持って行って編集する必要があります。
+この場合は SOPImport や SOP 側で LOP Import をするのでも良いですが、  
+作っと編集したい場合は「SOP Modify」を使用するのがお手軽です。
+
+## つかってみる
+
+![](https://gyazo.com/d48dd50450f2fc10c6bd45276892b7b8.png)
+
+使用方法は簡単で、SOLARIS で sopmodify ノードを作成し、入力に編集したいステージをつなぎ  
+sopmodify ノードをダブルクリックします。  
+ダブルクリックした中身は SOP になっているので、この中でジオメトリに対する操作を行います。
+
+![](https://gyazo.com/bb901080d3896a5cd2749a66258d0e54.png)
+
+![](https://gyazo.com/5509a940a40897c0c82b79a0e71f25dc.png)
+
+何も入れてない場合は、1Prim = 1 Primitives 扱いで、いわゆる Pack された状態になっています。
+そのため、ジオメトリの変形をしたい場合は、unpackusd を使用してから使用します。
+
+特にジオメトリの編集をしない場合は、sopmodify を抜けた後も基本 Prim の構成なども変わりません。
+
+## Mesh をマージする
+
+これだけだとあまり意味がないので、ジオメトリの編集をしていきます。  
+よくやりたい操作として、複数の MeshPrim を 1Mesh に結合したいケースがあると思います。
+
+![](https://gyazo.com/d76b713385db0e5644726c4f21ed90f7.png)
+
+サンプルとして、このように位置をずらした Cube を 2 つ作ります。  
+これを 1 つの Mesh に変換したいとします。
+
+![](https://gyazo.com/3c1b920f3a646c61c47a331132ee89cd.png)
+
+SOP > LOP にジオメトリを持って行く場合  
+Primitives の「name」と「path」アトリビュート単位で Mesh が分割されます。
+
+```
+s@path = "/testPrim";
+s@name = "testPrim";
+```
+
+なので、まずはすべての Primitives の name と path を上書きします。
+
+![](https://gyazo.com/87ce38fa0ca42f8eb9b2a8afb032703f.png)
+
+実行すると、このようにこれまでの CubePrim がのこったまま Mesh が作成されます。  
+CubePrim を Hide した状態で、状況を確認すると、
+
+![](https://gyazo.com/118f385ca05a8f7b6b2683917ac42faa.png)
+
+1 つの Cube のみが残っている状態になります。  
+これはわかりにくいのですが、位置をずらしておいた Cube が同じ位置にずれてしまい  
+1 つの Cube だけが見えている状態になります。
+
+![](https://gyazo.com/6886808741ab3decab44aff8dcb3ffe5.png)
+
+わかりやすいように片方を RubberToy にしてワイヤー表示にするとこのようになります。
+
+これはどういうことかというと、 Point のアトリビュートに usdxform というアトリビュートがあるのですが  
+これが、ある USD の Prim の Transform を持っていて  
+SOP Modify した後に TOP に戻るときに usdxform を適応している影響で  
+結果元の Prim の Transform 分だけ位置がずれてしまっているわけです。
+
+元の Prim の Transform を維持したい場合はそのままでも問題ないですが  
+今回のように Mesh を結合したい場合は、この usdxform を消しておかないと  
+意図した結果になりません。
+
+![](https://gyazo.com/368692aa5ab59b8140c90f0441216632.png)
+
+デフォルトでは、Apply Inverse USD Transform to Unpacked Geometry が ON になっているので  
+OFF にすることで、usdxform を切ることができます。
+
+![](https://gyazo.com/34fabe1e2df28ef46494bdcba8b30b5b.png)
+
+あるいは、SOPModify 側の attribute delete で point の usdxform を削除しておきます。
+
+これで、マージされた Mesh が出来上がりますが、このままだと元の CubePrim も残ってしまうので  
+元の Prim を削除します。
+
+![](https://gyazo.com/090ff3d11319f7e56d9c40d3e279a2ab.png)
+
+どれを削除するかをわかりやすくするため、GraftStage で指定 Prim 以下の子に入れて  
+RestructureSceneGraph ノードを使用して、GraftStage で作成したグループを削除するようにします。
+
+### subsetGeom
+
+マージはするけれども、マテリアルアサインは残したい　といった場合は  
+subsetGeom を作成してマテリアルをアサインすることで、Face 単位でのアサインが可能になります。  
+SopModify では、sopimport 等と同様に、SOP > LOP インポート時のオプションを変更できるので、  
+SOP の PrimitiveGroup を使用して SubsetGeom を作るようにします。
+
+```
+setprimgroup(0,@name,@primnum,1);
+
+s@path = "/testPrim";
+s@name = "testPrim";
+```
+
+setprimgroup で、元の Mesh の名前の Group を作っておきます。
+
+![](https://gyazo.com/ae3a1a848ed219f36d02f161b43b2ced.png)
+
+Import From SOPs の ImportData にある「Subset Groups」を \* にしておくと、
+
+![](https://gyazo.com/98e17f25b3b81d8b016fc27baf0c39fe.png)
+
+SOPModify 側で作成した Group で、SubsetGeom を作成できます。
+
+### マテリアルを維持してみる
+
+SubsetGeom を Group で作れたので、最後にマテリアルも維持した形でマージします。
+
+![](https://gyazo.com/692bbb2d47bca8a57cf47f1ab69e27c9.png)
+
+もう少しまともなやり方がありそうですが、ド直球にやってみます。  
+まず、マテリアルだけを切り出して Looks 以下にまとめます。
+
+![](https://gyazo.com/4ebfd0f1faff9fb9882760099db9a517.png)
+
+RubberToy と Pig を Merge した結果を ConfigureLayer で FlattenStage して、すべてのコンポジションを Flatten します。  
+これを入れないと RestructureSceneGraph ノードで親を変えたり削除したりといった操作が  
+うまく動きません。
+
+![](https://gyazo.com/4bbfd27d78b85bfe0941a648078c78a3.png)
+
+これで、mtl 以下をすべて Looks に移動し、
+
+![](https://gyazo.com/bc8e63466bca9b6cba5591cf81771313.png)
+
+Looks 以外の Prim をすべて削除します。  
+プリミティブパターンで /\* ルート以下の Prim のうち、 /Looks 以外を削除するように書いています。
+
+![](https://gyazo.com/10864ee8c32c3d8183a0a9d9d494b9f9.png)
+
+これで、マテリアルだけ切り出しできました。  
+なお、今回は同名 Prim に関しては無視しています。
+
+次に SOPModify 側。
+
+```
+setprimgroup(0,s@usdmaterialpath,@primnum,1);
+
+s@path = "/testPrim";
+s@name = "testPrim";
+
+string matName = split(@usdmaterialpath,"/")[-1];
+
+s@usdmaterialpath = "/Looks/" + matName;
+s@materialBind = matName;
+
+setprimgroup(0,matName,@primnum,1);
+```
+
+すべての Mesh を 1 つの Mesh にマージしたのち、マテリアル単位の Group を作り、  
+materialBind と usdmaterialpath を指定しておきます。  
+今回は元 Material を Looks 以下に移動した前提で設定しています。
+
+```python
+node = hou.pwd()
+stage = node.editableStage()
+
+from pxr import Usd,UsdShade
+
+for geom in stage.GetPrimAtPath("/Geom/testPrim").GetChildren():
+    matPrim = stage.GetPrimAtPath("/Looks/" + geom.GetName())
+    mat = UsdShade.Material(matPrim)
+    UsdShade.MaterialBindingAPI(geom).Bind(mat)
+    geom.GetAttribute("familyName").Set("materialBind")
+
+```
+
+最後に、GeomSubset と同名の Material が必ずあるという想定で、Python で  
+マテリアルをアサインします。
+
+GeomSubset の familyName に対して materialBind を入れておかないと動かないので  
+それだけ注意が必要です。
+
+![](https://gyazo.com/567b4d9c8bd4a7a9696337f3b25ddabe.png)
+
+最後に、GraftStage で Root をつくれば、GeomSubset 化した単一 Mesh のシーンの完成です。
+
+![](https://gyazo.com/846c486ab79856bc06f8001c4ce06025.png)
+
+ここまでできたら、あとは SOPModify 側で Remesh したりいろいろ編集したりしても  
+元を維持した形でマージした Mesh を持ってくることができます。
+
+## まとめ
+
+今回は非破壊を無視して、全力で破壊的処理をして SOP 側でジオメトリを編集する方法を試しました。  
+SOPModify を活用すれば、だいたいの処理を SOP 側で実行して後処理を LOP 側でする...みたいなことが可能になります。
+
+LOP 側と SOP 側で何をするかというのは難しい問題ですが  
+ジオメトリの操作などに関しては SOP 側でやるのが圧倒的に楽だし、  
+すでにあるアセットに対して何かしら処理をするのであれば  
+LOP 側を起点にジオメトリ処理を SOP Modify で編集するのが個人的には良いのかなと思います。
+
+https://1drv.ms/u/s!AlUBmJYsMwMhh5sxYJ3hIAx1tbundA?e=xdddKN
+
+参考になるかわかりませんが、上記の HIP は ↑ にアップしました。
