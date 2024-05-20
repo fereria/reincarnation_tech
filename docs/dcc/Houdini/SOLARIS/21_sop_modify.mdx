@@ -92,12 +92,12 @@ OFF にすることで、usdxform を切ることができます。
 どれを削除するかをわかりやすくするため、GraftStage で指定 Prim 以下の子に入れて  
 RestructureSceneGraph ノードを使用して、GraftStage で作成したグループを削除するようにします。
 
-### subsetGeom
+### GeomSubset
 
 マージはするけれども、マテリアルアサインは残したい　といった場合は  
-subsetGeom を作成してマテリアルをアサインすることで、Face 単位でのアサインが可能になります。  
+GeomSubset を作成してマテリアルをアサインすることで、Face 単位でのアサインが可能になります。  
 SopModify では、sopimport 等と同様に、SOP > LOP インポート時のオプションを変更できるので、  
-SOP の PrimitiveGroup を使用して SubsetGeom を作るようにします。
+SOP の PrimitiveGroup を使用して GeomSubset を作るようにします。
 
 ```
 setprimgroup(0,@name,@primnum,1);
@@ -114,11 +114,11 @@ Import From SOPs の ImportData にある「Subset Groups」を \* にしてお�
 
 ![](https://gyazo.com/98e17f25b3b81d8b016fc27baf0c39fe.png)
 
-SOPModify 側で作成した Group で、SubsetGeom を作成できます。
+SOPModify 側で作成した Group GeomSubset を作成できます。
 
 ### マテリアルを維持してみる
 
-SubsetGeom を Group で作れたので、最後にマテリアルも維持した形でマージします。
+GeomSubset を Group で作れたので、最後にマテリアルも維持した形でマージします。
 
 ![](https://gyazo.com/692bbb2d47bca8a57cf47f1ab69e27c9.png)
 
