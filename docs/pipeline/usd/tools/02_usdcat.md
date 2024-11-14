@@ -42,11 +42,11 @@ usdcat D:/sample.usd --usdFormat usdc -o D:/sample2usdc.usd
 usdcat の機能に flatten という機能があります。
 これは、指定の usd のコンポジションをすべてベイクした状態で出力する機能です。
 
-<Gist id="8601a03b53c0293879b56c396ea8ce09" file="cube.usda" />
+<ReactEmbedGist gist="8601a03b53c0293879b56c396ea8ce09" file="cube.usda" />
 
 たとえばこんな Cube の usd ファイルを、
 
-<Gist id="9b0587728f5729d2b740f502e4271f1d" file="root.usda" />
+<ReactEmbedGist gist="9b0587728f5729d2b740f502e4271f1d" file="root.usda" />
 
 このようにリファレンスしたファイルを usdcat を用意します。
 
@@ -72,11 +72,11 @@ stage = Usd.Stage.Open("D:/root.usda")
 print(stage.ExportToString())
 ```
 
-<Gist id="58bba26aa3bc46ba85f3668d2f6250e6" file="subLayer.usda" />
+<ReactEmbedGist gist="58bba26aa3bc46ba85f3668d2f6250e6" file="subLayer.usda" />
 
 --flattenLayerStack はすべてを Flatten するのではなく、サブレイヤー部分だけを Flatten します。
 
-<Gist id="e2442096f1e6201a1d7bb5423e41ff0a" file="root.usda" />
+<ReactEmbedGist gist="e2442096f1e6201a1d7bb5423e41ff0a" file="root.usda" />
 
 こんな感じにサブレイヤーにして実行すると
 
@@ -89,7 +89,7 @@ print(stage.ExportToString())
 
 mask は、<AutoLinkTitle url="/usd/population_mask" /> で説明した OpenMask で指定した Path 以下だけをロード・表示する機能です。
 
-<Gist id="8bad7d6f561150fc1ee197be85d11c85" file="root.usda" />
+<ReactEmbedGist gist="8bad7d6f561150fc1ee197be85d11c85" file="root.usda" />
 
 こんな感じでファイルのうち /a のみロードする場合
 

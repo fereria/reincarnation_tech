@@ -78,7 +78,7 @@ Prim は指定した Schema の Prim(UsdGeomCube)になります。
 
 ![](https://gyazo.com/e601ec4885edbce8422ed314002dba99.png)
 
-<Gist id="450695a7cdbd2b32e88abcf21879e858" file="cube.usda" />
+<ReactEmbedGist gist="450695a7cdbd2b32e88abcf21879e858" file="cube.usda" />
 
 この CubeSchema を適応した Prim を作成すると、ほかになんの指定がなかったとしても
 このような例のように、 **Prim に機能を与えるものが PrimSchema** です。

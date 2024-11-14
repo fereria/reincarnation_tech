@@ -17,7 +17,7 @@ sidebar_position: 5
 
 まずはヘッダーを定義します。
 
-<Gist id="2a98417e35ad275315da3e94904af749" file="MainWindow.h" />
+<ReactEmbedGist gist="2a98417e35ad275315da3e94904af749" file="MainWindow.h" />
 
 作成しておいた SimpleCamera や、今回のメインとなる UsdImagingGLEngine
 あとはレンダーパラメーターを定義する UsdImagingGLRenderParams 等を用意します。

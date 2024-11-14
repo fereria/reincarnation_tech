@@ -87,9 +87,9 @@ usdcat D:\Kitchen_set\Kitchen_set.usd
 
 Kitchen_set だと複雑なので、もっとシンプルな usd ファイルで確認してみます。
 
-<Gist id="5c2f8cc7ad988bea665dfce639c2050c" file="subLayer.usda" />
+<ReactEmbedGist gist="5c2f8cc7ad988bea665dfce639c2050c" file="subLayer.usda" />
 
-<Gist id="2f49e19ff084fe357e19a70660a75a4b" file="root.usda" />
+<ReactEmbedGist gist="2f49e19ff084fe357e19a70660a75a4b" file="root.usda" />
 
 このような、samplePrim に sampleValue = false を設定したレイヤーと
 そのレイヤーをサブレイヤーしているレイヤーを用意します。
