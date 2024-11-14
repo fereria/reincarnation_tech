@@ -53,6 +53,10 @@ const config = {
 			}),
 		],
 	],
+	i18n: {
+		defaultLocale: "ja",
+		locales: ["ja"],
+	},
 	themeConfig: {
 		// Replace with your project's social card
 		image: "img/docusaurus-social-card.jpg",
