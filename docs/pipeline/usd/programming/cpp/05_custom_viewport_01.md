@@ -102,7 +102,7 @@ usdview では、freeCamera.py で用意されていて
 
 なので、まずはこの freeCamera.py を参考に C++でカメラを作ります。
 
-<ReactEmbedGist gist="a4d194bddf28c4b10447c227ef715b96" file="SimpleCamera.h"/>
+<!-- <ReactEmbedGist gist="a4d194bddf28c4b10447c227ef715b96" file="SimpleCamera.h"/> -->
 
 まずはヘッダー。
 基本操作の Track PanTilt Tumble をできるようにします（Walk は今回未実装）
