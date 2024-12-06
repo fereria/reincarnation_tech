@@ -1,0 +1,247 @@
+---
+title: USD Variable Expressionを理解する
+tags:
+    - USD
+    - AdventCalendar2024
+description: VariableExpressionについて効果を調べていく
+sidebar_position: 42
+slug: /usd/variable_expression
+---
+
+今回は、VariableExpression について
+いったない何か、どんなことができるかを調べていきたいと思います。
+
+## Variable Expression とは？
+
+そもそも VariableExpression というのは何かというと、  
+公式サイトの説明ページ [こちら](https://openusd.org/release/user_guides/variable_expressions.html) に詳細が書かれていますが
+USD ファイル内に、実行時に評価する式や値を定義するための仕組みです。
+
+この仕組みを使用すると、シーンデータを大幅に変更しなくても  
+シーンを構成する...といったことが可能になります。
+
+が、これだけだとわからないので、サンプルを確認していきます。
+
+### 基本
+
+#### Path での使用
+
+まず、VariableExpression は
+
+-   サブレイヤー・リファレンス・ペイロード　などのアセットパス
+-   バリアントの選択
+
+に対応しています。
+
+シンプルな例を使用して、動作を確認していきます。
+
+```usda
+#usda 1.0
+(
+    expressionVariables = {
+        string LOAD_ASSET = "sphere"
+    }
+)
+
+def Xform "TEST" (
+    prepend references = @`"./${LOAD_ASSET}.usda"`@
+){}
+```
+
+これは、リファレンスで読み込むアセットを、VariableExpression を使用して  
+設定した例になります。  
+USD の記述の中で使用する「変数」にあたる部分は、レイヤーのメタデータ部分にたいして  
+記述します。  
+それが expressionVariables です。
+
+![](https://gyazo.com/50e64b26efd1f4eebcfe841475d212c2.png)
+
+同じフォルダに、 cube.usda sphere.usda があるものとして実行すると  
+このようになります。  
+expressionVariables で指定した値が解決されて「sphere」が表示されました。
+
+#### VariantSet での使用
+
+パスへの使用と、もう一つの利用用途が VariantSet の選択部分です
+
+```usda
+#usda 1.0
+(
+    expressionVariables = {
+        string VARIANT_CHOICE = "CupC"
+    }
+    subLayers  = [@c:/Users/remir/Downloads/Kitchen_set/assets/Cup/Cup.usd@]
+)
+
+over "Cup" (
+    variants = {
+        string modelingVariant = "`${VARIANT_CHOICE}`"
+    }
+){}
+```
+
+キッチンセットの Cup を使用してテストしてみます。  
+VariantSet の選択肢部分を Expression で記述しています。
+
+これだけだと 1 つなのであまり意義がないように見えますが  
+複数の VariatSet をまとめて編集したり
+条件に応じて変更させたりする場合等に使用できそうです。
+
+### expressionVariables
+
+サンプルの通り、すごくざっくりすると レイヤーで記述したメタデータ「expressionVariables」に、レイヤー内で使用する変数を定義して  
+決められた記述方法を使用すると、その変数がしようできるよー  
+というのが大まかな機能です。
+
+この変数の定義にあたる expressionVariables には、いくつかルールがあります。
+
+#### 対応する型
+
+まず、この変数にはいくつかの型を使用することができます。  
+使用可能なのが、 <Marker>string bool int64 配列 None</Marker> です。
+
+公式のドキュメントのサンプルを拝借すると
+
+```usda
+#usda 1.0
+(
+    expressionVariables = {
+        string VARIANT_CHOICE = "variantA"
+        bool UseProxyModel = false
+        int64 IDENTIFIER = 3254
+        string[] renderPassList = ["foreground", "background", "FX"]
+    }
+)
+```
+
+このあたりは、一般的なプログラミング言語と同様の仕様といえます。
+
+### Expression
+
+Expression は、USD のパスやメタデータ・アトリビュートの値に埋め込むことができる式のことで  
+以下のように記述します。
+
+```usda
+`"${LOAD_ASSET}"`
+```
+
+バッククォート＋" で囲まれた範囲が、Expression として評価される式で  
+評価後は文字列などに展開されます。  
+その中で expressionVariables で定義した値を使用する場合は$\{HOGEHOGE\}のような  
+フォーマットを使用して記述する必要があります。
+
+## オーサリング場所
+
+この expressionVariables は、レイヤーに記述されたメタデータですが  
+この「レイヤー」は
+
+-   ステージのルートレイヤー
+-   セッションレイヤー
+-   リファレンスレイヤーのレイヤースタックのルート
+
+で、オーサリングする必要があります。
+
+どういうことかというと、
+
+例えば最初の例のレイヤーの後に
+
+```usda
+#usda 1.0
+(
+    subLayers = [@sample_layer.usda@]
+)
+```
+
+このようなサブレイヤーを追加します。  
+これは、特に何もしていないレイヤーを追加しただけで、このレイヤーには何も書かれていません。  
+この USD ファイルを usdview で開くと
+
+![](https://gyazo.com/b5ba3fd779fb6ffed3a61473f655d60c.png)
+
+このように、リファレンスが読めなくなっている つまり、  
+VariableExpression の評価が行われなくなっているのを意味します。
+
+ここでいう「ステージのルートレイヤー」というのは、  
+usdview などで Open した時の USD ファイルを指しています。  
+このファイルには、 expressionVariables は記述されていないため（＝オーサリングされていない）今回のようにエラーになります。
+
+リファレンスレイヤーのレイヤースタックは、リファレンスで読み込んだファイルを指しています。
+
+なので、以上のことから言えるのは
+
+1.  USD ファイル内のパスやメタデータの値に対して、Expression で記述する
+2.  expressionVariable を記述したレイヤーに 1 のファイルをサブレイヤーすることで  
+    値を解決する
+
+という使い方が想定されているのだと思います。
+
+### Expression 記述
+
+ここまででは、シンプルな変数の埋め込みのみでしたが  
+それ以外にも関数を使用してより複雑な挙動を作成することができます。
+
+VariantSet のサンプルで処理をテストしてみます。
+使用可能な関数は[こちら](https://openusd.org/release/user_guides/variable_expressions.html#expression-function-reference)にありますが、今回はすべてではなくいくつか書き方の参考によさそうなものをピックアップして紹介します。
+
+#### at
+
+```usda
+#usda 1.0
+(
+    expressionVariables = {
+        string[] VARIANT_CHOICE = ["CupC","CupD"]
+    }
+    subLayers  = [@c:/Users/remir/Downloads/Kitchen_set/assets/Cup/Cup.usd@]
+)
+
+over "Cup" (
+    variants = {
+        string modelingVariant = "`at(${VARIANT_CHOICE}, 0)`"
+    }
+){}
+```
+
+基本的な関数の使用方法は同じで、
+`` `"<EXPRESSION>"` ``
+このような形式で使用します。
+
+at は、配列の値から、指定の Index の値を取り出します。
+
+#### if
+
+```usda
+#usda 1.0
+(
+    expressionVariables = {
+        string[] VARIANT_CHOICE = ["CupC","CupD"]
+        bool condition = false
+    }
+    subLayers  = [@c:/Users/remir/Downloads/Kitchen_set/assets/Cup/Cup.usd@]
+)
+
+over "Cup" (
+    variants = {
+        string modelingVariant = "`if(${condition},at(${VARIANT_CHOICE}, 0),at(${VARIANT_CHOICE}, 1))`"
+    }
+){}
+```
+
+if 文を使用した例。
+
+```
+if(<condition>, <true-value>, <false-value>)
+```
+
+関数の引数に変数を入れたり、関数を入れたりできます。  
+上の例なら、bool の変数に応じて true か false の結果　つまりは配列の０番目か１番目かをセットするようになります。
+
+## まとめ
+
+現状だと、使用箇所は限定的ではありますが  
+テンプレートな USD ファイルを用意できれば、色々なバリエーションのルートレイヤーの expressionVariables を用意すれば
+様々なパターンが表現できそうです。
+
+## 参考
+
+-   https://github.com/PixarAnimationStudios/OpenUSD-proposals/tree/main/proposals/stage_variable_expressions
+-   https://openusd.org/release/user_guides/variable_expressions.html
