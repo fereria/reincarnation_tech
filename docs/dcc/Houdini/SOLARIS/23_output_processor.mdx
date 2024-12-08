@@ -1,0 +1,329 @@
+---
+slug: /houdini/solaris/output_processor
+title: カスタムOutputProcessorを作ろう
+sidebar_position: 23
+tags:
+    - SOLARIS
+    - Python
+    - Houdini
+---
+
+HoudiniSOLARIS の USD ROP ノードには「OutputProcessing」と呼ばれる機能が用意されています。  
+![](https://gyazo.com/87516505f0315c55581057fa76b90f17.png)
+この OutputProcessing を使用すると、どんなことができるかというと
+
+USD ROP でファイルを保存するタイミングで、プラグインで実装した処理を実行できるようになります。
+
+![](https://gyazo.com/fd79782b68a65bea4105bb6eb459da77.png)
+例として、デフォルトで用意されている機能「Use Relative Path」であれば、  
+リファレンスのファイルパスを、自動で相対パス化してくれたり、  
+![](https://gyazo.com/5b8a2e08bf65c14182b95da9f244ab36.png)
+「Save AllFiles to a Specific Directory」であれば、  
+OutputDirectory で指定したパスに変換してくれます。
+
+USD は、複数のファイルで構成されているフォーマットのため  
+場合によってはパスを書き換えたりなど　様々な処理を入れたくなります。  
+OutputProcessing を使用しない場合は、一度出力したあとに、別のノードで実行する...といった  
+HDA を作る必要がありますが、  
+Python で書ける処理ならば、だいたいのことはこの OutputProcessing を使用して  
+実装することができます。
+
+## Plugin を作成する
+
+まず、プラグインを作成します。  
+OutputProcessing は Python で実装しますが、その Python ファイルを指定のディレクトリ以下に  
+作成するとロードできるようになります。
+
+Documents/houdini/VERSION/husdplugins/outputprocessors
+
+以下のフォルダに、適当な名前で Python ファイルを作成します。
+
+```python
+import hou
+from husd.outputprocessor import OutputProcessor
+
+
+class SampleOutputProcessor(OutputProcessor):
+
+    theParameters = None
+
+    @staticmethod
+    def name():
+        return "sample_output_processor"
+
+    @staticmethod
+    def displayName():
+        return "Sample OutputProcessor"
+
+
+# 以下の記述が必須です: プロセッサクラスを返すモジュールレベルの関数
+outputprocessor = SampleOutputProcessor()
+
+def usdOutputProcessor():
+    return SampleOutputProcessor
+
+```
+
+中身はこのようにします。  
+これがプラグインを作成する際の最小構成になります。
+
+name は、このプラグイン自体の名前（ユニークなもの）をスペースなしで、
+
+![](https://gyazo.com/ad136b6e5b016bf9d28418de5250f910.png)
+
+displayName は、USD ROP の Output Processors の選択メニューで出てくる文字列で、  
+スペースなどを入れてもＯＫです。
+
+## 実装
+
+以上のテンプレに対して、必要な実装をしていきます。
+
+https://www.sidefx.com/ja/docs/houdini/solaris/output.html
+
+実装方法は、上記のページにまとめられていますが、  
+わかりにくいので１つずつ見ていきましょう。
+
+基本的な流れとしては、処理を実行させたいタイミングに対応する  
+出力プロセッサメソッド（関数）をオーバーライドする形になります。  
+対応する関数は以下の 4 つです。
+
+| 関数                 | 機能                                                                                            |
+| -------------------- | ----------------------------------------------------------------------------------------------- |
+| beginSave            | USDROP がファイルの書き出しを始めたタイミングで実行。この中だと最も最初に呼ばれる               |
+| processSavePath      | USDROP がアセットを保存するディスク上の場所を決定する必要がある時に呼ばれる。                   |
+| processReferencePath | USDROP がアセット(ファイル内のサブレイヤーまたは参照)を指したファイルパスを書き出す必要がある時 |
+| processLayer         | レイヤーファイルをディスクに書き出す直前にコールされます                                        |
+
+![](https://gyazo.com/1ef801bf4f917214b77e94ec6c345e53.png)
+
+プラグインの動作を理解するために、このようなサンプルを作成しました。  
+2 レイヤーで構成されていて
+![](https://gyazo.com/2e2e1a7058126a6ce3c8f9c851b4bb25.png)
+1 つ目が、Root したに cube1 があるファイルで、Root が DefaultPrim になっているもの。  
+![](https://gyazo.com/caab6cbe9004017c0cdaa4ae6cadf218.png)
+もう 1 つが、最終的に出力しているレイヤーで、Cube を含むレイヤーを「リファレンス」している  
+レイヤーです。
+
+### beginSave
+
+この beginSave は、その名の通り USDROP が実行されたタイミングで呼ばれます。
+
+```python
+    def beginSave(self, config_node, config_overrides, lop_node, t, stage_variables):
+        super().beginSave(config_node, config_overrides, lop_node, t, stage_variables)
+```
+
+最初に呼ばれることから、主にパラメーターの初期化などを行います。
+
+#### parameters
+
+beginSave での処理を書く前に、理解しておきたいのがパラメーターです。  
+これは、OutputProcessing を追加した時に USDROP 上に表示される入力用 UI のことで  
+OutputProcessing で何かしらのパラメーターを設定したい場合は、このパラメーターを定義します。
+
+```python
+    @staticmethod
+    def parameters():
+
+        group = hou.ParmTemplateGroup()
+        group.append(hou.IntParmTemplate("sample_output_int_sample", "Int Sample", 1))
+        SampleOutputProcessor.theParameters = group.asDialogScript()
+        return SampleOutputProcessor.theParameters
+```
+
+例として、このような関数を追加します。  
+パラメーターは classmethod で定義し、ParmTemplateGroup.asDialogScript()の値を return します。
+
+![](https://gyazo.com/7717e0a5dce992d44a0f98f296f7ef35.png)
+
+設定結果はこのようになります。  
+OutputProcessor を追加すると、指定したパラメーターが追加されます。
+
+これで、何かしらの値を OutputProcessing 中で使用したい場合、設定可能になります。
+
+ここで追加した値を beginSave 側で初期化します。
+
+```python
+    def beginSave(self, config_node, config_overrides, lop_node, t, stage_variables):
+
+        self.int_value = self.evalConfig("sample_output_int_sample", config_node, config_overrides, t)
+```
+
+evalConfig を使用すると、その時点でのパラメーターに、config_overrides で指定した辞書型  
+をオーバーした値に評価してくれます。  
+config_overrides は、デフォルトでは空の辞書型ですが  
+ここで任意の辞書型を用意して値をオーバーライドすることも可能です。
+
+初期化したパラメーターはクラス変数としてセットされたので、以降の関数でも  
+使用することができます。
+
+もう１つ重要な点は、この関数の基底クラス実装を必ず呼び出す必要があります。
+
+```python
+    def beginSave(self, config_node, config_overrides, lop_node, t, stage_variables):
+
+        self.int_value = self.evalConfig("sample_output_int_sample", config_node, over, t)
+        # 基底クラスをコールすることで、
+        # 処理系メソッドで self.config_node self.lop_node self.t が使用できるようになる
+        super().beginSave(config_node, config_overrides, lop_node, t, stage_variables)
+```
+
+このように super().beginSave(～～～)で指定すれば OK です。  
+これを呼び出すことで、 config_node (地震の USDROP ノード) lop_node t のパラメーターを  
+self で呼び出せるようになります。
+
+## processSavePath
+
+processSavePath は、レイヤーを保存する先のファイルパスを決定するときに呼ばれます。  
+return で書き出し先のフォルダを返すようにすればよいので  
+パスを相対化したり、何かしらの値で定義してあった値を置換したりといったことを  
+この processSavePath で実装することができます。
+
+## processReferencePath
+
+processReferencePath は、リファレンスやサブレイヤーをしているレイヤーを  
+書き出す際に実行されます。
+
+![](https://gyazo.com/8ea92f18f5138c92f0cb06d7418351b8.png)
+
+```python
+def processReferencePath(self, asset_path, referencing_layer_path, asset_is_layer):
+```
+
+今回の例だと、LOP 内のネットワークでレイヤーを作成しリファレンスをしていますが、  
+この場合 Cube のレイヤー出力前にこの関数が呼ばれ、  
+asset_path > cube のレイヤー  
+referencing_layer_path > リファレンスをしている（USDROP で出力しようとしている）レイヤー  
+asset_is_layer > asset_path のアセットが USD ファイルかどうか  
+が入ってきます。
+
+これを利用して、たとえばリファレンスしているパスを相対パス化したり  
+データの収集＞パス変更などを行うことができます。
+
+```python
+    def processReferencePath(self, asset_path, referencing_layer_path, asset_is_layer):
+        """
+        レンダーノードがアセット(ファイル内のサブレイヤーまたは参照)を指したファイルパスを書き出す必要がある時にコールされます
+        """
+        return hou.text.relpath(asset_path, referencing_layer_path)
+```
+
+例として、リファレンスのパスを読み込んでいるレイヤーからの相対に書き換えた例。
+processReferencePath の return では、リファレンスのパス（USD にセットするパス）を  
+返します。  
+![](https://gyazo.com/1774f26c30c0a56bdc15b9e5b4cc2c86.png)
+
+この結果、リファレンスのパスは相対パスになりました。  
+今回は 1 回だけ processReferencePath が実行されましたが、この関数はリファレンスの数だけ  
+実行されます。
+
+## processLayer
+
+最後は ProcessLayer。  
+この関数は、USD ファイルに書き込む直前の SdfLayer を引数で受け取ることができます。  
+つまりは、<Marker>書き込む直前に、なんでもできる</Marker>のが ProcessLayer です。
+
+この processLayer は、エクスポートしたい LOP のレイヤーの数だけ実行されます。
+
+```python
+
+    def processLayer(self, layer):
+        print(layer.ExportToString())
+        # 変更があったらTrueにする
+        return False
+```
+
+試しに、このようにしてみます。
+
+![](https://gyazo.com/aae24a57d96851f9fc67bbd901fb9ff3.png)
+
+このタイミングでは、まだファイルに書き込まれる直前のため  
+受け取るレイヤーは AnonymousLayer（メモリにのみ存在するレイヤー）です。
+
+今回のサンプルだと、2 回 processLayer が実行されていて  
+片方はリファレンスをしている USDROP で出力しているレイヤー、  
+もう１つは Cube を作成しているレイヤーであることがわかります。
+
+注意点として、この段階でのレイヤーは Houdini 内で作成しているレイヤーは、  
+受け取る SdfLayer だけではなく、その中でリファレンスしている「Houdini 内で一緒に作成しているリファレンスレイヤー」  
+なども、すべて AnonymousLayer 扱いなことです。  
+なので、この OutputProcessiong で、AssetInfo を仕込む...とかは、正しく動かない可能性があります（一敗）
+
+また、何かしらルールがあるかもしれませんが  
+どういう順番でレイヤーが処理されるかわからないので、その点も注意が必要です。
+
+何をやると良さそうか考えてみましたが、今回はテクスチャを収集してパスをリプレースするようにしてみます。
+
+![](https://gyazo.com/917b232692cd7f3036fbdd4b3fd38363.png)
+
+サンプルをこのように改変して、
+
+![](https://gyazo.com/d6d33309b1542af29efadee817ddf736.png)
+
+テクスチャを張ったプレーンを用意します。  
+このテクスチャを張った USD を USDROP でエクスポートすると、ファイルと同じ階層下の textures 下にコピーするようにします。
+
+```python
+    def beginSave(self, config_node, config_overrides, lop_node, t, stage_variables):
+
+        self.int_value = self.evalConfig("sample_output_int_sample", config_node, config_overrides, t)
+        self.save_dir_root = os.path.dirname(self.evalConfig("lopoutput", config_node, config_overrides, t))
+        super().beginSave(config_node, config_overrides, lop_node, t, stage_variables)
+```
+
+まず beginSave で必要なアトリビュートを取得して、クラス変数に入れておきます。  
+保存先は、USD の保存先と同じディレクトリ以下にしたいので、lopoutput のディレクトリを使用します。
+
+```python
+    def processLayer(self, layer):
+        """
+        レイヤーファイルをディスクに書き出す直前にコールされます
+        TODO: Apprenticeだと動かない
+        """
+        collectDir = self.save_dir_root + "/textures"
+        os.makedirs(collectDir, exist_ok=True)
+
+        def traverse(shader):
+            for inAttr in shader.GetInputs():
+                if inAttr.GetTypeName() == "asset":
+                    srcPath = inAttr.Get().resolvedPath
+                    if srcPath and os.path.exists(srcPath):
+                        dstPath = collectDir + "/" + os.path.basename(srcPath)
+                        print(srcPath)
+                        print(dstPath)
+                        shutil.copy(srcPath, dstPath)
+                        print(f"copy to : {dstPath}")
+                        inAttr.Set(dstPath)
+
+        stage = Usd.Stage.Open(layer)
+        # Referenceを探す
+        for prim in stage.Traverse():
+            mat = UsdShade.Material(prim)
+            shader = UsdShade.Shader(prim)
+            if mat:
+                traverse(mat)
+            elif shader:
+                traverse(shader)
+
+        return True
+```
+
+processLayer 側でレイヤーを編集します。  
+SdfLayer のままだと扱いにくいので、UsdStage に入れて  
+Material/Shader の Inputs で asset (texture 等外部参照しているもの)を textures 下に  
+かき集めてパスを変更します。
+
+※厳密にいうと、これだと同名テクスチャは NG ですが  
+　そこは必要に応じて改変してください。
+
+## まとめ
+
+OutputProcessor の基本的な機能と書き方についてみてきましたが  
+この機能を使用すれば、わざわざ HDA を作って...などしなくても  
+必要な処理をかけるので便利そうです。
+
+積極的に使っていこうと思います。
+
+## 参考
+
+-   https://www.sidefx.com/ja/docs/houdini/solaris/output.html
