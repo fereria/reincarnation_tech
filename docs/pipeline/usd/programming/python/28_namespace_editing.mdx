@@ -1,0 +1,278 @@
+---
+slug: /usd/python/namespace_editing
+title: NamespaceEditingの使い方
+sidebar_position: 32
+---
+
+USD は、複数のファイルを合成して１つのシーングラフを構築する都合  
+現在のシーングラフの階層構造を変更するという処理が、できるにはできますが簡単にはできません。  
+そのあたりのやり方を書いたのが <AutoLinkTitle url="/usd/python/reparent" />という  
+BatchNamespaceEdit を使用した手法ですが、  
+比較的最近、UsdNamespaceEditor というクラスを使用したより手軽な方法が追加されたので  
+その使い方を紹介しようと思います。
+
+## 機能
+
+まず、この UsdNamespaceEditor は Prim や Property を「削除」したり「移動」する関数を提供しています。
+
+### 基本的な書き方
+
+```python
+from pxr import Usd,UsdGeom
+
+stage = Usd.Stage.CreateInMemory()
+layer = stage.GetRootLayer()
+stage.DefinePrim("/Root")
+stage.DefinePrim("/Root/A")
+stage.DefinePrim("/Root/B")
+UsdGeom.Cube.Define(stage,"/Root/A/Cube")
+```
+
+まずは、Python を使用してサンプルシーンを作ります。
+
+![](https://gyazo.com/450fd8a68fdd22657413d25aaf929418.png)
+
+/Root/A 下に CubePrim が作成されました。
+
+この Cube を B に移動したいとします。
+
+```python
+editor = Usd.NamespaceEditor(stage)
+# 移動
+editor.MovePrimAtPath('/Root/A/Cube','/Root/B/Cube')
+editor.ApplyEdits()
+# 削除
+editor.DeletePrimAtPath('/Root/A')
+editor.ApplyEdits()
+# リネーム
+editor.RenamePrim(stage.GetPrimAtPath('/Root/B/Cube'),'NewCube')
+editor.ApplyEdits()
+```
+
+以上！！  
+革命的に簡単です。
+
+使用方法はシンプルで、編集したい Stage を NameSpaceEditor に与え  
+実行したい処理の関数を実行し、次に ApplyEdits()を実行します。  
+複数の処理を実行したい場合も、処理の後にかならず ApplyEdits を実行します。
+
+Move や Rename といった処理を複数書いて、１回だけ ApplyEdits をすると  
+直前の処理 1 回だけが実行されるので注意が必要です。
+
+### Property
+
+```python
+aPrim = stage.GetPrimAtPath("/Root/A")
+bPrim = stage.GetPrimAtPath("/Root/B")
+
+prop = aPrim.CreateAttribute("sample",Sdf.ValueTypeNames.String)
+prop.Set("Hello")
+
+editor.DeleteProperty(prop)
+editor.ApplyEdits()
+```
+
+関数名や引数などもかなり直感的でわかりやすいですね。
+
+## 実行可能かチェックする
+
+この NamespaceEditor は、基本的に存在する Prim（有効な Prim）がない場合はエラーになってしまいます。  
+なので、エラーを回避するのであれば事前に実行可能かチェックをします。
+
+```python
+editor = Usd.NamespaceEditor(stage)
+
+#存在しないPrimを移動しようとした
+editor.MovePrimAtPath('/Root/C/Cube','/Root/B/Cube')
+if editor.CanApplyEdits():
+    editor.ApplyEdits()
+```
+
+存在しない Prim を実行しようとした　等、エラーになってしまうものは  
+CanApplyEdits が False になるため、上のように書くとエラーを回避することができます。
+
+## リレーションがある場合
+
+この関数の便利なポイントが、リレーション等で他 Prim に対してのコネクションがある場合  
+リレーション側も自動的にリネーム後のものにリネームしてくれる点です。
+
+```python
+stage = Usd.Stage.CreateInMemory()
+layer = stage.GetRootLayer()
+layer.Clear()
+stage.DefinePrim("/Root")
+primA = stage.DefinePrim("/Root/A")
+primC = stage.DefinePrim("/Root/C")
+
+rel = primC.CreateRelationship('sample')
+rel.AddTarget(primA.GetPath())
+print(stage.ExportToString())
+```
+
+まずは 2 つの Prim があり、sample という名前の C に A へのリレーションを追加します。
+
+```python
+editor = Usd.NamespaceEditor(stage)
+editor.RenamePrim(primA,'B')
+editor.ApplyEdits()
+```
+
+A を B にリネームします。
+
+```usda
+#usda 1.0
+(
+    doc = """Generated from Composed Stage of root layer
+"""
+)
+
+def "Root"
+{
+    def "B"
+    {
+    }
+
+    def "C"
+    {
+        custom rel sample = </Root/B>
+    }
+}
+```
+
+このように、C の sample も B に書き換わっているのがわかります。  
+BatchNamespaceEdit だと、リレーションまでは書き換えてくれず  
+階層を変えたらリレーションもすべて張りなおさなければいけなかったですが  
+（おかげでマテリアルの階層変更などは地獄）  
+RenamePrim や MovePrimAtPath といったシンプルなコマンドだけで済むようになりました。
+
+## コンポジションがある場合
+
+この NamespaceEditor の大きな特徴が、引数に渡しているのが「Stage」であることです。  
+BatchNamespaceEdit の時は、対象はレイヤーであり  
+サブレイヤーが存在している場合など、複数のレイヤーで構成されているものは  
+色々と面倒な処理が必要でした。
+
+ですが、stage なのでこの辺りは良しなに計らってくれます。
+
+まず、テストで ↑ で作成した Cube のシーンを usda で保存し、  
+そのシーンをサブレイヤー合成した main.usda を用意します
+
+```usda title="base_layer.usda"
+#usda 1.0
+
+def "Root"
+{
+    def "A"
+    {
+        def Cube "Cube"
+        {
+        }
+    }
+
+    def "B"
+    {
+    }
+}
+```
+
+```usda title="main.usda"
+#usda 1.0
+(
+    subLayers = [@./base_layer.usda@]
+)
+```
+
+```python
+stage = Usd.Stage.Open(r"D:/usd/main.usda")
+
+prim = stage.GetPrimAtPath('/Root/B/Cube')
+editor.RenamePrim(prim,'CubeRe')
+editor.ApplyEdits()
+
+print(stage.ExportToString())
+```
+
+この usda に対して、NamespaceEditor を使用してリネームしてみます。
+
+![](https://gyazo.com/6fd346181b78b35b60b86c964055db48.png)
+
+リネームできました。
+出来はしましたが、USD の構造を考えるとこれがどのように実現されているか気になります。  
+ので、LayerStack を確認します。  
+LayerStack とは、現在のステージを構成するサブレイヤーを再帰的にあつめたリストです。  
+もともとは
+
+```python
+for layer in stage.GetLayerStack():
+    print(layer)
+```
+
+![](https://gyazo.com/38ef33d6ba5cd686a5ae8e073bf72f72.png)
+
+このように、現在のアプリケーションに紐づく一時的な編集レイヤーである SessinLayer と  
+メインレイヤー、そしてサブレイヤー合成している base_layer.usda です。
+
+同様のスクリプトを NamespaceEditor を実行後のもので見ていきます。  
+わかりやすいように ExportToString()して、各レイヤーがどうなっているのか見てみましょう。
+
+```usda
+Sdf.Find('anon:000002215FA603C0:main-session.usda')
+#usda 1.0
+
+Sdf.Find('D:/usd/main.usda')
+#usda 1.0
+(
+    subLayers = [
+        @./base_layer.usda@
+    ]
+)
+
+Sdf.Find('D:/usd/base_layer.usda')
+#usda 1.0
+
+def "Root"
+{
+    def "A"
+    {
+        def Cube "CubeRe"
+        {
+        }
+    }
+
+    def "B"
+    {
+    }
+}
+```
+
+きちんと、Cube が記述されている base_layer.usda 側が更新されていることがわかります。  
+これからわかることとして、  
+ファイルを保存したい場合は RootLayer だけではなく、他のサブレイヤーも保存しなければいけません。
+
+```python
+for layer in stage.GetLayerStack():
+    if not layer.anonymous:
+        layer.Save()
+```
+
+今回の例であれば、シンプルなサブレイヤーだけで構成されているので  
+LayerStack から SessionLayer を含む AnonymousLayer を除いたレイヤーを保存します。
+
+## まとめ
+
+以上、NamespaceEditor の使い方でした。  
+個人的にかなり手間だった階層変更やリネームの処理を超手軽に、かつ直感的に書けるようになって  
+うれしいですが
+
+> This code is a work in progress and should not be used in production scenarios.
+> It is currently not feature-complete and subject to change.
+
+API ドキュメントにはこのように書かれている通り、  
+まだまだ作成中のコードのため、まだ実験にとどめておいたほうがよさそうです。  
+とはいえ、知っておくと色々便利だと思うので  
+ぜひ試してみてください。
+
+## 参考
+
+-   https://openusd.org/release/user_guides/namespace_editing.html
+-   https://openusd.org/release/api/class_usd_namespace_editor.html
