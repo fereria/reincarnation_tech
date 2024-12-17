@@ -1,0 +1,546 @@
+---
+slug: /houdini/pdg/usd
+title: TOPで他ツールと組み合わせてUSDのシーンを構築する
+sidebar_position: 20
+---
+
+[Houdini アドベントカレンダー 2024](https://qiita.com/advent-calendar/2024/houdini) 15 日目は、HoudiniTOP を中心にいろんなツールを組み合わせて  
+USD のシーンを作ってみよう！！です。
+
+## 前置き
+
+今回は、<Marker>「Maya ですでにあるプロジェクトに＋ α で USD で何かしたい」</Marker>となった場合のアプローチを
+
+<Marker color="cyan">あくまでも</Marker>
+<Marker color="pink">私の妄想で</Marker>構築していきます。 何故こんなことを前置きにするかというと、私自身は映像仕事でUSDを扱ったわけではなく
+USD以外のワークフローでも、映像業界での業務経験はほぼありません（あっても十数年前）
+なので、あくまで要素を組み合わせる考え方やUSDやTOPの機能をテストするという体ですので
+「こんな構成では作らない」とか「こういう要素も必要」みたいな突っ込みはなしでお願いします。
+こういう要素があったらどうなるの？ みたいなことはTwitterなどで行っていただけると、補足などはできると思いますので
+その辺了承の上、温かく見守ってください。
+
+## 前提・ゴール
+
+まず、ゴール設定ですが、Houdini の TOP を使用して、すでに存在している Maya シーンや Alembic などのキャッシュを使用して  
+USD のシーンを構築します。  
+そして、Houdini 上でライティングや LookDev などをできるようにするための「お膳立て」を行います。
+
+その前提ですが、以下はすでに行われているものとします。
+
+-   Maya シーンやキャッシュなどは、定められたルールのディレクトリ以下に、指定の名前で保存されている
+
+さすがにこの部分はできていないと PDG で処理することが不可能になってしまうので、  
+ここは絶対のルールであるとします。
+
+## 作っていく
+
+### WorkItem 準備
+
+まず、PDG で処理をする場合は、ざっくり分けると「準備」部分と「処理」部分に分けられます。  
+PDG の処理単位は「WorkItem」と呼ばれるのですが、この WorkItem がバッチ処理に必要な様々な情報を詰め合わせたコンテナ  
+になっています。  
+つまり、今回のようにレンダリング用のシーンを構築したい場合であれば  
+ショットやシーンの情報、どこにどのファイルがあるか等の情報を整理して WorkItem にいい感じに設定する必要があります。
+そのため、まずは PDG では最初に処理を実行したいシーンの数（あるいはショットの数）だけ WorkItem を  
+生成する必要があります。
+
+起点を何にするかはいろいろアプローチはありますが、  
+今回はディレクトリ階層がルール化されている前提としているので、workItem を作っていきます。
+
+階層構造は、あまり世間のサンプルがないのですが まずはシンプルな構成で行きたいと思います。
+
+![](https://gyazo.com/dd77ec85859f2c3c1201903b0f5143de.png)
+
+まずは、階層構造はこのようになっているものとします。  
+cache の位置は shots 内に入れるか外に入れるかはお好みで。
+
+![](https://gyazo.com/c1c1f18b1e8bfa8093f458acb9a90af7.png)
+
+seq と shot は seq+Num とします。
+
+![](https://gyazo.com/2d4701bbabba6720d6b32d460cc72232.png)
+
+まず、seq と shot 分の WorkItem を作ります。
+
+![](https://gyazo.com/b1445677bd1242d1fb236cc3d705fdbf.png)
+
+FileType をディレクトリ階層にして、まず seq 以下を探し
+
+![](https://gyazo.com/57dc542ec8a8798da2092baa87efdafc.png)
+
+さらに、その下流で上流の workItem を使用してさらに shot 以下の階層構造を取得します。
+
+![](https://gyazo.com/e1ccbda20fa6fbdd88df00d191cffdbc.png)
+
+まずはディレクトリの数だけ WorkItem が作られました。  
+Directory でリストした場合は、filename がディレクトリ名になるのですが  
+これだと seq と shot の番号が FilePattern を実行した時に消えてしまうので、
+
+![](https://gyazo.com/61fd86e30c281cb72a741f3b6bfa0342.png)
+
+AttributePromote で、それぞれを seq と shot に入れておきます。
+
+![](https://gyazo.com/349ae4bf12ec8c9e6a038b18bec9995e.png)
+
+＋ shot ディレクトリのルートもこの後使うので、rootDir としてアトリビュートに入れておきます。
+
+![](https://gyazo.com/2da8a877241a12b562996f78dab6ac20.png)
+
+これで、最低限の workItem の準備が整いました。  
+これを基準に、下流で処理を追加していきます。
+
+## 変換処理
+
+### MayaExport
+
+まず、すでに Alembic としてキャッシュを出力している部分以外で  
+現在 Maya シーン内に存在する要素を PDG 経由で USD に出力します。
+
+![](https://gyazo.com/0c0ed98d167f9b3217c59d6750c24d21.png)
+
+PDG には Maya ServiceBlock と呼ばれるノードが用意されていて  
+このノードを使用すると、裏で mayapy をサービスで起動し、PDG 側から Python 処理を  
+実行できるようになります。
+
+![](https://gyazo.com/281f723d11b6fd27ba79ffbe53482f43.png)
+
+ノードの要設定場所が、 Server Configuration で、ここで Maya のバージョンなどを指定します。
+
+![](https://gyazo.com/edf948a5e720b62bca73eae45da081e8.png)
+
+Create Maya Service を押すと、起動する MayaPy の場所を聞かれるので  
+自分の実行したい Maya のディレクトリを指定します。
+
+さらに、もし普段は日本語版の Maya を使用している人の場合は  
+日本語の mayapy で実行すると、ユニコードエラーがでて実行不可になってしまうので、  
+サービスでは US 版が実行されるように指定を入れておきます。
+
+![](https://gyazo.com/a68645d75ffd36b1318ffc109f29f713.png)
+
+Create Maya Service をした後に、 Manage Services.. を押して  
+一度サービスを止め、Add Environment Variable に MAYA_UI_LANGUAGE と en_US を入れておきます。  
+設定は以上終了です。
+
+あとはこの Begin-End の間に Service Block Send を追加して、  
+実行したい Python コマンドをノードに記述します。
+
+この ServiceBlockSend での Python では、  
+PDG の「Out-of-Process」な状態の Python 同じで、pdgjson 経由で workItem の情報を取得できます。  
+この Out-of-Process あたりは <AutoLinkTitle url="/houdini/pdg/oop/01" /> あたりを参照してください。
+
+準備ができたので、Maya からシーンを Export します。  
+Twitter でネタを探していた時に  
+インスタンスを Maya から、それ以外は Alembic があるという想定がありそうだったので  
+Maya からはインスタンスを出力するようにしてみます。
+
+実際にはシーンをちゃんと探したりしたほうが良いのですが、今回は本筋からはそれるので  
+（それだけで 1 つの記事ができそう）
+
+![](https://gyazo.com/84a2ca2131f66fefe3627c4ca4e180fa.png)
+
+今回は、グループ名は固定としておきます。
+
+![](https://gyazo.com/e76645175a5a0c1303bd25b0995c749b.png)
+
+出力設定のポイントは、Output で CreateRootPrim で「Root」階層を作り  
+ここを DefaultPrim としておきます。
+
+![](https://gyazo.com/edeec42765ccada73d5c253fff5d4e90.png)
+
+Advanced に、デフォルトでなっているとは思いますが Instances を Convert to USD Instaneable References にしておきます。
+
+![](https://gyazo.com/5815950a0187f1f4fa3bbc1e2f8a45bb.png)
+
+結果。  
+見ての通り、USD として出力すると元になっているオブジェクトも含めて  
+すべてインスタンスとして出力します。
+
+![](https://gyazo.com/c631f12e3286564d3c69d1a1df89a3db.png)
+
+USDView 上では見えないですが、 /MayaExportedInstanceSources という下に  
+インスタンスの Prototypes が出力され、このモデルを各インスタンスが表示するようになっています。
+
+この構造については思うところはありますが、今はこういうものとしておきます。  
+近いうちに PointInstancer に変換していい感じに加工する手順を紹介します。
+
+とりあえず、Maya から出力する手段はわかったので PDG から実行します。  
+開きたい Maya シーンは、 rootDir/shots/seq###/shot##/maya/scenes/scene.mb です。  
+これは WorkItem のアトリビュートにあるので、これを利用して開けばよいです。
+
+USD の保存先は、 proj/usd/seq/shot 下に出していきましょう。
+
+![](https://gyazo.com/3138ac88dfcba2271c8147aab17bbcc0.png)
+
+```python
+import os
+
+rootDir = work_item.attribValue('rootDir').local_path
+mayaScene = f"{rootDir}/maya/scenes/scene.mb"
+
+seq = work_item.attribValue('seq')
+shot = work_item.attribValue('shot')
+usdDir = f"D:/usd_sample/usd/{seq}/{shot}"
+usdPath = f"{usdDir}/instance.usd"
+# ディレクトリを作る
+os.makedirs(usdDir,exist_ok=True)
+
+import maya.cmds as cmds
+
+cmds.loadPlugin('mayaUsdPlugin')
+
+cmds.file(mayaScene,o=True,f=True)
+if cmds.objExists("|instances"):
+    cmds.select("|instances",r=True)
+    cmds.file(usdPath,f=True,es=True,options=";exportUVs=1;exportColorSets=1;defaultUSDFormat=usdc;rootPrim=Root;rootPrimType=scope;defaultPrim=Root;exportMaterials=1;convertMaterialsTo=[UsdPreviewSurface];exportAssignedMaterials=1;exportInstances=1",typ="USD Export")
+    work_item.addResultData(usdPath)
+```
+
+![](https://gyazo.com/94260f1f475327c0e39f9295f2418a02.png)
+
+これでファイルは出力できました。
+
+注意点は、サービス起動している場合は  
+UI 起動している Maya とは違い、Plugin のロード等々はされていないということです。  
+なので、必要にプラグインロードをしたりは必要です。
+
+PDG 的な注意点は、この Python 内は Out-of-Process で動いていて  
+workItem を使用する場合は、すでに work_item という変数でアクセスできる点です。  
+なので、これを利用すれば必要なアトリビュートが取得できます。  
+もう 1 点が、出力した結果のファイルは、次の PDG ノードに渡したいので  
+addResultData を使用して Outputs に追加をしておきます。
+
+こうすることで、次のノードで Inputs からファイルを取得できるようになります。
+
+### Camera
+
+同様に、Maya シーンにはカメラもあるだろうという想定で  
+Export コマンドを足します。  
+...が、なぜか MayaExport でカメラが出力できなかったのでいったんおいておきます。  
+出力できたなら camera.usd という名前で出力しておきます。
+
+### Alembic
+
+次に Alembic。  
+これも様々なパターンが考えられますが、今回は cache フォルダ以下にデータがあるものとして  
+考えます。
+
+![](https://gyazo.com/6d3e80794e5f551967bfaf476736f1cd.png)
+
+例として、こんなデータ（選択部分）が、事前に Alembic で出力されているとします。
+
+![](https://gyazo.com/a0ebaa04ab0d60bf1c9f5e526bc231ad.png)
+
+SOLARIS における Alembic はどうなっているかというと、
+デフォルトで FileFormatPlugin が入っているため、USD のレイヤーとして扱うことができます。
+
+![](https://gyazo.com/cedec8be61fa2414d84deec2666f33f6.png)
+
+![](https://gyazo.com/b3fa6e7d99d59fecb98a49e3d210c617.png)
+
+ロードした結果はこちら。  
+拡張子が abc なだけで、USD と同じようにロードできているのがわかるかと思います。  
+このおかげで、すでに出力済の Alembic に関しては USD への変換などはせずに  
+そのまま USD として扱うことが可能です。  
+もちろん、PDG 側で USD に変換することも可能ですが  
+容量的にもまずはそのまま使うほうが良いので、指定ディレクトリ以下の Alembic ファイルを  
+リスト化して、そのファイルをリファレンスするレイヤーを用意します。
+
+![](https://gyazo.com/d1b41719251e8727c60f4dfcdfbea4b4.png)
+
+FilePattern を使い、現在処理している Shot 番号以下にある abc ファイルを列挙します。  
+ファイルがない場合であっても WorkItem は作られてほしいので、No Match Behavior を  
+Create WorkItem とします。
+
+![](https://gyazo.com/31519a109fe4e64faa763be9ec30c2df.png)
+
+そして、Outputs で、アトリビュートを指定し  
+今回はそこまで使用しませんが Tag をいれておきます。
+
+![](https://gyazo.com/99661be2bd8ba91f2f40f5f65b047dce.png)
+
+これを、Shot 単位の WorkItem に整理します。
+
+![](https://gyazo.com/deb28cc20277d8363661375e08f15b1c.png)
+
+rootDir 単位でパーテーションを追加し、
+
+![](https://gyazo.com/01dbc67729ad999c4e06ea898ed009f7.png)
+
+1 ディレクトリ以下に複数ある場合は、abc ファイルは Array にマージするようにしておきます。
+
+![](https://gyazo.com/5fba24c6d6bff27981a5b04c46d4ee9e.png)
+
+ただ、普通にやるとアトリビュートがカオスになるので少し整理します。
+
+![](https://gyazo.com/085be9d686d825a1f6a7e81d2d7899c8.png)
+
+Partition では、rootDir と files だけを統合するようにして  
+AttributeCopy を使用して rootDir をキーにして元のノードに対して files をコピーするようにします。
+
+![](https://gyazo.com/4c3b893e722c286e761339d829afa5ac.png)
+
+これでファイルのリストだけをコピーできました。
+
+![](https://gyazo.com/d03241a4267d94175d088db351532a9f.png)
+
+これを AttributePromote で OutputFiles にいれておきます。
+
+```python
+import os
+
+rootDir = work_item.attribValue('rootDir').local_path
+
+seq = work_item.attribValue('seq')
+shot = work_item.attribValue('shot')
+usdDir = f"D:/usd_sample/usd/{seq}/{shot}"
+usdPath = f"{usdDir}/cache.usd"
+
+from pxr import Usd,UsdGeom,Sdf
+
+# usdaで作成する。すでにある場合はまずはクリアしてから
+layer = Sdf.Layer.FindOrOpen(usdPath)
+if layer is None:
+    layer = Sdf.Layer.CreateNew(usdPath, args={'format': 'usda'})
+layer.Clear()
+stage = Usd.Stage.Open(layer)
+# DefaultPrimを作る
+rootPrim = UsdGeom.Xform.Define(stage,'/Root').GetPrim()
+stage.SetDefaultPrim(rootPrim)
+rootPath = rootPrim.GetPath()
+# ファイルの数だけリファレンス
+for abcFile in work_item.inputFiles:
+    bn = os.path.splitext(os.path.basename(abcFile.local_path))[0]
+    # abc直接リファレンスだと、編集がやりづらいのでサブレイヤーを間に入れる
+    abcLayerPath = f"{usdDir}/caches"
+    os.makedirs(abcLayerPath,exist_ok=True)
+    abcLayer =  Sdf.Layer.FindOrOpen(f"{abcLayerPath}/{bn}.usd")
+    if abcLayer is None:
+        abcLayer = Sdf.Layer.CreateNew(f"{abcLayerPath}/{bn}.usd", args={'format': 'usda'})
+    abcLayer.Clear()
+    cacheStage = Usd.Stage.Open(abcLayer)
+    rootPrim = UsdGeom.Xform.Define(cacheStage,'/Root').GetPrim()
+    rootPath = rootPrim.GetPath()
+    cacheStage.SetDefaultPrim(rootPrim)
+    # abcのRoot直下をリファレンスする
+    abcStage = Usd.Stage.Open(abcFile.local_path)
+    for i in abcStage.GetPseudoRoot().GetChildren():
+        name = str(i.GetName())
+        cPrim = UsdGeom.Xform.Define(cacheStage,rootPath.AppendChild(name)).GetPrim()
+        cPrim.GetReferences().AddReference(abcFile.local_path,str(i.GetPath()))
+    abcLayer.Save()
+
+    prim = stage.DefinePrim(rootPath.AppendChild(bn))
+    prim.GetReferences().AddReference(f"./caches/{bn}.usd")
+
+# 保存してOutputsにいれて次のノードに渡す
+layer.Save()
+work_item.addResultData(usdPath)
+```
+
+実行する Python はこのようになります。
+
+![](https://gyazo.com/4c0c23e1659bdfb88a0b63237438bad2.png)
+
+これは、直接リファレンスしてもよさそうではあるのですが、
+それだと Alembic データを Houdini 側で調整したい（LookDev したり）場合  
+その編集は cache.usd に書かなければならず、それだと作業を分担したりしにくいですし  
+他の Shot でも Alembic のデータを使っている場合、編集結果を共有する...みたいなことが  
+やりにくくなってしまいます。  
+また、リファレンスで読み込む場合  
+USD に持って行くことを前提としていない Alembic の場合、PseudoRoot 以下に複数 Prim がある可能性があり  
+リファレンスができない可能性があります。
+
+ので、今回は Alembic 由来のデータは一度 Alembic を開いて Root 以下にある Prim を確認し  
+Root 以下 Prim を Prim 指定で Reference するようにしています。
+
+![](https://gyazo.com/c551b42ae745068874da4fcf996b39f6.png)
+
+その対策のために、Alembic 由来のデータを編集すするためのレイヤーを  
+あらかじめ、この段階で仕込んでおきます。
+
+![](https://gyazo.com/a952484e5010584b95b3e47aec83e017.png)
+
+これでロード用のレイヤーができました。
+
+## USD 用ファイル
+
+とりあえず Maya からの出力データ（Instance、できればカメラも）と  
+Alembic をロードしたレイヤーができたので、それ以外のファイルも用意していきます。
+
+### RenderSettings
+
+RenderSettings も仕込んでおきたいので用意します。
+
+https://zenn.dev/remiria/articles/d40507c880ca0f118b28
+
+基本的には、ここに書いてあるように共通設定を用意して置けばよいはずなので、  
+USD ディレクトリ以下に global というフォルダを作り、共通レイヤーを置いておきます。
+
+![](https://gyazo.com/a0184b1d7cf9412a08314af664222428.png)
+
+![](https://gyazo.com/18a5523cfe69de35273ad564fafedf78.png)
+
+今回は、このようなシンプルな構造だけを作っておきます。
+
+## 組み立てる
+
+最後に、出力した要素をコンポジションで合成して１つのステージを構築します。
+
+![](https://gyazo.com/7096b064349ef61145f9b381906a0ede.png)
+
+Maya からのエクスポート側と、Alembic 側をマージして  
+rootDir をキーにして、パーテーションを作ります。
+
+これで、上流それぞれの処理を待って各 Shot ごとの処理を実行できるようになりましたので  
+Python で書いていきます。
+
+まず必須なのがルートレイヤー。  
+今回はすべての Shot で scene.usd という名前で作ります。  
+これを、 usd/seq###/shot##　下に作ります。
+
+このレイヤーに現在あるデータを合成していきます。
+
+![](https://gyazo.com/29710360b77267780a665365994d7b8d.png)
+
+基本構造はこのようにします。
+
+考え方としては、まずは DefaultPrim を作るために、Root を作ります。  
+その下に、各要素をリファレンスしていきます。
+
+RenderSetting は、Alembic の項目と同様の理由で（この Shot 固有の編集を書けるようにするため）  
+間に SubLayer をはさみ、scene.usd にリファレンスします。
+
+Isntance と Cache は Geom 以下にリファレンスします。  
+今回は諸事情でやりませんでしたが（Maya から出力できなかった）Maya からカメラを  
+出力した場合などは、同様に CamPrim 下にリファレンスするようにします。
+
+```python
+rootDir = work_item.attribValue('rootDir').local_path
+
+seq = work_item.attribValue('seq')
+shot = work_item.attribValue('shot')
+usdDir = f"D:/usd_sample/usd/{seq}/{shot}"
+usdPath = f"{usdDir}/scene.usd"
+
+from pxr import Usd,UsdGeom,Sdf
+
+# render_settings.usd を作る
+settingsPath = f"{usdDir}/render_settings.usd"
+layer = Sdf.Layer.FindOrOpen(settingsPath)
+if layer is None:
+    layer = Sdf.Layer.CreateNew(settingsPath, args={'format': 'usda'})
+layer.Clear()
+layer.subLayerPaths = ["D:/usd_sample/globals/renerSettings/default.usd"]
+stage = Usd.Stage.Open(layer)
+stage.SetDefaultPrim(stage.GetPrimAtPath("/Render"))
+layer.Save()
+
+# scene.usd を作る
+# usdaで作成する。すでにある場合はまずはクリアしてから
+layer = Sdf.Layer.FindOrOpen(usdPath)
+if layer is None:
+    layer = Sdf.Layer.CreateNew(usdPath, args={'format': 'usda'})
+layer.Clear()
+stage = Usd.Stage.Open(layer)
+# 必要な階層を作る
+rootPath = Sdf.Path('/Root')
+rootPrim = UsdGeom.Xform.Define(stage,rootPath).GetPrim()
+
+stage.SetDefaultPrim(rootPrim)
+# Render
+renderPrim = UsdGeom.Scope.Define(stage,rootPath.AppendChild('Render')).GetPrim()
+renderPrim.GetReferences().AddReference("./render_settings.usd")
+# Geom
+geomPrim = UsdGeom.Scope.Define(stage,rootPath.AppendChild('Geom')).GetPrim()
+instancePrim = UsdGeom.Xform.Define(stage,geomPrim.GetPath().AppendChild('Instance')).GetPrim()
+cachePrim = UsdGeom.Xform.Define(stage,geomPrim.GetPath().AppendChild('Cache')).GetPrim()
+instancePrim.GetReferences().AddReference("./instance.usd")
+cachePrim.GetReferences().AddReference("./cache.usd")
+# Cam
+camPrim = UsdGeom.Scope.Define(stage,rootPath.AppendChild('Cam')).GetPrim()
+
+layer.Save()
+work_item.addResultData(usdPath)
+```
+
+最後の Python スクリプトはこのようにします。
+
+![](https://gyazo.com/52b092b923ae82fb2bf367b582917c19.png)
+
+PDG のネットワークはこんな感じです。
+
+![](https://gyazo.com/f61a9dcadb7bc62402c7412dda927f41.png)
+
+結果がこんな感じになりました。
+
+とりあえずは動きましたが、まだまだ改善の余地は大いにあるかとおいます。  
+出力する USD の階層やコンポジションの構成であったり、実際の要素はこれよりも確実に多いはずなので  
+それを考慮した構築は必要になると思います。  
+例として、ライティング用のレイヤーを入れるとか、マテリアル周りの編集とか  
+１シーンで複数ショットを作る場合どうするか...など。
+
+そういったことはありますが、要素が増えた場合であっても  
+Maya から追加で出力するものがあれば PDG の Maya サービス経由で Python でエクスポートするのを追加したり  
+追加要素だけ PDG のノードネットワークに追加し、最後にマージして処理をすればよいわけです。
+
+このあたりの柔軟さが PDG を使用して USD を構築する大きなメリットになるのではないかとおもいます。
+
+## 全体通してのポイント
+
+現段階でも一貫しているところがあるのですが、  
+それが
+
+1. レイヤーはアスキーで作る
+2. 要素を追加する場合は、間にレイヤーを入れておく
+
+この 2 つです。
+
+USD は、アスキーであってもバイナリーであっても、拡張子は usd で OK です。  
+あえて usdc や usda のようにする必要はありません。  
+むしろ、そうしてしまうと後でバイナリーからアスキーに変換するなどができないので  
+デメリットになってしまいます。
+
+そして、ジオメトリデータなどを含むものを除けば  
+アトリビュートを変更したり、ライトを追加したり、マテリアルを作るなどであれば  
+アスキーであったほうが都合がよいことが多いです。
+
+なので、今回 Python スクリプトで作成しているレイヤーは  
+すべてアスキーで保存するようにしています。
+
+2 つ目が、追加要素（キャッシュとかインスタンスとか）を作るときは  
+直接全部入りのシーン（scene.usd ）にリファレンスしないことです。  
+基本的に、USD はファイルを分割しておくと人やツールを分担することができます。  
+また、設定を共用したりもしやすくなります。
+
+なので、今回のように複数のデータを集めてくるような場合は  
+可能であれば間にレイヤーをはさんでおくとよいかなと思います。
+
+## まとめとか反省点
+
+思い付きでやってみたものの、思いのほかトラップも多くそれなりに検証に時間がかかってしまいました。
+
+いくつかのトラップと改善の余地があるポイントを書いておくと、  
+Maya から出てくる Isntance があまりにも使いにくいこと。  
+ここは、別記事で PointInstancer に変換する記事を書こうと思います。  
+今回の PDG のネットワークに、この HDA を呼び出す部分を追加する感じになるのでは？と思います。
+
+もう１つが Maya の CameraExport がダメだった点。  
+オプションのチェックボックスには Camera があるのでできるはずなのですが  
+どれだけやっても Xform になってしまいました。  
+まだまだ Maya 関係はリサーチ不足です。
+
+マテリアル関係は完全に時間がなかった＋サンプルがないので未検証です。  
+どうするのがいいんでしょうね？
+
+など、色々課題はありましたが  
+作ってしまえば、後から追加したり変更したりも容易にできて  
+まだまだできることや拡張のし甲斐のあるシステムだなと思いました。
+
+https://shoheiokazaki.github.io/FXHACK/posts/2024-12-16/
+また Shohei Okazaki さんのこちらの記事でも、PDG と USD を組み合わせて  
+データの共有する手法などを公開されています。
+
+USD 自体非常に便利ですし、HoudiniSOLARIS も USD を扱ううえでは非常に強力なツールではありますが、  
+それに加えて PDG も、非常に USD や SOLARIS と相性が良いシステムになっています。
+
+まだまだできることは多いので継続して検証していきたいなと思います。
