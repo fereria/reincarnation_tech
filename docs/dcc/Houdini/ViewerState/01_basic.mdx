@@ -1,0 +1,174 @@
+---
+slug: /houdini/viewer_state/01
+title: PythonViewerStateの基本
+sidebar_position: 1
+---
+
+Houdini の ViewerState とは「ビューポート内でのインタラクティブな操作を制御することができる」機能です。  
+例えば、ギズモを表示したりビューポート内でマウスをクリックしたり等  
+そういった操作もすべて ViewerState で行っています。
+
+Houdini では、各ノード（HDA）ごとに、ノードに関係した ViewerState を呼び出しているのですが  
+この ViewerState は、Python を使用して書かれていて  
+色々とカスタムすることが可能です。
+
+あまりやっている人も少なく、資料もあまりないので  
+０スタートで学習しつつ、作り方などをメモしていきたいと思います。
+
+## ViewerState
+
+まず、現在存在している ViewerState を確認してみます。
+
+![](https://gyazo.com/7e38ab69d9a77b081bfb61ebbc90e502.png)
+
+New Pane Tab Type から Inspectors > Viewer State Browser を選びます。
+
+![](https://gyazo.com/9735f400036a9d40d91703d324454513.png)
+
+表示すると、現在存在している ViewerState を一覧でみることができます。
+
+![](https://gyazo.com/2f8c67f2f40b53ddcb2a141f2e087771.png)
+
+たとえば、LOP の StageManager を見てみると、  
+このような ViewerState があります。
+
+![](https://gyazo.com/0bafa68fd7d04c1d543d7075b09c7f4b.png)
+
+Source を右クリック＞ Edit すると、このように中のコードを確認することができます。
+
+## 作成する
+
+すでにあるものの見方はわかったので、早速新しく作成してみます。
+
+ViewerState を作成する場合は、2 種類やり方が存在しています。  
+１つが HDA に埋め込む方法、もう１つが指定のディレクトリにファイルを配置する方法です。
+
+### HDA に埋め込む
+
+まずは簡単な HDA に埋め込む方法からみていきます。
+
+![](https://gyazo.com/f82a424fcf2f8e8e6faf43e890d0c07e.png)
+
+ViewerState を作成したい HDA を右クリックして、Type Properties を選びます。
+
+![](https://gyazo.com/ee84887600bdfe96fe07925867075466.png)
+
+Interactive タブ＞ State Script を選び、右下にある New ボタンを押します。
+
+![](https://gyazo.com/9dc43330c320fbffb805c58807505421.png)
+
+CodeGenerator を使うと、基本的なテンプレを作成してくれるので  
+ここで、Name (ユニークなもの) Label Description を入れて、  
+作成したいイベントハンドラーを作成します。
+
+今回は、マウスをクリックしたときに何かを実行させるのをサンプルで作りたいので  
+onMouseEvent のチェックをいれておきます。
+
+すると、State Script にテンプレートになるコードが追加されるので、  
+onMouseEvent 関数だけを、以下のように書き換えます。  
+それ以外の部分は消さずに残してください。
+
+```python
+    def onMouseEvent(self, kwargs):
+        """ Process mouse and tablet events
+        """
+        ui_event = kwargs["ui_event"]
+        reason = ui_event.reason()
+
+        if reason == hou.uiEventReason.Start:
+            print("Click!!")
+
+        # Must return True to consume the event
+        return False
+```
+
+書き換えができたら、保存して  
+Viewport 上で「Enter」を押します。
+
+![](https://gyazo.com/0707131ab0143a9f76ff702435aa82d3.png)
+
+Enter を押すと、ViewPort の左上が、CodeGenerator で指定した Label になります。
+
+![](https://gyazo.com/541b0c6fd742d80f89b53996c0efb3b9.png)
+
+Viewport 上でクリックすると、このように表示されます。  
+この状態から戻したい場合は Esc を押すことで、通常のモードに戻ることができます。
+
+### 指定ディレクトリ以下に保存する
+
+HDA に埋め込む方法は、HDA 固有の機能であればよいですが  
+それ以外に複数の HDA だったりもっと汎用的に使いたいような機能もあるはずです。  
+その場合は、指定ディレクトリ以下に Python ファイルを配置します。
+
+![](https://gyazo.com/9f1127a19fdac3f269ef84ac04b81824.png)
+
+この場合は、ドキュメント/houdini###/viewer_states フォルダを作り  
+その下に Python ファイルを配置します。
+
+```python
+import hou
+
+class State(object):
+    def __init__(self, state_name, scene_viewer):
+        self.state_name = state_name
+        self.scene_viewer = scene_viewer
+
+    def onMouseEvent(self, kwargs):
+        """マウスイベントを処理します
+        """
+        ui_event = kwargs["ui_event"]
+        dev = ui_event.device()
+        self.log("Mouse:", dev.mouseX(), dev.mouseY(), dev.isLeftButton())
+
+        # イベントを消費するにはTrueを返さなければなりません
+        return False
+
+
+def createViewerStateTemplate():
+    """登録するViewerステートテンプレートを作成して返すのに必須となるエントリーポイント"""
+
+    state_typename = "remi_statedemo"
+    state_label = "Statedemo"
+    state_cat = hou.sopNodeTypeCategory()
+
+
+    template = hou.ViewerStateTemplate(state_typename, state_label, state_cat)
+    template.bindFactory(State)
+    template.bindIcon("MISC_python")
+
+    return template
+```
+
+コードは、 [Houdini 公式の ViewerState 解説ページ](https://www.sidefx.com/ja/docs/houdini/hom/python_states.html#impl)にあったものを一部改変したものです。
+
+この場合の注意点は、どのコンテキストで使うものかを指定する必要があることです。  
+サンプルのコードだと Obj になっていて SOP ではなかったので  
+hou.sopNodeTypeCategory() のように sop になるようにしています。
+
+配置したら Houdini を再起動します。
+
+![](https://gyazo.com/fcb7ef22d74bafc193c702fb63646f32.png)
+
+Viewer State Browser を確認すると、viewer_states フォルダ下に配置したスクリプトが認識されているのがわかります。
+
+このままだと使用できないので、この ViewerState を使えるようにするには  
+HDA 側に指定をします。
+
+![](https://gyazo.com/05719a3f4283d828c51ed5a2ed9d3ebb.png)
+
+TypeProperties の Node の「DefaultState」に、作成した ViewerState の Name（Label ではない）を入れます。
+
+入れたら、HDA に埋め込んだ時と同じように「Enter」を押すと、
+
+![](https://gyazo.com/cca9feb771b9d547db81c9c7002449b5.png)
+
+ViewerState Browser のコンソールにログが表示されました。
+
+## まとめ
+
+これで基本的な作成方法と実行方法がわかりましたので、  
+次から細かく実装方法を確認していきます。
+
+## 参考
+
+-   https://www.sidefx.com/ja/docs/houdini/hom/python_states.html
