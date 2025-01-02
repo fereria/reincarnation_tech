@@ -27,8 +27,7 @@ const config = {
 	// Even if you don't use internalization, you can use this field to set useful
 	// metadata like html lang. For example, if your site is Chinese, you may want
 	// to replace "en" with "zh-Hans".
-
-	plugins: [],
+	plugins: [require.resolve("docusaurus-plugin-image-zoom")],
 	presets: [
 		[
 			"classic",
@@ -59,6 +58,16 @@ const config = {
 	},
 	themeConfig: {
 		// Replace with your project's social card
+		zoom: {
+			selector: ".markdown :not(em) > img",
+			config: {
+				// options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+				background: {
+					light: "rgb(255, 255, 255)",
+					dark: "rgb(50, 50, 50)",
+				},
+			},
+		},
 		image: "img/docusaurus-social-card.jpg",
 		metadata: [{ name: "twitter:card", content: "summary" }],
 		algolia: {
