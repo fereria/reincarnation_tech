@@ -1,0 +1,105 @@
+---
+slug: /usd/python/internal_reference
+title: InternalReferenceの情報をPythonで取得する
+sidebar_position: 33
+---
+
+[![Image from Gyazo](https://i.gyazo.com/7b23083acf951de18115a409dcf8d0e5.png)](https://gyazo.com/7b23083acf951de18115a409dcf8d0e5)
+
+Maya から Instance を含む USD を出力した場合は、上記のようにインスタンスされた状態で  
+出力されます。（青色の文字）  
+しかし、usdview で見た場合はインスタンス元になっている MeshPrim が見当たらず  
+どうしてこのようになっているかわからないし、何より扱いにくいです。  
+これを、Instance 元オブジェクトを別レイヤー化したうえで、PointInstancer 化していきたいのですが  
+Reference 対象を Python で取得する方法が地味にわかりにくかったのでその方法の紹介です。
+
+## InternalReference
+
+[![Image from Gyazo](https://i.gyazo.com/42dc39dc55ffb2daada21bab76595232.png)](https://gyazo.com/42dc39dc55ffb2daada21bab76595232)
+
+この USD を Houdini の SOLARIS で開くとこのように表示されます。
+
+[![Image from Gyazo](https://i.gyazo.com/ea87b6cde8eb1204fa9bd995bec94ae7.png)](https://gyazo.com/ea87b6cde8eb1204fa9bd995bec94ae7)
+
+これは、インスタンス元になっている MeshPrim のルートにある Prim が「over」で定義されているため  
+usdview 等では非表示になっているのが  
+SOLARIS 上では over の Prim も表示されているため、このような表示になっています。
+
+[![Image from Gyazo](https://i.gyazo.com/117b0a206f81b15f5e861d7a8a07e876.png)](https://gyazo.com/117b0a206f81b15f5e861d7a8a07e876)
+
+Maya の Instance は、このように USD のファイル内にある Prim を「ファイル内リファレンス（InternalReference）」を使用して Instanceable=True にすることで Maya の Instance を USD で出力しています。
+
+通常の Reference であれば <AutoLinkTitle url="/usd/python/composition_query" /> こちらの記事に書いてる CompositionQuery を使用して、Reference 対象を探すことができるのですが  
+InternalReference だと、この方法は使用できません。
+
+## Stack
+
+[![Image from Gyazo](https://i.gyazo.com/b315bf661f906cc538f997d4dbae105a.png)](https://gyazo.com/b315bf661f906cc538f997d4dbae105a)
+
+該当の Instanceable な Prim の Metadata を確認すると、InternalReference の情報は references 以下に書かれているのがわかります。  
+しかし、UsdPrimのMetadata関係の関数にもそれらしい関数はありません。  
+
+アプローチがまずそうなので視点を変えます。  
+
+InternalReference は、別ファイルを参照する通常の Reference と異なり、  
+上記に書いた通り「同一ファイル内にあるリファレンス」です。
+  
+USDは、繰り返しになりますが「複数のレイヤー（ファイル）」によって構成されたシーングラフです。  
+そんなUSDにおいて「単一ファイルに存在する」場合は、どこを探せばいいのか？というと、  
+Stageを構成するLayerStack、あるいは  
+そのPrimがどのSpecで構成されているか確認するPrimStackがそれにあたります。  
+  
+  
+```python
+# Houdiniの場合
+stage = node.editableStage()
+
+for layer in stage.GetLayerStack():
+    primSpec = layer.GetPrimAtPath("/Root/instances/sphere/baseSphere")
+    if primSpec:
+        print(primSpec)
+        referenceItems = primSpec.referenceList.prependedItems
+        if len(referenceItems) > 0:
+            print(referenceItems[0].primPath)
+```
+
+まずは、Layerから検索する場合。  
+あるStageを構成するレイヤーを取得する場合は、GetLayerStackを使用します。  
+
+```
+Sdf.Find('anon:000001E882FDF880')
+Sdf.Find('D:/usd/instance.usd')
+```
+GetLayerStackを使用すると、SubLayerで合成されているレイヤーを確認することができます。  
+※Houdiniの場合、内部の都合、アノニマスレイヤーが大量にできています※  
+  
+このLayerでGetPrimAtPath（Stageと同様）関数を使用すると、このLayer内にあるPrimSpec  
+を取得できます。  
+ただし、このLayerは、合成される前の情報になっていているので、  
+目的のPrimが記述されている場合のみ、そのPrimを定義するための「PrimSpec」が得られ  
+レイヤーに何も定義がなければNoneになります。  
+  
+なので、None以外＝InternalReferenceをしているであろうレイヤーとPrimSpecを探して  
+
+[![Image from Gyazo](https://i.gyazo.com/bc21a59406e823c6b131de85cd0ad611.png)](https://gyazo.com/bc21a59406e823c6b131de85cd0ad611)
+
+得られた Sdf.Reference の primPath で、InternalReferenceしている先のPrimPathを  
+取得できます。  
+  
+```python
+prim = stage.GetPrimAtPath("/Root/instances/sphere/baseSphere")
+for i in prim.GetPrimStack():
+    referenceItems = i.referenceList.prependedItems
+    if len(referenceItems) > 0:
+        print(referenceItems[0].primPath)
+```
+別の方法として、PrimStackから取得する場合は上記のようにします。  
+基本的なアプローチは同じなのですが、Layerの場合はStageからLayerを取得して  
+そのLayerからPrimSpecを得ていましたが、  
+指定したPrimの GetPrimStackを使用すると、Primを構成するPrimSpecを得ることができます。  
+あとは、このPrimStack内にReferenceを含むSpecを探せばOKです。  
+  
+基本的にはどちらでもできますが、Stage内のPrimをトラバースしてInternalReferenceを探すのであれば  
+PrimStackから探すほうがわかりやすいかなと思います。  
+  
+
