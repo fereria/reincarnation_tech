@@ -6,36 +6,46 @@ on:
             - master
 
 jobs:
-    build:
-        name: Build
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-                  cache: npm
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
 
-            - name: Install dependencies
-              run: npm ci --force
-            - name: Build website
-              run: npm run build
+      - name: Install dependencies
+        run: npm ci --force
+      - name: Build website
+        run: npm run build
 
-            - uses: actions/upload-artifact@v4
-              with:
-                  path: build
-    deploy:
-      needs: build
-      permissions:
-        pages: write
-        id-token: write
-      environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
-      runs-on: ubuntu-latest
-      steps:
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages  # ここでアーティファクト名を指定する
+          path: build
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Configure Pages
         uses: actions/configure-pages@v4
+      
+      - name: Download artifact  # 修正: 明示的にアーティファクトをダウンロード
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: build  # ここで適切なディレクトリを指定する
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
