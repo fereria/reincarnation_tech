@@ -1,0 +1,40 @@
+---
+slug: /houdini_python/jupyter
+title: JupyterNotebookからHoudiniPythonを実行する
+sidebar_position: 1
+---
+
+題名の通りですが、Houdini の Python を JupyterNotebook から実行したかったので  
+その環境を準備します。
+
+まず、事前に <AutoLinkTitle url="/pg/vscode/vscode_notebook" /> こちらの記事を参考に、 ワークスペースや venv の設定、python-dotenv のインストールなどを行います。
+
+```python
+HOUDINI_INSTALL_DIR="C:/Program Files/Side Effects Software/Houdini 20.5.365"
+PYTHONPATH="C:/USD/lib/python;${HOUDINI_INSTALL_DIR}/houdini/python3.11libs;${HOUDINI_INSTALL_DIR}/python311/lib/site-packages;${PYTHONPATH}"
+PATH="C:/USD/lib;C:/USD/bin;${PATH}"
+```
+
+.env の PYTHONPATH 設定に、Houdini の python モジュール置き場などを設定しておきます。
+
+Houdini 側で Python を実行する場合は、RPC を使用します。
+
+https://www.sidefx.com/ja/docs/houdini/hom/rpc.html
+
+まず、Houdini 側の PythonConsole でサーバーを起動します。
+
+```python
+import hrpyc
+hrpyc.start_server()
+```
+
+```python
+import hrpyc
+connection, hou = hrpyc.import_remote_module()
+```
+
+ドキュメント通りに、リモートモジュールをインポートします。  
+あとは一般的な hou モジュールと同じようにすれば OK です。
+
+![](https://gyazo.com/cce103c2d2483603206a75a2457a667c.png)
+
