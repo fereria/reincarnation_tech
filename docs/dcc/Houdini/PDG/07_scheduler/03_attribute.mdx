@@ -1,0 +1,199 @@
+---
+slug: /houdini/pdg/basic/scheduler/03
+title: Schedulerを作る～パラメーター定義
+description: Pythonスクリプトに保存～パラメーター作成
+sidebar_position: 3
+---
+
+[![Image from Gyazo](https://i.gyazo.com/48982e674c41b5f009a317fa45528c67.png)](https://gyazo.com/48982e674c41b5f009a317fa45528c67)
+
+PythonScheduler は、 Save to Python Script を押すことで  
+ノードではなく Python スクリプトのプラグインとして保存することができます。  
+今回は、この Python スクリプト化をしたうえで、スケジューラーの実装に必要な手順を  
+順番に実装していきます。
+
+[![Image from Gyazo](https://i.gyazo.com/3a50431958e1f9725df46aae8a5de6fb.png)](https://gyazo.com/3a50431958e1f9725df46aae8a5de6fb)
+
+Save to Python Script を押すと、このような保存画面が表示されます。  
+PDG は、HOUDINI_PATH 下の pdg/types に指定の形式の Python を保存することでノードを作成することができます。
+
+[![Image from Gyazo](https://i.gyazo.com/fbaecde66e40627c16584038c979cea0.png)](https://gyazo.com/fbaecde66e40627c16584038c979cea0)
+
+追加すると、このようにスケジューラーを追加することができます。
+
+```python
+def registerTypes(type_registry):
+    type_registry.registerScheduler(sample_pythonscheduler, label="Sample Scheduler", parm_category="OrigScheduler",node_category="SampleScheduler")
+```
+
+PDG の表示は、保存した Python スクリプトのレジストリ部分を書き換えることで変更できます。  
+label がノード名、parm_category が、カテゴリになります。
+node_category はこの後のパラメーター設定で使用します。
+
+[![Image from Gyazo](https://i.gyazo.com/a252f2992e0d90f76138def2550ff8e0.png)](https://gyazo.com/a252f2992e0d90f76138def2550ff8e0)
+
+上記のコードの場合は、このようになります。
+これで準備ができました。
+
+## パラメーターを作る
+
+[![Image from Gyazo](https://i.gyazo.com/7be706bc9140160620ce2cb85bfac993.png)](https://gyazo.com/7be706bc9140160620ce2cb85bfac993)
+
+デフォルトだと、このようにパラメーターがすべて列挙された状態になるので  
+カスタムパラメーターを足しても微妙になります。  
+ので、まずはここを整理してパラメーターを追加します。
+
+https://www.sidefx.com/ja/docs/houdini/tops/custom_scheduler.html#spare
+
+作成するには、Spare パラメータを追加します。
+
+```python
+open("C:/Users/USER_NAME/Documents/houdini20.5/topscheduler.user.ds", "w").write(hou.node("/tasks/topnet1/pdg_sample_pythonscheduler1").parmTemplateGroup().asDialogScript(full_info=True))
+```
+
+まず、現在のノードのパラメーターを保存します。  
+作成しているスケジューラーノードを指定して、指定のフォルダ以下に保存をします。  
+HOUDINI_PATH が通っている場所なら大丈夫なので、MyDocuments の HoudiniVersion フォルダ以下に  
+保存します。
+
+そのままだとエラーになってしまうので、いくつか書き換えをしつつ新しいパラメーターを追加します。
+
+https://gist.github.com/fereria/68423152aff60c436e4e6ad0e75674fc
+
+全文はこちら  
+ポイントは、collection {} で全体をくくることと、  
+コレクションとグループに対して、node_category で指定した名前をいれます。
+
+```python
+collection {
+    name "sample_pythonscheduler"
+    label "Sample Scheduler"
+    parmtag { spare_category "SampleScheduler" }
+    group {
+        name "settings"
+        label "Settings"
+        parmtag { spare_category "SampleScheduler" }
+        parm {
+            name    "sample_int"
+            label   "Load Item Data From"
+            type    ordinal
+            default { "0" }
+            menu {
+                "0" "Value_0"
+                "1" "Value_1"
+            }
+        }
+    }
+}
+```
+
+スケジューラー本体のパラメーターは以下のようにします。
+
+```python
+    @classmethod
+    def templateBody(cls):
+        return json.dumps(
+            {
+                "name": "pythonscheduler1_template",
+                "parameters": [
+                    {
+                        "name": "sample_int",
+                        "label": "Sample Value",
+                        "type": "Integer",
+                        "value": 0,
+                        "tag": ["pdg::scheduler"],
+                    }
+                ],
+            }
+        )
+
+```
+
+この状態で Houdini を再起動して、パラメーターを確認します。
+
+[![Image from Gyazo](https://i.gyazo.com/f53b8b582d25ecbe4d8291c4452fac47.png)](https://gyazo.com/f53b8b582d25ecbe4d8291c4452fac47)
+
+Node Properties を見ると、先ほど編集したパラメーター情報が表示されます。  
+表示はされますがこのままだと表示できないので、 Existing Parameters を削除して  
+このパラメーターをインストールします。
+
+[![Image from Gyazo](https://i.gyazo.com/72933601a9a704941d67490dcba69e3c.png)](https://gyazo.com/72933601a9a704941d67490dcba69e3c)
+
+Delete Parameters で削除してから、
+
+[![Image from Gyazo](https://i.gyazo.com/14c24c55620c79fb07e43c66463eaf10.png)](https://gyazo.com/14c24c55620c79fb07e43c66463eaf10)
+
+Install Parameters を実行します。
+
+[![Image from Gyazo](https://i.gyazo.com/11d620ea5b14f109380454918e49bbd9.png)](https://gyazo.com/11d620ea5b14f109380454918e49bbd9)
+
+戻ると、このように topscheduler.user.ds の group がタブ扱い  
+メニュー形式の UI も作成できます。
+
+ただ、毎度パラメーターを作るのはめんどくさいので  
+ノード作成時などに自動でパラメーターを追加する仕組みを追加します。
+
+Type Properties を開いて、ノード名を確認します。
+
+[![Image from Gyazo](https://i.gyazo.com/d939bd97ec4ba99a1d5baa9f6c8e4aff.png)](https://gyazo.com/d939bd97ec4ba99a1d5baa9f6c8e4aff)
+
+pdg_sample_pythonscheduler という名前でしたので、このノードが作られた時とロードされたときに  
+パラメーターをいい感じにするスクリプトを作成します。
+
+[![Image from Gyazo](https://i.gyazo.com/9741204058e5c86527a36a3bff509ceb.png)](https://gyazo.com/9741204058e5c86527a36a3bff509ceb)
+
+場所は、HOUDINI_PATH/scripts/top 下で  
+名前\_OnCreated.py 名前\_OnLoaded.py にします。
+
+OnCreated は、
+
+```python
+node = kwargs['node']
+
+if node:
+    node.removeSpareParms()
+    templ = hou.properties.parmTemplate('top', 'sample_pythonscheduler')
+    parmtuple = node.addSpareParmTuple(templ, (), False)
+```
+
+現在のパラメーターを削除してから、SpareParm を足します。
+
+OnLoaded は、
+
+```python
+node = kwargs['node']
+
+if node:
+    vals = {}
+    for i in node.spareParms():
+        vals[i.name()] = i.rawValue()
+
+    node.removeSpareParms()
+    templ = hou.properties.parmTemplate('top', 'sample_pythonscheduler')
+    parmtuple = node.addSpareParmTuple(templ, (), False)
+
+    for name in vals.keys():
+        parm = node.parm(name)
+        if parm:
+            if isinstance(parm.parmTemplate(), hou.ToggleParmTemplate):
+                parm.set(1 if vals[name] == 'on' else 0)
+            else:
+                parm.set(vals[name])
+```
+
+設定済の値を保存してからパラメーターを更新する処理を実行します。
+
+parmTemplate で指定する名前は topscheduler.user.ds の collection で指定した名前です。
+
+[![Image from Gyazo](https://i.gyazo.com/2379fbe84e3a8dc1065437dded592f40.png)](https://gyazo.com/2379fbe84e3a8dc1065437dded592f40)
+
+ここまでできたら、ノードを作成した段階でこのように Tab や Menu が表示された状態になります。
+
+パラメーターを足したい場合は topscheduler.user.ds と スケジューラーの Python の  
+パラメーターに足せば OK です。
+
+https://www.sidefx.com/ja/docs/houdini/hom/locations.html#node_event_files
+
+ハンドル周りはこのあたりを参考にしました。
+
+あとはスケジューラーの処理を書いていくのですが、それはまた次に。
