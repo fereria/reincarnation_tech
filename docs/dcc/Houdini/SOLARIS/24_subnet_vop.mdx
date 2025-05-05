@@ -1,0 +1,168 @@
+---
+slug: /houdini/solaris/subnet
+title: Geometry Subset VOPの使い方
+sidebar_position: 24
+---
+
+[![Image from Gyazo](https://i.gyazo.com/1b7e593efa2b5f303a0682e4ed986b63.png)](https://gyazo.com/1b7e593efa2b5f303a0682e4ed986b63)
+
+GeometrySubsetVOP とは、SOLARIS（LOPs）内で使用できるノードで、  
+VEXExpression や VOP 等を記述することで USD の UsdGeomSubset を作成することができるノードです。
+
+## UsdGeomSubset とは
+
+UsdGeomSubset とは、ある Mesh の　面・点・辺・セグメントの Index のセットを扱えるスキーマです。  
+主な用途としては、1Mesh に複数マテリアルをアサインしたいときなどに使用するのが多いです。
+
+https://openusd.org/dev/api/class_usd_geom_subset.html#details
+
+## SOLARIS での Subset 作成方法
+
+この UsdGeomSubset を Houdini で作成するには 3 つ方法があります。  
+1 つ目が sopimport の ImportData。
+
+[![Image from Gyazo](https://i.gyazo.com/e1fda76640fe995f40cd3a9ce03bfdc9.png)](https://gyazo.com/e1fda76640fe995f40cd3a9ce03bfdc9)
+
+SubsetGroups のチェックを ON にして、SOP の group で指定した情報をもとに  
+Subset を作成します。
+
+[![Image from Gyazo](https://i.gyazo.com/792b58c76114d874da2ba3a9f0c23fc7.png)](https://gyazo.com/792b58c76114d874da2ba3a9f0c23fc7)
+
+例として、このように Group を作成して、ImportData で SubsetGroups に指定を入れます。
+
+[![Image from Gyazo](https://i.gyazo.com/8a579bd19eb8be58babb9976eeb57181.png)](https://gyazo.com/8a579bd19eb8be58babb9976eeb57181)
+
+こうすると
+
+[![Image from Gyazo](https://i.gyazo.com/ecabb4bc4284fb946ae95aa980deb30b.png)](https://gyazo.com/ecabb4bc4284fb946ae95aa980deb30b)
+
+このようになります。
+
+もう 1 つが Python で書く...これはアトリビュートなどをもとにして Python を作れば作成できます。  
+Python で書けばよいだけなので手順は省略します。
+
+3 つ目が、今回説明する Geometry SubsetVOP です。  
+このノードは、その名の通り VEX（VOP）を使用して Subset を作成できるノードです。  
+ImportData ノードは、SOP 側の group で定義することで Subset を作成していますが、  
+そうではなく任意のアトリビュートを使用して Subset を SOLARIS 側で作成したいこともあります。  
+その時に使用するのがこのノードです。
+
+## GeometrySubsetVOP の使い方
+
+[![Image from Gyazo](https://i.gyazo.com/8c4e6e8e1857a64f9e4f0020dfb0492d.png)](https://gyazo.com/8c4e6e8e1857a64f9e4f0020dfb0492d)
+
+まず、SOP 側にアトリビュートを作成します。  
+sampleA というアトリビュートに作成したい Subset の名前を String で入れておきます。
+
+[![Image from Gyazo](https://i.gyazo.com/e573f00e62c2e92444f54586f9410185.png)](https://gyazo.com/e573f00e62c2e92444f54586f9410185)
+
+sopimport で SOP を読み込んだ場合、Primitives に指定されているアトリビュートは  
+（特に指定がない場合は）primvars で読み込まれます。
+
+[![Image from Gyazo](https://i.gyazo.com/2ac88d853ccb855bf3d7a6cb33bf84c7.png)](https://gyazo.com/2ac88d853ccb855bf3d7a6cb33bf84c7)
+
+Subset は、Mesh ノードの子に Def で定義される必要があります。  
+ので、基本的には MeshPrim に対して実行したいので PrimitivesType は %type:Mesh にします。
+
+Mode は、Selection・Partition とありますが、まずは Partition を使用します。  
+Partition の場合、指定の文字列の Subset を作成し、その中に指定の Index が追加されます。
+
+SubsetName は、Partition の場合 SubsetName + アトリビュート名で Subset が作成されるので  
+必要に応じて Prefix になる文字列を入れます。  
+指定がなければ空で OK です。  
+FamilyName は、（あまり情報がないのでおそらくですが）この Subset が何を表すかを示すためのタグ  
+のようなもので、  
+特定の値が入っている場合、例として materialBind が入っている場合に  
+その情報がレンダラーに渡され MaterialBind 用の Subset として動作します。  
+なので、MaterialBind 用途で Subset を使用する場合は FamilyName に「materialBind」を入れます。
+
+ここまでが共通で、あとは Vexpression か VOP を使用して Subset を作成するための仕込みを追加します。
+
+### Vexpression の場合
+
+[![Image from Gyazo](https://i.gyazo.com/23b5be6983cefffa833a75ad8e5914fe.png)](https://gyazo.com/23b5be6983cefffa833a75ad8e5914fe)
+
+Vexpression の場合は、VexSource を Vexpression にして、 Vexpression に VEX を書きます。  
+この Vexpression は、指定 Mesh の Face 分（Primitives 分）処理が実行され、
+処理している Face を、ここで return した名前の Subset に追加する...といった挙動になります。
+
+上記のサンプル return s@primvars:sampleA; の場合は、そのままの意味で  
+sampleA で指定された文字列で Subse を作れという処理になります。  
+注意点として、Selection の場合は return が数字ですが Partition は文字列なので  
+Vexpression Returns a String のチェックを ON にする必要があります。
+
+### VOP の場合
+
+次に VOP を使用した場合。  
+VOP の場合は、VEX Source を MySelf にして GeometrySubsetVOP のノードに入ります。
+
+[![Image from Gyazo](https://i.gyazo.com/64d5c1a234ebb6ece4b363d2aed0257a.png)](https://gyazo.com/64d5c1a234ebb6ece4b363d2aed0257a)
+
+VOP も Vexpression と同様に、現在処理している MeshPrim の Face1 単位で処理が実行されます。  
+必要最低限のノードは Parameter と Bind ノードの 2 つ。
+
+まず、Parameter ノードを使用して Output ノードを作成します。
+
+[![Image from Gyazo](https://i.gyazo.com/76a1b699adc4a1c6c7827eb4aa139ff1.png)](https://gyazo.com/76a1b699adc4a1c6c7827eb4aa139ff1)
+
+Type を String、 Use own Export Context を ON、Export を「Always」にします。  
+Name はとりあえずなんでも OK です。
+
+[![Image from Gyazo](https://i.gyazo.com/8bfef01b6fcd55da5f64581271e647bc.png)](https://gyazo.com/8bfef01b6fcd55da5f64581271e647bc)
+
+Bind 側はこのようにします。  
+Name に Mesh のアトリビュートを入れると、Primvars の場合はその Mesh の値を取得することができるので  
+あとは、この Bind の Output を Parameter の Input につなげば完了です。
+
+[![Image from Gyazo](https://i.gyazo.com/03b707026249da979d021a46f92a69f2.png)](https://gyazo.com/03b707026249da979d021a46f92a69f2)
+
+これで作成できました。
+
+### Selection を使用してみる
+
+ここまでは Partition を使用した例を書きましたが、おまけで Selection を使用した場合も試してみます。
+
+[![Image from Gyazo](https://i.gyazo.com/007ff0a347dbc217d55e89aa3e0b0e78.png)](https://gyazo.com/007ff0a347dbc217d55e89aa3e0b0e78)
+
+サンプルは、このように sampleAttr に default と hogehoge がセットされたアトリビュートを作ります。  
+そして、この hogehoge が付いている Face が入った Subset を作成してみます。
+
+#### Vexpression の場合
+
+[![Image from Gyazo](https://i.gyazo.com/8779a638572de190dcea1cf473408729.png)](https://gyazo.com/8779a638572de190dcea1cf473408729)
+
+VExpression を使用した場合は、Subset に入れたい Face の場合 1 を返すようになっていればよいです。  
+なので、基本的には１ノードに対して１ Subset を作成するような形になります。
+
+```c
+if ( s@primvars:sampleAttr == "hogehoge" ) {
+    return 1;
+} else {
+    return 0;
+}
+```
+
+return で 0 or 1 を返せばいいので、上記のようにすれば、
+
+[![Image from Gyazo](https://i.gyazo.com/6daedd7718d9b50e15adf866c7fd564e.png)](https://gyazo.com/6daedd7718d9b50e15adf866c7fd564e)
+
+GeometrySubsetVOP の Subset Name で指定した SubsetPrim が作成されます。
+
+#### VOP の場合
+
+[![Image from Gyazo](https://i.gyazo.com/87c01c145858afb8b0f92170ea0ef9f0.png)](https://gyazo.com/87c01c145858afb8b0f92170ea0ef9f0)
+
+同じ処理を VOP で作ります。  
+if 文の作り方がわかりにくすぎましたが、
+
+http://nomoreretake.net/2016/01/11/houidni_if-block_vop
+
+こちらを参考に構築しました。  
+個人的には VExpression 使ったほうが絶対良いのでは...？と思いました。
+
+## まとめ
+
+以上 GeometrySubsetVOP の使い方でした。  
+多くの場合 Python でやればよいのでは？という気もしますが、Face の数が多いと Python だと  
+速度で問題が起きそうなので、そういうときは Partition ＋ VExpression を使用したら  
+いい感じに作れるのかな？と思います。
