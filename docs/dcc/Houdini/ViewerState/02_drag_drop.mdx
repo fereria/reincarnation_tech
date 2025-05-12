@@ -1,0 +1,177 @@
+---
+slug: /houdini/viewer_state/02
+title: ViewerStateでDrag＆Drop
+description: PythonViewerStateでDrag&Drop情報を取得する
+sidebar_position: 2
+---
+
+ViewerState を使用すると、Houdini の Viewport への Drag&Drop で指定した処理を実行できるようになります。  
+ので、今回はこの機能の使い方を試してみます。
+
+## 追加する
+
+まず、新しい State を作成します。
+
+[![Image from Gyazo](https://i.gyazo.com/d71baa28b1604c42f4456f706001e9ec.png)](https://gyazo.com/d71baa28b1604c42f4456f706001e9ec)
+
+まず、ViewerStateBrowser を開きます。
+
+[![Image from Gyazo](https://i.gyazo.com/ad40231fdc850224d9c6a46266483e99.png)](https://gyazo.com/ad40231fdc850224d9c6a46266483e99)
+
+追加したい Context を選び（今回は Lop）、File から NewState... を選びます。
+
+[![Image from Gyazo](https://i.gyazo.com/3437940d77b40c144b39c211e439394e.png)](https://gyazo.com/3437940d77b40c144b39c211e439394e)
+
+Samples を Drag&Drop で、初期テンプレを作成しておくと楽です。
+
+## 実行してみる
+
+[![Image from Gyazo](https://i.gyazo.com/bf6ac28cb716cf92efe406edb0d91a77.png)](https://gyazo.com/bf6ac28cb716cf92efe406edb0d91a77)
+
+作成すると、ViewerStateBrowser に追加した State（Label 名で表示）が表示されるので、右クリック＞ Enter を実行します。
+
+サンプルは、テキストファイルを Drag＆Drop するようなコードになっているので  
+テスト用のテキストファイルを作り、Viewport に Drag＆Drop してみます。
+
+[![Image from Gyazo](https://i.gyazo.com/d30b8fc3d28021679134f603fb5bdf36.png)](https://gyazo.com/d30b8fc3d28021679134f603fb5bdf36)
+
+すると、このようなコンテキストメニューが表示され、Open を選ぶと、
+
+[![Image from Gyazo](https://i.gyazo.com/49f09395f6b0e0a0092086e8b0f0a3ab.png)](https://gyazo.com/49f09395f6b0e0a0092086e8b0f0a3ab)
+
+ファイルを開くことができました。
+
+## onDragTest/onDropGetOptions/onDropAccept
+
+おおむね動作が確認できたので、テストコードをみつつ実装方法を確認していきます。
+
+Drag＆Drop では、 onDragTest onDropGetOptions onDropAccept の 3 つの関数を実装します。
+
+### onDragTest
+
+onDragTest は、ファイルの Drop を許可するかを判定するための関数で、  
+True を返すと許可され、False にすると onDropAccept が実行されなくなります。
+
+```python
+        if hou.ui.hasDragSourceData("text/plain"):
+            return True
+```
+
+シンプルな例だと、上記のようにすると「テキストファイルが Drop された」場合に  
+Drop 処理を許可する...という意味になります。
+
+### onDropGetOptions
+
+onDropGetOptions は、 onDragTest が True だった場合に  
+マウスを話したタイミングで表示するコンテキストメニューを指定します。
+
+```python
+    def onDropGetOptions( self, kwargs ):
+        """ Build drag drop option list """
+
+        source = hou.ui.getDragSourceData("text/plain")
+        basename = os.path.basename( source )
+        kwargs["drop_options"]["ids"] = ("open", "info")
+        kwargs["drop_options"]["labels"] = ("Open: %s" % basename, "Info")
+```
+
+指定方法は、 kwargs["drop_options"] に対して、ID と Label を指定します。  
+ここで指定した値は onDropAccept で使用することができます。
+
+```python
+    def onDropAccept( self, kwargs ):
+        """ Process the event with the selected option """
+
+        selected = kwargs["drop_selection"]
+        print(selected)
+        filepath = hou.ui.getDragSourceData("text/plain")
+        print(filepath)
+
+        return True
+```
+
+[![Image from Gyazo](https://i.gyazo.com/ef091f01c0e5c3ce36ac01943482dc1d.png)](https://gyazo.com/ef091f01c0e5c3ce36ac01943482dc1d)
+
+onDropAccept をこのようにすると、Drop したときのコンテキストメニューの結果と  
+Drag したデータを、そのファイルの種別に応じて取得することができます。
+
+## 応用編
+
+デフォルトで追加される Sample はテキストファイルを Drag＆Drop するサンプルでしたが、  
+当然テキストファイル以外の Drag＆Drop も実装することができます。
+
+https://www.sidefx.com/ja/docs/houdini/hom/hou/qt/mimeType.html
+
+対応しているイベントタイプは、公式 Docs 内の上記のページまとめられています。  
+なので、ここに書かれている情報であれば  
+Drag＆Drop で取得できるということになります。
+
+実験で、今回は LOP の AssetBrowser の情報を取得してみます。
+
+[![Image from Gyazo](https://i.gyazo.com/e88c892a44cc50dd9504a2ce4aea50ae.png)](https://gyazo.com/e88c892a44cc50dd9504a2ce4aea50ae)
+
+LOP には LayoutAssetGallery というパネルがデフォルトで用意されています。
+
+[![Image from Gyazo](https://i.gyazo.com/1b32e55fe86996ed8572959fc73f3aae.png)](https://gyazo.com/1b32e55fe86996ed8572959fc73f3aae)
+
+このブラウザでは、USD のアセットのデータベースを作成することができて、  
+Layout ノードでアセットを配置するときの配置アセットの選択パレットとして使用できます。
+
+[![Image from Gyazo](https://i.gyazo.com/4bffda48a347f7b087ff67408ad09d6d.png)](https://gyazo.com/4bffda48a347f7b087ff67408ad09d6d)
+
+デフォルトだと、このアイコンを選んで Drag＆Drop すると Reference ノードが作成されますが  
+この処理を ViewerState を使用してのっとってみようと思います。
+
+```python
+    def onDragTest( self, kwargs ):
+        """ Accept text files only """
+
+        if hou.ui.hasDragSourceData(hou.qt.mimeType.asset):
+            return True
+        return False
+```
+
+onDragTest では、 mimeType.asset を使用して Drag を許可します。
+
+```python
+    def onDropGetOptions( self, kwargs ):
+        """3つの項目でドロップオプションリストを収集します。"""
+
+        kwargs['drop_options']['ids'] = ('ok','ng')
+        kwargs['drop_options']['labels'] = ('はい','いいえ')
+
+        return True
+```
+
+マウスを話したときに表示されるコンテキストメニューは、 drop_options の要素として ids labels を  
+入れます。  
+このメニューには、最低２つ以上選択肢をれる必要があり、この関数とメニューが実装されていないと  
+Accept が呼ばれないので要注意です。
+
+```python
+    def onDropAccept( self, kwargs ):
+        """ Process the event with the selected option """
+        select = kwargs['drop_selection']
+        if select == "ok":
+            import json
+            data = json.loads(hou.ui.getDragSourceData(hou.qt.mimeType.asset))
+            print(data['filepaths'])
+            print(data['labels'])
+
+        return True
+```
+
+最後に Drop した時の動作を作ります。  
+Drag してきたデータは getDragSourceData に mimeType を指定することで  
+取得することができます。  
+取得できるデータは str で、ものによってことなりますが  
+今回のアセットの場合は json が Dump された str になっています。
+
+[![Image from Gyazo](https://i.gyazo.com/d79b0d2c28cd0b9c3fd680f209c8728d.png)](https://gyazo.com/d79b0d2c28cd0b9c3fd680f209c8728d)
+
+構造はこのようになっているので、  
+これを json.loads で読み込めば  
+AssetBrowser のアセットのファイルパスを取得できます。
+
+他にも Drag&Drop 可能な要素はたくさんあるので  
+うまく利用すればいい感じにカスタマイズできそうです。
