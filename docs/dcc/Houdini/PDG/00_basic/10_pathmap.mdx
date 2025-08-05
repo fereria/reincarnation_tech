@@ -1,0 +1,150 @@
+---
+slug: /houdini/pdg/basic/11
+title: PDG Path Mapの使い方
+description:
+sidebar_position: 0
+---
+
+PDG には、PathMap と呼ばれる機能があります。
+
+https://www.sidefx.com/ja/docs/houdini/ref/panes/pdgpathmap.html
+
+PDG で分散処理を実行する場合は、自分の PC 以外の、いわゆるレンダー PC のような  
+別環境の PC でジョブが実行されることがあります。  
+この時、異なる環境の場合はファイルパスが異なる構造の場合もあるので  
+何かしらの手段でパスの解決をする必要があります。  
+PathMap は、その問題を解決するために PDG がデフォルトで提供している機能で  
+String や File アトリビュート内にある特定の文字列を  
+ファーム側で置換してくれます。
+
+## 基本設定
+
+まず、PDG PathMap のパネルを開きます。
+
+[![Image from Gyazo](https://i.gyazo.com/d60b76ef5a4763c8d27fea1b16a634db.png)](https://gyazo.com/d60b76ef5a4763c8d27fea1b16a634db)
+
+New Pane Tab Type > TOPs > PDG Path Map をリックします。
+
+[![Image from Gyazo](https://i.gyazo.com/8101801b452db5766787bad2c220fe3c.png)](https://gyazo.com/8101801b452db5766787bad2c220fe3c)
+
+すでにいくつか設定してありますが、このようなパネルが表示されます。  
+Path Map では、実行環境（Win/Mac/Linux）、MatchType、Source Destination Path  
+を指定する欄があります。
+
+[![Image from Gyazo](https://i.gyazo.com/b7730d2672c5b00163ea3022e67df20e.png)](https://gyazo.com/b7730d2672c5b00163ea3022e67df20e)
+
+PathMap は複数追加することができ、Mapping の一覧の順に  
+該当する環境の指定で Path の置換が実行されます。
+
+[![Image from Gyazo](https://i.gyazo.com/8b582904128c824b47e6ab23a9206e99.png)](https://gyazo.com/8b582904128c824b47e6ab23a9206e99)
+
+私の場合はあまり使用しないですが、  
+上から順番に置換処理が実行されるので  
+最初に全環境を一時的な文字列に変換し、次に環境ごと（Win/Mac/Linux）の  
+パスに置換する...といったことも可能です。
+
+簡単なサンプルを使用して、挙動を確認します。
+
+[![Image from Gyazo](https://i.gyazo.com/ca0eb9b971fb261178d4d357c5fa810e.png)](https://gyazo.com/ca0eb9b971fb261178d4d357c5fa810e)
+
+[![Image from Gyazo](https://i.gyazo.com/23b8b2a075f0e45c352983e4d0b8eead.png)](https://gyazo.com/23b8b2a075f0e45c352983e4d0b8eead)
+
+SOP 内で String パラメーター 1 つを持つ HDA を作成します。
+
+[![Image from Gyazo](https://i.gyazo.com/d5e0ed0a06c9c236f3e6480552ae319b.png)](https://gyazo.com/d5e0ed0a06c9c236f3e6480552ae319b)
+
+HDA 内はシンプルで、PythonScript1 つだけあるようなシンプルな HDA です。
+
+```python
+node = hou.pwd()
+geo = node.geometry()
+
+# Add code to modify contents of geo.
+# Use drop down menu to select examples.
+
+print(node.node("..").parm("path").eval())
+```
+
+Python スクリプトは、上記のようにパラメーターを取得してプリントします。  
+この HDA を PDG の HDAProcessor に入れて、パラメータに、
+
+[![Image from Gyazo](https://i.gyazo.com/40815a1a82ba9b9aed45298ee51d07d4.png)](https://gyazo.com/40815a1a82ba9b9aed45298ee51d07d4)
+
+PathMap に入れた文字列を指定しておきます。  
+今回の場合は S:/fav/study_projects/houdini_pdg が置換元なので  
+そのパスを入れておきます。
+
+この状態で、HDAProcessor を実行します。
+
+[![Image from Gyazo](https://i.gyazo.com/55e887cc65a81032804998d9fa0d2081.png)](https://gyazo.com/55e887cc65a81032804998d9fa0d2081)
+
+Log を確認すると、プリントされている文字が S:/～ではなく  
+PathMap で指定された置換後の D:/～ になっているのがわかります。
+
+## 実行時の処理
+
+動作がわかったので、Out-of-Process で実行している先がどのようになっているか  
+見ていきます。
+
+[![Image from Gyazo](https://i.gyazo.com/647fc273242f234840f8f9f8036b74c8.png)](https://gyazo.com/647fc273242f234840f8f9f8036b74c8)
+
+HDAProcessor は、Out-of-Process 実行時には、hdaprocessor.py というファイルを介して実行されています。
+
+[![Image from Gyazo](https://i.gyazo.com/143ee45f779ea831e24406eef61cf993.png)](https://gyazo.com/143ee45f779ea831e24406eef61cf993)
+
+LocalScheduler の Temp Directory の Custom で、任意のフォルダを指定すると  
+その指定フォルダ以下に Out-of-Process で実行するのに必要なファイルが保存されます。  
+その中に hdaprocessor.py があるのでそのファイルを確認します。
+
+まず、PathMap データはファイル(workitem の json)ではなく、環境変数を使用して実行 PC 側に受け渡しされます。  
+それが、PDG_PATHMAP で
+
+```json
+{
+	"version": 3,
+	"paths": [
+		{
+			"S:/fav/study_projects/houdini_pdg": {
+				"path": "D:/",
+				"zone": "WIN",
+				"scheduler": "",
+				"matchtype": 1
+			}
+		},
+		{
+			"test": {
+				"path": "hello",
+				"zone": "*",
+				"scheduler": "",
+				"matchtype": 0
+			}
+		}
+	]
+}
+```
+
+このような json 形式を dump したもので渡されます。  
+この情報を、`pdgcmd.localizePath(path)`で読み込み、対象のパスに対して置換処理を行います。
+
+hdaprocessor.py 側からだと、
+
+```python
+    for str_parm in str_parm_names:
+        parm_vals = work_item.stringAttribArray(str_parm)
+
+        for i, parm_val in enumerate(parm_vals):
+            parm_vals[i] = work_item.localizePath(parm_val)
+```
+
+このように、workItem に存在するアトリビュートを列挙して  
+localizePath を実行した結果を再セットする...といった実装がされています。
+
+## PathMap情報の保存先
+
+[![Image from Gyazo](https://i.gyazo.com/ca4b6525edd99c6bff3eb2be892a9fcc.png)](https://gyazo.com/ca4b6525edd99c6bff3eb2be892a9fcc)
+
+このPathMapは、PDG_PATHMAPグローバル変数に保存されます。  
+ファイルとして外部に保存する手段はみつからなかったですが、  
+おそらく共通のPathMapのjsonをテキストに保存し、実行PC側は環境変数ではなく  
+ファイルからPathMapを取得するような実装をすれば  
+特殊な環境でも、Pathの扱いを共通化できるのかな？と思います。
