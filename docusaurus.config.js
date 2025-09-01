@@ -57,7 +57,6 @@ const config = {
 		locales: ["ja"],
 	},
 	themeConfig: {
-		// Replace with your project's social card
 		zoom: {
 			selector: ".markdown :not(em) > img",
 			config: {
@@ -79,7 +78,7 @@ const config = {
 			title: "Reincarnation+#Tech",
 			logo: {
 				alt: "My Site Logo",
-				src: "img/logo.svg",
+				src: "img/favicon.ico",
 			},
 			// Tab を追加する場合はここに追加
 			items: [

@@ -1,0 +1,97 @@
+---
+slug: /houdini/memo/01
+title: PyPanel でHDAのUIを作る
+sidebar_position: 0
+---
+
+[![Image from Gyazo](https://i.gyazo.com/9431ee66c9c595ef9829b3a851be0194.png)](https://gyazo.com/9431ee66c9c595ef9829b3a851be0194)
+
+Panel を作るときは、まず Windows > Python PanelEditor を開く。
+
+[![Image from Gyazo](https://i.gyazo.com/fa2bdfccec2f90d646f2a5ff8f3c87db.png)](https://gyazo.com/fa2bdfccec2f90d646f2a5ff8f3c87db)
+
+そして、「New Interface」を選んで枠を作成します。
+作成したファイルは、 proj/python_panels 下に XXXX.pypanel という拡張子で保存される。
+
+[![Image from Gyazo](https://i.gyazo.com/b7919023ab4b11e436a4c60c4618d134.png)](https://gyazo.com/b7919023ab4b11e436a4c60c4618d134)
+
+追加したあと、使えるようにするには ToolBarMenu のタブに移動して
+作成したパネルを Toolbar Menu Entries に移動します。
+
+[![Image from Gyazo](https://i.gyazo.com/b4650e6045dde0a6e5f292e4b83c9ce4.png)](https://gyazo.com/b4650e6045dde0a6e5f292e4b83c9ce4)
+
+移動すると、Tab の Misc ＞ Python Panel から表示するビューを開き
+
+[![Image from Gyazo](https://i.gyazo.com/403f9c2a85a097ca7d49617cde3f91d4.png)](https://gyazo.com/403f9c2a85a097ca7d49617cde3f91d4)
+
+一覧から、作成したパネルを選ぶと表示できます。
+
+[![Image from Gyazo](https://i.gyazo.com/de0b1d90cd4532da36ec5db8b0d992fb.png)](https://gyazo.com/de0b1d90cd4532da36ec5db8b0d992fb)
+
+ただ、それだと HDA の UI にならないので、パネルの Parameters Pane Hints に
+そのパネルを表示したい HDA を入れます。
+
+名前は、 Namespace::Sop/###### のように入力します。  
+サンプルのように、名前やバージョンが入っている場合は、途中にコンテキスト名を入れる必要があるので  
+それだけ注意です。  
+アスタリスクを入れると、ワイルドカード扱いになるので すべてのバージョンだったりすべての SOP ノード  
+のように合致する HDA に対してパネルを適応できます。
+
+```python
+from PySide6 import QtWidgets, QtGui, QtCore
+import sys, os
+
+class IconGridView(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super(IconGridView, self).__init__(parent)
+
+        layout = QtWidgets.QVBoxLayout(self)
+
+        # QListWidgetを用意
+        self.listWidget = QtWidgets.QListWidget()
+        layout.addWidget(self.listWidget)
+
+
+        for name in ["A","B","C"]:
+            item = QtWidgets.QListWidgetItem(name)
+            self.listWidget.addItem(item)
+
+        self.listWidget.clicked.connect(self.clicked)
+
+    def clicked(self,index):
+        value = index.data()
+        panel = hou.ui.paneTabOfType(hou.paneTabType.Parm)
+        if panel:
+            node = panel.currentNode()
+            node.parm('sample').set(value)
+
+
+
+def onCreateInterface():
+    widget = IconGridView()
+    return widget
+
+```
+
+パネルの実装は PySide で実装します。
+
+onCreateInterface() の return で PySide の Widget を返すようにします。  
+それ以外は、基本的には PySide の UI を作るのと同じ感じで UI を作成できます。
+
+現在表示されている HDA のノードを取得する場合は、
+
+```python
+panel = hou.ui.paneTabOfType(hou.paneTabType.Parm)
+if panel:
+    node = panel.currentNode()
+```
+
+パネルから、currentNode を取得すれば OK です。
+
+[![Image from Gyazo](https://i.gyazo.com/2a3da48a2eaa434d7be372ad43d33172.png)](https://gyazo.com/2a3da48a2eaa434d7be372ad43d33172)
+
+結果、このように PySide のリストを HDA のパラメーター編集 UI として表示できました。
+
+[![Image from Gyazo](https://i.gyazo.com/21fe27e096a229b1cf0b6cb192662201.png)](https://gyazo.com/21fe27e096a229b1cf0b6cb192662201)
+
+作成したパネルは、このアイコンを表示すると非表示にできます。
