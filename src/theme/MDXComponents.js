@@ -2,7 +2,8 @@ import MDXComponents from "@theme-original/MDXComponents";
 import AutoLinkTitle from "@site/src/components/auto_link_title.js";
 import CodePen from "@site/src/components/codepen.js";
 import Marker from "@site/src/components/marker.js";
-import { TwitterTweetEmbed } from "react-twitter-embed";
+import { Tweet } from "react-tweet";
+import { XEmbed } from "react-social-media-embed";
 // import ReactEmbedGist from "react-embed-gist";
 
 export default {
@@ -10,7 +11,8 @@ export default {
 	...MDXComponents,
 	AutoLinkTitle,
 	// ReactEmbedGist,
-	TwitterTweetEmbed,
+	Tweet,
+	XEmbed,
 	CodePen,
 	Marker,
 };
