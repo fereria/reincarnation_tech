@@ -4,6 +4,11 @@
  * work well for content-centric websites.
  */
 
+/* --------------------------------------------------
+   Global variables (Infima overrides)
+   - Brand colors, text colors, layout vars
+   - Navbar/Sidebar related colors
+   -------------------------------------------------- */
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
@@ -15,22 +20,192 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --doc-sidebar-width: 400px !important;
+  --doc-sidebar-width: 450px !important;
+  --ifm-navbar-background-color: #323b39;
+  --ifm-navbar-link-color: #e5e7eb;        /* gray-200 */
+  --ifm-navbar-link-hover-color: #ffffff;
+  --ifm-navbar-border-color: rgba(255,255,255,.08);  
+  --ifm-font-color-base: #404341;
+  --ifm-heading-color: #454947; 
+  --sidebar-category-bg: rgba(15, 23, 42, 0.04);
+  --sidebar-category-bg-hover: rgba(15, 23, 42, 0.08);
+  --sidebar-category-bg-active: rgba(15, 23, 42, 0.12);
+  --sidebar-category-border: rgba(0, 0, 0, 0.06);   
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --doc-sidebar-width: 400px !important;
+/* --------------------------------------------------
+   Headings: emoji icons and spacing
+   -------------------------------------------------- */
+
+/* Docs本文の見出しに絵文字アイコンを付与 */
+.theme-doc-markdown h1,
+.theme-doc-markdown h2,
+.theme-doc-markdown h3,
+.theme-doc-markdown h4 {
+  position: relative;
+  padding-left: 1.6em; /* アイコン分の余白 */
 }
 
-.menu__list-item-collapsible{
-  background-color: #a4e0d3;
+.theme-doc-markdown h1::before,
+.theme-doc-markdown h2::before,
+.theme-doc-markdown h3::before,
+.theme-doc-markdown h4::before {
+  position: absolute;
+  left: 0.2em;
+  top: 0.05em;    /* 必要に応じて微調整 */
+  font-size: 1em; /* 見出しサイズに追従 */
+  line-height: 1;
+  opacity: 0.95;
+}
+
+/* レベル別の絵文字（好みに変更OK） */
+.theme-doc-markdown h1::before { content: '📝'; }
+.theme-doc-markdown h2::before { content: '📌'; }
+.theme-doc-markdown h3::before { content: '📎'; }
+.theme-doc-markdown h4::before { content: '🧩'; }
+
+/* 見出しのアンカー(#)との間隔を少し空ける */
+.theme-doc-markdown h2 .anchor,
+.theme-doc-markdown h3 .anchor,
+.theme-doc-markdown h4 .anchor {
+  margin-left: 0.25em;
+}
+
+/* --------------------------------------------------
+   Navbar
+   -------------------------------------------------- */
+.navbar {
+  border-bottom: 1px solid var(--ifm-navbar-border-color);
+  box-shadow: var(--ifm-navbar-shadow);
+}
+
+/* --------------------------------------------------
+   Footer
+   -------------------------------------------------- */
+.footer {
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* --------------------------------------------------
+   Sidebar: category row styling and caret coverage
+   -------------------------------------------------- */
+/* Sidebar category: extend background to caret (toggle) area */
+.theme-doc-sidebar-menu .menu__link--sublist {
+  position: relative;
+  overflow: hidden; /* ensure caret overlay stays within rounded bg */
+  background: var(--sidebar-category-bg, rgba(15, 23, 42, 0.04));
+  border: 1px solid transparent;
+  border-radius: 8px;
+  margin: 2px 4px;
+  padding: 6px 8px;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+/* Make the caret overlay share the same background */
+.theme-doc-sidebar-menu .menu__link--sublist .menu__link--sublist-caret,
+.theme-doc-sidebar-menu .menu__link--sublist .menu__caret {
+  background: inherit;
+  height: 100%;
+}
+
+.theme-doc-sidebar-menu .menu__link--sublist:hover,
+.theme-doc-sidebar-menu .menu__link--sublist:hover .menu__link--sublist-caret,
+.theme-doc-sidebar-menu .menu__link--sublist:hover .menu__caret {
+  background: var(--sidebar-category-bg-hover, rgba(15, 23, 42, 0.08));
+}
+
+/* Expanded/active state colors, including caret */
+.theme-doc-sidebar-menu .menu__list-item--active > .menu__link--sublist,
+.theme-doc-sidebar-menu .menu__link--sublist[aria-expanded='true'],
+.theme-doc-sidebar-menu .menu__list-item--active > .menu__link--sublist .menu__link--sublist-caret,
+.theme-doc-sidebar-menu .menu__list-item--active > .menu__link--sublist .menu__caret,
+.theme-doc-sidebar-menu .menu__link--sublist[aria-expanded='true'] .menu__link--sublist-caret,
+.theme-doc-sidebar-menu .menu__link--sublist[aria-expanded='true'] .menu__caret {
+  background: var(--sidebar-category-bg-active, rgba(15, 23, 42, 0.12));
+  border-color: var(--sidebar-category-border, rgba(0, 0, 0, 0.06));
+}
+
+/* Optional: tune caret icon color to follow text color */
+.theme-doc-sidebar-menu .menu__link--sublist .menu__link--sublist-caret::before,
+.theme-doc-sidebar-menu .menu__link--sublist .menu__caret::before {
+  color: currentColor;
+  opacity: 0.9;
+}
+
+/* Ensure the caret area shares the same background by painting on the <li> */
+.theme-doc-sidebar-menu .menu__list-item-collapsible {
+  position: relative;
+}
+
+/* Background layer that spans link + caret area */
+.theme-doc-sidebar-menu .menu__list-item-collapsible::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: 2px 8px; /* align with link margin */
+  border-radius: 8px;
+  background: var(--sidebar-category-bg, rgba(15, 23, 42, 0.04));
+  border: 1px solid transparent;
+  pointer-events: none; /* keep clicks on link/caret */
+  transition: background .15s ease, border-color .15s ease;
+}
+
+/* Raise content above the background layer */
+.theme-doc-sidebar-menu .menu__list-item-collapsible > .menu__link--sublist,
+.theme-doc-sidebar-menu .menu__list-item-collapsible > .menu__caret {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+/* Hover state on the whole row */
+.theme-doc-sidebar-menu .menu__list-item-collapsible:hover::before {
+  background: var(--sidebar-category-bg-hover, rgba(15, 23, 42, 0.08));
+}
+
+/* Active/expanded state */
+.theme-doc-sidebar-menu .menu__list-item--active::before {
+  background: var(--sidebar-category-bg-active, rgba(15, 23, 42, 0.12));
+  border-color: var(--sidebar-category-border, rgba(0, 0, 0, 0.06));
+}
+
+/* Folder emoji icon at the start of category text */
+.theme-doc-sidebar-menu .menu__link--sublist::before {
+  content: '📁';
+  margin-right: 0.1em;
+  opacity: 0.95;
+}
+
+/* File emoji icon for leaf links (non-category) */
+.theme-doc-sidebar-menu .menu__link:not(.menu__link--sublist)::before {
+  content: '📄';
+  margin-right: 0em;
+  opacity: 0.95;
+}
+/* --------------------------------------------------
+   Typography scale overrides (~90%)
+   -------------------------------------------------- */
+/* Desktop/base sizes */
+:root {
+  /* Default h1 is ~2.5rem → 2.25rem */
+  --ifm-h1-font-size: 2.25rem;
+  --ifm-h2-font-size: 1.8rem;   /* 2.0rem → 1.8rem */
+  --ifm-h3-font-size: 1.35rem;  /* 1.5rem → 1.35rem */
+  --ifm-h4-font-size: 1.125rem; /* 1.25rem → 1.125rem */
+  --ifm-h5-font-size: 0.9rem;   /* 1.0rem → 0.9rem */
+  --ifm-h6-font-size: 0.7875rem;/* 0.875rem → 0.7875rem */
+}
+
+/* Mobile sizes at ~90% of defaults */
+@media (max-width: 996px) {
+  :root {
+    /* Default h1 ~2rem → 1.8rem */
+    --ifm-h1-font-size: 1.8rem;
+    --ifm-h2-font-size: 1.35rem;  /* 1.5rem → 1.35rem */
+    --ifm-h3-font-size: 1.125rem; /* 1.25rem → 1.125rem */
+    --ifm-h4-font-size: 0.9rem;   /* 1.0rem → 0.9rem */
+    --ifm-h5-font-size: 0.9rem;   /* 1.0rem → 0.9rem */
+    --ifm-h6-font-size: 0.7875rem;/* 0.875rem → 0.7875rem */
+  }
 }
