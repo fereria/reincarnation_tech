@@ -42,17 +42,6 @@
   --heading-underline-h6: rgba(0, 0, 0, 0.10);
 }
 
-/* Dark theme overrides */
-[data-theme='dark'] {
-  --heading-underline-color: rgba(255, 255, 255, 0.12);
-  /* Per-level underline colors (dark) */
-  --heading-underline-h1: rgba(255, 255, 255, 0.32);
-  --heading-underline-h2: rgba(255, 255, 255, 0.28);
-  --heading-underline-h3: rgba(255, 255, 255, 0.24);
-  --heading-underline-h4: rgba(255, 255, 255, 0.20);
-  --heading-underline-h5: rgba(255, 255, 255, 0.16);
-  --heading-underline-h6: rgba(255, 255, 255, 0.12);
-}
 
 /* --------------------------------------------------
    Headings: emoji icons and spacing
@@ -119,6 +108,18 @@
 .navbar {
   border-bottom: 1px solid var(--ifm-navbar-border-color);
   box-shadow: var(--ifm-navbar-shadow);
+}
+
+/* Keep navbar color consistent on mobile width */
+@media (max-width: 996px) {
+  .navbar,
+  .navbar--fixed-top {
+    background: var(--ifm-navbar-background-color) !important;
+    border-bottom-color: var(--ifm-navbar-border-color) !important;
+    box-shadow: var(--ifm-navbar-shadow);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 /* --------------------------------------------------
@@ -224,6 +225,33 @@
   content: '📄';
   margin-right: 0em;
   opacity: 0.95;
+}
+
+/* --------------------------------------------------
+   Mobile menus: keep light surface background
+   - Prevent mobile navbar sidebar from turning dark
+   -------------------------------------------------- */
+:root { --mobile-menu-bg: var(--ifm-background-surface-color, #ffffff); }
+[data-theme='dark'] { --mobile-menu-bg: var(--ifm-background-surface-color, #0b1220); }
+
+/* Navbar hamburger sidebar */
+.navbar-sidebar,
+.navbar-sidebar__items,
+.navbar-sidebar__brand {
+  background: var(--mobile-menu-bg) !important;
+}
+.navbar-sidebar .menu,
+.navbar-sidebar .menu__list,
+.navbar-sidebar .menu__list-item,
+.navbar-sidebar .menu__link {
+  background: var(--mobile-menu-bg);
+}
+
+/* Docs sidebar drawer on narrow screens */
+@media (max-width: 996px) {
+  .theme-doc-sidebar-container {
+    background: var(--mobile-menu-bg);
+  }
 }
 /* --------------------------------------------------
    Typography scale overrides (~90%)
