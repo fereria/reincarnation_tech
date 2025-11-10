@@ -1,0 +1,40 @@
+---
+slug: 01
+title: Bgeoを分割する
+sidebar_position: 1
+---
+
+[![Image from Gyazo](https://i.gyazo.com/58cfca4159c0179e100569974b246030.png)](https://gyazo.com/58cfca4159c0179e100569974b246030)
+
+Primitive のアトリビュートを使用して Mesh を分割して出力したい場合は、以下のようにする。
+
+[![Image from Gyazo](https://i.gyazo.com/9d4fffdec0af8db2e996c13e80ea2779.png)](https://gyazo.com/9d4fffdec0af8db2e996c13e80ea2779)
+まず、GeometryImport ノードで、 Geometry Source を SOP Node にして、SOP Path を入力する。
+
+[![Image from Gyazo](https://i.gyazo.com/648d74b44093a479820ccbd095fae9d8.png)](https://gyazo.com/648d74b44093a479820ccbd095fae9d8)
+次に、Storage の「Store Geometry As」を「GeometryAttribute」にする。
+AttributeName はデフォルトのままで OK。  
+Attribute 名をファイル名に使いたい　とかではなければ、これより下の手順はせず、
+Storage を Store Geometry As を External File にして、ExternalFilePath を指定すればよい。
+
+分割に使用した Attribute 名をファイル名に入れたい場合は一工夫する。
+
+[![Image from Gyazo](https://i.gyazo.com/7753e9603d0b2019cbfd6a68bb4763a5.png)](https://gyazo.com/7753e9603d0b2019cbfd6a68bb4763a5)
+
+Data Extension の Copy From Class を Primitive（分割のもとになるアトリビュートタイプ）  
+を指定し、Create Work Item For を「Each Piece Attribute Value」にして、
+分割のキーになるアトリビュート名を入れる。
+
+[![Image from Gyazo](https://i.gyazo.com/b28f9f71174ec83224a6405a562816b9.png)](https://gyazo.com/b28f9f71174ec83224a6405a562816b9)
+結果、PieceAttribute で指定したアトリビュート分 WorkItem が作成される。
+
+[![Image from Gyazo](https://i.gyazo.com/0587451c40eec6be73a66740a2867faf.png)](https://gyazo.com/0587451c40eec6be73a66740a2867faf)
+Geometry は WorkItem のアトリビュートとして保持される。
+
+[![Image from Gyazo](https://i.gyazo.com/0eedc34742a027e1bc23c938ac3b1bcd.png)](https://gyazo.com/0eedc34742a027e1bc23c938ac3b1bcd)
+この Geometry アトリビュートを保存するには、
+もう一つ GeometryImport を作り、Geometry Source を「Upstream Geometery Attribute」にして、Attribute Name を指定する。基本変えていなければ geometry で OK。
+
+[![Image from Gyazo](https://i.gyazo.com/7bd921af7fdcf52b3f18c23a56c05dd2.png)](https://gyazo.com/7bd921af7fdcf52b3f18c23a56c05dd2)
+
+Storage で Store Geometry As で「External File」にして、External File Path を出力先にする。
