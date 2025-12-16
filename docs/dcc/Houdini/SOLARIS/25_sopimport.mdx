@@ -1,0 +1,300 @@
+---
+slug: sopimport
+title: SOPImportでSOPのデータをLOPに持って行く
+sidebar_position: 25
+---
+
+[![Image from Gyazo](https://i.gyazo.com/be5c62fc3a2f5050a265c84579639b8b.png)](https://gyazo.com/be5c62fc3a2f5050a265c84579639b8b)
+
+SOLARIS には、sopimport というある意味 Houdini で USD を扱う場合に最重要となる「SOP のデータを USD に持ち込む」ためのノードが用意されています。
+
+SOP と LOP は別空間ではあるものの、このノードを介することで相互に行き来が可能になるため  
+Houdini ＋ USD の利便性やイテレーションの向上に大いに寄与してくれるノードではあるのですが  
+その設定が多く、どのような仕様になっているのか私自身も正しく理解できていないところがありました。
+
+ということで、今回は sopimport の挙動を基本的なところから確認しつつ  
+USD の仕様を合わせてみていきたいと思います。
+
+## 基本的な使い方
+
+[![Image from Gyazo](https://i.gyazo.com/2b92bc284779d4e805aeabcb7ed07a45.png)](https://gyazo.com/2b92bc284779d4e805aeabcb7ed07a45)
+
+最も基本的な使い方は、 SOP Import の SOP Path に読み込みたい SOP ノードを設定するだけです。  
+これを指定することで、SOP 側のジオメトリを LOP の世界に読み込むことができます。
+
+[![Image from Gyazo](https://i.gyazo.com/822f646d90b11f0de66e6fecd0f306cb.png)](https://gyazo.com/822f646d90b11f0de66e6fecd0f306cb)
+
+この結果、SOPImport のノード名の Xform の下に mesh_0 という名前の MeshPrim が作成されました。  
+[![Image from Gyazo](https://i.gyazo.com/73ac74e0fcc2489bd14c90227ebe2e46.png)](https://gyazo.com/73ac74e0fcc2489bd14c90227ebe2e46)
+この「sopimport1」の部分は、Import Path Prefix の部分で決まっていて、デフォルトだと /$OS という自身のノード名が指定されていますが、変更すれば固定の名前にすることが可能です。
+
+## MeshPrimName を SOP で決める
+
+まず、最初にやりたくなるのは、MeshPrim の名前や、MeshPrim の分割をどう分けるか？なのではないでしょうか。
+
+[![Image from Gyazo](https://i.gyazo.com/7ae536b30f90a381d4f7da772041d3cb.png)](https://gyazo.com/7ae536b30f90a381d4f7da772041d3cb)
+
+その指定は、SOP 側の Primitives の path あるいは name アトリビュートです。
+
+[![Image from Gyazo](https://i.gyazo.com/4afa1ea97530cf7d41816535bf5e38bf.png)](https://gyazo.com/4afa1ea97530cf7d41816535bf5e38bf)
+
+[![Image from Gyazo](https://i.gyazo.com/991735ce85110feb17b26286f63832c2.png)](https://gyazo.com/991735ce85110feb17b26286f63832c2)
+
+name の場合は、LOP に持ち込まれたときは name アトリビュートで指定したものになりますし、path の場合は Prim のパスを指定することができます。
+
+[![Image from Gyazo](https://i.gyazo.com/cc46a62783a93665f6978561a6a0a5e4.png)](https://gyazo.com/cc46a62783a93665f6978561a6a0a5e4)
+
+SOP 側で作成したジオメトリを、複数の Prim に分割したい場合も  
+name を Primitives のアトリビュートに指定することで、その name ごとの Prim に切り分けることができます。
+
+## 部分的な読み込み
+
+デフォルトの状態だと、SOP 側のジオメトリはすべて LOP 側に読み込まれてしまいますが  
+Group を設定することで、指定の Group に属した Mesh だけ LOP に読み込むことができます。
+
+[![Image from Gyazo](https://i.gyazo.com/df2e1f9de868dfb8a68437a75229d80f.png)](https://gyazo.com/df2e1f9de868dfb8a68437a75229d80f)
+
+例として、group1 を作成して、Cube と Sphere のうち Cube だけをそのグループに入れておきます。
+
+[![Image from Gyazo](https://i.gyazo.com/ba7928fbb7765f2ab07a882363133a7d.png)](https://gyazo.com/ba7928fbb7765f2ab07a882363133a7d)
+
+Import Group で SOP 側の Gorup を指定すると、
+
+[![Image from Gyazo](https://i.gyazo.com/f87c8ed8df46dd1697d6a9839e065f87.png)](https://gyazo.com/f87c8ed8df46dd1697d6a9839e065f87)
+
+その Group に属した Mesh だけが読み込まれます。  
+この例だと、name ＝ group になっていますが、もちろん cube sphere の一部分の Face だけ読み込むようなことも可能です。
+
+## Mesh or Points
+
+ここまで Mesh を LOP にインポートしてきましたが、Mesh だけではなく Point も LOP に持ち込むことができます。  
+では、どのようなパターンで Points でどのようなときに Mesh になるのか見ていきましょう。
+
+### Points
+
+基本的には Mesh で出力される方が多いので、どういうパターンで Points になるのか見ていきましょう。
+
+[![Image from Gyazo](https://i.gyazo.com/4417f4a7d5e07e0262e3c8908a90eff1.png)](https://gyazo.com/4417f4a7d5e07e0262e3c8908a90eff1)
+
+Points になるのは、SOP 側がその名の通り Points にのみデータを持っているケースで  
+この場合は、SOP 側の Point が、USD の PointsPrim としてエクスポートされます。  
+name / path の指定は Mesh と同様で SOP 側の PointAttribute に対して name または path を指定することで、Prim を分割したり名前を変更することができます。
+
+### Mesh
+
+基本的には、Pointsで示したようなSOP側でPointsを作った例を除けば  
+それ以外はMesh扱いになります。
+
+[![Image from Gyazo](https://i.gyazo.com/8ef7fa109864645e680457dac8730121.png)](https://gyazo.com/8ef7fa109864645e680457dac8730121)
+
+例として、CopyToPointsでPointに対してジオメトリを配置したような場合。  
+
+[![Image from Gyazo](https://i.gyazo.com/9f20b9e947b05be65dc7d0e68ded6209.png)](https://gyazo.com/9f20b9e947b05be65dc7d0e68ded6209)
+
+この場合は、１つのMeshPrimとしてLOPにインポートされます。  
+
+[![Image from Gyazo](https://i.gyazo.com/7c30616fba220f97199778af43c16c00.png)](https://gyazo.com/7c30616fba220f97199778af43c16c00)
+
+PointとMeshをマージしたものを読み込んだ場合は、
+
+[![Image from Gyazo](https://i.gyazo.com/4405aa267cacdd4af43c25efc46b7f47.png)](https://gyazo.com/4405aa267cacdd4af43c25efc46b7f47)
+
+両方がそれぞれのノードで出力されます。  
+  
+## Instance
+
+CopyToPointを使用する場合も単体のMeshで出力されていましたが、  
+多くの場合CopyToPointを使う時はインスタンス配置としてUsdのNativeInstanceかPointInstancerで出力されてほしいかと思います。  
+ので、単一のMeshやPointsをPrimとして出力するパターンを確認していきます。  
+  
+### PackedPrimitive
+
+まず、LOP側のNativeInstanceの構造に対応するSOPの構造がなにか？というと、  
+それは「Pack」です。  
+
+[![Image from Gyazo](https://i.gyazo.com/3b3a391bbda4b58d971f1ee80e1f58e7.png)](https://gyazo.com/3b3a391bbda4b58d971f1ee80e1f58e7)
+
+SOP側でPackをした状態でLOPに持って行くと、
+
+[![Image from Gyazo](https://i.gyazo.com/e80eeed0b9749a3527a6cffc26ea8211.png)](https://gyazo.com/e80eeed0b9749a3527a6cffc26ea8211)
+
+このように、Prototypesという形でMeshが出力され、  
+そのMeshをInternalReference（ファイル内のリファレンス）でリファレンスして、  
+instanceable=Trueの形で出力をします。  
+  
+今回の例だと、1つしかMeshがないので、1Reference1Meshになっています。  
+
+[![Image from Gyazo](https://i.gyazo.com/685b85fa30f1dcccdc44613f7ddc0bba.png)](https://gyazo.com/685b85fa30f1dcccdc44613f7ddc0bba)
+
+このPackしたオブジェクトを、CopyToPointでPointに対して配置します。  
+
+[![Image from Gyazo](https://i.gyazo.com/fb47dafe867aa8aafcc953eb23a51df2.png)](https://gyazo.com/fb47dafe867aa8aafcc953eb23a51df2)
+
+すると、このように、Point分に配置されたNativeInstanceが出力されます。  
+  
+### PointInstancer
+
+[![Image from Gyazo](https://i.gyazo.com/644f1eb4016cb2f33bc279a085c09df1.png)](https://gyazo.com/644f1eb4016cb2f33bc279a085c09df1)
+
+デフォルトではNativeInstanceでしたが、これをPointInstancerで出力したい場合はどうするかというと、  
+
+[![Image from Gyazo](https://i.gyazo.com/b609704859d23ad5a7bceb4e2f2dba8d.png)](https://gyazo.com/b609704859d23ad5a7bceb4e2f2dba8d)
+
+Packed Primitivesの項目をCreate XformからCreate PointInstancerに変更します。  
+
+[![Image from Gyazo](https://i.gyazo.com/28543cdf17adc5b6c1f33c150b8b701c.png)](https://gyazo.com/28543cdf17adc5b6c1f33c150b8b701c)
+
+すると、このようにPointInstancerの形式でLOPに持ってくることができます。  
+
+
+## Attribute
+
+Mesh,Instance の次は、Attributeです。  
+LOPでは、SOPで指定したAttributeをPrimのAttributeとしてインポートすることができます。  
+なにをどう持ってくるかは SOP Importの Import Dataで指定が可能なので  
+よく使うものから順にみていきたいと思います。  
+  
+### デフォルトの挙動
+  
+まず、Attributeを持ってくる場合は  
+Meshとして持ってきたい場合はPrimitivesAttribute、Pointsとして持ってきたい場合はPointAttributeに値を指定します。  
+
+[![Image from Gyazo](https://i.gyazo.com/c16f7485801a6f83f92c15979965248d.png)](https://gyazo.com/c16f7485801a6f83f92c15979965248d)
+
+Primitivesに hoge Attributeが指定されていたとします。  
+
+[![Image from Gyazo](https://i.gyazo.com/8a11232050969603508904eeb82f4509.png)](https://gyazo.com/8a11232050969603508904eeb82f4509)
+
+これをデフォルトの状態で出力すると、 primvars としてパラメーターが出力されます。  
+これはどういうことかというと、SOPのPrimitiveは、LOPがわのFaceにあたるため  
+Meshに対して１つのパラメーターが設定された　というわけではなく、  
+「各Faceごとに別の値が入っていて、たまたま同じ値が入っていた」  
+という解釈で読み込まれているわけです。  
+
+[![Image from Gyazo](https://i.gyazo.com/c9947adc62e2f68c07a9444d8f8feca0.png)](https://gyazo.com/c9947adc62e2f68c07a9444d8f8feca0)
+
+なので、このように1Mesh（同意nameが指定されているPrimitives）に別のhogeアトリビュートがある場合などは、
+
+[![Image from Gyazo](https://i.gyazo.com/16d24ecca82b082dc3f8040e8cc2e5d9.png)](https://gyazo.com/16d24ecca82b082dc3f8040e8cc2e5d9)
+
+hogeにはSOP側で指定されている文字列パターンと、そのIndicesがLOP側にインポートされます。  
+  
+デフォルトではprimvarになりますが、そうじゃないケースはどうすればいいかを順にみていきます。
+
+### CustomAttribute
+
+Primvarではなく、すべてに単一の同じ値がセットされているとして  
+固定のアトリビュートとして出力したい場合は以下のようにします。
+
+[![Image from Gyazo](https://i.gyazo.com/214d822f494b7440c0d47d1a3bd0fd63.png)](https://gyazo.com/214d822f494b7440c0d47d1a3bd0fd63)
+
+まず、Primvarではなくアトリビュートとして定義したい場合は USD Custom Attributesに、アトリビュートにしたいものの名前（今回の場合hoge）を入れます。  
+
+[![Image from Gyazo](https://i.gyazo.com/6d354e40d6d9ba03330613fdbab84cbf.png)](https://gyazo.com/6d354e40d6d9ba03330613fdbab84cbf)
+
+その場合、hogeは配列で SOP側にセットした数だけ配列で値が列挙されます。  
+
+[![Image from Gyazo](https://i.gyazo.com/4397ee372bad16773bbedf57c5314c0f.png)](https://gyazo.com/4397ee372bad16773bbedf57c5314c0f)
+
+そうではなくStringとしたい場合は、 Import as Single Value をオンにして、そこに配列ではなく通常の値で読み込みたいアトリビュート名を入れます。  
+
+[![Image from Gyazo](https://i.gyazo.com/2e56e70b5299a006094cb5e4acf2fa4f.png)](https://gyazo.com/2e56e70b5299a006094cb5e4acf2fa4f)
+
+要素は1つだがArrayにしたい場合は、 Import as Single Element Array をオンにします。
+
+[![Image from Gyazo](https://i.gyazo.com/ff7164e8382a2e9d69a4bbd22c6ae7fd.png)](https://gyazo.com/ff7164e8382a2e9d69a4bbd22c6ae7fd)
+
+この場合、配列の要素は1つだけのアトリビュートとして読み込まれます。
+Import as Single Value と Import as Single Element Array両方がONの場合は、配列扱いになるようです。  
+  
+[![Image from Gyazo](https://i.gyazo.com/a1397f89c3339bf242af291f468516af.png)](https://gyazo.com/a1397f89c3339bf242af291f468516af)
+
+両方OFFの場合は、Primvarではなく、通常のアトリビュートの配列で  
+SOP側のPrimitivesの値がそのままインポートされます。  
+
+### Attributeの型
+
+USDのアトリビュートの型は、ある程度SOP側の型準拠で自動でインポートされます。  
+これまでの例だと、SOP側をstringで定義していたので、USD側もstringでしたが  
+
+[![Image from Gyazo](https://i.gyazo.com/b2f170b64f76c05289205e2cfa2bc948.png)](https://gyazo.com/b2f170b64f76c05289205e2cfa2bc948)
+
+SOP側がintであれば、LOP側もint扱いになります（配列の場合はintの配列）  
+ですが、場合によっては別の型にしたい　例として SOP側はint、USD側はそれをBool扱いにしたい場合があります。  
+
+[![Image from Gyazo](https://i.gyazo.com/ba7d4cb962c4be4f69946d98a89b42d1.png)](https://gyazo.com/ba7d4cb962c4be4f69946d98a89b42d1)
+
+そういった場合は、 Boolean AttributesにBool扱いにしたいアトリビュート名を入れると、
+
+[![Image from Gyazo](https://i.gyazo.com/8d860f4d1080b67386bd6cefdf0783b7.png)](https://gyazo.com/8d860f4d1080b67386bd6cefdf0783b7)
+
+LOP側はBoolアトリビュートとしてインポートできます。  
+同様の挙動が Unsigned 32-bit / Unsigned 64-bit 等の設定になります。  
+
+### GeomSubset
+
+AttributeとしてLOPにインポートする以外に、特定の処理をするために  
+SOP側のアトリビュートを使用したいパターンが、このGeomSubsetです。  
+
+SOLARIS上でのGeomSubsetの作り方は、以前 <AutoLinkTitle url="/houdini/solaris/subnet" /> こちらにまとめているので詳細は割愛しますが  
+SOPImportでは、このGeomSubsetをSOPのAttributeを指定することで作成することができます。  
+  
+[![Image from Gyazo](https://i.gyazo.com/16f91ffbf5f20a1d9f855cd9a4e196fc.png)](https://gyazo.com/16f91ffbf5f20a1d9f855cd9a4e196fc)
+
+それが、Subset Attributes で、同一Meshに複数マテリアルを指定したいとき用に指定するGeomSubsetの指定を定義したAttributeを指定して、
+
+[![Image from Gyazo](https://i.gyazo.com/92108ee9fb96963d5d8ab4b3a1108294.png)](https://gyazo.com/92108ee9fb96963d5d8ab4b3a1108294)
+
+その情報をもとに、このようにGeomSubsetとしてインポートすることができます。  
+
+## Material
+
+最後にマテリアル周りのインポートを確認していきます。
+
+[![Image from Gyazo](https://i.gyazo.com/f124591c90ca85a9cbf7902efe7ef044.png)](https://gyazo.com/f124591c90ca85a9cbf7902efe7ef044)
+
+SOPImportには、 BindMaterials という項目があり  
+この設定を切り替えることでSOPの情報をもとにBindMaterialを作成することができます。  
+  
+この値は、SOP側のマテリアルアサイン（shop_materialpath ) とは別で、  
+SOP側で、usdmaterialpathアトリビュートを指定することで動作します。  
+  
+[![Image from Gyazo](https://i.gyazo.com/a71a0fd8b4910429f5ebf55b5d6e8564.png)](https://gyazo.com/a71a0fd8b4910429f5ebf55b5d6e8564)
+
+まず、Primitivesアトリビュートに対して、usdmaterialpathを指定します。  
+個々にはUSD側のPath形式か、/を入れずmaterial名（上の画像なら testMat )のように指定できます。  
+
+[![Image from Gyazo](https://i.gyazo.com/e00d670f935bac9b37879118fff9f8ee.png)](https://gyazo.com/e00d670f935bac9b37879118fff9f8ee)
+
+名前をもとに、資金でMaterialPrimを作成＆アサインしたい場合は  
+Create and Bind Materials Based on Imported Attributeを指定します。  
+
+[![Image from Gyazo](https://i.gyazo.com/784bdf375bada6f562f57cceba1173e4.png)](https://gyazo.com/784bdf375bada6f562f57cceba1173e4)
+
+すると、このように usdmaterialpathで指定したパスにMaterialPrimを作成できます。  
+
+[![Image from Gyazo](https://i.gyazo.com/5578dc2403bd59f92a1afbbc89611e70.png)](https://gyazo.com/5578dc2403bd59f92a1afbbc89611e70)
+
+Mesh側には、自動でこの作成したマテリアルがバインドされます。  
+BindMaterialの場合は、すでにLOP側でマテリアルがある想定で、既存のMaterialPrimに対してマテリアルのアサインを行います。
+指定したマテリアルが存在しない場合は、何も起こりません。  
+  
+shop_materialpathの扱いはどうなの？というのは、公式HELPに
+
+> shop_materialpath SOPアトリビュートからシェーディング用またはジオメトリサブセット用のUSD Primvarsを生成することができます
+
+とあるので、対応するUSDMaterialを作りつつ  
+このprimvarの情報をもとにLOP側で再構築するのかな？とおもいます。
+（が、あまりSOPでのマテリアルアサイン事情に詳しくないので間違ってたらすいません）
+
+## まとめ
+
+これ以外に overかdefineかとか、Animation,Curve,等他のアセットの扱いなど  
+Primitive Definition系はまだ設定があるのですが今回はこのあたりまでにしておこうと思います。  
+
+それぞれの要素だけでも調べることは多いので（特にAnimation等）  
+そこはまた続きの調査記事をまとめていきたいと思います。
+
+今回の内容で、SOP側で作成したジオメトリやアトリビュートを  
+適切な形でLOP側に読み込むための設定箇所は抑えたと思うので  
+データ作成時のSOP側の設定、SOPImportの設定の参考にしてください。
