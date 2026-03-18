@@ -1,6 +1,7 @@
 import MDXComponents from "@theme-original/MDXComponents";
 import AutoLinkTitle from "@site/src/components/auto_link_title.js";
 import CodePen from "@site/src/components/codepen.js";
+import LinkCard from "@site/src/components/link_card.js";
 import Marker from "@site/src/components/marker.js";
 import { Tweet } from "react-tweet";
 import { XEmbed } from "react-social-media-embed";
@@ -14,5 +15,6 @@ export default {
 	Tweet,
 	XEmbed,
 	CodePen,
+	LinkCard,
 	Marker,
 };
