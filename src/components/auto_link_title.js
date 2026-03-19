@@ -1,27 +1,49 @@
-import React, { useEffect, useState } from "react";
+﻿import React from "react";
+import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import linkMetadata from "../generated/link-metadata.json";
 
-const AutoLinkTitle = ({ url }) => {
-	const [posts, setPosts] = useState([]);
+const isExternalUrl = (value) => /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(value || "");
 
-	var rootURL = "https://fereria.github.io/reincarnation_tech";
+const joinWithBaseUrl = (baseUrl, value) => {
+	const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+	const normalizedValue = (value || "").replace(/^\//, "");
+	return `${normalizedBase}${normalizedValue}`;
+};
 
-	useEffect(() => {
-		fetchData(url);
-	}, []);
+const normalizeRoutePath = (value) => {
+	if (!value) {
+		return null;
+	}
 
-	const fetchData = async (url) => {
-		fetch(rootURL + url, { method: "GET" })
-			.then((res) => res.text())
-			.then((data) => {
-				setPosts(data.match(/<header><h1>(.*?)\<\/h1><\/header>/i)[1]);
-			})
-			.catch((error) => {
-				// Errorだった場合、URLを文字列にする
-				setPosts(rootURL + url);
-			});
-	};
+	let normalized = value.trim();
+	if (!normalized.startsWith("/")) {
+		normalized = `/${normalized}`;
+	}
+	if (normalized.length > 1) {
+		normalized = normalized.replace(/\/+$/, "");
+	}
+	return normalized;
+};
 
-	return <a href={rootURL + url}>{posts}</a>;
+const AutoLinkTitle = ({ url = "/" }) => {
+	const { siteConfig } = useDocusaurusContext();
+	const baseUrl = siteConfig?.baseUrl || "/";
+	const normalizedUrl = normalizeRoutePath(url);
+	const metadata =
+		linkMetadata[url] || (normalizedUrl ? linkMetadata[normalizedUrl] : null);
+	const title = metadata?.title || url;
+	const resolvedHref = isExternalUrl(url) ? url : joinWithBaseUrl(baseUrl, url);
+
+	return (
+		<Link
+			href={resolvedHref}
+			target={isExternalUrl(url) ? "_blank" : undefined}
+			rel={isExternalUrl(url) ? "noopener noreferrer" : undefined}
+		>
+			{title}
+		</Link>
+	);
 };
 
 export default AutoLinkTitle;

@@ -17,6 +17,8 @@ const CONTENT_DIRS = [
 ];
 const CONTENT_EXTENSIONS = new Set([".md", ".mdx"]);
 const LINK_CARD_PATTERN = /<LinkCard\b[\s\S]*?\bhref=(["'])(.*?)\1[\s\S]*?\/>/g;
+const AUTO_LINK_TITLE_PATTERN =
+	/<AutoLinkTitle\b[\s\S]*?\burl=(["'])(.*?)\1[\s\S]*?\/>/g;
 const EXCERPT_LIMIT = 160;
 const HTTP_URL_PATTERN = /^https?:\/\//i;
 const EXTERNAL_SCHEME_PATTERN = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
@@ -151,13 +153,16 @@ const collectInternalMetadata = () => {
 	return metadata;
 };
 
-const extractLinkCardHrefs = () => {
+const extractRequestedHrefs = () => {
 	const hrefs = new Set();
 
 	for (const dirPath of CONTENT_DIRS) {
 		for (const filePath of walkFiles(dirPath)) {
 			const source = fs.readFileSync(filePath, "utf8");
 			for (const match of source.matchAll(LINK_CARD_PATTERN)) {
+				hrefs.add(match[2].trim());
+			}
+			for (const match of source.matchAll(AUTO_LINK_TITLE_PATTERN)) {
 				hrefs.add(match[2].trim());
 			}
 		}
@@ -340,7 +345,7 @@ const createInternalAssetUrl = (value) => {
 
 const main = async () => {
 	const internalMetadata = collectInternalMetadata();
-	const hrefs = extractLinkCardHrefs();
+	const hrefs = extractRequestedHrefs();
 	const output = {};
 
 	for (const href of hrefs) {
@@ -371,7 +376,7 @@ const main = async () => {
 	fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
 	fs.writeFileSync(OUTPUT_FILE, `${JSON.stringify(output, null, 2)}\n`, "utf8");
 	console.log(
-		`Generated link metadata for ${Object.keys(output).length} LinkCard entr${
+		`Generated link metadata for ${Object.keys(output).length} link entr${
 			Object.keys(output).length === 1 ? "y" : "ies"
 		}.`
 	);
